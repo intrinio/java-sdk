@@ -2,16 +2,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.intrinio</groupId>
-    <artifactId>api</artifactId>
+    <artifactId>sdk</artifactId>
     <packaging>jar</packaging>
-    <name>api</name>
+    <name>sdk</name>
     <version>0.0.1</version>
-    <url>https://github.com/swagger-api/swagger-codegen</url>
-    <description>Swagger Java</description>
+    <url>https://github.com/intrinio/java-sdk</url>
+    <description>Access the Intrinio API</description>
     <scm>
-        <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
-        <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
-        <url>https://github.com/swagger-api/swagger-codegen</url>
+        <connection>scm:git:git@github.com:intrinio/java-sdk.git</connection>
+        <developerConnection>scm:git:git@github.com:intrinio/java-sdk.git</developerConnection>
+        <url>https://github.com/intrinio/java-sdk</url>
     </scm>
 
     <licenses>

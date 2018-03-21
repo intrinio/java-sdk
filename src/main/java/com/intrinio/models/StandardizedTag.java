@@ -27,7 +27,7 @@ import java.math.BigDecimal;
 /**
  * StandardizedTag
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class StandardizedTag {
   @SerializedName("id")
   private String id = null;

@@ -28,7 +28,7 @@ import org.threeten.bp.LocalDate;
  * An economic index provided by the St. Lous Fed FRED API, such as GDP, Unemployment, Fed Funds Rate, and more.
  */
 @ApiModel(description = "An economic index provided by the St. Lous Fed FRED API, such as GDP, Unemployment, Fed Funds Rate, and more.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class EconomicIndex {
   @SerializedName("id")
   private String id = null;

@@ -27,7 +27,7 @@ import java.io.IOException;
  * A conditional clause used tp screen securities
  */
 @ApiModel(description = "A conditional clause used tp screen securities")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class SecurityScreenClause {
   @SerializedName("field")
   private String field = null;

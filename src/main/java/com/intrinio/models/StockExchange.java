@@ -28,7 +28,7 @@ import org.threeten.bp.LocalDate;
  * An organized and regulated financial market in which securities are bought and sold.
  */
 @ApiModel(description = "An organized and regulated financial market in which securities are bought and sold.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class StockExchange {
   @SerializedName("id")
   private String id = null;

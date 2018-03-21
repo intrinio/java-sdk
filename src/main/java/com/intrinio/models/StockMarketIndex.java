@@ -27,7 +27,7 @@ import org.threeten.bp.LocalDate;
 /**
  * StockMarketIndex
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class StockMarketIndex {
   @SerializedName("id")
   private String id = null;

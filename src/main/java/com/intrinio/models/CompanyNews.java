@@ -28,7 +28,7 @@ import org.threeten.bp.LocalDate;
  * A news article about a company
  */
 @ApiModel(description = "A news article about a company")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class CompanyNews {
   @SerializedName("title")
   private String title = null;

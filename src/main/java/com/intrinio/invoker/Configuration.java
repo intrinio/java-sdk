@@ -13,7 +13,7 @@
 
 package com.intrinio.invoker;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 

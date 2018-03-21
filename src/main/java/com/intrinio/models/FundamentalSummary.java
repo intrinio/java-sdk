@@ -28,7 +28,7 @@ import org.threeten.bp.LocalDate;
 /**
  * FundamentalSummary
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class FundamentalSummary {
   @SerializedName("id")
   private String id = null;

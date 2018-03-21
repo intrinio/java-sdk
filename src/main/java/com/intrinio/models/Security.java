@@ -31,7 +31,7 @@ import org.threeten.bp.LocalDate;
  * A financial instrument representing shares of ownership in a publicly-traded company
  */
 @ApiModel(description = "A financial instrument representing shares of ownership in a publicly-traded company")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class Security {
   @SerializedName("id")
   private String id = null;

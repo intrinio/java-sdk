@@ -28,7 +28,7 @@ import org.threeten.bp.LocalDate;
  * A company that submits filings to the SEC and has a security traded primarily on a US exchange
  */
 @ApiModel(description = "A company that submits filings to the SEC and has a security traded primarily on a US exchange")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class Company {
   @SerializedName("id")
   private String id = null;

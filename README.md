@@ -8,7 +8,6 @@ Welcome to the Intrinio API! Through our Marketplace, we offer a wide selection 
 
 - API version: 2.0.0
 - Package version: 
-- Build date: 2018-03-20T19:49:08.691-06:00
 
 
 ## Requirements
@@ -32,7 +31,7 @@ Add this dependency to your project's POM:
 ```xml
 <dependency>
     <groupId>com.intrinio</groupId>
-    <artifactId>api</artifactId>
+    <artifactId>sdk</artifactId>
     <version>0.0.1</version>
     <scope>compile</scope>
 </dependency>
@@ -43,7 +42,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.intrinio:api:0.0.1"
+compile "com.intrinio:sdk:0.0.1"
 ```
 
 ### Others
@@ -54,7 +53,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/api-0.0.1.jar
+* target/sdk-0.0.1.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -62,10 +61,12 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instructions and execute the following Java code:
 
 ```java
-import invalidPackageName.*;
-import invalidPackageName.auth.*;
-import io.swagger.client.model.*;
-import Intrinio.CompanyApi;
+// Import classes:
+//import com.intrinio.invoker.ApiClient;
+//import com.intrinio.invoker.ApiException;
+//import com.intrinio.invoker.Configuration;
+//import com.intrinio.invoker.auth.*;
+//import .;
 
 import java.io.File;
 import java.util.*;

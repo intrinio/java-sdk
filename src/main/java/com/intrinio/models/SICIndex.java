@@ -27,7 +27,7 @@ import java.io.IOException;
  * An Index representing a Standard Industrial Classification (SIC) code.
  */
 @ApiModel(description = "An Index representing a Standard Industrial Classification (SIC) code.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class SICIndex {
   @SerializedName("id")
   private String id = null;

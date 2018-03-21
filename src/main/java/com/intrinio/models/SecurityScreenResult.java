@@ -31,7 +31,7 @@ import java.util.List;
  * A security that matches the screen and its corresponding screened properties
  */
 @ApiModel(description = "A security that matches the screen and its corresponding screened properties")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class SecurityScreenResult {
   @SerializedName("security")
   private SecuritySummary security = null;

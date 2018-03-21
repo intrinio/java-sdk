@@ -30,7 +30,7 @@ import org.threeten.bp.LocalDate;
  * The stock price of a security on a given date.
  */
 @ApiModel(description = "The stock price of a security on a given date.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class StockPrice {
   @SerializedName("security")
   private SecuritySummary security = null;

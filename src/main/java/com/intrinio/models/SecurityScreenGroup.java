@@ -31,7 +31,7 @@ import java.util.List;
  * A group of clauses and groups combined with a logic operator, used to screen securities
  */
 @ApiModel(description = "A group of clauses and groups combined with a logic operator, used to screen securities")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class SecurityScreenGroup {
   @SerializedName("operator")
   private String operator = null;

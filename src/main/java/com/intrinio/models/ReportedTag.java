@@ -27,7 +27,7 @@ import java.io.IOException;
  * An XBRL tag as-reported by the company on the as-reported financial statement
  */
 @ApiModel(description = "An XBRL tag as-reported by the company on the as-reported financial statement")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class ReportedTag {
   @SerializedName("tag")
   private String tag = null;

@@ -29,7 +29,7 @@ import java.math.BigDecimal;
  * A financial statement as-reported, directly from the financial statements of the XBRL filings from the company.
  */
 @ApiModel(description = "A financial statement as-reported, directly from the financial statements of the XBRL filings from the company.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class ReportedFinancial {
   @SerializedName("xbrl_tag")
   private ReportedTag xbrlTag = null;

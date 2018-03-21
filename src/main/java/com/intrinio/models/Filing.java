@@ -29,7 +29,7 @@ import org.threeten.bp.LocalDate;
  * A filing submitted to the SEC by a company
  */
 @ApiModel(description = "A filing submitted to the SEC by a company")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-21T13:10:36.306-06:00")
+
 public class Filing {
   @SerializedName("id")
   private String id = null;
