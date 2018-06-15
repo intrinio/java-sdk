@@ -271,7 +271,7 @@ SecurityApi securityApi = new SecurityApi();
 
 String identifier = "identifier_example"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
 LocalDate startDate = new LocalDate(); // LocalDate | Return prices on or after the date
-LocalDate endDate = new LocalDate(); // LocalDate | Return prices on or beore the date
+LocalDate endDate = new LocalDate(); // LocalDate | Return prices on or before the date
 String frequency = "daily"; // String | Return stock prices in the given frequency
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
  **startDate** | **LocalDate**| Return prices on or after the date | [optional]
- **endDate** | **LocalDate**| Return prices on or beore the date | [optional]
+ **endDate** | **LocalDate**| Return prices on or before the date | [optional]
  **frequency** | **String**| Return stock prices in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
