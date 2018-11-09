@@ -4,21 +4,21 @@ All URIs are relative to *https://api-v2.intrinio.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAllEconomicIndices**](IndexApi.md#getAllEconomicIndices) | **GET** /indices/economic | Get ALl Economic Indices
+[**getAllEconomicIndices**](IndexApi.md#getAllEconomicIndices) | **GET** /indices/economic | Get All Economic Indices
 [**getAllSicIndices**](IndexApi.md#getAllSicIndices) | **GET** /indices/sic | Get All SIC Indices
 [**getAllStockMarketIndices**](IndexApi.md#getAllStockMarketIndices) | **GET** /indices/stock_market | Get All Stock Market Indices
 [**getEconomicIndexById**](IndexApi.md#getEconomicIndexById) | **GET** /indices/economic/{identifier} | Get an Economic Index by ID
-[**getEconomicIndexDataPointNumber**](IndexApi.md#getEconomicIndexDataPointNumber) | **GET** /indices/economic/{identifier}/data_point/{item}/number | Get Economic Index Data Point (Number)
-[**getEconomicIndexDataPointText**](IndexApi.md#getEconomicIndexDataPointText) | **GET** /indices/economic/{identifier}/data_point/{item}/text | Get Economic Index Data Point (Text)
-[**getEconomicIndexHistoricalData**](IndexApi.md#getEconomicIndexHistoricalData) | **GET** /indices/economic/{identifier}/historical_data/{item} | Get Economic Index Historical Data
+[**getEconomicIndexDataPointNumber**](IndexApi.md#getEconomicIndexDataPointNumber) | **GET** /indices/economic/{identifier}/data_point/{tag}/number | Get Economic Index Data Point (Number)
+[**getEconomicIndexDataPointText**](IndexApi.md#getEconomicIndexDataPointText) | **GET** /indices/economic/{identifier}/data_point/{tag}/text | Get Economic Index Data Point (Text)
+[**getEconomicIndexHistoricalData**](IndexApi.md#getEconomicIndexHistoricalData) | **GET** /indices/economic/{identifier}/historical_data/{tag} | Get Economic Index Historical Data
 [**getSicIndexById**](IndexApi.md#getSicIndexById) | **GET** /indices/sic/{identifier} | Get an SIC Index by ID
-[**getSicIndexDataPointNumber**](IndexApi.md#getSicIndexDataPointNumber) | **GET** /indices/sic/{identifier}/data_point/{item}/number | Get SIC Index Data Point (Number)
-[**getSicIndexDataPointText**](IndexApi.md#getSicIndexDataPointText) | **GET** /indices/sic/{identifier}/data_point/{item}/text | Get SIC Index Data Point (Text)
-[**getSicIndexHistoricalData**](IndexApi.md#getSicIndexHistoricalData) | **GET** /indices/sic/{identifier}/historical_data/{item} | Get SIC Index Historical Data
+[**getSicIndexDataPointNumber**](IndexApi.md#getSicIndexDataPointNumber) | **GET** /indices/sic/{identifier}/data_point/{tag}/number | Get SIC Index Data Point (Number)
+[**getSicIndexDataPointText**](IndexApi.md#getSicIndexDataPointText) | **GET** /indices/sic/{identifier}/data_point/{tag}/text | Get SIC Index Data Point (Text)
+[**getSicIndexHistoricalData**](IndexApi.md#getSicIndexHistoricalData) | **GET** /indices/sic/{identifier}/historical_data/{tag} | Get SIC Index Historical Data
 [**getStockMarketIndexById**](IndexApi.md#getStockMarketIndexById) | **GET** /indices/stock_market/{identifier} | Get a Stock Market Index by ID
-[**getStockMarketIndexDataPointNumber**](IndexApi.md#getStockMarketIndexDataPointNumber) | **GET** /indices/stock_market/{identifier}/data_point/{item}/number | Get Stock Market Index Data Point (Number)
-[**getStockMarketIndexDataPointText**](IndexApi.md#getStockMarketIndexDataPointText) | **GET** /indices/stock_market/{identifier}/data_point/{item}/text | Get Stock Market Index Data Point (Text)
-[**getStockMarketIndexHistoricalData**](IndexApi.md#getStockMarketIndexHistoricalData) | **GET** /indices/stock_market/{identifier}/historical_data/{item} | Get Stock Market Index Historical Data
+[**getStockMarketIndexDataPointNumber**](IndexApi.md#getStockMarketIndexDataPointNumber) | **GET** /indices/stock_market/{identifier}/data_point/{tag}/number | Get Stock Market Index Data Point (Number)
+[**getStockMarketIndexDataPointText**](IndexApi.md#getStockMarketIndexDataPointText) | **GET** /indices/stock_market/{identifier}/data_point/{tag}/text | Get Stock Market Index Data Point (Text)
+[**getStockMarketIndexHistoricalData**](IndexApi.md#getStockMarketIndexHistoricalData) | **GET** /indices/stock_market/{identifier}/historical_data/{tag} | Get Stock Market Index Historical Data
 [**searchEconomicIndices**](IndexApi.md#searchEconomicIndices) | **GET** /indices/economic/search | Search Economic Indices
 [**searchSicIndices**](IndexApi.md#searchSicIndices) | **GET** /indices/sic/search | Search SIC Indices
 [**searchStockMarketsIndices**](IndexApi.md#searchStockMarketsIndices) | **GET** /indices/stock_market/search | Search Stock Market Indices
@@ -26,9 +26,9 @@ Method | HTTP request | Description
 
 <a name="getAllEconomicIndices"></a>
 # **getAllEconomicIndices**
-> List&lt;EconomicIndexSummary&gt; getAllEconomicIndices(nextPage)
+> ApiResponseEconomicIndices getAllEconomicIndices(nextPage)
 
-Get ALl Economic Indices
+Get All Economic Indices
 
 ### Example
 ```java
@@ -40,7 +40,7 @@ Get ALl Economic Indices
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
@@ -48,7 +48,7 @@ IndexApi indexApi = new IndexApi();
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<EconomicIndexSummary> result = indexApi.getAllEconomicIndices(nextPage);
+    ApiResponseEconomicIndices result = indexApi.getAllEconomicIndices(nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getAllEconomicIndices");
@@ -64,11 +64,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;EconomicIndexSummary&gt;**](EconomicIndexSummary.md)
+[**ApiResponseEconomicIndices**](ApiResponseEconomicIndices.md)
 
 <a name="getAllSicIndices"></a>
 # **getAllSicIndices**
-> List&lt;SICIndex&gt; getAllSicIndices(nextPage)
+> ApiResponseSICIndices getAllSicIndices(nextPage)
 
 Get All SIC Indices
 
@@ -82,7 +82,7 @@ Get All SIC Indices
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
@@ -90,7 +90,7 @@ IndexApi indexApi = new IndexApi();
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<SICIndex> result = indexApi.getAllSicIndices(nextPage);
+    ApiResponseSICIndices result = indexApi.getAllSicIndices(nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getAllSicIndices");
@@ -106,11 +106,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;SICIndex&gt;**](SICIndex.md)
+[**ApiResponseSICIndices**](ApiResponseSICIndices.md)
 
 <a name="getAllStockMarketIndices"></a>
 # **getAllStockMarketIndices**
-> List&lt;StockMarketIndexSummary&gt; getAllStockMarketIndices(nextPage)
+> ApiResponseStockMarketIndices getAllStockMarketIndices(nextPage)
 
 Get All Stock Market Indices
 
@@ -124,7 +124,7 @@ Get All Stock Market Indices
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
@@ -132,7 +132,7 @@ IndexApi indexApi = new IndexApi();
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<StockMarketIndexSummary> result = indexApi.getAllStockMarketIndices(nextPage);
+    ApiResponseStockMarketIndices result = indexApi.getAllStockMarketIndices(nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getAllStockMarketIndices");
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;StockMarketIndexSummary&gt;**](StockMarketIndexSummary.md)
+[**ApiResponseStockMarketIndices**](ApiResponseStockMarketIndices.md)
 
 <a name="getEconomicIndexById"></a>
 # **getEconomicIndexById**
@@ -166,7 +166,7 @@ Get an Economic Index by ID
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
@@ -194,11 +194,11 @@ Name | Type | Description  | Notes
 
 <a name="getEconomicIndexDataPointNumber"></a>
 # **getEconomicIndexDataPointNumber**
-> BigDecimal getEconomicIndexDataPointNumber(identifier, item)
+> BigDecimal getEconomicIndexDataPointNumber(identifier, tag)
 
 Get Economic Index Data Point (Number)
 
-Returns a numeric value for the given &#x60;item&#x60; for the Economic Index with the given &#x60;identifier&#x60;
+Returns a numeric value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -210,16 +210,16 @@ Returns a numeric value for the given &#x60;item&#x60; for the Economic Index wi
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag or other item
+String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
 
 try {
-    BigDecimal result = indexApi.getEconomicIndexDataPointNumber(identifier, item);
+    BigDecimal result = indexApi.getEconomicIndexDataPointNumber(identifier, tag);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getEconomicIndexDataPointNumber");
@@ -232,7 +232,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **item** | **String**| An Intrinio data tag or other item |
+ **tag** | **String**| An Intrinio data tag ID or code-name |
 
 ### Return type
 
@@ -240,11 +240,11 @@ Name | Type | Description  | Notes
 
 <a name="getEconomicIndexDataPointText"></a>
 # **getEconomicIndexDataPointText**
-> String getEconomicIndexDataPointText(identifier, item)
+> String getEconomicIndexDataPointText(identifier, tag)
 
 Get Economic Index Data Point (Text)
 
-Returns a text value for the given &#x60;item&#x60; for the Economic Index with the given &#x60;identifier&#x60;
+Returns a text value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -256,16 +256,16 @@ Returns a text value for the given &#x60;item&#x60; for the Economic Index with 
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag or other item
+String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
 
 try {
-    String result = indexApi.getEconomicIndexDataPointText(identifier, item);
+    String result = indexApi.getEconomicIndexDataPointText(identifier, tag);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getEconomicIndexDataPointText");
@@ -278,7 +278,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **item** | **String**| An Intrinio data tag or other item |
+ **tag** | **String**| An Intrinio data tag ID or code-name |
 
 ### Return type
 
@@ -286,11 +286,11 @@ Name | Type | Description  | Notes
 
 <a name="getEconomicIndexHistoricalData"></a>
 # **getEconomicIndexHistoricalData**
-> List&lt;HistoricalData&gt; getEconomicIndexHistoricalData(identifier, item, type, startDate, endDate, sortOrder, pageSize)
+> Object getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
 
 Get Economic Index Historical Data
 
-Returns historical values for the given &#x60;item&#x60; and the Economic Index with the given &#x60;identifier&#x60;
+Returns historical values for the given &#x60;tag&#x60; and the Economic Index with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -302,21 +302,21 @@ Returns historical values for the given &#x60;item&#x60; and the Economic Index 
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag or other item
+String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
 String type = "type_example"; // String | Filter by type, when applicable
 LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
 LocalDate endDate = new LocalDate(); // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | 
+String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<HistoricalData> result = indexApi.getEconomicIndexHistoricalData(identifier, item, type, startDate, endDate, sortOrder, pageSize);
+    Object result = indexApi.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getEconomicIndexHistoricalData");
@@ -329,16 +329,16 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **item** | **String**| An Intrinio data tag or other item |
+ **tag** | **String**| An Intrinio data tag ID or code-name |
  **type** | **String**| Filter by type, when applicable | [optional]
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
- **pageSize** | **BigDecimal**|  | [optional] [default to 100]
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
-[**List&lt;HistoricalData&gt;**](HistoricalData.md)
+**Object**
 
 <a name="getSicIndexById"></a>
 # **getSicIndexById**
@@ -356,7 +356,7 @@ Get an SIC Index by ID
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
@@ -384,11 +384,11 @@ Name | Type | Description  | Notes
 
 <a name="getSicIndexDataPointNumber"></a>
 # **getSicIndexDataPointNumber**
-> BigDecimal getSicIndexDataPointNumber(identifier, item)
+> BigDecimal getSicIndexDataPointNumber(identifier, tag)
 
 Get SIC Index Data Point (Number)
 
-Returns a numeric value for the given &#x60;item&#x60; for the SIC Index with the given &#x60;identifier&#x60;
+Returns a numeric value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -400,16 +400,16 @@ Returns a numeric value for the given &#x60;item&#x60; for the SIC Index with th
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag or other item
+String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
 
 try {
-    BigDecimal result = indexApi.getSicIndexDataPointNumber(identifier, item);
+    BigDecimal result = indexApi.getSicIndexDataPointNumber(identifier, tag);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getSicIndexDataPointNumber");
@@ -422,7 +422,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **item** | **String**| An Intrinio data tag or other item |
+ **tag** | **String**| An Intrinio data tag ID or code-name |
 
 ### Return type
 
@@ -430,11 +430,11 @@ Name | Type | Description  | Notes
 
 <a name="getSicIndexDataPointText"></a>
 # **getSicIndexDataPointText**
-> String getSicIndexDataPointText(identifier, item)
+> String getSicIndexDataPointText(identifier, tag)
 
 Get SIC Index Data Point (Text)
 
-Returns a text value for the given &#x60;item&#x60; for the SIC Index with the given &#x60;identifier&#x60;
+Returns a text value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -446,16 +446,16 @@ Returns a text value for the given &#x60;item&#x60; for the SIC Index with the g
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag or other item
+String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
 
 try {
-    String result = indexApi.getSicIndexDataPointText(identifier, item);
+    String result = indexApi.getSicIndexDataPointText(identifier, tag);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getSicIndexDataPointText");
@@ -468,7 +468,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **item** | **String**| An Intrinio data tag or other item |
+ **tag** | **String**| An Intrinio data tag ID or code-name |
 
 ### Return type
 
@@ -476,11 +476,11 @@ Name | Type | Description  | Notes
 
 <a name="getSicIndexHistoricalData"></a>
 # **getSicIndexHistoricalData**
-> List&lt;HistoricalData&gt; getSicIndexHistoricalData(identifier, item, type, startDate, endDate, sortOrder, pageSize)
+> ApiResponseSICIndexHistoricalData getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
 
 Get SIC Index Historical Data
 
-Returns historical values for the given &#x60;item&#x60; and the SIC Index with the given &#x60;identifier&#x60;
+Returns historical values for the given &#x60;tag&#x60; and the SIC Index with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -492,21 +492,21 @@ Returns historical values for the given &#x60;item&#x60; and the SIC Index with 
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag or other item
+String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
 String type = "type_example"; // String | Filter by type, when applicable
 LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
 LocalDate endDate = new LocalDate(); // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | 
+String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<HistoricalData> result = indexApi.getSicIndexHistoricalData(identifier, item, type, startDate, endDate, sortOrder, pageSize);
+    ApiResponseSICIndexHistoricalData result = indexApi.getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getSicIndexHistoricalData");
@@ -519,16 +519,16 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **item** | **String**| An Intrinio data tag or other item |
+ **tag** | **String**| An Intrinio data tag ID or code-name |
  **type** | **String**| Filter by type, when applicable | [optional]
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
- **pageSize** | **BigDecimal**|  | [optional] [default to 100]
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
-[**List&lt;HistoricalData&gt;**](HistoricalData.md)
+[**ApiResponseSICIndexHistoricalData**](ApiResponseSICIndexHistoricalData.md)
 
 <a name="getStockMarketIndexById"></a>
 # **getStockMarketIndexById**
@@ -546,7 +546,7 @@ Get a Stock Market Index by ID
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
@@ -574,11 +574,11 @@ Name | Type | Description  | Notes
 
 <a name="getStockMarketIndexDataPointNumber"></a>
 # **getStockMarketIndexDataPointNumber**
-> BigDecimal getStockMarketIndexDataPointNumber(identifier, item)
+> BigDecimal getStockMarketIndexDataPointNumber(identifier, tag)
 
 Get Stock Market Index Data Point (Number)
 
-Returns a numeric value for the given &#x60;item&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
+Returns a numeric value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -590,16 +590,16 @@ Returns a numeric value for the given &#x60;item&#x60; for the Stock Market Inde
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag or other item
+String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
 
 try {
-    BigDecimal result = indexApi.getStockMarketIndexDataPointNumber(identifier, item);
+    BigDecimal result = indexApi.getStockMarketIndexDataPointNumber(identifier, tag);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getStockMarketIndexDataPointNumber");
@@ -612,7 +612,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **item** | **String**| An Intrinio data tag or other item |
+ **tag** | **String**| An Intrinio data tag ID or code-name |
 
 ### Return type
 
@@ -620,11 +620,11 @@ Name | Type | Description  | Notes
 
 <a name="getStockMarketIndexDataPointText"></a>
 # **getStockMarketIndexDataPointText**
-> String getStockMarketIndexDataPointText(identifier, item)
+> String getStockMarketIndexDataPointText(identifier, tag)
 
 Get Stock Market Index Data Point (Text)
 
-Returns a text value for the given &#x60;item&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
+Returns a text value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -636,16 +636,16 @@ Returns a text value for the given &#x60;item&#x60; for the Stock Market Index w
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag or other item
+String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
 
 try {
-    String result = indexApi.getStockMarketIndexDataPointText(identifier, item);
+    String result = indexApi.getStockMarketIndexDataPointText(identifier, tag);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getStockMarketIndexDataPointText");
@@ -658,7 +658,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **item** | **String**| An Intrinio data tag or other item |
+ **tag** | **String**| An Intrinio data tag ID or code-name |
 
 ### Return type
 
@@ -666,11 +666,11 @@ Name | Type | Description  | Notes
 
 <a name="getStockMarketIndexHistoricalData"></a>
 # **getStockMarketIndexHistoricalData**
-> List&lt;HistoricalData&gt; getStockMarketIndexHistoricalData(identifier, item, type, startDate, endDate, sortOrder, pageSize)
+> ApiResponseStockMarketIndexHistoricalData getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
 
 Get Stock Market Index Historical Data
 
-Returns historical values for the given &#x60;item&#x60; and the Stock Market Index with the given &#x60;identifier&#x60;
+Returns historical values for the given &#x60;tag&#x60; and the Stock Market Index with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -682,21 +682,21 @@ Returns historical values for the given &#x60;item&#x60; and the Stock Market In
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag or other item
+String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
 String type = "type_example"; // String | Filter by type, when applicable
 LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
 LocalDate endDate = new LocalDate(); // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | 
+String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<HistoricalData> result = indexApi.getStockMarketIndexHistoricalData(identifier, item, type, startDate, endDate, sortOrder, pageSize);
+    ApiResponseStockMarketIndexHistoricalData result = indexApi.getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getStockMarketIndexHistoricalData");
@@ -709,20 +709,20 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **item** | **String**| An Intrinio data tag or other item |
+ **tag** | **String**| An Intrinio data tag ID or code-name |
  **type** | **String**| Filter by type, when applicable | [optional]
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
- **pageSize** | **BigDecimal**|  | [optional] [default to 100]
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
-[**List&lt;HistoricalData&gt;**](HistoricalData.md)
+[**ApiResponseStockMarketIndexHistoricalData**](ApiResponseStockMarketIndexHistoricalData.md)
 
 <a name="searchEconomicIndices"></a>
 # **searchEconomicIndices**
-> List&lt;EconomicIndexSummary&gt; searchEconomicIndices(query, nextPage)
+> ApiResponseEconomicIndices searchEconomicIndices(query)
 
 Search Economic Indices
 
@@ -738,16 +738,15 @@ Searches for indices using the text in &#x60;query&#x60;
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String query = "query_example"; // String | Search query
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<EconomicIndexSummary> result = indexApi.searchEconomicIndices(query, nextPage);
+    ApiResponseEconomicIndices result = indexApi.searchEconomicIndices(query);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#searchEconomicIndices");
@@ -760,15 +759,14 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| Search query |
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
-[**List&lt;EconomicIndexSummary&gt;**](EconomicIndexSummary.md)
+[**ApiResponseEconomicIndices**](ApiResponseEconomicIndices.md)
 
 <a name="searchSicIndices"></a>
 # **searchSicIndices**
-> List&lt;SICIndex&gt; searchSicIndices(query, nextPage)
+> ApiResponseSICIndices searchSicIndices(query)
 
 Search SIC Indices
 
@@ -784,16 +782,15 @@ Searches for indices using the text in &#x60;query&#x60;
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String query = "query_example"; // String | Search query
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<SICIndex> result = indexApi.searchSicIndices(query, nextPage);
+    ApiResponseSICIndices result = indexApi.searchSicIndices(query);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#searchSicIndices");
@@ -806,15 +803,14 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| Search query |
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
-[**List&lt;SICIndex&gt;**](SICIndex.md)
+[**ApiResponseSICIndices**](ApiResponseSICIndices.md)
 
 <a name="searchStockMarketsIndices"></a>
 # **searchStockMarketsIndices**
-> List&lt;StockMarketIndexSummary&gt; searchStockMarketsIndices(query, nextPage)
+> ApiResponseStockMarketIndices searchStockMarketsIndices(query)
 
 Search Stock Market Indices
 
@@ -830,16 +826,15 @@ Searches for indices using the text in &#x60;query&#x60;
 //import com.intrinio.api.IndexApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
 String query = "query_example"; // String | Search query
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<StockMarketIndexSummary> result = indexApi.searchStockMarketsIndices(query, nextPage);
+    ApiResponseStockMarketIndices result = indexApi.searchStockMarketsIndices(query);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#searchStockMarketsIndices");
@@ -852,9 +847,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| Search query |
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
-[**List&lt;StockMarketIndexSummary&gt;**](StockMarketIndexSummary.md)
+[**ApiResponseStockMarketIndices**](ApiResponseStockMarketIndices.md)
 

@@ -97,12 +97,6 @@ public class StockPriceSummary {
   @SerializedName("volume")
   private BigDecimal volume = null;
 
-  @SerializedName("ex_dividend")
-  private BigDecimal exDividend = null;
-
-  @SerializedName("split_ratio")
-  private BigDecimal splitRatio = null;
-
   @SerializedName("adj_open")
   private BigDecimal adjOpen = null;
 
@@ -262,42 +256,6 @@ public class StockPriceSummary {
     this.volume = volume;
   }
 
-  public StockPriceSummary exDividend(BigDecimal exDividend) {
-    this.exDividend = exDividend;
-    return this;
-  }
-
-   /**
-   * The face (or dollar) value of any dividends awarded during the period
-   * @return exDividend
-  **/
-  @ApiModelProperty(value = "The face (or dollar) value of any dividends awarded during the period")
-  public BigDecimal getExDividend() {
-    return exDividend;
-  }
-
-  public void setExDividend(BigDecimal exDividend) {
-    this.exDividend = exDividend;
-  }
-
-  public StockPriceSummary splitRatio(BigDecimal splitRatio) {
-    this.splitRatio = splitRatio;
-    return this;
-  }
-
-   /**
-   * The combined ratio of all splits during the period. A 2 for 1 split would yield a split ratio of 0.5.
-   * @return splitRatio
-  **/
-  @ApiModelProperty(value = "The combined ratio of all splits during the period. A 2 for 1 split would yield a split ratio of 0.5.")
-  public BigDecimal getSplitRatio() {
-    return splitRatio;
-  }
-
-  public void setSplitRatio(BigDecimal splitRatio) {
-    this.splitRatio = splitRatio;
-  }
-
   public StockPriceSummary adjOpen(BigDecimal adjOpen) {
     this.adjOpen = adjOpen;
     return this;
@@ -406,8 +364,6 @@ public class StockPriceSummary {
         Objects.equals(this.low, stockPriceSummary.low) &&
         Objects.equals(this.close, stockPriceSummary.close) &&
         Objects.equals(this.volume, stockPriceSummary.volume) &&
-        Objects.equals(this.exDividend, stockPriceSummary.exDividend) &&
-        Objects.equals(this.splitRatio, stockPriceSummary.splitRatio) &&
         Objects.equals(this.adjOpen, stockPriceSummary.adjOpen) &&
         Objects.equals(this.adjHigh, stockPriceSummary.adjHigh) &&
         Objects.equals(this.adjLow, stockPriceSummary.adjLow) &&
@@ -417,7 +373,7 @@ public class StockPriceSummary {
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, intraperiod, frequency, open, high, low, close, volume, exDividend, splitRatio, adjOpen, adjHigh, adjLow, adjClose, adjVolume);
+    return Objects.hash(date, intraperiod, frequency, open, high, low, close, volume, adjOpen, adjHigh, adjLow, adjClose, adjVolume);
   }
 
 
@@ -434,8 +390,6 @@ public class StockPriceSummary {
     sb.append("    low: ").append(toIndentedString(low)).append("\n");
     sb.append("    close: ").append(toIndentedString(close)).append("\n");
     sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
-    sb.append("    exDividend: ").append(toIndentedString(exDividend)).append("\n");
-    sb.append("    splitRatio: ").append(toIndentedString(splitRatio)).append("\n");
     sb.append("    adjOpen: ").append(toIndentedString(adjOpen)).append("\n");
     sb.append("    adjHigh: ").append(toIndentedString(adjHigh)).append("\n");
     sb.append("    adjLow: ").append(toIndentedString(adjLow)).append("\n");

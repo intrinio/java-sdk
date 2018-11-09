@@ -23,9 +23,6 @@ public class Fundamental {
   @SerializedName("id")
   private String id = null;
 
-  @SerializedName("company")
-  private CompanySummary company = null;
-
   @SerializedName("statement_code")
   private String statementCode = null;
 
@@ -96,8 +93,8 @@ public class Fundamental {
   @SerializedName("filing_date")
   private LocalDate filingDate = null;
 
-  @SerializedName("calculated")
-  private Boolean calculated = null;
+  @SerializedName("company")
+  private CompanySummary company = null;
 
   public Fundamental id(String id) {
     this.id = id;
@@ -115,24 +112,6 @@ public class Fundamental {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-  public Fundamental company(CompanySummary company) {
-    this.company = company;
-    return this;
-  }
-
-   /**
-   * The Company that the Fundamental was belongs to
-   * @return company
-  **/
-  @ApiModelProperty(value = "The Company that the Fundamental was belongs to")
-  public CompanySummary getCompany() {
-    return company;
-  }
-
-  public void setCompany(CompanySummary company) {
-    this.company = company;
   }
 
   public Fundamental statementCode(String statementCode) {
@@ -261,22 +240,22 @@ public class Fundamental {
     this.filingDate = filingDate;
   }
 
-  public Fundamental calculated(Boolean calculated) {
-    this.calculated = calculated;
+  public Fundamental company(CompanySummary company) {
+    this.company = company;
     return this;
   }
 
    /**
-   * If true, this Fundamental was calculated by Intrinio and not actually reported by the Company
-   * @return calculated
+   * The Company that the Fundamental was belongs to
+   * @return company
   **/
-  @ApiModelProperty(value = "If true, this Fundamental was calculated by Intrinio and not actually reported by the Company")
-  public Boolean isisCalculated() {
-    return calculated;
+  @ApiModelProperty(value = "The Company that the Fundamental was belongs to")
+  public CompanySummary getCompany() {
+    return company;
   }
 
-  public void setCalculated(Boolean calculated) {
-    this.calculated = calculated;
+  public void setCompany(CompanySummary company) {
+    this.company = company;
   }
 
 
@@ -290,7 +269,6 @@ public class Fundamental {
     }
     Fundamental fundamental = (Fundamental) o;
     return Objects.equals(this.id, fundamental.id) &&
-        Objects.equals(this.company, fundamental.company) &&
         Objects.equals(this.statementCode, fundamental.statementCode) &&
         Objects.equals(this.fiscalYear, fundamental.fiscalYear) &&
         Objects.equals(this.fiscalPeriod, fundamental.fiscalPeriod) &&
@@ -298,12 +276,12 @@ public class Fundamental {
         Objects.equals(this.startDate, fundamental.startDate) &&
         Objects.equals(this.endDate, fundamental.endDate) &&
         Objects.equals(this.filingDate, fundamental.filingDate) &&
-        Objects.equals(this.calculated, fundamental.calculated);
+        Objects.equals(this.company, fundamental.company);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, company, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, calculated);
+    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, company);
   }
 
 
@@ -313,7 +291,6 @@ public class Fundamental {
     sb.append("class Fundamental {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("    statementCode: ").append(toIndentedString(statementCode)).append("\n");
     sb.append("    fiscalYear: ").append(toIndentedString(fiscalYear)).append("\n");
     sb.append("    fiscalPeriod: ").append(toIndentedString(fiscalPeriod)).append("\n");
@@ -321,7 +298,7 @@ public class Fundamental {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    filingDate: ").append(toIndentedString(filingDate)).append("\n");
-    sb.append("    calculated: ").append(toIndentedString(calculated)).append("\n");
+    sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("}");
     return sb.toString();
   }

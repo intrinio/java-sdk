@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'com.intrinio'
-version = '0.0.1'
+version = '0.9.1'
 
 buildscript {
     repositories {
@@ -83,7 +83,7 @@ if(hasProperty('target') && target == 'android') {
 
     install {
         repositories.mavenInstaller {
-            pom.artifactId = 'api'
+            pom.artifactId = 'sdk'
         }
     }
 

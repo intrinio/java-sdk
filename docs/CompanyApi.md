@@ -7,20 +7,22 @@ Method | HTTP request | Description
 [**filterCompanies**](CompanyApi.md#filterCompanies) | **GET** /companies/filter | Filter Companies
 [**filterCompanyFundamentals**](CompanyApi.md#filterCompanyFundamentals) | **GET** /companies/{identifier}/fundamentals/filter | Filter Fundamentals for a Company
 [**getAllCompanies**](CompanyApi.md#getAllCompanies) | **GET** /companies | Get All Companies
-[**getAllCompanyFilings**](CompanyApi.md#getAllCompanyFilings) | **GET** /companies/{identifier}/filings | Filings
-[**getAllCompanyFundamentals**](CompanyApi.md#getAllCompanyFundamentals) | **GET** /companies/{identifier}/fundamentals | Get All Fundamentals for a Company
+[**getAllCompanyNews**](CompanyApi.md#getAllCompanyNews) | **GET** /companies/news | Get All Company News
 [**getCompany**](CompanyApi.md#getCompany) | **GET** /companies/{identifier} | Get a Company by ID
-[**getCompanyDataPointNumber**](CompanyApi.md#getCompanyDataPointNumber) | **GET** /companies/{identifier}/data_point/{item}/number | Get Company Data Point (Number)
-[**getCompanyDataPointText**](CompanyApi.md#getCompanyDataPointText) | **GET** /companies/{identifier}/data_point/{item}/text | Get Company Data Point (Text)
-[**getCompanyHistoricalData**](CompanyApi.md#getCompanyHistoricalData) | **GET** /companies/{identifier}/historical_data/{item} | Get Company Historical Data
-[**getNews**](CompanyApi.md#getNews) | **GET** /companies/{identifier}/news | News
+[**getCompanyDataPointNumber**](CompanyApi.md#getCompanyDataPointNumber) | **GET** /companies/{identifier}/data_point/{tag}/number | Get Company Data Point (Number)
+[**getCompanyDataPointText**](CompanyApi.md#getCompanyDataPointText) | **GET** /companies/{identifier}/data_point/{tag}/text | Get Company Data Point (Text)
+[**getCompanyFilings**](CompanyApi.md#getCompanyFilings) | **GET** /companies/{identifier}/filings | Get Filings for a Company
+[**getCompanyFundamentals**](CompanyApi.md#getCompanyFundamentals) | **GET** /companies/{identifier}/fundamentals | Get All Fundamentals for a Company
+[**getCompanyHistoricalData**](CompanyApi.md#getCompanyHistoricalData) | **GET** /companies/{identifier}/historical_data/{tag} | Get Company Historical Data
+[**getCompanyNews**](CompanyApi.md#getCompanyNews) | **GET** /companies/{identifier}/news | Get News for a Company
+[**getCompanySecurities**](CompanyApi.md#getCompanySecurities) | **GET** /companies/{identifier}/securities | Get Securities by Company
 [**lookupCompanyFundamental**](CompanyApi.md#lookupCompanyFundamental) | **GET** /companies/{identifier}/fundamentals/lookup/{statement_code}/{fiscal_year}/{fiscal_period} | Lookup a Fundamental for a Company
 [**searchCompanies**](CompanyApi.md#searchCompanies) | **GET** /companies/search | Search Companies
 
 
 <a name="filterCompanies"></a>
 # **filterCompanies**
-> List&lt;CompanySummary&gt; filterCompanies(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage)
+> ApiResponseCompanies filterCompanies(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage)
 
 Filter Companies
 
@@ -36,7 +38,7 @@ Returns Companies matching the specified filters
 //import com.intrinio.api.CompanyApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
@@ -50,7 +52,7 @@ String industryGroup = "industryGroup_example"; // String | Industry group
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<CompanySummary> result = companyApi.filterCompanies(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage);
+    ApiResponseCompanies result = companyApi.filterCompanies(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#filterCompanies");
@@ -64,7 +66,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **lastFilingDate** | **LocalDate**| Last filing date | [optional]
  **sic** | **String**| Standard Industrial Classification code | [optional]
- **template** | **String**| Template | [optional]
+ **template** | **String**| Template | [optional] [enum: industrial, financial]
  **sector** | **String**| Industry sector | [optional]
  **industryCategory** | **String**| Industry category | [optional]
  **industryGroup** | **String**| Industry group | [optional]
@@ -72,11 +74,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;CompanySummary&gt;**](CompanySummary.md)
+[**ApiResponseCompanies**](ApiResponseCompanies.md)
 
 <a name="filterCompanyFundamentals"></a>
 # **filterCompanyFundamentals**
-> List&lt;Fundamental&gt; filterCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage)
+> ApiResponseCompanyFundamentals filterCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage)
 
 Filter Fundamentals for a Company
 
@@ -92,7 +94,7 @@ Returns Fundamentals for the Company with the given &#x60;identifier&#x60; and m
 //import com.intrinio.api.CompanyApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
@@ -109,7 +111,7 @@ LocalDate endDate = new LocalDate(); // LocalDate | Only on or after the given d
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<Fundamental> result = companyApi.filterCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage);
+    ApiResponseCompanyFundamentals result = companyApi.filterCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#filterCompanyFundamentals");
@@ -134,11 +136,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;Fundamental&gt;**](Fundamental.md)
+[**ApiResponseCompanyFundamentals**](ApiResponseCompanyFundamentals.md)
 
 <a name="getAllCompanies"></a>
 # **getAllCompanies**
-> List&lt;CompanySummary&gt; getAllCompanies(nextPage)
+> ApiResponseCompanies getAllCompanies(nextPage)
 
 Get All Companies
 
@@ -152,7 +154,7 @@ Get All Companies
 //import com.intrinio.api.CompanyApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
@@ -160,7 +162,7 @@ CompanyApi companyApi = new CompanyApi();
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<CompanySummary> result = companyApi.getAllCompanies(nextPage);
+    ApiResponseCompanies result = companyApi.getAllCompanies(nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#getAllCompanies");
@@ -176,61 +178,15 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;CompanySummary&gt;**](CompanySummary.md)
+[**ApiResponseCompanies**](ApiResponseCompanies.md)
 
-<a name="getAllCompanyFilings"></a>
-# **getAllCompanyFilings**
-> List&lt;FilingSummary&gt; getAllCompanyFilings(identifier, nextPage)
+<a name="getAllCompanyNews"></a>
+# **getAllCompanyNews**
+> ApiResponseNews getAllCompanyNews(nextPage)
 
-Filings
+Get All Company News
 
-Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
-
-### Example
-```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
-auth.setApiKey("YOUR API KEY");
-
-CompanyApi companyApi = new CompanyApi();
-
-String identifier = "identifier_example"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
-
-try {
-    List<FilingSummary> result = companyApi.getAllCompanyFilings(identifier, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getAllCompanyFilings");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
-
-### Return type
-
-[**List&lt;FilingSummary&gt;**](FilingSummary.md)
-
-<a name="getAllCompanyFundamentals"></a>
-# **getAllCompanyFundamentals**
-> List&lt;Fundamental&gt; getAllCompanyFundamentals(identifier, nextPage)
-
-Get All Fundamentals for a Company
-
-Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
+Returns all news for all companies
 
 ### Example
 ```java
@@ -242,19 +198,18 @@ Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
 //import com.intrinio.api.CompanyApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
-String identifier = "identifier_example"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<Fundamental> result = companyApi.getAllCompanyFundamentals(identifier, nextPage);
+    ApiResponseNews result = companyApi.getAllCompanyNews(nextPage);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getAllCompanyFundamentals");
+    System.err.println("Exception when calling CompanyApi#getAllCompanyNews");
     e.printStackTrace();
 }
 ```
@@ -263,12 +218,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
-[**List&lt;Fundamental&gt;**](Fundamental.md)
+[**ApiResponseNews**](ApiResponseNews.md)
 
 <a name="getCompany"></a>
 # **getCompany**
@@ -286,7 +240,7 @@ Get a Company by ID
 //import com.intrinio.api.CompanyApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
@@ -314,11 +268,11 @@ Name | Type | Description  | Notes
 
 <a name="getCompanyDataPointNumber"></a>
 # **getCompanyDataPointNumber**
-> BigDecimal getCompanyDataPointNumber(identifier, item)
+> BigDecimal getCompanyDataPointNumber(identifier, tag)
 
 Get Company Data Point (Number)
 
-Returns a numeric value for the given &#x60;item&#x60; for the Company with the given &#x60;identifier&#x60;
+Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -330,16 +284,16 @@ Returns a numeric value for the given &#x60;item&#x60; for the Company with the 
 //import com.intrinio.api.CompanyApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
 String identifier = "identifier_example"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag
+String tag = "tag_example"; // String | An Intrinio data tag
 
 try {
-    BigDecimal result = companyApi.getCompanyDataPointNumber(identifier, item);
+    BigDecimal result = companyApi.getCompanyDataPointNumber(identifier, tag);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#getCompanyDataPointNumber");
@@ -352,7 +306,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **item** | **String**| An Intrinio data tag |
+ **tag** | **String**| An Intrinio data tag |
 
 ### Return type
 
@@ -360,11 +314,11 @@ Name | Type | Description  | Notes
 
 <a name="getCompanyDataPointText"></a>
 # **getCompanyDataPointText**
-> String getCompanyDataPointText(identifier, item)
+> String getCompanyDataPointText(identifier, tag)
 
 Get Company Data Point (Text)
 
-Returns a text value for the given &#x60;item&#x60; for the Company with the given &#x60;identifier&#x60;
+Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -376,16 +330,16 @@ Returns a text value for the given &#x60;item&#x60; for the Company with the giv
 //import com.intrinio.api.CompanyApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
 String identifier = "identifier_example"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag
+String tag = "tag_example"; // String | An Intrinio data tag
 
 try {
-    String result = companyApi.getCompanyDataPointText(identifier, item);
+    String result = companyApi.getCompanyDataPointText(identifier, tag);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#getCompanyDataPointText");
@@ -398,19 +352,19 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **item** | **String**| An Intrinio data tag |
+ **tag** | **String**| An Intrinio data tag |
 
 ### Return type
 
 **String**
 
-<a name="getCompanyHistoricalData"></a>
-# **getCompanyHistoricalData**
-> List&lt;HistoricalData&gt; getCompanyHistoricalData(identifier, item, type, startDate, endDate, sortOrder, nextPage)
+<a name="getCompanyFilings"></a>
+# **getCompanyFilings**
+> ApiResponseCompanyFilings getCompanyFilings(identifier, nextPage)
 
-Get Company Historical Data
+Get Filings for a Company
 
-Returns historical values for the given &#x60;item&#x60; and the Company with the given &#x60;identifier&#x60;
+Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -422,13 +376,105 @@ Returns historical values for the given &#x60;item&#x60; and the Company with th
 //import com.intrinio.api.CompanyApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
 String identifier = "identifier_example"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String item = "item_example"; // String | Item
+String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+
+try {
+    ApiResponseCompanyFilings result = companyApi.getCompanyFilings(identifier, nextPage);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling CompanyApi#getCompanyFilings");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+
+### Return type
+
+[**ApiResponseCompanyFilings**](ApiResponseCompanyFilings.md)
+
+<a name="getCompanyFundamentals"></a>
+# **getCompanyFundamentals**
+> ApiResponseCompanyFundamentals getCompanyFundamentals(identifier, nextPage)
+
+Get All Fundamentals for a Company
+
+Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
+
+### Example
+```java
+// Import classes:
+//import com.intrinio.invoker.ApiClient;
+//import com.intrinio.invoker.ApiException;
+//import com.intrinio.invoker.Configuration;
+//import com.intrinio.invoker.auth.*;
+//import com.intrinio.api.CompanyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+auth.setApiKey("YOUR API KEY");
+
+CompanyApi companyApi = new CompanyApi();
+
+String identifier = "identifier_example"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+
+try {
+    ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, nextPage);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling CompanyApi#getCompanyFundamentals");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+
+### Return type
+
+[**ApiResponseCompanyFundamentals**](ApiResponseCompanyFundamentals.md)
+
+<a name="getCompanyHistoricalData"></a>
+# **getCompanyHistoricalData**
+> ApiResponseCompanyHistoricalData getCompanyHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
+
+Get Company Historical Data
+
+Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
+
+### Example
+```java
+// Import classes:
+//import com.intrinio.invoker.ApiClient;
+//import com.intrinio.invoker.ApiException;
+//import com.intrinio.invoker.Configuration;
+//import com.intrinio.invoker.auth.*;
+//import com.intrinio.api.CompanyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+auth.setApiKey("YOUR API KEY");
+
+CompanyApi companyApi = new CompanyApi();
+
+String identifier = "identifier_example"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+String tag = "tag_example"; // String | Item
 String type = "type_example"; // String | Filter by type, when applicable
 LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
 LocalDate endDate = new LocalDate(); // LocalDate | Get historical data on or before this date
@@ -436,7 +482,7 @@ String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<HistoricalData> result = companyApi.getCompanyHistoricalData(identifier, item, type, startDate, endDate, sortOrder, nextPage);
+    ApiResponseCompanyHistoricalData result = companyApi.getCompanyHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#getCompanyHistoricalData");
@@ -449,7 +495,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **item** | **String**| Item |
+ **tag** | **String**| Item |
  **type** | **String**| Filter by type, when applicable | [optional]
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
@@ -458,13 +504,13 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;HistoricalData&gt;**](HistoricalData.md)
+[**ApiResponseCompanyHistoricalData**](ApiResponseCompanyHistoricalData.md)
 
-<a name="getNews"></a>
-# **getNews**
-> List&lt;CompanyNews&gt; getNews(identifier, nextPage)
+<a name="getCompanyNews"></a>
+# **getCompanyNews**
+> ApiResponseCompanyNews getCompanyNews(identifier, nextPage)
 
-News
+Get News for a Company
 
 Returns news for the Company with the given &#x60;identifier&#x60;
 
@@ -478,7 +524,7 @@ Returns news for the Company with the given &#x60;identifier&#x60;
 //import com.intrinio.api.CompanyApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
@@ -487,10 +533,10 @@ String identifier = "identifier_example"; // String | A Company identifier (Tick
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<CompanyNews> result = companyApi.getNews(identifier, nextPage);
+    ApiResponseCompanyNews result = companyApi.getCompanyNews(identifier, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getNews");
+    System.err.println("Exception when calling CompanyApi#getCompanyNews");
     e.printStackTrace();
 }
 ```
@@ -504,7 +550,53 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;CompanyNews&gt;**](CompanyNews.md)
+[**ApiResponseCompanyNews**](ApiResponseCompanyNews.md)
+
+<a name="getCompanySecurities"></a>
+# **getCompanySecurities**
+> ApiResponseCompanySecurities getCompanySecurities(identifier, nextPage)
+
+Get Securities by Company
+
+Return Securities for the Company with &#x60;identifier&#x60;
+
+### Example
+```java
+// Import classes:
+//import com.intrinio.invoker.ApiClient;
+//import com.intrinio.invoker.ApiException;
+//import com.intrinio.invoker.Configuration;
+//import com.intrinio.invoker.auth.*;
+//import com.intrinio.api.CompanyApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+auth.setApiKey("YOUR API KEY");
+
+CompanyApi companyApi = new CompanyApi();
+
+String identifier = "identifier_example"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+
+try {
+    ApiResponseCompanySecurities result = companyApi.getCompanySecurities(identifier, nextPage);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling CompanyApi#getCompanySecurities");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+
+### Return type
+
+[**ApiResponseCompanySecurities**](ApiResponseCompanySecurities.md)
 
 <a name="lookupCompanyFundamental"></a>
 # **lookupCompanyFundamental**
@@ -524,7 +616,7 @@ Returns the Fundamental for the Company with the given &#x60;identifier&#x60; an
 //import com.intrinio.api.CompanyApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
@@ -558,7 +650,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCompanies"></a>
 # **searchCompanies**
-> List&lt;CompanySummary&gt; searchCompanies(query, nextPage)
+> ApiResponseCompanies searchCompanies(query)
 
 Search Companies
 
@@ -574,16 +666,15 @@ Searches for Companies matching the text &#x60;query&#x60;
 //import com.intrinio.api.CompanyApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
 String query = "query_example"; // String | Search parameters
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<CompanySummary> result = companyApi.searchCompanies(query, nextPage);
+    ApiResponseCompanies result = companyApi.searchCompanies(query);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#searchCompanies");
@@ -596,9 +687,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| Search parameters |
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
-[**List&lt;CompanySummary&gt;**](CompanySummary.md)
+[**ApiResponseCompanies**](ApiResponseCompanies.md)
 

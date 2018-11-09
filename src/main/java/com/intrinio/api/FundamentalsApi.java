@@ -16,9 +16,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.intrinio.models.ApiResponseReportedFinancials;
+import com.intrinio.models.ApiResponseStandardizedFinancials;
 import com.intrinio.models.Fundamental;
-import com.intrinio.models.ReportedFinancial;
-import com.intrinio.models.StandardizedFinancial;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -91,7 +91,7 @@ public class FundamentalsApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -214,7 +214,7 @@ public class FundamentalsApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -236,11 +236,11 @@ public class FundamentalsApi {
      * Get Reported Financials for a Fundamental
      * Returns the As-Reported Financials directly from the financial statements of the XBRL filings from the company
      * @param id The Intrinio ID for the Fundamental (required)
-     * @return List&lt;ReportedFinancial&gt;
+     * @return ApiResponseReportedFinancials
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<ReportedFinancial> getFundamentalReportedFinancials(String id) throws ApiException {
-        ApiResponse<List<ReportedFinancial>> resp = getFundamentalReportedFinancialsWithHttpInfo(id);
+    public ApiResponseReportedFinancials getFundamentalReportedFinancials(String id) throws ApiException {
+        ApiResponse<ApiResponseReportedFinancials> resp = getFundamentalReportedFinancialsWithHttpInfo(id);
         return resp.getData();
     }
 
@@ -248,12 +248,12 @@ public class FundamentalsApi {
      * Get Reported Financials for a Fundamental
      * Returns the As-Reported Financials directly from the financial statements of the XBRL filings from the company
      * @param id The Intrinio ID for the Fundamental (required)
-     * @return ApiResponse&lt;List&lt;ReportedFinancial&gt;&gt;
+     * @return ApiResponse&lt;ApiResponseReportedFinancials&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<ReportedFinancial>> getFundamentalReportedFinancialsWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<ApiResponseReportedFinancials> getFundamentalReportedFinancialsWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = getFundamentalReportedFinancialsValidateBeforeCall(id, null, null);
-        Type localVarReturnType = new TypeToken<List<ReportedFinancial>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseReportedFinancials>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -265,7 +265,7 @@ public class FundamentalsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getFundamentalReportedFinancialsAsync(String id, final ApiCallback<List<ReportedFinancial>> callback) throws ApiException {
+    public com.squareup.okhttp.Call getFundamentalReportedFinancialsAsync(String id, final ApiCallback<ApiResponseReportedFinancials> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -287,7 +287,7 @@ public class FundamentalsApi {
         }
 
         com.squareup.okhttp.Call call = getFundamentalReportedFinancialsValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<ReportedFinancial>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseReportedFinancials>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -337,7 +337,7 @@ public class FundamentalsApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -359,11 +359,11 @@ public class FundamentalsApi {
      * Get Standardized Financials for a Fundamental
      * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies fundamentals. For example, it is possible to compare total revenues between two companies as of a certain point in time, or within a single company across multiple time periods. This is not possible using the as reported financial statements because of the inherent complexity of reporting standards.
      * @param id The Intrinio ID for the Fundamental (required)
-     * @return List&lt;StandardizedFinancial&gt;
+     * @return ApiResponseStandardizedFinancials
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<StandardizedFinancial> getFundamentalStandardizedFinancials(String id) throws ApiException {
-        ApiResponse<List<StandardizedFinancial>> resp = getFundamentalStandardizedFinancialsWithHttpInfo(id);
+    public ApiResponseStandardizedFinancials getFundamentalStandardizedFinancials(String id) throws ApiException {
+        ApiResponse<ApiResponseStandardizedFinancials> resp = getFundamentalStandardizedFinancialsWithHttpInfo(id);
         return resp.getData();
     }
 
@@ -371,12 +371,12 @@ public class FundamentalsApi {
      * Get Standardized Financials for a Fundamental
      * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies fundamentals. For example, it is possible to compare total revenues between two companies as of a certain point in time, or within a single company across multiple time periods. This is not possible using the as reported financial statements because of the inherent complexity of reporting standards.
      * @param id The Intrinio ID for the Fundamental (required)
-     * @return ApiResponse&lt;List&lt;StandardizedFinancial&gt;&gt;
+     * @return ApiResponse&lt;ApiResponseStandardizedFinancials&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<StandardizedFinancial>> getFundamentalStandardizedFinancialsWithHttpInfo(String id) throws ApiException {
+    public ApiResponse<ApiResponseStandardizedFinancials> getFundamentalStandardizedFinancialsWithHttpInfo(String id) throws ApiException {
         com.squareup.okhttp.Call call = getFundamentalStandardizedFinancialsValidateBeforeCall(id, null, null);
-        Type localVarReturnType = new TypeToken<List<StandardizedFinancial>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseStandardizedFinancials>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -388,7 +388,7 @@ public class FundamentalsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getFundamentalStandardizedFinancialsAsync(String id, final ApiCallback<List<StandardizedFinancial>> callback) throws ApiException {
+    public com.squareup.okhttp.Call getFundamentalStandardizedFinancialsAsync(String id, final ApiCallback<ApiResponseStandardizedFinancials> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -410,7 +410,7 @@ public class FundamentalsApi {
         }
 
         com.squareup.okhttp.Call call = getFundamentalStandardizedFinancialsValidateBeforeCall(id, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<StandardizedFinancial>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseStandardizedFinancials>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -466,7 +466,7 @@ public class FundamentalsApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 

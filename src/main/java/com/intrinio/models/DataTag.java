@@ -14,10 +14,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * StandardizedTag
+ * DataTag
  */
 
-public class StandardizedTag {
+public class DataTag {
   @SerializedName("id")
   private String id = null;
 
@@ -31,7 +31,7 @@ public class StandardizedTag {
   private String statementCode = null;
 
   /**
-   * The format of the financial statment to which this tag belongs
+   * The format of the financial statment to which this Data Tag belongs
    */
   @JsonAdapter(StatementTypeEnum.Adapter.class)
   public enum StatementTypeEnum {
@@ -95,16 +95,16 @@ public class StandardizedTag {
   @SerializedName("unit")
   private String unit = null;
 
-  public StandardizedTag id(String id) {
+  public DataTag id(String id) {
     this.id = id;
     return this;
   }
 
    /**
-   * The Intrinio ID for the Standardized Tag
+   * The Intrinio ID for the Data Tag
    * @return id
   **/
-  @ApiModelProperty(value = "The Intrinio ID for the Standardized Tag")
+  @ApiModelProperty(value = "The Intrinio ID for the Data Tag")
   public String getId() {
     return id;
   }
@@ -113,16 +113,16 @@ public class StandardizedTag {
     this.id = id;
   }
 
-  public StandardizedTag name(String name) {
+  public DataTag name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * The readable name of tag
+   * The readable name of the Data Tag
    * @return name
   **/
-  @ApiModelProperty(value = "The readable name of tag")
+  @ApiModelProperty(value = "The readable name of the Data Tag")
   public String getName() {
     return name;
   }
@@ -131,16 +131,16 @@ public class StandardizedTag {
     this.name = name;
   }
 
-  public StandardizedTag tag(String tag) {
+  public DataTag tag(String tag) {
     this.tag = tag;
     return this;
   }
 
    /**
-   * The Intrinio standardized tag
+   * The code-name of the Data Tag
    * @return tag
   **/
-  @ApiModelProperty(value = "The Intrinio standardized tag")
+  @ApiModelProperty(value = "The code-name of the Data Tag")
   public String getTag() {
     return tag;
   }
@@ -149,16 +149,16 @@ public class StandardizedTag {
     this.tag = tag;
   }
 
-  public StandardizedTag statementCode(String statementCode) {
+  public DataTag statementCode(String statementCode) {
     this.statementCode = statementCode;
     return this;
   }
 
    /**
-   * The code of the financial statement to which this tag belongs
+   * The code of the financial statement to which this Data Tag belongs
    * @return statementCode
   **/
-  @ApiModelProperty(value = "The code of the financial statement to which this tag belongs")
+  @ApiModelProperty(value = "The code of the financial statement to which this Data Tag belongs")
   public String getStatementCode() {
     return statementCode;
   }
@@ -167,16 +167,16 @@ public class StandardizedTag {
     this.statementCode = statementCode;
   }
 
-  public StandardizedTag statementType(StatementTypeEnum statementType) {
+  public DataTag statementType(StatementTypeEnum statementType) {
     this.statementType = statementType;
     return this;
   }
 
    /**
-   * The format of the financial statment to which this tag belongs
+   * The format of the financial statment to which this Data Tag belongs
    * @return statementType
   **/
-  @ApiModelProperty(value = "The format of the financial statment to which this tag belongs")
+  @ApiModelProperty(value = "The format of the financial statment to which this Data Tag belongs")
   public StatementTypeEnum getStatementType() {
     return statementType;
   }
@@ -185,16 +185,16 @@ public class StandardizedTag {
     this.statementType = statementType;
   }
 
-  public StandardizedTag parent(String parent) {
+  public DataTag parent(String parent) {
     this.parent = parent;
     return this;
   }
 
    /**
-   * The parent Standardized Tag forming the statement relationship with the factor
+   * The parent Data Tag forming the statement relationship with the factor
    * @return parent
   **/
-  @ApiModelProperty(value = "The parent Standardized Tag forming the statement relationship with the factor")
+  @ApiModelProperty(value = "The parent Data Tag forming the statement relationship with the factor")
   public String getParent() {
     return parent;
   }
@@ -203,16 +203,16 @@ public class StandardizedTag {
     this.parent = parent;
   }
 
-  public StandardizedTag factor(String factor) {
+  public DataTag factor(String factor) {
     this.factor = factor;
     return this;
   }
 
    /**
-   * The operator forming the statement relationship between the child tag (or tags) and the parent
+   * The operator forming the statement relationship between the child Data Tag (or Data Tags) and the parent Data Tag
    * @return factor
   **/
-  @ApiModelProperty(value = "The operator forming the statement relationship between the child tag (or tags) and the parent")
+  @ApiModelProperty(value = "The operator forming the statement relationship between the child Data Tag (or Data Tags) and the parent Data Tag")
   public String getFactor() {
     return factor;
   }
@@ -221,16 +221,16 @@ public class StandardizedTag {
     this.factor = factor;
   }
 
-  public StandardizedTag balance(BigDecimal balance) {
+  public DataTag balance(BigDecimal balance) {
     this.balance = balance;
     return this;
   }
 
    /**
-   * Whether the tag represents a credit or debit
+   * Whether the Data Tag represents a credit or debit
    * @return balance
   **/
-  @ApiModelProperty(value = "Whether the tag represents a credit or debit")
+  @ApiModelProperty(value = "Whether the Data Tag represents a credit or debit")
   public BigDecimal getBalance() {
     return balance;
   }
@@ -239,16 +239,16 @@ public class StandardizedTag {
     this.balance = balance;
   }
 
-  public StandardizedTag type(String type) {
+  public DataTag type(String type) {
     this.type = type;
     return this;
   }
 
    /**
-   * The nature of the tag, operating or nonoperating
+   * The nature of the Data Tag, operating or nonoperating
    * @return type
   **/
-  @ApiModelProperty(value = "The nature of the tag, operating or nonoperating")
+  @ApiModelProperty(value = "The nature of the Data Tag, operating or nonoperating")
   public String getType() {
     return type;
   }
@@ -257,16 +257,16 @@ public class StandardizedTag {
     this.type = type;
   }
 
-  public StandardizedTag unit(String unit) {
+  public DataTag unit(String unit) {
     this.unit = unit;
     return this;
   }
 
    /**
-   * The unit of the tag
+   * The unit of the Data Tag
    * @return unit
   **/
-  @ApiModelProperty(value = "The unit of the tag")
+  @ApiModelProperty(value = "The unit of the Data Tag")
   public String getUnit() {
     return unit;
   }
@@ -284,17 +284,17 @@ public class StandardizedTag {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    StandardizedTag standardizedTag = (StandardizedTag) o;
-    return Objects.equals(this.id, standardizedTag.id) &&
-        Objects.equals(this.name, standardizedTag.name) &&
-        Objects.equals(this.tag, standardizedTag.tag) &&
-        Objects.equals(this.statementCode, standardizedTag.statementCode) &&
-        Objects.equals(this.statementType, standardizedTag.statementType) &&
-        Objects.equals(this.parent, standardizedTag.parent) &&
-        Objects.equals(this.factor, standardizedTag.factor) &&
-        Objects.equals(this.balance, standardizedTag.balance) &&
-        Objects.equals(this.type, standardizedTag.type) &&
-        Objects.equals(this.unit, standardizedTag.unit);
+    DataTag dataTag = (DataTag) o;
+    return Objects.equals(this.id, dataTag.id) &&
+        Objects.equals(this.name, dataTag.name) &&
+        Objects.equals(this.tag, dataTag.tag) &&
+        Objects.equals(this.statementCode, dataTag.statementCode) &&
+        Objects.equals(this.statementType, dataTag.statementType) &&
+        Objects.equals(this.parent, dataTag.parent) &&
+        Objects.equals(this.factor, dataTag.factor) &&
+        Objects.equals(this.balance, dataTag.balance) &&
+        Objects.equals(this.type, dataTag.type) &&
+        Objects.equals(this.unit, dataTag.unit);
   }
 
   @Override
@@ -306,7 +306,7 @@ public class StandardizedTag {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class StandardizedTag {\n");
+    sb.append("class DataTag {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
