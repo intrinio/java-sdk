@@ -73,13 +73,14 @@ import java.util.*;
 public class CompanyApiExample {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
-        ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+        ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
         auth.setApiKey("YOUR API KEY");
 
         CompanyApi companyApi = new CompanyApi();
-      
+        String nextPage = null;
+        
         try {
-            List<CompanySummary> result = companyApi.getAllCompanies(null);
+            ApiResponseCompanies result = companyApi.getAllCompanies(nextPage);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CompanyApi#filterCompanies");
