@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | The Intrinio ID of the Filing |  [optional]
+**company** | [**CompanySummary**](CompanySummary.md) |  |  [optional]
 **filingDate** | [**LocalDate**](LocalDate.md) | The date when the filing was submitted to the SEC by the company |  [optional]
 **acceptedDate** | **String** | The date and time when the filing was accepted by SEC |  [optional]
 **periodEndDate** | [**LocalDate**](LocalDate.md) | The ending date of the fiscal period for the filing |  [optional]
@@ -13,7 +14,6 @@ Name | Type | Description | Notes
 **filingUrl** | **String** | The URL to the filing page on the SEC site |  [optional]
 **reportUrl** | **String** | The URL to the actual report on the SEC site |  [optional]
 **instanceUrl** | **String** | The URL for the XBRL filing for the report |  [optional]
-**company** | [**CompanySummary**](CompanySummary.md) |  |  [optional]
 
 
 

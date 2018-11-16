@@ -16,11 +16,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.intrinio.models.ApiResponseStockExchangeSecurities;
-import com.intrinio.models.ApiResponseStockExchangeStockPriceAdjustments;
-import com.intrinio.models.ApiResponseStockExchangeStockPrices;
 import org.threeten.bp.LocalDate;
+import com.intrinio.models.Security;
 import com.intrinio.models.StockExchange;
+import com.intrinio.models.StockPrice;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -52,12 +51,13 @@ public class StockExchangeApi {
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call filterStockExchangesCall(String city, String country, String countryCode, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call filterStockExchangesCall(String city, String country, String countryCode, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -71,6 +71,8 @@ public class StockExchangeApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("country", country));
         if (countryCode != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("country_code", countryCode));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -100,59 +102,62 @@ public class StockExchangeApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call filterStockExchangesValidateBeforeCall(String city, String country, String countryCode, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call filterStockExchangesValidateBeforeCall(String city, String country, String countryCode, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = filterStockExchangesCall(city, country, countryCode, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = filterStockExchangesCall(city, country, countryCode, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Filter Stock Exchanges
-     * Return Stock Exchanges matching the given filters
+     * 
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return List&lt;StockExchange&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<StockExchange> filterStockExchanges(String city, String country, String countryCode) throws ApiException {
-        ApiResponse<List<StockExchange>> resp = filterStockExchangesWithHttpInfo(city, country, countryCode);
+    public List<StockExchange> filterStockExchanges(String city, String country, String countryCode, String nextPage) throws ApiException {
+        ApiResponse<List<StockExchange>> resp = filterStockExchangesWithHttpInfo(city, country, countryCode, nextPage);
         return resp.getData();
     }
 
     /**
      * Filter Stock Exchanges
-     * Return Stock Exchanges matching the given filters
+     * 
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;List&lt;StockExchange&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<StockExchange>> filterStockExchangesWithHttpInfo(String city, String country, String countryCode) throws ApiException {
-        com.squareup.okhttp.Call call = filterStockExchangesValidateBeforeCall(city, country, countryCode, null, null);
+    public ApiResponse<List<StockExchange>> filterStockExchangesWithHttpInfo(String city, String country, String countryCode, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = filterStockExchangesValidateBeforeCall(city, country, countryCode, nextPage, null, null);
         Type localVarReturnType = new TypeToken<List<StockExchange>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Filter Stock Exchanges (asynchronously)
-     * Return Stock Exchanges matching the given filters
+     * 
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call filterStockExchangesAsync(String city, String country, String countryCode, final ApiCallback<List<StockExchange>> callback) throws ApiException {
+    public com.squareup.okhttp.Call filterStockExchangesAsync(String city, String country, String countryCode, String nextPage, final ApiCallback<List<StockExchange>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -173,19 +178,20 @@ public class StockExchangeApi {
             };
         }
 
-        com.squareup.okhttp.Call call = filterStockExchangesValidateBeforeCall(city, country, countryCode, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = filterStockExchangesValidateBeforeCall(city, country, countryCode, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<StockExchange>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getAllStockExchanges
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllStockExchangesCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllStockExchangesCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -193,6 +199,8 @@ public class StockExchangeApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -222,50 +230,53 @@ public class StockExchangeApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllStockExchangesValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllStockExchangesValidateBeforeCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllStockExchangesCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllStockExchangesCall(nextPage, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Get All Stock Exchanges
-     * Return All Stock Exchanges
+     * 
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return List&lt;StockExchange&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<StockExchange> getAllStockExchanges() throws ApiException {
-        ApiResponse<List<StockExchange>> resp = getAllStockExchangesWithHttpInfo();
+    public List<StockExchange> getAllStockExchanges(String nextPage) throws ApiException {
+        ApiResponse<List<StockExchange>> resp = getAllStockExchangesWithHttpInfo(nextPage);
         return resp.getData();
     }
 
     /**
      * Get All Stock Exchanges
-     * Return All Stock Exchanges
+     * 
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;List&lt;StockExchange&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<StockExchange>> getAllStockExchangesWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = getAllStockExchangesValidateBeforeCall(null, null);
+    public ApiResponse<List<StockExchange>> getAllStockExchangesWithHttpInfo(String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllStockExchangesValidateBeforeCall(nextPage, null, null);
         Type localVarReturnType = new TypeToken<List<StockExchange>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get All Stock Exchanges (asynchronously)
-     * Return All Stock Exchanges
+     * 
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllStockExchangesAsync(final ApiCallback<List<StockExchange>> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllStockExchangesAsync(String nextPage, final ApiCallback<List<StockExchange>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -286,7 +297,7 @@ public class StockExchangeApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllStockExchangesValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllStockExchangesValidateBeforeCall(nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<StockExchange>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -337,7 +348,7 @@ public class StockExchangeApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -415,141 +426,6 @@ public class StockExchangeApi {
         return call;
     }
     /**
-     * Build call for getStockExchangePriceAdjustments
-     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param date The date for which to return price adjustments (optional)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getStockExchangePriceAdjustmentsCall(String identifier, LocalDate date, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/stock_exchanges/{identifier}/prices/adjustments"
-            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (date != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
-        if (nextPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getStockExchangePriceAdjustmentsValidateBeforeCall(String identifier, LocalDate date, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'identifier' is set
-        if (identifier == null) {
-            throw new ApiException("Missing the required parameter 'identifier' when calling getStockExchangePriceAdjustments(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = getStockExchangePriceAdjustmentsCall(identifier, date, nextPage, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Get Stock Price Adjustments by Exchange
-     * Return stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
-     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param date The date for which to return price adjustments (optional)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponseStockExchangeStockPriceAdjustments
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponseStockExchangeStockPriceAdjustments getStockExchangePriceAdjustments(String identifier, LocalDate date, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseStockExchangeStockPriceAdjustments> resp = getStockExchangePriceAdjustmentsWithHttpInfo(identifier, date, nextPage);
-        return resp.getData();
-    }
-
-    /**
-     * Get Stock Price Adjustments by Exchange
-     * Return stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
-     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param date The date for which to return price adjustments (optional)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponse&lt;ApiResponseStockExchangeStockPriceAdjustments&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<ApiResponseStockExchangeStockPriceAdjustments> getStockExchangePriceAdjustmentsWithHttpInfo(String identifier, LocalDate date, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getStockExchangePriceAdjustmentsValidateBeforeCall(identifier, date, nextPage, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeStockPriceAdjustments>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Get Stock Price Adjustments by Exchange (asynchronously)
-     * Return stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
-     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param date The date for which to return price adjustments (optional)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getStockExchangePriceAdjustmentsAsync(String identifier, LocalDate date, String nextPage, final ApiCallback<ApiResponseStockExchangeStockPriceAdjustments> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getStockExchangePriceAdjustmentsValidateBeforeCall(identifier, date, nextPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeStockPriceAdjustments>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for getStockExchangePrices
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param date The date for which to return prices (optional)
@@ -601,7 +477,7 @@ public class StockExchangeApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -625,11 +501,11 @@ public class StockExchangeApi {
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param date The date for which to return prices (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponseStockExchangeStockPrices
+     * @return List&lt;StockPrice&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseStockExchangeStockPrices getStockExchangePrices(String identifier, LocalDate date, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseStockExchangeStockPrices> resp = getStockExchangePricesWithHttpInfo(identifier, date, nextPage);
+    public List<StockPrice> getStockExchangePrices(String identifier, LocalDate date, String nextPage) throws ApiException {
+        ApiResponse<List<StockPrice>> resp = getStockExchangePricesWithHttpInfo(identifier, date, nextPage);
         return resp.getData();
     }
 
@@ -639,12 +515,12 @@ public class StockExchangeApi {
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param date The date for which to return prices (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponse&lt;ApiResponseStockExchangeStockPrices&gt;
+     * @return ApiResponse&lt;List&lt;StockPrice&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseStockExchangeStockPrices> getStockExchangePricesWithHttpInfo(String identifier, LocalDate date, String nextPage) throws ApiException {
+    public ApiResponse<List<StockPrice>> getStockExchangePricesWithHttpInfo(String identifier, LocalDate date, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getStockExchangePricesValidateBeforeCall(identifier, date, nextPage, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeStockPrices>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<StockPrice>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -658,7 +534,7 @@ public class StockExchangeApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getStockExchangePricesAsync(String identifier, LocalDate date, String nextPage, final ApiCallback<ApiResponseStockExchangeStockPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getStockExchangePricesAsync(String identifier, LocalDate date, String nextPage, final ApiCallback<List<StockPrice>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -680,7 +556,7 @@ public class StockExchangeApi {
         }
 
         com.squareup.okhttp.Call call = getStockExchangePricesValidateBeforeCall(identifier, date, nextPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeStockPrices>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<StockPrice>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -733,7 +609,7 @@ public class StockExchangeApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -753,41 +629,41 @@ public class StockExchangeApi {
 
     /**
      * Get Securities by Exchange
-     * Return Securities traded on the Stock Exchange with &#x60;identifier&#x60;
+     * Return Securities on the Stock Exchange with &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponseStockExchangeSecurities
+     * @return List&lt;Security&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseStockExchangeSecurities getStockExchangeSecurities(String identifier, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseStockExchangeSecurities> resp = getStockExchangeSecuritiesWithHttpInfo(identifier, nextPage);
+    public List<Security> getStockExchangeSecurities(String identifier, String nextPage) throws ApiException {
+        ApiResponse<List<Security>> resp = getStockExchangeSecuritiesWithHttpInfo(identifier, nextPage);
         return resp.getData();
     }
 
     /**
      * Get Securities by Exchange
-     * Return Securities traded on the Stock Exchange with &#x60;identifier&#x60;
+     * Return Securities on the Stock Exchange with &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponse&lt;ApiResponseStockExchangeSecurities&gt;
+     * @return ApiResponse&lt;List&lt;Security&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseStockExchangeSecurities> getStockExchangeSecuritiesWithHttpInfo(String identifier, String nextPage) throws ApiException {
+    public ApiResponse<List<Security>> getStockExchangeSecuritiesWithHttpInfo(String identifier, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getStockExchangeSecuritiesValidateBeforeCall(identifier, nextPage, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeSecurities>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<Security>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get Securities by Exchange (asynchronously)
-     * Return Securities traded on the Stock Exchange with &#x60;identifier&#x60;
+     * Return Securities on the Stock Exchange with &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getStockExchangeSecuritiesAsync(String identifier, String nextPage, final ApiCallback<ApiResponseStockExchangeSecurities> callback) throws ApiException {
+    public com.squareup.okhttp.Call getStockExchangeSecuritiesAsync(String identifier, String nextPage, final ApiCallback<List<Security>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -809,7 +685,7 @@ public class StockExchangeApi {
         }
 
         com.squareup.okhttp.Call call = getStockExchangeSecuritiesValidateBeforeCall(identifier, nextPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeSecurities>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<Security>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

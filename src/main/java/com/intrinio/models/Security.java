@@ -70,6 +70,15 @@ public class Security {
   @SerializedName("figi_uniqueid")
   private String figiUniqueid = null;
 
+  @SerializedName("isin")
+  private String isin = null;
+
+  @SerializedName("cusip")
+  private String cusip = null;
+
+  @SerializedName("sedol")
+  private String sedol = null;
+
   @SerializedName("active")
   private Boolean active = null;
 
@@ -96,9 +105,6 @@ public class Security {
 
   @SerializedName("last_corporate_action")
   private LocalDate lastCorporateAction = null;
-
-  @SerializedName("previous_tickers")
-  private List<String> previousTickers = null;
 
   public Security id(String id) {
     this.id = id;
@@ -396,6 +402,60 @@ public class Security {
     this.figiUniqueid = figiUniqueid;
   }
 
+  public Security isin(String isin) {
+    this.isin = isin;
+    return this;
+  }
+
+   /**
+   * The International Securities Identification Number
+   * @return isin
+  **/
+  @ApiModelProperty(value = "The International Securities Identification Number")
+  public String getIsin() {
+    return isin;
+  }
+
+  public void setIsin(String isin) {
+    this.isin = isin;
+  }
+
+  public Security cusip(String cusip) {
+    this.cusip = cusip;
+    return this;
+  }
+
+   /**
+   * An identifier provided by the Committee on Uniform Security Identification Procedures (U.S.)
+   * @return cusip
+  **/
+  @ApiModelProperty(value = "An identifier provided by the Committee on Uniform Security Identification Procedures (U.S.)")
+  public String getCusip() {
+    return cusip;
+  }
+
+  public void setCusip(String cusip) {
+    this.cusip = cusip;
+  }
+
+  public Security sedol(String sedol) {
+    this.sedol = sedol;
+    return this;
+  }
+
+   /**
+   * An identifier provided by the Stock Exchange Daily Official List (U.K.)
+   * @return sedol
+  **/
+  @ApiModelProperty(value = "An identifier provided by the Stock Exchange Daily Official List (U.K.)")
+  public String getSedol() {
+    return sedol;
+  }
+
+  public void setSedol(String sedol) {
+    this.sedol = sedol;
+  }
+
   public Security active(Boolean active) {
     this.active = active;
     return this;
@@ -558,32 +618,6 @@ public class Security {
     this.lastCorporateAction = lastCorporateAction;
   }
 
-  public Security previousTickers(List<String> previousTickers) {
-    this.previousTickers = previousTickers;
-    return this;
-  }
-
-  public Security addPreviousTickersItem(String previousTickersItem) {
-    if (this.previousTickers == null) {
-      this.previousTickers = new ArrayList<String>();
-    }
-    this.previousTickers.add(previousTickersItem);
-    return this;
-  }
-
-   /**
-   * Previous tickers used by this security
-   * @return previousTickers
-  **/
-  @ApiModelProperty(value = "Previous tickers used by this security")
-  public List<String> getPreviousTickers() {
-    return previousTickers;
-  }
-
-  public void setPreviousTickers(List<String> previousTickers) {
-    this.previousTickers = previousTickers;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -610,6 +644,9 @@ public class Security {
         Objects.equals(this.compositeFigi, security.compositeFigi) &&
         Objects.equals(this.shareClassFigi, security.shareClassFigi) &&
         Objects.equals(this.figiUniqueid, security.figiUniqueid) &&
+        Objects.equals(this.isin, security.isin) &&
+        Objects.equals(this.cusip, security.cusip) &&
+        Objects.equals(this.sedol, security.sedol) &&
         Objects.equals(this.active, security.active) &&
         Objects.equals(this.etf, security.etf) &&
         Objects.equals(this.delisted, security.delisted) &&
@@ -618,13 +655,12 @@ public class Security {
         Objects.equals(this.firstStockPrice, security.firstStockPrice) &&
         Objects.equals(this.lastStockPrice, security.lastStockPrice) &&
         Objects.equals(this.lastStockPriceAdjustment, security.lastStockPriceAdjustment) &&
-        Objects.equals(this.lastCorporateAction, security.lastCorporateAction) &&
-        Objects.equals(this.previousTickers, security.previousTickers);
+        Objects.equals(this.lastCorporateAction, security.lastCorporateAction);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, companyId, name, type, code, shareClass, currency, roundLotSize, ticker, exchangeTicker, compositeTicker, alternateTickers, figi, compositeFigi, shareClassFigi, figiUniqueid, active, etf, delisted, primaryListing, primarySecurity, firstStockPrice, lastStockPrice, lastStockPriceAdjustment, lastCorporateAction, previousTickers);
+    return Objects.hash(id, companyId, name, type, code, shareClass, currency, roundLotSize, ticker, exchangeTicker, compositeTicker, alternateTickers, figi, compositeFigi, shareClassFigi, figiUniqueid, isin, cusip, sedol, active, etf, delisted, primaryListing, primarySecurity, firstStockPrice, lastStockPrice, lastStockPriceAdjustment, lastCorporateAction);
   }
 
 
@@ -649,6 +685,9 @@ public class Security {
     sb.append("    compositeFigi: ").append(toIndentedString(compositeFigi)).append("\n");
     sb.append("    shareClassFigi: ").append(toIndentedString(shareClassFigi)).append("\n");
     sb.append("    figiUniqueid: ").append(toIndentedString(figiUniqueid)).append("\n");
+    sb.append("    isin: ").append(toIndentedString(isin)).append("\n");
+    sb.append("    cusip: ").append(toIndentedString(cusip)).append("\n");
+    sb.append("    sedol: ").append(toIndentedString(sedol)).append("\n");
     sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    etf: ").append(toIndentedString(etf)).append("\n");
     sb.append("    delisted: ").append(toIndentedString(delisted)).append("\n");
@@ -658,7 +697,6 @@ public class Security {
     sb.append("    lastStockPrice: ").append(toIndentedString(lastStockPrice)).append("\n");
     sb.append("    lastStockPriceAdjustment: ").append(toIndentedString(lastStockPriceAdjustment)).append("\n");
     sb.append("    lastCorporateAction: ").append(toIndentedString(lastCorporateAction)).append("\n");
-    sb.append("    previousTickers: ").append(toIndentedString(previousTickers)).append("\n");
     sb.append("}");
     return sb.toString();
   }

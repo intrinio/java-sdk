@@ -28,7 +28,7 @@ Retrieves detailed fundamental data for the given &#x60;fundamental_id&#x60;.
 //import com.intrinio.api.FundamentalsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 FundamentalsApi fundamentalsApi = new FundamentalsApi();
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 <a name="getFundamentalReportedFinancials"></a>
 # **getFundamentalReportedFinancials**
-> ApiResponseReportedFinancials getFundamentalReportedFinancials(id)
+> List&lt;ReportedFinancial&gt; getFundamentalReportedFinancials(id)
 
 Get Reported Financials for a Fundamental
 
@@ -72,7 +72,7 @@ Returns the As-Reported Financials directly from the financial statements of the
 //import com.intrinio.api.FundamentalsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 FundamentalsApi fundamentalsApi = new FundamentalsApi();
@@ -80,7 +80,7 @@ FundamentalsApi fundamentalsApi = new FundamentalsApi();
 String id = "id_example"; // String | The Intrinio ID for the Fundamental
 
 try {
-    ApiResponseReportedFinancials result = fundamentalsApi.getFundamentalReportedFinancials(id);
+    List<ReportedFinancial> result = fundamentalsApi.getFundamentalReportedFinancials(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FundamentalsApi#getFundamentalReportedFinancials");
@@ -96,11 +96,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiResponseReportedFinancials**](ApiResponseReportedFinancials.md)
+[**List&lt;ReportedFinancial&gt;**](ReportedFinancial.md)
 
 <a name="getFundamentalStandardizedFinancials"></a>
 # **getFundamentalStandardizedFinancials**
-> ApiResponseStandardizedFinancials getFundamentalStandardizedFinancials(id)
+> List&lt;StandardizedFinancial&gt; getFundamentalStandardizedFinancials(id)
 
 Get Standardized Financials for a Fundamental
 
@@ -116,7 +116,7 @@ Returns professional-grade historical financial data. This data is standardized,
 //import com.intrinio.api.FundamentalsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 FundamentalsApi fundamentalsApi = new FundamentalsApi();
@@ -124,7 +124,7 @@ FundamentalsApi fundamentalsApi = new FundamentalsApi();
 String id = "id_example"; // String | The Intrinio ID for the Fundamental
 
 try {
-    ApiResponseStandardizedFinancials result = fundamentalsApi.getFundamentalStandardizedFinancials(id);
+    List<StandardizedFinancial> result = fundamentalsApi.getFundamentalStandardizedFinancials(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FundamentalsApi#getFundamentalStandardizedFinancials");
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiResponseStandardizedFinancials**](ApiResponseStandardizedFinancials.md)
+[**List&lt;StandardizedFinancial&gt;**](StandardizedFinancial.md)
 
 <a name="lookupFundamental"></a>
 # **lookupFundamental**
@@ -160,7 +160,7 @@ Returns the Fundamental for the Company with the given &#x60;identifier&#x60; an
 //import com.intrinio.api.FundamentalsApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 FundamentalsApi fundamentalsApi = new FundamentalsApi();

@@ -16,7 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.intrinio.models.ApiResponseHistoricalData;
+import com.intrinio.models.HistoricalData;
 import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
@@ -47,7 +47,7 @@ public class HistoricalDataApi {
     /**
      * Build call for getHistoricalData
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code-name (required)
+     * @param item An Intrinio data tag or other item (required)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
@@ -58,13 +58,13 @@ public class HistoricalDataApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getHistoricalDataCall(String identifier, String item, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/historical_data/{identifier}/{tag}"
+        String localVarPath = "/historical_data/{identifier}/{item}"
             .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()))
-            .replaceAll("\\{" + "tag" + "\\}", apiClient.escapeString(tag.toString()));
+            .replaceAll("\\{" + "item" + "\\}", apiClient.escapeString(item.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -107,71 +107,71 @@ public class HistoricalDataApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getHistoricalDataValidateBeforeCall(String identifier, String item, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
             throw new ApiException("Missing the required parameter 'identifier' when calling getHistoricalData(Async)");
         }
         
-        // verify the required parameter 'tag' is set
-        if (tag == null) {
-            throw new ApiException("Missing the required parameter 'tag' when calling getHistoricalData(Async)");
+        // verify the required parameter 'item' is set
+        if (item == null) {
+            throw new ApiException("Missing the required parameter 'item' when calling getHistoricalData(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = getHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getHistoricalDataCall(identifier, item, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Get Historical Data
-     * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
+     * Returns historical values for the given &#x60;item&#x60; and the entity represented by the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code-name (required)
+     * @param item An Intrinio data tag or other item (required)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponseHistoricalData
+     * @return List&lt;HistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseHistoricalData getHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseHistoricalData> resp = getHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    public List<HistoricalData> getHistoricalData(String identifier, String item, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
+        ApiResponse<List<HistoricalData>> resp = getHistoricalDataWithHttpInfo(identifier, item, type, startDate, endDate, sortOrder, nextPage);
         return resp.getData();
     }
 
     /**
      * Get Historical Data
-     * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
+     * Returns historical values for the given &#x60;item&#x60; and the entity represented by the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code-name (required)
+     * @param item An Intrinio data tag or other item (required)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponse&lt;ApiResponseHistoricalData&gt;
+     * @return ApiResponse&lt;List&lt;HistoricalData&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseHistoricalData> getHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseHistoricalData>(){}.getType();
+    public ApiResponse<List<HistoricalData>> getHistoricalDataWithHttpInfo(String identifier, String item, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, item, type, startDate, endDate, sortOrder, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<List<HistoricalData>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get Historical Data (asynchronously)
-     * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
+     * Returns historical values for the given &#x60;item&#x60; and the entity represented by the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code-name (required)
+     * @param item An Intrinio data tag or other item (required)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
@@ -181,7 +181,7 @@ public class HistoricalDataApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseHistoricalData> callback) throws ApiException {
+    public com.squareup.okhttp.Call getHistoricalDataAsync(String identifier, String item, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<List<HistoricalData>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -202,8 +202,8 @@ public class HistoricalDataApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseHistoricalData>(){}.getType();
+        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, item, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<List<HistoricalData>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -24,15 +24,6 @@ public class SecuritySummary {
   @SerializedName("company_id")
   private String companyId = null;
 
-  @SerializedName("name")
-  private String name = null;
-
-  @SerializedName("code")
-  private String code = null;
-
-  @SerializedName("currency")
-  private String currency = null;
-
   @SerializedName("ticker")
   private String ticker = null;
 
@@ -42,11 +33,8 @@ public class SecuritySummary {
   @SerializedName("figi")
   private String figi = null;
 
-  @SerializedName("composite_figi")
-  private String compositeFigi = null;
-
-  @SerializedName("share_class_figi")
-  private String shareClassFigi = null;
+  @SerializedName("name")
+  private String name = null;
 
   public SecuritySummary id(String id) {
     this.id = id;
@@ -82,60 +70,6 @@ public class SecuritySummary {
 
   public void setCompanyId(String companyId) {
     this.companyId = companyId;
-  }
-
-  public SecuritySummary name(String name) {
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * The name of the Security
-   * @return name
-  **/
-  @ApiModelProperty(value = "The name of the Security")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public SecuritySummary code(String code) {
-    this.code = code;
-    return this;
-  }
-
-   /**
-   * A 2-3 digit code classifying the Security
-   * @return code
-  **/
-  @ApiModelProperty(value = "A 2-3 digit code classifying the Security")
-  public String getCode() {
-    return code;
-  }
-
-  public void setCode(String code) {
-    this.code = code;
-  }
-
-  public SecuritySummary currency(String currency) {
-    this.currency = currency;
-    return this;
-  }
-
-   /**
-   * The currency in which the Security is traded on the exchange
-   * @return currency
-  **/
-  @ApiModelProperty(value = "The currency in which the Security is traded on the exchange")
-  public String getCurrency() {
-    return currency;
-  }
-
-  public void setCurrency(String currency) {
-    this.currency = currency;
   }
 
   public SecuritySummary ticker(String ticker) {
@@ -192,40 +126,22 @@ public class SecuritySummary {
     this.figi = figi;
   }
 
-  public SecuritySummary compositeFigi(String compositeFigi) {
-    this.compositeFigi = compositeFigi;
+  public SecuritySummary name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * The country-composite OpenFIGI identifier
-   * @return compositeFigi
+   * The name of the Security
+   * @return name
   **/
-  @ApiModelProperty(value = "The country-composite OpenFIGI identifier")
-  public String getCompositeFigi() {
-    return compositeFigi;
+  @ApiModelProperty(value = "The name of the Security")
+  public String getName() {
+    return name;
   }
 
-  public void setCompositeFigi(String compositeFigi) {
-    this.compositeFigi = compositeFigi;
-  }
-
-  public SecuritySummary shareClassFigi(String shareClassFigi) {
-    this.shareClassFigi = shareClassFigi;
-    return this;
-  }
-
-   /**
-   * The global-composite OpenFIGI identifier
-   * @return shareClassFigi
-  **/
-  @ApiModelProperty(value = "The global-composite OpenFIGI identifier")
-  public String getShareClassFigi() {
-    return shareClassFigi;
-  }
-
-  public void setShareClassFigi(String shareClassFigi) {
-    this.shareClassFigi = shareClassFigi;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -240,19 +156,15 @@ public class SecuritySummary {
     SecuritySummary securitySummary = (SecuritySummary) o;
     return Objects.equals(this.id, securitySummary.id) &&
         Objects.equals(this.companyId, securitySummary.companyId) &&
-        Objects.equals(this.name, securitySummary.name) &&
-        Objects.equals(this.code, securitySummary.code) &&
-        Objects.equals(this.currency, securitySummary.currency) &&
         Objects.equals(this.ticker, securitySummary.ticker) &&
         Objects.equals(this.compositeTicker, securitySummary.compositeTicker) &&
         Objects.equals(this.figi, securitySummary.figi) &&
-        Objects.equals(this.compositeFigi, securitySummary.compositeFigi) &&
-        Objects.equals(this.shareClassFigi, securitySummary.shareClassFigi);
+        Objects.equals(this.name, securitySummary.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, companyId, name, code, currency, ticker, compositeTicker, figi, compositeFigi, shareClassFigi);
+    return Objects.hash(id, companyId, ticker, compositeTicker, figi, name);
   }
 
 
@@ -263,14 +175,10 @@ public class SecuritySummary {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    companyId: ").append(toIndentedString(companyId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
     sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
     sb.append("    compositeTicker: ").append(toIndentedString(compositeTicker)).append("\n");
     sb.append("    figi: ").append(toIndentedString(figi)).append("\n");
-    sb.append("    compositeFigi: ").append(toIndentedString(compositeFigi)).append("\n");
-    sb.append("    shareClassFigi: ").append(toIndentedString(shareClassFigi)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

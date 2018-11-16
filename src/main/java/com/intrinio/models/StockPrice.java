@@ -21,6 +21,9 @@ import org.threeten.bp.LocalDate;
 @ApiModel(description = "The stock price of a security on a given date.")
 
 public class StockPrice {
+  @SerializedName("security")
+  private SecuritySummary security = null;
+
   @SerializedName("date")
   private LocalDate date = null;
 
@@ -113,8 +116,23 @@ public class StockPrice {
   @SerializedName("adj_volume")
   private BigDecimal adjVolume = null;
 
-  @SerializedName("security")
-  private SecuritySummary security = null;
+  public StockPrice security(SecuritySummary security) {
+    this.security = security;
+    return this;
+  }
+
+   /**
+   * The Security of the stock price
+   * @return security
+  **/
+  @ApiModelProperty(value = "The Security of the stock price")
+  public SecuritySummary getSecurity() {
+    return security;
+  }
+
+  public void setSecurity(SecuritySummary security) {
+    this.security = security;
+  }
 
   public StockPrice date(LocalDate date) {
     this.date = date;
@@ -350,24 +368,6 @@ public class StockPrice {
     this.adjVolume = adjVolume;
   }
 
-  public StockPrice security(SecuritySummary security) {
-    this.security = security;
-    return this;
-  }
-
-   /**
-   * The Security of the stock price
-   * @return security
-  **/
-  @ApiModelProperty(value = "The Security of the stock price")
-  public SecuritySummary getSecurity() {
-    return security;
-  }
-
-  public void setSecurity(SecuritySummary security) {
-    this.security = security;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -378,7 +378,8 @@ public class StockPrice {
       return false;
     }
     StockPrice stockPrice = (StockPrice) o;
-    return Objects.equals(this.date, stockPrice.date) &&
+    return Objects.equals(this.security, stockPrice.security) &&
+        Objects.equals(this.date, stockPrice.date) &&
         Objects.equals(this.intraperiod, stockPrice.intraperiod) &&
         Objects.equals(this.frequency, stockPrice.frequency) &&
         Objects.equals(this.open, stockPrice.open) &&
@@ -390,13 +391,12 @@ public class StockPrice {
         Objects.equals(this.adjHigh, stockPrice.adjHigh) &&
         Objects.equals(this.adjLow, stockPrice.adjLow) &&
         Objects.equals(this.adjClose, stockPrice.adjClose) &&
-        Objects.equals(this.adjVolume, stockPrice.adjVolume) &&
-        Objects.equals(this.security, stockPrice.security);
+        Objects.equals(this.adjVolume, stockPrice.adjVolume);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, intraperiod, frequency, open, high, low, close, volume, adjOpen, adjHigh, adjLow, adjClose, adjVolume, security);
+    return Objects.hash(security, date, intraperiod, frequency, open, high, low, close, volume, adjOpen, adjHigh, adjLow, adjClose, adjVolume);
   }
 
 
@@ -405,6 +405,7 @@ public class StockPrice {
     StringBuilder sb = new StringBuilder();
     sb.append("class StockPrice {\n");
     
+    sb.append("    security: ").append(toIndentedString(security)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    intraperiod: ").append(toIndentedString(intraperiod)).append("\n");
     sb.append("    frequency: ").append(toIndentedString(frequency)).append("\n");
@@ -418,7 +419,6 @@ public class StockPrice {
     sb.append("    adjLow: ").append(toIndentedString(adjLow)).append("\n");
     sb.append("    adjClose: ").append(toIndentedString(adjClose)).append("\n");
     sb.append("    adjVolume: ").append(toIndentedString(adjVolume)).append("\n");
-    sb.append("    security: ").append(toIndentedString(security)).append("\n");
     sb.append("}");
     return sb.toString();
   }

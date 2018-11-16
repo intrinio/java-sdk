@@ -16,7 +16,6 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.intrinio.models.ApiResponseFilings;
 import com.intrinio.models.Filing;
 import org.threeten.bp.LocalDate;
 
@@ -104,7 +103,7 @@ public class FilingApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -124,40 +123,40 @@ public class FilingApi {
 
     /**
      * Filter Filings
-     * Returns filings that match the specified filters
+     * 
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
      * @param reportType Filter by report type (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponseFilings
+     * @return List&lt;Filing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseFilings filterFilings(String company, String reportType, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseFilings> resp = filterFilingsWithHttpInfo(company, reportType, startDate, endDate, nextPage);
+    public List<Filing> filterFilings(String company, String reportType, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
+        ApiResponse<List<Filing>> resp = filterFilingsWithHttpInfo(company, reportType, startDate, endDate, nextPage);
         return resp.getData();
     }
 
     /**
      * Filter Filings
-     * Returns filings that match the specified filters
+     * 
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
      * @param reportType Filter by report type (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponse&lt;ApiResponseFilings&gt;
+     * @return ApiResponse&lt;List&lt;Filing&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseFilings> filterFilingsWithHttpInfo(String company, String reportType, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
+    public ApiResponse<List<Filing>> filterFilingsWithHttpInfo(String company, String reportType, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = filterFilingsValidateBeforeCall(company, reportType, startDate, endDate, nextPage, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseFilings>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<Filing>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Filter Filings (asynchronously)
-     * Returns filings that match the specified filters
+     * 
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
      * @param reportType Filter by report type (optional)
      * @param startDate Filed on or after the given date (optional)
@@ -167,7 +166,7 @@ public class FilingApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call filterFilingsAsync(String company, String reportType, LocalDate startDate, LocalDate endDate, String nextPage, final ApiCallback<ApiResponseFilings> callback) throws ApiException {
+    public com.squareup.okhttp.Call filterFilingsAsync(String company, String reportType, LocalDate startDate, LocalDate endDate, String nextPage, final ApiCallback<List<Filing>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -189,7 +188,7 @@ public class FilingApi {
         }
 
         com.squareup.okhttp.Call call = filterFilingsValidateBeforeCall(company, reportType, startDate, endDate, nextPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseFilings>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<Filing>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -240,7 +239,7 @@ public class FilingApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -255,38 +254,38 @@ public class FilingApi {
 
     /**
      * Get All Filings
-     * Returns all filings
+     * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponseFilings
+     * @return List&lt;Filing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseFilings getAllFilings(String nextPage) throws ApiException {
-        ApiResponse<ApiResponseFilings> resp = getAllFilingsWithHttpInfo(nextPage);
+    public List<Filing> getAllFilings(String nextPage) throws ApiException {
+        ApiResponse<List<Filing>> resp = getAllFilingsWithHttpInfo(nextPage);
         return resp.getData();
     }
 
     /**
      * Get All Filings
-     * Returns all filings
+     * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponse&lt;ApiResponseFilings&gt;
+     * @return ApiResponse&lt;List&lt;Filing&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseFilings> getAllFilingsWithHttpInfo(String nextPage) throws ApiException {
+    public ApiResponse<List<Filing>> getAllFilingsWithHttpInfo(String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getAllFilingsValidateBeforeCall(nextPage, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseFilings>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<Filing>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get All Filings (asynchronously)
-     * Returns all filings
+     * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllFilingsAsync(String nextPage, final ApiCallback<ApiResponseFilings> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllFilingsAsync(String nextPage, final ApiCallback<List<Filing>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -308,7 +307,7 @@ public class FilingApi {
         }
 
         com.squareup.okhttp.Call call = getAllFilingsValidateBeforeCall(nextPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseFilings>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<Filing>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -358,7 +357,7 @@ public class FilingApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
@@ -378,7 +377,7 @@ public class FilingApi {
 
     /**
      * Get a Filing by ID
-     * Return the filing with the given ID
+     * 
      * @param id The Intrinio ID of the Filing (required)
      * @return Filing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -390,7 +389,7 @@ public class FilingApi {
 
     /**
      * Get a Filing by ID
-     * Return the filing with the given ID
+     * 
      * @param id The Intrinio ID of the Filing (required)
      * @return ApiResponse&lt;Filing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -403,7 +402,7 @@ public class FilingApi {
 
     /**
      * Get a Filing by ID (asynchronously)
-     * Return the filing with the given ID
+     * 
      * @param id The Intrinio ID of the Filing (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call

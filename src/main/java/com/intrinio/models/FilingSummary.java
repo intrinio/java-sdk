@@ -14,9 +14,9 @@ import java.io.IOException;
 import org.threeten.bp.LocalDate;
 
 /**
- * A filing submitted to the SEC by a company
+ * The summary of a filing submitted to the SEC by a company
  */
-@ApiModel(description = "A filing submitted to the SEC by a company")
+@ApiModel(description = "The summary of a filing submitted to the SEC by a company")
 
 public class FilingSummary {
   @SerializedName("id")

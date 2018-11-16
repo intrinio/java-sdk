@@ -6,10 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAllSecurities**](SecurityApi.md#getAllSecurities) | **GET** /securities | Get All Securiites
 [**getSecurityById**](SecurityApi.md#getSecurityById) | **GET** /securities/{identifier} | Get a Security by ID
-[**getSecurityDataPointNumber**](SecurityApi.md#getSecurityDataPointNumber) | **GET** /securities/{identifier}/data_point/{tag}/number | Get Security Data Point (Number)
-[**getSecurityDataPointText**](SecurityApi.md#getSecurityDataPointText) | **GET** /securities/{identifier}/data_point/{tag}/text | Get Security Data Point (Text)
-[**getSecurityHistoricalData**](SecurityApi.md#getSecurityHistoricalData) | **GET** /securities/{identifier}/historical_data/{tag} | Get Security Historical Data
-[**getSecurityStockPriceAdjustments**](SecurityApi.md#getSecurityStockPriceAdjustments) | **GET** /securities/{identifier}/prices/adjustments | Get Stock Price Adjustments for Security
+[**getSecurityDataPointNumber**](SecurityApi.md#getSecurityDataPointNumber) | **GET** /securities/{identifier}/data_point/{item}/number | Get Security Data Point (Number)
+[**getSecurityDataPointText**](SecurityApi.md#getSecurityDataPointText) | **GET** /securities/{identifier}/data_point/{item}/text | Get Security Data Point (Text)
+[**getSecurityHistoricalData**](SecurityApi.md#getSecurityHistoricalData) | **GET** /securities/{identifier}/historical_data/{item} | Get Security Historical Data
 [**getSecurityStockPrices**](SecurityApi.md#getSecurityStockPrices) | **GET** /securities/{identifier}/prices | Get Stock Prices for Security
 [**screenSecurities**](SecurityApi.md#screenSecurities) | **POST** /securities/screen | Screen Securities
 [**searchSecurities**](SecurityApi.md#searchSecurities) | **GET** /securities/search | Search Securities
@@ -17,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="getAllSecurities"></a>
 # **getAllSecurities**
-> ApiResponseSecurities getAllSecurities(nextPage)
+> List&lt;SecuritySummary&gt; getAllSecurities(nextPage)
 
 Get All Securiites
 
@@ -31,7 +30,7 @@ Get All Securiites
 //import com.intrinio.api.SecurityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
@@ -39,7 +38,7 @@ SecurityApi securityApi = new SecurityApi();
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseSecurities result = securityApi.getAllSecurities(nextPage);
+    List<SecuritySummary> result = securityApi.getAllSecurities(nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#getAllSecurities");
@@ -55,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiResponseSecurities**](ApiResponseSecurities.md)
+[**List&lt;SecuritySummary&gt;**](SecuritySummary.md)
 
 <a name="getSecurityById"></a>
 # **getSecurityById**
@@ -73,7 +72,7 @@ Get a Security by ID
 //import com.intrinio.api.SecurityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
@@ -101,11 +100,11 @@ Name | Type | Description  | Notes
 
 <a name="getSecurityDataPointNumber"></a>
 # **getSecurityDataPointNumber**
-> BigDecimal getSecurityDataPointNumber(identifier, tag)
+> BigDecimal getSecurityDataPointNumber(identifier, item)
 
 Get Security Data Point (Number)
 
-Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+Returns a numeric value for the given &#x60;item&#x60; for the Security with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -117,16 +116,16 @@ Returns a numeric value for the given &#x60;tag&#x60; for the Security with the 
 //import com.intrinio.api.SecurityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
 String identifier = "identifier_example"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String item = "item_example"; // String | An Intrinio data tag or other item
 
 try {
-    BigDecimal result = securityApi.getSecurityDataPointNumber(identifier, tag);
+    BigDecimal result = securityApi.getSecurityDataPointNumber(identifier, item);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#getSecurityDataPointNumber");
@@ -139,7 +138,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
+ **item** | **String**| An Intrinio data tag or other item |
 
 ### Return type
 
@@ -147,11 +146,11 @@ Name | Type | Description  | Notes
 
 <a name="getSecurityDataPointText"></a>
 # **getSecurityDataPointText**
-> String getSecurityDataPointText(identifier, tag)
+> String getSecurityDataPointText(identifier, item)
 
 Get Security Data Point (Text)
 
-Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+Returns a text value for the given &#x60;item&#x60; for the Security with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -163,16 +162,16 @@ Returns a text value for the given &#x60;tag&#x60; for the Security with the giv
 //import com.intrinio.api.SecurityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
 String identifier = "identifier_example"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String item = "item_example"; // String | An Intrinio data tag or other item
 
 try {
-    String result = securityApi.getSecurityDataPointText(identifier, tag);
+    String result = securityApi.getSecurityDataPointText(identifier, item);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#getSecurityDataPointText");
@@ -185,7 +184,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
+ **item** | **String**| An Intrinio data tag or other item |
 
 ### Return type
 
@@ -193,11 +192,11 @@ Name | Type | Description  | Notes
 
 <a name="getSecurityHistoricalData"></a>
 # **getSecurityHistoricalData**
-> ApiResponseSecurityHistoricalData getSecurityHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
+> List&lt;HistoricalData&gt; getSecurityHistoricalData(identifier, item, type, startDate, endDate, sortOrder, nextPage)
 
 Get Security Historical Data
 
-Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
+Returns historical values for the given &#x60;item&#x60; and the Security with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -209,13 +208,13 @@ Returns historical values for the given &#x60;tag&#x60; and the Security with th
 //import com.intrinio.api.SecurityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
 String identifier = "identifier_example"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String item = "item_example"; // String | An Intrinio data tag or other item
 String type = "type_example"; // String | Filter by type, when applicable
 LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
 LocalDate endDate = new LocalDate(); // LocalDate | Get historical date on or before this date
@@ -223,7 +222,7 @@ String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseSecurityHistoricalData result = securityApi.getSecurityHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    List<HistoricalData> result = securityApi.getSecurityHistoricalData(identifier, item, type, startDate, endDate, sortOrder, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#getSecurityHistoricalData");
@@ -236,7 +235,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
+ **item** | **String**| An Intrinio data tag or other item |
  **type** | **String**| Filter by type, when applicable | [optional]
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical date on or before this date | [optional]
@@ -245,61 +244,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiResponseSecurityHistoricalData**](ApiResponseSecurityHistoricalData.md)
-
-<a name="getSecurityStockPriceAdjustments"></a>
-# **getSecurityStockPriceAdjustments**
-> ApiResponseSecurityStockPriceAdjustments getSecurityStockPriceAdjustments(identifier, startDate, endDate, nextPage)
-
-Get Stock Price Adjustments for Security
-
-Return stock price adjustments for the Security with the given &#x60;identifier&#x60;
-
-### Example
-```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.SecurityApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
-
-SecurityApi securityApi = new SecurityApi();
-
-String identifier = "identifier_example"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-LocalDate startDate = new LocalDate(); // LocalDate | Return price adjustments on or after the date
-LocalDate endDate = new LocalDate(); // LocalDate | Return price adjustments on or before the date
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
-
-try {
-    ApiResponseSecurityStockPriceAdjustments result = securityApi.getSecurityStockPriceAdjustments(identifier, startDate, endDate, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling SecurityApi#getSecurityStockPriceAdjustments");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
- **startDate** | **LocalDate**| Return price adjustments on or after the date | [optional]
- **endDate** | **LocalDate**| Return price adjustments on or before the date | [optional]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
-
-### Return type
-
-[**ApiResponseSecurityStockPriceAdjustments**](ApiResponseSecurityStockPriceAdjustments.md)
+[**List&lt;HistoricalData&gt;**](HistoricalData.md)
 
 <a name="getSecurityStockPrices"></a>
 # **getSecurityStockPrices**
-> ApiResponseSecurityStockPrices getSecurityStockPrices(identifier, startDate, endDate, frequency, nextPage)
+> List&lt;StockPriceSummary&gt; getSecurityStockPrices(identifier, startDate, endDate, frequency, nextPage)
 
 Get Stock Prices for Security
 
@@ -315,7 +264,7 @@ Return stock prices for the Security with the given &#x60;identifier&#x60;
 //import com.intrinio.api.SecurityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
@@ -327,7 +276,7 @@ String frequency = "daily"; // String | Return stock prices in the given frequen
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseSecurityStockPrices result = securityApi.getSecurityStockPrices(identifier, startDate, endDate, frequency, nextPage);
+    List<StockPriceSummary> result = securityApi.getSecurityStockPrices(identifier, startDate, endDate, frequency, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#getSecurityStockPrices");
@@ -347,11 +296,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiResponseSecurityStockPrices**](ApiResponseSecurityStockPrices.md)
+[**List&lt;StockPriceSummary&gt;**](StockPriceSummary.md)
 
 <a name="screenSecurities"></a>
 # **screenSecurities**
-> List&lt;SecurityScreenResult&gt; screenSecurities(logic, orderColumn, orderDirection, primaryOnly)
+> List&lt;SecurityScreenResult&gt; screenSecurities(logic, orderColumn, orderDirection, primaryOnly, nextPage)
 
 Screen Securities
 
@@ -367,7 +316,7 @@ Screen securities using complex logic
 //import com.intrinio.api.SecurityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
@@ -376,9 +325,10 @@ SecurityScreenGroup logic = new SecurityScreenGroup(); // SecurityScreenGroup | 
 String orderColumn = "orderColumn_example"; // String | Results returned sorted by this column
 String orderDirection = "asc"; // String | Sort order to use with the order_column
 Boolean primaryOnly = false; // Boolean | Return only primary securities
+String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<SecurityScreenResult> result = securityApi.screenSecurities(logic, orderColumn, orderDirection, primaryOnly);
+    List<SecurityScreenResult> result = securityApi.screenSecurities(logic, orderColumn, orderDirection, primaryOnly, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#screenSecurities");
@@ -394,6 +344,7 @@ Name | Type | Description  | Notes
  **orderColumn** | **String**| Results returned sorted by this column | [optional]
  **orderDirection** | **String**| Sort order to use with the order_column | [optional] [default to asc] [enum: asc, desc]
  **primaryOnly** | **Boolean**| Return only primary securities | [optional] [default to false]
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
@@ -401,7 +352,7 @@ Name | Type | Description  | Notes
 
 <a name="searchSecurities"></a>
 # **searchSecurities**
-> ApiResponseSecurities searchSecurities(query)
+> List&lt;SecuritySummary&gt; searchSecurities(query, nextPage)
 
 Search Securities
 
@@ -417,15 +368,16 @@ Searches for Securities matching the text &#x60;query&#x60;
 //import com.intrinio.api.SecurityApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
 String query = "query_example"; // String | 
+String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseSecurities result = securityApi.searchSecurities(query);
+    List<SecuritySummary> result = securityApi.searchSecurities(query, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#searchSecurities");
@@ -438,8 +390,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**|  |
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
-[**ApiResponseSecurities**](ApiResponseSecurities.md)
+[**List&lt;SecuritySummary&gt;**](SecuritySummary.md)
 

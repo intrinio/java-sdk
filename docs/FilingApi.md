@@ -11,11 +11,9 @@ Method | HTTP request | Description
 
 <a name="filterFilings"></a>
 # **filterFilings**
-> ApiResponseFilings filterFilings(company, reportType, startDate, endDate, nextPage)
+> List&lt;Filing&gt; filterFilings(company, reportType, startDate, endDate, nextPage)
 
 Filter Filings
-
-Returns filings that match the specified filters
 
 ### Example
 ```java
@@ -27,7 +25,7 @@ Returns filings that match the specified filters
 //import com.intrinio.api.FilingApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 FilingApi filingApi = new FilingApi();
@@ -39,7 +37,7 @@ LocalDate endDate = new LocalDate(); // LocalDate | Filed before or after the gi
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseFilings result = filingApi.filterFilings(company, reportType, startDate, endDate, nextPage);
+    List<Filing> result = filingApi.filterFilings(company, reportType, startDate, endDate, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FilingApi#filterFilings");
@@ -59,15 +57,13 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiResponseFilings**](ApiResponseFilings.md)
+[**List&lt;Filing&gt;**](Filing.md)
 
 <a name="getAllFilings"></a>
 # **getAllFilings**
-> ApiResponseFilings getAllFilings(nextPage)
+> List&lt;Filing&gt; getAllFilings(nextPage)
 
 Get All Filings
-
-Returns all filings
 
 ### Example
 ```java
@@ -79,7 +75,7 @@ Returns all filings
 //import com.intrinio.api.FilingApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 FilingApi filingApi = new FilingApi();
@@ -87,7 +83,7 @@ FilingApi filingApi = new FilingApi();
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseFilings result = filingApi.getAllFilings(nextPage);
+    List<Filing> result = filingApi.getAllFilings(nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FilingApi#getAllFilings");
@@ -103,15 +99,13 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiResponseFilings**](ApiResponseFilings.md)
+[**List&lt;Filing&gt;**](Filing.md)
 
 <a name="getFilingById"></a>
 # **getFilingById**
 > Filing getFilingById(id)
 
 Get a Filing by ID
-
-Return the filing with the given ID
 
 ### Example
 ```java
@@ -123,7 +117,7 @@ Return the filing with the given ID
 //import com.intrinio.api.FilingApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
 auth.setApiKey("YOUR API KEY");
 
 FilingApi filingApi = new FilingApi();

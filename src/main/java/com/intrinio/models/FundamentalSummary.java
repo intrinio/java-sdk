@@ -92,6 +92,9 @@ public class FundamentalSummary {
   @SerializedName("filing_date")
   private LocalDate filingDate = null;
 
+  @SerializedName("calculated")
+  private Boolean calculated = null;
+
   public FundamentalSummary id(String id) {
     this.id = id;
     return this;
@@ -236,6 +239,24 @@ public class FundamentalSummary {
     this.filingDate = filingDate;
   }
 
+  public FundamentalSummary calculated(Boolean calculated) {
+    this.calculated = calculated;
+    return this;
+  }
+
+   /**
+   * If true, this Fundamental was calculated by Intrinio and not actually reported by the Company
+   * @return calculated
+  **/
+  @ApiModelProperty(value = "If true, this Fundamental was calculated by Intrinio and not actually reported by the Company")
+  public Boolean isisCalculated() {
+    return calculated;
+  }
+
+  public void setCalculated(Boolean calculated) {
+    this.calculated = calculated;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -253,12 +274,13 @@ public class FundamentalSummary {
         Objects.equals(this.type, fundamentalSummary.type) &&
         Objects.equals(this.startDate, fundamentalSummary.startDate) &&
         Objects.equals(this.endDate, fundamentalSummary.endDate) &&
-        Objects.equals(this.filingDate, fundamentalSummary.filingDate);
+        Objects.equals(this.filingDate, fundamentalSummary.filingDate) &&
+        Objects.equals(this.calculated, fundamentalSummary.calculated);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate);
+    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, calculated);
   }
 
 
@@ -275,6 +297,7 @@ public class FundamentalSummary {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    filingDate: ").append(toIndentedString(filingDate)).append("\n");
+    sb.append("    calculated: ").append(toIndentedString(calculated)).append("\n");
     sb.append("}");
     return sb.toString();
   }
