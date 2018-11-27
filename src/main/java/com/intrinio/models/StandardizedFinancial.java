@@ -8,7 +8,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.intrinio.models.StandardizedTag;
+import com.intrinio.models.DataTagSummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -21,12 +21,12 @@ import java.math.BigDecimal;
 
 public class StandardizedFinancial {
   @SerializedName("data_tag")
-  private StandardizedTag dataTag = null;
+  private DataTagSummary dataTag = null;
 
   @SerializedName("value")
   private BigDecimal value = null;
 
-  public StandardizedFinancial dataTag(StandardizedTag dataTag) {
+  public StandardizedFinancial dataTag(DataTagSummary dataTag) {
     this.dataTag = dataTag;
     return this;
   }
@@ -36,11 +36,11 @@ public class StandardizedFinancial {
    * @return dataTag
   **/
   @ApiModelProperty(value = "")
-  public StandardizedTag getDataTag() {
+  public DataTagSummary getDataTag() {
     return dataTag;
   }
 
-  public void setDataTag(StandardizedTag dataTag) {
+  public void setDataTag(DataTagSummary dataTag) {
     this.dataTag = dataTag;
   }
 
@@ -50,10 +50,10 @@ public class StandardizedFinancial {
   }
 
    /**
-   * The value for the Standardized Tag within the scope of the Fundamental
+   * The value for the Data Tag within the scope of the Fundamental
    * @return value
   **/
-  @ApiModelProperty(value = "The value for the Standardized Tag within the scope of the Fundamental")
+  @ApiModelProperty(value = "The value for the Data Tag within the scope of the Fundamental")
   public BigDecimal getValue() {
     return value;
   }

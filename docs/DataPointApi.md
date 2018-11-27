@@ -4,17 +4,17 @@ All URIs are relative to *https://api-v2.intrinio.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getDataPointNumber**](DataPointApi.md#getDataPointNumber) | **GET** /data_point/{identifier}/{item}/number | Get a Data Point (Number)
-[**getDataPointText**](DataPointApi.md#getDataPointText) | **GET** /data_point/{identifier}/{item}/text | Get a Data Point (Text)
+[**getDataPointNumber**](DataPointApi.md#getDataPointNumber) | **GET** /data_point/{identifier}/{tag}/number | Get a Data Point (Number)
+[**getDataPointText**](DataPointApi.md#getDataPointText) | **GET** /data_point/{identifier}/{tag}/text | Get a Data Point (Text)
 
 
 <a name="getDataPointNumber"></a>
 # **getDataPointNumber**
-> BigDecimal getDataPointNumber(identifier, item)
+> BigDecimal getDataPointNumber(identifier, tag)
 
 Get a Data Point (Number)
 
-Returns a numeric value for the given &#x60;item&#x60; and the entity with the given &#x60;identifier&#x60;
+Returns a numeric value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -26,16 +26,16 @@ Returns a numeric value for the given &#x60;item&#x60; and the entity with the g
 //import com.intrinio.api.DataPointApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 DataPointApi dataPointApi = new DataPointApi();
 
 String identifier = "identifier_example"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag or other item
+String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
 
 try {
-    BigDecimal result = dataPointApi.getDataPointNumber(identifier, item);
+    BigDecimal result = dataPointApi.getDataPointNumber(identifier, tag);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DataPointApi#getDataPointNumber");
@@ -48,7 +48,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) |
- **item** | **String**| An Intrinio data tag or other item |
+ **tag** | **String**| An Intrinio data tag ID or code-name |
 
 ### Return type
 
@@ -56,11 +56,11 @@ Name | Type | Description  | Notes
 
 <a name="getDataPointText"></a>
 # **getDataPointText**
-> String getDataPointText(identifier, item)
+> String getDataPointText(identifier, tag)
 
 Get a Data Point (Text)
 
-Returns a text value for the given &#x60;item&#x60; and the entity with the given &#x60;identifier&#x60;
+Returns a text value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -72,16 +72,16 @@ Returns a text value for the given &#x60;item&#x60; and the entity with the give
 //import com.intrinio.api.DataPointApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 DataPointApi dataPointApi = new DataPointApi();
 
 String identifier = "identifier_example"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-String item = "item_example"; // String | An Intrinio data tag or other item
+String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
 
 try {
-    String result = dataPointApi.getDataPointText(identifier, item);
+    String result = dataPointApi.getDataPointText(identifier, tag);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DataPointApi#getDataPointText");
@@ -94,7 +94,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) |
- **item** | **String**| An Intrinio data tag or other item |
+ **tag** | **String**| An Intrinio data tag ID or code-name |
 
 ### Return type
 

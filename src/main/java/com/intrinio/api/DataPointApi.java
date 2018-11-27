@@ -46,19 +46,19 @@ public class DataPointApi {
     /**
      * Build call for getDataPointNumber
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param item An Intrinio data tag or other item (required)
+     * @param tag An Intrinio data tag ID or code-name (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getDataPointNumberCall(String identifier, String item, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getDataPointNumberCall(String identifier, String tag, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/data_point/{identifier}/{item}/number"
+        String localVarPath = "/data_point/{identifier}/{tag}/number"
             .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()))
-            .replaceAll("\\{" + "item" + "\\}", apiClient.escapeString(item.toString()));
+            .replaceAll("\\{" + "tag" + "\\}", apiClient.escapeString(tag.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -91,66 +91,66 @@ public class DataPointApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDataPointNumberValidateBeforeCall(String identifier, String item, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getDataPointNumberValidateBeforeCall(String identifier, String tag, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
             throw new ApiException("Missing the required parameter 'identifier' when calling getDataPointNumber(Async)");
         }
         
-        // verify the required parameter 'item' is set
-        if (item == null) {
-            throw new ApiException("Missing the required parameter 'item' when calling getDataPointNumber(Async)");
+        // verify the required parameter 'tag' is set
+        if (tag == null) {
+            throw new ApiException("Missing the required parameter 'tag' when calling getDataPointNumber(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = getDataPointNumberCall(identifier, item, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDataPointNumberCall(identifier, tag, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Get a Data Point (Number)
-     * Returns a numeric value for the given &#x60;item&#x60; and the entity with the given &#x60;identifier&#x60;
+     * Returns a numeric value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param item An Intrinio data tag or other item (required)
+     * @param tag An Intrinio data tag ID or code-name (required)
      * @return BigDecimal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public BigDecimal getDataPointNumber(String identifier, String item) throws ApiException {
-        ApiResponse<BigDecimal> resp = getDataPointNumberWithHttpInfo(identifier, item);
+    public BigDecimal getDataPointNumber(String identifier, String tag) throws ApiException {
+        ApiResponse<BigDecimal> resp = getDataPointNumberWithHttpInfo(identifier, tag);
         return resp.getData();
     }
 
     /**
      * Get a Data Point (Number)
-     * Returns a numeric value for the given &#x60;item&#x60; and the entity with the given &#x60;identifier&#x60;
+     * Returns a numeric value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param item An Intrinio data tag or other item (required)
+     * @param tag An Intrinio data tag ID or code-name (required)
      * @return ApiResponse&lt;BigDecimal&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<BigDecimal> getDataPointNumberWithHttpInfo(String identifier, String item) throws ApiException {
-        com.squareup.okhttp.Call call = getDataPointNumberValidateBeforeCall(identifier, item, null, null);
+    public ApiResponse<BigDecimal> getDataPointNumberWithHttpInfo(String identifier, String tag) throws ApiException {
+        com.squareup.okhttp.Call call = getDataPointNumberValidateBeforeCall(identifier, tag, null, null);
         Type localVarReturnType = new TypeToken<BigDecimal>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get a Data Point (Number) (asynchronously)
-     * Returns a numeric value for the given &#x60;item&#x60; and the entity with the given &#x60;identifier&#x60;
+     * Returns a numeric value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param item An Intrinio data tag or other item (required)
+     * @param tag An Intrinio data tag ID or code-name (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getDataPointNumberAsync(String identifier, String item, final ApiCallback<BigDecimal> callback) throws ApiException {
+    public com.squareup.okhttp.Call getDataPointNumberAsync(String identifier, String tag, final ApiCallback<BigDecimal> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -171,7 +171,7 @@ public class DataPointApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getDataPointNumberValidateBeforeCall(identifier, item, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDataPointNumberValidateBeforeCall(identifier, tag, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<BigDecimal>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -179,19 +179,19 @@ public class DataPointApi {
     /**
      * Build call for getDataPointText
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param item An Intrinio data tag or other item (required)
+     * @param tag An Intrinio data tag ID or code-name (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getDataPointTextCall(String identifier, String item, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getDataPointTextCall(String identifier, String tag, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/data_point/{identifier}/{item}/text"
+        String localVarPath = "/data_point/{identifier}/{tag}/text"
             .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()))
-            .replaceAll("\\{" + "item" + "\\}", apiClient.escapeString(item.toString()));
+            .replaceAll("\\{" + "tag" + "\\}", apiClient.escapeString(tag.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -224,66 +224,66 @@ public class DataPointApi {
             });
         }
 
-        String[] localVarAuthNames = new String[] { "HttpHeaderApiKey" };
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getDataPointTextValidateBeforeCall(String identifier, String item, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getDataPointTextValidateBeforeCall(String identifier, String tag, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
             throw new ApiException("Missing the required parameter 'identifier' when calling getDataPointText(Async)");
         }
         
-        // verify the required parameter 'item' is set
-        if (item == null) {
-            throw new ApiException("Missing the required parameter 'item' when calling getDataPointText(Async)");
+        // verify the required parameter 'tag' is set
+        if (tag == null) {
+            throw new ApiException("Missing the required parameter 'tag' when calling getDataPointText(Async)");
         }
         
 
-        com.squareup.okhttp.Call call = getDataPointTextCall(identifier, item, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDataPointTextCall(identifier, tag, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Get a Data Point (Text)
-     * Returns a text value for the given &#x60;item&#x60; and the entity with the given &#x60;identifier&#x60;
+     * Returns a text value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param item An Intrinio data tag or other item (required)
+     * @param tag An Intrinio data tag ID or code-name (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String getDataPointText(String identifier, String item) throws ApiException {
-        ApiResponse<String> resp = getDataPointTextWithHttpInfo(identifier, item);
+    public String getDataPointText(String identifier, String tag) throws ApiException {
+        ApiResponse<String> resp = getDataPointTextWithHttpInfo(identifier, tag);
         return resp.getData();
     }
 
     /**
      * Get a Data Point (Text)
-     * Returns a text value for the given &#x60;item&#x60; and the entity with the given &#x60;identifier&#x60;
+     * Returns a text value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param item An Intrinio data tag or other item (required)
+     * @param tag An Intrinio data tag ID or code-name (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> getDataPointTextWithHttpInfo(String identifier, String item) throws ApiException {
-        com.squareup.okhttp.Call call = getDataPointTextValidateBeforeCall(identifier, item, null, null);
+    public ApiResponse<String> getDataPointTextWithHttpInfo(String identifier, String tag) throws ApiException {
+        com.squareup.okhttp.Call call = getDataPointTextValidateBeforeCall(identifier, tag, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Get a Data Point (Text) (asynchronously)
-     * Returns a text value for the given &#x60;item&#x60; and the entity with the given &#x60;identifier&#x60;
+     * Returns a text value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param item An Intrinio data tag or other item (required)
+     * @param tag An Intrinio data tag ID or code-name (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getDataPointTextAsync(String identifier, String item, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call getDataPointTextAsync(String identifier, String tag, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -304,7 +304,7 @@ public class DataPointApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getDataPointTextValidateBeforeCall(identifier, item, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getDataPointTextValidateBeforeCall(identifier, tag, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

@@ -78,7 +78,7 @@ public class ApiClient {
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
-        authentications.put("HttpHeaderApiKey", new ApiKeyAuth("header", "api-key"));
+        authentications.put("ApiKeyAuth", new ApiKeyAuth("query", "api_key"));
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }

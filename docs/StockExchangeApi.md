@@ -7,15 +7,18 @@ Method | HTTP request | Description
 [**filterStockExchanges**](StockExchangeApi.md#filterStockExchanges) | **GET** /stock_exchanges/filter | Filter Stock Exchanges
 [**getAllStockExchanges**](StockExchangeApi.md#getAllStockExchanges) | **GET** /stock_exchanges | Get All Stock Exchanges
 [**getStockExchangeById**](StockExchangeApi.md#getStockExchangeById) | **GET** /stock_exchanges/{identifier} | Get Stock Exchange by ID
+[**getStockExchangePriceAdjustments**](StockExchangeApi.md#getStockExchangePriceAdjustments) | **GET** /stock_exchanges/{identifier}/prices/adjustments | Get Stock Price Adjustments by Exchange
 [**getStockExchangePrices**](StockExchangeApi.md#getStockExchangePrices) | **GET** /stock_exchanges/{identifier}/prices | Get Stock Prices by Exchange
 [**getStockExchangeSecurities**](StockExchangeApi.md#getStockExchangeSecurities) | **GET** /stock_exchanges/{identifier}/securities | Get Securities by Exchange
 
 
 <a name="filterStockExchanges"></a>
 # **filterStockExchanges**
-> List&lt;StockExchange&gt; filterStockExchanges(city, country, countryCode, nextPage)
+> List&lt;StockExchange&gt; filterStockExchanges(city, country, countryCode)
 
 Filter Stock Exchanges
+
+Return Stock Exchanges matching the given filters
 
 ### Example
 ```java
@@ -27,7 +30,7 @@ Filter Stock Exchanges
 //import com.intrinio.api.StockExchangeApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
@@ -35,10 +38,9 @@ StockExchangeApi stockExchangeApi = new StockExchangeApi();
 String city = "city_example"; // String | Filter by city
 String country = "country_example"; // String | Filter by country
 String countryCode = "countryCode_example"; // String | Filter by ISO country code
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<StockExchange> result = stockExchangeApi.filterStockExchanges(city, country, countryCode, nextPage);
+    List<StockExchange> result = stockExchangeApi.filterStockExchanges(city, country, countryCode);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StockExchangeApi#filterStockExchanges");
@@ -53,7 +55,6 @@ Name | Type | Description  | Notes
  **city** | **String**| Filter by city | [optional]
  **country** | **String**| Filter by country | [optional]
  **countryCode** | **String**| Filter by ISO country code | [optional]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
@@ -61,9 +62,11 @@ Name | Type | Description  | Notes
 
 <a name="getAllStockExchanges"></a>
 # **getAllStockExchanges**
-> List&lt;StockExchange&gt; getAllStockExchanges(nextPage)
+> List&lt;StockExchange&gt; getAllStockExchanges()
 
 Get All Stock Exchanges
+
+Return All Stock Exchanges
 
 ### Example
 ```java
@@ -75,15 +78,14 @@ Get All Stock Exchanges
 //import com.intrinio.api.StockExchangeApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<StockExchange> result = stockExchangeApi.getAllStockExchanges(nextPage);
+    List<StockExchange> result = stockExchangeApi.getAllStockExchanges();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StockExchangeApi#getAllStockExchanges");
@@ -92,10 +94,7 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -117,7 +116,7 @@ Get Stock Exchange by ID
 //import com.intrinio.api.StockExchangeApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
@@ -143,9 +142,57 @@ Name | Type | Description  | Notes
 
 [**StockExchange**](StockExchange.md)
 
+<a name="getStockExchangePriceAdjustments"></a>
+# **getStockExchangePriceAdjustments**
+> ApiResponseStockExchangeStockPriceAdjustments getStockExchangePriceAdjustments(identifier, date, nextPage)
+
+Get Stock Price Adjustments by Exchange
+
+Return stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
+
+### Example
+```java
+// Import classes:
+//import com.intrinio.invoker.ApiClient;
+//import com.intrinio.invoker.ApiException;
+//import com.intrinio.invoker.Configuration;
+//import com.intrinio.invoker.auth.*;
+//import com.intrinio.api.StockExchangeApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+auth.setApiKey("YOUR API KEY");
+
+StockExchangeApi stockExchangeApi = new StockExchangeApi();
+
+String identifier = "identifier_example"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+LocalDate date = new LocalDate(); // LocalDate | The date for which to return price adjustments
+String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+
+try {
+    ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustments(identifier, date, nextPage);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling StockExchangeApi#getStockExchangePriceAdjustments");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) |
+ **date** | **LocalDate**| The date for which to return price adjustments | [optional]
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+
+### Return type
+
+[**ApiResponseStockExchangeStockPriceAdjustments**](ApiResponseStockExchangeStockPriceAdjustments.md)
+
 <a name="getStockExchangePrices"></a>
 # **getStockExchangePrices**
-> List&lt;StockPrice&gt; getStockExchangePrices(identifier, date, nextPage)
+> ApiResponseStockExchangeStockPrices getStockExchangePrices(identifier, date, nextPage)
 
 Get Stock Prices by Exchange
 
@@ -161,7 +208,7 @@ Return daily Stock Prices for Securities on the Stock Exchange with &#x60;identi
 //import com.intrinio.api.StockExchangeApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
@@ -171,7 +218,7 @@ LocalDate date = new LocalDate(); // LocalDate | The date for which to return pr
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<StockPrice> result = stockExchangeApi.getStockExchangePrices(identifier, date, nextPage);
+    ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StockExchangeApi#getStockExchangePrices");
@@ -189,15 +236,15 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;StockPrice&gt;**](StockPrice.md)
+[**ApiResponseStockExchangeStockPrices**](ApiResponseStockExchangeStockPrices.md)
 
 <a name="getStockExchangeSecurities"></a>
 # **getStockExchangeSecurities**
-> List&lt;Security&gt; getStockExchangeSecurities(identifier, nextPage)
+> ApiResponseStockExchangeSecurities getStockExchangeSecurities(identifier, nextPage)
 
 Get Securities by Exchange
 
-Return Securities on the Stock Exchange with &#x60;identifier&#x60;
+Return Securities traded on the Stock Exchange with &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -209,7 +256,7 @@ Return Securities on the Stock Exchange with &#x60;identifier&#x60;
 //import com.intrinio.api.StockExchangeApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("HttpHeaderApiKey");
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
 auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
@@ -218,7 +265,7 @@ String identifier = "identifier_example"; // String | A Stock Exchange identifie
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {
-    List<Security> result = stockExchangeApi.getStockExchangeSecurities(identifier, nextPage);
+    ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StockExchangeApi#getStockExchangeSecurities");
@@ -235,5 +282,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;Security&gt;**](Security.md)
+[**ApiResponseStockExchangeSecurities**](ApiResponseStockExchangeSecurities.md)
 

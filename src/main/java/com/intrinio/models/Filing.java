@@ -23,9 +23,6 @@ public class Filing {
   @SerializedName("id")
   private String id = null;
 
-  @SerializedName("company")
-  private CompanySummary company = null;
-
   @SerializedName("filing_date")
   private LocalDate filingDate = null;
 
@@ -50,6 +47,9 @@ public class Filing {
   @SerializedName("instance_url")
   private String instanceUrl = null;
 
+  @SerializedName("company")
+  private CompanySummary company = null;
+
   public Filing id(String id) {
     this.id = id;
     return this;
@@ -66,24 +66,6 @@ public class Filing {
 
   public void setId(String id) {
     this.id = id;
-  }
-
-  public Filing company(CompanySummary company) {
-    this.company = company;
-    return this;
-  }
-
-   /**
-   * Get company
-   * @return company
-  **/
-  @ApiModelProperty(value = "")
-  public CompanySummary getCompany() {
-    return company;
-  }
-
-  public void setCompany(CompanySummary company) {
-    this.company = company;
   }
 
   public Filing filingDate(LocalDate filingDate) {
@@ -230,6 +212,24 @@ public class Filing {
     this.instanceUrl = instanceUrl;
   }
 
+  public Filing company(CompanySummary company) {
+    this.company = company;
+    return this;
+  }
+
+   /**
+   * Get company
+   * @return company
+  **/
+  @ApiModelProperty(value = "")
+  public CompanySummary getCompany() {
+    return company;
+  }
+
+  public void setCompany(CompanySummary company) {
+    this.company = company;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -241,7 +241,6 @@ public class Filing {
     }
     Filing filing = (Filing) o;
     return Objects.equals(this.id, filing.id) &&
-        Objects.equals(this.company, filing.company) &&
         Objects.equals(this.filingDate, filing.filingDate) &&
         Objects.equals(this.acceptedDate, filing.acceptedDate) &&
         Objects.equals(this.periodEndDate, filing.periodEndDate) &&
@@ -249,12 +248,13 @@ public class Filing {
         Objects.equals(this.secUniqueId, filing.secUniqueId) &&
         Objects.equals(this.filingUrl, filing.filingUrl) &&
         Objects.equals(this.reportUrl, filing.reportUrl) &&
-        Objects.equals(this.instanceUrl, filing.instanceUrl);
+        Objects.equals(this.instanceUrl, filing.instanceUrl) &&
+        Objects.equals(this.company, filing.company);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, company, filingDate, acceptedDate, periodEndDate, reportType, secUniqueId, filingUrl, reportUrl, instanceUrl);
+    return Objects.hash(id, filingDate, acceptedDate, periodEndDate, reportType, secUniqueId, filingUrl, reportUrl, instanceUrl, company);
   }
 
 
@@ -264,7 +264,6 @@ public class Filing {
     sb.append("class Filing {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("    filingDate: ").append(toIndentedString(filingDate)).append("\n");
     sb.append("    acceptedDate: ").append(toIndentedString(acceptedDate)).append("\n");
     sb.append("    periodEndDate: ").append(toIndentedString(periodEndDate)).append("\n");
@@ -273,6 +272,7 @@ public class Filing {
     sb.append("    filingUrl: ").append(toIndentedString(filingUrl)).append("\n");
     sb.append("    reportUrl: ").append(toIndentedString(reportUrl)).append("\n");
     sb.append("    instanceUrl: ").append(toIndentedString(instanceUrl)).append("\n");
+    sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("}");
     return sb.toString();
   }
