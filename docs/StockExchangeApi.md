@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="filterStockExchanges"></a>
 # **filterStockExchanges**
-> List&lt;StockExchange&gt; filterStockExchanges(city, country, countryCode)
+> ApiResponseStockExchanges filterStockExchanges(city, country, countryCode)
 
 Filter Stock Exchanges
 
@@ -36,11 +36,11 @@ auth.setApiKey("YOUR API KEY");
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
 String city = "city_example"; // String | Filter by city
-String country = "country_example"; // String | Filter by country
+String country = "CHINA"; // String | Filter by country
 String countryCode = "countryCode_example"; // String | Filter by ISO country code
 
 try {
-    List<StockExchange> result = stockExchangeApi.filterStockExchanges(city, country, countryCode);
+    ApiResponseStockExchanges result = stockExchangeApi.filterStockExchanges(city, country, countryCode);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StockExchangeApi#filterStockExchanges");
@@ -58,11 +58,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;StockExchange&gt;**](StockExchange.md)
+[**ApiResponseStockExchanges**](ApiResponseStockExchanges.md)
 
 <a name="getAllStockExchanges"></a>
 # **getAllStockExchanges**
-> List&lt;StockExchange&gt; getAllStockExchanges()
+> ApiResponseStockExchanges getAllStockExchanges()
 
 Get All Stock Exchanges
 
@@ -85,7 +85,7 @@ StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
 
 try {
-    List<StockExchange> result = stockExchangeApi.getAllStockExchanges();
+    ApiResponseStockExchanges result = stockExchangeApi.getAllStockExchanges();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StockExchangeApi#getAllStockExchanges");
@@ -98,7 +98,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List&lt;StockExchange&gt;**](StockExchange.md)
+[**ApiResponseStockExchanges**](ApiResponseStockExchanges.md)
 
 <a name="getStockExchangeById"></a>
 # **getStockExchangeById**
@@ -121,7 +121,7 @@ auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-String identifier = "identifier_example"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+String identifier = "XSHG"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
 
 try {
     StockExchange result = stockExchangeApi.getStockExchangeById(identifier);
@@ -165,9 +165,9 @@ auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-String identifier = "identifier_example"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
 LocalDate date = new LocalDate(); // LocalDate | The date for which to return price adjustments
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustments(identifier, date, nextPage);
@@ -213,9 +213,9 @@ auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-String identifier = "identifier_example"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
 LocalDate date = new LocalDate(); // LocalDate | The date for which to return prices
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, nextPage);
@@ -261,8 +261,8 @@ auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-String identifier = "identifier_example"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, nextPage);

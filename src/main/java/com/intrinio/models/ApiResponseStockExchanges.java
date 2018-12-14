@@ -8,7 +8,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.intrinio.models.DataTag;
+import com.intrinio.models.StockExchange;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -16,43 +16,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ApiResponseDataTags
+ * ApiResponseStockExchanges
  */
 
-public class ApiResponseDataTags {
-  @SerializedName("tags")
-  private List<DataTag> tags = null;
+public class ApiResponseStockExchanges {
+  @SerializedName("stock_exchanges")
+  private List<StockExchange> stockExchanges = null;
 
   @SerializedName("next_page")
   private String nextPage = null;
 
-  public ApiResponseDataTags tags(List<DataTag> tags) {
-    this.tags = tags;
+  public ApiResponseStockExchanges stockExchanges(List<StockExchange> stockExchanges) {
+    this.stockExchanges = stockExchanges;
     return this;
   }
 
-  public ApiResponseDataTags addTagsItem(DataTag tagsItem) {
-    if (this.tags == null) {
-      this.tags = new ArrayList<DataTag>();
+  public ApiResponseStockExchanges addStockExchangesItem(StockExchange stockExchangesItem) {
+    if (this.stockExchanges == null) {
+      this.stockExchanges = new ArrayList<StockExchange>();
     }
-    this.tags.add(tagsItem);
+    this.stockExchanges.add(stockExchangesItem);
     return this;
   }
 
    /**
-   * Get tags
-   * @return tags
+   * Get stockExchanges
+   * @return stockExchanges
   **/
   @ApiModelProperty(value = "")
-  public List<DataTag> getTags() {
-    return tags;
+  public List<StockExchange> getStockExchanges() {
+    return stockExchanges;
   }
 
-  public void setTags(List<DataTag> tags) {
-    this.tags = tags;
+  public void setStockExchanges(List<StockExchange> stockExchanges) {
+    this.stockExchanges = stockExchanges;
   }
 
-  public ApiResponseDataTags nextPage(String nextPage) {
+  public ApiResponseStockExchanges nextPage(String nextPage) {
     this.nextPage = nextPage;
     return this;
   }
@@ -79,23 +79,23 @@ public class ApiResponseDataTags {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApiResponseDataTags apiResponseDataTags = (ApiResponseDataTags) o;
-    return Objects.equals(this.tags, apiResponseDataTags.tags) &&
-        Objects.equals(this.nextPage, apiResponseDataTags.nextPage);
+    ApiResponseStockExchanges apiResponseStockExchanges = (ApiResponseStockExchanges) o;
+    return Objects.equals(this.stockExchanges, apiResponseStockExchanges.stockExchanges) &&
+        Objects.equals(this.nextPage, apiResponseStockExchanges.nextPage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tags, nextPage);
+    return Objects.hash(stockExchanges, nextPage);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApiResponseDataTags {\n");
+    sb.append("class ApiResponseStockExchanges {\n");
     
-    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    stockExchanges: ").append(toIndentedString(stockExchanges)).append("\n");
     sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
     sb.append("}");
     return sb.toString();

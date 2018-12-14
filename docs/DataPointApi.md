@@ -31,8 +31,8 @@ auth.setApiKey("YOUR API KEY");
 
 DataPointApi dataPointApi = new DataPointApi();
 
-String identifier = "identifier_example"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String identifier = "AAPL"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
+String tag = "marketcap"; // String | An Intrinio data tag ID or code-name
 
 try {
     BigDecimal result = dataPointApi.getDataPointNumber(identifier, tag);
@@ -77,8 +77,8 @@ auth.setApiKey("YOUR API KEY");
 
 DataPointApi dataPointApi = new DataPointApi();
 
-String identifier = "identifier_example"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String identifier = "AAPL"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
+String tag = "marketcap"; // String | An Intrinio data tag ID or code-name
 
 try {
     String result = dataPointApi.getDataPointText(identifier, tag);

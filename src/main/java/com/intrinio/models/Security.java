@@ -61,6 +61,9 @@ public class Security {
   @SerializedName("figi")
   private String figi = null;
 
+  @SerializedName("cik")
+  private String cik = null;
+
   @SerializedName("composite_figi")
   private String compositeFigi = null;
 
@@ -342,6 +345,24 @@ public class Security {
     this.figi = figi;
   }
 
+  public Security cik(String cik) {
+    this.cik = cik;
+    return this;
+  }
+
+   /**
+   * Central Index Key issued by the SEC, which is the unique identifier for all owner filings
+   * @return cik
+  **/
+  @ApiModelProperty(value = "Central Index Key issued by the SEC, which is the unique identifier for all owner filings")
+  public String getCik() {
+    return cik;
+  }
+
+  public void setCik(String cik) {
+    this.cik = cik;
+  }
+
   public Security compositeFigi(String compositeFigi) {
     this.compositeFigi = compositeFigi;
     return this;
@@ -607,6 +628,7 @@ public class Security {
         Objects.equals(this.compositeTicker, security.compositeTicker) &&
         Objects.equals(this.alternateTickers, security.alternateTickers) &&
         Objects.equals(this.figi, security.figi) &&
+        Objects.equals(this.cik, security.cik) &&
         Objects.equals(this.compositeFigi, security.compositeFigi) &&
         Objects.equals(this.shareClassFigi, security.shareClassFigi) &&
         Objects.equals(this.figiUniqueid, security.figiUniqueid) &&
@@ -624,7 +646,7 @@ public class Security {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, companyId, name, type, code, shareClass, currency, roundLotSize, ticker, exchangeTicker, compositeTicker, alternateTickers, figi, compositeFigi, shareClassFigi, figiUniqueid, active, etf, delisted, primaryListing, primarySecurity, firstStockPrice, lastStockPrice, lastStockPriceAdjustment, lastCorporateAction, previousTickers);
+    return Objects.hash(id, companyId, name, type, code, shareClass, currency, roundLotSize, ticker, exchangeTicker, compositeTicker, alternateTickers, figi, cik, compositeFigi, shareClassFigi, figiUniqueid, active, etf, delisted, primaryListing, primarySecurity, firstStockPrice, lastStockPrice, lastStockPriceAdjustment, lastCorporateAction, previousTickers);
   }
 
 
@@ -646,6 +668,7 @@ public class Security {
     sb.append("    compositeTicker: ").append(toIndentedString(compositeTicker)).append("\n");
     sb.append("    alternateTickers: ").append(toIndentedString(alternateTickers)).append("\n");
     sb.append("    figi: ").append(toIndentedString(figi)).append("\n");
+    sb.append("    cik: ").append(toIndentedString(cik)).append("\n");
     sb.append("    compositeFigi: ").append(toIndentedString(compositeFigi)).append("\n");
     sb.append("    shareClassFigi: ").append(toIndentedString(shareClassFigi)).append("\n");
     sb.append("    figiUniqueid: ").append(toIndentedString(figiUniqueid)).append("\n");

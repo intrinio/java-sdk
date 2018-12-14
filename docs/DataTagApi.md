@@ -33,12 +33,12 @@ auth.setApiKey("YOUR API KEY");
 
 DataTagApi dataTagApi = new DataTagApi();
 
-String tag = "tag_example"; // String | Tag
-String type = "type_example"; // String | Type
-String parent = "parent_example"; // String | ID of tag parent
-String statementCode = "statementCode_example"; // String | Statement Code
+String tag = ""; // String | Tag
+String type = ""; // String | Type
+String parent = ""; // String | ID of tag parent
+String statementCode = "income_statement"; // String | Statement Code
 String fsTemplate = "industrial"; // String | Template
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseDataTags result = dataTagApi.filterDataTags(tag, type, parent, statementCode, fsTemplate, nextPage);
@@ -87,7 +87,7 @@ auth.setApiKey("YOUR API KEY");
 
 DataTagApi dataTagApi = new DataTagApi();
 
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseDataTags result = dataTagApi.getAllDataTags(nextPage);
@@ -131,7 +131,7 @@ auth.setApiKey("YOUR API KEY");
 
 DataTagApi dataTagApi = new DataTagApi();
 
-String identifier = "identifier_example"; // String | The Intrinio ID or the code-name of the Data Tag
+String identifier = "marketcap"; // String | The Intrinio ID or the code-name of the Data Tag
 
 try {
     DataTag result = dataTagApi.getDataTagById(identifier);
@@ -175,7 +175,7 @@ auth.setApiKey("YOUR API KEY");
 
 DataTagApi dataTagApi = new DataTagApi();
 
-String query = "query_example"; // String | 
+String query = "revenue"; // String | 
 
 try {
     ApiResponseDataTags result = dataTagApi.searchDataTags(query);

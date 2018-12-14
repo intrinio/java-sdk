@@ -418,22 +418,22 @@ public class FundamentalsApi {
      * Build call for lookupFundamental
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)
-     * @param fiscalPeriod The fiscal period (required)
      * @param fiscalYear The fiscal year (required)
+     * @param fiscalPeriod The fiscal period (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call lookupFundamentalCall(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call lookupFundamentalCall(String identifier, String statementCode, Integer fiscalYear, String fiscalPeriod, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/fundamentals/lookup/{identifier}/{statement_code}/{fiscal_year}/{fiscal_period}"
             .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()))
             .replaceAll("\\{" + "statement_code" + "\\}", apiClient.escapeString(statementCode.toString()))
-            .replaceAll("\\{" + "fiscal_period" + "\\}", apiClient.escapeString(fiscalPeriod.toString()))
-            .replaceAll("\\{" + "fiscal_year" + "\\}", apiClient.escapeString(fiscalYear.toString()));
+            .replaceAll("\\{" + "fiscal_year" + "\\}", apiClient.escapeString(fiscalYear.toString()))
+            .replaceAll("\\{" + "fiscal_period" + "\\}", apiClient.escapeString(fiscalPeriod.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -471,7 +471,7 @@ public class FundamentalsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call lookupFundamentalValidateBeforeCall(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call lookupFundamentalValidateBeforeCall(String identifier, String statementCode, Integer fiscalYear, String fiscalPeriod, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -483,18 +483,18 @@ public class FundamentalsApi {
             throw new ApiException("Missing the required parameter 'statementCode' when calling lookupFundamental(Async)");
         }
         
-        // verify the required parameter 'fiscalPeriod' is set
-        if (fiscalPeriod == null) {
-            throw new ApiException("Missing the required parameter 'fiscalPeriod' when calling lookupFundamental(Async)");
-        }
-        
         // verify the required parameter 'fiscalYear' is set
         if (fiscalYear == null) {
             throw new ApiException("Missing the required parameter 'fiscalYear' when calling lookupFundamental(Async)");
         }
         
+        // verify the required parameter 'fiscalPeriod' is set
+        if (fiscalPeriod == null) {
+            throw new ApiException("Missing the required parameter 'fiscalPeriod' when calling lookupFundamental(Async)");
+        }
+        
 
-        com.squareup.okhttp.Call call = lookupFundamentalCall(identifier, statementCode, fiscalPeriod, fiscalYear, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = lookupFundamentalCall(identifier, statementCode, fiscalYear, fiscalPeriod, progressListener, progressRequestListener);
         return call;
 
     }
@@ -504,13 +504,13 @@ public class FundamentalsApi {
      * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)
-     * @param fiscalPeriod The fiscal period (required)
      * @param fiscalYear The fiscal year (required)
-     * @return List&lt;Fundamental&gt;
+     * @param fiscalPeriod The fiscal period (required)
+     * @return Fundamental
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<Fundamental> lookupFundamental(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear) throws ApiException {
-        ApiResponse<List<Fundamental>> resp = lookupFundamentalWithHttpInfo(identifier, statementCode, fiscalPeriod, fiscalYear);
+    public Fundamental lookupFundamental(String identifier, String statementCode, Integer fiscalYear, String fiscalPeriod) throws ApiException {
+        ApiResponse<Fundamental> resp = lookupFundamentalWithHttpInfo(identifier, statementCode, fiscalYear, fiscalPeriod);
         return resp.getData();
     }
 
@@ -519,14 +519,14 @@ public class FundamentalsApi {
      * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)
-     * @param fiscalPeriod The fiscal period (required)
      * @param fiscalYear The fiscal year (required)
-     * @return ApiResponse&lt;List&lt;Fundamental&gt;&gt;
+     * @param fiscalPeriod The fiscal period (required)
+     * @return ApiResponse&lt;Fundamental&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<Fundamental>> lookupFundamentalWithHttpInfo(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear) throws ApiException {
-        com.squareup.okhttp.Call call = lookupFundamentalValidateBeforeCall(identifier, statementCode, fiscalPeriod, fiscalYear, null, null);
-        Type localVarReturnType = new TypeToken<List<Fundamental>>(){}.getType();
+    public ApiResponse<Fundamental> lookupFundamentalWithHttpInfo(String identifier, String statementCode, Integer fiscalYear, String fiscalPeriod) throws ApiException {
+        com.squareup.okhttp.Call call = lookupFundamentalValidateBeforeCall(identifier, statementCode, fiscalYear, fiscalPeriod, null, null);
+        Type localVarReturnType = new TypeToken<Fundamental>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -535,13 +535,13 @@ public class FundamentalsApi {
      * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)
-     * @param fiscalPeriod The fiscal period (required)
      * @param fiscalYear The fiscal year (required)
+     * @param fiscalPeriod The fiscal period (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call lookupFundamentalAsync(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear, final ApiCallback<List<Fundamental>> callback) throws ApiException {
+    public com.squareup.okhttp.Call lookupFundamentalAsync(String identifier, String statementCode, Integer fiscalYear, String fiscalPeriod, final ApiCallback<Fundamental> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -562,8 +562,8 @@ public class FundamentalsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = lookupFundamentalValidateBeforeCall(identifier, statementCode, fiscalPeriod, fiscalYear, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<Fundamental>>(){}.getType();
+        com.squareup.okhttp.Call call = lookupFundamentalValidateBeforeCall(identifier, statementCode, fiscalYear, fiscalPeriod, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<Fundamental>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

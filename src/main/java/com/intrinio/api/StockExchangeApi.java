@@ -19,6 +19,7 @@ import java.io.IOException;
 import com.intrinio.models.ApiResponseStockExchangeSecurities;
 import com.intrinio.models.ApiResponseStockExchangeStockPriceAdjustments;
 import com.intrinio.models.ApiResponseStockExchangeStockPrices;
+import com.intrinio.models.ApiResponseStockExchanges;
 import org.threeten.bp.LocalDate;
 import com.intrinio.models.StockExchange;
 
@@ -119,11 +120,11 @@ public class StockExchangeApi {
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)
-     * @return List&lt;StockExchange&gt;
+     * @return ApiResponseStockExchanges
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<StockExchange> filterStockExchanges(String city, String country, String countryCode) throws ApiException {
-        ApiResponse<List<StockExchange>> resp = filterStockExchangesWithHttpInfo(city, country, countryCode);
+    public ApiResponseStockExchanges filterStockExchanges(String city, String country, String countryCode) throws ApiException {
+        ApiResponse<ApiResponseStockExchanges> resp = filterStockExchangesWithHttpInfo(city, country, countryCode);
         return resp.getData();
     }
 
@@ -133,12 +134,12 @@ public class StockExchangeApi {
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)
-     * @return ApiResponse&lt;List&lt;StockExchange&gt;&gt;
+     * @return ApiResponse&lt;ApiResponseStockExchanges&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<StockExchange>> filterStockExchangesWithHttpInfo(String city, String country, String countryCode) throws ApiException {
+    public ApiResponse<ApiResponseStockExchanges> filterStockExchangesWithHttpInfo(String city, String country, String countryCode) throws ApiException {
         com.squareup.okhttp.Call call = filterStockExchangesValidateBeforeCall(city, country, countryCode, null, null);
-        Type localVarReturnType = new TypeToken<List<StockExchange>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchanges>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -152,7 +153,7 @@ public class StockExchangeApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call filterStockExchangesAsync(String city, String country, String countryCode, final ApiCallback<List<StockExchange>> callback) throws ApiException {
+    public com.squareup.okhttp.Call filterStockExchangesAsync(String city, String country, String countryCode, final ApiCallback<ApiResponseStockExchanges> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -174,7 +175,7 @@ public class StockExchangeApi {
         }
 
         com.squareup.okhttp.Call call = filterStockExchangesValidateBeforeCall(city, country, countryCode, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<StockExchange>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchanges>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -238,23 +239,23 @@ public class StockExchangeApi {
     /**
      * Get All Stock Exchanges
      * Return All Stock Exchanges
-     * @return List&lt;StockExchange&gt;
+     * @return ApiResponseStockExchanges
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<StockExchange> getAllStockExchanges() throws ApiException {
-        ApiResponse<List<StockExchange>> resp = getAllStockExchangesWithHttpInfo();
+    public ApiResponseStockExchanges getAllStockExchanges() throws ApiException {
+        ApiResponse<ApiResponseStockExchanges> resp = getAllStockExchangesWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Get All Stock Exchanges
      * Return All Stock Exchanges
-     * @return ApiResponse&lt;List&lt;StockExchange&gt;&gt;
+     * @return ApiResponse&lt;ApiResponseStockExchanges&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<StockExchange>> getAllStockExchangesWithHttpInfo() throws ApiException {
+    public ApiResponse<ApiResponseStockExchanges> getAllStockExchangesWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getAllStockExchangesValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<List<StockExchange>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchanges>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -265,7 +266,7 @@ public class StockExchangeApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllStockExchangesAsync(final ApiCallback<List<StockExchange>> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllStockExchangesAsync(final ApiCallback<ApiResponseStockExchanges> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -287,7 +288,7 @@ public class StockExchangeApi {
         }
 
         com.squareup.okhttp.Call call = getAllStockExchangesValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<StockExchange>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchanges>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

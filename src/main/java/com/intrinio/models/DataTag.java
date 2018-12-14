@@ -11,7 +11,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 /**
  * DataTag
@@ -87,7 +86,7 @@ public class DataTag {
   private String factor = null;
 
   @SerializedName("balance")
-  private BigDecimal balance = null;
+  private String balance = null;
 
   @SerializedName("type")
   private String type = null;
@@ -221,7 +220,7 @@ public class DataTag {
     this.factor = factor;
   }
 
-  public DataTag balance(BigDecimal balance) {
+  public DataTag balance(String balance) {
     this.balance = balance;
     return this;
   }
@@ -231,11 +230,11 @@ public class DataTag {
    * @return balance
   **/
   @ApiModelProperty(value = "Whether the Data Tag represents a credit or debit")
-  public BigDecimal getBalance() {
+  public String getBalance() {
     return balance;
   }
 
-  public void setBalance(BigDecimal balance) {
+  public void setBalance(String balance) {
     this.balance = balance;
   }
 

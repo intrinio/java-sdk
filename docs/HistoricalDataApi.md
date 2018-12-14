@@ -36,7 +36,7 @@ String type = "type_example"; // String | Filter by type, when applicable
 LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
 LocalDate endDate = new LocalDate(); // LocalDate | Get historical date on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseHistoricalData result = historicalDataApi.getHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);

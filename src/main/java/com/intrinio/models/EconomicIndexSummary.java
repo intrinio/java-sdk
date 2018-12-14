@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * An economic index provided by the St. Lous Fed FRED API, such as GDP, Unemployment, Fed Funds Rate, and more.
@@ -38,7 +39,7 @@ public class EconomicIndexSummary {
   private String updateFrequency = null;
 
   @SerializedName("last_updated")
-  private LocalDate lastUpdated = null;
+  private OffsetDateTime lastUpdated = null;
 
   @SerializedName("observation_start")
   private LocalDate observationStart = null;
@@ -160,7 +161,7 @@ public class EconomicIndexSummary {
     this.updateFrequency = updateFrequency;
   }
 
-  public EconomicIndexSummary lastUpdated(LocalDate lastUpdated) {
+  public EconomicIndexSummary lastUpdated(OffsetDateTime lastUpdated) {
     this.lastUpdated = lastUpdated;
     return this;
   }
@@ -170,11 +171,11 @@ public class EconomicIndexSummary {
    * @return lastUpdated
   **/
   @ApiModelProperty(value = "When the Index was updated last")
-  public LocalDate getLastUpdated() {
+  public OffsetDateTime getLastUpdated() {
     return lastUpdated;
   }
 
-  public void setLastUpdated(LocalDate lastUpdated) {
+  public void setLastUpdated(OffsetDateTime lastUpdated) {
     this.lastUpdated = lastUpdated;
   }
 

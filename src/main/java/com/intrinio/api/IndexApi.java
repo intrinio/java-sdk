@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.intrinio.models.ApiResponseEconomicIndexHistoricalData;
 import com.intrinio.models.ApiResponseEconomicIndices;
 import com.intrinio.models.ApiResponseSICIndexHistoricalData;
 import com.intrinio.models.ApiResponseSICIndices;
@@ -557,7 +558,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain; charset=utf-8"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -690,7 +691,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain; charset=utf-8"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -894,11 +895,11 @@ public class IndexApi {
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return Object
+     * @return ApiResponseEconomicIndexHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Object getEconomicIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        ApiResponse<Object> resp = getEconomicIndexHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    public ApiResponseEconomicIndexHistoricalData getEconomicIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseEconomicIndexHistoricalData> resp = getEconomicIndexHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
         return resp.getData();
     }
 
@@ -912,12 +913,12 @@ public class IndexApi {
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponse&lt;Object&gt;
+     * @return ApiResponse&lt;ApiResponseEconomicIndexHistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Object> getEconomicIndexHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseEconomicIndexHistoricalData> getEconomicIndexHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getEconomicIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, null, null);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseEconomicIndexHistoricalData>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -935,7 +936,7 @@ public class IndexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getEconomicIndexHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<Object> callback) throws ApiException {
+    public com.squareup.okhttp.Call getEconomicIndexHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseEconomicIndexHistoricalData> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -957,7 +958,7 @@ public class IndexApi {
         }
 
         com.squareup.okhttp.Call call = getEconomicIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseEconomicIndexHistoricalData>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1109,7 +1110,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain; charset=utf-8"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1242,7 +1243,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain; charset=utf-8"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1661,7 +1662,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain; charset=utf-8"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1794,7 +1795,7 @@ public class IndexApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain; charset=utf-8"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);

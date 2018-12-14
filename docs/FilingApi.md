@@ -32,11 +32,11 @@ auth.setApiKey("YOUR API KEY");
 
 FilingApi filingApi = new FilingApi();
 
-String company = "company_example"; // String | Filings for the given `company` identifier (ticker, CIK, LEI, Intrinio ID)
-String reportType = "reportType_example"; // String | Filter by report type
+String company = "AAPL"; // String | Filings for the given `company` identifier (ticker, CIK, LEI, Intrinio ID)
+String reportType = ""; // String | Filter by report type
 LocalDate startDate = new LocalDate(); // LocalDate | Filed on or after the given date
 LocalDate endDate = new LocalDate(); // LocalDate | Filed before or after the given date
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseFilings result = filingApi.filterFilings(company, reportType, startDate, endDate, nextPage);
@@ -84,7 +84,7 @@ auth.setApiKey("YOUR API KEY");
 
 FilingApi filingApi = new FilingApi();
 
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseFilings result = filingApi.getAllFilings(nextPage);
@@ -128,7 +128,7 @@ auth.setApiKey("YOUR API KEY");
 
 FilingApi filingApi = new FilingApi();
 
-String id = "id_example"; // String | The Intrinio ID of the Filing
+String id = "fil_7Kn2P6"; // String | The Intrinio ID of the Filing
 
 try {
     Filing result = filingApi.getFilingById(id);

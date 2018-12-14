@@ -12,7 +12,7 @@ import com.intrinio.models.CompanySummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * A news article about a company
@@ -27,7 +27,7 @@ public class CompanyNews {
   private String title = null;
 
   @SerializedName("publication_date")
-  private LocalDate publicationDate = null;
+  private OffsetDateTime publicationDate = null;
 
   @SerializedName("url")
   private String url = null;
@@ -74,7 +74,7 @@ public class CompanyNews {
     this.title = title;
   }
 
-  public CompanyNews publicationDate(LocalDate publicationDate) {
+  public CompanyNews publicationDate(OffsetDateTime publicationDate) {
     this.publicationDate = publicationDate;
     return this;
   }
@@ -84,11 +84,11 @@ public class CompanyNews {
    * @return publicationDate
   **/
   @ApiModelProperty(value = "The publication date of the news article")
-  public LocalDate getPublicationDate() {
+  public OffsetDateTime getPublicationDate() {
     return publicationDate;
   }
 
-  public void setPublicationDate(LocalDate publicationDate) {
+  public void setPublicationDate(OffsetDateTime publicationDate) {
     this.publicationDate = publicationDate;
   }
 

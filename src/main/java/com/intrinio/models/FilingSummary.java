@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * A filing submitted to the SEC by a company
@@ -26,7 +27,7 @@ public class FilingSummary {
   private LocalDate filingDate = null;
 
   @SerializedName("accepted_date")
-  private String acceptedDate = null;
+  private OffsetDateTime acceptedDate = null;
 
   @SerializedName("period_end_date")
   private LocalDate periodEndDate = null;
@@ -82,7 +83,7 @@ public class FilingSummary {
     this.filingDate = filingDate;
   }
 
-  public FilingSummary acceptedDate(String acceptedDate) {
+  public FilingSummary acceptedDate(OffsetDateTime acceptedDate) {
     this.acceptedDate = acceptedDate;
     return this;
   }
@@ -92,11 +93,11 @@ public class FilingSummary {
    * @return acceptedDate
   **/
   @ApiModelProperty(value = "The date and time when the filing was accepted by SEC")
-  public String getAcceptedDate() {
+  public OffsetDateTime getAcceptedDate() {
     return acceptedDate;
   }
 
-  public void setAcceptedDate(String acceptedDate) {
+  public void setAcceptedDate(OffsetDateTime acceptedDate) {
     this.acceptedDate = acceptedDate;
   }
 

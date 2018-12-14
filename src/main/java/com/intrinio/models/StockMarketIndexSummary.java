@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * StockMarketIndexSummary
@@ -37,7 +38,7 @@ public class StockMarketIndexSummary {
   private String updateFrequency = null;
 
   @SerializedName("last_updated")
-  private LocalDate lastUpdated = null;
+  private OffsetDateTime lastUpdated = null;
 
   @SerializedName("observation_start")
   private LocalDate observationStart = null;
@@ -153,7 +154,7 @@ public class StockMarketIndexSummary {
     this.updateFrequency = updateFrequency;
   }
 
-  public StockMarketIndexSummary lastUpdated(LocalDate lastUpdated) {
+  public StockMarketIndexSummary lastUpdated(OffsetDateTime lastUpdated) {
     this.lastUpdated = lastUpdated;
     return this;
   }
@@ -163,11 +164,11 @@ public class StockMarketIndexSummary {
    * @return lastUpdated
   **/
   @ApiModelProperty(value = "When the Index was updated last")
-  public LocalDate getLastUpdated() {
+  public OffsetDateTime getLastUpdated() {
     return lastUpdated;
   }
 
-  public void setLastUpdated(LocalDate lastUpdated) {
+  public void setLastUpdated(OffsetDateTime lastUpdated) {
     this.lastUpdated = lastUpdated;
   }
 

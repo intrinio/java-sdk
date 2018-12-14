@@ -318,7 +318,7 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain; charset=utf-8"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -451,7 +451,7 @@ public class SecurityApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain; charset=utf-8"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1012,7 +1012,7 @@ public class SecurityApi {
     }
     /**
      * Build call for screenSecurities
-     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups (optional)
+     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
@@ -1080,7 +1080,7 @@ public class SecurityApi {
     /**
      * Screen Securities
      * Screen securities using complex logic
-     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups (optional)
+     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
@@ -1095,7 +1095,7 @@ public class SecurityApi {
     /**
      * Screen Securities
      * Screen securities using complex logic
-     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups (optional)
+     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
@@ -1111,7 +1111,7 @@ public class SecurityApi {
     /**
      * Screen Securities (asynchronously)
      * Screen securities using complex logic
-     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups (optional)
+     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)

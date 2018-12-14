@@ -36,7 +36,7 @@ auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSecurities result = securityApi.getAllSecurities(nextPage);
@@ -78,7 +78,7 @@ auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
-String identifier = "identifier_example"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
 
 try {
     Security result = securityApi.getSecurityById(identifier);
@@ -122,8 +122,8 @@ auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
-String identifier = "identifier_example"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+String tag = "52_week_high"; // String | An Intrinio data tag ID or code-name
 
 try {
     BigDecimal result = securityApi.getSecurityDataPointNumber(identifier, tag);
@@ -168,8 +168,8 @@ auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
-String identifier = "identifier_example"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+String tag = "figi"; // String | An Intrinio data tag ID or code-name
 
 try {
     String result = securityApi.getSecurityDataPointText(identifier, tag);
@@ -214,13 +214,13 @@ auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
-String identifier = "identifier_example"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
-String type = "type_example"; // String | Filter by type, when applicable
+String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+String tag = "volume"; // String | An Intrinio data tag ID or code-name
+String type = ""; // String | Filter by type, when applicable
 LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
 LocalDate endDate = new LocalDate(); // LocalDate | Get historical date on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSecurityHistoricalData result = securityApi.getSecurityHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
@@ -270,10 +270,10 @@ auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
-String identifier = "identifier_example"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
 LocalDate startDate = new LocalDate(); // LocalDate | Return price adjustments on or after the date
 LocalDate endDate = new LocalDate(); // LocalDate | Return price adjustments on or before the date
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSecurityStockPriceAdjustments result = securityApi.getSecurityStockPriceAdjustments(identifier, startDate, endDate, nextPage);
@@ -320,11 +320,11 @@ auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
-String identifier = "identifier_example"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
 LocalDate startDate = new LocalDate(); // LocalDate | Return prices on or after the date
 LocalDate endDate = new LocalDate(); // LocalDate | Return prices on or before the date
 String frequency = "daily"; // String | Return stock prices in the given frequency
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSecurityStockPrices result = securityApi.getSecurityStockPrices(identifier, startDate, endDate, frequency, nextPage);
@@ -372,7 +372,7 @@ auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
-SecurityScreenGroup logic = new SecurityScreenGroup(); // SecurityScreenGroup | The logic to screen with, consisting of operators, clauses, and nested groups
+SecurityScreenGroup logic = new SecurityScreenGroup(); // SecurityScreenGroup | The logic to screen with, consisting of operators, clauses, and nested groups.<br/> See <a href=\"/documentation/screener_v2\" target=\"_blank\">screener documentation</a> for details on how to construct conditions.
 String orderColumn = "orderColumn_example"; // String | Results returned sorted by this column
 String orderDirection = "asc"; // String | Sort order to use with the order_column
 Boolean primaryOnly = false; // Boolean | Return only primary securities
@@ -390,7 +390,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **logic** | [**SecurityScreenGroup**](SecurityScreenGroup.md)| The logic to screen with, consisting of operators, clauses, and nested groups | [optional]
+ **logic** | [**SecurityScreenGroup**](SecurityScreenGroup.md)| The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. | [optional]
  **orderColumn** | **String**| Results returned sorted by this column | [optional]
  **orderDirection** | **String**| Sort order to use with the order_column | [optional] [default to asc] [enum: asc, desc]
  **primaryOnly** | **Boolean**| Return only primary securities | [optional] [default to false]
@@ -422,7 +422,7 @@ auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
-String query = "query_example"; // String | 
+String query = "Apple"; // String | 
 
 try {
     ApiResponseSecurities result = securityApi.searchSecurities(query);

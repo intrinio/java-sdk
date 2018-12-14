@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **continent** | **String** | The continent of the country of focus for the Index |  [optional]
 **country** | **String** | The country of focus for the Index |  [optional]
 **updateFrequency** | **String** | How often the Index is updated |  [optional]
-**lastUpdated** | [**LocalDate**](LocalDate.md) | When the Index was updated last |  [optional]
+**lastUpdated** | [**OffsetDateTime**](OffsetDateTime.md) | When the Index was updated last |  [optional]
 **description** | **String** | A paragraph describing the index and its scope |  [optional]
 **observationStart** | [**LocalDate**](LocalDate.md) | The earliest date for which data is available |  [optional]
 **observationEnd** | [**LocalDate**](LocalDate.md) | The latest date for which data is available |  [optional]

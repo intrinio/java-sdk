@@ -218,7 +218,7 @@ public class CompanyApi {
      * @param statementCode Only of the given statement code (optional)
      * @param type Only of the given type (optional)
      * @param startDate Only on or after the given date (optional)
-     * @param endDate Only on or after the given date (optional)
+     * @param endDate Only on or before the given date (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -310,7 +310,7 @@ public class CompanyApi {
      * @param statementCode Only of the given statement code (optional)
      * @param type Only of the given type (optional)
      * @param startDate Only on or after the given date (optional)
-     * @param endDate Only on or after the given date (optional)
+     * @param endDate Only on or before the given date (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyFundamentals
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -331,7 +331,7 @@ public class CompanyApi {
      * @param statementCode Only of the given statement code (optional)
      * @param type Only of the given type (optional)
      * @param startDate Only on or after the given date (optional)
-     * @param endDate Only on or after the given date (optional)
+     * @param endDate Only on or before the given date (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanyFundamentals&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -353,7 +353,7 @@ public class CompanyApi {
      * @param statementCode Only of the given statement code (optional)
      * @param type Only of the given type (optional)
      * @param startDate Only on or after the given date (optional)
-     * @param endDate Only on or after the given date (optional)
+     * @param endDate Only on or before the given date (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -771,7 +771,7 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain; charset=utf-8"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -904,7 +904,7 @@ public class CompanyApi {
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/json"
+            "text/plain; charset=utf-8"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -1783,11 +1783,11 @@ public class CompanyApi {
      * @param statementCode The statement code (required)
      * @param fiscalPeriod The fiscal period (required)
      * @param fiscalYear The fiscal year (required)
-     * @return List&lt;Fundamental&gt;
+     * @return Fundamental
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<Fundamental> lookupCompanyFundamental(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear) throws ApiException {
-        ApiResponse<List<Fundamental>> resp = lookupCompanyFundamentalWithHttpInfo(identifier, statementCode, fiscalPeriod, fiscalYear);
+    public Fundamental lookupCompanyFundamental(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear) throws ApiException {
+        ApiResponse<Fundamental> resp = lookupCompanyFundamentalWithHttpInfo(identifier, statementCode, fiscalPeriod, fiscalYear);
         return resp.getData();
     }
 
@@ -1798,12 +1798,12 @@ public class CompanyApi {
      * @param statementCode The statement code (required)
      * @param fiscalPeriod The fiscal period (required)
      * @param fiscalYear The fiscal year (required)
-     * @return ApiResponse&lt;List&lt;Fundamental&gt;&gt;
+     * @return ApiResponse&lt;Fundamental&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<Fundamental>> lookupCompanyFundamentalWithHttpInfo(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear) throws ApiException {
+    public ApiResponse<Fundamental> lookupCompanyFundamentalWithHttpInfo(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear) throws ApiException {
         com.squareup.okhttp.Call call = lookupCompanyFundamentalValidateBeforeCall(identifier, statementCode, fiscalPeriod, fiscalYear, null, null);
-        Type localVarReturnType = new TypeToken<List<Fundamental>>(){}.getType();
+        Type localVarReturnType = new TypeToken<Fundamental>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1818,7 +1818,7 @@ public class CompanyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call lookupCompanyFundamentalAsync(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear, final ApiCallback<List<Fundamental>> callback) throws ApiException {
+    public com.squareup.okhttp.Call lookupCompanyFundamentalAsync(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear, final ApiCallback<Fundamental> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1840,7 +1840,7 @@ public class CompanyApi {
         }
 
         com.squareup.okhttp.Call call = lookupCompanyFundamentalValidateBeforeCall(identifier, statementCode, fiscalPeriod, fiscalYear, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<Fundamental>>(){}.getType();
+        Type localVarReturnType = new TypeToken<Fundamental>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

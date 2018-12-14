@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **statementType** | [**StatementTypeEnum**](#StatementTypeEnum) | The format of the financial statment to which this Data Tag belongs |  [optional]
 **parent** | **String** | The parent Data Tag forming the statement relationship with the factor |  [optional]
 **factor** | **String** | The operator forming the statement relationship between the child Data Tag (or Data Tags) and the parent Data Tag |  [optional]
-**balance** | [**BigDecimal**](BigDecimal.md) | Whether the Data Tag represents a credit or debit |  [optional]
+**balance** | **String** | Whether the Data Tag represents a credit or debit |  [optional]
 **type** | **String** | The nature of the Data Tag, operating or nonoperating |  [optional]
 **unit** | **String** | The unit of the Data Tag |  [optional]
 

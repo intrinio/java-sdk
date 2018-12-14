@@ -45,7 +45,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseEconomicIndices result = indexApi.getAllEconomicIndices(nextPage);
@@ -87,7 +87,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSICIndices result = indexApi.getAllSicIndices(nextPage);
@@ -129,7 +129,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseStockMarketIndices result = indexApi.getAllStockMarketIndices(nextPage);
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 <a name="getEconomicIndexHistoricalData"></a>
 # **getEconomicIndexHistoricalData**
-> Object getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
+> ApiResponseEconomicIndexHistoricalData getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
 
 Get Economic Index Historical Data
 
@@ -313,10 +313,10 @@ String type = "type_example"; // String | Filter by type, when applicable
 LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
 LocalDate endDate = new LocalDate(); // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
-    Object result = indexApi.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    ApiResponseEconomicIndexHistoricalData result = indexApi.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getEconomicIndexHistoricalData");
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+[**ApiResponseEconomicIndexHistoricalData**](ApiResponseEconomicIndexHistoricalData.md)
 
 <a name="getSicIndexById"></a>
 # **getSicIndexById**
@@ -503,7 +503,7 @@ String type = "type_example"; // String | Filter by type, when applicable
 LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
 LocalDate endDate = new LocalDate(); // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSICIndexHistoricalData result = indexApi.getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
@@ -693,7 +693,7 @@ String type = "type_example"; // String | Filter by type, when applicable
 LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
 LocalDate endDate = new LocalDate(); // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
+String nextPage = ""; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseStockMarketIndexHistoricalData result = indexApi.getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);

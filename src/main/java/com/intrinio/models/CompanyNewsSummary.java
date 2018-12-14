@@ -11,7 +11,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import org.threeten.bp.LocalDate;
 
 /**
  * A news article about a company
@@ -26,7 +25,7 @@ public class CompanyNewsSummary {
   private String title = null;
 
   @SerializedName("publication_date")
-  private LocalDate publicationDate = null;
+  private String publicationDate = null;
 
   @SerializedName("url")
   private String url = null;
@@ -70,7 +69,7 @@ public class CompanyNewsSummary {
     this.title = title;
   }
 
-  public CompanyNewsSummary publicationDate(LocalDate publicationDate) {
+  public CompanyNewsSummary publicationDate(String publicationDate) {
     this.publicationDate = publicationDate;
     return this;
   }
@@ -80,11 +79,11 @@ public class CompanyNewsSummary {
    * @return publicationDate
   **/
   @ApiModelProperty(value = "The publication date of the news article")
-  public LocalDate getPublicationDate() {
+  public String getPublicationDate() {
     return publicationDate;
   }
 
-  public void setPublicationDate(LocalDate publicationDate) {
+  public void setPublicationDate(String publicationDate) {
     this.publicationDate = publicationDate;
   }
 

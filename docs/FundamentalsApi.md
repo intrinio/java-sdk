@@ -33,7 +33,7 @@ auth.setApiKey("YOUR API KEY");
 
 FundamentalsApi fundamentalsApi = new FundamentalsApi();
 
-String id = "id_example"; // String | The Intrinio ID for the Fundamental
+String id = "fun_ge9LlE"; // String | The Intrinio ID for the Fundamental
 
 try {
     Fundamental result = fundamentalsApi.getFundamentalById(id);
@@ -77,7 +77,7 @@ auth.setApiKey("YOUR API KEY");
 
 FundamentalsApi fundamentalsApi = new FundamentalsApi();
 
-String id = "id_example"; // String | The Intrinio ID for the Fundamental
+String id = "fun_ge9LlE"; // String | The Intrinio ID for the Fundamental
 
 try {
     ApiResponseReportedFinancials result = fundamentalsApi.getFundamentalReportedFinancials(id);
@@ -121,7 +121,7 @@ auth.setApiKey("YOUR API KEY");
 
 FundamentalsApi fundamentalsApi = new FundamentalsApi();
 
-String id = "id_example"; // String | The Intrinio ID for the Fundamental
+String id = "fun_ge9LlE"; // String | The Intrinio ID for the Fundamental
 
 try {
     ApiResponseStandardizedFinancials result = fundamentalsApi.getFundamentalStandardizedFinancials(id);
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 <a name="lookupFundamental"></a>
 # **lookupFundamental**
-> List&lt;Fundamental&gt; lookupFundamental(identifier, statementCode, fiscalPeriod, fiscalYear)
+> Fundamental lookupFundamental(identifier, statementCode, fiscalYear, fiscalPeriod)
 
 Lookup a Fundamental
 
@@ -165,13 +165,13 @@ auth.setApiKey("YOUR API KEY");
 
 FundamentalsApi fundamentalsApi = new FundamentalsApi();
 
-String identifier = "identifier_example"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String statementCode = "statementCode_example"; // String | The statement code
-String fiscalPeriod = "fiscalPeriod_example"; // String | The fiscal period
-Integer fiscalYear = 56; // Integer | The fiscal year
+String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+String statementCode = "income_statement"; // String | The statement code
+Integer fiscalYear = 2017; // Integer | The fiscal year
+String fiscalPeriod = "FY"; // String | The fiscal period
 
 try {
-    List<Fundamental> result = fundamentalsApi.lookupFundamental(identifier, statementCode, fiscalPeriod, fiscalYear);
+    Fundamental result = fundamentalsApi.lookupFundamental(identifier, statementCode, fiscalYear, fiscalPeriod);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FundamentalsApi#lookupFundamental");
@@ -185,10 +185,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
  **statementCode** | **String**| The statement code | [enum: income_statement, balance_sheet_statement, cash_flow_statement, calculations]
- **fiscalPeriod** | **String**| The fiscal period | [enum: Q1TTM, Q2TTM, Q3TTM, FY, Q1, Q2, Q3, Q4, Q2YTD, Q3YTD]
  **fiscalYear** | **Integer**| The fiscal year |
+ **fiscalPeriod** | **String**| The fiscal period | [enum: Q1TTM, Q2TTM, Q3TTM, FY, Q1, Q2, Q3, Q4, Q2YTD, Q3YTD]
 
 ### Return type
 
-[**List&lt;Fundamental&gt;**](Fundamental.md)
+[**Fundamental**](Fundamental.md)
 
