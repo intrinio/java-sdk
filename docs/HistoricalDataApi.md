@@ -30,13 +30,13 @@ auth.setApiKey("YOUR API KEY");
 
 HistoricalDataApi historicalDataApi = new HistoricalDataApi();
 
-String identifier = "identifier_example"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
-String type = "type_example"; // String | Filter by type, when applicable
-LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
-LocalDate endDate = new LocalDate(); // LocalDate | Get historical date on or before this date
+String identifier = "AAPL"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
+String tag = "marketcap"; // String | An Intrinio data tag ID or code-name
+String type = null; // String | Filter by type, when applicable
+LocalDate startDate = null; // LocalDate | Get historical data on or after this date
+LocalDate endDate = null; // LocalDate | Get historical date on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseHistoricalData result = historicalDataApi.getHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);

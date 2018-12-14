@@ -166,8 +166,8 @@ auth.setApiKey("YOUR API KEY");
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
 String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
-LocalDate date = new LocalDate(); // LocalDate | The date for which to return price adjustments
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+LocalDate date = null; // LocalDate | The date for which to return price adjustments
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustments(identifier, date, nextPage);
@@ -214,8 +214,8 @@ auth.setApiKey("YOUR API KEY");
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
 String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
-LocalDate date = new LocalDate(); // LocalDate | The date for which to return prices
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+LocalDate date = null; // LocalDate | The date for which to return prices
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, nextPage);
@@ -262,7 +262,7 @@ auth.setApiKey("YOUR API KEY");
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
 String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, nextPage);

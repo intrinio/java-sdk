@@ -118,8 +118,8 @@ auth.setApiKey("YOUR API KEY");
 MutualFundApi mutualFundApi = new MutualFundApi();
 
 String identifier = "identifier_example"; // String | A Mutual Fund identifier (CUSIP, Intrinio ID)
-LocalDate startDate = new LocalDate(); // LocalDate | Return stats on or after the date
-LocalDate endDate = new LocalDate(); // LocalDate | Return stats on or before the date
+LocalDate startDate = null; // LocalDate | Return stats on or after the date
+LocalDate endDate = null; // LocalDate | Return stats on or before the date
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 
 try {

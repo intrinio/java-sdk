@@ -269,8 +269,8 @@ StandardizedTagApi standardizedTagApi = new StandardizedTagApi();
 String id = "id_example"; // String | The Intrinio Standardized Tag ID or its tag
 String identifier = "identifier_example"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
 String type = "type_example"; // String | Filter by type, when applicable
-LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
-LocalDate endDate = new LocalDate(); // LocalDate | Get historical date on or before this date
+LocalDate startDate = null; // LocalDate | Get historical data on or after this date
+LocalDate endDate = null; // LocalDate | Get historical date on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
 String nextPage = "nextPage_example"; // String | Gets the next page of data from a previous API call
 

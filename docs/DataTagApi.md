@@ -33,12 +33,12 @@ auth.setApiKey("YOUR API KEY");
 
 DataTagApi dataTagApi = new DataTagApi();
 
-String tag = ""; // String | Tag
-String type = ""; // String | Type
-String parent = ""; // String | ID of tag parent
+String tag = null; // String | Tag
+String type = null; // String | Type
+String parent = null; // String | ID of tag parent
 String statementCode = "income_statement"; // String | Statement Code
 String fsTemplate = "industrial"; // String | Template
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseDataTags result = dataTagApi.filterDataTags(tag, type, parent, statementCode, fsTemplate, nextPage);
@@ -87,7 +87,7 @@ auth.setApiKey("YOUR API KEY");
 
 DataTagApi dataTagApi = new DataTagApi();
 
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseDataTags result = dataTagApi.getAllDataTags(nextPage);

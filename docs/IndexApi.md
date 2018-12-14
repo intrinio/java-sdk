@@ -45,7 +45,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseEconomicIndices result = indexApi.getAllEconomicIndices(nextPage);
@@ -87,7 +87,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSICIndices result = indexApi.getAllSicIndices(nextPage);
@@ -129,7 +129,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseStockMarketIndices result = indexApi.getAllStockMarketIndices(nextPage);
@@ -171,7 +171,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
+String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
 
 try {
     EconomicIndex result = indexApi.getEconomicIndexById(identifier);
@@ -215,8 +215,8 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
+String tag = "level"; // String | An Intrinio data tag ID or code-name
 
 try {
     BigDecimal result = indexApi.getEconomicIndexDataPointNumber(identifier, tag);
@@ -261,8 +261,8 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
+String tag = "level"; // String | An Intrinio data tag ID or code-name
 
 try {
     String result = indexApi.getEconomicIndexDataPointText(identifier, tag);
@@ -307,13 +307,13 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
-String type = "type_example"; // String | Filter by type, when applicable
-LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
-LocalDate endDate = new LocalDate(); // LocalDate | Get historical data on or before this date
+String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
+String tag = "level"; // String | An Intrinio data tag ID or code-name
+String type = null; // String | Filter by type, when applicable
+LocalDate startDate = null; // LocalDate | Get historical data on or after this date
+LocalDate endDate = null; // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseEconomicIndexHistoricalData result = indexApi.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
@@ -361,7 +361,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
+String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
 
 try {
     SICIndex result = indexApi.getSicIndexById(identifier);
@@ -405,8 +405,8 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
+String tag = "level"; // String | An Intrinio data tag ID or code-name
 
 try {
     BigDecimal result = indexApi.getSicIndexDataPointNumber(identifier, tag);
@@ -451,8 +451,8 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
+String tag = "level"; // String | An Intrinio data tag ID or code-name
 
 try {
     String result = indexApi.getSicIndexDataPointText(identifier, tag);
@@ -497,13 +497,13 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
-String type = "type_example"; // String | Filter by type, when applicable
-LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
-LocalDate endDate = new LocalDate(); // LocalDate | Get historical data on or before this date
+String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
+String tag = "marketcap"; // String | An Intrinio data tag ID or code-name
+String type = null; // String | Filter by type, when applicable
+LocalDate startDate = null; // LocalDate | Get historical data on or after this date
+LocalDate endDate = null; // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSICIndexHistoricalData result = indexApi.getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
@@ -551,7 +551,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
+String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
 
 try {
     StockMarketIndex result = indexApi.getStockMarketIndexById(identifier);
@@ -595,8 +595,8 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
+String tag = "level"; // String | An Intrinio data tag ID or code-name
 
 try {
     BigDecimal result = indexApi.getStockMarketIndexDataPointNumber(identifier, tag);
@@ -641,8 +641,8 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
+String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
+String tag = "level"; // String | An Intrinio data tag ID or code-name
 
 try {
     String result = indexApi.getStockMarketIndexDataPointText(identifier, tag);
@@ -687,13 +687,13 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String identifier = "identifier_example"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "tag_example"; // String | An Intrinio data tag ID or code-name
-String type = "type_example"; // String | Filter by type, when applicable
-LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
-LocalDate endDate = new LocalDate(); // LocalDate | Get historical data on or before this date
+String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
+String tag = "level"; // String | An Intrinio data tag ID or code-name
+String type = null; // String | Filter by type, when applicable
+LocalDate startDate = null; // LocalDate | Get historical data on or after this date
+LocalDate endDate = null; // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseStockMarketIndexHistoricalData result = indexApi.getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
@@ -743,7 +743,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String query = "query_example"; // String | Search query
+String query = "GDP"; // String | Search query
 
 try {
     ApiResponseEconomicIndices result = indexApi.searchEconomicIndices(query);
@@ -787,7 +787,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String query = "query_example"; // String | Search query
+String query = "agriculture"; // String | Search query
 
 try {
     ApiResponseSICIndices result = indexApi.searchSicIndices(query);
@@ -831,7 +831,7 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
-String query = "query_example"; // String | Search query
+String query = "dow"; // String | Search query
 
 try {
     ApiResponseStockMarketIndices result = indexApi.searchStockMarketsIndices(query);

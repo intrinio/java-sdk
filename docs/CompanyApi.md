@@ -43,13 +43,13 @@ auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
-LocalDate lastFilingDate = new LocalDate(); // LocalDate | Last filing date
+LocalDate lastFilingDate = null; // LocalDate | Last filing date
 String sic = "3350"; // String | Standard Industrial Classification code
 String template = "industrial"; // String | Template
 String sector = "Basic Materials"; // String | Industry sector
 String industryCategory = "Metals & Mining"; // String | Industry category
 String industryGroup = "Aluminum"; // String | Industry group
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseCompanies result = companyApi.filterCompanies(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage);
@@ -100,15 +100,15 @@ auth.setApiKey("YOUR API KEY");
 CompanyApi companyApi = new CompanyApi();
 
 String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-LocalDate filedAfter = new LocalDate(); // LocalDate | Filed on or after this date
-LocalDate filedBefore = new LocalDate(); // LocalDate | Filed on or before this date
+LocalDate filedAfter = null; // LocalDate | Filed on or after this date
+LocalDate filedBefore = null; // LocalDate | Filed on or before this date
 Boolean reportedOnly = false; // Boolean | Only as-reported fundamentals
 Integer fiscalYear = 2017; // Integer | Only for the given fiscal year
-String statementCode = ""; // String | Only of the given statement code
-String type = ""; // String | Only of the given type
-LocalDate startDate = new LocalDate(); // LocalDate | Only on or after the given date
-LocalDate endDate = new LocalDate(); // LocalDate | Only on or before the given date
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String statementCode = null; // String | Only of the given statement code
+String type = null; // String | Only of the given type
+LocalDate startDate = null; // LocalDate | Only on or after the given date
+LocalDate endDate = null; // LocalDate | Only on or before the given date
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseCompanyFundamentals result = companyApi.filterCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage);
@@ -159,7 +159,7 @@ auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseCompanies result = companyApi.getAllCompanies(nextPage);
@@ -203,7 +203,7 @@ auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseNews result = companyApi.getAllCompanyNews(nextPage);
@@ -382,7 +382,7 @@ auth.setApiKey("YOUR API KEY");
 CompanyApi companyApi = new CompanyApi();
 
 String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseCompanyFilings result = companyApi.getCompanyFilings(identifier, nextPage);
@@ -428,7 +428,7 @@ auth.setApiKey("YOUR API KEY");
 CompanyApi companyApi = new CompanyApi();
 
 String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, nextPage);
@@ -475,11 +475,11 @@ CompanyApi companyApi = new CompanyApi();
 
 String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
 String tag = "marketcap"; // String | Item
-String type = ""; // String | Filter by type, when applicable
-LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
-LocalDate endDate = new LocalDate(); // LocalDate | Get historical data on or before this date
+String type = null; // String | Filter by type, when applicable
+LocalDate startDate = null; // LocalDate | Get historical data on or after this date
+LocalDate endDate = null; // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseCompanyHistoricalData result = companyApi.getCompanyHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
@@ -530,7 +530,7 @@ auth.setApiKey("YOUR API KEY");
 CompanyApi companyApi = new CompanyApi();
 
 String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseCompanyNews result = companyApi.getCompanyNews(identifier, nextPage);
@@ -576,7 +576,7 @@ auth.setApiKey("YOUR API KEY");
 CompanyApi companyApi = new CompanyApi();
 
 String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseCompanySecurities result = companyApi.getCompanySecurities(identifier, nextPage);

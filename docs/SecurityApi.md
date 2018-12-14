@@ -36,7 +36,7 @@ auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSecurities result = securityApi.getAllSecurities(nextPage);
@@ -216,11 +216,11 @@ SecurityApi securityApi = new SecurityApi();
 
 String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
 String tag = "volume"; // String | An Intrinio data tag ID or code-name
-String type = ""; // String | Filter by type, when applicable
-LocalDate startDate = new LocalDate(); // LocalDate | Get historical data on or after this date
-LocalDate endDate = new LocalDate(); // LocalDate | Get historical date on or before this date
+String type = null; // String | Filter by type, when applicable
+LocalDate startDate = null; // LocalDate | Get historical data on or after this date
+LocalDate endDate = null; // LocalDate | Get historical date on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSecurityHistoricalData result = securityApi.getSecurityHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
@@ -271,9 +271,9 @@ auth.setApiKey("YOUR API KEY");
 SecurityApi securityApi = new SecurityApi();
 
 String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-LocalDate startDate = new LocalDate(); // LocalDate | Return price adjustments on or after the date
-LocalDate endDate = new LocalDate(); // LocalDate | Return price adjustments on or before the date
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+LocalDate startDate = null; // LocalDate | Return price adjustments on or after the date
+LocalDate endDate = null; // LocalDate | Return price adjustments on or before the date
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSecurityStockPriceAdjustments result = securityApi.getSecurityStockPriceAdjustments(identifier, startDate, endDate, nextPage);
@@ -321,10 +321,10 @@ auth.setApiKey("YOUR API KEY");
 SecurityApi securityApi = new SecurityApi();
 
 String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-LocalDate startDate = new LocalDate(); // LocalDate | Return prices on or after the date
-LocalDate endDate = new LocalDate(); // LocalDate | Return prices on or before the date
+LocalDate startDate = null; // LocalDate | Return prices on or after the date
+LocalDate endDate = null; // LocalDate | Return prices on or before the date
 String frequency = "daily"; // String | Return stock prices in the given frequency
-String nextPage = ""; // String | Gets the next page of data from a previous API call
+String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
     ApiResponseSecurityStockPrices result = securityApi.getSecurityStockPrices(identifier, startDate, endDate, frequency, nextPage);
