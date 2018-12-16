@@ -19,6 +19,3 @@ hs_err_pid*
 target
 .gradle
 build
-
-# test files
-src/test
