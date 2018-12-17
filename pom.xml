@@ -2,9 +2,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.intrinio</groupId>
-    <artifactId>sdk</artifactId>
+    <artifactId>intrinio-sdk</artifactId>
     <packaging>jar</packaging>
-    <name>sdk</name>
+    <name>intrinio-sdk</name>
     <version>1.0.0</version>
     <url>https://github.com/intrinio/java-sdk</url>
     <description>Access the Intrinio API</description>
