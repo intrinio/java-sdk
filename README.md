@@ -54,17 +54,21 @@ Then manually install the following JARs:
 * target/sdk-1.0.0.jar
 * target/lib/*.jar
 
+## SDK Code Examples
+
+Code examples for Intrinio SDKs are available at https://github.com/intrinio/sdk-code-samples
+
 ## Getting Started
 
 Please follow the [installation](#installation) instructions and execute the following Java code:
 
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import .;
+import com.intrinio.invoker.ApiClient;
+import com.intrinio.invoker.ApiException;
+import com.intrinio.invoker.Configuration;
+import com.intrinio.invoker.auth.ApiKeyAuth;
+import com.intrinio.api.CompanyApi;
+import com.intrinio.models.ApiResponseCompanies;
 
 import java.io.File;
 import java.util.*;
