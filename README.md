@@ -1,10 +1,8 @@
 # Intrinio Java SDK
 
-WARNING: THIS IS IS A BETA - DO NOT USE IN PRODUCTION.
+To get an API key, [sign up here](https://intrinio.com/).
 
-To request a beta access key, [sign up here](https://intrinio.com/api-v2-beta).
-
-Welcome to the Intrinio API! Through our Marketplace, we offer a wide selection of financial data feeds sourced by our own proprietary processes as well as from many data vendors. The primary application of the Intrinio API is for use in third-party applications and integrations or for end-users utilizing the Excel add-in and Google Sheets add-on. The Intrinio API uses HTTPS verbs and a RESTful endpoint structure, which makes it easy to request data from Intrinio. Responses are delivered in JSON format. If you need additional help in using the API, go to our home page (https://intrinio.com) and click on the chat icon in the lower right corner.
+Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors.  The Intrinio API uses HTTPS verbs and a RESTful endpoint structure. Responses are delivered in JSON format. You can view the full Intrinio API documentation at https://intrinio.com/documentation/api_v2    If you need additional help in using the API, go to our home page (https://intrinio.com) and click on the chat icon in the lower right corner.
 
 - API version: 2.0.2
 
@@ -31,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.intrinio</groupId>
     <artifactId>sdk</artifactId>
-    <version>0.9.1</version>
+    <version>1.0.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -41,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.intrinio:sdk:0.9.1"
+compile "com.intrinio:sdk:1.0.0"
 ```
 
 ### Others
@@ -52,7 +50,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/sdk-0.9.1.jar
+* target/sdk-1.0.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -188,6 +186,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseStockExchangeSecurities](docs/ApiResponseStockExchangeSecurities.md)
  - [ApiResponseStockExchangeStockPriceAdjustments](docs/ApiResponseStockExchangeStockPriceAdjustments.md)
  - [ApiResponseStockExchangeStockPrices](docs/ApiResponseStockExchangeStockPrices.md)
+ - [ApiResponseStockExchanges](docs/ApiResponseStockExchanges.md)
  - [ApiResponseStockMarketIndexHistoricalData](docs/ApiResponseStockMarketIndexHistoricalData.md)
  - [ApiResponseStockMarketIndices](docs/ApiResponseStockMarketIndices.md)
  - [Company](docs/Company.md)
