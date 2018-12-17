@@ -2,9 +2,10 @@
 
 To get an API key, [sign up here](https://intrinio.com/).
 
-Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors.   The Intrinio API uses HTTPS verbs and a RESTful endpoint structure. Responses are delivered in JSON format. You can view the full Intrinio API documentation at https://intrinio.com/documentation/api_v2    If you need additional help in using the API, go to our home page (https://intrinio.com) and click on the chat icon in the lower right corner.
+Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.0.2
+- API version: 2.0.0
+- Package version: 
 
 
 ## Requirements
