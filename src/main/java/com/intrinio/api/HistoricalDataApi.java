@@ -131,7 +131,7 @@ public class HistoricalDataApi {
     }
 
     /**
-     * Get Historical Data
+     * Historical Data
      * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -149,7 +149,7 @@ public class HistoricalDataApi {
     }
 
     /**
-     * Get Historical Data
+     * Historical Data
      * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -168,7 +168,7 @@ public class HistoricalDataApi {
     }
 
     /**
-     * Get Historical Data (asynchronously)
+     * Historical Data (asynchronously)
      * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)

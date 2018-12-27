@@ -254,7 +254,7 @@ public class DataTagApi {
     }
 
     /**
-     * Get All Data Tags
+     * All Data Tags
      * Returns All Data Tags
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseDataTags
@@ -266,7 +266,7 @@ public class DataTagApi {
     }
 
     /**
-     * Get All Data Tags
+     * All Data Tags
      * Returns All Data Tags
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseDataTags&gt;
@@ -279,7 +279,7 @@ public class DataTagApi {
     }
 
     /**
-     * Get All Data Tags (asynchronously)
+     * All Data Tags (asynchronously)
      * Returns All Data Tags
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -377,8 +377,8 @@ public class DataTagApi {
     }
 
     /**
-     * Get a Data Tag by ID
-     * Returns a Data Tag with the specified &#x60;identifier&#x60;
+     * Lookup Data Tag
+     * Returns the Data Tag with the given &#x60;identifier&#x60;
      * @param identifier The Intrinio ID or the code-name of the Data Tag (required)
      * @return DataTag
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -389,8 +389,8 @@ public class DataTagApi {
     }
 
     /**
-     * Get a Data Tag by ID
-     * Returns a Data Tag with the specified &#x60;identifier&#x60;
+     * Lookup Data Tag
+     * Returns the Data Tag with the given &#x60;identifier&#x60;
      * @param identifier The Intrinio ID or the code-name of the Data Tag (required)
      * @return ApiResponse&lt;DataTag&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -402,8 +402,8 @@ public class DataTagApi {
     }
 
     /**
-     * Get a Data Tag by ID (asynchronously)
-     * Returns a Data Tag with the specified &#x60;identifier&#x60;
+     * Lookup Data Tag (asynchronously)
+     * Returns the Data Tag with the given &#x60;identifier&#x60;
      * @param identifier The Intrinio ID or the code-name of the Data Tag (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call

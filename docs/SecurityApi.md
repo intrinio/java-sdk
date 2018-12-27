@@ -4,13 +4,16 @@ All URIs are relative to *https://api-v2.intrinio.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getAllSecurities**](SecurityApi.md#getAllSecurities) | **GET** /securities | Get All Securiites
-[**getSecurityById**](SecurityApi.md#getSecurityById) | **GET** /securities/{identifier} | Get a Security by ID
-[**getSecurityDataPointNumber**](SecurityApi.md#getSecurityDataPointNumber) | **GET** /securities/{identifier}/data_point/{tag}/number | Get Security Data Point (Number)
-[**getSecurityDataPointText**](SecurityApi.md#getSecurityDataPointText) | **GET** /securities/{identifier}/data_point/{tag}/text | Get Security Data Point (Text)
-[**getSecurityHistoricalData**](SecurityApi.md#getSecurityHistoricalData) | **GET** /securities/{identifier}/historical_data/{tag} | Get Security Historical Data
-[**getSecurityStockPriceAdjustments**](SecurityApi.md#getSecurityStockPriceAdjustments) | **GET** /securities/{identifier}/prices/adjustments | Get Stock Price Adjustments for Security
-[**getSecurityStockPrices**](SecurityApi.md#getSecurityStockPrices) | **GET** /securities/{identifier}/prices | Get Stock Prices for Security
+[**getAllSecurities**](SecurityApi.md#getAllSecurities) | **GET** /securities | All Securities
+[**getSecurityById**](SecurityApi.md#getSecurityById) | **GET** /securities/{identifier} | Lookup Security
+[**getSecurityDataPointNumber**](SecurityApi.md#getSecurityDataPointNumber) | **GET** /securities/{identifier}/data_point/{tag}/number | Data Point (Number) for Security
+[**getSecurityDataPointText**](SecurityApi.md#getSecurityDataPointText) | **GET** /securities/{identifier}/data_point/{tag}/text | Data Point (Text) for Security
+[**getSecurityHistoricalData**](SecurityApi.md#getSecurityHistoricalData) | **GET** /securities/{identifier}/historical_data/{tag} | Historical Data for Security
+[**getSecurityLatestDividendRecord**](SecurityApi.md#getSecurityLatestDividendRecord) | **GET** /securities/{identifier}/dividends/latest | Lastest Dividend Record for Security
+[**getSecurityLatestEarningsRecord**](SecurityApi.md#getSecurityLatestEarningsRecord) | **GET** /securities/{identifier}/earnings/latest | Lastest Earnings Record for Security
+[**getSecurityRealtimePrice**](SecurityApi.md#getSecurityRealtimePrice) | **GET** /securities/{identifier}/prices/realtime | Realtime Stock Price for Security
+[**getSecurityStockPriceAdjustments**](SecurityApi.md#getSecurityStockPriceAdjustments) | **GET** /securities/{identifier}/prices/adjustments | Stock Price Adjustments by Security
+[**getSecurityStockPrices**](SecurityApi.md#getSecurityStockPrices) | **GET** /securities/{identifier}/prices | Stock Prices by Security
 [**screenSecurities**](SecurityApi.md#screenSecurities) | **POST** /securities/screen | Screen Securities
 [**searchSecurities**](SecurityApi.md#searchSecurities) | **GET** /securities/search | Search Securities
 
@@ -19,7 +22,7 @@ Method | HTTP request | Description
 # **getAllSecurities**
 > ApiResponseSecurities getAllSecurities(nextPage)
 
-Get All Securiites
+All Securities
 
 ### Example
 ```java
@@ -61,7 +64,9 @@ Name | Type | Description  | Notes
 # **getSecurityById**
 > Security getSecurityById(identifier)
 
-Get a Security by ID
+Lookup Security
+
+Returns the Security with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -103,7 +108,7 @@ Name | Type | Description  | Notes
 # **getSecurityDataPointNumber**
 > BigDecimal getSecurityDataPointNumber(identifier, tag)
 
-Get Security Data Point (Number)
+Data Point (Number) for Security
 
 Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
 
@@ -149,7 +154,7 @@ Name | Type | Description  | Notes
 # **getSecurityDataPointText**
 > String getSecurityDataPointText(identifier, tag)
 
-Get Security Data Point (Text)
+Data Point (Text) for Security
 
 Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
 
@@ -193,9 +198,9 @@ Name | Type | Description  | Notes
 
 <a name="getSecurityHistoricalData"></a>
 # **getSecurityHistoricalData**
-> ApiResponseSecurityHistoricalData getSecurityHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
+> ApiResponseSecurityHistoricalData getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage)
 
-Get Security Historical Data
+Historical Data for Security
 
 Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
 
@@ -216,6 +221,7 @@ SecurityApi securityApi = new SecurityApi();
 
 String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
 String tag = "volume"; // String | An Intrinio data tag ID or code-name
+String frequency = "daily"; // String | Return historical data in the given frequency
 String type = null; // String | Filter by type, when applicable
 LocalDate startDate = null; // LocalDate | Get historical data on or after this date
 LocalDate endDate = null; // LocalDate | Get historical date on or before this date
@@ -223,7 +229,7 @@ String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseSecurityHistoricalData result = securityApi.getSecurityHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    ApiResponseSecurityHistoricalData result = securityApi.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#getSecurityHistoricalData");
@@ -237,6 +243,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
  **tag** | **String**| An Intrinio data tag ID or code-name |
+ **frequency** | **String**| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly]
  **type** | **String**| Filter by type, when applicable | [optional]
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical date on or before this date | [optional]
@@ -247,13 +254,147 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityHistoricalData**](ApiResponseSecurityHistoricalData.md)
 
+<a name="getSecurityLatestDividendRecord"></a>
+# **getSecurityLatestDividendRecord**
+> DividendRecord getSecurityLatestDividendRecord(identifier)
+
+Lastest Dividend Record for Security
+
+Returns the latest available dividend information for the Security with the given &#x60;identifier&#x60;
+
+### Example
+```java
+// Import classes:
+//import com.intrinio.invoker.ApiClient;
+//import com.intrinio.invoker.ApiException;
+//import com.intrinio.invoker.Configuration;
+//import com.intrinio.invoker.auth.*;
+//import com.intrinio.api.SecurityApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+auth.setApiKey("YOUR API KEY");
+
+SecurityApi securityApi = new SecurityApi();
+
+String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+
+try {
+    DividendRecord result = securityApi.getSecurityLatestDividendRecord(identifier);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling SecurityApi#getSecurityLatestDividendRecord");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
+
+### Return type
+
+[**DividendRecord**](DividendRecord.md)
+
+<a name="getSecurityLatestEarningsRecord"></a>
+# **getSecurityLatestEarningsRecord**
+> EarningsRecord getSecurityLatestEarningsRecord(identifier)
+
+Lastest Earnings Record for Security
+
+Returns latest available earnings information for the Security with the given &#x60;identifier&#x60;
+
+### Example
+```java
+// Import classes:
+//import com.intrinio.invoker.ApiClient;
+//import com.intrinio.invoker.ApiException;
+//import com.intrinio.invoker.Configuration;
+//import com.intrinio.invoker.auth.*;
+//import com.intrinio.api.SecurityApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+auth.setApiKey("YOUR API KEY");
+
+SecurityApi securityApi = new SecurityApi();
+
+String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+
+try {
+    EarningsRecord result = securityApi.getSecurityLatestEarningsRecord(identifier);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling SecurityApi#getSecurityLatestEarningsRecord");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
+
+### Return type
+
+[**EarningsRecord**](EarningsRecord.md)
+
+<a name="getSecurityRealtimePrice"></a>
+# **getSecurityRealtimePrice**
+> RealtimeStockPrice getSecurityRealtimePrice(identifier, source)
+
+Realtime Stock Price for Security
+
+Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
+
+### Example
+```java
+// Import classes:
+//import com.intrinio.invoker.ApiClient;
+//import com.intrinio.invoker.ApiException;
+//import com.intrinio.invoker.Configuration;
+//import com.intrinio.invoker.auth.*;
+//import com.intrinio.api.SecurityApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+auth.setApiKey("YOUR API KEY");
+
+SecurityApi securityApi = new SecurityApi();
+
+String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+String source = null; // String | Return the realtime price from the specified data source
+
+try {
+    RealtimeStockPrice result = securityApi.getSecurityRealtimePrice(identifier, source);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling SecurityApi#getSecurityRealtimePrice");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
+ **source** | **String**| Return the realtime price from the specified data source | [optional] [enum: iex, bats, bats_delayed]
+
+### Return type
+
+[**RealtimeStockPrice**](RealtimeStockPrice.md)
+
 <a name="getSecurityStockPriceAdjustments"></a>
 # **getSecurityStockPriceAdjustments**
 > ApiResponseSecurityStockPriceAdjustments getSecurityStockPriceAdjustments(identifier, startDate, endDate, nextPage)
 
-Get Stock Price Adjustments for Security
+Stock Price Adjustments by Security
 
-Return stock price adjustments for the Security with the given &#x60;identifier&#x60;
+Returns stock price adjustments for the Security with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -301,9 +442,9 @@ Name | Type | Description  | Notes
 # **getSecurityStockPrices**
 > ApiResponseSecurityStockPrices getSecurityStockPrices(identifier, startDate, endDate, frequency, nextPage)
 
-Get Stock Prices for Security
+Stock Prices by Security
 
-Return stock prices for the Security with the given &#x60;identifier&#x60;
+Return end-of-day stock prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -355,7 +496,7 @@ Name | Type | Description  | Notes
 
 Screen Securities
 
-Screen securities using complex logic
+Screen Securities using complex logic
 
 ### Example
 ```java

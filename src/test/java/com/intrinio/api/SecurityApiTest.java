@@ -8,7 +8,10 @@ import com.intrinio.models.ApiResponseSecurityHistoricalData;
 import com.intrinio.models.ApiResponseSecurityStockPriceAdjustments;
 import com.intrinio.models.ApiResponseSecurityStockPrices;
 import java.math.BigDecimal;
+import com.intrinio.models.DividendRecord;
+import com.intrinio.models.EarningsRecord;
 import org.threeten.bp.LocalDate;
+import com.intrinio.models.RealtimeStockPrice;
 import com.intrinio.models.Security;
 import com.intrinio.models.SecurityScreenGroup;
 import com.intrinio.models.SecurityScreenResult;
@@ -30,7 +33,7 @@ public class SecurityApiTest {
 
     
     /**
-     * Get All Securiites
+     * All Securities
      *
      * 
      *
@@ -46,9 +49,9 @@ public class SecurityApiTest {
     }
     
     /**
-     * Get a Security by ID
+     * Lookup Security
      *
-     * 
+     * Returns the Security with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -62,7 +65,7 @@ public class SecurityApiTest {
     }
     
     /**
-     * Get Security Data Point (Number)
+     * Data Point (Number) for Security
      *
      * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
      *
@@ -79,7 +82,7 @@ public class SecurityApiTest {
     }
     
     /**
-     * Get Security Data Point (Text)
+     * Data Point (Text) for Security
      *
      * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
      *
@@ -96,7 +99,7 @@ public class SecurityApiTest {
     }
     
     /**
-     * Get Security Historical Data
+     * Historical Data for Security
      *
      * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
      *
@@ -107,20 +110,70 @@ public class SecurityApiTest {
     public void getSecurityHistoricalDataTest() throws ApiException {
         String identifier = null;
         String tag = null;
+        String frequency = null;
         String type = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
         String sortOrder = null;
         String nextPage = null;
-        ApiResponseSecurityHistoricalData response = api.getSecurityHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+        ApiResponseSecurityHistoricalData response = api.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage);
 
         // TODO: test validations
     }
     
     /**
-     * Get Stock Price Adjustments for Security
+     * Lastest Dividend Record for Security
      *
-     * Return stock price adjustments for the Security with the given &#x60;identifier&#x60;
+     * Returns the latest available dividend information for the Security with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityLatestDividendRecordTest() throws ApiException {
+        String identifier = null;
+        DividendRecord response = api.getSecurityLatestDividendRecord(identifier);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Lastest Earnings Record for Security
+     *
+     * Returns latest available earnings information for the Security with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityLatestEarningsRecordTest() throws ApiException {
+        String identifier = null;
+        EarningsRecord response = api.getSecurityLatestEarningsRecord(identifier);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Realtime Stock Price for Security
+     *
+     * Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityRealtimePriceTest() throws ApiException {
+        String identifier = null;
+        String source = null;
+        RealtimeStockPrice response = api.getSecurityRealtimePrice(identifier, source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Stock Price Adjustments by Security
+     *
+     * Returns stock price adjustments for the Security with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -137,9 +190,9 @@ public class SecurityApiTest {
     }
     
     /**
-     * Get Stock Prices for Security
+     * Stock Prices by Security
      *
-     * Return stock prices for the Security with the given &#x60;identifier&#x60;
+     * Return end-of-day stock prices for the Security with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -159,7 +212,7 @@ public class SecurityApiTest {
     /**
      * Screen Securities
      *
-     * Screen securities using complex logic
+     * Screen Securities using complex logic
      *
      * @throws ApiException
      *          if the Api call fails

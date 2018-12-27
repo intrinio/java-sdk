@@ -32,7 +32,7 @@ public class IndexApiTest {
 
     
     /**
-     * Get All Economic Indices
+     * All Economic Indices
      *
      * 
      *
@@ -48,7 +48,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get All SIC Indices
+     * All SIC Indices
      *
      * 
      *
@@ -64,7 +64,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get All Stock Market Indices
+     * All Stock Market Indices
      *
      * 
      *
@@ -80,7 +80,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get an Economic Index by ID
+     * Lookup Economic Index
      *
      * 
      *
@@ -96,7 +96,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get Economic Index Data Point (Number)
+     * Data Point (Number) for an Economic Index
      *
      * Returns a numeric value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
      *
@@ -113,7 +113,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get Economic Index Data Point (Text)
+     * Data Point (Text) for an Economic Index
      *
      * Returns a text value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
      *
@@ -130,7 +130,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get Economic Index Historical Data
+     * Historical Data for an Economic Index
      *
      * Returns historical values for the given &#x60;tag&#x60; and the Economic Index with the given &#x60;identifier&#x60;
      *
@@ -152,7 +152,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get an SIC Index by ID
+     * Lookup SIC Index
      *
      * 
      *
@@ -168,7 +168,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get SIC Index Data Point (Number)
+     * Data Point (Number) for an SIC Index
      *
      * Returns a numeric value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
      *
@@ -185,7 +185,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get SIC Index Data Point (Text)
+     * Data Point (Text) for an SIC Index
      *
      * Returns a text value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
      *
@@ -202,7 +202,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get SIC Index Historical Data
+     * Historical Data for an SIC Index
      *
      * Returns historical values for the given &#x60;tag&#x60; and the SIC Index with the given &#x60;identifier&#x60;
      *
@@ -224,7 +224,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get a Stock Market Index by ID
+     * Lookup Stock Market Index
      *
      * 
      *
@@ -240,7 +240,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get Stock Market Index Data Point (Number)
+     * Data Point (Number) for Stock Market Index
      *
      * Returns a numeric value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
      *
@@ -257,7 +257,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get Stock Market Index Data Point (Text)
+     * Data Point (Text) for Stock Market Index
      *
      * Returns a text value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
      *
@@ -274,7 +274,7 @@ public class IndexApiTest {
     }
     
     /**
-     * Get Stock Market Index Historical Data
+     * Historical Data for Stock Market Index
      *
      * Returns historical values for the given &#x60;tag&#x60; and the Stock Market Index with the given &#x60;identifier&#x60;
      *

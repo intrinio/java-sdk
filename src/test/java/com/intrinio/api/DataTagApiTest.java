@@ -44,7 +44,7 @@ public class DataTagApiTest {
     }
     
     /**
-     * Get All Data Tags
+     * All Data Tags
      *
      * Returns All Data Tags
      *
@@ -60,9 +60,9 @@ public class DataTagApiTest {
     }
     
     /**
-     * Get a Data Tag by ID
+     * Lookup Data Tag
      *
-     * Returns a Data Tag with the specified &#x60;identifier&#x60;
+     * Returns the Data Tag with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails

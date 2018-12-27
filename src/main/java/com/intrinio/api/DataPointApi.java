@@ -115,7 +115,7 @@ public class DataPointApi {
     }
 
     /**
-     * Get a Data Point (Number)
+     * Data Point (Number)
      * Returns a numeric value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -128,7 +128,7 @@ public class DataPointApi {
     }
 
     /**
-     * Get a Data Point (Number)
+     * Data Point (Number)
      * Returns a numeric value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -142,7 +142,7 @@ public class DataPointApi {
     }
 
     /**
-     * Get a Data Point (Number) (asynchronously)
+     * Data Point (Number) (asynchronously)
      * Returns a numeric value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -248,7 +248,7 @@ public class DataPointApi {
     }
 
     /**
-     * Get a Data Point (Text)
+     * Data Point (Text)
      * Returns a text value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -261,7 +261,7 @@ public class DataPointApi {
     }
 
     /**
-     * Get a Data Point (Text)
+     * Data Point (Text)
      * Returns a text value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -275,7 +275,7 @@ public class DataPointApi {
     }
 
     /**
-     * Get a Data Point (Text) (asynchronously)
+     * Data Point (Text) (asynchronously)
      * Returns a text value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)

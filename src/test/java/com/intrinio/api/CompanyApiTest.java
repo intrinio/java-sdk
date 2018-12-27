@@ -54,7 +54,7 @@ public class CompanyApiTest {
     }
     
     /**
-     * Filter Fundamentals for a Company
+     * Filter Fundamentals by Company
      *
      * Returns Fundamentals for the Company with the given &#x60;identifier&#x60; and matching the specified filters
      *
@@ -79,9 +79,9 @@ public class CompanyApiTest {
     }
     
     /**
-     * Get All Companies
+     * All Companies
      *
-     * 
+     * Returns all Companies
      *
      * @throws ApiException
      *          if the Api call fails
@@ -95,9 +95,9 @@ public class CompanyApiTest {
     }
     
     /**
-     * Get All Company News
+     * All News
      *
-     * Returns all news for all companies
+     * Returns all News for all Companies
      *
      * @throws ApiException
      *          if the Api call fails
@@ -111,9 +111,9 @@ public class CompanyApiTest {
     }
     
     /**
-     * Get a Company by ID
+     * Lookup Company
      *
-     * 
+     * Returns the Company with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -127,7 +127,7 @@ public class CompanyApiTest {
     }
     
     /**
-     * Get Company Data Point (Number)
+     * Data Point (Number) for Company
      *
      * Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
      *
@@ -144,7 +144,7 @@ public class CompanyApiTest {
     }
     
     /**
-     * Get Company Data Point (Text)
+     * Data Point (Text) for Company
      *
      * Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
      *
@@ -161,7 +161,7 @@ public class CompanyApiTest {
     }
     
     /**
-     * Get Filings for a Company
+     * All Filings by Company
      *
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      *
@@ -178,7 +178,7 @@ public class CompanyApiTest {
     }
     
     /**
-     * Get All Fundamentals for a Company
+     * All Fundamentals by Company
      *
      * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
      *
@@ -195,7 +195,7 @@ public class CompanyApiTest {
     }
     
     /**
-     * Get Company Historical Data
+     * Historical Data for Company
      *
      * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
      *
@@ -206,18 +206,19 @@ public class CompanyApiTest {
     public void getCompanyHistoricalDataTest() throws ApiException {
         String identifier = null;
         String tag = null;
+        String frequency = null;
         String type = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
         String sortOrder = null;
         String nextPage = null;
-        ApiResponseCompanyHistoricalData response = api.getCompanyHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+        ApiResponseCompanyHistoricalData response = api.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage);
 
         // TODO: test validations
     }
     
     /**
-     * Get News for a Company
+     * All News by Company
      *
      * Returns news for the Company with the given &#x60;identifier&#x60;
      *
@@ -234,9 +235,9 @@ public class CompanyApiTest {
     }
     
     /**
-     * Get Securities by Company
+     * All Securities by Company
      *
-     * Return Securities for the Company with &#x60;identifier&#x60;
+     * Returns Securities for the Company with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -251,7 +252,7 @@ public class CompanyApiTest {
     }
     
     /**
-     * Lookup a Fundamental for a Company
+     * Lookup Fundamental by Company
      *
      * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
      *

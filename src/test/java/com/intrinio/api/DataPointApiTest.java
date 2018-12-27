@@ -22,7 +22,7 @@ public class DataPointApiTest {
 
     
     /**
-     * Get a Data Point (Number)
+     * Data Point (Number)
      *
      * Returns a numeric value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      *
@@ -39,7 +39,7 @@ public class DataPointApiTest {
     }
     
     /**
-     * Get a Data Point (Text)
+     * Data Point (Text)
      *
      * Returns a text value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
      *

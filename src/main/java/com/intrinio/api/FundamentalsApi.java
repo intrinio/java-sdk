@@ -110,8 +110,8 @@ public class FundamentalsApi {
     }
 
     /**
-     * Get a Fundamental by ID
-     * Retrieves detailed fundamental data for the given &#x60;fundamental_id&#x60;.
+     * Fundamental by ID
+     * Returns detailed fundamental data for the given &#x60;id&#x60;.
      * @param id The Intrinio ID for the Fundamental (required)
      * @return Fundamental
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -122,8 +122,8 @@ public class FundamentalsApi {
     }
 
     /**
-     * Get a Fundamental by ID
-     * Retrieves detailed fundamental data for the given &#x60;fundamental_id&#x60;.
+     * Fundamental by ID
+     * Returns detailed fundamental data for the given &#x60;id&#x60;.
      * @param id The Intrinio ID for the Fundamental (required)
      * @return ApiResponse&lt;Fundamental&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -135,8 +135,8 @@ public class FundamentalsApi {
     }
 
     /**
-     * Get a Fundamental by ID (asynchronously)
-     * Retrieves detailed fundamental data for the given &#x60;fundamental_id&#x60;.
+     * Fundamental by ID (asynchronously)
+     * Returns detailed fundamental data for the given &#x60;id&#x60;.
      * @param id The Intrinio ID for the Fundamental (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -233,7 +233,7 @@ public class FundamentalsApi {
     }
 
     /**
-     * Get Reported Financials for a Fundamental
+     * Reported Financials
      * Returns the As-Reported Financials directly from the financial statements of the XBRL filings from the company
      * @param id The Intrinio ID for the Fundamental (required)
      * @return ApiResponseReportedFinancials
@@ -245,7 +245,7 @@ public class FundamentalsApi {
     }
 
     /**
-     * Get Reported Financials for a Fundamental
+     * Reported Financials
      * Returns the As-Reported Financials directly from the financial statements of the XBRL filings from the company
      * @param id The Intrinio ID for the Fundamental (required)
      * @return ApiResponse&lt;ApiResponseReportedFinancials&gt;
@@ -258,7 +258,7 @@ public class FundamentalsApi {
     }
 
     /**
-     * Get Reported Financials for a Fundamental (asynchronously)
+     * Reported Financials (asynchronously)
      * Returns the As-Reported Financials directly from the financial statements of the XBRL filings from the company
      * @param id The Intrinio ID for the Fundamental (required)
      * @param callback The callback to be executed when the API call finishes
@@ -356,7 +356,7 @@ public class FundamentalsApi {
     }
 
     /**
-     * Get Standardized Financials for a Fundamental
+     * Standardized Financials
      * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies fundamentals. For example, it is possible to compare total revenues between two companies as of a certain point in time, or within a single company across multiple time periods. This is not possible using the as reported financial statements because of the inherent complexity of reporting standards.
      * @param id The Intrinio ID for the Fundamental (required)
      * @return ApiResponseStandardizedFinancials
@@ -368,7 +368,7 @@ public class FundamentalsApi {
     }
 
     /**
-     * Get Standardized Financials for a Fundamental
+     * Standardized Financials
      * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies fundamentals. For example, it is possible to compare total revenues between two companies as of a certain point in time, or within a single company across multiple time periods. This is not possible using the as reported financial statements because of the inherent complexity of reporting standards.
      * @param id The Intrinio ID for the Fundamental (required)
      * @return ApiResponse&lt;ApiResponseStandardizedFinancials&gt;
@@ -381,7 +381,7 @@ public class FundamentalsApi {
     }
 
     /**
-     * Get Standardized Financials for a Fundamental (asynchronously)
+     * Standardized Financials (asynchronously)
      * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies fundamentals. For example, it is possible to compare total revenues between two companies as of a certain point in time, or within a single company across multiple time periods. This is not possible using the as reported financial statements because of the inherent complexity of reporting standards.
      * @param id The Intrinio ID for the Fundamental (required)
      * @param callback The callback to be executed when the API call finishes
@@ -500,7 +500,7 @@ public class FundamentalsApi {
     }
 
     /**
-     * Lookup a Fundamental
+     * Lookup Fundamental
      * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)
@@ -515,7 +515,7 @@ public class FundamentalsApi {
     }
 
     /**
-     * Lookup a Fundamental
+     * Lookup Fundamental
      * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)
@@ -531,7 +531,7 @@ public class FundamentalsApi {
     }
 
     /**
-     * Lookup a Fundamental (asynchronously)
+     * Lookup Fundamental (asynchronously)
      * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)

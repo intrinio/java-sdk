@@ -23,7 +23,7 @@ public class HistoricalDataApiTest {
 
     
     /**
-     * Get Historical Data
+     * Historical Data
      *
      * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
      *

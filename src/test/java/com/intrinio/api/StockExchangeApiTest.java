@@ -3,6 +3,7 @@
 package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
+import com.intrinio.models.ApiResponseStockExchangeRealtimeStockPrices;
 import com.intrinio.models.ApiResponseStockExchangeSecurities;
 import com.intrinio.models.ApiResponseStockExchangeStockPriceAdjustments;
 import com.intrinio.models.ApiResponseStockExchangeStockPrices;
@@ -29,7 +30,7 @@ public class StockExchangeApiTest {
     /**
      * Filter Stock Exchanges
      *
-     * Return Stock Exchanges matching the given filters
+     * Returns Stock Exchanges matching the given filters
      *
      * @throws ApiException
      *          if the Api call fails
@@ -45,9 +46,9 @@ public class StockExchangeApiTest {
     }
     
     /**
-     * Get All Stock Exchanges
+     * All Stock Exchanges
      *
-     * Return All Stock Exchanges
+     * Returns all Stock Exchanges
      *
      * @throws ApiException
      *          if the Api call fails
@@ -60,9 +61,9 @@ public class StockExchangeApiTest {
     }
     
     /**
-     * Get Stock Exchange by ID
+     * Lookup Stock Exchange
      *
-     * 
+     * Returns the Stock Exchange with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -76,9 +77,9 @@ public class StockExchangeApiTest {
     }
     
     /**
-     * Get Stock Price Adjustments by Exchange
+     * Stock Price Adjustments by Exchange
      *
-     * Return stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
+     * Returns stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -94,9 +95,9 @@ public class StockExchangeApiTest {
     }
     
     /**
-     * Get Stock Prices by Exchange
+     * Stock Prices by Exchange
      *
-     * Return daily Stock Prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
+     * Returns end-of-day stock prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
      *
      * @throws ApiException
      *          if the Api call fails
@@ -112,9 +113,27 @@ public class StockExchangeApiTest {
     }
     
     /**
-     * Get Securities by Exchange
+     * Realtime Stock Prices by Exchange
      *
-     * Return Securities traded on the Stock Exchange with &#x60;identifier&#x60;
+     * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getStockExchangeRealtimePricesTest() throws ApiException {
+        String identifier = null;
+        String source = null;
+        String nextPage = null;
+        ApiResponseStockExchangeRealtimeStockPrices response = api.getStockExchangeRealtimePrices(identifier, source, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Securities by Exchange
+     *
+     * Returns Securities traded on the Stock Exchange with &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails

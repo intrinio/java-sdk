@@ -5,11 +5,12 @@ All URIs are relative to *https://api-v2.intrinio.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**filterStockExchanges**](StockExchangeApi.md#filterStockExchanges) | **GET** /stock_exchanges/filter | Filter Stock Exchanges
-[**getAllStockExchanges**](StockExchangeApi.md#getAllStockExchanges) | **GET** /stock_exchanges | Get All Stock Exchanges
-[**getStockExchangeById**](StockExchangeApi.md#getStockExchangeById) | **GET** /stock_exchanges/{identifier} | Get Stock Exchange by ID
-[**getStockExchangePriceAdjustments**](StockExchangeApi.md#getStockExchangePriceAdjustments) | **GET** /stock_exchanges/{identifier}/prices/adjustments | Get Stock Price Adjustments by Exchange
-[**getStockExchangePrices**](StockExchangeApi.md#getStockExchangePrices) | **GET** /stock_exchanges/{identifier}/prices | Get Stock Prices by Exchange
-[**getStockExchangeSecurities**](StockExchangeApi.md#getStockExchangeSecurities) | **GET** /stock_exchanges/{identifier}/securities | Get Securities by Exchange
+[**getAllStockExchanges**](StockExchangeApi.md#getAllStockExchanges) | **GET** /stock_exchanges | All Stock Exchanges
+[**getStockExchangeById**](StockExchangeApi.md#getStockExchangeById) | **GET** /stock_exchanges/{identifier} | Lookup Stock Exchange
+[**getStockExchangePriceAdjustments**](StockExchangeApi.md#getStockExchangePriceAdjustments) | **GET** /stock_exchanges/{identifier}/prices/adjustments | Stock Price Adjustments by Exchange
+[**getStockExchangePrices**](StockExchangeApi.md#getStockExchangePrices) | **GET** /stock_exchanges/{identifier}/prices | Stock Prices by Exchange
+[**getStockExchangeRealtimePrices**](StockExchangeApi.md#getStockExchangeRealtimePrices) | **GET** /stock_exchanges/{identifier}/prices/realtime | Realtime Stock Prices by Exchange
+[**getStockExchangeSecurities**](StockExchangeApi.md#getStockExchangeSecurities) | **GET** /stock_exchanges/{identifier}/securities | Securities by Exchange
 
 
 <a name="filterStockExchanges"></a>
@@ -18,7 +19,7 @@ Method | HTTP request | Description
 
 Filter Stock Exchanges
 
-Return Stock Exchanges matching the given filters
+Returns Stock Exchanges matching the given filters
 
 ### Example
 ```java
@@ -64,9 +65,9 @@ Name | Type | Description  | Notes
 # **getAllStockExchanges**
 > ApiResponseStockExchanges getAllStockExchanges()
 
-Get All Stock Exchanges
+All Stock Exchanges
 
-Return All Stock Exchanges
+Returns all Stock Exchanges
 
 ### Example
 ```java
@@ -104,7 +105,9 @@ This endpoint does not need any parameter.
 # **getStockExchangeById**
 > StockExchange getStockExchangeById(identifier)
 
-Get Stock Exchange by ID
+Lookup Stock Exchange
+
+Returns the Stock Exchange with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -146,9 +149,9 @@ Name | Type | Description  | Notes
 # **getStockExchangePriceAdjustments**
 > ApiResponseStockExchangeStockPriceAdjustments getStockExchangePriceAdjustments(identifier, date, nextPage)
 
-Get Stock Price Adjustments by Exchange
+Stock Price Adjustments by Exchange
 
-Return stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
+Returns stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -194,9 +197,9 @@ Name | Type | Description  | Notes
 # **getStockExchangePrices**
 > ApiResponseStockExchangeStockPrices getStockExchangePrices(identifier, date, nextPage)
 
-Get Stock Prices by Exchange
+Stock Prices by Exchange
 
-Return daily Stock Prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
+Returns end-of-day stock prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
 
 ### Example
 ```java
@@ -238,13 +241,61 @@ Name | Type | Description  | Notes
 
 [**ApiResponseStockExchangeStockPrices**](ApiResponseStockExchangeStockPrices.md)
 
+<a name="getStockExchangeRealtimePrices"></a>
+# **getStockExchangeRealtimePrices**
+> ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(identifier, source, nextPage)
+
+Realtime Stock Prices by Exchange
+
+Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
+
+### Example
+```java
+// Import classes:
+//import com.intrinio.invoker.ApiClient;
+//import com.intrinio.invoker.ApiException;
+//import com.intrinio.invoker.Configuration;
+//import com.intrinio.invoker.auth.*;
+//import com.intrinio.api.StockExchangeApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+auth.setApiKey("YOUR API KEY");
+
+StockExchangeApi stockExchangeApi = new StockExchangeApi();
+
+String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+String source = null; // String | Return realtime prices from the specified data source
+String nextPage = null; // String | Gets the next page of data from a previous API call
+
+try {
+    ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, nextPage);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling StockExchangeApi#getStockExchangeRealtimePrices");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) |
+ **source** | **String**| Return realtime prices from the specified data source | [optional] [enum: iex, bats, bats_delayed]
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+
+### Return type
+
+[**ApiResponseStockExchangeRealtimeStockPrices**](ApiResponseStockExchangeRealtimeStockPrices.md)
+
 <a name="getStockExchangeSecurities"></a>
 # **getStockExchangeSecurities**
 > ApiResponseStockExchangeSecurities getStockExchangeSecurities(identifier, nextPage)
 
-Get Securities by Exchange
+Securities by Exchange
 
-Return Securities traded on the Stock Exchange with &#x60;identifier&#x60;
+Returns Securities traded on the Stock Exchange with &#x60;identifier&#x60;
 
 ### Example
 ```java

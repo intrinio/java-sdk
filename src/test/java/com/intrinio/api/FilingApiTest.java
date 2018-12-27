@@ -3,8 +3,12 @@
 package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
+import com.intrinio.models.ApiResponseFilingNotes;
+import com.intrinio.models.ApiResponseFilingNotesSearch;
 import com.intrinio.models.ApiResponseFilings;
+import java.math.BigDecimal;
 import com.intrinio.models.Filing;
+import com.intrinio.models.FilingNote;
 import org.threeten.bp.LocalDate;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -26,7 +30,7 @@ public class FilingApiTest {
     /**
      * Filter Filings
      *
-     * Returns filings that match the specified filters
+     * Returns Filings that match the specified filters
      *
      * @throws ApiException
      *          if the Api call fails
@@ -44,9 +48,31 @@ public class FilingApiTest {
     }
     
     /**
-     * Get All Filings
+     * Filter SEC filing notes
      *
-     * Returns all filings
+     * Returns SEC filing notes matching the supplied criteria
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void filterNotesTest() throws ApiException {
+        String company = null;
+        String reportType = null;
+        LocalDate filingStartDate = null;
+        LocalDate filingEndDate = null;
+        LocalDate periodEndedStartDate = null;
+        LocalDate periodEndedEndDate = null;
+        String nextPage = null;
+        ApiResponseFilingNotes response = api.filterNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * All Filings
+     *
+     * Returns all Filings
      *
      * @throws ApiException
      *          if the Api call fails
@@ -60,9 +86,25 @@ public class FilingApiTest {
     }
     
     /**
-     * Get a Filing by ID
+     * Get All SEC filing notes
      *
-     * Return the filing with the given ID
+     * Return All notes from SEC Filings, most-recent first
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAllNotesTest() throws ApiException {
+        String nextPage = null;
+        ApiResponseFilingNotes response = api.getAllNotes(nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Lookup Filing
+     *
+     * Returns the Filing with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -71,6 +113,74 @@ public class FilingApiTest {
     public void getFilingByIdTest() throws ApiException {
         String id = null;
         Filing response = api.getFilingById(id);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get an SEC filing note by ID
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getNoteTest() throws ApiException {
+        String identifier = null;
+        String contentFormat = null;
+        FilingNote response = api.getNote(identifier, contentFormat);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Returns the content of an SEC filing note as originally filed
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getNoteHtmlTest() throws ApiException {
+        String identifier = null;
+        String response = api.getNoteHtml(identifier);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Returns the content of an SEC filing note stripped of HTML
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getNoteTextTest() throws ApiException {
+        String identifier = null;
+        String response = api.getNoteText(identifier);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Search Filing Notes
+     *
+     * Searches SEC filing notes using the text in &#x60;query&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void searchNotesTest() throws ApiException {
+        String query = null;
+        LocalDate filingStartDate = null;
+        LocalDate filingEndDate = null;
+        BigDecimal pageSize = null;
+        ApiResponseFilingNotesSearch response = api.searchNotes(query, filingStartDate, filingEndDate, pageSize);
 
         // TODO: test validations
     }

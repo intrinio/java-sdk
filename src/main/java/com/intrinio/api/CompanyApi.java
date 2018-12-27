@@ -300,7 +300,7 @@ public class CompanyApi {
     }
 
     /**
-     * Filter Fundamentals for a Company
+     * Filter Fundamentals by Company
      * Returns Fundamentals for the Company with the given &#x60;identifier&#x60; and matching the specified filters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param filedAfter Filed on or after this date (optional)
@@ -321,7 +321,7 @@ public class CompanyApi {
     }
 
     /**
-     * Filter Fundamentals for a Company
+     * Filter Fundamentals by Company
      * Returns Fundamentals for the Company with the given &#x60;identifier&#x60; and matching the specified filters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param filedAfter Filed on or after this date (optional)
@@ -343,7 +343,7 @@ public class CompanyApi {
     }
 
     /**
-     * Filter Fundamentals for a Company (asynchronously)
+     * Filter Fundamentals by Company (asynchronously)
      * Returns Fundamentals for the Company with the given &#x60;identifier&#x60; and matching the specified filters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param filedAfter Filed on or after this date (optional)
@@ -446,8 +446,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get All Companies
-     * 
+     * All Companies
+     * Returns all Companies
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanies
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -458,8 +458,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get All Companies
-     * 
+     * All Companies
+     * Returns all Companies
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanies&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -471,8 +471,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get All Companies (asynchronously)
-     * 
+     * All Companies (asynchronously)
+     * Returns all Companies
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -565,8 +565,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get All Company News
-     * Returns all news for all companies
+     * All News
+     * Returns all News for all Companies
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseNews
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -577,8 +577,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get All Company News
-     * Returns all news for all companies
+     * All News
+     * Returns all News for all Companies
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseNews&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -590,8 +590,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get All Company News (asynchronously)
-     * Returns all news for all companies
+     * All News (asynchronously)
+     * Returns all News for all Companies
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -688,8 +688,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get a Company by ID
-     * 
+     * Lookup Company
+     * Returns the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @return Company
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -700,8 +700,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get a Company by ID
-     * 
+     * Lookup Company
+     * Returns the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @return ApiResponse&lt;Company&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -713,8 +713,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get a Company by ID (asynchronously)
-     * 
+     * Lookup Company (asynchronously)
+     * Returns the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -818,7 +818,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get Company Data Point (Number)
+     * Data Point (Number) for Company
      * Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag (required)
@@ -831,7 +831,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get Company Data Point (Number)
+     * Data Point (Number) for Company
      * Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag (required)
@@ -845,7 +845,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get Company Data Point (Number) (asynchronously)
+     * Data Point (Number) for Company (asynchronously)
      * Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag (required)
@@ -951,7 +951,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get Company Data Point (Text)
+     * Data Point (Text) for Company
      * Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag (required)
@@ -964,7 +964,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get Company Data Point (Text)
+     * Data Point (Text) for Company
      * Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag (required)
@@ -978,7 +978,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get Company Data Point (Text) (asynchronously)
+     * Data Point (Text) for Company (asynchronously)
      * Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag (required)
@@ -1080,7 +1080,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get Filings for a Company
+     * All Filings by Company
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1093,7 +1093,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get Filings for a Company
+     * All Filings by Company
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1107,7 +1107,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get Filings for a Company (asynchronously)
+     * All Filings by Company (asynchronously)
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1209,7 +1209,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get All Fundamentals for a Company
+     * All Fundamentals by Company
      * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1222,7 +1222,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get All Fundamentals for a Company
+     * All Fundamentals by Company
      * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1236,7 +1236,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get All Fundamentals for a Company (asynchronously)
+     * All Fundamentals by Company (asynchronously)
      * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1273,7 +1273,8 @@ public class CompanyApi {
     /**
      * Build call for getCompanyHistoricalData
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag Item (required)
+     * @param tag An Intrinio data-tag (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
@@ -1284,7 +1285,7 @@ public class CompanyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyHistoricalDataCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1294,6 +1295,8 @@ public class CompanyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (frequency != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("frequency", frequency));
         if (type != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
         if (startDate != null)
@@ -1338,7 +1341,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyHistoricalDataValidateBeforeCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1351,16 +1354,17 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCompanyHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyHistoricalDataCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
-     * Get Company Historical Data
+     * Historical Data for Company
      * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag Item (required)
+     * @param tag An Intrinio data-tag (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
@@ -1369,16 +1373,17 @@ public class CompanyApi {
      * @return ApiResponseCompanyHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseCompanyHistoricalData getCompanyHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanyHistoricalData> resp = getCompanyHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    public ApiResponseCompanyHistoricalData getCompanyHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseCompanyHistoricalData> resp = getCompanyHistoricalDataWithHttpInfo(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage);
         return resp.getData();
     }
 
     /**
-     * Get Company Historical Data
+     * Historical Data for Company
      * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag Item (required)
+     * @param tag An Intrinio data-tag (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
@@ -1387,17 +1392,18 @@ public class CompanyApi {
      * @return ApiResponse&lt;ApiResponseCompanyHistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanyHistoricalData> getCompanyHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanyHistoricalData> getCompanyHistoricalDataWithHttpInfo(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyHistoricalData>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Get Company Historical Data (asynchronously)
+     * Historical Data for Company (asynchronously)
      * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag Item (required)
+     * @param tag An Intrinio data-tag (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
@@ -1407,7 +1413,7 @@ public class CompanyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseCompanyHistoricalData> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyHistoricalDataAsync(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseCompanyHistoricalData> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1428,7 +1434,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyHistoricalData>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1501,7 +1507,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get News for a Company
+     * All News by Company
      * Returns news for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1514,7 +1520,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get News for a Company
+     * All News by Company
      * Returns news for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1528,7 +1534,7 @@ public class CompanyApi {
     }
 
     /**
-     * Get News for a Company (asynchronously)
+     * All News by Company (asynchronously)
      * Returns news for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1630,8 +1636,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get Securities by Company
-     * Return Securities for the Company with &#x60;identifier&#x60;
+     * All Securities by Company
+     * Returns Securities for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanySecurities
@@ -1643,8 +1649,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get Securities by Company
-     * Return Securities for the Company with &#x60;identifier&#x60;
+     * All Securities by Company
+     * Returns Securities for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanySecurities&gt;
@@ -1657,8 +1663,8 @@ public class CompanyApi {
     }
 
     /**
-     * Get Securities by Company (asynchronously)
-     * Return Securities for the Company with &#x60;identifier&#x60;
+     * All Securities by Company (asynchronously)
+     * Returns Securities for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -1777,7 +1783,7 @@ public class CompanyApi {
     }
 
     /**
-     * Lookup a Fundamental for a Company
+     * Lookup Fundamental by Company
      * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)
@@ -1792,7 +1798,7 @@ public class CompanyApi {
     }
 
     /**
-     * Lookup a Fundamental for a Company
+     * Lookup Fundamental by Company
      * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)
@@ -1808,7 +1814,7 @@ public class CompanyApi {
     }
 
     /**
-     * Lookup a Fundamental for a Company (asynchronously)
+     * Lookup Fundamental by Company (asynchronously)
      * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)

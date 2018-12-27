@@ -21,7 +21,10 @@ import com.intrinio.models.ApiResponseSecurityHistoricalData;
 import com.intrinio.models.ApiResponseSecurityStockPriceAdjustments;
 import com.intrinio.models.ApiResponseSecurityStockPrices;
 import java.math.BigDecimal;
+import com.intrinio.models.DividendRecord;
+import com.intrinio.models.EarningsRecord;
 import org.threeten.bp.LocalDate;
+import com.intrinio.models.RealtimeStockPrice;
 import com.intrinio.models.Security;
 import com.intrinio.models.SecurityScreenGroup;
 import com.intrinio.models.SecurityScreenResult;
@@ -112,7 +115,7 @@ public class SecurityApi {
     }
 
     /**
-     * Get All Securiites
+     * All Securities
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurities
@@ -124,7 +127,7 @@ public class SecurityApi {
     }
 
     /**
-     * Get All Securiites
+     * All Securities
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurities&gt;
@@ -137,7 +140,7 @@ public class SecurityApi {
     }
 
     /**
-     * Get All Securiites (asynchronously)
+     * All Securities (asynchronously)
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -235,8 +238,8 @@ public class SecurityApi {
     }
 
     /**
-     * Get a Security by ID
-     * 
+     * Lookup Security
+     * Returns the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @return Security
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -247,8 +250,8 @@ public class SecurityApi {
     }
 
     /**
-     * Get a Security by ID
-     * 
+     * Lookup Security
+     * Returns the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @return ApiResponse&lt;Security&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -260,8 +263,8 @@ public class SecurityApi {
     }
 
     /**
-     * Get a Security by ID (asynchronously)
-     * 
+     * Lookup Security (asynchronously)
+     * Returns the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -365,7 +368,7 @@ public class SecurityApi {
     }
 
     /**
-     * Get Security Data Point (Number)
+     * Data Point (Number) for Security
      * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -378,7 +381,7 @@ public class SecurityApi {
     }
 
     /**
-     * Get Security Data Point (Number)
+     * Data Point (Number) for Security
      * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -392,7 +395,7 @@ public class SecurityApi {
     }
 
     /**
-     * Get Security Data Point (Number) (asynchronously)
+     * Data Point (Number) for Security (asynchronously)
      * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -498,7 +501,7 @@ public class SecurityApi {
     }
 
     /**
-     * Get Security Data Point (Text)
+     * Data Point (Text) for Security
      * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -511,7 +514,7 @@ public class SecurityApi {
     }
 
     /**
-     * Get Security Data Point (Text)
+     * Data Point (Text) for Security
      * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -525,7 +528,7 @@ public class SecurityApi {
     }
 
     /**
-     * Get Security Data Point (Text) (asynchronously)
+     * Data Point (Text) for Security (asynchronously)
      * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -563,6 +566,7 @@ public class SecurityApi {
      * Build call for getSecurityHistoricalData
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
@@ -573,7 +577,7 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityHistoricalDataCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -583,6 +587,8 @@ public class SecurityApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (frequency != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("frequency", frequency));
         if (type != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
         if (startDate != null)
@@ -627,7 +633,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityHistoricalDataValidateBeforeCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -640,16 +646,17 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityHistoricalDataCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
-     * Get Security Historical Data
+     * Historical Data for Security
      * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
@@ -658,16 +665,17 @@ public class SecurityApi {
      * @return ApiResponseSecurityHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurityHistoricalData getSecurityHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityHistoricalData> resp = getSecurityHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    public ApiResponseSecurityHistoricalData getSecurityHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSecurityHistoricalData> resp = getSecurityHistoricalDataWithHttpInfo(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage);
         return resp.getData();
     }
 
     /**
-     * Get Security Historical Data
+     * Historical Data for Security
      * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
@@ -676,17 +684,18 @@ public class SecurityApi {
      * @return ApiResponse&lt;ApiResponseSecurityHistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityHistoricalData> getSecurityHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurityHistoricalData> getSecurityHistoricalDataWithHttpInfo(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityHistoricalData>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Get Security Historical Data (asynchronously)
+     * Historical Data for Security (asynchronously)
      * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
@@ -696,7 +705,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseSecurityHistoricalData> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityHistoricalDataAsync(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseSecurityHistoricalData> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -717,8 +726,383 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityHistoricalData>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityLatestDividendRecord
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityLatestDividendRecordCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/{identifier}/dividends/latest"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityLatestDividendRecordValidateBeforeCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityLatestDividendRecord(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityLatestDividendRecordCall(identifier, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Lastest Dividend Record for Security
+     * Returns the latest available dividend information for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @return DividendRecord
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public DividendRecord getSecurityLatestDividendRecord(String identifier) throws ApiException {
+        ApiResponse<DividendRecord> resp = getSecurityLatestDividendRecordWithHttpInfo(identifier);
+        return resp.getData();
+    }
+
+    /**
+     * Lastest Dividend Record for Security
+     * Returns the latest available dividend information for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @return ApiResponse&lt;DividendRecord&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<DividendRecord> getSecurityLatestDividendRecordWithHttpInfo(String identifier) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityLatestDividendRecordValidateBeforeCall(identifier, null, null);
+        Type localVarReturnType = new TypeToken<DividendRecord>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Lastest Dividend Record for Security (asynchronously)
+     * Returns the latest available dividend information for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityLatestDividendRecordAsync(String identifier, final ApiCallback<DividendRecord> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityLatestDividendRecordValidateBeforeCall(identifier, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<DividendRecord>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityLatestEarningsRecord
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityLatestEarningsRecordCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/{identifier}/earnings/latest"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityLatestEarningsRecordValidateBeforeCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityLatestEarningsRecord(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityLatestEarningsRecordCall(identifier, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Lastest Earnings Record for Security
+     * Returns latest available earnings information for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @return EarningsRecord
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public EarningsRecord getSecurityLatestEarningsRecord(String identifier) throws ApiException {
+        ApiResponse<EarningsRecord> resp = getSecurityLatestEarningsRecordWithHttpInfo(identifier);
+        return resp.getData();
+    }
+
+    /**
+     * Lastest Earnings Record for Security
+     * Returns latest available earnings information for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @return ApiResponse&lt;EarningsRecord&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<EarningsRecord> getSecurityLatestEarningsRecordWithHttpInfo(String identifier) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityLatestEarningsRecordValidateBeforeCall(identifier, null, null);
+        Type localVarReturnType = new TypeToken<EarningsRecord>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Lastest Earnings Record for Security (asynchronously)
+     * Returns latest available earnings information for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityLatestEarningsRecordAsync(String identifier, final ApiCallback<EarningsRecord> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityLatestEarningsRecordValidateBeforeCall(identifier, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<EarningsRecord>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityRealtimePrice
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param source Return the realtime price from the specified data source (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityRealtimePriceCall(String identifier, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/{identifier}/prices/realtime"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityRealtimePriceValidateBeforeCall(String identifier, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityRealtimePrice(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityRealtimePriceCall(identifier, source, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Realtime Stock Price for Security
+     * Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param source Return the realtime price from the specified data source (optional)
+     * @return RealtimeStockPrice
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public RealtimeStockPrice getSecurityRealtimePrice(String identifier, String source) throws ApiException {
+        ApiResponse<RealtimeStockPrice> resp = getSecurityRealtimePriceWithHttpInfo(identifier, source);
+        return resp.getData();
+    }
+
+    /**
+     * Realtime Stock Price for Security
+     * Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param source Return the realtime price from the specified data source (optional)
+     * @return ApiResponse&lt;RealtimeStockPrice&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<RealtimeStockPrice> getSecurityRealtimePriceWithHttpInfo(String identifier, String source) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityRealtimePriceValidateBeforeCall(identifier, source, null, null);
+        Type localVarReturnType = new TypeToken<RealtimeStockPrice>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Realtime Stock Price for Security (asynchronously)
+     * Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param source Return the realtime price from the specified data source (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityRealtimePriceAsync(String identifier, String source, final ApiCallback<RealtimeStockPrice> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityRealtimePriceValidateBeforeCall(identifier, source, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<RealtimeStockPrice>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -796,8 +1180,8 @@ public class SecurityApi {
     }
 
     /**
-     * Get Stock Price Adjustments for Security
-     * Return stock price adjustments for the Security with the given &#x60;identifier&#x60;
+     * Stock Price Adjustments by Security
+     * Returns stock price adjustments for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Return price adjustments on or after the date (optional)
      * @param endDate Return price adjustments on or before the date (optional)
@@ -811,8 +1195,8 @@ public class SecurityApi {
     }
 
     /**
-     * Get Stock Price Adjustments for Security
-     * Return stock price adjustments for the Security with the given &#x60;identifier&#x60;
+     * Stock Price Adjustments by Security
+     * Returns stock price adjustments for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Return price adjustments on or after the date (optional)
      * @param endDate Return price adjustments on or before the date (optional)
@@ -827,8 +1211,8 @@ public class SecurityApi {
     }
 
     /**
-     * Get Stock Price Adjustments for Security (asynchronously)
-     * Return stock price adjustments for the Security with the given &#x60;identifier&#x60;
+     * Stock Price Adjustments by Security (asynchronously)
+     * Returns stock price adjustments for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Return price adjustments on or after the date (optional)
      * @param endDate Return price adjustments on or before the date (optional)
@@ -940,8 +1324,8 @@ public class SecurityApi {
     }
 
     /**
-     * Get Stock Prices for Security
-     * Return stock prices for the Security with the given &#x60;identifier&#x60;
+     * Stock Prices by Security
+     * Return end-of-day stock prices for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Return prices on or after the date (optional)
      * @param endDate Return prices on or before the date (optional)
@@ -956,8 +1340,8 @@ public class SecurityApi {
     }
 
     /**
-     * Get Stock Prices for Security
-     * Return stock prices for the Security with the given &#x60;identifier&#x60;
+     * Stock Prices by Security
+     * Return end-of-day stock prices for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Return prices on or after the date (optional)
      * @param endDate Return prices on or before the date (optional)
@@ -973,8 +1357,8 @@ public class SecurityApi {
     }
 
     /**
-     * Get Stock Prices for Security (asynchronously)
-     * Return stock prices for the Security with the given &#x60;identifier&#x60;
+     * Stock Prices by Security (asynchronously)
+     * Return end-of-day stock prices for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Return prices on or after the date (optional)
      * @param endDate Return prices on or before the date (optional)
@@ -1079,7 +1463,7 @@ public class SecurityApi {
 
     /**
      * Screen Securities
-     * Screen securities using complex logic
+     * Screen Securities using complex logic
      * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
@@ -1094,7 +1478,7 @@ public class SecurityApi {
 
     /**
      * Screen Securities
-     * Screen securities using complex logic
+     * Screen Securities using complex logic
      * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
@@ -1110,7 +1494,7 @@ public class SecurityApi {
 
     /**
      * Screen Securities (asynchronously)
-     * Screen securities using complex logic
+     * Screen Securities using complex logic
      * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)

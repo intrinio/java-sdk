@@ -114,7 +114,7 @@ public class IndexApi {
     }
 
     /**
-     * Get All Economic Indices
+     * All Economic Indices
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseEconomicIndices
@@ -126,7 +126,7 @@ public class IndexApi {
     }
 
     /**
-     * Get All Economic Indices
+     * All Economic Indices
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseEconomicIndices&gt;
@@ -139,7 +139,7 @@ public class IndexApi {
     }
 
     /**
-     * Get All Economic Indices (asynchronously)
+     * All Economic Indices (asynchronously)
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -233,7 +233,7 @@ public class IndexApi {
     }
 
     /**
-     * Get All SIC Indices
+     * All SIC Indices
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSICIndices
@@ -245,7 +245,7 @@ public class IndexApi {
     }
 
     /**
-     * Get All SIC Indices
+     * All SIC Indices
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSICIndices&gt;
@@ -258,7 +258,7 @@ public class IndexApi {
     }
 
     /**
-     * Get All SIC Indices (asynchronously)
+     * All SIC Indices (asynchronously)
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -352,7 +352,7 @@ public class IndexApi {
     }
 
     /**
-     * Get All Stock Market Indices
+     * All Stock Market Indices
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockMarketIndices
@@ -364,7 +364,7 @@ public class IndexApi {
     }
 
     /**
-     * Get All Stock Market Indices
+     * All Stock Market Indices
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseStockMarketIndices&gt;
@@ -377,7 +377,7 @@ public class IndexApi {
     }
 
     /**
-     * Get All Stock Market Indices (asynchronously)
+     * All Stock Market Indices (asynchronously)
      * 
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -475,7 +475,7 @@ public class IndexApi {
     }
 
     /**
-     * Get an Economic Index by ID
+     * Lookup Economic Index
      * 
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @return EconomicIndex
@@ -487,7 +487,7 @@ public class IndexApi {
     }
 
     /**
-     * Get an Economic Index by ID
+     * Lookup Economic Index
      * 
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @return ApiResponse&lt;EconomicIndex&gt;
@@ -500,7 +500,7 @@ public class IndexApi {
     }
 
     /**
-     * Get an Economic Index by ID (asynchronously)
+     * Lookup Economic Index (asynchronously)
      * 
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
@@ -605,7 +605,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Economic Index Data Point (Number)
+     * Data Point (Number) for an Economic Index
      * Returns a numeric value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -618,7 +618,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Economic Index Data Point (Number)
+     * Data Point (Number) for an Economic Index
      * Returns a numeric value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -632,7 +632,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Economic Index Data Point (Number) (asynchronously)
+     * Data Point (Number) for an Economic Index (asynchronously)
      * Returns a numeric value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -738,7 +738,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Economic Index Data Point (Text)
+     * Data Point (Text) for an Economic Index
      * Returns a text value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -751,7 +751,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Economic Index Data Point (Text)
+     * Data Point (Text) for an Economic Index
      * Returns a text value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -765,7 +765,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Economic Index Data Point (Text) (asynchronously)
+     * Data Point (Text) for an Economic Index (asynchronously)
      * Returns a text value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -886,7 +886,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Economic Index Historical Data
+     * Historical Data for an Economic Index
      * Returns historical values for the given &#x60;tag&#x60; and the Economic Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -904,7 +904,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Economic Index Historical Data
+     * Historical Data for an Economic Index
      * Returns historical values for the given &#x60;tag&#x60; and the Economic Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -923,7 +923,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Economic Index Historical Data (asynchronously)
+     * Historical Data for an Economic Index (asynchronously)
      * Returns historical values for the given &#x60;tag&#x60; and the Economic Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1027,7 +1027,7 @@ public class IndexApi {
     }
 
     /**
-     * Get an SIC Index by ID
+     * Lookup SIC Index
      * 
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @return SICIndex
@@ -1039,7 +1039,7 @@ public class IndexApi {
     }
 
     /**
-     * Get an SIC Index by ID
+     * Lookup SIC Index
      * 
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @return ApiResponse&lt;SICIndex&gt;
@@ -1052,7 +1052,7 @@ public class IndexApi {
     }
 
     /**
-     * Get an SIC Index by ID (asynchronously)
+     * Lookup SIC Index (asynchronously)
      * 
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1157,7 +1157,7 @@ public class IndexApi {
     }
 
     /**
-     * Get SIC Index Data Point (Number)
+     * Data Point (Number) for an SIC Index
      * Returns a numeric value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1170,7 +1170,7 @@ public class IndexApi {
     }
 
     /**
-     * Get SIC Index Data Point (Number)
+     * Data Point (Number) for an SIC Index
      * Returns a numeric value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1184,7 +1184,7 @@ public class IndexApi {
     }
 
     /**
-     * Get SIC Index Data Point (Number) (asynchronously)
+     * Data Point (Number) for an SIC Index (asynchronously)
      * Returns a numeric value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1290,7 +1290,7 @@ public class IndexApi {
     }
 
     /**
-     * Get SIC Index Data Point (Text)
+     * Data Point (Text) for an SIC Index
      * Returns a text value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1303,7 +1303,7 @@ public class IndexApi {
     }
 
     /**
-     * Get SIC Index Data Point (Text)
+     * Data Point (Text) for an SIC Index
      * Returns a text value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1317,7 +1317,7 @@ public class IndexApi {
     }
 
     /**
-     * Get SIC Index Data Point (Text) (asynchronously)
+     * Data Point (Text) for an SIC Index (asynchronously)
      * Returns a text value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1438,7 +1438,7 @@ public class IndexApi {
     }
 
     /**
-     * Get SIC Index Historical Data
+     * Historical Data for an SIC Index
      * Returns historical values for the given &#x60;tag&#x60; and the SIC Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1456,7 +1456,7 @@ public class IndexApi {
     }
 
     /**
-     * Get SIC Index Historical Data
+     * Historical Data for an SIC Index
      * Returns historical values for the given &#x60;tag&#x60; and the SIC Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1475,7 +1475,7 @@ public class IndexApi {
     }
 
     /**
-     * Get SIC Index Historical Data (asynchronously)
+     * Historical Data for an SIC Index (asynchronously)
      * Returns historical values for the given &#x60;tag&#x60; and the SIC Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1579,7 +1579,7 @@ public class IndexApi {
     }
 
     /**
-     * Get a Stock Market Index by ID
+     * Lookup Stock Market Index
      * 
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @return StockMarketIndex
@@ -1591,7 +1591,7 @@ public class IndexApi {
     }
 
     /**
-     * Get a Stock Market Index by ID
+     * Lookup Stock Market Index
      * 
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @return ApiResponse&lt;StockMarketIndex&gt;
@@ -1604,7 +1604,7 @@ public class IndexApi {
     }
 
     /**
-     * Get a Stock Market Index by ID (asynchronously)
+     * Lookup Stock Market Index (asynchronously)
      * 
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1709,7 +1709,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Stock Market Index Data Point (Number)
+     * Data Point (Number) for Stock Market Index
      * Returns a numeric value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1722,7 +1722,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Stock Market Index Data Point (Number)
+     * Data Point (Number) for Stock Market Index
      * Returns a numeric value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1736,7 +1736,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Stock Market Index Data Point (Number) (asynchronously)
+     * Data Point (Number) for Stock Market Index (asynchronously)
      * Returns a numeric value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1842,7 +1842,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Stock Market Index Data Point (Text)
+     * Data Point (Text) for Stock Market Index
      * Returns a text value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1855,7 +1855,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Stock Market Index Data Point (Text)
+     * Data Point (Text) for Stock Market Index
      * Returns a text value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1869,7 +1869,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Stock Market Index Data Point (Text) (asynchronously)
+     * Data Point (Text) for Stock Market Index (asynchronously)
      * Returns a text value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -1990,7 +1990,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Stock Market Index Historical Data
+     * Historical Data for Stock Market Index
      * Returns historical values for the given &#x60;tag&#x60; and the Stock Market Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -2008,7 +2008,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Stock Market Index Historical Data
+     * Historical Data for Stock Market Index
      * Returns historical values for the given &#x60;tag&#x60; and the Stock Market Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
@@ -2027,7 +2027,7 @@ public class IndexApi {
     }
 
     /**
-     * Get Stock Market Index Historical Data (asynchronously)
+     * Historical Data for Stock Market Index (asynchronously)
      * Returns historical values for the given &#x60;tag&#x60; and the Stock Market Index with the given &#x60;identifier&#x60;
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)

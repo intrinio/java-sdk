@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.intrinio.models.ApiResponseStockExchangeRealtimeStockPrices;
 import com.intrinio.models.ApiResponseStockExchangeSecurities;
 import com.intrinio.models.ApiResponseStockExchangeStockPriceAdjustments;
 import com.intrinio.models.ApiResponseStockExchangeStockPrices;
@@ -116,7 +117,7 @@ public class StockExchangeApi {
 
     /**
      * Filter Stock Exchanges
-     * Return Stock Exchanges matching the given filters
+     * Returns Stock Exchanges matching the given filters
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)
@@ -130,7 +131,7 @@ public class StockExchangeApi {
 
     /**
      * Filter Stock Exchanges
-     * Return Stock Exchanges matching the given filters
+     * Returns Stock Exchanges matching the given filters
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)
@@ -145,7 +146,7 @@ public class StockExchangeApi {
 
     /**
      * Filter Stock Exchanges (asynchronously)
-     * Return Stock Exchanges matching the given filters
+     * Returns Stock Exchanges matching the given filters
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)
@@ -237,8 +238,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get All Stock Exchanges
-     * Return All Stock Exchanges
+     * All Stock Exchanges
+     * Returns all Stock Exchanges
      * @return ApiResponseStockExchanges
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -248,8 +249,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get All Stock Exchanges
-     * Return All Stock Exchanges
+     * All Stock Exchanges
+     * Returns all Stock Exchanges
      * @return ApiResponse&lt;ApiResponseStockExchanges&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -260,8 +261,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get All Stock Exchanges (asynchronously)
-     * Return All Stock Exchanges
+     * All Stock Exchanges (asynchronously)
+     * Returns all Stock Exchanges
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -357,8 +358,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Stock Exchange by ID
-     * 
+     * Lookup Stock Exchange
+     * Returns the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @return StockExchange
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -369,8 +370,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Stock Exchange by ID
-     * 
+     * Lookup Stock Exchange
+     * Returns the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @return ApiResponse&lt;StockExchange&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -382,8 +383,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Stock Exchange by ID (asynchronously)
-     * 
+     * Lookup Stock Exchange (asynchronously)
+     * Returns the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -486,8 +487,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Stock Price Adjustments by Exchange
-     * Return stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
+     * Stock Price Adjustments by Exchange
+     * Returns stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param date The date for which to return price adjustments (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -500,8 +501,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Stock Price Adjustments by Exchange
-     * Return stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
+     * Stock Price Adjustments by Exchange
+     * Returns stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param date The date for which to return price adjustments (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -515,8 +516,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Stock Price Adjustments by Exchange (asynchronously)
-     * Return stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
+     * Stock Price Adjustments by Exchange (asynchronously)
+     * Returns stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param date The date for which to return price adjustments (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -621,8 +622,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Stock Prices by Exchange
-     * Return daily Stock Prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
+     * Stock Prices by Exchange
+     * Returns end-of-day stock prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param date The date for which to return prices (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -635,8 +636,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Stock Prices by Exchange
-     * Return daily Stock Prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
+     * Stock Prices by Exchange
+     * Returns end-of-day stock prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param date The date for which to return prices (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -650,8 +651,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Stock Prices by Exchange (asynchronously)
-     * Return daily Stock Prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
+     * Stock Prices by Exchange (asynchronously)
+     * Returns end-of-day stock prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param date The date for which to return prices (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -682,6 +683,141 @@ public class StockExchangeApi {
 
         com.squareup.okhttp.Call call = getStockExchangePricesValidateBeforeCall(identifier, date, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseStockExchangeStockPrices>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getStockExchangeRealtimePrices
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param source Return realtime prices from the specified data source (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getStockExchangeRealtimePricesCall(String identifier, String source, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/stock_exchanges/{identifier}/prices/realtime"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getStockExchangeRealtimePricesValidateBeforeCall(String identifier, String source, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getStockExchangeRealtimePrices(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesCall(identifier, source, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Realtime Stock Prices by Exchange
+     * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param source Return realtime prices from the specified data source (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseStockExchangeRealtimeStockPrices
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(String identifier, String source, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> resp = getStockExchangeRealtimePricesWithHttpInfo(identifier, source, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * Realtime Stock Prices by Exchange
+     * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param source Return realtime prices from the specified data source (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseStockExchangeRealtimeStockPrices&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> getStockExchangeRealtimePricesWithHttpInfo(String identifier, String source, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesValidateBeforeCall(identifier, source, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeRealtimeStockPrices>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Realtime Stock Prices by Exchange (asynchronously)
+     * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param source Return realtime prices from the specified data source (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getStockExchangeRealtimePricesAsync(String identifier, String source, String nextPage, final ApiCallback<ApiResponseStockExchangeRealtimeStockPrices> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesValidateBeforeCall(identifier, source, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeRealtimeStockPrices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -753,8 +889,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Securities by Exchange
-     * Return Securities traded on the Stock Exchange with &#x60;identifier&#x60;
+     * Securities by Exchange
+     * Returns Securities traded on the Stock Exchange with &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockExchangeSecurities
@@ -766,8 +902,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Securities by Exchange
-     * Return Securities traded on the Stock Exchange with &#x60;identifier&#x60;
+     * Securities by Exchange
+     * Returns Securities traded on the Stock Exchange with &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseStockExchangeSecurities&gt;
@@ -780,8 +916,8 @@ public class StockExchangeApi {
     }
 
     /**
-     * Get Securities by Exchange (asynchronously)
-     * Return Securities traded on the Stock Exchange with &#x60;identifier&#x60;
+     * Securities by Exchange (asynchronously)
+     * Returns Securities traded on the Stock Exchange with &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
