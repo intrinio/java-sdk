@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **dividend** | [**BigDecimal**](BigDecimal.md) | The dividend amount, if a dividend was paid. |  [optional]
 **dividendCurrency** | **String** | The currency of the dividend, if known. |  [optional]
 **splitRatio** | [**BigDecimal**](BigDecimal.md) | The ratio of the stock split, if a stock split occurred. |  [optional]
+**security** | [**SecuritySummary**](SecuritySummary.md) | The Security of the stock price |  [optional]
 
 
 

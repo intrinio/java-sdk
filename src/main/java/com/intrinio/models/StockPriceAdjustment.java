@@ -8,6 +8,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.intrinio.models.SecuritySummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -34,6 +35,9 @@ public class StockPriceAdjustment {
 
   @SerializedName("split_ratio")
   private BigDecimal splitRatio = null;
+
+  @SerializedName("security")
+  private SecuritySummary security = null;
 
   public StockPriceAdjustment date(LocalDate date) {
     this.date = date;
@@ -125,6 +129,24 @@ public class StockPriceAdjustment {
     this.splitRatio = splitRatio;
   }
 
+  public StockPriceAdjustment security(SecuritySummary security) {
+    this.security = security;
+    return this;
+  }
+
+   /**
+   * The Security of the stock price
+   * @return security
+  **/
+  @ApiModelProperty(value = "The Security of the stock price")
+  public SecuritySummary getSecurity() {
+    return security;
+  }
+
+  public void setSecurity(SecuritySummary security) {
+    this.security = security;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -139,12 +161,13 @@ public class StockPriceAdjustment {
         Objects.equals(this.factor, stockPriceAdjustment.factor) &&
         Objects.equals(this.dividend, stockPriceAdjustment.dividend) &&
         Objects.equals(this.dividendCurrency, stockPriceAdjustment.dividendCurrency) &&
-        Objects.equals(this.splitRatio, stockPriceAdjustment.splitRatio);
+        Objects.equals(this.splitRatio, stockPriceAdjustment.splitRatio) &&
+        Objects.equals(this.security, stockPriceAdjustment.security);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, factor, dividend, dividendCurrency, splitRatio);
+    return Objects.hash(date, factor, dividend, dividendCurrency, splitRatio, security);
   }
 
 
@@ -158,6 +181,7 @@ public class StockPriceAdjustment {
     sb.append("    dividend: ").append(toIndentedString(dividend)).append("\n");
     sb.append("    dividendCurrency: ").append(toIndentedString(dividendCurrency)).append("\n");
     sb.append("    splitRatio: ").append(toIndentedString(splitRatio)).append("\n");
+    sb.append("    security: ").append(toIndentedString(security)).append("\n");
     sb.append("}");
     return sb.toString();
   }

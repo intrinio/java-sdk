@@ -276,8 +276,8 @@ public class FilingApi {
     }
 
     /**
-     * Filter SEC filing notes
-     * Returns SEC filing notes matching the supplied criteria
+     * Filter Filing Notes
+     * Returns Filing Notes that match the specified filters
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
      * @param reportType Notes contained in filings that match the given report type (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
@@ -294,8 +294,8 @@ public class FilingApi {
     }
 
     /**
-     * Filter SEC filing notes
-     * Returns SEC filing notes matching the supplied criteria
+     * Filter Filing Notes
+     * Returns Filing Notes that match the specified filters
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
      * @param reportType Notes contained in filings that match the given report type (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
@@ -313,8 +313,8 @@ public class FilingApi {
     }
 
     /**
-     * Filter SEC filing notes (asynchronously)
-     * Returns SEC filing notes matching the supplied criteria
+     * Filter Filing Notes (asynchronously)
+     * Returns Filing Notes that match the specified filters
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
      * @param reportType Notes contained in filings that match the given report type (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
@@ -532,8 +532,8 @@ public class FilingApi {
     }
 
     /**
-     * Get All SEC filing notes
-     * Return All notes from SEC Filings, most-recent first
+     * All Filing Notes
+     * Return all Notes from all Filings, most-recent first
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseFilingNotes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -544,8 +544,8 @@ public class FilingApi {
     }
 
     /**
-     * Get All SEC filing notes
-     * Return All notes from SEC Filings, most-recent first
+     * All Filing Notes
+     * Return all Notes from all Filings, most-recent first
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseFilingNotes&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -557,8 +557,8 @@ public class FilingApi {
     }
 
     /**
-     * Get All SEC filing notes (asynchronously)
-     * Return All notes from SEC Filings, most-recent first
+     * All Filing Notes (asynchronously)
+     * Return all Notes from all Filings, most-recent first
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -781,7 +781,7 @@ public class FilingApi {
     }
 
     /**
-     * Get an SEC filing note by ID
+     * Filing Note by ID
      * 
      * @param identifier The Intrinio ID of the filing note (required)
      * @param contentFormat Returns content in html (as filed) or plain text (optional, default to text)
@@ -794,7 +794,7 @@ public class FilingApi {
     }
 
     /**
-     * Get an SEC filing note by ID
+     * Filing Note by ID
      * 
      * @param identifier The Intrinio ID of the filing note (required)
      * @param contentFormat Returns content in html (as filed) or plain text (optional, default to text)
@@ -808,7 +808,7 @@ public class FilingApi {
     }
 
     /**
-     * Get an SEC filing note by ID (asynchronously)
+     * Filing Note by ID (asynchronously)
      * 
      * @param identifier The Intrinio ID of the filing note (required)
      * @param contentFormat Returns content in html (as filed) or plain text (optional, default to text)
@@ -907,7 +907,7 @@ public class FilingApi {
     }
 
     /**
-     * Returns the content of an SEC filing note as originally filed
+     * Filing Note HTML
      * 
      * @param identifier The Intrinio ID of the filing note (required)
      * @return String
@@ -919,7 +919,7 @@ public class FilingApi {
     }
 
     /**
-     * Returns the content of an SEC filing note as originally filed
+     * Filing Note HTML
      * 
      * @param identifier The Intrinio ID of the filing note (required)
      * @return ApiResponse&lt;String&gt;
@@ -932,7 +932,7 @@ public class FilingApi {
     }
 
     /**
-     * Returns the content of an SEC filing note as originally filed (asynchronously)
+     * Filing Note HTML (asynchronously)
      * 
      * @param identifier The Intrinio ID of the filing note (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1030,7 +1030,7 @@ public class FilingApi {
     }
 
     /**
-     * Returns the content of an SEC filing note stripped of HTML
+     * Filing Note Text
      * 
      * @param identifier The Intrinio ID of the filing note (required)
      * @return String
@@ -1042,7 +1042,7 @@ public class FilingApi {
     }
 
     /**
-     * Returns the content of an SEC filing note stripped of HTML
+     * Filing Note Text
      * 
      * @param identifier The Intrinio ID of the filing note (required)
      * @return ApiResponse&lt;String&gt;
@@ -1055,7 +1055,7 @@ public class FilingApi {
     }
 
     /**
-     * Returns the content of an SEC filing note stripped of HTML (asynchronously)
+     * Filing Note Text (asynchronously)
      * 
      * @param identifier The Intrinio ID of the filing note (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1164,7 +1164,7 @@ public class FilingApi {
 
     /**
      * Search Filing Notes
-     * Searches SEC filing notes using the text in &#x60;query&#x60;
+     * Searches for Filing Notes using the &#x60;query&#x60;
      * @param query Search for notes that contain all or parts of this text (required)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
@@ -1179,7 +1179,7 @@ public class FilingApi {
 
     /**
      * Search Filing Notes
-     * Searches SEC filing notes using the text in &#x60;query&#x60;
+     * Searches for Filing Notes using the &#x60;query&#x60;
      * @param query Search for notes that contain all or parts of this text (required)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
@@ -1195,7 +1195,7 @@ public class FilingApi {
 
     /**
      * Search Filing Notes (asynchronously)
-     * Searches SEC filing notes using the text in &#x60;query&#x60;
+     * Searches for Filing Notes using the &#x60;query&#x60;
      * @param query Search for notes that contain all or parts of this text (required)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)

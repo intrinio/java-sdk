@@ -5,7 +5,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
 - API version: 2.1.0
-- Package version: 1.1.0
+- Package version: 1.1.1 
+
 
 ## Requirements
 
@@ -29,7 +30,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.intrinio</groupId>
     <artifactId>intrinio-sdk</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +40,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.intrinio:intrinio-sdk:1.1.0"
+compile "com.intrinio:intrinio-sdk:1.1.1"
 ```
 
 ### Others
@@ -50,7 +51,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/intrinio-sdk-1.1.0.jar
+* target/intrinio-sdk-1.1.1.jar
 * target/lib/*.jar
 
 ## SDK Code Examples
@@ -123,13 +124,13 @@ Class | Method | HTTP request | Description
 *DataTagApi* | [**getDataTagById**](docs/DataTagApi.md#getDataTagById) | **GET** /data_tags/{identifier} | Lookup Data Tag
 *DataTagApi* | [**searchDataTags**](docs/DataTagApi.md#searchDataTags) | **GET** /data_tags/search | Search Data Tags
 *FilingApi* | [**filterFilings**](docs/FilingApi.md#filterFilings) | **GET** /filings/filter | Filter Filings
-*FilingApi* | [**filterNotes**](docs/FilingApi.md#filterNotes) | **GET** /filings/notes/filter | Filter SEC filing notes
+*FilingApi* | [**filterNotes**](docs/FilingApi.md#filterNotes) | **GET** /filings/notes/filter | Filter Filing Notes
 *FilingApi* | [**getAllFilings**](docs/FilingApi.md#getAllFilings) | **GET** /filings | All Filings
-*FilingApi* | [**getAllNotes**](docs/FilingApi.md#getAllNotes) | **GET** /filings/notes | Get All SEC filing notes
+*FilingApi* | [**getAllNotes**](docs/FilingApi.md#getAllNotes) | **GET** /filings/notes | All Filing Notes
 *FilingApi* | [**getFilingById**](docs/FilingApi.md#getFilingById) | **GET** /filings/{id} | Lookup Filing
-*FilingApi* | [**getNote**](docs/FilingApi.md#getNote) | **GET** /filings/notes/{identifier} | Get an SEC filing note by ID
-*FilingApi* | [**getNoteHtml**](docs/FilingApi.md#getNoteHtml) | **GET** /filings/notes/{identifier}/html | Returns the content of an SEC filing note as originally filed
-*FilingApi* | [**getNoteText**](docs/FilingApi.md#getNoteText) | **GET** /filings/notes/{identifier}/text | Returns the content of an SEC filing note stripped of HTML
+*FilingApi* | [**getNote**](docs/FilingApi.md#getNote) | **GET** /filings/notes/{identifier} | Filing Note by ID
+*FilingApi* | [**getNoteHtml**](docs/FilingApi.md#getNoteHtml) | **GET** /filings/notes/{identifier}/html | Filing Note HTML
+*FilingApi* | [**getNoteText**](docs/FilingApi.md#getNoteText) | **GET** /filings/notes/{identifier}/text | Filing Note Text
 *FilingApi* | [**searchNotes**](docs/FilingApi.md#searchNotes) | **GET** /filings/notes/search | Search Filing Notes
 *FundamentalsApi* | [**getFundamentalById**](docs/FundamentalsApi.md#getFundamentalById) | **GET** /fundamentals/{id} | Fundamental by ID
 *FundamentalsApi* | [**getFundamentalReportedFinancials**](docs/FundamentalsApi.md#getFundamentalReportedFinancials) | **GET** /fundamentals/{id}/reported_financials | Reported Financials

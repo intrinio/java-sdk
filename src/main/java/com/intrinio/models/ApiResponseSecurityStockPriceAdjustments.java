@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.intrinio.models.SecuritySummary;
-import com.intrinio.models.StockPriceAdjustment;
+import com.intrinio.models.StockPriceAdjustmentSummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ApiResponseSecurityStockPriceAdjustments {
   @SerializedName("stock_price_adjustments")
-  private List<StockPriceAdjustment> stockPriceAdjustments = null;
+  private List<StockPriceAdjustmentSummary> stockPriceAdjustments = null;
 
   @SerializedName("security")
   private SecuritySummary security = null;
@@ -30,14 +30,14 @@ public class ApiResponseSecurityStockPriceAdjustments {
   @SerializedName("next_page")
   private String nextPage = null;
 
-  public ApiResponseSecurityStockPriceAdjustments stockPriceAdjustments(List<StockPriceAdjustment> stockPriceAdjustments) {
+  public ApiResponseSecurityStockPriceAdjustments stockPriceAdjustments(List<StockPriceAdjustmentSummary> stockPriceAdjustments) {
     this.stockPriceAdjustments = stockPriceAdjustments;
     return this;
   }
 
-  public ApiResponseSecurityStockPriceAdjustments addStockPriceAdjustmentsItem(StockPriceAdjustment stockPriceAdjustmentsItem) {
+  public ApiResponseSecurityStockPriceAdjustments addStockPriceAdjustmentsItem(StockPriceAdjustmentSummary stockPriceAdjustmentsItem) {
     if (this.stockPriceAdjustments == null) {
-      this.stockPriceAdjustments = new ArrayList<StockPriceAdjustment>();
+      this.stockPriceAdjustments = new ArrayList<StockPriceAdjustmentSummary>();
     }
     this.stockPriceAdjustments.add(stockPriceAdjustmentsItem);
     return this;
@@ -48,11 +48,11 @@ public class ApiResponseSecurityStockPriceAdjustments {
    * @return stockPriceAdjustments
   **/
   @ApiModelProperty(value = "The stock price adjustments for the Security")
-  public List<StockPriceAdjustment> getStockPriceAdjustments() {
+  public List<StockPriceAdjustmentSummary> getStockPriceAdjustments() {
     return stockPriceAdjustments;
   }
 
-  public void setStockPriceAdjustments(List<StockPriceAdjustment> stockPriceAdjustments) {
+  public void setStockPriceAdjustments(List<StockPriceAdjustmentSummary> stockPriceAdjustments) {
     this.stockPriceAdjustments = stockPriceAdjustments;
   }
 

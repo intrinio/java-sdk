@@ -8,7 +8,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.intrinio.models.SecuritySummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -35,9 +34,6 @@ public class StockPriceAdjustmentSummary {
 
   @SerializedName("split_ratio")
   private BigDecimal splitRatio = null;
-
-  @SerializedName("security")
-  private SecuritySummary security = null;
 
   public StockPriceAdjustmentSummary date(LocalDate date) {
     this.date = date;
@@ -129,24 +125,6 @@ public class StockPriceAdjustmentSummary {
     this.splitRatio = splitRatio;
   }
 
-  public StockPriceAdjustmentSummary security(SecuritySummary security) {
-    this.security = security;
-    return this;
-  }
-
-   /**
-   * The Security of the stock price
-   * @return security
-  **/
-  @ApiModelProperty(value = "The Security of the stock price")
-  public SecuritySummary getSecurity() {
-    return security;
-  }
-
-  public void setSecurity(SecuritySummary security) {
-    this.security = security;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -161,13 +139,12 @@ public class StockPriceAdjustmentSummary {
         Objects.equals(this.factor, stockPriceAdjustmentSummary.factor) &&
         Objects.equals(this.dividend, stockPriceAdjustmentSummary.dividend) &&
         Objects.equals(this.dividendCurrency, stockPriceAdjustmentSummary.dividendCurrency) &&
-        Objects.equals(this.splitRatio, stockPriceAdjustmentSummary.splitRatio) &&
-        Objects.equals(this.security, stockPriceAdjustmentSummary.security);
+        Objects.equals(this.splitRatio, stockPriceAdjustmentSummary.splitRatio);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, factor, dividend, dividendCurrency, splitRatio, security);
+    return Objects.hash(date, factor, dividend, dividendCurrency, splitRatio);
   }
 
 
@@ -181,7 +158,6 @@ public class StockPriceAdjustmentSummary {
     sb.append("    dividend: ").append(toIndentedString(dividend)).append("\n");
     sb.append("    dividendCurrency: ").append(toIndentedString(dividendCurrency)).append("\n");
     sb.append("    splitRatio: ").append(toIndentedString(splitRatio)).append("\n");
-    sb.append("    security: ").append(toIndentedString(security)).append("\n");
     sb.append("}");
     return sb.toString();
   }

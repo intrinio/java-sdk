@@ -48,9 +48,9 @@ public class FilingApiTest {
     }
     
     /**
-     * Filter SEC filing notes
+     * Filter Filing Notes
      *
-     * Returns SEC filing notes matching the supplied criteria
+     * Returns Filing Notes that match the specified filters
      *
      * @throws ApiException
      *          if the Api call fails
@@ -86,9 +86,9 @@ public class FilingApiTest {
     }
     
     /**
-     * Get All SEC filing notes
+     * All Filing Notes
      *
-     * Return All notes from SEC Filings, most-recent first
+     * Return all Notes from all Filings, most-recent first
      *
      * @throws ApiException
      *          if the Api call fails
@@ -118,7 +118,7 @@ public class FilingApiTest {
     }
     
     /**
-     * Get an SEC filing note by ID
+     * Filing Note by ID
      *
      * 
      *
@@ -135,7 +135,7 @@ public class FilingApiTest {
     }
     
     /**
-     * Returns the content of an SEC filing note as originally filed
+     * Filing Note HTML
      *
      * 
      *
@@ -151,7 +151,7 @@ public class FilingApiTest {
     }
     
     /**
-     * Returns the content of an SEC filing note stripped of HTML
+     * Filing Note Text
      *
      * 
      *
@@ -169,7 +169,7 @@ public class FilingApiTest {
     /**
      * Search Filing Notes
      *
-     * Searches SEC filing notes using the text in &#x60;query&#x60;
+     * Searches for Filing Notes using the &#x60;query&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
