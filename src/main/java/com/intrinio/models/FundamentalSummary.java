@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * FundamentalSummary
@@ -90,7 +91,7 @@ public class FundamentalSummary {
   private LocalDate endDate = null;
 
   @SerializedName("filing_date")
-  private LocalDate filingDate = null;
+  private OffsetDateTime filingDate = null;
 
   public FundamentalSummary id(String id) {
     this.id = id;
@@ -218,7 +219,7 @@ public class FundamentalSummary {
     this.endDate = endDate;
   }
 
-  public FundamentalSummary filingDate(LocalDate filingDate) {
+  public FundamentalSummary filingDate(OffsetDateTime filingDate) {
     this.filingDate = filingDate;
     return this;
   }
@@ -228,11 +229,11 @@ public class FundamentalSummary {
    * @return filingDate
   **/
   @ApiModelProperty(value = "The date and time when the Fundamental was filed with the SEC")
-  public LocalDate getFilingDate() {
+  public OffsetDateTime getFilingDate() {
     return filingDate;
   }
 
-  public void setFilingDate(LocalDate filingDate) {
+  public void setFilingDate(OffsetDateTime filingDate) {
     this.filingDate = filingDate;
   }
 
