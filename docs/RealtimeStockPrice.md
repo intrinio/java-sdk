@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **exchangeVolume** | [**BigDecimal**](BigDecimal.md) | The number of shares exchanged during the trading day on the exchange. |  [optional]
 **marketVolume** | [**BigDecimal**](BigDecimal.md) | The number of shares exchanged during the trading day for the whole market. |  [optional]
 **updatedOn** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when the data was last updated. |  [optional]
-**source** | **String** | Source of the realtime quote. |  [optional]
+**source** | **String** | The source of the data. |  [optional]
 **security** | [**RealtimeStockPriceSecurity**](RealtimeStockPriceSecurity.md) |  |  [optional]
 
 

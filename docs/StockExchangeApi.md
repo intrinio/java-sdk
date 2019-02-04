@@ -4,7 +4,6 @@ All URIs are relative to *https://api-v2.intrinio.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**filterStockExchanges**](StockExchangeApi.md#filterStockExchanges) | **GET** /stock_exchanges/filter | Filter Stock Exchanges
 [**getAllStockExchanges**](StockExchangeApi.md#getAllStockExchanges) | **GET** /stock_exchanges | All Stock Exchanges
 [**getStockExchangeById**](StockExchangeApi.md#getStockExchangeById) | **GET** /stock_exchanges/{identifier} | Lookup Stock Exchange
 [**getStockExchangePriceAdjustments**](StockExchangeApi.md#getStockExchangePriceAdjustments) | **GET** /stock_exchanges/{identifier}/prices/adjustments | Stock Price Adjustments by Exchange
@@ -13,13 +12,13 @@ Method | HTTP request | Description
 [**getStockExchangeSecurities**](StockExchangeApi.md#getStockExchangeSecurities) | **GET** /stock_exchanges/{identifier}/securities | Securities by Exchange
 
 
-<a name="filterStockExchanges"></a>
-# **filterStockExchanges**
-> ApiResponseStockExchanges filterStockExchanges(city, country, countryCode)
+<a name="getAllStockExchanges"></a>
+# **getAllStockExchanges**
+> ApiResponseStockExchanges getAllStockExchanges(city, country, countryCode, pageSize)
 
-Filter Stock Exchanges
+All Stock Exchanges
 
-Returns Stock Exchanges matching the given filters
+Returns all Stock Exchanges. Returns Stock Exchanges matching parameters when specified.
 
 ### Example
 ```java
@@ -39,12 +38,13 @@ StockExchangeApi stockExchangeApi = new StockExchangeApi();
 String city = "city_example"; // String | Filter by city
 String country = "CHINA"; // String | Filter by country
 String countryCode = "countryCode_example"; // String | Filter by ISO country code
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 
 try {
-    ApiResponseStockExchanges result = stockExchangeApi.filterStockExchanges(city, country, countryCode);
+    ApiResponseStockExchanges result = stockExchangeApi.getAllStockExchanges(city, country, countryCode, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling StockExchangeApi#filterStockExchanges");
+    System.err.println("Exception when calling StockExchangeApi#getAllStockExchanges");
     e.printStackTrace();
 }
 ```
@@ -56,46 +56,7 @@ Name | Type | Description  | Notes
  **city** | **String**| Filter by city | [optional]
  **country** | **String**| Filter by country | [optional]
  **countryCode** | **String**| Filter by ISO country code | [optional]
-
-### Return type
-
-[**ApiResponseStockExchanges**](ApiResponseStockExchanges.md)
-
-<a name="getAllStockExchanges"></a>
-# **getAllStockExchanges**
-> ApiResponseStockExchanges getAllStockExchanges()
-
-All Stock Exchanges
-
-Returns all Stock Exchanges
-
-### Example
-```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.StockExchangeApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
-
-StockExchangeApi stockExchangeApi = new StockExchangeApi();
-
-
-try {
-    ApiResponseStockExchanges result = stockExchangeApi.getAllStockExchanges();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling StockExchangeApi#getAllStockExchanges");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
@@ -147,7 +108,7 @@ Name | Type | Description  | Notes
 
 <a name="getStockExchangePriceAdjustments"></a>
 # **getStockExchangePriceAdjustments**
-> ApiResponseStockExchangeStockPriceAdjustments getStockExchangePriceAdjustments(identifier, date, nextPage)
+> ApiResponseStockExchangeStockPriceAdjustments getStockExchangePriceAdjustments(identifier, date, pageSize, nextPage)
 
 Stock Price Adjustments by Exchange
 
@@ -170,10 +131,11 @@ StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
 String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
 LocalDate date = null; // LocalDate | The date for which to return price adjustments
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustments(identifier, date, nextPage);
+    ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustments(identifier, date, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StockExchangeApi#getStockExchangePriceAdjustments");
@@ -187,6 +149,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) |
  **date** | **LocalDate**| The date for which to return price adjustments | [optional]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -195,7 +158,7 @@ Name | Type | Description  | Notes
 
 <a name="getStockExchangePrices"></a>
 # **getStockExchangePrices**
-> ApiResponseStockExchangeStockPrices getStockExchangePrices(identifier, date, nextPage)
+> ApiResponseStockExchangeStockPrices getStockExchangePrices(identifier, date, pageSize, nextPage)
 
 Stock Prices by Exchange
 
@@ -218,10 +181,11 @@ StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
 String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
 LocalDate date = null; // LocalDate | The date for which to return prices
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, nextPage);
+    ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StockExchangeApi#getStockExchangePrices");
@@ -235,6 +199,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) |
  **date** | **LocalDate**| The date for which to return prices | [optional]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -243,7 +208,7 @@ Name | Type | Description  | Notes
 
 <a name="getStockExchangeRealtimePrices"></a>
 # **getStockExchangeRealtimePrices**
-> ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(identifier, source, nextPage)
+> ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(identifier, source, pageSize, nextPage)
 
 Realtime Stock Prices by Exchange
 
@@ -266,10 +231,11 @@ StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
 String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
 String source = null; // String | Return realtime prices from the specified data source
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, nextPage);
+    ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StockExchangeApi#getStockExchangeRealtimePrices");
@@ -283,6 +249,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) |
  **source** | **String**| Return realtime prices from the specified data source | [optional] [enum: iex, bats, bats_delayed]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -291,7 +258,7 @@ Name | Type | Description  | Notes
 
 <a name="getStockExchangeSecurities"></a>
 # **getStockExchangeSecurities**
-> ApiResponseStockExchangeSecurities getStockExchangeSecurities(identifier, nextPage)
+> ApiResponseStockExchangeSecurities getStockExchangeSecurities(identifier, pageSize, nextPage)
 
 Securities by Exchange
 
@@ -313,10 +280,11 @@ auth.setApiKey("YOUR API KEY");
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
 String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, nextPage);
+    ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling StockExchangeApi#getStockExchangeSecurities");
@@ -329,6 +297,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) |
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type

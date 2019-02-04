@@ -28,59 +28,22 @@ public class FilingApiTest {
 
     
     /**
-     * Filter Filings
-     *
-     * Returns Filings that match the specified filters
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void filterFilingsTest() throws ApiException {
-        String company = null;
-        String reportType = null;
-        LocalDate startDate = null;
-        LocalDate endDate = null;
-        String nextPage = null;
-        ApiResponseFilings response = api.filterFilings(company, reportType, startDate, endDate, nextPage);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Filter Filing Notes
-     *
-     * Returns Filing Notes that match the specified filters
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void filterNotesTest() throws ApiException {
-        String company = null;
-        String reportType = null;
-        LocalDate filingStartDate = null;
-        LocalDate filingEndDate = null;
-        LocalDate periodEndedStartDate = null;
-        LocalDate periodEndedEndDate = null;
-        String nextPage = null;
-        ApiResponseFilingNotes response = api.filterNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, nextPage);
-
-        // TODO: test validations
-    }
-    
-    /**
      * All Filings
      *
-     * Returns all Filings
+     * Returns all Filings. Returns Filings matching parameters when supplied.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getAllFilingsTest() throws ApiException {
+        String company = null;
+        String reportType = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseFilings response = api.getAllFilings(nextPage);
+        ApiResponseFilings response = api.getAllFilings(company, reportType, startDate, endDate, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -88,15 +51,22 @@ public class FilingApiTest {
     /**
      * All Filing Notes
      *
-     * Return all Notes from all Filings, most-recent first
+     * Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getAllNotesTest() throws ApiException {
+        String company = null;
+        String reportType = null;
+        LocalDate filingStartDate = null;
+        LocalDate filingEndDate = null;
+        LocalDate periodEndedStartDate = null;
+        LocalDate periodEndedEndDate = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseFilingNotes response = api.getAllNotes(nextPage);
+        ApiResponseFilingNotes response = api.getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -180,7 +150,8 @@ public class FilingApiTest {
         LocalDate filingStartDate = null;
         LocalDate filingEndDate = null;
         BigDecimal pageSize = null;
-        ApiResponseFilingNotesSearch response = api.searchNotes(query, filingStartDate, filingEndDate, pageSize);
+        BigDecimal pageSize2 = null;
+        ApiResponseFilingNotesSearch response = api.searchNotes(query, filingStartDate, filingEndDate, pageSize, pageSize2);
 
         // TODO: test validations
     }

@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getSecurityDataPointNumber**](SecurityApi.md#getSecurityDataPointNumber) | **GET** /securities/{identifier}/data_point/{tag}/number | Data Point (Number) for Security
 [**getSecurityDataPointText**](SecurityApi.md#getSecurityDataPointText) | **GET** /securities/{identifier}/data_point/{tag}/text | Data Point (Text) for Security
 [**getSecurityHistoricalData**](SecurityApi.md#getSecurityHistoricalData) | **GET** /securities/{identifier}/historical_data/{tag} | Historical Data for Security
+[**getSecurityIntradayPrices**](SecurityApi.md#getSecurityIntradayPrices) | **GET** /securities/{identifier}/prices/intraday | Intraday Stock Prices for Security
 [**getSecurityLatestDividendRecord**](SecurityApi.md#getSecurityLatestDividendRecord) | **GET** /securities/{identifier}/dividends/latest | Lastest Dividend Record for Security
 [**getSecurityLatestEarningsRecord**](SecurityApi.md#getSecurityLatestEarningsRecord) | **GET** /securities/{identifier}/earnings/latest | Lastest Earnings Record for Security
 [**getSecurityRealtimePrice**](SecurityApi.md#getSecurityRealtimePrice) | **GET** /securities/{identifier}/prices/realtime | Realtime Stock Price for Security
@@ -20,7 +21,7 @@ Method | HTTP request | Description
 
 <a name="getAllSecurities"></a>
 # **getAllSecurities**
-> ApiResponseSecurities getAllSecurities(nextPage)
+> ApiResponseSecurities getAllSecurities(pageSize, nextPage)
 
 All Securities
 
@@ -39,10 +40,11 @@ auth.setApiKey("YOUR API KEY");
 
 SecurityApi securityApi = new SecurityApi();
 
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseSecurities result = securityApi.getAllSecurities(nextPage);
+    ApiResponseSecurities result = securityApi.getAllSecurities(pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#getAllSecurities");
@@ -54,6 +56,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -198,7 +201,7 @@ Name | Type | Description  | Notes
 
 <a name="getSecurityHistoricalData"></a>
 # **getSecurityHistoricalData**
-> ApiResponseSecurityHistoricalData getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage)
+> ApiResponseSecurityHistoricalData getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
 Historical Data for Security
 
@@ -226,10 +229,11 @@ String type = null; // String | Filter by type, when applicable
 LocalDate startDate = null; // LocalDate | Get historical data on or after this date
 LocalDate endDate = null; // LocalDate | Get historical date on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseSecurityHistoricalData result = securityApi.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage);
+    ApiResponseSecurityHistoricalData result = securityApi.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#getSecurityHistoricalData");
@@ -248,11 +252,66 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical date on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseSecurityHistoricalData**](ApiResponseSecurityHistoricalData.md)
+
+<a name="getSecurityIntradayPrices"></a>
+# **getSecurityIntradayPrices**
+> ApiResponseSecurityIntradayPrices getSecurityIntradayPrices(identifier, source, startDate, startTime, endDate, endTime)
+
+Intraday Stock Prices for Security
+
+Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
+
+### Example
+```java
+// Import classes:
+//import com.intrinio.invoker.ApiClient;
+//import com.intrinio.invoker.ApiException;
+//import com.intrinio.invoker.Configuration;
+//import com.intrinio.invoker.auth.*;
+//import com.intrinio.api.SecurityApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+auth.setApiKey("YOUR API KEY");
+
+SecurityApi securityApi = new SecurityApi();
+
+String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+String source = null; // String | Return intraday prices from the specified data source
+LocalDate startDate = null; // LocalDate | Return intraday prices starting at the specified date
+String startTime = "4200"; // String | Return intraday prices starting at the specified time on the `start_date` (timezone is UTC)
+LocalDate endDate = null; // LocalDate | Return intraday prices stopping at the specified date
+String endTime = "4200"; // String | Return intraday prices stopping at the specified time on the `end_date` (timezone is UTC)
+
+try {
+    ApiResponseSecurityIntradayPrices result = securityApi.getSecurityIntradayPrices(identifier, source, startDate, startTime, endDate, endTime);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling SecurityApi#getSecurityIntradayPrices");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
+ **source** | **String**| Return intraday prices from the specified data source | [optional] [enum: iex, bats]
+ **startDate** | **LocalDate**| Return intraday prices starting at the specified date | [optional]
+ **startTime** | **String**| Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) | [optional]
+ **endDate** | **LocalDate**| Return intraday prices stopping at the specified date | [optional]
+ **endTime** | **String**| Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) | [optional]
+
+### Return type
+
+[**ApiResponseSecurityIntradayPrices**](ApiResponseSecurityIntradayPrices.md)
 
 <a name="getSecurityLatestDividendRecord"></a>
 # **getSecurityLatestDividendRecord**
@@ -390,7 +449,7 @@ Name | Type | Description  | Notes
 
 <a name="getSecurityStockPriceAdjustments"></a>
 # **getSecurityStockPriceAdjustments**
-> ApiResponseSecurityStockPriceAdjustments getSecurityStockPriceAdjustments(identifier, startDate, endDate, nextPage)
+> ApiResponseSecurityStockPriceAdjustments getSecurityStockPriceAdjustments(identifier, startDate, endDate, pageSize, nextPage)
 
 Stock Price Adjustments by Security
 
@@ -414,10 +473,11 @@ SecurityApi securityApi = new SecurityApi();
 String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
 LocalDate startDate = null; // LocalDate | Return price adjustments on or after the date
 LocalDate endDate = null; // LocalDate | Return price adjustments on or before the date
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseSecurityStockPriceAdjustments result = securityApi.getSecurityStockPriceAdjustments(identifier, startDate, endDate, nextPage);
+    ApiResponseSecurityStockPriceAdjustments result = securityApi.getSecurityStockPriceAdjustments(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#getSecurityStockPriceAdjustments");
@@ -432,6 +492,7 @@ Name | Type | Description  | Notes
  **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
  **startDate** | **LocalDate**| Return price adjustments on or after the date | [optional]
  **endDate** | **LocalDate**| Return price adjustments on or before the date | [optional]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -440,7 +501,7 @@ Name | Type | Description  | Notes
 
 <a name="getSecurityStockPrices"></a>
 # **getSecurityStockPrices**
-> ApiResponseSecurityStockPrices getSecurityStockPrices(identifier, startDate, endDate, frequency, nextPage)
+> ApiResponseSecurityStockPrices getSecurityStockPrices(identifier, startDate, endDate, frequency, pageSize, nextPage)
 
 Stock Prices by Security
 
@@ -465,10 +526,11 @@ String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISI
 LocalDate startDate = null; // LocalDate | Return prices on or after the date
 LocalDate endDate = null; // LocalDate | Return prices on or before the date
 String frequency = "daily"; // String | Return stock prices in the given frequency
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseSecurityStockPrices result = securityApi.getSecurityStockPrices(identifier, startDate, endDate, frequency, nextPage);
+    ApiResponseSecurityStockPrices result = securityApi.getSecurityStockPrices(identifier, startDate, endDate, frequency, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#getSecurityStockPrices");
@@ -484,6 +546,7 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Return prices on or after the date | [optional]
  **endDate** | **LocalDate**| Return prices on or before the date | [optional]
  **frequency** | **String**| Return stock prices in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -492,7 +555,7 @@ Name | Type | Description  | Notes
 
 <a name="screenSecurities"></a>
 # **screenSecurities**
-> List&lt;SecurityScreenResult&gt; screenSecurities(logic, orderColumn, orderDirection, primaryOnly)
+> List&lt;SecurityScreenResult&gt; screenSecurities(logic, orderColumn, orderDirection, primaryOnly, pageSize)
 
 Screen Securities
 
@@ -517,9 +580,10 @@ SecurityScreenGroup logic = new SecurityScreenGroup(); // SecurityScreenGroup | 
 String orderColumn = "orderColumn_example"; // String | Results returned sorted by this column
 String orderDirection = "asc"; // String | Sort order to use with the order_column
 Boolean primaryOnly = false; // Boolean | Return only primary securities
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 
 try {
-    List<SecurityScreenResult> result = securityApi.screenSecurities(logic, orderColumn, orderDirection, primaryOnly);
+    List<SecurityScreenResult> result = securityApi.screenSecurities(logic, orderColumn, orderDirection, primaryOnly, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#screenSecurities");
@@ -535,6 +599,7 @@ Name | Type | Description  | Notes
  **orderColumn** | **String**| Results returned sorted by this column | [optional]
  **orderDirection** | **String**| Sort order to use with the order_column | [optional] [default to asc] [enum: asc, desc]
  **primaryOnly** | **Boolean**| Return only primary securities | [optional] [default to false]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
@@ -542,7 +607,7 @@ Name | Type | Description  | Notes
 
 <a name="searchSecurities"></a>
 # **searchSecurities**
-> ApiResponseSecurities searchSecurities(query)
+> ApiResponseSecuritiesSearch searchSecurities(query, pageSize)
 
 Search Securities
 
@@ -564,9 +629,10 @@ auth.setApiKey("YOUR API KEY");
 SecurityApi securityApi = new SecurityApi();
 
 String query = "Apple"; // String | 
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 
 try {
-    ApiResponseSecurities result = securityApi.searchSecurities(query);
+    ApiResponseSecuritiesSearch result = securityApi.searchSecurities(query, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SecurityApi#searchSecurities");
@@ -579,8 +645,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**|  |
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
-[**ApiResponseSecurities**](ApiResponseSecurities.md)
+[**ApiResponseSecuritiesSearch**](ApiResponseSecuritiesSearch.md)
 

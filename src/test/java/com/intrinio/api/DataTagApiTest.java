@@ -4,6 +4,8 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseDataTags;
+import com.intrinio.models.ApiResponseDataTagsSearch;
+import java.math.BigDecimal;
 import com.intrinio.models.DataTag;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -23,38 +25,23 @@ public class DataTagApiTest {
 
     
     /**
-     * Filter Data Tags
-     *
-     * Returns Data Tags that match the given filters
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void filterDataTagsTest() throws ApiException {
-        String tag = null;
-        String type = null;
-        String parent = null;
-        String statementCode = null;
-        String fsTemplate = null;
-        String nextPage = null;
-        ApiResponseDataTags response = api.filterDataTags(tag, type, parent, statementCode, fsTemplate, nextPage);
-
-        // TODO: test validations
-    }
-    
-    /**
      * All Data Tags
      *
-     * Returns All Data Tags
+     * Returns all Data Tags. Returns Data Tags matching parameters when specified.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getAllDataTagsTest() throws ApiException {
+        String tag = null;
+        String type = null;
+        String parent = null;
+        String statementCode = null;
+        String fsTemplate = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseDataTags response = api.getAllDataTags(nextPage);
+        ApiResponseDataTags response = api.getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -86,7 +73,8 @@ public class DataTagApiTest {
     @Test
     public void searchDataTagsTest() throws ApiException {
         String query = null;
-        ApiResponseDataTags response = api.searchDataTags(query);
+        BigDecimal pageSize = null;
+        ApiResponseDataTagsSearch response = api.searchDataTags(query, pageSize);
 
         // TODO: test validations
     }

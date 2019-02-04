@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.1.0
-- Package version: 1.1.2
+- API version: 2.1.1
+- Package version: 2.0.0
 
 
 ## Requirements
@@ -30,7 +30,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.intrinio</groupId>
     <artifactId>intrinio-sdk</artifactId>
-    <version>1.1.2</version>
+    <version>2.0.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -40,7 +40,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.intrinio:intrinio-sdk:1.1.2"
+compile "com.intrinio:intrinio-sdk:2.0.0"
 ```
 
 ### Others
@@ -51,7 +51,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/intrinio-sdk-1.1.2.jar
+* target/intrinio-sdk-2.0.0.jar
 * target/lib/*.jar
 
 ## SDK Code Examples
@@ -103,8 +103,6 @@ All URIs are relative to *https://api-v2.intrinio.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CompanyApi* | [**filterCompanies**](docs/CompanyApi.md#filterCompanies) | **GET** /companies/filter | Filter Companies
-*CompanyApi* | [**filterCompanyFundamentals**](docs/CompanyApi.md#filterCompanyFundamentals) | **GET** /companies/{identifier}/fundamentals/filter | Filter Fundamentals by Company
 *CompanyApi* | [**getAllCompanies**](docs/CompanyApi.md#getAllCompanies) | **GET** /companies | All Companies
 *CompanyApi* | [**getAllCompanyNews**](docs/CompanyApi.md#getAllCompanyNews) | **GET** /companies/news | All News
 *CompanyApi* | [**getCompany**](docs/CompanyApi.md#getCompany) | **GET** /companies/{identifier} | Lookup Company
@@ -119,12 +117,9 @@ Class | Method | HTTP request | Description
 *CompanyApi* | [**searchCompanies**](docs/CompanyApi.md#searchCompanies) | **GET** /companies/search | Search Companies
 *DataPointApi* | [**getDataPointNumber**](docs/DataPointApi.md#getDataPointNumber) | **GET** /data_point/{identifier}/{tag}/number | Data Point (Number)
 *DataPointApi* | [**getDataPointText**](docs/DataPointApi.md#getDataPointText) | **GET** /data_point/{identifier}/{tag}/text | Data Point (Text)
-*DataTagApi* | [**filterDataTags**](docs/DataTagApi.md#filterDataTags) | **GET** /data_tags/filter | Filter Data Tags
 *DataTagApi* | [**getAllDataTags**](docs/DataTagApi.md#getAllDataTags) | **GET** /data_tags | All Data Tags
 *DataTagApi* | [**getDataTagById**](docs/DataTagApi.md#getDataTagById) | **GET** /data_tags/{identifier} | Lookup Data Tag
 *DataTagApi* | [**searchDataTags**](docs/DataTagApi.md#searchDataTags) | **GET** /data_tags/search | Search Data Tags
-*FilingApi* | [**filterFilings**](docs/FilingApi.md#filterFilings) | **GET** /filings/filter | Filter Filings
-*FilingApi* | [**filterNotes**](docs/FilingApi.md#filterNotes) | **GET** /filings/notes/filter | Filter Filing Notes
 *FilingApi* | [**getAllFilings**](docs/FilingApi.md#getAllFilings) | **GET** /filings | All Filings
 *FilingApi* | [**getAllNotes**](docs/FilingApi.md#getAllNotes) | **GET** /filings/notes | All Filing Notes
 *FilingApi* | [**getFilingById**](docs/FilingApi.md#getFilingById) | **GET** /filings/{id} | Lookup Filing
@@ -155,11 +150,15 @@ Class | Method | HTTP request | Description
 *IndexApi* | [**searchEconomicIndices**](docs/IndexApi.md#searchEconomicIndices) | **GET** /indices/economic/search | Search Economic Indices
 *IndexApi* | [**searchSicIndices**](docs/IndexApi.md#searchSicIndices) | **GET** /indices/sic/search | Search SIC Indices
 *IndexApi* | [**searchStockMarketsIndices**](docs/IndexApi.md#searchStockMarketsIndices) | **GET** /indices/stock_market/search | Search Stock Market Indices
+*MunicipalityApi* | [**getAllMunicipalities**](docs/MunicipalityApi.md#getAllMunicipalities) | **GET** /municipalities | All Municipalities
+*MunicipalityApi* | [**getMunicipalityById**](docs/MunicipalityApi.md#getMunicipalityById) | **GET** /municipalities/{id} | Municipality by ID
+*MunicipalityApi* | [**getMunicipalityFinancials**](docs/MunicipalityApi.md#getMunicipalityFinancials) | **GET** /municipalities/{id}/financials | Financials for a Municipality
 *SecurityApi* | [**getAllSecurities**](docs/SecurityApi.md#getAllSecurities) | **GET** /securities | All Securities
 *SecurityApi* | [**getSecurityById**](docs/SecurityApi.md#getSecurityById) | **GET** /securities/{identifier} | Lookup Security
 *SecurityApi* | [**getSecurityDataPointNumber**](docs/SecurityApi.md#getSecurityDataPointNumber) | **GET** /securities/{identifier}/data_point/{tag}/number | Data Point (Number) for Security
 *SecurityApi* | [**getSecurityDataPointText**](docs/SecurityApi.md#getSecurityDataPointText) | **GET** /securities/{identifier}/data_point/{tag}/text | Data Point (Text) for Security
 *SecurityApi* | [**getSecurityHistoricalData**](docs/SecurityApi.md#getSecurityHistoricalData) | **GET** /securities/{identifier}/historical_data/{tag} | Historical Data for Security
+*SecurityApi* | [**getSecurityIntradayPrices**](docs/SecurityApi.md#getSecurityIntradayPrices) | **GET** /securities/{identifier}/prices/intraday | Intraday Stock Prices for Security
 *SecurityApi* | [**getSecurityLatestDividendRecord**](docs/SecurityApi.md#getSecurityLatestDividendRecord) | **GET** /securities/{identifier}/dividends/latest | Lastest Dividend Record for Security
 *SecurityApi* | [**getSecurityLatestEarningsRecord**](docs/SecurityApi.md#getSecurityLatestEarningsRecord) | **GET** /securities/{identifier}/earnings/latest | Lastest Earnings Record for Security
 *SecurityApi* | [**getSecurityRealtimePrice**](docs/SecurityApi.md#getSecurityRealtimePrice) | **GET** /securities/{identifier}/prices/realtime | Realtime Stock Price for Security
@@ -167,7 +166,6 @@ Class | Method | HTTP request | Description
 *SecurityApi* | [**getSecurityStockPrices**](docs/SecurityApi.md#getSecurityStockPrices) | **GET** /securities/{identifier}/prices | Stock Prices by Security
 *SecurityApi* | [**screenSecurities**](docs/SecurityApi.md#screenSecurities) | **POST** /securities/screen | Screen Securities
 *SecurityApi* | [**searchSecurities**](docs/SecurityApi.md#searchSecurities) | **GET** /securities/search | Search Securities
-*StockExchangeApi* | [**filterStockExchanges**](docs/StockExchangeApi.md#filterStockExchanges) | **GET** /stock_exchanges/filter | Filter Stock Exchanges
 *StockExchangeApi* | [**getAllStockExchanges**](docs/StockExchangeApi.md#getAllStockExchanges) | **GET** /stock_exchanges | All Stock Exchanges
 *StockExchangeApi* | [**getStockExchangeById**](docs/StockExchangeApi.md#getStockExchangeById) | **GET** /stock_exchanges/{identifier} | Lookup Stock Exchange
 *StockExchangeApi* | [**getStockExchangePriceAdjustments**](docs/StockExchangeApi.md#getStockExchangePriceAdjustments) | **GET** /stock_exchanges/{identifier}/prices/adjustments | Stock Price Adjustments by Exchange
@@ -179,24 +177,32 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [ApiResponseCompanies](docs/ApiResponseCompanies.md)
+ - [ApiResponseCompaniesSearch](docs/ApiResponseCompaniesSearch.md)
  - [ApiResponseCompanyFilings](docs/ApiResponseCompanyFilings.md)
  - [ApiResponseCompanyFundamentals](docs/ApiResponseCompanyFundamentals.md)
  - [ApiResponseCompanyHistoricalData](docs/ApiResponseCompanyHistoricalData.md)
  - [ApiResponseCompanyNews](docs/ApiResponseCompanyNews.md)
  - [ApiResponseCompanySecurities](docs/ApiResponseCompanySecurities.md)
  - [ApiResponseDataTags](docs/ApiResponseDataTags.md)
+ - [ApiResponseDataTagsSearch](docs/ApiResponseDataTagsSearch.md)
  - [ApiResponseEconomicIndexHistoricalData](docs/ApiResponseEconomicIndexHistoricalData.md)
  - [ApiResponseEconomicIndices](docs/ApiResponseEconomicIndices.md)
+ - [ApiResponseEconomicIndicesSearch](docs/ApiResponseEconomicIndicesSearch.md)
  - [ApiResponseFilingNotes](docs/ApiResponseFilingNotes.md)
  - [ApiResponseFilingNotesSearch](docs/ApiResponseFilingNotesSearch.md)
  - [ApiResponseFilings](docs/ApiResponseFilings.md)
  - [ApiResponseHistoricalData](docs/ApiResponseHistoricalData.md)
+ - [ApiResponseMunicipalities](docs/ApiResponseMunicipalities.md)
+ - [ApiResponseMunicipalitiyFinancials](docs/ApiResponseMunicipalitiyFinancials.md)
  - [ApiResponseNews](docs/ApiResponseNews.md)
  - [ApiResponseReportedFinancials](docs/ApiResponseReportedFinancials.md)
  - [ApiResponseSICIndexHistoricalData](docs/ApiResponseSICIndexHistoricalData.md)
  - [ApiResponseSICIndices](docs/ApiResponseSICIndices.md)
+ - [ApiResponseSICIndicesSearch](docs/ApiResponseSICIndicesSearch.md)
  - [ApiResponseSecurities](docs/ApiResponseSecurities.md)
+ - [ApiResponseSecuritiesSearch](docs/ApiResponseSecuritiesSearch.md)
  - [ApiResponseSecurityHistoricalData](docs/ApiResponseSecurityHistoricalData.md)
+ - [ApiResponseSecurityIntradayPrices](docs/ApiResponseSecurityIntradayPrices.md)
  - [ApiResponseSecurityStockPriceAdjustments](docs/ApiResponseSecurityStockPriceAdjustments.md)
  - [ApiResponseSecurityStockPrices](docs/ApiResponseSecurityStockPrices.md)
  - [ApiResponseStandardizedFinancials](docs/ApiResponseStandardizedFinancials.md)
@@ -207,6 +213,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseStockExchanges](docs/ApiResponseStockExchanges.md)
  - [ApiResponseStockMarketIndexHistoricalData](docs/ApiResponseStockMarketIndexHistoricalData.md)
  - [ApiResponseStockMarketIndices](docs/ApiResponseStockMarketIndices.md)
+ - [ApiResponseStockMarketIndicesSearch](docs/ApiResponseStockMarketIndicesSearch.md)
  - [Company](docs/Company.md)
  - [CompanyFiling](docs/CompanyFiling.md)
  - [CompanyNews](docs/CompanyNews.md)
@@ -226,6 +233,9 @@ Class | Method | HTTP request | Description
  - [Fundamental](docs/Fundamental.md)
  - [FundamentalSummary](docs/FundamentalSummary.md)
  - [HistoricalData](docs/HistoricalData.md)
+ - [IntradayStockPrice](docs/IntradayStockPrice.md)
+ - [Municipality](docs/Municipality.md)
+ - [MunicipalityFinancial](docs/MunicipalityFinancial.md)
  - [RealtimeStockPrice](docs/RealtimeStockPrice.md)
  - [RealtimeStockPriceSecurity](docs/RealtimeStockPriceSecurity.md)
  - [ReportedFinancial](docs/ReportedFinancial.md)

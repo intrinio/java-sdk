@@ -4,7 +4,9 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseSecurities;
+import com.intrinio.models.ApiResponseSecuritiesSearch;
 import com.intrinio.models.ApiResponseSecurityHistoricalData;
+import com.intrinio.models.ApiResponseSecurityIntradayPrices;
 import com.intrinio.models.ApiResponseSecurityStockPriceAdjustments;
 import com.intrinio.models.ApiResponseSecurityStockPrices;
 import java.math.BigDecimal;
@@ -42,8 +44,9 @@ public class SecurityApiTest {
      */
     @Test
     public void getAllSecuritiesTest() throws ApiException {
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseSecurities response = api.getAllSecurities(nextPage);
+        ApiResponseSecurities response = api.getAllSecurities(pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -115,8 +118,30 @@ public class SecurityApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         String sortOrder = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseSecurityHistoricalData response = api.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage);
+        ApiResponseSecurityHistoricalData response = api.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Intraday Stock Prices for Security
+     *
+     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityIntradayPricesTest() throws ApiException {
+        String identifier = null;
+        String source = null;
+        LocalDate startDate = null;
+        String startTime = null;
+        LocalDate endDate = null;
+        String endTime = null;
+        ApiResponseSecurityIntradayPrices response = api.getSecurityIntradayPrices(identifier, source, startDate, startTime, endDate, endTime);
 
         // TODO: test validations
     }
@@ -183,8 +208,9 @@ public class SecurityApiTest {
         String identifier = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseSecurityStockPriceAdjustments response = api.getSecurityStockPriceAdjustments(identifier, startDate, endDate, nextPage);
+        ApiResponseSecurityStockPriceAdjustments response = api.getSecurityStockPriceAdjustments(identifier, startDate, endDate, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -203,8 +229,9 @@ public class SecurityApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         String frequency = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseSecurityStockPrices response = api.getSecurityStockPrices(identifier, startDate, endDate, frequency, nextPage);
+        ApiResponseSecurityStockPrices response = api.getSecurityStockPrices(identifier, startDate, endDate, frequency, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -223,7 +250,8 @@ public class SecurityApiTest {
         String orderColumn = null;
         String orderDirection = null;
         Boolean primaryOnly = null;
-        List<SecurityScreenResult> response = api.screenSecurities(logic, orderColumn, orderDirection, primaryOnly);
+        BigDecimal pageSize = null;
+        List<SecurityScreenResult> response = api.screenSecurities(logic, orderColumn, orderDirection, primaryOnly, pageSize);
 
         // TODO: test validations
     }
@@ -239,7 +267,8 @@ public class SecurityApiTest {
     @Test
     public void searchSecuritiesTest() throws ApiException {
         String query = null;
-        ApiResponseSecurities response = api.searchSecurities(query);
+        BigDecimal pageSize = null;
+        ApiResponseSecuritiesSearch response = api.searchSecurities(query, pageSize);
 
         // TODO: test validations
     }

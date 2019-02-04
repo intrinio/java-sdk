@@ -17,6 +17,7 @@ import java.io.IOException;
 
 
 import com.intrinio.models.ApiResponseHistoricalData;
+import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
@@ -52,13 +53,14 @@ public class HistoricalDataApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -76,6 +78,8 @@ public class HistoricalDataApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (sortOrder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sort_order", sortOrder));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -112,7 +116,7 @@ public class HistoricalDataApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -125,7 +129,7 @@ public class HistoricalDataApi {
         }
         
 
-        com.squareup.okhttp.Call call = getHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -139,12 +143,13 @@ public class HistoricalDataApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseHistoricalData getHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseHistoricalData> resp = getHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    public ApiResponseHistoricalData getHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseHistoricalData> resp = getHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -157,12 +162,13 @@ public class HistoricalDataApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseHistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseHistoricalData> getHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, null, null);
+    public ApiResponse<ApiResponseHistoricalData> getHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseHistoricalData>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -176,12 +182,13 @@ public class HistoricalDataApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseHistoricalData> callback) throws ApiException {
+    public com.squareup.okhttp.Call getHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseHistoricalData> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -202,7 +209,7 @@ public class HistoricalDataApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseHistoricalData>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

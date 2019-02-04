@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 <a name="getAllEconomicIndices"></a>
 # **getAllEconomicIndices**
-> ApiResponseEconomicIndices getAllEconomicIndices(nextPage)
+> ApiResponseEconomicIndices getAllEconomicIndices(pageSize, nextPage)
 
 All Economic Indices
 
@@ -45,10 +45,11 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseEconomicIndices result = indexApi.getAllEconomicIndices(nextPage);
+    ApiResponseEconomicIndices result = indexApi.getAllEconomicIndices(pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getAllEconomicIndices");
@@ -60,6 +61,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -68,7 +70,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllSicIndices"></a>
 # **getAllSicIndices**
-> ApiResponseSICIndices getAllSicIndices(nextPage)
+> ApiResponseSICIndices getAllSicIndices(pageSize, nextPage)
 
 All SIC Indices
 
@@ -87,10 +89,11 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseSICIndices result = indexApi.getAllSicIndices(nextPage);
+    ApiResponseSICIndices result = indexApi.getAllSicIndices(pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getAllSicIndices");
@@ -102,6 +105,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -110,7 +114,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllStockMarketIndices"></a>
 # **getAllStockMarketIndices**
-> ApiResponseStockMarketIndices getAllStockMarketIndices(nextPage)
+> ApiResponseStockMarketIndices getAllStockMarketIndices(pageSize, nextPage)
 
 All Stock Market Indices
 
@@ -129,10 +133,11 @@ auth.setApiKey("YOUR API KEY");
 
 IndexApi indexApi = new IndexApi();
 
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseStockMarketIndices result = indexApi.getAllStockMarketIndices(nextPage);
+    ApiResponseStockMarketIndices result = indexApi.getAllStockMarketIndices(pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getAllStockMarketIndices");
@@ -144,6 +149,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -286,7 +292,7 @@ Name | Type | Description  | Notes
 
 <a name="getEconomicIndexHistoricalData"></a>
 # **getEconomicIndexHistoricalData**
-> ApiResponseEconomicIndexHistoricalData getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
+> ApiResponseEconomicIndexHistoricalData getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
 Historical Data for an Economic Index
 
@@ -313,10 +319,11 @@ String type = null; // String | Filter by type, when applicable
 LocalDate startDate = null; // LocalDate | Get historical data on or after this date
 LocalDate endDate = null; // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseEconomicIndexHistoricalData result = indexApi.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    ApiResponseEconomicIndexHistoricalData result = indexApi.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getEconomicIndexHistoricalData");
@@ -334,6 +341,7 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -476,7 +484,7 @@ Name | Type | Description  | Notes
 
 <a name="getSicIndexHistoricalData"></a>
 # **getSicIndexHistoricalData**
-> ApiResponseSICIndexHistoricalData getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
+> ApiResponseSICIndexHistoricalData getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
 Historical Data for an SIC Index
 
@@ -503,10 +511,11 @@ String type = null; // String | Filter by type, when applicable
 LocalDate startDate = null; // LocalDate | Get historical data on or after this date
 LocalDate endDate = null; // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseSICIndexHistoricalData result = indexApi.getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    ApiResponseSICIndexHistoricalData result = indexApi.getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getSicIndexHistoricalData");
@@ -524,6 +533,7 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -666,7 +676,7 @@ Name | Type | Description  | Notes
 
 <a name="getStockMarketIndexHistoricalData"></a>
 # **getStockMarketIndexHistoricalData**
-> ApiResponseStockMarketIndexHistoricalData getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
+> ApiResponseStockMarketIndexHistoricalData getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
 Historical Data for Stock Market Index
 
@@ -693,10 +703,11 @@ String type = null; // String | Filter by type, when applicable
 LocalDate startDate = null; // LocalDate | Get historical data on or after this date
 LocalDate endDate = null; // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseStockMarketIndexHistoricalData result = indexApi.getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    ApiResponseStockMarketIndexHistoricalData result = indexApi.getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#getStockMarketIndexHistoricalData");
@@ -714,6 +725,7 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -722,7 +734,7 @@ Name | Type | Description  | Notes
 
 <a name="searchEconomicIndices"></a>
 # **searchEconomicIndices**
-> ApiResponseEconomicIndices searchEconomicIndices(query)
+> ApiResponseEconomicIndicesSearch searchEconomicIndices(query, pageSize)
 
 Search Economic Indices
 
@@ -744,9 +756,10 @@ auth.setApiKey("YOUR API KEY");
 IndexApi indexApi = new IndexApi();
 
 String query = "GDP"; // String | Search query
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 
 try {
-    ApiResponseEconomicIndices result = indexApi.searchEconomicIndices(query);
+    ApiResponseEconomicIndicesSearch result = indexApi.searchEconomicIndices(query, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#searchEconomicIndices");
@@ -759,14 +772,15 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| Search query |
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
-[**ApiResponseEconomicIndices**](ApiResponseEconomicIndices.md)
+[**ApiResponseEconomicIndicesSearch**](ApiResponseEconomicIndicesSearch.md)
 
 <a name="searchSicIndices"></a>
 # **searchSicIndices**
-> ApiResponseSICIndices searchSicIndices(query)
+> ApiResponseSICIndicesSearch searchSicIndices(query, pageSize)
 
 Search SIC Indices
 
@@ -788,9 +802,10 @@ auth.setApiKey("YOUR API KEY");
 IndexApi indexApi = new IndexApi();
 
 String query = "agriculture"; // String | Search query
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 
 try {
-    ApiResponseSICIndices result = indexApi.searchSicIndices(query);
+    ApiResponseSICIndicesSearch result = indexApi.searchSicIndices(query, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#searchSicIndices");
@@ -803,14 +818,15 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| Search query |
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
-[**ApiResponseSICIndices**](ApiResponseSICIndices.md)
+[**ApiResponseSICIndicesSearch**](ApiResponseSICIndicesSearch.md)
 
 <a name="searchStockMarketsIndices"></a>
 # **searchStockMarketsIndices**
-> ApiResponseStockMarketIndices searchStockMarketsIndices(query)
+> ApiResponseStockMarketIndicesSearch searchStockMarketsIndices(query, pageSize)
 
 Search Stock Market Indices
 
@@ -832,9 +848,10 @@ auth.setApiKey("YOUR API KEY");
 IndexApi indexApi = new IndexApi();
 
 String query = "dow"; // String | Search query
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 
 try {
-    ApiResponseStockMarketIndices result = indexApi.searchStockMarketsIndices(query);
+    ApiResponseStockMarketIndicesSearch result = indexApi.searchStockMarketsIndices(query, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IndexApi#searchStockMarketsIndices");
@@ -847,8 +864,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| Search query |
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
-[**ApiResponseStockMarketIndices**](ApiResponseStockMarketIndices.md)
+[**ApiResponseStockMarketIndicesSearch**](ApiResponseStockMarketIndicesSearch.md)
 

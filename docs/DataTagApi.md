@@ -4,19 +4,18 @@ All URIs are relative to *https://api-v2.intrinio.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**filterDataTags**](DataTagApi.md#filterDataTags) | **GET** /data_tags/filter | Filter Data Tags
 [**getAllDataTags**](DataTagApi.md#getAllDataTags) | **GET** /data_tags | All Data Tags
 [**getDataTagById**](DataTagApi.md#getDataTagById) | **GET** /data_tags/{identifier} | Lookup Data Tag
 [**searchDataTags**](DataTagApi.md#searchDataTags) | **GET** /data_tags/search | Search Data Tags
 
 
-<a name="filterDataTags"></a>
-# **filterDataTags**
-> ApiResponseDataTags filterDataTags(tag, type, parent, statementCode, fsTemplate, nextPage)
+<a name="getAllDataTags"></a>
+# **getAllDataTags**
+> ApiResponseDataTags getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage)
 
-Filter Data Tags
+All Data Tags
 
-Returns Data Tags that match the given filters
+Returns all Data Tags. Returns Data Tags matching parameters when specified.
 
 ### Example
 ```java
@@ -38,13 +37,14 @@ String type = null; // String | Type
 String parent = null; // String | ID of tag parent
 String statementCode = "income_statement"; // String | Statement Code
 String fsTemplate = "industrial"; // String | Template
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseDataTags result = dataTagApi.filterDataTags(tag, type, parent, statementCode, fsTemplate, nextPage);
+    ApiResponseDataTags result = dataTagApi.getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling DataTagApi#filterDataTags");
+    System.err.println("Exception when calling DataTagApi#getAllDataTags");
     e.printStackTrace();
 }
 ```
@@ -58,50 +58,7 @@ Name | Type | Description  | Notes
  **parent** | **String**| ID of tag parent | [optional]
  **statementCode** | **String**| Statement Code | [optional] [enum: income_statement, balance_sheet_statement, cash_flow_statement, calculations]
  **fsTemplate** | **String**| Template | [optional] [default to industrial] [enum: industrial, financial]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
-
-### Return type
-
-[**ApiResponseDataTags**](ApiResponseDataTags.md)
-
-<a name="getAllDataTags"></a>
-# **getAllDataTags**
-> ApiResponseDataTags getAllDataTags(nextPage)
-
-All Data Tags
-
-Returns All Data Tags
-
-### Example
-```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.DataTagApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
-
-DataTagApi dataTagApi = new DataTagApi();
-
-String nextPage = null; // String | Gets the next page of data from a previous API call
-
-try {
-    ApiResponseDataTags result = dataTagApi.getAllDataTags(nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DataTagApi#getAllDataTags");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -154,7 +111,7 @@ Name | Type | Description  | Notes
 
 <a name="searchDataTags"></a>
 # **searchDataTags**
-> ApiResponseDataTags searchDataTags(query)
+> ApiResponseDataTagsSearch searchDataTags(query, pageSize)
 
 Search Data Tags
 
@@ -176,9 +133,10 @@ auth.setApiKey("YOUR API KEY");
 DataTagApi dataTagApi = new DataTagApi();
 
 String query = "revenue"; // String | 
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 
 try {
-    ApiResponseDataTags result = dataTagApi.searchDataTags(query);
+    ApiResponseDataTagsSearch result = dataTagApi.searchDataTags(query, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DataTagApi#searchDataTags");
@@ -191,8 +149,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**|  |
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
-[**ApiResponseDataTags**](ApiResponseDataTags.md)
+[**ApiResponseDataTagsSearch**](ApiResponseDataTagsSearch.md)
 

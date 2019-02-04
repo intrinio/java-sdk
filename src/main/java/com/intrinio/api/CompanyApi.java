@@ -17,6 +17,7 @@ import java.io.IOException;
 
 
 import com.intrinio.models.ApiResponseCompanies;
+import com.intrinio.models.ApiResponseCompaniesSearch;
 import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
@@ -54,29 +55,30 @@ public class CompanyApi {
     }
 
     /**
-     * Build call for filterCompanies
-     * @param lastFilingDate Last filing date (optional)
+     * Build call for getAllCompanies
+     * @param latestFilingDate Last filing date (optional)
      * @param sic Standard Industrial Classification code (optional)
      * @param template Template (optional)
      * @param sector Industry sector (optional)
      * @param industryCategory Industry category (optional)
      * @param industryGroup Industry group (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call filterCompaniesCall(LocalDate lastFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompaniesCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/companies/filter";
+        String localVarPath = "/companies";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (lastFilingDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("last_filing_date", lastFilingDate));
+        if (latestFilingDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("latest_filing_date", latestFilingDate));
         if (sic != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sic", sic));
         if (template != null)
@@ -87,6 +89,8 @@ public class CompanyApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("industry_category", industryCategory));
         if (industryGroup != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("industry_group", industryGroup));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -123,362 +127,69 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call filterCompaniesValidateBeforeCall(LocalDate lastFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllCompaniesValidateBeforeCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = filterCompaniesCall(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Filter Companies
-     * Returns Companies matching the specified filters
-     * @param lastFilingDate Last filing date (optional)
-     * @param sic Standard Industrial Classification code (optional)
-     * @param template Template (optional)
-     * @param sector Industry sector (optional)
-     * @param industryCategory Industry category (optional)
-     * @param industryGroup Industry group (optional)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponseCompanies
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponseCompanies filterCompanies(LocalDate lastFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanies> resp = filterCompaniesWithHttpInfo(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage);
-        return resp.getData();
-    }
-
-    /**
-     * Filter Companies
-     * Returns Companies matching the specified filters
-     * @param lastFilingDate Last filing date (optional)
-     * @param sic Standard Industrial Classification code (optional)
-     * @param template Template (optional)
-     * @param sector Industry sector (optional)
-     * @param industryCategory Industry category (optional)
-     * @param industryGroup Industry group (optional)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponse&lt;ApiResponseCompanies&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<ApiResponseCompanies> filterCompaniesWithHttpInfo(LocalDate lastFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = filterCompaniesValidateBeforeCall(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Filter Companies (asynchronously)
-     * Returns Companies matching the specified filters
-     * @param lastFilingDate Last filing date (optional)
-     * @param sic Standard Industrial Classification code (optional)
-     * @param template Template (optional)
-     * @param sector Industry sector (optional)
-     * @param industryCategory Industry category (optional)
-     * @param industryGroup Industry group (optional)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call filterCompaniesAsync(LocalDate lastFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, String nextPage, final ApiCallback<ApiResponseCompanies> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = filterCompaniesValidateBeforeCall(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for filterCompanyFundamentals
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param filedAfter Filed on or after this date (optional)
-     * @param filedBefore Filed on or before this date (optional)
-     * @param reportedOnly Only as-reported fundamentals (optional)
-     * @param fiscalYear Only for the given fiscal year (optional)
-     * @param statementCode Only of the given statement code (optional)
-     * @param type Only of the given type (optional)
-     * @param startDate Only on or after the given date (optional)
-     * @param endDate Only on or before the given date (optional)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call filterCompanyFundamentalsCall(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/companies/{identifier}/fundamentals/filter"
-            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (filedAfter != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("filed_after", filedAfter));
-        if (filedBefore != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("filed_before", filedBefore));
-        if (reportedOnly != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("reported_only", reportedOnly));
-        if (fiscalYear != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_year", fiscalYear));
-        if (statementCode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("statement_code", statementCode));
-        if (type != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
-        if (startDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
-        if (endDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
-        if (nextPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call filterCompanyFundamentalsValidateBeforeCall(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'identifier' is set
-        if (identifier == null) {
-            throw new ApiException("Missing the required parameter 'identifier' when calling filterCompanyFundamentals(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = filterCompanyFundamentalsCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Filter Fundamentals by Company
-     * Returns Fundamentals for the Company with the given &#x60;identifier&#x60; and matching the specified filters
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param filedAfter Filed on or after this date (optional)
-     * @param filedBefore Filed on or before this date (optional)
-     * @param reportedOnly Only as-reported fundamentals (optional)
-     * @param fiscalYear Only for the given fiscal year (optional)
-     * @param statementCode Only of the given statement code (optional)
-     * @param type Only of the given type (optional)
-     * @param startDate Only on or after the given date (optional)
-     * @param endDate Only on or before the given date (optional)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponseCompanyFundamentals
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponseCompanyFundamentals filterCompanyFundamentals(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanyFundamentals> resp = filterCompanyFundamentalsWithHttpInfo(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage);
-        return resp.getData();
-    }
-
-    /**
-     * Filter Fundamentals by Company
-     * Returns Fundamentals for the Company with the given &#x60;identifier&#x60; and matching the specified filters
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param filedAfter Filed on or after this date (optional)
-     * @param filedBefore Filed on or before this date (optional)
-     * @param reportedOnly Only as-reported fundamentals (optional)
-     * @param fiscalYear Only for the given fiscal year (optional)
-     * @param statementCode Only of the given statement code (optional)
-     * @param type Only of the given type (optional)
-     * @param startDate Only on or after the given date (optional)
-     * @param endDate Only on or before the given date (optional)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponse&lt;ApiResponseCompanyFundamentals&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<ApiResponseCompanyFundamentals> filterCompanyFundamentalsWithHttpInfo(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = filterCompanyFundamentalsValidateBeforeCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseCompanyFundamentals>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Filter Fundamentals by Company (asynchronously)
-     * Returns Fundamentals for the Company with the given &#x60;identifier&#x60; and matching the specified filters
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param filedAfter Filed on or after this date (optional)
-     * @param filedBefore Filed on or before this date (optional)
-     * @param reportedOnly Only as-reported fundamentals (optional)
-     * @param fiscalYear Only for the given fiscal year (optional)
-     * @param statementCode Only of the given statement code (optional)
-     * @param type Only of the given type (optional)
-     * @param startDate Only on or after the given date (optional)
-     * @param endDate Only on or before the given date (optional)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call filterCompanyFundamentalsAsync(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, String nextPage, final ApiCallback<ApiResponseCompanyFundamentals> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = filterCompanyFundamentalsValidateBeforeCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseCompanyFundamentals>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for getAllCompanies
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getAllCompaniesCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/companies";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (nextPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllCompaniesValidateBeforeCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-
-        com.squareup.okhttp.Call call = getAllCompaniesCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompaniesCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * All Companies
-     * Returns all Companies
+     * Returns all Companies. When parameters are specified, returns matching companies.
+     * @param latestFilingDate Last filing date (optional)
+     * @param sic Standard Industrial Classification code (optional)
+     * @param template Template (optional)
+     * @param sector Industry sector (optional)
+     * @param industryCategory Industry category (optional)
+     * @param industryGroup Industry group (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanies
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseCompanies getAllCompanies(String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanies> resp = getAllCompaniesWithHttpInfo(nextPage);
+    public ApiResponseCompanies getAllCompanies(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseCompanies> resp = getAllCompaniesWithHttpInfo(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage);
         return resp.getData();
     }
 
     /**
      * All Companies
-     * Returns all Companies
+     * Returns all Companies. When parameters are specified, returns matching companies.
+     * @param latestFilingDate Last filing date (optional)
+     * @param sic Standard Industrial Classification code (optional)
+     * @param template Template (optional)
+     * @param sector Industry sector (optional)
+     * @param industryCategory Industry category (optional)
+     * @param industryGroup Industry group (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanies&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanies> getAllCompaniesWithHttpInfo(String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(nextPage, null, null);
+    public ApiResponse<ApiResponseCompanies> getAllCompaniesWithHttpInfo(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * All Companies (asynchronously)
-     * Returns all Companies
+     * Returns all Companies. When parameters are specified, returns matching companies.
+     * @param latestFilingDate Last filing date (optional)
+     * @param sic Standard Industrial Classification code (optional)
+     * @param template Template (optional)
+     * @param sector Industry sector (optional)
+     * @param industryCategory Industry category (optional)
+     * @param industryGroup Industry group (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllCompaniesAsync(String nextPage, final ApiCallback<ApiResponseCompanies> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompaniesAsync(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseCompanies> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -499,20 +210,21 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getAllCompanyNews
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllCompanyNewsCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompanyNewsCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -520,6 +232,8 @@ public class CompanyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -556,10 +270,10 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllCompanyNewsValidateBeforeCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllCompanyNewsValidateBeforeCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllCompanyNewsCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompanyNewsCall(pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -567,24 +281,26 @@ public class CompanyApi {
     /**
      * All News
      * Returns all News for all Companies
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseNews
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseNews getAllCompanyNews(String nextPage) throws ApiException {
-        ApiResponse<ApiResponseNews> resp = getAllCompanyNewsWithHttpInfo(nextPage);
+    public ApiResponseNews getAllCompanyNews(BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseNews> resp = getAllCompanyNewsWithHttpInfo(pageSize, nextPage);
         return resp.getData();
     }
 
     /**
      * All News
      * Returns all News for all Companies
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseNews&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseNews> getAllCompanyNewsWithHttpInfo(String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllCompanyNewsValidateBeforeCall(nextPage, null, null);
+    public ApiResponse<ApiResponseNews> getAllCompanyNewsWithHttpInfo(BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllCompanyNewsValidateBeforeCall(pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseNews>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -592,12 +308,13 @@ public class CompanyApi {
     /**
      * All News (asynchronously)
      * Returns all News for all Companies
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllCompanyNewsAsync(String nextPage, final ApiCallback<ApiResponseNews> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompanyNewsAsync(BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseNews> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -618,7 +335,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllCompanyNewsValidateBeforeCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompanyNewsValidateBeforeCall(pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseNews>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1015,13 +732,14 @@ public class CompanyApi {
     /**
      * Build call for getCompanyFilings
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFilingsCall(String identifier, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFilingsCall(String identifier, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1030,6 +748,8 @@ public class CompanyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -1066,7 +786,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyFilingsValidateBeforeCall(String identifier, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyFilingsValidateBeforeCall(String identifier, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1074,7 +794,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCompanyFilingsCall(identifier, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFilingsCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1083,12 +803,13 @@ public class CompanyApi {
      * All Filings by Company
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyFilings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseCompanyFilings getCompanyFilings(String identifier, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanyFilings> resp = getCompanyFilingsWithHttpInfo(identifier, nextPage);
+    public ApiResponseCompanyFilings getCompanyFilings(String identifier, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseCompanyFilings> resp = getCompanyFilingsWithHttpInfo(identifier, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -1096,12 +817,13 @@ public class CompanyApi {
      * All Filings by Company
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanyFilings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanyFilings> getCompanyFilingsWithHttpInfo(String identifier, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanyFilings> getCompanyFilingsWithHttpInfo(String identifier, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFilings>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1110,12 +832,13 @@ public class CompanyApi {
      * All Filings by Company (asynchronously)
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFilingsAsync(String identifier, String nextPage, final ApiCallback<ApiResponseCompanyFilings> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFilingsAsync(String identifier, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseCompanyFilings> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1136,7 +859,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFilings>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1144,13 +867,22 @@ public class CompanyApi {
     /**
      * Build call for getCompanyFundamentals
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param filedAfter Filed on or after this date (optional)
+     * @param filedBefore Filed on or before this date (optional)
+     * @param reportedOnly Only as-reported fundamentals (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param statementCode Only of the given statement code (optional)
+     * @param type Only of the given type (optional)
+     * @param startDate Only on or after the given date (optional)
+     * @param endDate Only on or before the given date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFundamentalsCall(String identifier, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFundamentalsCall(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1159,6 +891,24 @@ public class CompanyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (filedAfter != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("filed_after", filedAfter));
+        if (filedBefore != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("filed_before", filedBefore));
+        if (reportedOnly != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("reported_only", reportedOnly));
+        if (fiscalYear != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_year", fiscalYear));
+        if (statementCode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("statement_code", statementCode));
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -1195,7 +945,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyFundamentalsValidateBeforeCall(String identifier, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyFundamentalsValidateBeforeCall(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1203,48 +953,75 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCompanyFundamentalsCall(identifier, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFundamentalsCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * All Fundamentals by Company
-     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
+     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param filedAfter Filed on or after this date (optional)
+     * @param filedBefore Filed on or before this date (optional)
+     * @param reportedOnly Only as-reported fundamentals (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param statementCode Only of the given statement code (optional)
+     * @param type Only of the given type (optional)
+     * @param startDate Only on or after the given date (optional)
+     * @param endDate Only on or before the given date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyFundamentals
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseCompanyFundamentals getCompanyFundamentals(String identifier, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanyFundamentals> resp = getCompanyFundamentalsWithHttpInfo(identifier, nextPage);
+    public ApiResponseCompanyFundamentals getCompanyFundamentals(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseCompanyFundamentals> resp = getCompanyFundamentalsWithHttpInfo(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage);
         return resp.getData();
     }
 
     /**
      * All Fundamentals by Company
-     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
+     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param filedAfter Filed on or after this date (optional)
+     * @param filedBefore Filed on or before this date (optional)
+     * @param reportedOnly Only as-reported fundamentals (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param statementCode Only of the given statement code (optional)
+     * @param type Only of the given type (optional)
+     * @param startDate Only on or after the given date (optional)
+     * @param endDate Only on or before the given date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanyFundamentals&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanyFundamentals> getCompanyFundamentalsWithHttpInfo(String identifier, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyFundamentalsValidateBeforeCall(identifier, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanyFundamentals> getCompanyFundamentalsWithHttpInfo(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyFundamentalsValidateBeforeCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFundamentals>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * All Fundamentals by Company (asynchronously)
-     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
+     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param filedAfter Filed on or after this date (optional)
+     * @param filedBefore Filed on or before this date (optional)
+     * @param reportedOnly Only as-reported fundamentals (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param statementCode Only of the given statement code (optional)
+     * @param type Only of the given type (optional)
+     * @param startDate Only on or after the given date (optional)
+     * @param endDate Only on or before the given date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFundamentalsAsync(String identifier, String nextPage, final ApiCallback<ApiResponseCompanyFundamentals> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFundamentalsAsync(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseCompanyFundamentals> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1265,7 +1042,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyFundamentalsValidateBeforeCall(identifier, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFundamentalsValidateBeforeCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFundamentals>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1279,13 +1056,14 @@ public class CompanyApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyHistoricalDataCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyHistoricalDataCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1305,6 +1083,8 @@ public class CompanyApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (sortOrder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sort_order", sortOrder));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -1341,7 +1121,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyHistoricalDataValidateBeforeCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyHistoricalDataValidateBeforeCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1354,7 +1134,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCompanyHistoricalDataCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyHistoricalDataCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1369,12 +1149,13 @@ public class CompanyApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseCompanyHistoricalData getCompanyHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanyHistoricalData> resp = getCompanyHistoricalDataWithHttpInfo(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage);
+    public ApiResponseCompanyHistoricalData getCompanyHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseCompanyHistoricalData> resp = getCompanyHistoricalDataWithHttpInfo(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -1388,12 +1169,13 @@ public class CompanyApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanyHistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanyHistoricalData> getCompanyHistoricalDataWithHttpInfo(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanyHistoricalData> getCompanyHistoricalDataWithHttpInfo(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyHistoricalData>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1408,12 +1190,13 @@ public class CompanyApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyHistoricalDataAsync(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseCompanyHistoricalData> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyHistoricalDataAsync(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseCompanyHistoricalData> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1434,7 +1217,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyHistoricalData>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1442,13 +1225,14 @@ public class CompanyApi {
     /**
      * Build call for getCompanyNews
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyNewsCall(String identifier, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyNewsCall(String identifier, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1457,6 +1241,8 @@ public class CompanyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -1493,7 +1279,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyNewsValidateBeforeCall(String identifier, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyNewsValidateBeforeCall(String identifier, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1501,7 +1287,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCompanyNewsCall(identifier, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyNewsCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1510,12 +1296,13 @@ public class CompanyApi {
      * All News by Company
      * Returns news for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyNews
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseCompanyNews getCompanyNews(String identifier, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanyNews> resp = getCompanyNewsWithHttpInfo(identifier, nextPage);
+    public ApiResponseCompanyNews getCompanyNews(String identifier, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseCompanyNews> resp = getCompanyNewsWithHttpInfo(identifier, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -1523,12 +1310,13 @@ public class CompanyApi {
      * All News by Company
      * Returns news for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanyNews&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanyNews> getCompanyNewsWithHttpInfo(String identifier, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyNewsValidateBeforeCall(identifier, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanyNews> getCompanyNewsWithHttpInfo(String identifier, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyNewsValidateBeforeCall(identifier, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyNews>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1537,12 +1325,13 @@ public class CompanyApi {
      * All News by Company (asynchronously)
      * Returns news for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyNewsAsync(String identifier, String nextPage, final ApiCallback<ApiResponseCompanyNews> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyNewsAsync(String identifier, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseCompanyNews> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1563,7 +1352,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyNewsValidateBeforeCall(identifier, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyNewsValidateBeforeCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyNews>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1853,12 +1642,13 @@ public class CompanyApi {
     /**
      * Build call for searchCompanies
      * @param query Search parameters (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call searchCompaniesCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call searchCompaniesCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1868,6 +1658,8 @@ public class CompanyApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (query != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1902,7 +1694,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call searchCompaniesValidateBeforeCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call searchCompaniesValidateBeforeCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'query' is set
         if (query == null) {
@@ -1910,7 +1702,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = searchCompaniesCall(query, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchCompaniesCall(query, pageSize, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1919,11 +1711,12 @@ public class CompanyApi {
      * Search Companies
      * Searches for Companies matching the text &#x60;query&#x60;
      * @param query Search parameters (required)
-     * @return ApiResponseCompanies
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponseCompaniesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseCompanies searchCompanies(String query) throws ApiException {
-        ApiResponse<ApiResponseCompanies> resp = searchCompaniesWithHttpInfo(query);
+    public ApiResponseCompaniesSearch searchCompanies(String query, BigDecimal pageSize) throws ApiException {
+        ApiResponse<ApiResponseCompaniesSearch> resp = searchCompaniesWithHttpInfo(query, pageSize);
         return resp.getData();
     }
 
@@ -1931,12 +1724,13 @@ public class CompanyApi {
      * Search Companies
      * Searches for Companies matching the text &#x60;query&#x60;
      * @param query Search parameters (required)
-     * @return ApiResponse&lt;ApiResponseCompanies&gt;
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponse&lt;ApiResponseCompaniesSearch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanies> searchCompaniesWithHttpInfo(String query) throws ApiException {
-        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
+    public ApiResponse<ApiResponseCompaniesSearch> searchCompaniesWithHttpInfo(String query, BigDecimal pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, pageSize, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseCompaniesSearch>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1944,11 +1738,12 @@ public class CompanyApi {
      * Search Companies (asynchronously)
      * Searches for Companies matching the text &#x60;query&#x60;
      * @param query Search parameters (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchCompaniesAsync(String query, final ApiCallback<ApiResponseCompanies> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchCompaniesAsync(String query, BigDecimal pageSize, final ApiCallback<ApiResponseCompaniesSearch> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1969,8 +1764,8 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
+        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, pageSize, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseCompaniesSearch>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

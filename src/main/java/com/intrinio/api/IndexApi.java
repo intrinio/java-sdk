@@ -18,10 +18,13 @@ import java.io.IOException;
 
 import com.intrinio.models.ApiResponseEconomicIndexHistoricalData;
 import com.intrinio.models.ApiResponseEconomicIndices;
+import com.intrinio.models.ApiResponseEconomicIndicesSearch;
 import com.intrinio.models.ApiResponseSICIndexHistoricalData;
 import com.intrinio.models.ApiResponseSICIndices;
+import com.intrinio.models.ApiResponseSICIndicesSearch;
 import com.intrinio.models.ApiResponseStockMarketIndexHistoricalData;
 import com.intrinio.models.ApiResponseStockMarketIndices;
+import com.intrinio.models.ApiResponseStockMarketIndicesSearch;
 import java.math.BigDecimal;
 import com.intrinio.models.EconomicIndex;
 import org.threeten.bp.LocalDate;
@@ -55,13 +58,14 @@ public class IndexApi {
 
     /**
      * Build call for getAllEconomicIndices
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllEconomicIndicesCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllEconomicIndicesCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -69,6 +73,8 @@ public class IndexApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -105,10 +111,10 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllEconomicIndicesValidateBeforeCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllEconomicIndicesValidateBeforeCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllEconomicIndicesCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllEconomicIndicesCall(pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -116,24 +122,26 @@ public class IndexApi {
     /**
      * All Economic Indices
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseEconomicIndices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseEconomicIndices getAllEconomicIndices(String nextPage) throws ApiException {
-        ApiResponse<ApiResponseEconomicIndices> resp = getAllEconomicIndicesWithHttpInfo(nextPage);
+    public ApiResponseEconomicIndices getAllEconomicIndices(BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseEconomicIndices> resp = getAllEconomicIndicesWithHttpInfo(pageSize, nextPage);
         return resp.getData();
     }
 
     /**
      * All Economic Indices
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseEconomicIndices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseEconomicIndices> getAllEconomicIndicesWithHttpInfo(String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllEconomicIndicesValidateBeforeCall(nextPage, null, null);
+    public ApiResponse<ApiResponseEconomicIndices> getAllEconomicIndicesWithHttpInfo(BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllEconomicIndicesValidateBeforeCall(pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseEconomicIndices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -141,12 +149,13 @@ public class IndexApi {
     /**
      * All Economic Indices (asynchronously)
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllEconomicIndicesAsync(String nextPage, final ApiCallback<ApiResponseEconomicIndices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllEconomicIndicesAsync(BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseEconomicIndices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -167,20 +176,21 @@ public class IndexApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllEconomicIndicesValidateBeforeCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllEconomicIndicesValidateBeforeCall(pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseEconomicIndices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getAllSicIndices
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllSicIndicesCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllSicIndicesCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -188,6 +198,8 @@ public class IndexApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -224,10 +236,10 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllSicIndicesValidateBeforeCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllSicIndicesValidateBeforeCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllSicIndicesCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllSicIndicesCall(pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -235,24 +247,26 @@ public class IndexApi {
     /**
      * All SIC Indices
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSICIndices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSICIndices getAllSicIndices(String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSICIndices> resp = getAllSicIndicesWithHttpInfo(nextPage);
+    public ApiResponseSICIndices getAllSicIndices(BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSICIndices> resp = getAllSicIndicesWithHttpInfo(pageSize, nextPage);
         return resp.getData();
     }
 
     /**
      * All SIC Indices
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSICIndices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSICIndices> getAllSicIndicesWithHttpInfo(String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllSicIndicesValidateBeforeCall(nextPage, null, null);
+    public ApiResponse<ApiResponseSICIndices> getAllSicIndicesWithHttpInfo(BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllSicIndicesValidateBeforeCall(pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSICIndices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -260,12 +274,13 @@ public class IndexApi {
     /**
      * All SIC Indices (asynchronously)
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllSicIndicesAsync(String nextPage, final ApiCallback<ApiResponseSICIndices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllSicIndicesAsync(BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseSICIndices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -286,20 +301,21 @@ public class IndexApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllSicIndicesValidateBeforeCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllSicIndicesValidateBeforeCall(pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSICIndices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for getAllStockMarketIndices
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllStockMarketIndicesCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllStockMarketIndicesCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -307,6 +323,8 @@ public class IndexApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -343,10 +361,10 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllStockMarketIndicesValidateBeforeCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllStockMarketIndicesValidateBeforeCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllStockMarketIndicesCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllStockMarketIndicesCall(pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -354,24 +372,26 @@ public class IndexApi {
     /**
      * All Stock Market Indices
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockMarketIndices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseStockMarketIndices getAllStockMarketIndices(String nextPage) throws ApiException {
-        ApiResponse<ApiResponseStockMarketIndices> resp = getAllStockMarketIndicesWithHttpInfo(nextPage);
+    public ApiResponseStockMarketIndices getAllStockMarketIndices(BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseStockMarketIndices> resp = getAllStockMarketIndicesWithHttpInfo(pageSize, nextPage);
         return resp.getData();
     }
 
     /**
      * All Stock Market Indices
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseStockMarketIndices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseStockMarketIndices> getAllStockMarketIndicesWithHttpInfo(String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllStockMarketIndicesValidateBeforeCall(nextPage, null, null);
+    public ApiResponse<ApiResponseStockMarketIndices> getAllStockMarketIndicesWithHttpInfo(BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllStockMarketIndicesValidateBeforeCall(pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseStockMarketIndices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -379,12 +399,13 @@ public class IndexApi {
     /**
      * All Stock Market Indices (asynchronously)
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllStockMarketIndicesAsync(String nextPage, final ApiCallback<ApiResponseStockMarketIndices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllStockMarketIndicesAsync(BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseStockMarketIndices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -405,7 +426,7 @@ public class IndexApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllStockMarketIndicesValidateBeforeCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllStockMarketIndicesValidateBeforeCall(pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseStockMarketIndices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -807,13 +828,14 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getEconomicIndexHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getEconomicIndexHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -831,6 +853,8 @@ public class IndexApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (sortOrder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sort_order", sortOrder));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -867,7 +891,7 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getEconomicIndexHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getEconomicIndexHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -880,7 +904,7 @@ public class IndexApi {
         }
         
 
-        com.squareup.okhttp.Call call = getEconomicIndexHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getEconomicIndexHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -894,12 +918,13 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseEconomicIndexHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseEconomicIndexHistoricalData getEconomicIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseEconomicIndexHistoricalData> resp = getEconomicIndexHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    public ApiResponseEconomicIndexHistoricalData getEconomicIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseEconomicIndexHistoricalData> resp = getEconomicIndexHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -912,12 +937,13 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseEconomicIndexHistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseEconomicIndexHistoricalData> getEconomicIndexHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getEconomicIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, null, null);
+    public ApiResponse<ApiResponseEconomicIndexHistoricalData> getEconomicIndexHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getEconomicIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseEconomicIndexHistoricalData>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -931,12 +957,13 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getEconomicIndexHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseEconomicIndexHistoricalData> callback) throws ApiException {
+    public com.squareup.okhttp.Call getEconomicIndexHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseEconomicIndexHistoricalData> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -957,7 +984,7 @@ public class IndexApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getEconomicIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getEconomicIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseEconomicIndexHistoricalData>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1359,13 +1386,14 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSicIndexHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSicIndexHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1383,6 +1411,8 @@ public class IndexApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (sortOrder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sort_order", sortOrder));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -1419,7 +1449,7 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSicIndexHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSicIndexHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1432,7 +1462,7 @@ public class IndexApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSicIndexHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSicIndexHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1446,12 +1476,13 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSICIndexHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSICIndexHistoricalData getSicIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSICIndexHistoricalData> resp = getSicIndexHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    public ApiResponseSICIndexHistoricalData getSicIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSICIndexHistoricalData> resp = getSicIndexHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -1464,12 +1495,13 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSICIndexHistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSICIndexHistoricalData> getSicIndexHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSicIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, null, null);
+    public ApiResponse<ApiResponseSICIndexHistoricalData> getSicIndexHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSicIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSICIndexHistoricalData>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1483,12 +1515,13 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSicIndexHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseSICIndexHistoricalData> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSicIndexHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseSICIndexHistoricalData> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1509,7 +1542,7 @@ public class IndexApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSicIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSicIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSICIndexHistoricalData>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1911,13 +1944,14 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getStockMarketIndexHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getStockMarketIndexHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1935,6 +1969,8 @@ public class IndexApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (sortOrder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sort_order", sortOrder));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -1971,7 +2007,7 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getStockMarketIndexHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getStockMarketIndexHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1984,7 +2020,7 @@ public class IndexApi {
         }
         
 
-        com.squareup.okhttp.Call call = getStockMarketIndexHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStockMarketIndexHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1998,12 +2034,13 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockMarketIndexHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseStockMarketIndexHistoricalData getStockMarketIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseStockMarketIndexHistoricalData> resp = getStockMarketIndexHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    public ApiResponseStockMarketIndexHistoricalData getStockMarketIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseStockMarketIndexHistoricalData> resp = getStockMarketIndexHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -2016,12 +2053,13 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseStockMarketIndexHistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseStockMarketIndexHistoricalData> getStockMarketIndexHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getStockMarketIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, null, null);
+    public ApiResponse<ApiResponseStockMarketIndexHistoricalData> getStockMarketIndexHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getStockMarketIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseStockMarketIndexHistoricalData>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2035,12 +2073,13 @@ public class IndexApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getStockMarketIndexHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseStockMarketIndexHistoricalData> callback) throws ApiException {
+    public com.squareup.okhttp.Call getStockMarketIndexHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseStockMarketIndexHistoricalData> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2061,7 +2100,7 @@ public class IndexApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getStockMarketIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStockMarketIndexHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseStockMarketIndexHistoricalData>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -2069,12 +2108,13 @@ public class IndexApi {
     /**
      * Build call for searchEconomicIndices
      * @param query Search query (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call searchEconomicIndicesCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call searchEconomicIndicesCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2084,6 +2124,8 @@ public class IndexApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (query != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2118,7 +2160,7 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call searchEconomicIndicesValidateBeforeCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call searchEconomicIndicesValidateBeforeCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'query' is set
         if (query == null) {
@@ -2126,7 +2168,7 @@ public class IndexApi {
         }
         
 
-        com.squareup.okhttp.Call call = searchEconomicIndicesCall(query, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchEconomicIndicesCall(query, pageSize, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2135,11 +2177,12 @@ public class IndexApi {
      * Search Economic Indices
      * Searches for indices using the text in &#x60;query&#x60;
      * @param query Search query (required)
-     * @return ApiResponseEconomicIndices
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponseEconomicIndicesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseEconomicIndices searchEconomicIndices(String query) throws ApiException {
-        ApiResponse<ApiResponseEconomicIndices> resp = searchEconomicIndicesWithHttpInfo(query);
+    public ApiResponseEconomicIndicesSearch searchEconomicIndices(String query, BigDecimal pageSize) throws ApiException {
+        ApiResponse<ApiResponseEconomicIndicesSearch> resp = searchEconomicIndicesWithHttpInfo(query, pageSize);
         return resp.getData();
     }
 
@@ -2147,12 +2190,13 @@ public class IndexApi {
      * Search Economic Indices
      * Searches for indices using the text in &#x60;query&#x60;
      * @param query Search query (required)
-     * @return ApiResponse&lt;ApiResponseEconomicIndices&gt;
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponse&lt;ApiResponseEconomicIndicesSearch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseEconomicIndices> searchEconomicIndicesWithHttpInfo(String query) throws ApiException {
-        com.squareup.okhttp.Call call = searchEconomicIndicesValidateBeforeCall(query, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseEconomicIndices>(){}.getType();
+    public ApiResponse<ApiResponseEconomicIndicesSearch> searchEconomicIndicesWithHttpInfo(String query, BigDecimal pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = searchEconomicIndicesValidateBeforeCall(query, pageSize, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseEconomicIndicesSearch>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2160,11 +2204,12 @@ public class IndexApi {
      * Search Economic Indices (asynchronously)
      * Searches for indices using the text in &#x60;query&#x60;
      * @param query Search query (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchEconomicIndicesAsync(String query, final ApiCallback<ApiResponseEconomicIndices> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchEconomicIndicesAsync(String query, BigDecimal pageSize, final ApiCallback<ApiResponseEconomicIndicesSearch> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2185,20 +2230,21 @@ public class IndexApi {
             };
         }
 
-        com.squareup.okhttp.Call call = searchEconomicIndicesValidateBeforeCall(query, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseEconomicIndices>(){}.getType();
+        com.squareup.okhttp.Call call = searchEconomicIndicesValidateBeforeCall(query, pageSize, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseEconomicIndicesSearch>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for searchSicIndices
      * @param query Search query (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call searchSicIndicesCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call searchSicIndicesCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2208,6 +2254,8 @@ public class IndexApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (query != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2242,7 +2290,7 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call searchSicIndicesValidateBeforeCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call searchSicIndicesValidateBeforeCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'query' is set
         if (query == null) {
@@ -2250,7 +2298,7 @@ public class IndexApi {
         }
         
 
-        com.squareup.okhttp.Call call = searchSicIndicesCall(query, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchSicIndicesCall(query, pageSize, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2259,11 +2307,12 @@ public class IndexApi {
      * Search SIC Indices
      * Searches for indices using the text in &#x60;query&#x60;
      * @param query Search query (required)
-     * @return ApiResponseSICIndices
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponseSICIndicesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSICIndices searchSicIndices(String query) throws ApiException {
-        ApiResponse<ApiResponseSICIndices> resp = searchSicIndicesWithHttpInfo(query);
+    public ApiResponseSICIndicesSearch searchSicIndices(String query, BigDecimal pageSize) throws ApiException {
+        ApiResponse<ApiResponseSICIndicesSearch> resp = searchSicIndicesWithHttpInfo(query, pageSize);
         return resp.getData();
     }
 
@@ -2271,12 +2320,13 @@ public class IndexApi {
      * Search SIC Indices
      * Searches for indices using the text in &#x60;query&#x60;
      * @param query Search query (required)
-     * @return ApiResponse&lt;ApiResponseSICIndices&gt;
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponse&lt;ApiResponseSICIndicesSearch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSICIndices> searchSicIndicesWithHttpInfo(String query) throws ApiException {
-        com.squareup.okhttp.Call call = searchSicIndicesValidateBeforeCall(query, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseSICIndices>(){}.getType();
+    public ApiResponse<ApiResponseSICIndicesSearch> searchSicIndicesWithHttpInfo(String query, BigDecimal pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = searchSicIndicesValidateBeforeCall(query, pageSize, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSICIndicesSearch>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2284,11 +2334,12 @@ public class IndexApi {
      * Search SIC Indices (asynchronously)
      * Searches for indices using the text in &#x60;query&#x60;
      * @param query Search query (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchSicIndicesAsync(String query, final ApiCallback<ApiResponseSICIndices> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchSicIndicesAsync(String query, BigDecimal pageSize, final ApiCallback<ApiResponseSICIndicesSearch> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2309,20 +2360,21 @@ public class IndexApi {
             };
         }
 
-        com.squareup.okhttp.Call call = searchSicIndicesValidateBeforeCall(query, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseSICIndices>(){}.getType();
+        com.squareup.okhttp.Call call = searchSicIndicesValidateBeforeCall(query, pageSize, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSICIndicesSearch>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
      * Build call for searchStockMarketsIndices
      * @param query Search query (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call searchStockMarketsIndicesCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call searchStockMarketsIndicesCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2332,6 +2384,8 @@ public class IndexApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (query != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2366,7 +2420,7 @@ public class IndexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call searchStockMarketsIndicesValidateBeforeCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call searchStockMarketsIndicesValidateBeforeCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'query' is set
         if (query == null) {
@@ -2374,7 +2428,7 @@ public class IndexApi {
         }
         
 
-        com.squareup.okhttp.Call call = searchStockMarketsIndicesCall(query, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchStockMarketsIndicesCall(query, pageSize, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2383,11 +2437,12 @@ public class IndexApi {
      * Search Stock Market Indices
      * Searches for indices using the text in &#x60;query&#x60;
      * @param query Search query (required)
-     * @return ApiResponseStockMarketIndices
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponseStockMarketIndicesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseStockMarketIndices searchStockMarketsIndices(String query) throws ApiException {
-        ApiResponse<ApiResponseStockMarketIndices> resp = searchStockMarketsIndicesWithHttpInfo(query);
+    public ApiResponseStockMarketIndicesSearch searchStockMarketsIndices(String query, BigDecimal pageSize) throws ApiException {
+        ApiResponse<ApiResponseStockMarketIndicesSearch> resp = searchStockMarketsIndicesWithHttpInfo(query, pageSize);
         return resp.getData();
     }
 
@@ -2395,12 +2450,13 @@ public class IndexApi {
      * Search Stock Market Indices
      * Searches for indices using the text in &#x60;query&#x60;
      * @param query Search query (required)
-     * @return ApiResponse&lt;ApiResponseStockMarketIndices&gt;
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponse&lt;ApiResponseStockMarketIndicesSearch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseStockMarketIndices> searchStockMarketsIndicesWithHttpInfo(String query) throws ApiException {
-        com.squareup.okhttp.Call call = searchStockMarketsIndicesValidateBeforeCall(query, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseStockMarketIndices>(){}.getType();
+    public ApiResponse<ApiResponseStockMarketIndicesSearch> searchStockMarketsIndicesWithHttpInfo(String query, BigDecimal pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = searchStockMarketsIndicesValidateBeforeCall(query, pageSize, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseStockMarketIndicesSearch>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -2408,11 +2464,12 @@ public class IndexApi {
      * Search Stock Market Indices (asynchronously)
      * Searches for indices using the text in &#x60;query&#x60;
      * @param query Search query (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchStockMarketsIndicesAsync(String query, final ApiCallback<ApiResponseStockMarketIndices> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchStockMarketsIndicesAsync(String query, BigDecimal pageSize, final ApiCallback<ApiResponseStockMarketIndicesSearch> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2433,8 +2490,8 @@ public class IndexApi {
             };
         }
 
-        com.squareup.okhttp.Call call = searchStockMarketsIndicesValidateBeforeCall(query, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseStockMarketIndices>(){}.getType();
+        com.squareup.okhttp.Call call = searchStockMarketsIndicesValidateBeforeCall(query, pageSize, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseStockMarketIndicesSearch>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

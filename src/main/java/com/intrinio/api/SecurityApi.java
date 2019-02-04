@@ -17,7 +17,9 @@ import java.io.IOException;
 
 
 import com.intrinio.models.ApiResponseSecurities;
+import com.intrinio.models.ApiResponseSecuritiesSearch;
 import com.intrinio.models.ApiResponseSecurityHistoricalData;
+import com.intrinio.models.ApiResponseSecurityIntradayPrices;
 import com.intrinio.models.ApiResponseSecurityStockPriceAdjustments;
 import com.intrinio.models.ApiResponseSecurityStockPrices;
 import java.math.BigDecimal;
@@ -56,13 +58,14 @@ public class SecurityApi {
 
     /**
      * Build call for getAllSecurities
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllSecuritiesCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllSecuritiesCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -70,6 +73,8 @@ public class SecurityApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -106,10 +111,10 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllSecuritiesValidateBeforeCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllSecuritiesValidateBeforeCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllSecuritiesCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllSecuritiesCall(pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -117,24 +122,26 @@ public class SecurityApi {
     /**
      * All Securities
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurities
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurities getAllSecurities(String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurities> resp = getAllSecuritiesWithHttpInfo(nextPage);
+    public ApiResponseSecurities getAllSecurities(BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSecurities> resp = getAllSecuritiesWithHttpInfo(pageSize, nextPage);
         return resp.getData();
     }
 
     /**
      * All Securities
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurities&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurities> getAllSecuritiesWithHttpInfo(String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(nextPage, null, null);
+    public ApiResponse<ApiResponseSecurities> getAllSecuritiesWithHttpInfo(BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -142,12 +149,13 @@ public class SecurityApi {
     /**
      * All Securities (asynchronously)
      * 
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllSecuritiesAsync(String nextPage, final ApiCallback<ApiResponseSecurities> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllSecuritiesAsync(BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseSecurities> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -168,7 +176,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -571,13 +579,14 @@ public class SecurityApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityHistoricalDataCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityHistoricalDataCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -597,6 +606,8 @@ public class SecurityApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (sortOrder != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sort_order", sortOrder));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -633,7 +644,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityHistoricalDataValidateBeforeCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityHistoricalDataValidateBeforeCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -646,7 +657,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityHistoricalDataCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityHistoricalDataCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -661,12 +672,13 @@ public class SecurityApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurityHistoricalData getSecurityHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityHistoricalData> resp = getSecurityHistoricalDataWithHttpInfo(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage);
+    public ApiResponseSecurityHistoricalData getSecurityHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSecurityHistoricalData> resp = getSecurityHistoricalDataWithHttpInfo(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -680,12 +692,13 @@ public class SecurityApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurityHistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityHistoricalData> getSecurityHistoricalDataWithHttpInfo(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurityHistoricalData> getSecurityHistoricalDataWithHttpInfo(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityHistoricalData>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -700,12 +713,13 @@ public class SecurityApi {
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityHistoricalDataAsync(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, String nextPage, final ApiCallback<ApiResponseSecurityHistoricalData> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityHistoricalDataAsync(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseSecurityHistoricalData> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -726,8 +740,161 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityHistoricalData>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityIntradayPrices
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param source Return intraday prices from the specified data source (optional)
+     * @param startDate Return intraday prices starting at the specified date (optional)
+     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
+     * @param endDate Return intraday prices stopping at the specified date (optional)
+     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityIntradayPricesCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/{identifier}/prices/intraday"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (startTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_time", startTime));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (endTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_time", endTime));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityIntradayPricesValidateBeforeCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityIntradayPrices(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityIntradayPricesCall(identifier, source, startDate, startTime, endDate, endTime, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Intraday Stock Prices for Security
+     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param source Return intraday prices from the specified data source (optional)
+     * @param startDate Return intraday prices starting at the specified date (optional)
+     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
+     * @param endDate Return intraday prices stopping at the specified date (optional)
+     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @return ApiResponseSecurityIntradayPrices
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseSecurityIntradayPrices getSecurityIntradayPrices(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime) throws ApiException {
+        ApiResponse<ApiResponseSecurityIntradayPrices> resp = getSecurityIntradayPricesWithHttpInfo(identifier, source, startDate, startTime, endDate, endTime);
+        return resp.getData();
+    }
+
+    /**
+     * Intraday Stock Prices for Security
+     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param source Return intraday prices from the specified data source (optional)
+     * @param startDate Return intraday prices starting at the specified date (optional)
+     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
+     * @param endDate Return intraday prices stopping at the specified date (optional)
+     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @return ApiResponse&lt;ApiResponseSecurityIntradayPrices&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseSecurityIntradayPrices> getSecurityIntradayPricesWithHttpInfo(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityIntradayPricesValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityIntradayPrices>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Intraday Stock Prices for Security (asynchronously)
+     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param source Return intraday prices from the specified data source (optional)
+     * @param startDate Return intraday prices starting at the specified date (optional)
+     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
+     * @param endDate Return intraday prices stopping at the specified date (optional)
+     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityIntradayPricesAsync(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, final ApiCallback<ApiResponseSecurityIntradayPrices> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityIntradayPricesValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityIntradayPrices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1111,13 +1278,14 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Return price adjustments on or after the date (optional)
      * @param endDate Return price adjustments on or before the date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsCall(String identifier, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsCall(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1130,6 +1298,8 @@ public class SecurityApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
         if (endDate != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -1166,7 +1336,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1174,7 +1344,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityStockPriceAdjustmentsCall(identifier, startDate, endDate, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityStockPriceAdjustmentsCall(identifier, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1185,12 +1355,13 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Return price adjustments on or after the date (optional)
      * @param endDate Return price adjustments on or before the date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityStockPriceAdjustments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurityStockPriceAdjustments getSecurityStockPriceAdjustments(String identifier, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityStockPriceAdjustments> resp = getSecurityStockPriceAdjustmentsWithHttpInfo(identifier, startDate, endDate, nextPage);
+    public ApiResponseSecurityStockPriceAdjustments getSecurityStockPriceAdjustments(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSecurityStockPriceAdjustments> resp = getSecurityStockPriceAdjustmentsWithHttpInfo(identifier, startDate, endDate, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -1200,12 +1371,13 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Return price adjustments on or after the date (optional)
      * @param endDate Return price adjustments on or before the date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurityStockPriceAdjustments&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityStockPriceAdjustments> getSecurityStockPriceAdjustmentsWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityStockPriceAdjustmentsValidateBeforeCall(identifier, startDate, endDate, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurityStockPriceAdjustments> getSecurityStockPriceAdjustmentsWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityStockPriceAdjustmentsValidateBeforeCall(identifier, startDate, endDate, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityStockPriceAdjustments>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1216,12 +1388,13 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Return price adjustments on or after the date (optional)
      * @param endDate Return price adjustments on or before the date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsAsync(String identifier, LocalDate startDate, LocalDate endDate, String nextPage, final ApiCallback<ApiResponseSecurityStockPriceAdjustments> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsAsync(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseSecurityStockPriceAdjustments> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1242,7 +1415,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityStockPriceAdjustmentsValidateBeforeCall(identifier, startDate, endDate, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityStockPriceAdjustmentsValidateBeforeCall(identifier, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityStockPriceAdjustments>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1253,13 +1426,14 @@ public class SecurityApi {
      * @param startDate Return prices on or after the date (optional)
      * @param endDate Return prices on or before the date (optional)
      * @param frequency Return stock prices in the given frequency (optional, default to daily)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityStockPricesCall(String identifier, LocalDate startDate, LocalDate endDate, String frequency, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityStockPricesCall(String identifier, LocalDate startDate, LocalDate endDate, String frequency, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1274,6 +1448,8 @@ public class SecurityApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (frequency != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("frequency", frequency));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -1310,7 +1486,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityStockPricesValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, String frequency, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityStockPricesValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, String frequency, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1318,7 +1494,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityStockPricesCall(identifier, startDate, endDate, frequency, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityStockPricesCall(identifier, startDate, endDate, frequency, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1330,12 +1506,13 @@ public class SecurityApi {
      * @param startDate Return prices on or after the date (optional)
      * @param endDate Return prices on or before the date (optional)
      * @param frequency Return stock prices in the given frequency (optional, default to daily)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityStockPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurityStockPrices getSecurityStockPrices(String identifier, LocalDate startDate, LocalDate endDate, String frequency, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityStockPrices> resp = getSecurityStockPricesWithHttpInfo(identifier, startDate, endDate, frequency, nextPage);
+    public ApiResponseSecurityStockPrices getSecurityStockPrices(String identifier, LocalDate startDate, LocalDate endDate, String frequency, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSecurityStockPrices> resp = getSecurityStockPricesWithHttpInfo(identifier, startDate, endDate, frequency, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -1346,12 +1523,13 @@ public class SecurityApi {
      * @param startDate Return prices on or after the date (optional)
      * @param endDate Return prices on or before the date (optional)
      * @param frequency Return stock prices in the given frequency (optional, default to daily)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurityStockPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityStockPrices> getSecurityStockPricesWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, String frequency, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityStockPricesValidateBeforeCall(identifier, startDate, endDate, frequency, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurityStockPrices> getSecurityStockPricesWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, String frequency, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityStockPricesValidateBeforeCall(identifier, startDate, endDate, frequency, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityStockPrices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1363,12 +1541,13 @@ public class SecurityApi {
      * @param startDate Return prices on or after the date (optional)
      * @param endDate Return prices on or before the date (optional)
      * @param frequency Return stock prices in the given frequency (optional, default to daily)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityStockPricesAsync(String identifier, LocalDate startDate, LocalDate endDate, String frequency, String nextPage, final ApiCallback<ApiResponseSecurityStockPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityStockPricesAsync(String identifier, LocalDate startDate, LocalDate endDate, String frequency, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseSecurityStockPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1389,7 +1568,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityStockPricesValidateBeforeCall(identifier, startDate, endDate, frequency, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityStockPricesValidateBeforeCall(identifier, startDate, endDate, frequency, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityStockPrices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1400,12 +1579,13 @@ public class SecurityApi {
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call screenSecuritiesCall(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call screenSecuritiesCall(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = logic;
 
         // create path and map variables
@@ -1419,6 +1599,8 @@ public class SecurityApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("order_direction", orderDirection));
         if (primaryOnly != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("primary_only", primaryOnly));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1453,10 +1635,10 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call screenSecuritiesValidateBeforeCall(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call screenSecuritiesValidateBeforeCall(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = screenSecuritiesCall(logic, orderColumn, orderDirection, primaryOnly, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = screenSecuritiesCall(logic, orderColumn, orderDirection, primaryOnly, pageSize, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1468,11 +1650,12 @@ public class SecurityApi {
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @return List&lt;SecurityScreenResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SecurityScreenResult> screenSecurities(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly) throws ApiException {
-        ApiResponse<List<SecurityScreenResult>> resp = screenSecuritiesWithHttpInfo(logic, orderColumn, orderDirection, primaryOnly);
+    public List<SecurityScreenResult> screenSecurities(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, BigDecimal pageSize) throws ApiException {
+        ApiResponse<List<SecurityScreenResult>> resp = screenSecuritiesWithHttpInfo(logic, orderColumn, orderDirection, primaryOnly, pageSize);
         return resp.getData();
     }
 
@@ -1483,11 +1666,12 @@ public class SecurityApi {
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponse&lt;List&lt;SecurityScreenResult&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SecurityScreenResult>> screenSecuritiesWithHttpInfo(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly) throws ApiException {
-        com.squareup.okhttp.Call call = screenSecuritiesValidateBeforeCall(logic, orderColumn, orderDirection, primaryOnly, null, null);
+    public ApiResponse<List<SecurityScreenResult>> screenSecuritiesWithHttpInfo(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, BigDecimal pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = screenSecuritiesValidateBeforeCall(logic, orderColumn, orderDirection, primaryOnly, pageSize, null, null);
         Type localVarReturnType = new TypeToken<List<SecurityScreenResult>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1499,11 +1683,12 @@ public class SecurityApi {
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call screenSecuritiesAsync(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, final ApiCallback<List<SecurityScreenResult>> callback) throws ApiException {
+    public com.squareup.okhttp.Call screenSecuritiesAsync(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, BigDecimal pageSize, final ApiCallback<List<SecurityScreenResult>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1524,7 +1709,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = screenSecuritiesValidateBeforeCall(logic, orderColumn, orderDirection, primaryOnly, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = screenSecuritiesValidateBeforeCall(logic, orderColumn, orderDirection, primaryOnly, pageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<List<SecurityScreenResult>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1532,12 +1717,13 @@ public class SecurityApi {
     /**
      * Build call for searchSecurities
      * @param query  (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call searchSecuritiesCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call searchSecuritiesCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1547,6 +1733,8 @@ public class SecurityApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (query != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1581,7 +1769,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call searchSecuritiesValidateBeforeCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call searchSecuritiesValidateBeforeCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'query' is set
         if (query == null) {
@@ -1589,7 +1777,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = searchSecuritiesCall(query, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchSecuritiesCall(query, pageSize, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1598,11 +1786,12 @@ public class SecurityApi {
      * Search Securities
      * Searches for Securities matching the text &#x60;query&#x60;
      * @param query  (required)
-     * @return ApiResponseSecurities
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponseSecuritiesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurities searchSecurities(String query) throws ApiException {
-        ApiResponse<ApiResponseSecurities> resp = searchSecuritiesWithHttpInfo(query);
+    public ApiResponseSecuritiesSearch searchSecurities(String query, BigDecimal pageSize) throws ApiException {
+        ApiResponse<ApiResponseSecuritiesSearch> resp = searchSecuritiesWithHttpInfo(query, pageSize);
         return resp.getData();
     }
 
@@ -1610,12 +1799,13 @@ public class SecurityApi {
      * Search Securities
      * Searches for Securities matching the text &#x60;query&#x60;
      * @param query  (required)
-     * @return ApiResponse&lt;ApiResponseSecurities&gt;
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponse&lt;ApiResponseSecuritiesSearch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurities> searchSecuritiesWithHttpInfo(String query) throws ApiException {
-        com.squareup.okhttp.Call call = searchSecuritiesValidateBeforeCall(query, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
+    public ApiResponse<ApiResponseSecuritiesSearch> searchSecuritiesWithHttpInfo(String query, BigDecimal pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = searchSecuritiesValidateBeforeCall(query, pageSize, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesSearch>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -1623,11 +1813,12 @@ public class SecurityApi {
      * Search Securities (asynchronously)
      * Searches for Securities matching the text &#x60;query&#x60;
      * @param query  (required)
+     * @param pageSize The number of results to return (optional, default to 100)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchSecuritiesAsync(String query, final ApiCallback<ApiResponseSecurities> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchSecuritiesAsync(String query, BigDecimal pageSize, final ApiCallback<ApiResponseSecuritiesSearch> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1648,8 +1839,8 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = searchSecuritiesValidateBeforeCall(query, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
+        com.squareup.okhttp.Call call = searchSecuritiesValidateBeforeCall(query, pageSize, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesSearch>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

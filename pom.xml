@@ -5,7 +5,7 @@
     <artifactId>intrinio-sdk</artifactId>
     <packaging>jar</packaging>
     <name>intrinio-sdk</name>
-    <version>1.1.2</version>
+    <version>2.0.0</version>
     <url>https://github.com/intrinio/java-sdk</url>
     <description>Access the Intrinio API</description>
     <scm>

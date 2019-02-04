@@ -8,6 +8,7 @@ import com.intrinio.models.ApiResponseStockExchangeSecurities;
 import com.intrinio.models.ApiResponseStockExchangeStockPriceAdjustments;
 import com.intrinio.models.ApiResponseStockExchangeStockPrices;
 import com.intrinio.models.ApiResponseStockExchanges;
+import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
 import com.intrinio.models.StockExchange;
 import org.junit.Test;
@@ -28,34 +29,20 @@ public class StockExchangeApiTest {
 
     
     /**
-     * Filter Stock Exchanges
-     *
-     * Returns Stock Exchanges matching the given filters
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void filterStockExchangesTest() throws ApiException {
-        String city = null;
-        String country = null;
-        String countryCode = null;
-        ApiResponseStockExchanges response = api.filterStockExchanges(city, country, countryCode);
-
-        // TODO: test validations
-    }
-    
-    /**
      * All Stock Exchanges
      *
-     * Returns all Stock Exchanges
+     * Returns all Stock Exchanges. Returns Stock Exchanges matching parameters when specified.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getAllStockExchangesTest() throws ApiException {
-        ApiResponseStockExchanges response = api.getAllStockExchanges();
+        String city = null;
+        String country = null;
+        String countryCode = null;
+        BigDecimal pageSize = null;
+        ApiResponseStockExchanges response = api.getAllStockExchanges(city, country, countryCode, pageSize);
 
         // TODO: test validations
     }
@@ -88,8 +75,9 @@ public class StockExchangeApiTest {
     public void getStockExchangePriceAdjustmentsTest() throws ApiException {
         String identifier = null;
         LocalDate date = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseStockExchangeStockPriceAdjustments response = api.getStockExchangePriceAdjustments(identifier, date, nextPage);
+        ApiResponseStockExchangeStockPriceAdjustments response = api.getStockExchangePriceAdjustments(identifier, date, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -106,8 +94,9 @@ public class StockExchangeApiTest {
     public void getStockExchangePricesTest() throws ApiException {
         String identifier = null;
         LocalDate date = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseStockExchangeStockPrices response = api.getStockExchangePrices(identifier, date, nextPage);
+        ApiResponseStockExchangeStockPrices response = api.getStockExchangePrices(identifier, date, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -124,8 +113,9 @@ public class StockExchangeApiTest {
     public void getStockExchangeRealtimePricesTest() throws ApiException {
         String identifier = null;
         String source = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseStockExchangeRealtimeStockPrices response = api.getStockExchangeRealtimePrices(identifier, source, nextPage);
+        ApiResponseStockExchangeRealtimeStockPrices response = api.getStockExchangeRealtimePrices(identifier, source, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -141,8 +131,9 @@ public class StockExchangeApiTest {
     @Test
     public void getStockExchangeSecuritiesTest() throws ApiException {
         String identifier = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseStockExchangeSecurities response = api.getStockExchangeSecurities(identifier, nextPage);
+        ApiResponseStockExchangeSecurities response = api.getStockExchangeSecurities(identifier, pageSize, nextPage);
 
         // TODO: test validations
     }

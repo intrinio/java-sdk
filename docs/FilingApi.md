@@ -4,8 +4,6 @@ All URIs are relative to *https://api-v2.intrinio.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**filterFilings**](FilingApi.md#filterFilings) | **GET** /filings/filter | Filter Filings
-[**filterNotes**](FilingApi.md#filterNotes) | **GET** /filings/notes/filter | Filter Filing Notes
 [**getAllFilings**](FilingApi.md#getAllFilings) | **GET** /filings | All Filings
 [**getAllNotes**](FilingApi.md#getAllNotes) | **GET** /filings/notes | All Filing Notes
 [**getFilingById**](FilingApi.md#getFilingById) | **GET** /filings/{id} | Lookup Filing
@@ -15,13 +13,13 @@ Method | HTTP request | Description
 [**searchNotes**](FilingApi.md#searchNotes) | **GET** /filings/notes/search | Search Filing Notes
 
 
-<a name="filterFilings"></a>
-# **filterFilings**
-> ApiResponseFilings filterFilings(company, reportType, startDate, endDate, nextPage)
+<a name="getAllFilings"></a>
+# **getAllFilings**
+> ApiResponseFilings getAllFilings(company, reportType, startDate, endDate, pageSize, nextPage)
 
-Filter Filings
+All Filings
 
-Returns Filings that match the specified filters
+Returns all Filings. Returns Filings matching parameters when supplied.
 
 ### Example
 ```java
@@ -42,13 +40,14 @@ String company = "AAPL"; // String | Filings for the given `company` identifier 
 String reportType = null; // String | Filter by report type
 LocalDate startDate = null; // LocalDate | Filed on or after the given date
 LocalDate endDate = null; // LocalDate | Filed before or after the given date
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseFilings result = filingApi.filterFilings(company, reportType, startDate, endDate, nextPage);
+    ApiResponseFilings result = filingApi.getAllFilings(company, reportType, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling FilingApi#filterFilings");
+    System.err.println("Exception when calling FilingApi#getAllFilings");
     e.printStackTrace();
 }
 ```
@@ -61,19 +60,20 @@ Name | Type | Description  | Notes
  **reportType** | **String**| Filter by report type | [optional]
  **startDate** | **LocalDate**| Filed on or after the given date | [optional]
  **endDate** | **LocalDate**| Filed before or after the given date | [optional]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseFilings**](ApiResponseFilings.md)
 
-<a name="filterNotes"></a>
-# **filterNotes**
-> ApiResponseFilingNotes filterNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, nextPage)
+<a name="getAllNotes"></a>
+# **getAllNotes**
+> ApiResponseFilingNotes getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage)
 
-Filter Filing Notes
+All Filing Notes
 
-Returns Filing Notes that match the specified filters
+Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
 
 ### Example
 ```java
@@ -96,13 +96,14 @@ LocalDate filingStartDate = null; // LocalDate | Limit search to filings on or a
 LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
 LocalDate periodEndedStartDate = null; // LocalDate | Limit search to filings with a period end date on or after this date
 LocalDate periodEndedEndDate = null; // LocalDate | Limit search to filings with a period end date on or before this date
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseFilingNotes result = filingApi.filterNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, nextPage);
+    ApiResponseFilingNotes result = filingApi.getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling FilingApi#filterNotes");
+    System.err.println("Exception when calling FilingApi#getAllNotes");
     e.printStackTrace();
 }
 ```
@@ -117,94 +118,7 @@ Name | Type | Description  | Notes
  **filingEndDate** | **LocalDate**| Limit search to filings on or before this date | [optional]
  **periodEndedStartDate** | **LocalDate**| Limit search to filings with a period end date on or after this date | [optional]
  **periodEndedEndDate** | **LocalDate**| Limit search to filings with a period end date on or before this date | [optional]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
-
-### Return type
-
-[**ApiResponseFilingNotes**](ApiResponseFilingNotes.md)
-
-<a name="getAllFilings"></a>
-# **getAllFilings**
-> ApiResponseFilings getAllFilings(nextPage)
-
-All Filings
-
-Returns all Filings
-
-### Example
-```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FilingApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
-
-FilingApi filingApi = new FilingApi();
-
-String nextPage = null; // String | Gets the next page of data from a previous API call
-
-try {
-    ApiResponseFilings result = filingApi.getAllFilings(nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilingApi#getAllFilings");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
-
-### Return type
-
-[**ApiResponseFilings**](ApiResponseFilings.md)
-
-<a name="getAllNotes"></a>
-# **getAllNotes**
-> ApiResponseFilingNotes getAllNotes(nextPage)
-
-All Filing Notes
-
-Return all Notes from all Filings, most-recent first
-
-### Example
-```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FilingApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
-
-FilingApi filingApi = new FilingApi();
-
-String nextPage = null; // String | Gets the next page of data from a previous API call
-
-try {
-    ApiResponseFilingNotes result = filingApi.getAllNotes(nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilingApi#getAllNotes");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -385,7 +299,7 @@ Name | Type | Description  | Notes
 
 <a name="searchNotes"></a>
 # **searchNotes**
-> ApiResponseFilingNotesSearch searchNotes(query, filingStartDate, filingEndDate, pageSize)
+> ApiResponseFilingNotesSearch searchNotes(query, filingStartDate, filingEndDate, pageSize, pageSize2)
 
 Search Filing Notes
 
@@ -410,9 +324,10 @@ String query = "inflation"; // String | Search for notes that contain all or par
 LocalDate filingStartDate = null; // LocalDate | Limit search to filings on or after this date
 LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
 BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
+BigDecimal pageSize2 = new BigDecimal(); // BigDecimal | The number of results to return
 
 try {
-    ApiResponseFilingNotesSearch result = filingApi.searchNotes(query, filingStartDate, filingEndDate, pageSize);
+    ApiResponseFilingNotesSearch result = filingApi.searchNotes(query, filingStartDate, filingEndDate, pageSize, pageSize2);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FilingApi#searchNotes");
@@ -428,6 +343,7 @@ Name | Type | Description  | Notes
  **filingStartDate** | **LocalDate**| Limit search to filings on or after this date | [optional]
  **filingEndDate** | **LocalDate**| Limit search to filings on or before this date | [optional]
  **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize2** | **BigDecimal**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 

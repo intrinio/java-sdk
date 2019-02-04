@@ -4,6 +4,7 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseCompanies;
+import com.intrinio.models.ApiResponseCompaniesSearch;
 import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
@@ -32,64 +33,24 @@ public class CompanyApiTest {
 
     
     /**
-     * Filter Companies
-     *
-     * Returns Companies matching the specified filters
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void filterCompaniesTest() throws ApiException {
-        LocalDate lastFilingDate = null;
-        String sic = null;
-        String template = null;
-        String sector = null;
-        String industryCategory = null;
-        String industryGroup = null;
-        String nextPage = null;
-        ApiResponseCompanies response = api.filterCompanies(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Filter Fundamentals by Company
-     *
-     * Returns Fundamentals for the Company with the given &#x60;identifier&#x60; and matching the specified filters
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void filterCompanyFundamentalsTest() throws ApiException {
-        String identifier = null;
-        LocalDate filedAfter = null;
-        LocalDate filedBefore = null;
-        Boolean reportedOnly = null;
-        Integer fiscalYear = null;
-        String statementCode = null;
-        String type = null;
-        LocalDate startDate = null;
-        LocalDate endDate = null;
-        String nextPage = null;
-        ApiResponseCompanyFundamentals response = api.filterCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage);
-
-        // TODO: test validations
-    }
-    
-    /**
      * All Companies
      *
-     * Returns all Companies
+     * Returns all Companies. When parameters are specified, returns matching companies.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getAllCompaniesTest() throws ApiException {
+        LocalDate latestFilingDate = null;
+        String sic = null;
+        String template = null;
+        String sector = null;
+        String industryCategory = null;
+        String industryGroup = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseCompanies response = api.getAllCompanies(nextPage);
+        ApiResponseCompanies response = api.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -104,8 +65,9 @@ public class CompanyApiTest {
      */
     @Test
     public void getAllCompanyNewsTest() throws ApiException {
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseNews response = api.getAllCompanyNews(nextPage);
+        ApiResponseNews response = api.getAllCompanyNews(pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -171,8 +133,9 @@ public class CompanyApiTest {
     @Test
     public void getCompanyFilingsTest() throws ApiException {
         String identifier = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseCompanyFilings response = api.getCompanyFilings(identifier, nextPage);
+        ApiResponseCompanyFilings response = api.getCompanyFilings(identifier, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -180,7 +143,7 @@ public class CompanyApiTest {
     /**
      * All Fundamentals by Company
      *
-     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
+     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -188,8 +151,17 @@ public class CompanyApiTest {
     @Test
     public void getCompanyFundamentalsTest() throws ApiException {
         String identifier = null;
+        LocalDate filedAfter = null;
+        LocalDate filedBefore = null;
+        Boolean reportedOnly = null;
+        Integer fiscalYear = null;
+        String statementCode = null;
+        String type = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseCompanyFundamentals response = api.getCompanyFundamentals(identifier, nextPage);
+        ApiResponseCompanyFundamentals response = api.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -211,8 +183,9 @@ public class CompanyApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         String sortOrder = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseCompanyHistoricalData response = api.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage);
+        ApiResponseCompanyHistoricalData response = api.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -228,8 +201,9 @@ public class CompanyApiTest {
     @Test
     public void getCompanyNewsTest() throws ApiException {
         String identifier = null;
+        BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseCompanyNews response = api.getCompanyNews(identifier, nextPage);
+        ApiResponseCompanyNews response = api.getCompanyNews(identifier, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -281,7 +255,8 @@ public class CompanyApiTest {
     @Test
     public void searchCompaniesTest() throws ApiException {
         String query = null;
-        ApiResponseCompanies response = api.searchCompanies(query);
+        BigDecimal pageSize = null;
+        ApiResponseCompaniesSearch response = api.searchCompanies(query, pageSize);
 
         // TODO: test validations
     }

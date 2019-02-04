@@ -4,8 +4,6 @@ All URIs are relative to *https://api-v2.intrinio.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**filterCompanies**](CompanyApi.md#filterCompanies) | **GET** /companies/filter | Filter Companies
-[**filterCompanyFundamentals**](CompanyApi.md#filterCompanyFundamentals) | **GET** /companies/{identifier}/fundamentals/filter | Filter Fundamentals by Company
 [**getAllCompanies**](CompanyApi.md#getAllCompanies) | **GET** /companies | All Companies
 [**getAllCompanyNews**](CompanyApi.md#getAllCompanyNews) | **GET** /companies/news | All News
 [**getCompany**](CompanyApi.md#getCompany) | **GET** /companies/{identifier} | Lookup Company
@@ -20,13 +18,13 @@ Method | HTTP request | Description
 [**searchCompanies**](CompanyApi.md#searchCompanies) | **GET** /companies/search | Search Companies
 
 
-<a name="filterCompanies"></a>
-# **filterCompanies**
-> ApiResponseCompanies filterCompanies(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage)
+<a name="getAllCompanies"></a>
+# **getAllCompanies**
+> ApiResponseCompanies getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage)
 
-Filter Companies
+All Companies
 
-Returns Companies matching the specified filters
+Returns all Companies. When parameters are specified, returns matching companies.
 
 ### Example
 ```java
@@ -43,128 +41,17 @@ auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
-LocalDate lastFilingDate = null; // LocalDate | Last filing date
+LocalDate latestFilingDate = null; // LocalDate | Last filing date
 String sic = "3350"; // String | Standard Industrial Classification code
 String template = "industrial"; // String | Template
 String sector = "Basic Materials"; // String | Industry sector
 String industryCategory = "Metals & Mining"; // String | Industry category
 String industryGroup = "Aluminum"; // String | Industry group
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseCompanies result = companyApi.filterCompanies(lastFilingDate, sic, template, sector, industryCategory, industryGroup, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#filterCompanies");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **lastFilingDate** | **LocalDate**| Last filing date | [optional]
- **sic** | **String**| Standard Industrial Classification code | [optional]
- **template** | **String**| Template | [optional] [enum: industrial, financial]
- **sector** | **String**| Industry sector | [optional]
- **industryCategory** | **String**| Industry category | [optional]
- **industryGroup** | **String**| Industry group | [optional]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
-
-### Return type
-
-[**ApiResponseCompanies**](ApiResponseCompanies.md)
-
-<a name="filterCompanyFundamentals"></a>
-# **filterCompanyFundamentals**
-> ApiResponseCompanyFundamentals filterCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage)
-
-Filter Fundamentals by Company
-
-Returns Fundamentals for the Company with the given &#x60;identifier&#x60; and matching the specified filters
-
-### Example
-```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
-
-CompanyApi companyApi = new CompanyApi();
-
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-LocalDate filedAfter = null; // LocalDate | Filed on or after this date
-LocalDate filedBefore = null; // LocalDate | Filed on or before this date
-Boolean reportedOnly = false; // Boolean | Only as-reported fundamentals
-Integer fiscalYear = 2017; // Integer | Only for the given fiscal year
-String statementCode = null; // String | Only of the given statement code
-String type = null; // String | Only of the given type
-LocalDate startDate = null; // LocalDate | Only on or after the given date
-LocalDate endDate = null; // LocalDate | Only on or before the given date
-String nextPage = null; // String | Gets the next page of data from a previous API call
-
-try {
-    ApiResponseCompanyFundamentals result = companyApi.filterCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#filterCompanyFundamentals");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **filedAfter** | **LocalDate**| Filed on or after this date | [optional]
- **filedBefore** | **LocalDate**| Filed on or before this date | [optional]
- **reportedOnly** | **Boolean**| Only as-reported fundamentals | [optional]
- **fiscalYear** | **Integer**| Only for the given fiscal year | [optional]
- **statementCode** | **String**| Only of the given statement code | [optional] [enum: income_statement, balance_sheet_statement, cash_flow_statement, calculations]
- **type** | **String**| Only of the given type | [optional] [enum: QTR, YTD, FY, TTM]
- **startDate** | **LocalDate**| Only on or after the given date | [optional]
- **endDate** | **LocalDate**| Only on or before the given date | [optional]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
-
-### Return type
-
-[**ApiResponseCompanyFundamentals**](ApiResponseCompanyFundamentals.md)
-
-<a name="getAllCompanies"></a>
-# **getAllCompanies**
-> ApiResponseCompanies getAllCompanies(nextPage)
-
-All Companies
-
-Returns all Companies
-
-### Example
-```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
-
-CompanyApi companyApi = new CompanyApi();
-
-String nextPage = null; // String | Gets the next page of data from a previous API call
-
-try {
-    ApiResponseCompanies result = companyApi.getAllCompanies(nextPage);
+    ApiResponseCompanies result = companyApi.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#getAllCompanies");
@@ -176,6 +63,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **latestFilingDate** | **LocalDate**| Last filing date | [optional]
+ **sic** | **String**| Standard Industrial Classification code | [optional]
+ **template** | **String**| Template | [optional] [enum: industrial, financial]
+ **sector** | **String**| Industry sector | [optional]
+ **industryCategory** | **String**| Industry category | [optional]
+ **industryGroup** | **String**| Industry group | [optional]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -184,7 +78,7 @@ Name | Type | Description  | Notes
 
 <a name="getAllCompanyNews"></a>
 # **getAllCompanyNews**
-> ApiResponseNews getAllCompanyNews(nextPage)
+> ApiResponseNews getAllCompanyNews(pageSize, nextPage)
 
 All News
 
@@ -205,10 +99,11 @@ auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseNews result = companyApi.getAllCompanyNews(nextPage);
+    ApiResponseNews result = companyApi.getAllCompanyNews(pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#getAllCompanyNews");
@@ -220,6 +115,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -364,7 +260,7 @@ Name | Type | Description  | Notes
 
 <a name="getCompanyFilings"></a>
 # **getCompanyFilings**
-> ApiResponseCompanyFilings getCompanyFilings(identifier, nextPage)
+> ApiResponseCompanyFilings getCompanyFilings(identifier, pageSize, nextPage)
 
 All Filings by Company
 
@@ -386,10 +282,11 @@ auth.setApiKey("YOUR API KEY");
 CompanyApi companyApi = new CompanyApi();
 
 String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseCompanyFilings result = companyApi.getCompanyFilings(identifier, nextPage);
+    ApiResponseCompanyFilings result = companyApi.getCompanyFilings(identifier, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#getCompanyFilings");
@@ -402,6 +299,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -410,11 +308,11 @@ Name | Type | Description  | Notes
 
 <a name="getCompanyFundamentals"></a>
 # **getCompanyFundamentals**
-> ApiResponseCompanyFundamentals getCompanyFundamentals(identifier, nextPage)
+> ApiResponseCompanyFundamentals getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage)
 
 All Fundamentals by Company
 
-Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;
+Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
 
 ### Example
 ```java
@@ -432,10 +330,19 @@ auth.setApiKey("YOUR API KEY");
 CompanyApi companyApi = new CompanyApi();
 
 String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+LocalDate filedAfter = null; // LocalDate | Filed on or after this date
+LocalDate filedBefore = null; // LocalDate | Filed on or before this date
+Boolean reportedOnly = false; // Boolean | Only as-reported fundamentals
+Integer fiscalYear = 2017; // Integer | Only for the given fiscal year
+String statementCode = null; // String | Only of the given statement code
+String type = null; // String | Only of the given type
+LocalDate startDate = null; // LocalDate | Only on or after the given date
+LocalDate endDate = null; // LocalDate | Only on or before the given date
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, nextPage);
+    ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#getCompanyFundamentals");
@@ -448,6 +355,15 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
+ **filedAfter** | **LocalDate**| Filed on or after this date | [optional]
+ **filedBefore** | **LocalDate**| Filed on or before this date | [optional]
+ **reportedOnly** | **Boolean**| Only as-reported fundamentals | [optional]
+ **fiscalYear** | **Integer**| Only for the given fiscal year | [optional]
+ **statementCode** | **String**| Only of the given statement code | [optional] [enum: income_statement, balance_sheet_statement, cash_flow_statement, calculations]
+ **type** | **String**| Only of the given type | [optional] [enum: QTR, YTD, FY, TTM]
+ **startDate** | **LocalDate**| Only on or after the given date | [optional]
+ **endDate** | **LocalDate**| Only on or before the given date | [optional]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -456,7 +372,7 @@ Name | Type | Description  | Notes
 
 <a name="getCompanyHistoricalData"></a>
 # **getCompanyHistoricalData**
-> ApiResponseCompanyHistoricalData getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage)
+> ApiResponseCompanyHistoricalData getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
 Historical Data for Company
 
@@ -484,10 +400,11 @@ String type = null; // String | Filter by type, when applicable
 LocalDate startDate = null; // LocalDate | Get historical data on or after this date
 LocalDate endDate = null; // LocalDate | Get historical data on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseCompanyHistoricalData result = companyApi.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, nextPage);
+    ApiResponseCompanyHistoricalData result = companyApi.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#getCompanyHistoricalData");
@@ -506,6 +423,7 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -514,7 +432,7 @@ Name | Type | Description  | Notes
 
 <a name="getCompanyNews"></a>
 # **getCompanyNews**
-> ApiResponseCompanyNews getCompanyNews(identifier, nextPage)
+> ApiResponseCompanyNews getCompanyNews(identifier, pageSize, nextPage)
 
 All News by Company
 
@@ -536,10 +454,11 @@ auth.setApiKey("YOUR API KEY");
 CompanyApi companyApi = new CompanyApi();
 
 String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseCompanyNews result = companyApi.getCompanyNews(identifier, nextPage);
+    ApiResponseCompanyNews result = companyApi.getCompanyNews(identifier, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#getCompanyNews");
@@ -552,6 +471,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
@@ -656,7 +576,7 @@ Name | Type | Description  | Notes
 
 <a name="searchCompanies"></a>
 # **searchCompanies**
-> ApiResponseCompanies searchCompanies(query)
+> ApiResponseCompaniesSearch searchCompanies(query, pageSize)
 
 Search Companies
 
@@ -678,9 +598,10 @@ auth.setApiKey("YOUR API KEY");
 CompanyApi companyApi = new CompanyApi();
 
 String query = "Apple"; // String | Search parameters
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 
 try {
-    ApiResponseCompanies result = companyApi.searchCompanies(query);
+    ApiResponseCompaniesSearch result = companyApi.searchCompanies(query, pageSize);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CompanyApi#searchCompanies");
@@ -693,8 +614,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| Search parameters |
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
-[**ApiResponseCompanies**](ApiResponseCompanies.md)
+[**ApiResponseCompaniesSearch**](ApiResponseCompaniesSearch.md)
 

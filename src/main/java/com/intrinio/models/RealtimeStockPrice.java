@@ -285,10 +285,10 @@ public class RealtimeStockPrice {
   }
 
    /**
-   * Source of the realtime quote.
+   * The source of the data.
    * @return source
   **/
-  @ApiModelProperty(value = "Source of the realtime quote.")
+  @ApiModelProperty(value = "The source of the data.")
   public String getSource() {
     return source;
   }

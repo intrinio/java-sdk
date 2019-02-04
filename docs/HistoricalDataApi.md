@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getHistoricalData"></a>
 # **getHistoricalData**
-> ApiResponseHistoricalData getHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage)
+> ApiResponseHistoricalData getHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
 Historical Data
 
@@ -36,10 +36,11 @@ String type = null; // String | Filter by type, when applicable
 LocalDate startDate = null; // LocalDate | Get historical data on or after this date
 LocalDate endDate = null; // LocalDate | Get historical date on or before this date
 String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
+BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseHistoricalData result = historicalDataApi.getHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, nextPage);
+    ApiResponseHistoricalData result = historicalDataApi.getHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling HistoricalDataApi#getHistoricalData");
@@ -57,6 +58,7 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical date on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
+ **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
