@@ -9,11 +9,11 @@ Method | HTTP request | Description
 
 <a name="getHistoricalData"></a>
 # **getHistoricalData**
-> ApiResponseHistoricalData getHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage)
+> ApiResponseHistoricalData getHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
 Historical Data
 
-Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
+$$v2_historical_data_description$$
 
 ### Example
 ```java
@@ -30,8 +30,9 @@ auth.setApiKey("YOUR API KEY");
 
 HistoricalDataApi historicalDataApi = new HistoricalDataApi();
 
-String identifier = "AAPL"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-String tag = "marketcap"; // String | An Intrinio data tag ID or code-name
+String identifier = "$$v2_historical_data_identifier_default$$"; // String | $$v2_historical_data_identifier_description$$
+String tag = "$$v2_historical_data_item_default$$"; // String | $$v2_historical_data_item_description$$
+String frequency = "daily"; // String | Return historical data in the given frequency
 String type = null; // String | Filter by type, when applicable
 LocalDate startDate = null; // LocalDate | Get historical data on or after this date
 LocalDate endDate = null; // LocalDate | Get historical date on or before this date
@@ -40,7 +41,7 @@ BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
 try {
-    ApiResponseHistoricalData result = historicalDataApi.getHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
+    ApiResponseHistoricalData result = historicalDataApi.getHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling HistoricalDataApi#getHistoricalData");
@@ -52,8 +53,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
+ **identifier** | **String**| $$v2_historical_data_identifier_description$$ |
+ **tag** | **String**| $$v2_historical_data_item_description$$ |
+ **frequency** | **String**| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly]
  **type** | **String**| Filter by type, when applicable | [optional]
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical date on or before this date | [optional]

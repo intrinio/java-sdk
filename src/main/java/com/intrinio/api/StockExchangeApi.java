@@ -121,7 +121,7 @@ public class StockExchangeApi {
 
     /**
      * All Stock Exchanges
-     * Returns all Stock Exchanges. Returns Stock Exchanges matching parameters when specified.
+     * Returns all Stock Exchanges matching the specified parameters
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)
@@ -136,7 +136,7 @@ public class StockExchangeApi {
 
     /**
      * All Stock Exchanges
-     * Returns all Stock Exchanges. Returns Stock Exchanges matching parameters when specified.
+     * Returns all Stock Exchanges matching the specified parameters
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)
@@ -152,7 +152,7 @@ public class StockExchangeApi {
 
     /**
      * All Stock Exchanges (asynchronously)
-     * Returns all Stock Exchanges. Returns Stock Exchanges matching parameters when specified.
+     * Returns all Stock Exchanges matching the specified parameters
      * @param city Filter by city (optional)
      * @param country Filter by country (optional)
      * @param countryCode Filter by ISO country code (optional)

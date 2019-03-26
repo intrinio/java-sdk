@@ -103,6 +103,9 @@ public class Security {
   @SerializedName("previous_tickers")
   private List<String> previousTickers = null;
 
+  @SerializedName("listing_exchange_mic")
+  private String listingExchangeMic = null;
+
   public Security id(String id) {
     this.id = id;
     return this;
@@ -605,6 +608,24 @@ public class Security {
     this.previousTickers = previousTickers;
   }
 
+  public Security listingExchangeMic(String listingExchangeMic) {
+    this.listingExchangeMic = listingExchangeMic;
+    return this;
+  }
+
+   /**
+   * The MIC code of the exchange on which this security primarily trades
+   * @return listingExchangeMic
+  **/
+  @ApiModelProperty(value = "The MIC code of the exchange on which this security primarily trades")
+  public String getListingExchangeMic() {
+    return listingExchangeMic;
+  }
+
+  public void setListingExchangeMic(String listingExchangeMic) {
+    this.listingExchangeMic = listingExchangeMic;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -641,12 +662,13 @@ public class Security {
         Objects.equals(this.lastStockPrice, security.lastStockPrice) &&
         Objects.equals(this.lastStockPriceAdjustment, security.lastStockPriceAdjustment) &&
         Objects.equals(this.lastCorporateAction, security.lastCorporateAction) &&
-        Objects.equals(this.previousTickers, security.previousTickers);
+        Objects.equals(this.previousTickers, security.previousTickers) &&
+        Objects.equals(this.listingExchangeMic, security.listingExchangeMic);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, companyId, name, type, code, shareClass, currency, roundLotSize, ticker, exchangeTicker, compositeTicker, alternateTickers, figi, cik, compositeFigi, shareClassFigi, figiUniqueid, active, etf, delisted, primaryListing, primarySecurity, firstStockPrice, lastStockPrice, lastStockPriceAdjustment, lastCorporateAction, previousTickers);
+    return Objects.hash(id, companyId, name, type, code, shareClass, currency, roundLotSize, ticker, exchangeTicker, compositeTicker, alternateTickers, figi, cik, compositeFigi, shareClassFigi, figiUniqueid, active, etf, delisted, primaryListing, primarySecurity, firstStockPrice, lastStockPrice, lastStockPriceAdjustment, lastCorporateAction, previousTickers, listingExchangeMic);
   }
 
 
@@ -682,6 +704,7 @@ public class Security {
     sb.append("    lastStockPriceAdjustment: ").append(toIndentedString(lastStockPriceAdjustment)).append("\n");
     sb.append("    lastCorporateAction: ").append(toIndentedString(lastCorporateAction)).append("\n");
     sb.append("    previousTickers: ").append(toIndentedString(previousTickers)).append("\n");
+    sb.append("    listingExchangeMic: ").append(toIndentedString(listingExchangeMic)).append("\n");
     sb.append("}");
     return sb.toString();
   }

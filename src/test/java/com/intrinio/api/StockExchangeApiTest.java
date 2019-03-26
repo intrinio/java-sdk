@@ -31,7 +31,7 @@ public class StockExchangeApiTest {
     /**
      * All Stock Exchanges
      *
-     * Returns all Stock Exchanges. Returns Stock Exchanges matching parameters when specified.
+     * Returns all Stock Exchanges matching the specified parameters
      *
      * @throws ApiException
      *          if the Api call fails

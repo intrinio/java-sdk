@@ -26,7 +26,7 @@ public class HistoricalDataApiTest {
     /**
      * Historical Data
      *
-     * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
+     * $$v2_historical_data_description$$
      *
      * @throws ApiException
      *          if the Api call fails
@@ -35,13 +35,14 @@ public class HistoricalDataApiTest {
     public void getHistoricalDataTest() throws ApiException {
         String identifier = null;
         String tag = null;
+        String frequency = null;
         String type = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
         String sortOrder = null;
         BigDecimal pageSize = null;
         String nextPage = null;
-        ApiResponseHistoricalData response = api.getHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
+        ApiResponseHistoricalData response = api.getHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
 
         // TODO: test validations
     }

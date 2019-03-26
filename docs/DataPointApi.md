@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Data Point (Number)
 
-Returns a numeric value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
+$$v2_data_point_number_description$$
 
 ### Example
 ```java
@@ -31,8 +31,8 @@ auth.setApiKey("YOUR API KEY");
 
 DataPointApi dataPointApi = new DataPointApi();
 
-String identifier = "AAPL"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-String tag = "marketcap"; // String | An Intrinio data tag ID or code-name
+String identifier = "$$v2_data_point_identifier_default$$"; // String | $$v2_data_point_identifier_description$$
+String tag = "$$v2_data_point_item_number_default$$"; // String | $$v2_data_point_item_description$$
 
 try {
     BigDecimal result = dataPointApi.getDataPointNumber(identifier, tag);
@@ -47,8 +47,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
+ **identifier** | **String**| $$v2_data_point_identifier_description$$ |
+ **tag** | **String**| $$v2_data_point_item_description$$ |
 
 ### Return type
 
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 Data Point (Text)
 
-Returns a text value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
+$$v2_data_point_text_description$$
 
 ### Example
 ```java
@@ -77,8 +77,8 @@ auth.setApiKey("YOUR API KEY");
 
 DataPointApi dataPointApi = new DataPointApi();
 
-String identifier = "AAPL"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-String tag = "marketcap"; // String | An Intrinio data tag ID or code-name
+String identifier = "$$v2_data_point_identifier_default$$"; // String | $$v2_data_point_identifier_description$$
+String tag = "$$v2_data_point_item_text_default$$"; // String | $$v2_data_point_item_description$$
 
 try {
     String result = dataPointApi.getDataPointText(identifier, tag);
@@ -93,8 +93,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
+ **identifier** | **String**| $$v2_data_point_identifier_description$$ |
+ **tag** | **String**| $$v2_data_point_item_description$$ |
 
 ### Return type
 

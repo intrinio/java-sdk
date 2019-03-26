@@ -77,7 +77,7 @@ auth.setApiKey("YOUR API KEY");
 
 FundamentalsApi fundamentalsApi = new FundamentalsApi();
 
-String id = "fun_ge9LlE"; // String | The Intrinio ID for the Fundamental
+String id = "AAPL-income_statement-2018-Q1"; // String | The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental
 
 try {
     ApiResponseReportedFinancials result = fundamentalsApi.getFundamentalReportedFinancials(id);
@@ -92,7 +92,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The Intrinio ID for the Fundamental |
+ **id** | **String**| The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental |
 
 ### Return type
 
@@ -121,7 +121,7 @@ auth.setApiKey("YOUR API KEY");
 
 FundamentalsApi fundamentalsApi = new FundamentalsApi();
 
-String id = "fun_ge9LlE"; // String | The Intrinio ID for the Fundamental
+String id = "AAPL-income_statement-2018-Q1"; // String | The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental
 
 try {
     ApiResponseStandardizedFinancials result = fundamentalsApi.getFundamentalStandardizedFinancials(id);
@@ -136,7 +136,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| The Intrinio ID for the Fundamental |
+ **id** | **String**| The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental |
 
 ### Return type
 

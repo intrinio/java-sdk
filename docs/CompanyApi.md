@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 Data Point (Number) for Company
 
-Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+$$v2_company_data_point_number_description$$
 
 ### Example
 ```java
@@ -189,8 +189,8 @@ auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String tag = "marketcap"; // String | An Intrinio data tag
+String identifier = "$$v2_company_data_point_identifier_default$$"; // String | $$v2_company_data_point_identifier_description$$
+String tag = "$$v2_company_data_point_item_number_default$$"; // String | $$v2_company_data_point_item_description$$
 
 try {
     BigDecimal result = companyApi.getCompanyDataPointNumber(identifier, tag);
@@ -205,8 +205,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag |
+ **identifier** | **String**| $$v2_company_data_point_identifier_description$$ |
+ **tag** | **String**| $$v2_company_data_point_item_description$$ |
 
 ### Return type
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 Data Point (Text) for Company
 
-Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+$$v2_company_data_point_text_description$$
 
 ### Example
 ```java
@@ -235,8 +235,8 @@ auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String tag = "marketcap"; // String | An Intrinio data tag
+String identifier = "$$v2_company_data_point_identifier_default$$"; // String | $$v2_company_data_point_identifier_description$$
+String tag = "$$v2_company_data_point_item_text_default$$"; // String | $$v2_company_data_point_item_description$$
 
 try {
     String result = companyApi.getCompanyDataPointText(identifier, tag);
@@ -251,8 +251,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag |
+ **identifier** | **String**| $$v2_company_data_point_identifier_description$$ |
+ **tag** | **String**| $$v2_company_data_point_item_description$$ |
 
 ### Return type
 
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 
 Historical Data for Company
 
-Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
+$$v2_company_historical_data_description$$
 
 ### Example
 ```java
@@ -393,8 +393,8 @@ auth.setApiKey("YOUR API KEY");
 
 CompanyApi companyApi = new CompanyApi();
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String tag = "marketcap"; // String | An Intrinio data-tag
+String identifier = "$$v2_company_historical_data_identifier_default$$"; // String | $$v2_company_historical_data_identifier_description$$
+String tag = "$$v2_company_historical_data_item_default$$"; // String | $$v2_company_historical_data_item_description$$
 String frequency = "daily"; // String | Return historical data in the given frequency
 String type = null; // String | Filter by type, when applicable
 LocalDate startDate = null; // LocalDate | Get historical data on or after this date
@@ -416,8 +416,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **tag** | **String**| An Intrinio data-tag |
+ **identifier** | **String**| $$v2_company_historical_data_identifier_description$$ |
+ **tag** | **String**| $$v2_company_historical_data_item_description$$ |
  **frequency** | **String**| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly]
  **type** | **String**| Filter by type, when applicable | [optional]
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]

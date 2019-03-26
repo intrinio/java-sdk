@@ -47,8 +47,9 @@ public class HistoricalDataApi {
 
     /**
      * Build call for getHistoricalData
-     * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code-name (required)
+     * @param identifier $$v2_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_historical_data_item_description$$ (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
@@ -60,7 +61,7 @@ public class HistoricalDataApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getHistoricalDataCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getHistoricalDataCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -70,6 +71,8 @@ public class HistoricalDataApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (frequency != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("frequency", frequency));
         if (type != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
         if (startDate != null)
@@ -116,7 +119,7 @@ public class HistoricalDataApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getHistoricalDataValidateBeforeCall(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getHistoricalDataValidateBeforeCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -129,16 +132,17 @@ public class HistoricalDataApi {
         }
         
 
-        com.squareup.okhttp.Call call = getHistoricalDataCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getHistoricalDataCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Historical Data
-     * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
-     * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code-name (required)
+     * $$v2_historical_data_description$$
+     * @param identifier $$v2_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_historical_data_item_description$$ (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
@@ -148,16 +152,17 @@ public class HistoricalDataApi {
      * @return ApiResponseHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseHistoricalData getHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseHistoricalData> resp = getHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
+    public ApiResponseHistoricalData getHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseHistoricalData> resp = getHistoricalDataWithHttpInfo(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
         return resp.getData();
     }
 
     /**
      * Historical Data
-     * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
-     * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code-name (required)
+     * $$v2_historical_data_description$$
+     * @param identifier $$v2_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_historical_data_item_description$$ (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
@@ -167,17 +172,18 @@ public class HistoricalDataApi {
      * @return ApiResponse&lt;ApiResponseHistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseHistoricalData> getHistoricalDataWithHttpInfo(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseHistoricalData> getHistoricalDataWithHttpInfo(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseHistoricalData>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Historical Data (asynchronously)
-     * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
-     * @param identifier An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code-name (required)
+     * $$v2_historical_data_description$$
+     * @param identifier $$v2_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_historical_data_item_description$$ (required)
+     * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
      * @param endDate Get historical date on or before this date (optional)
@@ -188,7 +194,7 @@ public class HistoricalDataApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getHistoricalDataAsync(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseHistoricalData> callback) throws ApiException {
+    public com.squareup.okhttp.Call getHistoricalDataAsync(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseHistoricalData> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -209,7 +215,7 @@ public class HistoricalDataApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseHistoricalData>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
