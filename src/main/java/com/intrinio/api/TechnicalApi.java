@@ -2257,9 +2257,8 @@ public class TechnicalApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
      * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc5 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
      * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
      * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
      * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
@@ -2274,7 +2273,7 @@ public class TechnicalApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityPriceTechnicalsKstCall(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer roc5, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityPriceTechnicalsKstCall(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2288,11 +2287,9 @@ public class TechnicalApi {
         if (roc2 != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("roc2", roc2));
         if (roc3 != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("roc2", roc3));
+        localVarQueryParams.addAll(apiClient.parameterToPair("roc3", roc3));
         if (roc4 != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("roc3", roc4));
-        if (roc5 != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("roc4", roc5));
+        localVarQueryParams.addAll(apiClient.parameterToPair("roc4", roc4));
         if (sma1 != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sma1", sma1));
         if (sma2 != null)
@@ -2345,7 +2342,7 @@ public class TechnicalApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityPriceTechnicalsKstValidateBeforeCall(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer roc5, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityPriceTechnicalsKstValidateBeforeCall(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -2353,7 +2350,7 @@ public class TechnicalApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstCall(identifier, roc1, roc2, roc3, roc4, roc5, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstCall(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2364,9 +2361,8 @@ public class TechnicalApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
      * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc5 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
      * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
      * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
      * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
@@ -2379,8 +2375,8 @@ public class TechnicalApi {
      * @return ApiResponseSecurityKnowSureThing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurityKnowSureThing getSecurityPriceTechnicalsKst(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer roc5, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityKnowSureThing> resp = getSecurityPriceTechnicalsKstWithHttpInfo(identifier, roc1, roc2, roc3, roc4, roc5, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
+    public ApiResponseSecurityKnowSureThing getSecurityPriceTechnicalsKst(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSecurityKnowSureThing> resp = getSecurityPriceTechnicalsKstWithHttpInfo(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -2390,9 +2386,8 @@ public class TechnicalApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
      * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc5 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
      * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
      * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
      * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
@@ -2405,8 +2400,8 @@ public class TechnicalApi {
      * @return ApiResponse&lt;ApiResponseSecurityKnowSureThing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityKnowSureThing> getSecurityPriceTechnicalsKstWithHttpInfo(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer roc5, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstValidateBeforeCall(identifier, roc1, roc2, roc3, roc4, roc5, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurityKnowSureThing> getSecurityPriceTechnicalsKstWithHttpInfo(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstValidateBeforeCall(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityKnowSureThing>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2417,9 +2412,8 @@ public class TechnicalApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
      * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc5 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
      * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
      * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
      * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
@@ -2433,7 +2427,7 @@ public class TechnicalApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityPriceTechnicalsKstAsync(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer roc5, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityKnowSureThing> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityPriceTechnicalsKstAsync(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityKnowSureThing> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2454,7 +2448,7 @@ public class TechnicalApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstValidateBeforeCall(identifier, roc1, roc2, roc3, roc4, roc5, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstValidateBeforeCall(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityKnowSureThing>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

@@ -20,33 +20,33 @@ import java.util.List;
  */
 
 public class ApiResponseOptionsChain {
-  @SerializedName("chains")
-  private List<OptionChain> chains = null;
+  @SerializedName("chain")
+  private List<OptionChain> chain = null;
 
-  public ApiResponseOptionsChain chains(List<OptionChain> chains) {
-    this.chains = chains;
+  public ApiResponseOptionsChain chain(List<OptionChain> chain) {
+    this.chain = chain;
     return this;
   }
 
-  public ApiResponseOptionsChain addChainsItem(OptionChain chainsItem) {
-    if (this.chains == null) {
-      this.chains = new ArrayList<OptionChain>();
+  public ApiResponseOptionsChain addChainItem(OptionChain chainItem) {
+    if (this.chain == null) {
+      this.chain = new ArrayList<OptionChain>();
     }
-    this.chains.add(chainsItem);
+    this.chain.add(chainItem);
     return this;
   }
 
    /**
    * A list of options for the provided expiration date their respective option prices.
-   * @return chains
+   * @return chain
   **/
   @ApiModelProperty(value = "A list of options for the provided expiration date their respective option prices.")
-  public List<OptionChain> getChains() {
-    return chains;
+  public List<OptionChain> getChain() {
+    return chain;
   }
 
-  public void setChains(List<OptionChain> chains) {
-    this.chains = chains;
+  public void setChain(List<OptionChain> chain) {
+    this.chain = chain;
   }
 
 
@@ -59,12 +59,12 @@ public class ApiResponseOptionsChain {
       return false;
     }
     ApiResponseOptionsChain apiResponseOptionsChain = (ApiResponseOptionsChain) o;
-    return Objects.equals(this.chains, apiResponseOptionsChain.chains);
+    return Objects.equals(this.chain, apiResponseOptionsChain.chain);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(chains);
+    return Objects.hash(chain);
   }
 
 
@@ -73,7 +73,7 @@ public class ApiResponseOptionsChain {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApiResponseOptionsChain {\n");
     
-    sb.append("    chains: ").append(toIndentedString(chains)).append("\n");
+    sb.append("    chain: ").append(toIndentedString(chain)).append("\n");
     sb.append("}");
     return sb.toString();
   }

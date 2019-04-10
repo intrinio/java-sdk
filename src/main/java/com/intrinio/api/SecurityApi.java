@@ -337,8 +337,8 @@ public class SecurityApi {
     }
     /**
      * Build call for getSecurityDataPointNumber
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -408,9 +408,9 @@ public class SecurityApi {
 
     /**
      * Data Point (Number) for Security
-     * $$v2_security_data_point_number_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return BigDecimal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -421,9 +421,9 @@ public class SecurityApi {
 
     /**
      * Data Point (Number) for Security
-     * $$v2_security_data_point_number_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return ApiResponse&lt;BigDecimal&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -435,9 +435,9 @@ public class SecurityApi {
 
     /**
      * Data Point (Number) for Security (asynchronously)
-     * $$v2_security_data_point_number_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -470,7 +470,7 @@ public class SecurityApi {
     }
     /**
      * Build call for getSecurityDataPointText
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -541,8 +541,8 @@ public class SecurityApi {
 
     /**
      * Data Point (Text) for Security
-     * $$v2_security_data_point_text_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
+     * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -554,8 +554,8 @@ public class SecurityApi {
 
     /**
      * Data Point (Text) for Security
-     * $$v2_security_data_point_text_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
+     * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -568,8 +568,8 @@ public class SecurityApi {
 
     /**
      * Data Point (Text) for Security (asynchronously)
-     * $$v2_security_data_point_text_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
+     * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -603,8 +603,8 @@ public class SecurityApi {
     }
     /**
      * Build call for getSecurityHistoricalData
-     * @param identifier $$v2_security_historical_data_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
@@ -695,9 +695,9 @@ public class SecurityApi {
 
     /**
      * Historical Data for Security
-     * $$v2_security_historical_data_description$$
-     * @param identifier $$v2_security_historical_data_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
@@ -715,9 +715,9 @@ public class SecurityApi {
 
     /**
      * Historical Data for Security
-     * $$v2_security_historical_data_description$$
-     * @param identifier $$v2_security_historical_data_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
@@ -736,9 +736,9 @@ public class SecurityApi {
 
     /**
      * Historical Data for Security (asynchronously)
-     * $$v2_security_historical_data_description$$
-     * @param identifier $$v2_security_historical_data_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
@@ -857,7 +857,7 @@ public class SecurityApi {
 
     /**
      * Intraday Stock Prices for Security
-     * $$v2_security_intraday_prices_description$$
+     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param source Return intraday prices from the specified data source (optional)
      * @param startDate Return intraday prices starting at the specified date (optional)
@@ -874,7 +874,7 @@ public class SecurityApi {
 
     /**
      * Intraday Stock Prices for Security
-     * $$v2_security_intraday_prices_description$$
+     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param source Return intraday prices from the specified data source (optional)
      * @param startDate Return intraday prices starting at the specified date (optional)
@@ -892,7 +892,7 @@ public class SecurityApi {
 
     /**
      * Intraday Stock Prices for Security (asynchronously)
-     * $$v2_security_intraday_prices_description$$
+     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param source Return intraday prices from the specified data source (optional)
      * @param startDate Return intraday prices starting at the specified date (optional)
@@ -3358,9 +3358,8 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
      * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc5 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
      * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
      * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
      * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
@@ -3375,7 +3374,7 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityPriceTechnicalsKstCall(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer roc5, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityPriceTechnicalsKstCall(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -3389,11 +3388,9 @@ public class SecurityApi {
         if (roc2 != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("roc2", roc2));
         if (roc3 != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("roc2", roc3));
+        localVarQueryParams.addAll(apiClient.parameterToPair("roc3", roc3));
         if (roc4 != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("roc3", roc4));
-        if (roc5 != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("roc4", roc5));
+        localVarQueryParams.addAll(apiClient.parameterToPair("roc4", roc4));
         if (sma1 != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sma1", sma1));
         if (sma2 != null)
@@ -3446,7 +3443,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityPriceTechnicalsKstValidateBeforeCall(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer roc5, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityPriceTechnicalsKstValidateBeforeCall(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -3454,7 +3451,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstCall(identifier, roc1, roc2, roc3, roc4, roc5, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstCall(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3465,9 +3462,8 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
      * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc5 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
      * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
      * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
      * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
@@ -3480,8 +3476,8 @@ public class SecurityApi {
      * @return ApiResponseSecurityKnowSureThing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurityKnowSureThing getSecurityPriceTechnicalsKst(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer roc5, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityKnowSureThing> resp = getSecurityPriceTechnicalsKstWithHttpInfo(identifier, roc1, roc2, roc3, roc4, roc5, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
+    public ApiResponseSecurityKnowSureThing getSecurityPriceTechnicalsKst(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSecurityKnowSureThing> resp = getSecurityPriceTechnicalsKstWithHttpInfo(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -3491,9 +3487,8 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
      * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc5 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
      * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
      * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
      * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
@@ -3506,8 +3501,8 @@ public class SecurityApi {
      * @return ApiResponse&lt;ApiResponseSecurityKnowSureThing&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityKnowSureThing> getSecurityPriceTechnicalsKstWithHttpInfo(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer roc5, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstValidateBeforeCall(identifier, roc1, roc2, roc3, roc4, roc5, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurityKnowSureThing> getSecurityPriceTechnicalsKstWithHttpInfo(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstValidateBeforeCall(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityKnowSureThing>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3518,9 +3513,8 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
      * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc5 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
      * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
      * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
      * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
@@ -3534,7 +3528,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityPriceTechnicalsKstAsync(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer roc5, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityKnowSureThing> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityPriceTechnicalsKstAsync(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityKnowSureThing> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3555,7 +3549,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstValidateBeforeCall(identifier, roc1, roc2, roc3, roc4, roc5, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityPriceTechnicalsKstValidateBeforeCall(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityKnowSureThing>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

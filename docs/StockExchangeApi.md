@@ -85,7 +85,7 @@ auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-String identifier = "$$v2_mic_default$$"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
 
 try {
     StockExchange result = stockExchangeApi.getStockExchangeById(identifier);
@@ -129,7 +129,7 @@ auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-String identifier = "$$v2_mic_default$$"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
 LocalDate date = null; // LocalDate | The date for which to return price adjustments
 BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
@@ -179,7 +179,7 @@ auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-String identifier = "$$v2_mic_default$$"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
 LocalDate date = null; // LocalDate | The date for which to return prices
 BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
@@ -229,7 +229,7 @@ auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-String identifier = "$$v2_mic_default$$"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
 String source = null; // String | Return realtime prices from the specified data source
 BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
@@ -279,7 +279,7 @@ auth.setApiKey("YOUR API KEY");
 
 StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-String identifier = "$$v2_mic_default$$"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
 BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
 String nextPage = null; // String | Gets the next page of data from a previous API call
 
