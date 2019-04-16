@@ -367,7 +367,6 @@ public class TechnicalApiTest {
         Integer roc2 = null;
         Integer roc3 = null;
         Integer roc4 = null;
-        Integer roc5 = null;
         Integer sma1 = null;
         Integer sma2 = null;
         Integer sma3 = null;
@@ -377,7 +376,7 @@ public class TechnicalApiTest {
         String endDate = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseSecurityKnowSureThing response = api.getSecurityPriceTechnicalsKst(identifier, roc1, roc2, roc3, roc4, roc5, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
+        ApiResponseSecurityKnowSureThing response = api.getSecurityPriceTechnicalsKst(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
 
         // TODO: test validations
     }

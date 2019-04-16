@@ -101,7 +101,7 @@ public class SecurityApiTest {
     /**
      * Data Point (Number) for Security
      *
-     * $$v2_security_data_point_number_description$$
+     * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -118,7 +118,7 @@ public class SecurityApiTest {
     /**
      * Data Point (Text) for Security
      *
-     * $$v2_security_data_point_text_description$$
+     * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -135,7 +135,7 @@ public class SecurityApiTest {
     /**
      * Historical Data for Security
      *
-     * $$v2_security_historical_data_description$$
+     * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -159,7 +159,7 @@ public class SecurityApiTest {
     /**
      * Intraday Stock Prices for Security
      *
-     * $$v2_security_intraday_prices_description$$
+     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -524,7 +524,6 @@ public class SecurityApiTest {
         Integer roc2 = null;
         Integer roc3 = null;
         Integer roc4 = null;
-        Integer roc5 = null;
         Integer sma1 = null;
         Integer sma2 = null;
         Integer sma3 = null;
@@ -534,7 +533,7 @@ public class SecurityApiTest {
         String endDate = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseSecurityKnowSureThing response = api.getSecurityPriceTechnicalsKst(identifier, roc1, roc2, roc3, roc4, roc5, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
+        ApiResponseSecurityKnowSureThing response = api.getSecurityPriceTechnicalsKst(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
 
         // TODO: test validations
     }
