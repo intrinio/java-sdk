@@ -28,34 +28,40 @@ Returns all Companies. When parameters are specified, returns matching companies
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-LocalDate latestFilingDate = null; // LocalDate | Last filing date
-String sic = "3350"; // String | Standard Industrial Classification code
-String template = "industrial"; // String | Template
-String sector = "Basic Materials"; // String | Industry sector
-String industryCategory = "Metals & Mining"; // String | Industry category
-String industryGroup = "Aluminum"; // String | Industry group
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    ApiResponseCompanies result = companyApi.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getAllCompanies");
-    e.printStackTrace();
+    LocalDate latestFilingDate = null; // LocalDate | Last filing date
+    String sic = "3350"; // String | Standard Industrial Classification code
+    String template = "industrial"; // String | Template
+    String sector = "Basic Materials"; // String | Industry sector
+    String industryCategory = "Metals & Mining"; // String | Industry category
+    String industryGroup = "Aluminum"; // String | Industry group
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseCompanies result = companyApi.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#getAllCompanies");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -86,28 +92,34 @@ Returns all News for all Companies
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    ApiResponseNews result = companyApi.getAllCompanyNews(pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getAllCompanyNews");
-    e.printStackTrace();
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseNews result = companyApi.getAllCompanyNews(pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#getAllCompanyNews");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -132,27 +144,33 @@ Returns the Company with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    Company result = companyApi.getCompany(identifier);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getCompany");
-    e.printStackTrace();
+    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+
+    try {
+        Company result = companyApi.getCompany(identifier);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#getCompany");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -172,32 +190,38 @@ Name | Type | Description  | Notes
 
 Data Point (Number) for Company
 
-Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+$$v2_company_data_point_number_description$$
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String tag = "marketcap"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    BigDecimal result = companyApi.getCompanyDataPointNumber(identifier, tag);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getCompanyDataPointNumber");
-    e.printStackTrace();
+    String identifier = "$$v2_company_data_point_identifier_default$$"; // String | $$v2_company_data_point_identifier_description$$
+    String tag = "$$v2_company_data_point_item_number_default$$"; // String | $$v2_company_data_point_item_description$$
+
+    try {
+        BigDecimal result = companyApi.getCompanyDataPointNumber(identifier, tag);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#getCompanyDataPointNumber");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -205,8 +229,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) |
+ **identifier** | **String**| $$v2_company_data_point_identifier_description$$ |
+ **tag** | **String**| $$v2_company_data_point_item_description$$ |
 
 ### Return type
 
@@ -218,32 +242,38 @@ Name | Type | Description  | Notes
 
 Data Point (Text) for Company
 
-Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+$$v2_company_data_point_text_description$$
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String tag = "ceo"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    String result = companyApi.getCompanyDataPointText(identifier, tag);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getCompanyDataPointText");
-    e.printStackTrace();
+    String identifier = "$$v2_company_data_point_identifier_default$$"; // String | $$v2_company_data_point_identifier_description$$
+    String tag = "$$v2_company_data_point_item_text_default$$"; // String | $$v2_company_data_point_item_description$$
+
+    try {
+        String result = companyApi.getCompanyDataPointText(identifier, tag);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#getCompanyDataPointText");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -251,8 +281,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) |
+ **identifier** | **String**| $$v2_company_data_point_identifier_description$$ |
+ **tag** | **String**| $$v2_company_data_point_item_description$$ |
 
 ### Return type
 
@@ -268,29 +298,35 @@ Returns a complete list of SEC filings for the Company with the given &#x60;iden
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    ApiResponseCompanyFilings result = companyApi.getCompanyFilings(identifier, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getCompanyFilings");
-    e.printStackTrace();
+    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseCompanyFilings result = companyApi.getCompanyFilings(identifier, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#getCompanyFilings");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -316,37 +352,43 @@ Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;. 
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-LocalDate filedAfter = null; // LocalDate | Filed on or after this date
-LocalDate filedBefore = null; // LocalDate | Filed on or before this date
-Boolean reportedOnly = false; // Boolean | Only as-reported fundamentals
-Integer fiscalYear = 2017; // Integer | Only for the given fiscal year
-String statementCode = null; // String | Only of the given statement code
-String type = null; // String | Only of the given type
-LocalDate startDate = null; // LocalDate | Only on or after the given date
-LocalDate endDate = null; // LocalDate | Only on or before the given date
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getCompanyFundamentals");
-    e.printStackTrace();
+    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+    LocalDate filedAfter = null; // LocalDate | Filed on or after this date
+    LocalDate filedBefore = null; // LocalDate | Filed on or before this date
+    Boolean reportedOnly = false; // Boolean | Only as-reported fundamentals
+    Integer fiscalYear = 2017; // Integer | Only for the given fiscal year
+    String statementCode = null; // String | Only of the given statement code
+    String type = null; // String | Only of the given type
+    LocalDate startDate = null; // LocalDate | Only on or after the given date
+    LocalDate endDate = null; // LocalDate | Only on or before the given date
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#getCompanyFundamentals");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -376,39 +418,45 @@ Name | Type | Description  | Notes
 
 Historical Data for Company
 
-Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
+$$v2_company_historical_data_description$$
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String tag = "marketcap"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
-String frequency = "daily"; // String | Return historical data in the given frequency
-String type = null; // String | Filter by type, when applicable
-LocalDate startDate = null; // LocalDate | Get historical data on or after this date
-LocalDate endDate = null; // LocalDate | Get historical data on or before this date
-String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    ApiResponseCompanyHistoricalData result = companyApi.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getCompanyHistoricalData");
-    e.printStackTrace();
+    String identifier = "$$v2_company_historical_data_identifier_default$$"; // String | $$v2_company_historical_data_identifier_description$$
+    String tag = "$$v2_company_historical_data_item_default$$"; // String | $$v2_company_historical_data_item_description$$
+    String frequency = "daily"; // String | Return historical data in the given frequency
+    String type = null; // String | Filter by type, when applicable
+    LocalDate startDate = null; // LocalDate | Get historical data on or after this date
+    LocalDate endDate = null; // LocalDate | Get historical data on or before this date
+    String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseCompanyHistoricalData result = companyApi.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#getCompanyHistoricalData");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -416,8 +464,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) |
+ **identifier** | **String**| $$v2_company_historical_data_identifier_description$$ |
+ **tag** | **String**| $$v2_company_historical_data_item_description$$ |
  **frequency** | **String**| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly]
  **type** | **String**| Filter by type, when applicable | [optional]
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
@@ -440,29 +488,35 @@ Returns news for the Company with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    ApiResponseCompanyNews result = companyApi.getCompanyNews(identifier, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getCompanyNews");
-    e.printStackTrace();
+    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseCompanyNews result = companyApi.getCompanyNews(identifier, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#getCompanyNews");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -488,28 +542,34 @@ Returns Securities for the Company with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    ApiResponseCompanySecurities result = companyApi.getCompanySecurities(identifier, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#getCompanySecurities");
-    e.printStackTrace();
+    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseCompanySecurities result = companyApi.getCompanySecurities(identifier, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#getCompanySecurities");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -534,30 +594,36 @@ Returns the Fundamental for the Company with the given &#x60;identifier&#x60; an
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String statementCode = "income_statement"; // String | The statement code
-String fiscalPeriod = "FY"; // String | The fiscal period
-Integer fiscalYear = 2017; // Integer | The fiscal year
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    Fundamental result = companyApi.lookupCompanyFundamental(identifier, statementCode, fiscalPeriod, fiscalYear);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#lookupCompanyFundamental");
-    e.printStackTrace();
+    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+    String statementCode = "income_statement"; // String | The statement code
+    String fiscalPeriod = "FY"; // String | The fiscal period
+    Integer fiscalYear = 2017; // Integer | The fiscal year
+
+    try {
+        Fundamental result = companyApi.lookupCompanyFundamental(identifier, statementCode, fiscalPeriod, fiscalYear);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#lookupCompanyFundamental");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -584,28 +650,34 @@ Searches for Companies matching the text &#x60;query&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.CompanyApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-CompanyApi companyApi = new CompanyApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String query = "Apple"; // String | Search parameters
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
+    CompanyApi companyApi = new CompanyApi();
 
-try {
-    ApiResponseCompaniesSearch result = companyApi.searchCompanies(query, pageSize);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling CompanyApi#searchCompanies");
-    e.printStackTrace();
+    String query = "Apple"; // String | Search parameters
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+
+    try {
+        ApiResponseCompaniesSearch result = companyApi.searchCompanies(query, pageSize);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling CompanyApi#searchCompanies");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 

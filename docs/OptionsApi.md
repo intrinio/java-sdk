@@ -20,36 +20,42 @@ Returns the master list of option contracts for a given symbol.
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.OptionsApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-OptionsApi optionsApi = new OptionsApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String symbol = "MSFT"; // String | The option symbol, corresponding to the underlying security.
-String type = "put"; // String | The option contract type.
-BigDecimal strike = new BigDecimal(); // BigDecimal | The strike price of the option contract. This will return options contracts with strike price equal to this price.
-BigDecimal strikeGreaterThan = new BigDecimal(); // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices greater than this price.
-BigDecimal strikeLessThan = new BigDecimal(); // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices less than this price.
-String expiration = "2019-03-01"; // String | The expiration date of the option contract. This will return options contracts with expiration dates on this date.
-String expirationAfter = "2019-01-01"; // String | The expiration date of the option contract. This will return options contracts with expiration dates after this date.
-String expirationBefore = "2019-12-31"; // String | The expiration date of the option contract. This will return options contracts with expiration dates before this date.
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    OptionsApi optionsApi = new OptionsApi();
 
-try {
-    ApiResponseOptions result = optionsApi.getOptions(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling OptionsApi#getOptions");
-    e.printStackTrace();
+    String symbol = "MSFT"; // String | The option symbol, corresponding to the underlying security.
+    String type = "put"; // String | The option contract type.
+    BigDecimal strike = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike price equal to this price.
+    BigDecimal strikeGreaterThan = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices greater than this price.
+    BigDecimal strikeLessThan = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices less than this price.
+    String expiration = "2019-03-01"; // String | The expiration date of the option contract. This will return options contracts with expiration dates on this date.
+    String expirationAfter = "2019-01-01"; // String | The expiration date of the option contract. This will return options contracts with expiration dates after this date.
+    String expirationBefore = "2019-12-31"; // String | The expiration date of the option contract. This will return options contracts with expiration dates before this date.
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseOptions result = optionsApi.getOptions(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling OptionsApi#getOptions");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -82,34 +88,40 @@ Returns all options contracts and their prices for the given symbol and expirati
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.OptionsApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-OptionsApi optionsApi = new OptionsApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String symbol = "MSFT"; // String | The option symbol, corresponding to the underlying security.
-String expiration = "2019-03-06"; // String | The expiration date of the options contract
-String type = "put"; // String | The option contract type.
-BigDecimal strike = new BigDecimal(); // BigDecimal | The strike price of the option contract. This will return options contracts with strike price equal to this price.
-BigDecimal strikeGreaterThan = new BigDecimal(); // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices greater than this price.
-BigDecimal strikeLessThan = new BigDecimal(); // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices less than this price.
-String moneyness = "in_the_money"; // String | The moneyness of the options contracts to return. 'all' will return all options contracts. 'in_the_money' will return options contracts that are in the money (call options with strike prices below the current price, put options with strike prices above the current price). 'out_of_they_money' will return options contracts that are out of the money (call options with strike prices above the current price, put options with strike prices below the current price). 'near_the_money' will return options contracts that are $0.50 or less away from being in the money.
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
+    OptionsApi optionsApi = new OptionsApi();
 
-try {
-    ApiResponseOptionsChain result = optionsApi.getOptionsChain(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling OptionsApi#getOptionsChain");
-    e.printStackTrace();
+    String symbol = "MSFT"; // String | The option symbol, corresponding to the underlying security.
+    String expiration = "2019-03-06"; // String | The expiration date of the options contract
+    String type = "put"; // String | The option contract type.
+    BigDecimal strike = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike price equal to this price.
+    BigDecimal strikeGreaterThan = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices greater than this price.
+    BigDecimal strikeLessThan = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices less than this price.
+    String moneyness = "in_the_money"; // String | The moneyness of the options contracts to return. 'all' will return all options contracts. 'in_the_money' will return options contracts that are in the money (call options with strike prices below the current price, put options with strike prices above the current price). 'out_of_they_money' will return options contracts that are out of the money (call options with strike prices above the current price, put options with strike prices below the current price). 'near_the_money' will return options contracts that are $0.50 or less away from being in the money.
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+
+    try {
+        ApiResponseOptionsChain result = optionsApi.getOptionsChain(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling OptionsApi#getOptionsChain");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -140,29 +152,35 @@ Returns all option contract expiration dates for a given symbol.
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.OptionsApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-OptionsApi optionsApi = new OptionsApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String symbol = "MSFT"; // String | The option symbol, corresponding to the underlying security.
-String after = "2019-01-01"; // String | Return option contract expiration dates after this date.
-String before = "2019-12-31"; // String | Return option contract expiration dates before this date.
+    OptionsApi optionsApi = new OptionsApi();
 
-try {
-    ApiResponseOptionsExpirations result = optionsApi.getOptionsExpirations(symbol, after, before);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling OptionsApi#getOptionsExpirations");
-    e.printStackTrace();
+    String symbol = "MSFT"; // String | The option symbol, corresponding to the underlying security.
+    String after = "2019-01-01"; // String | Return option contract expiration dates after this date.
+    String before = "2019-12-31"; // String | Return option contract expiration dates before this date.
+
+    try {
+        ApiResponseOptionsExpirations result = optionsApi.getOptionsExpirations(symbol, after, before);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling OptionsApi#getOptionsExpirations");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -188,31 +206,37 @@ Returns all option prices for a given option contract identifier.
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.OptionsApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-OptionsApi optionsApi = new OptionsApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "null"; // String | The Intrinio ID or code of the options contract to request prices for.
-String startDate = "2019-01-01"; // String | Return option contract prices on or after this date.
-String endDate = "2019-12-31"; // String | Return option contract prices on or before this date.
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    OptionsApi optionsApi = new OptionsApi();
 
-try {
-    ApiResponseOptionPrices result = optionsApi.getOptionsPrices(identifier, startDate, endDate, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling OptionsApi#getOptionsPrices");
-    e.printStackTrace();
+    String identifier = "null"; // String | The Intrinio ID or code of the options contract to request prices for.
+    String startDate = "2019-01-01"; // String | Return option contract prices on or after this date.
+    String endDate = "2019-12-31"; // String | Return option contract prices on or before this date.
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseOptionPrices result = optionsApi.getOptionsPrices(identifier, startDate, endDate, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling OptionsApi#getOptionsPrices");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 

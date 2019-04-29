@@ -23,32 +23,38 @@ Returns all Filings. Returns Filings matching parameters when supplied.
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FilingApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-FilingApi filingApi = new FilingApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String company = "AAPL"; // String | Filings for the given `company` identifier (ticker, CIK, LEI, Intrinio ID)
-String reportType = null; // String | Filter by report type
-LocalDate startDate = null; // LocalDate | Filed on or after the given date
-LocalDate endDate = null; // LocalDate | Filed before or after the given date
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    FilingApi filingApi = new FilingApi();
 
-try {
-    ApiResponseFilings result = filingApi.getAllFilings(company, reportType, startDate, endDate, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilingApi#getAllFilings");
-    e.printStackTrace();
+    String company = "AAPL"; // String | Filings for the given `company` identifier (ticker, CIK, LEI, Intrinio ID)
+    String reportType = null; // String | Filter by report type
+    LocalDate startDate = null; // LocalDate | Filed on or after the given date
+    LocalDate endDate = null; // LocalDate | Filed before or after the given date
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseFilings result = filingApi.getAllFilings(company, reportType, startDate, endDate, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling FilingApi#getAllFilings");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -77,34 +83,40 @@ Return all Notes from all Filings, most-recent first. Returns notes matching par
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FilingApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-FilingApi filingApi = new FilingApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String company = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String reportType = "10-Q"; // String | Notes contained in filings that match the given report type
-LocalDate filingStartDate = null; // LocalDate | Limit search to filings on or after this date
-LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
-LocalDate periodEndedStartDate = null; // LocalDate | Limit search to filings with a period end date on or after this date
-LocalDate periodEndedEndDate = null; // LocalDate | Limit search to filings with a period end date on or before this date
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    FilingApi filingApi = new FilingApi();
 
-try {
-    ApiResponseFilingNotes result = filingApi.getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilingApi#getAllNotes");
-    e.printStackTrace();
+    String company = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+    String reportType = "10-Q"; // String | Notes contained in filings that match the given report type
+    LocalDate filingStartDate = null; // LocalDate | Limit search to filings on or after this date
+    LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
+    LocalDate periodEndedStartDate = null; // LocalDate | Limit search to filings with a period end date on or after this date
+    LocalDate periodEndedEndDate = null; // LocalDate | Limit search to filings with a period end date on or before this date
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseFilingNotes result = filingApi.getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling FilingApi#getAllNotes");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -135,27 +147,33 @@ Returns the Filing with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FilingApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-FilingApi filingApi = new FilingApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String id = "fil_7Kn2P6"; // String | The Intrinio ID of the Filing
+    FilingApi filingApi = new FilingApi();
 
-try {
-    Filing result = filingApi.getFilingById(id);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilingApi#getFilingById");
-    e.printStackTrace();
+    String id = "fil_7Kn2P6"; // String | The Intrinio ID of the Filing
+
+    try {
+        Filing result = filingApi.getFilingById(id);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling FilingApi#getFilingById");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -177,28 +195,34 @@ Filing Note by ID
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FilingApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-FilingApi filingApi = new FilingApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "xbn_3fghz"; // String | The Intrinio ID of the filing note
-String contentFormat = "text"; // String | Returns content in html (as filed) or plain text
+    FilingApi filingApi = new FilingApi();
 
-try {
-    FilingNote result = filingApi.getNote(identifier, contentFormat);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilingApi#getNote");
-    e.printStackTrace();
+    String identifier = "xbn_3fghz"; // String | The Intrinio ID of the filing note
+    String contentFormat = "text"; // String | Returns content in html (as filed) or plain text
+
+    try {
+        FilingNote result = filingApi.getNote(identifier, contentFormat);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling FilingApi#getNote");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -221,27 +245,33 @@ Filing Note HTML
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FilingApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-FilingApi filingApi = new FilingApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "xbn_3fghz"; // String | The Intrinio ID of the filing note
+    FilingApi filingApi = new FilingApi();
 
-try {
-    String result = filingApi.getNoteHtml(identifier);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilingApi#getNoteHtml");
-    e.printStackTrace();
+    String identifier = "xbn_3fghz"; // String | The Intrinio ID of the filing note
+
+    try {
+        String result = filingApi.getNoteHtml(identifier);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling FilingApi#getNoteHtml");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -263,27 +293,33 @@ Filing Note Text
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FilingApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-FilingApi filingApi = new FilingApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "xbn_3fghz"; // String | The Intrinio ID of the filing note
+    FilingApi filingApi = new FilingApi();
 
-try {
-    String result = filingApi.getNoteText(identifier);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilingApi#getNoteText");
-    e.printStackTrace();
+    String identifier = "xbn_3fghz"; // String | The Intrinio ID of the filing note
+
+    try {
+        String result = filingApi.getNoteText(identifier);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling FilingApi#getNoteText");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -307,31 +343,37 @@ Searches for Filing Notes using the &#x60;query&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FilingApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-FilingApi filingApi = new FilingApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String query = "inflation"; // String | Search for notes that contain all or parts of this text
-LocalDate filingStartDate = null; // LocalDate | Limit search to filings on or after this date
-LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-BigDecimal pageSize2 = new BigDecimal(); // BigDecimal | The number of results to return
+    FilingApi filingApi = new FilingApi();
 
-try {
-    ApiResponseFilingNotesSearch result = filingApi.searchNotes(query, filingStartDate, filingEndDate, pageSize, pageSize2);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FilingApi#searchNotes");
-    e.printStackTrace();
+    String query = "inflation"; // String | Search for notes that contain all or parts of this text
+    LocalDate filingStartDate = null; // LocalDate | Limit search to filings on or after this date
+    LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    BigDecimal pageSize2 = null; // BigDecimal | The number of results to return
+
+    try {
+        ApiResponseFilingNotesSearch result = filingApi.searchNotes(query, filingStartDate, filingEndDate, pageSize, pageSize2);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling FilingApi#searchNotes");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 

@@ -24,7 +24,7 @@ public class DataPointApiTest {
     /**
      * Data Point (Number)
      *
-     * Returns a numeric value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;&#x60;
+     * $$v2_data_point_number_description$$
      *
      * @throws ApiException
      *          if the Api call fails
@@ -41,7 +41,7 @@ public class DataPointApiTest {
     /**
      * Data Point (Text)
      *
-     * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * $$v2_data_point_text_description$$
      *
      * @throws ApiException
      *          if the Api call fails

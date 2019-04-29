@@ -22,30 +22,36 @@ Returns all Stock Exchanges matching the specified parameters
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.StockExchangeApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-StockExchangeApi stockExchangeApi = new StockExchangeApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String city = "city_example"; // String | Filter by city
-String country = "CHINA"; // String | Filter by country
-String countryCode = "countryCode_example"; // String | Filter by ISO country code
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
+    StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-try {
-    ApiResponseStockExchanges result = stockExchangeApi.getAllStockExchanges(city, country, countryCode, pageSize);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling StockExchangeApi#getAllStockExchanges");
-    e.printStackTrace();
+    String city = "city_example"; // String | Filter by city
+    String country = "CHINA"; // String | Filter by country
+    String countryCode = "countryCode_example"; // String | Filter by ISO country code
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+
+    try {
+        ApiResponseStockExchanges result = stockExchangeApi.getAllStockExchanges(city, country, countryCode, pageSize);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling StockExchangeApi#getAllStockExchanges");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -72,27 +78,33 @@ Returns the Stock Exchange with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.StockExchangeApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-StockExchangeApi stockExchangeApi = new StockExchangeApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+    StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-try {
-    StockExchange result = stockExchangeApi.getStockExchangeById(identifier);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling StockExchangeApi#getStockExchangeById");
-    e.printStackTrace();
+    String identifier = "$$v2_mic_default$$"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+
+    try {
+        StockExchange result = stockExchangeApi.getStockExchangeById(identifier);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling StockExchangeApi#getStockExchangeById");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -116,30 +128,36 @@ Returns stock price adjustments for the Stock Exchange with the given &#x60;iden
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.StockExchangeApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-StockExchangeApi stockExchangeApi = new StockExchangeApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
-LocalDate date = null; // LocalDate | The date for which to return price adjustments
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-try {
-    ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustments(identifier, date, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling StockExchangeApi#getStockExchangePriceAdjustments");
-    e.printStackTrace();
+    String identifier = "$$v2_mic_default$$"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+    LocalDate date = null; // LocalDate | The date for which to return price adjustments
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustments(identifier, date, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling StockExchangeApi#getStockExchangePriceAdjustments");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -166,30 +184,36 @@ Returns end-of-day stock prices for Securities on the Stock Exchange with &#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.StockExchangeApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-StockExchangeApi stockExchangeApi = new StockExchangeApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
-LocalDate date = null; // LocalDate | The date for which to return prices
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-try {
-    ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling StockExchangeApi#getStockExchangePrices");
-    e.printStackTrace();
+    String identifier = "$$v2_mic_default$$"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+    LocalDate date = null; // LocalDate | The date for which to return prices
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling StockExchangeApi#getStockExchangePrices");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -216,30 +240,36 @@ Returns realtime stock prices for the Stock Exchange with the given &#x60;identi
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.StockExchangeApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-StockExchangeApi stockExchangeApi = new StockExchangeApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
-String source = null; // String | Return realtime prices from the specified data source
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-try {
-    ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling StockExchangeApi#getStockExchangeRealtimePrices");
-    e.printStackTrace();
+    String identifier = "$$v2_mic_default$$"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+    String source = null; // String | Return realtime prices from the specified data source
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling StockExchangeApi#getStockExchangeRealtimePrices");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -266,29 +296,35 @@ Returns Securities traded on the Stock Exchange with &#x60;identifier&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.StockExchangeApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-StockExchangeApi stockExchangeApi = new StockExchangeApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-try {
-    ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling StockExchangeApi#getStockExchangeSecurities");
-    e.printStackTrace();
+    String identifier = "$$v2_mic_default$$"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling StockExchangeApi#getStockExchangeSecurities");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 

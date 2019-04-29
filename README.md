@@ -8,51 +8,13 @@ Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a 
 - Package version: 2.2.0
 
 
-## Requirements
-
-Building the Intrinio Java SDK requires [Maven](https://maven.apache.org/) to be installed.
-
 ## Installation
 
-To install the Intrinio Java SDK to your local Maven repository, simply execute:
+Download the most recent release zip file and import all .jar files into your project as module dependencies.
 
-```shell
-mvn install
-```
+Instructions for importing jar files into your IntelliJ project can be found here:
 
-Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
-
-### Maven users
-
-Add this dependency to your project's POM:
-
-```xml
-<dependency>
-    <groupId>com.intrinio</groupId>
-    <artifactId>intrinio-sdk</artifactId>
-    <version>2.2.0</version>
-    <scope>compile</scope>
-</dependency>
-```
-
-### Gradle users
-
-Add this dependency to your project's build file:
-
-```groovy
-compile "com.intrinio:intrinio-sdk:2.2.0"
-```
-
-### Others
-
-At first generate the JAR by executing:
-
-    mvn package
-
-Then manually install the following JARs:
-
-* target/intrinio-sdk-2.2.0.jar
-* target/lib/*.jar
+https://www.jetbrains.com/help/idea/library.html#add-library-to-module-dependencies
 
 ## SDK Code Examples
 
@@ -63,33 +25,38 @@ Code examples for Intrinio SDKs are available at https://github.com/intrinio/sdk
 Please follow the [installation](#installation) instructions and execute the following Java code:
 
 ```java
-import com.intrinio.invoker.ApiClient;
-import com.intrinio.invoker.ApiException;
-import com.intrinio.invoker.Configuration;
-import com.intrinio.invoker.auth.ApiKeyAuth;
-import com.intrinio.api.CompanyApi;
-import com.intrinio.models.ApiResponseCompanies;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-import java.io.File;
-import java.util.*;
+public class Main {
+  public static void main(String[] args) {
 
-public class CompanyApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        auth.setApiKey("YOUR API KEY");
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-        CompanyApi companyApi = new CompanyApi();
-        String nextPage = null;
-        
-        try {
-            ApiResponseCompanies result = companyApi.getAllCompanies(nextPage);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#filterCompanies");
-            e.printStackTrace();
-        }
+    SecurityApi securityApi = new SecurityApi();
+
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    LocalDate startDate = null; // LocalDate | Return prices on or after the date
+    LocalDate endDate = null; // LocalDate | Return prices on or before the date
+    String frequency = "daily"; // String | Return stock prices in the given frequency
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseSecurityStockPrices result = securityApi.getSecurityStockPrices(identifier, startDate, endDate, frequency, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling SecurityApi#getSecurityStockPrices");
+        e.printStackTrace();
     }
+
+  }
 }
 ```
 

@@ -19,33 +19,39 @@ Returns all Data Tags. Returns Data Tags matching parameters when specified.
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.DataTagApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-DataTagApi dataTagApi = new DataTagApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String tag = null; // String | Tag
-String type = null; // String | Type
-String parent = null; // String | ID of tag parent
-String statementCode = "income_statement"; // String | Statement Code
-String fsTemplate = "industrial"; // String | Template
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    DataTagApi dataTagApi = new DataTagApi();
 
-try {
-    ApiResponseDataTags result = dataTagApi.getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DataTagApi#getAllDataTags");
-    e.printStackTrace();
+    String tag = null; // String | Tag
+    String type = null; // String | Type
+    String parent = null; // String | ID of tag parent
+    String statementCode = "income_statement"; // String | Statement Code
+    String fsTemplate = "industrial"; // String | Template
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseDataTags result = dataTagApi.getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling DataTagApi#getAllDataTags");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -75,27 +81,33 @@ Returns the Data Tag with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.DataTagApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-DataTagApi dataTagApi = new DataTagApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "marketcap"; // String | The Intrinio ID or the code-name of the Data Tag
+    DataTagApi dataTagApi = new DataTagApi();
 
-try {
-    DataTag result = dataTagApi.getDataTagById(identifier);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DataTagApi#getDataTagById");
-    e.printStackTrace();
+    String identifier = "marketcap"; // String | The Intrinio ID or the code-name of the Data Tag
+
+    try {
+        DataTag result = dataTagApi.getDataTagById(identifier);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling DataTagApi#getDataTagById");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -119,28 +131,34 @@ Searches for Data Tags matching the text &#x60;query&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.DataTagApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-DataTagApi dataTagApi = new DataTagApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String query = "revenue"; // String | 
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
+    DataTagApi dataTagApi = new DataTagApi();
 
-try {
-    ApiResponseDataTagsSearch result = dataTagApi.searchDataTags(query, pageSize);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DataTagApi#searchDataTags");
-    e.printStackTrace();
+    String query = "revenue"; // String | 
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+
+    try {
+        ApiResponseDataTagsSearch result = dataTagApi.searchDataTags(query, pageSize);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling DataTagApi#searchDataTags");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 

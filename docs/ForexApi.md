@@ -19,26 +19,32 @@ Returns a list of forex currencies for which prices are available.
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.ForexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-ForexApi forexApi = new ForexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
+
+    ForexApi forexApi = new ForexApi();
 
 
-try {
-    ApiResponseForexCurrencies result = forexApi.getForexCurrencies();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ForexApi#getForexCurrencies");
-    e.printStackTrace();
+    try {
+        ApiResponseForexCurrencies result = forexApi.getForexCurrencies();
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling ForexApi#getForexCurrencies");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -59,26 +65,32 @@ Returns a list of currency pairs used to request foreign exchange (forex) market
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.ForexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-ForexApi forexApi = new ForexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
+
+    ForexApi forexApi = new ForexApi();
 
 
-try {
-    ApiResponseForexPairs result = forexApi.getForexPairs();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ForexApi#getForexPairs");
-    e.printStackTrace();
+    try {
+        ApiResponseForexPairs result = forexApi.getForexPairs();
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling ForexApi#getForexPairs");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -99,35 +111,41 @@ Provides a list of forex price quotes for a given forex currency pair and timefr
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.ForexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-ForexApi forexApi = new ForexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String pair = "EURUSD"; // String | The Forex Currency Pair code
-String timeframe = "D1"; // String | The time interval for the quotes
-String timezone = "UTC"; // String | Returns trading times in this timezone
-String startDate = "2018-01-01"; // String | Return Forex Prices on or after this date
-String startTime = "14:20:00"; // String | Return Forex Prices at or after this time (24-hour)
-String endDate = "2019-01-01"; // String | Return Forex Prices on or before this date
-String endTime = "21:01:21"; // String | Return Forex Prices at or before this time (24-hour)
-Integer pageSize = 100; // Integer | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    ForexApi forexApi = new ForexApi();
 
-try {
-    ApiResponseForexPrices result = forexApi.getForexPrices(pair, timeframe, timezone, startDate, startTime, endDate, endTime, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ForexApi#getForexPrices");
-    e.printStackTrace();
+    String pair = "EURUSD"; // String | The Forex Currency Pair code
+    String timeframe = "D1"; // String | The time interval for the quotes
+    String timezone = "UTC"; // String | Returns trading times in this timezone
+    String startDate = "2018-01-01"; // String | Return Forex Prices on or after this date
+    String startTime = "14:20:00"; // String | Return Forex Prices at or after this time (24-hour)
+    String endDate = "2019-01-01"; // String | Return Forex Prices on or before this date
+    String endTime = "21:01:21"; // String | Return Forex Prices at or before this time (24-hour)
+    Integer pageSize = 100; // Integer | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseForexPrices result = forexApi.getForexPrices(pair, timeframe, timezone, startDate, startTime, endDate, endTime, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling ForexApi#getForexPrices");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 

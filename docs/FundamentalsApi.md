@@ -20,27 +20,33 @@ Returns detailed fundamental data for the given &#x60;id&#x60;.
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FundamentalsApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-FundamentalsApi fundamentalsApi = new FundamentalsApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String id = "fun_ge9LlE"; // String | The Intrinio ID for the Fundamental
+    FundamentalsApi fundamentalsApi = new FundamentalsApi();
 
-try {
-    Fundamental result = fundamentalsApi.getFundamentalById(id);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FundamentalsApi#getFundamentalById");
-    e.printStackTrace();
+    String id = "fun_ge9LlE"; // String | The Intrinio ID for the Fundamental
+
+    try {
+        Fundamental result = fundamentalsApi.getFundamentalById(id);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling FundamentalsApi#getFundamentalById");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -64,27 +70,33 @@ Returns the As-Reported Financials directly from the financial statements of the
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FundamentalsApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-FundamentalsApi fundamentalsApi = new FundamentalsApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String id = "AAPL-income_statement-2018-Q1"; // String | The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental
+    FundamentalsApi fundamentalsApi = new FundamentalsApi();
 
-try {
-    ApiResponseReportedFinancials result = fundamentalsApi.getFundamentalReportedFinancials(id);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FundamentalsApi#getFundamentalReportedFinancials");
-    e.printStackTrace();
+    String id = "AAPL-income_statement-2018-Q1"; // String | The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental
+
+    try {
+        ApiResponseReportedFinancials result = fundamentalsApi.getFundamentalReportedFinancials(id);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling FundamentalsApi#getFundamentalReportedFinancials");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -108,27 +120,33 @@ Returns professional-grade historical financial data. This data is standardized,
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FundamentalsApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-FundamentalsApi fundamentalsApi = new FundamentalsApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String id = "AAPL-income_statement-2018-Q1"; // String | The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental
+    FundamentalsApi fundamentalsApi = new FundamentalsApi();
 
-try {
-    ApiResponseStandardizedFinancials result = fundamentalsApi.getFundamentalStandardizedFinancials(id);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FundamentalsApi#getFundamentalStandardizedFinancials");
-    e.printStackTrace();
+    String id = "AAPL-income_statement-2018-Q1"; // String | The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental
+
+    try {
+        ApiResponseStandardizedFinancials result = fundamentalsApi.getFundamentalStandardizedFinancials(id);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling FundamentalsApi#getFundamentalStandardizedFinancials");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -152,30 +170,36 @@ Returns the Fundamental for the Company with the given &#x60;identifier&#x60; an
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.FundamentalsApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-FundamentalsApi fundamentalsApi = new FundamentalsApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-String statementCode = "income_statement"; // String | The statement code
-Integer fiscalYear = 2017; // Integer | The fiscal year
-String fiscalPeriod = "FY"; // String | The fiscal period
+    FundamentalsApi fundamentalsApi = new FundamentalsApi();
 
-try {
-    Fundamental result = fundamentalsApi.lookupFundamental(identifier, statementCode, fiscalYear, fiscalPeriod);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling FundamentalsApi#lookupFundamental");
-    e.printStackTrace();
+    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+    String statementCode = "income_statement"; // String | The statement code
+    Integer fiscalYear = 2017; // Integer | The fiscal year
+    String fiscalPeriod = "FY"; // String | The fiscal period
+
+    try {
+        Fundamental result = fundamentalsApi.lookupFundamental(identifier, statementCode, fiscalYear, fiscalPeriod);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling FundamentalsApi#lookupFundamental");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 

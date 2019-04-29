@@ -32,28 +32,34 @@ All Economic Indices
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    IndexApi indexApi = new IndexApi();
 
-try {
-    ApiResponseEconomicIndices result = indexApi.getAllEconomicIndices(pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getAllEconomicIndices");
-    e.printStackTrace();
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseEconomicIndices result = indexApi.getAllEconomicIndices(pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getAllEconomicIndices");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -76,28 +82,34 @@ All SIC Indices
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    IndexApi indexApi = new IndexApi();
 
-try {
-    ApiResponseSICIndices result = indexApi.getAllSicIndices(pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getAllSicIndices");
-    e.printStackTrace();
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseSICIndices result = indexApi.getAllSicIndices(pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getAllSicIndices");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -120,28 +132,34 @@ All Stock Market Indices
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    IndexApi indexApi = new IndexApi();
 
-try {
-    ApiResponseStockMarketIndices result = indexApi.getAllStockMarketIndices(pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getAllStockMarketIndices");
-    e.printStackTrace();
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseStockMarketIndices result = indexApi.getAllStockMarketIndices(pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getAllStockMarketIndices");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -164,27 +182,33 @@ Lookup Economic Index
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
+    IndexApi indexApi = new IndexApi();
 
-try {
-    EconomicIndex result = indexApi.getEconomicIndexById(identifier);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getEconomicIndexById");
-    e.printStackTrace();
+    String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
+
+    try {
+        EconomicIndex result = indexApi.getEconomicIndexById(identifier);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getEconomicIndexById");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -208,28 +232,34 @@ Returns a numeric value for the given &#x60;tag&#x60; for the Economic Index wit
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "level"; // String | An Intrinio data tag ID or code-name
+    IndexApi indexApi = new IndexApi();
 
-try {
-    BigDecimal result = indexApi.getEconomicIndexDataPointNumber(identifier, tag);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getEconomicIndexDataPointNumber");
-    e.printStackTrace();
+    String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
+    String tag = "level"; // String | An Intrinio data tag ID or code-name
+
+    try {
+        BigDecimal result = indexApi.getEconomicIndexDataPointNumber(identifier, tag);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getEconomicIndexDataPointNumber");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -254,28 +284,34 @@ Returns a text value for the given &#x60;tag&#x60; for the Economic Index with t
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "level"; // String | An Intrinio data tag ID or code-name
+    IndexApi indexApi = new IndexApi();
 
-try {
-    String result = indexApi.getEconomicIndexDataPointText(identifier, tag);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getEconomicIndexDataPointText");
-    e.printStackTrace();
+    String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
+    String tag = "level"; // String | An Intrinio data tag ID or code-name
+
+    try {
+        String result = indexApi.getEconomicIndexDataPointText(identifier, tag);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getEconomicIndexDataPointText");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -300,34 +336,40 @@ Returns historical values for the given &#x60;tag&#x60; and the Economic Index w
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "level"; // String | An Intrinio data tag ID or code-name
-String type = null; // String | Filter by type, when applicable
-LocalDate startDate = null; // LocalDate | Get historical data on or after this date
-LocalDate endDate = null; // LocalDate | Get historical data on or before this date
-String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    IndexApi indexApi = new IndexApi();
 
-try {
-    ApiResponseEconomicIndexHistoricalData result = indexApi.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getEconomicIndexHistoricalData");
-    e.printStackTrace();
+    String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
+    String tag = "level"; // String | An Intrinio data tag ID or code-name
+    String type = null; // String | Filter by type, when applicable
+    LocalDate startDate = null; // LocalDate | Get historical data on or after this date
+    LocalDate endDate = null; // LocalDate | Get historical data on or before this date
+    String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseEconomicIndexHistoricalData result = indexApi.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getEconomicIndexHistoricalData");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -356,27 +398,33 @@ Lookup SIC Index
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
+    IndexApi indexApi = new IndexApi();
 
-try {
-    SICIndex result = indexApi.getSicIndexById(identifier);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getSicIndexById");
-    e.printStackTrace();
+    String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
+
+    try {
+        SICIndex result = indexApi.getSicIndexById(identifier);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getSicIndexById");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -400,28 +448,34 @@ Returns a numeric value for the given &#x60;tag&#x60; for the SIC Index with the
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "level"; // String | An Intrinio data tag ID or code-name
+    IndexApi indexApi = new IndexApi();
 
-try {
-    BigDecimal result = indexApi.getSicIndexDataPointNumber(identifier, tag);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getSicIndexDataPointNumber");
-    e.printStackTrace();
+    String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
+    String tag = "level"; // String | An Intrinio data tag ID or code-name
+
+    try {
+        BigDecimal result = indexApi.getSicIndexDataPointNumber(identifier, tag);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getSicIndexDataPointNumber");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -446,28 +500,34 @@ Returns a text value for the given &#x60;tag&#x60; for the SIC Index with the gi
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "level"; // String | An Intrinio data tag ID or code-name
+    IndexApi indexApi = new IndexApi();
 
-try {
-    String result = indexApi.getSicIndexDataPointText(identifier, tag);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getSicIndexDataPointText");
-    e.printStackTrace();
+    String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
+    String tag = "level"; // String | An Intrinio data tag ID or code-name
+
+    try {
+        String result = indexApi.getSicIndexDataPointText(identifier, tag);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getSicIndexDataPointText");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -492,34 +552,40 @@ Returns historical values for the given &#x60;tag&#x60; and the SIC Index with t
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "marketcap"; // String | An Intrinio data tag ID or code-name
-String type = null; // String | Filter by type, when applicable
-LocalDate startDate = null; // LocalDate | Get historical data on or after this date
-LocalDate endDate = null; // LocalDate | Get historical data on or before this date
-String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    IndexApi indexApi = new IndexApi();
 
-try {
-    ApiResponseSICIndexHistoricalData result = indexApi.getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getSicIndexHistoricalData");
-    e.printStackTrace();
+    String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
+    String tag = "marketcap"; // String | An Intrinio data tag ID or code-name
+    String type = null; // String | Filter by type, when applicable
+    LocalDate startDate = null; // LocalDate | Get historical data on or after this date
+    LocalDate endDate = null; // LocalDate | Get historical data on or before this date
+    String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseSICIndexHistoricalData result = indexApi.getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getSicIndexHistoricalData");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -548,27 +614,33 @@ Lookup Stock Market Index
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
+    IndexApi indexApi = new IndexApi();
 
-try {
-    StockMarketIndex result = indexApi.getStockMarketIndexById(identifier);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getStockMarketIndexById");
-    e.printStackTrace();
+    String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
+
+    try {
+        StockMarketIndex result = indexApi.getStockMarketIndexById(identifier);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getStockMarketIndexById");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -592,28 +664,34 @@ Returns a numeric value for the given &#x60;tag&#x60; for the Stock Market Index
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "level"; // String | An Intrinio data tag ID or code-name
+    IndexApi indexApi = new IndexApi();
 
-try {
-    BigDecimal result = indexApi.getStockMarketIndexDataPointNumber(identifier, tag);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getStockMarketIndexDataPointNumber");
-    e.printStackTrace();
+    String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
+    String tag = "level"; // String | An Intrinio data tag ID or code-name
+
+    try {
+        BigDecimal result = indexApi.getStockMarketIndexDataPointNumber(identifier, tag);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getStockMarketIndexDataPointNumber");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -638,28 +716,34 @@ Returns a text value for the given &#x60;tag&#x60; for the Stock Market Index wi
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "level"; // String | An Intrinio data tag ID or code-name
+    IndexApi indexApi = new IndexApi();
 
-try {
-    String result = indexApi.getStockMarketIndexDataPointText(identifier, tag);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getStockMarketIndexDataPointText");
-    e.printStackTrace();
+    String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
+    String tag = "level"; // String | An Intrinio data tag ID or code-name
+
+    try {
+        String result = indexApi.getStockMarketIndexDataPointText(identifier, tag);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getStockMarketIndexDataPointText");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -684,34 +768,40 @@ Returns historical values for the given &#x60;tag&#x60; and the Stock Market Ind
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
-String tag = "level"; // String | An Intrinio data tag ID or code-name
-String type = null; // String | Filter by type, when applicable
-LocalDate startDate = null; // LocalDate | Get historical data on or after this date
-LocalDate endDate = null; // LocalDate | Get historical data on or before this date
-String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    IndexApi indexApi = new IndexApi();
 
-try {
-    ApiResponseStockMarketIndexHistoricalData result = indexApi.getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#getStockMarketIndexHistoricalData");
-    e.printStackTrace();
+    String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
+    String tag = "level"; // String | An Intrinio data tag ID or code-name
+    String type = null; // String | Filter by type, when applicable
+    LocalDate startDate = null; // LocalDate | Get historical data on or after this date
+    LocalDate endDate = null; // LocalDate | Get historical data on or before this date
+    String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseStockMarketIndexHistoricalData result = indexApi.getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#getStockMarketIndexHistoricalData");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -742,28 +832,34 @@ Searches for indices using the text in &#x60;query&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String query = "GDP"; // String | Search query
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
+    IndexApi indexApi = new IndexApi();
 
-try {
-    ApiResponseEconomicIndicesSearch result = indexApi.searchEconomicIndices(query, pageSize);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#searchEconomicIndices");
-    e.printStackTrace();
+    String query = "GDP"; // String | Search query
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+
+    try {
+        ApiResponseEconomicIndicesSearch result = indexApi.searchEconomicIndices(query, pageSize);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#searchEconomicIndices");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -788,28 +884,34 @@ Searches for indices using the text in &#x60;query&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String query = "agriculture"; // String | Search query
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
+    IndexApi indexApi = new IndexApi();
 
-try {
-    ApiResponseSICIndicesSearch result = indexApi.searchSicIndices(query, pageSize);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#searchSicIndices");
-    e.printStackTrace();
+    String query = "agriculture"; // String | Search query
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+
+    try {
+        ApiResponseSICIndicesSearch result = indexApi.searchSicIndices(query, pageSize);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#searchSicIndices");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -834,28 +936,34 @@ Searches for indices using the text in &#x60;query&#x60;
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.IndexApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-IndexApi indexApi = new IndexApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String query = "dow"; // String | Search query
-BigDecimal pageSize = new BigDecimal(); // BigDecimal | The number of results to return
+    IndexApi indexApi = new IndexApi();
 
-try {
-    ApiResponseStockMarketIndicesSearch result = indexApi.searchStockMarketsIndices(query, pageSize);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling IndexApi#searchStockMarketsIndices");
-    e.printStackTrace();
+    String query = "dow"; // String | Search query
+    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+
+    try {
+        ApiResponseStockMarketIndicesSearch result = indexApi.searchStockMarketsIndices(query, pageSize);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling IndexApi#searchStockMarketsIndices");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 

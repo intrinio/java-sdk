@@ -17,39 +17,45 @@ All Municipalities
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.MunicipalityApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-MunicipalityApi municipalityApi = new MunicipalityApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-Boolean hasFinancials = true; // Boolean | Return municipalities with financials
-String governmentName = "governmentName_example"; // String | Return municipalities with a government name matching the given query
-String governmentType = "governmentType_example"; // String | Return municipalities with the given government type
-String areaName = "areaName_example"; // String | Return municipalities with an area name matching the given query
-String areaType = "areaType_example"; // String | Return municipalities with the given area type
-String city = "city_example"; // String | Return municipalities in the given city
-String state = "state_example"; // String | Return municipalities in the given state
-BigDecimal zipcode = new BigDecimal(); // BigDecimal | Return municipalities in the given zipcode
-BigDecimal populationGreaterThan = new BigDecimal(); // BigDecimal | Return municipalities with a population greater than the given number
-BigDecimal populationLessThan = new BigDecimal(); // BigDecimal | Return municipalities with a population less than the given number
-BigDecimal enrollmentGreaterThan = new BigDecimal(); // BigDecimal | Return municipalities with an enrollment greater than the given number
-BigDecimal enrollmentLessThan = new BigDecimal(); // BigDecimal | Return municipalities with an enrollment less than the given number
-String nextPage = null; // String | Gets the next page of data from a previous API call
+    MunicipalityApi municipalityApi = new MunicipalityApi();
 
-try {
-    ApiResponseMunicipalities result = municipalityApi.getAllMunicipalities(hasFinancials, governmentName, governmentType, areaName, areaType, city, state, zipcode, populationGreaterThan, populationLessThan, enrollmentGreaterThan, enrollmentLessThan, nextPage);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling MunicipalityApi#getAllMunicipalities");
-    e.printStackTrace();
+    Boolean hasFinancials = true; // Boolean | Return municipalities with financials
+    String governmentName = "governmentName_example"; // String | Return municipalities with a government name matching the given query
+    String governmentType = "governmentType_example"; // String | Return municipalities with the given government type
+    String areaName = "areaName_example"; // String | Return municipalities with an area name matching the given query
+    String areaType = "areaType_example"; // String | Return municipalities with the given area type
+    String city = "city_example"; // String | Return municipalities in the given city
+    String state = "state_example"; // String | Return municipalities in the given state
+    BigDecimal zipcode = null; // BigDecimal | Return municipalities in the given zipcode
+    BigDecimal populationGreaterThan = null; // BigDecimal | Return municipalities with a population greater than the given number
+    BigDecimal populationLessThan = null; // BigDecimal | Return municipalities with a population less than the given number
+    BigDecimal enrollmentGreaterThan = null; // BigDecimal | Return municipalities with an enrollment greater than the given number
+    BigDecimal enrollmentLessThan = null; // BigDecimal | Return municipalities with an enrollment less than the given number
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseMunicipalities result = municipalityApi.getAllMunicipalities(hasFinancials, governmentName, governmentType, areaName, areaType, city, state, zipcode, populationGreaterThan, populationLessThan, enrollmentGreaterThan, enrollmentLessThan, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling MunicipalityApi#getAllMunicipalities");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -85,27 +91,33 @@ Returns the Municipality with the given ID
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.MunicipalityApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-MunicipalityApi municipalityApi = new MunicipalityApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String id = "mun_Xn7x4z"; // String | An Intrinio ID of a Municipality
+    MunicipalityApi municipalityApi = new MunicipalityApi();
 
-try {
-    Municipality result = municipalityApi.getMunicipalityById(id);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling MunicipalityApi#getMunicipalityById");
-    e.printStackTrace();
+    String id = "mun_Xn7x4z"; // String | An Intrinio ID of a Municipality
+
+    try {
+        Municipality result = municipalityApi.getMunicipalityById(id);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling MunicipalityApi#getMunicipalityById");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
@@ -129,28 +141,34 @@ Returns financial statement data for the Municipality with the given ID
 
 ### Example
 ```java
-// Import classes:
-//import com.intrinio.invoker.ApiClient;
-//import com.intrinio.invoker.ApiException;
-//import com.intrinio.invoker.Configuration;
-//import com.intrinio.invoker.auth.*;
-//import com.intrinio.api.MunicipalityApi;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-auth.setApiKey("YOUR API KEY");
+public class Main {
+  public static void main(String[] args) {
 
-MunicipalityApi municipalityApi = new MunicipalityApi();
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
 
-String id = "mun_Xn7x4z"; // String | An Intrinio ID of a Municipality
-BigDecimal fiscalYear = new BigDecimal(); // BigDecimal | Return financials for the given fiscal year
+    MunicipalityApi municipalityApi = new MunicipalityApi();
 
-try {
-    ApiResponseMunicipalitiyFinancials result = municipalityApi.getMunicipalityFinancials(id, fiscalYear);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling MunicipalityApi#getMunicipalityFinancials");
-    e.printStackTrace();
+    String id = "mun_Xn7x4z"; // String | An Intrinio ID of a Municipality
+    BigDecimal fiscalYear = null; // BigDecimal | Return financials for the given fiscal year
+
+    try {
+        ApiResponseMunicipalitiyFinancials result = municipalityApi.getMunicipalityFinancials(id, fiscalYear);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling MunicipalityApi#getMunicipalityFinancials");
+        e.printStackTrace();
+    }
+  
+  }
 }
 ```
 
