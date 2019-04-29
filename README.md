@@ -7,60 +7,19 @@ Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a 
 - API version: 2.5.0
 - Package version: 2.2.0
 
-
-## Requirements
-
-Building the Intrinio Java SDK requires [Maven](https://maven.apache.org/) to be installed.
-
 ## Installation
 
-To install the Intrinio Java SDK to your local Maven repository, simply execute:
+Download the most recent release zip file and import all .jar files into your project as module dependencies.
 
-```shell
-mvn install
-```
+Instructions for importing jar files into your IntelliJ project can be found here:
 
-Refer to the [official documentation](https://maven.apache.org/plugins/maven-deploy-plugin/usage.html) for more information.
-
-### Maven users
-
-Add this dependency to your project's POM:
-
-```xml
-<dependency>
-    <groupId>com.intrinio</groupId>
-    <artifactId>intrinio-sdk</artifactId>
-    <version>2.2.0</version>
-    <scope>compile</scope>
-</dependency>
-```
-
-### Gradle users
-
-Add this dependency to your project's build file:
-
-```groovy
-compile "com.intrinio:intrinio-sdk:2.2.0"
-```
-
-### Others
-
-At first generate the JAR by executing:
-
-    mvn package
-
-Then manually install the following JARs:
-
-* target/intrinio-sdk-2.2.0.jar
-* target/lib/*.jar
+https://www.jetbrains.com/help/idea/library.html#add-library-to-module-dependencies
 
 ## SDK Code Examples
 
 Code examples for Intrinio SDKs are available at https://github.com/intrinio/sdk-code-samples
 
 ## Getting Started
-
-Please follow the [installation](#installation) instructions and execute the following Java code:
 
 ```java
 import com.intrinio.api.*;
