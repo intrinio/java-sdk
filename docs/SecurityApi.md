@@ -2669,3 +2669,4 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseSecuritiesSearch**](ApiResponseSecuritiesSearch.md)
+

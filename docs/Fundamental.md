@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **type** | [**TypeEnum**](#TypeEnum) | The type of Fundamental |  [optional]
 **startDate** | [**LocalDate**](LocalDate.md) | The period start date |  [optional]
 **endDate** | [**LocalDate**](LocalDate.md) | The period start date |  [optional]
-**filingDate** | [**LocalDate**](LocalDate.md) | The date and time when the Fundamental was filed with the SEC |  [optional]
+**filingDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when the Fundamental was filed with the SEC |  [optional]
 **company** | [**CompanySummary**](CompanySummary.md) | The Company that the Fundamental was belongs to |  [optional]
 
 
