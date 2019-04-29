@@ -63,33 +63,36 @@ Code examples for Intrinio SDKs are available at https://github.com/intrinio/sdk
 Please follow the [installation](#installation) instructions and execute the following Java code:
 
 ```java
-import com.intrinio.invoker.ApiClient;
-import com.intrinio.invoker.ApiException;
-import com.intrinio.invoker.Configuration;
-import com.intrinio.invoker.auth.ApiKeyAuth;
-import com.intrinio.api.CompanyApi;
-import com.intrinio.models.ApiResponseCompanies;
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
 
-import java.io.File;
-import java.util.*;
+public class Main {
+        public static void main(String[] args) {
+            ApiClient defaultClient = Configuration.getDefaultApiClient();
+            ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+            auth.setApiKey("YOUR API KEY");
 
-public class CompanyApiExample {
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-        ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-        auth.setApiKey("YOUR API KEY");
+            SecurityApi securityApi = new SecurityApi();
 
-        CompanyApi companyApi = new CompanyApi();
-        String nextPage = null;
-        
-        try {
-            ApiResponseCompanies result = companyApi.getAllCompanies(nextPage);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling CompanyApi#filterCompanies");
-            e.printStackTrace();
+            String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+            LocalDate startDate = null; // LocalDate | Return prices on or after the date
+            LocalDate endDate = null; // LocalDate | Return prices on or before the date
+            String frequency = "daily"; // String | Return stock prices in the given frequency
+            BigDecimal pageSize = null; // BigDecimal | The number of results to return
+            String nextPage = null; // String | Gets the next page of data from a previous API call
+
+            try {
+                ApiResponseSecurityStockPrices result = securityApi.getSecurityStockPrices(identifier, startDate, endDate, frequency, pageSize, nextPage);
+                System.out.println(result);
+            } catch (ApiException e) {
+                System.err.println("Exception when calling SecurityApi#getSecurityStockPrices");
+                e.printStackTrace();
+            }
         }
-    }
 }
 ```
 
