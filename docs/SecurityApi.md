@@ -128,7 +128,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
 
     try {
         Security result = securityApi.getSecurityById(identifier);
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 Data Point (Number) for Security
 
-$$v2_security_data_point_number_description$$
+Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -178,8 +178,8 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_security_data_point_identifier_default$$"; // String | $$v2_security_data_point_identifier_description$$
-    String tag = "$$v2_security_data_point_item_number_default$$"; // String | $$v2_security_data_point_item_description$$
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String tag = "close_price"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
 
     try {
         BigDecimal result = securityApi.getSecurityDataPointNumber(identifier, tag);
@@ -197,8 +197,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| $$v2_security_data_point_identifier_description$$ |
- **tag** | **String**| $$v2_security_data_point_item_description$$ |
+ **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
+ **tag** | **String**| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) |
 
 ### Return type
 
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 Data Point (Text) for Security
 
-$$v2_security_data_point_text_description$$
+Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -230,8 +230,8 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_security_data_point_identifier_default$$"; // String | $$v2_security_data_point_identifier_description$$
-    String tag = "$$v2_security_data_point_item_text_default$$"; // String | An Intrinio data tag ID or code-name
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String tag = "figi"; // String | An Intrinio data tag ID or code-name
 
     try {
         String result = securityApi.getSecurityDataPointText(identifier, tag);
@@ -249,7 +249,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| $$v2_security_data_point_identifier_description$$ |
+ **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
  **tag** | **String**| An Intrinio data tag ID or code-name |
 
 ### Return type
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 
 Historical Data for Security
 
-$$v2_security_historical_data_description$$
+Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -282,8 +282,8 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_security_historical_data_identifier_default$$"; // String | $$v2_security_historical_data_identifier_description$$
-    String tag = "$$v2_security_historical_data_item_default$$"; // String | $$v2_security_data_point_item_description$$
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String tag = "adj_close_price"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
     String frequency = "daily"; // String | Return historical data in the given frequency
     String type = null; // String | Filter by type, when applicable
     LocalDate startDate = null; // LocalDate | Get historical data on or after this date
@@ -308,8 +308,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| $$v2_security_historical_data_identifier_description$$ |
- **tag** | **String**| $$v2_security_data_point_item_description$$ |
+ **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
+ **tag** | **String**| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) |
  **frequency** | **String**| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly]
  **type** | **String**| Filter by type, when applicable | [optional]
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 Intraday Stock Prices for Security
 
-$$v2_security_intraday_prices_description$$
+Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
 ```java
@@ -348,7 +348,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     String source = null; // String | Return intraday prices from the specified data source
     LocalDate startDate = null; // LocalDate | Return intraday prices starting at the specified date
     String startTime = "4200"; // String | Return intraday prices starting at the specified time on the `start_date` (timezone is UTC)
@@ -408,7 +408,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
 
     try {
         DividendRecord result = securityApi.getSecurityLatestDividendRecord(identifier);
@@ -458,7 +458,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
 
     try {
         EarningsRecord result = securityApi.getSecurityLatestEarningsRecord(identifier);
@@ -508,7 +508,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
     Integer pageSize = 100; // Integer | The number of results to return
@@ -566,7 +566,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 22; // Integer | The number of observations, per period, to calculate Average Daily Trading Volume
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
@@ -626,7 +626,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 14; // Integer | The number of observations, per period, to calculate Average Directional Index
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
@@ -686,7 +686,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer shortPeriod = 5; // Integer | The number of observations, per period, to calculate short period Simple Moving Average of the Awesome Oscillator
     Integer longPeriod = 34; // Integer | The number of observations, per period, to calculate long period Simple Moving Average of the Awesome Oscillator
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
@@ -748,7 +748,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 14; // Integer | The number of observations, per period, to calculate Average True Range
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
@@ -808,7 +808,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 20; // Integer | The number of observations, per period, to calculate Bollinger Bands
     Float standardDeviations = 2.0F; // Float | The number of standard deviations to calculate the upper and lower bands of the Bollinger Bands
     String priceKey = "close"; // String | The Stock Price field to use when calculating Bollinger Bands
@@ -872,7 +872,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 20; // Integer | The number of observations, per period, to calculate Commodity Channel Index
     Float constant = 0.015F; // Float | The number of observations, per period, to calculate Commodity Channel Index
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
@@ -934,7 +934,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 20; // Integer | The number of observations, per period, to calculate Chaikin Money Flow
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
@@ -994,7 +994,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 20; // Integer | The number of observations, per period, to calculate Donchian Channel
     String priceKey = "close"; // String | The Stock Price field to use when calculating Donchian Channel
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
@@ -1056,7 +1056,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 20; // Integer | The number of observations, per period, to calculate Detrended Price Oscillator
     String priceKey = "close"; // String | The Stock Price field to use when calculating Detrended Price Oscillator
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
@@ -1118,7 +1118,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 20; // Integer | The number of observations, per period, to calculate Ease of Movement
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
@@ -1178,7 +1178,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
     Integer pageSize = 100; // Integer | The number of results to return
@@ -1236,7 +1236,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer lowPeriod = 9; // Integer | The number of observations, per period, to calculate Tenkan Sen (Conversion Line) of Ichimoku Kinko Hyo
     Integer mediumPeriod = 26; // Integer | The number of observations, per period, to calculate Kijun Sen (Base Line), Senkou Span A (Leading Span A), and Chikou Span (Lagging Span) of Ichimoku Kinko Hyo
     Integer highPeriod = 52; // Integer | The number of observations, per period, to calculate Senkou Span B (Leading Span B) of Ichimoku Kinko Hyo
@@ -1300,7 +1300,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 10; // Integer | The number of observations, per period, to calculate Kelter Channel
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
@@ -1360,7 +1360,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer roc1 = 10; // Integer | The number of observations, per period, to calculate the rate-of-change for RCMA1
     Integer roc2 = 15; // Integer | The number of observations, per period, to calculate the rate-of-change for RCMA2
     Integer roc3 = 20; // Integer | The number of observations, per period, to calculate the rate-of-change for RCMA3
@@ -1436,7 +1436,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer fastPeriod = 12; // Integer | The number of observations, per period, to calculate the fast moving Exponential Moving Average for Moving Average Convergence Divergence
     Integer slowPeriod = 26; // Integer | The number of observations, per period, to calculate the slow moving Exponential Moving Average for Moving Average Convergence Divergence
     Integer signalPeriod = 9; // Integer | The number of observations, per period, to calculate the signal line for Moving Average Convergence Divergence
@@ -1502,7 +1502,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 14; // Integer | The number of observations, per period, to calculate Money Flow Index
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
@@ -1562,7 +1562,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer emaPeriod = 9; // Integer | The number of observations, per period, to calculate the single Exponential Moving Average and the Double Exponential Moving Average for Mass Index
     Integer sumPeriod = 25; // Integer | The number of observations, per period, to calculate the sum of the Exponetinal Moving Average Ratios for Mass Index
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
@@ -1624,7 +1624,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
     Integer pageSize = 100; // Integer | The number of results to return
@@ -1682,7 +1682,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
     Integer pageSize = 100; // Integer | The number of results to return
@@ -1740,7 +1740,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 10; // Integer | The number of observations, per period, to calculate On-balance Volume Mean
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
@@ -1800,7 +1800,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 14; // Integer | The number of observations, per period, to calculate Relative Strength Index
     String priceKey = "close"; // String | The Stock Price field to use when calculating Relative Strength Index
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
@@ -1862,7 +1862,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 20; // Integer | The number of observations, per period, to calculate Simple Moving Average
     String priceKey = "close"; // String | The Stock Price field to use when calculating Simple Moving Average
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
@@ -1924,7 +1924,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 14; // Integer | The number of observations, per period, to calculate %K of Stochastic Oscillator
     Integer signalPeriod = 3; // Integer | The number of observations, per period, to calculate the %D (the Simple Moving Average of %K) as a signal line for Stochastic Oscillator
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
@@ -1986,7 +1986,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 15; // Integer | The number of observations, per period, to calculate Exponential Moving Average for Triple Exponential Average
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
@@ -2046,7 +2046,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer lowPeriod = 13; // Integer | The number of observations, per period, to calculate low period Exponential Moving Average for smoothing in True Strength Index
     Integer highPeriod = 25; // Integer | The number of observations, per period, to calculate high period Exponential Moving Average for smoothing in True Strength Index
     String priceKey = "close"; // String | The Stock Price field to use when calculating True Strength Index
@@ -2110,7 +2110,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer shortPeriod = 7; // Integer | The number of observations, per period, to calculate the short period for Ultimate Oscillator
     Integer mediumPeriod = 14; // Integer | The number of observations, per period, to calculate the medium period for Ultimate Oscillator
     Integer longPeriod = 28; // Integer | The number of observations, per period, to calculate the long period for Ultimate Oscillator
@@ -2180,7 +2180,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 14; // Integer | The number of observations, per period, to calculate Vortex Indicator
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
@@ -2240,7 +2240,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
     Integer pageSize = 100; // Integer | The number of results to return
@@ -2298,7 +2298,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
     Integer pageSize = 100; // Integer | The number of results to return
@@ -2356,7 +2356,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     Integer period = 14; // Integer | The number of observations, per period, to look-back when calculating Williams %R
     String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
     String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
@@ -2416,7 +2416,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     String source = null; // String | Return the realtime price from the specified data source
 
     try {
@@ -2468,7 +2468,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     LocalDate startDate = null; // LocalDate | Return price adjustments on or after the date
     LocalDate endDate = null; // LocalDate | Return price adjustments on or before the date
     BigDecimal pageSize = null; // BigDecimal | The number of results to return
@@ -2526,7 +2526,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     LocalDate startDate = null; // LocalDate | Return prices on or after the date
     LocalDate endDate = null; // LocalDate | Return prices on or before the date
     String frequency = "daily"; // String | Return stock prices in the given frequency
@@ -2669,4 +2669,3 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseSecuritiesSearch**](ApiResponseSecuritiesSearch.md)
-
