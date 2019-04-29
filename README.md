@@ -7,7 +7,6 @@ Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a 
 - API version: 2.5.0
 - Package version: 2.2.0
 
-
 ## Installation
 
 Download the most recent release zip file and import all .jar files into your project as module dependencies.
@@ -21,8 +20,6 @@ https://www.jetbrains.com/help/idea/library.html#add-library-to-module-dependenc
 Code examples for Intrinio SDKs are available at https://github.com/intrinio/sdk-code-samples
 
 ## Getting Started
-
-Please follow the [installation](#installation) instructions and execute the following Java code:
 
 ```java
 import com.intrinio.api.*;
