@@ -46,12 +46,26 @@ Method | HTTP request | Description
 [**getSecurityRealtimePrice**](SecurityApi.md#getSecurityRealtimePrice) | **GET** /securities/{identifier}/prices/realtime | Realtime Stock Price for Security
 [**getSecurityStockPriceAdjustments**](SecurityApi.md#getSecurityStockPriceAdjustments) | **GET** /securities/{identifier}/prices/adjustments | Stock Price Adjustments by Security
 [**getSecurityStockPrices**](SecurityApi.md#getSecurityStockPrices) | **GET** /securities/{identifier}/prices | Stock Prices by Security
+[**getSecurityZacksAnalystRatings**](SecurityApi.md#getSecurityZacksAnalystRatings) | **GET** /securities/{identifier}/zacks/analyst_ratings | Zacks Analyst Ratings
+[**getSecurityZacksAnalystRatingsSnapshot**](SecurityApi.md#getSecurityZacksAnalystRatingsSnapshot) | **GET** /securities/{identifier}/zacks/analyst_ratings/snapshot | Zacks Analyst Ratings Snapshot
+[**getSecurityZacksEpsSurprises**](SecurityApi.md#getSecurityZacksEpsSurprises) | **GET** /securities/{identifier}/zacks/eps_surprises | Zacks EPS Surprises for Security
+[**getSecurityZacksSalesSurprises**](SecurityApi.md#getSecurityZacksSalesSurprises) | **GET** /securities/{identifier}/zacks/sales_surprises | Zacks Sales Surprises for Security
 [**screenSecurities**](SecurityApi.md#screenSecurities) | **POST** /securities/screen | Screen Securities
 [**searchSecurities**](SecurityApi.md#searchSecurities) | **GET** /securities/search | Search Securities
 
 
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities)
+
+[//]: # (DOC_LINK:SecurityApi.md#getAllSecurities)
+
 <a name="getAllSecurities"></a>
 # **getAllSecurities**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllSecurities_v2)
+
 > ApiResponseSecurities getAllSecurities(pageSize, nextPage)
 
 All Securities
@@ -59,6 +73,9 @@ All Securities
 Returns all Securities to which you have access.
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -76,7 +93,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -91,19 +108,33 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseSecurities**](ApiResponseSecurities.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier})
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityById)
+
 <a name="getSecurityById"></a>
 # **getSecurityById**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityById_v2)
+
 > Security getSecurityById(identifier)
 
 Lookup Security
@@ -111,6 +142,9 @@ Lookup Security
 Returns the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -142,6 +176,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -152,8 +188,20 @@ Name | Type | Description  | Notes
 
 [**Security**](Security.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/data_point/{tag}/number)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityDataPointNumber)
+
 <a name="getSecurityDataPointNumber"></a>
 # **getSecurityDataPointNumber**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityDataPointNumber_v2)
+
 > BigDecimal getSecurityDataPointNumber(identifier, tag)
 
 Data Point (Number) for Security
@@ -161,6 +209,9 @@ Data Point (Number) for Security
 Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -193,6 +244,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -204,8 +257,20 @@ Name | Type | Description  | Notes
 
 [**BigDecimal**](BigDecimal.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/data_point/{tag}/text)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityDataPointText)
+
 <a name="getSecurityDataPointText"></a>
 # **getSecurityDataPointText**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityDataPointText_v2)
+
 > String getSecurityDataPointText(identifier, tag)
 
 Data Point (Text) for Security
@@ -213,6 +278,9 @@ Data Point (Text) for Security
 Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -245,6 +313,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -256,8 +326,20 @@ Name | Type | Description  | Notes
 
 **String**
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/historical_data/{tag})
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityHistoricalData)
+
 <a name="getSecurityHistoricalData"></a>
 # **getSecurityHistoricalData**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityHistoricalData_v2)
+
 > ApiResponseSecurityHistoricalData getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
 Historical Data for Security
@@ -265,6 +347,9 @@ Historical Data for Security
 Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -289,7 +374,7 @@ public class Main {
     LocalDate startDate = null; // LocalDate | Get historical data on or after this date
     LocalDate endDate = null; // LocalDate | Get historical date on or before this date
     String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -304,6 +389,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -315,15 +402,27 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical date on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseSecurityHistoricalData**](ApiResponseSecurityHistoricalData.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/intraday)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityIntradayPrices)
+
 <a name="getSecurityIntradayPrices"></a>
 # **getSecurityIntradayPrices**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityIntradayPrices_v2)
+
 > ApiResponseSecurityIntradayPrices getSecurityIntradayPrices(identifier, source, startDate, startTime, endDate, endTime)
 
 Intraday Stock Prices for Security
@@ -331,6 +430,9 @@ Intraday Stock Prices for Security
 Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -367,6 +469,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -382,8 +486,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityIntradayPrices**](ApiResponseSecurityIntradayPrices.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/dividends/latest)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityLatestDividendRecord)
+
 <a name="getSecurityLatestDividendRecord"></a>
 # **getSecurityLatestDividendRecord**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityLatestDividendRecord_v2)
+
 > DividendRecord getSecurityLatestDividendRecord(identifier)
 
 Lastest Dividend Record for Security
@@ -391,6 +507,9 @@ Lastest Dividend Record for Security
 Returns the latest available dividend information for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -422,6 +541,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -432,8 +553,20 @@ Name | Type | Description  | Notes
 
 [**DividendRecord**](DividendRecord.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/earnings/latest)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityLatestEarningsRecord)
+
 <a name="getSecurityLatestEarningsRecord"></a>
 # **getSecurityLatestEarningsRecord**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityLatestEarningsRecord_v2)
+
 > EarningsRecord getSecurityLatestEarningsRecord(identifier)
 
 Lastest Earnings Record for Security
@@ -441,6 +574,9 @@ Lastest Earnings Record for Security
 Returns latest available earnings information for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -472,6 +608,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -482,8 +620,20 @@ Name | Type | Description  | Notes
 
 [**EarningsRecord**](EarningsRecord.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/adi)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsAdi)
+
 <a name="getSecurityPriceTechnicalsAdi"></a>
 # **getSecurityPriceTechnicalsAdi**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsAdi_v2)
+
 > ApiResponseSecurityAccumulationDistributionIndex getSecurityPriceTechnicalsAdi(identifier, startDate, endDate, pageSize, nextPage)
 
 Accumulation/Distribution Index
@@ -491,6 +641,9 @@ Accumulation/Distribution Index
 Returns the Accumulation/Distribution Index values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -526,6 +679,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -540,8 +695,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityAccumulationDistributionIndex**](ApiResponseSecurityAccumulationDistributionIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/adtv)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsAdtv)
+
 <a name="getSecurityPriceTechnicalsAdtv"></a>
 # **getSecurityPriceTechnicalsAdtv**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsAdtv_v2)
+
 > ApiResponseSecurityAverageDailyTradingVolume getSecurityPriceTechnicalsAdtv(identifier, period, startDate, endDate, pageSize, nextPage)
 
 Average Daily Trading Volume
@@ -549,6 +716,9 @@ Average Daily Trading Volume
 Returns the Average Daily Trading Volume values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -585,6 +755,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -600,8 +772,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityAverageDailyTradingVolume**](ApiResponseSecurityAverageDailyTradingVolume.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/adx)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsAdx)
+
 <a name="getSecurityPriceTechnicalsAdx"></a>
 # **getSecurityPriceTechnicalsAdx**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsAdx_v2)
+
 > ApiResponseSecurityAverageDirectionalIndex getSecurityPriceTechnicalsAdx(identifier, period, startDate, endDate, pageSize, nextPage)
 
 Average Directional Index
@@ -609,6 +793,9 @@ Average Directional Index
 Returns the Average Directional Index values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -645,6 +832,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -660,8 +849,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityAverageDirectionalIndex**](ApiResponseSecurityAverageDirectionalIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/ao)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsAo)
+
 <a name="getSecurityPriceTechnicalsAo"></a>
 # **getSecurityPriceTechnicalsAo**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsAo_v2)
+
 > ApiResponseSecurityAwesomeOscillator getSecurityPriceTechnicalsAo(identifier, shortPeriod, longPeriod, startDate, endDate, pageSize, nextPage)
 
 Awesome Oscillator
@@ -669,6 +870,9 @@ Awesome Oscillator
 Returns the Awesome Oscillator values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -706,6 +910,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -722,8 +928,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityAwesomeOscillator**](ApiResponseSecurityAwesomeOscillator.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/atr)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsAtr)
+
 <a name="getSecurityPriceTechnicalsAtr"></a>
 # **getSecurityPriceTechnicalsAtr**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsAtr_v2)
+
 > ApiResponseSecurityAverageTrueRange getSecurityPriceTechnicalsAtr(identifier, period, startDate, endDate, pageSize, nextPage)
 
 Average True Range
@@ -731,6 +949,9 @@ Average True Range
 Returns the Average True Range values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -767,6 +988,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -782,8 +1005,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityAverageTrueRange**](ApiResponseSecurityAverageTrueRange.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/bb)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsBb)
+
 <a name="getSecurityPriceTechnicalsBb"></a>
 # **getSecurityPriceTechnicalsBb**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsBb_v2)
+
 > ApiResponseSecurityBollingerBands getSecurityPriceTechnicalsBb(identifier, period, standardDeviations, priceKey, startDate, endDate, pageSize, nextPage)
 
 Bollinger Bands
@@ -791,6 +1026,9 @@ Bollinger Bands
 Returns the Bollinger Bands values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -829,6 +1067,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -846,8 +1086,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityBollingerBands**](ApiResponseSecurityBollingerBands.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/cci)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsCci)
+
 <a name="getSecurityPriceTechnicalsCci"></a>
 # **getSecurityPriceTechnicalsCci**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsCci_v2)
+
 > ApiResponseSecurityCommodityChannelIndex getSecurityPriceTechnicalsCci(identifier, period, constant, startDate, endDate, pageSize, nextPage)
 
 Commodity Channel Index
@@ -855,6 +1107,9 @@ Commodity Channel Index
 Returns the Commodity Channel Index values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -892,6 +1147,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -908,8 +1165,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityCommodityChannelIndex**](ApiResponseSecurityCommodityChannelIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/cmf)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsCmf)
+
 <a name="getSecurityPriceTechnicalsCmf"></a>
 # **getSecurityPriceTechnicalsCmf**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsCmf_v2)
+
 > ApiResponseSecurityChaikinMoneyFlow getSecurityPriceTechnicalsCmf(identifier, period, startDate, endDate, pageSize, nextPage)
 
 Chaikin Money Flow
@@ -917,6 +1186,9 @@ Chaikin Money Flow
 Returns the Chaikin Money Flow values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -953,6 +1225,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -968,8 +1242,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityChaikinMoneyFlow**](ApiResponseSecurityChaikinMoneyFlow.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/dc)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsDc)
+
 <a name="getSecurityPriceTechnicalsDc"></a>
 # **getSecurityPriceTechnicalsDc**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsDc_v2)
+
 > ApiResponseSecurityDonchianChannel getSecurityPriceTechnicalsDc(identifier, period, priceKey, startDate, endDate, pageSize, nextPage)
 
 Donchian Channel
@@ -977,6 +1263,9 @@ Donchian Channel
 Returns the Donchian Channel values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1014,6 +1303,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1030,8 +1321,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityDonchianChannel**](ApiResponseSecurityDonchianChannel.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/dpo)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsDpo)
+
 <a name="getSecurityPriceTechnicalsDpo"></a>
 # **getSecurityPriceTechnicalsDpo**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsDpo_v2)
+
 > ApiResponseSecurityDetrendedPriceOscillator getSecurityPriceTechnicalsDpo(identifier, period, priceKey, startDate, endDate, pageSize, nextPage)
 
 Detrended Price Oscillator
@@ -1039,6 +1342,9 @@ Detrended Price Oscillator
 Returns the Detrended Price Oscillator values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1076,6 +1382,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1092,8 +1400,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityDetrendedPriceOscillator**](ApiResponseSecurityDetrendedPriceOscillator.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/eom)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsEom)
+
 <a name="getSecurityPriceTechnicalsEom"></a>
 # **getSecurityPriceTechnicalsEom**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsEom_v2)
+
 > ApiResponseSecurityEaseOfMovement getSecurityPriceTechnicalsEom(identifier, period, startDate, endDate, pageSize, nextPage)
 
 Ease of Movement
@@ -1101,6 +1421,9 @@ Ease of Movement
 Returns the Ease of Movement values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1137,6 +1460,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1152,8 +1477,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityEaseOfMovement**](ApiResponseSecurityEaseOfMovement.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/fi)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsFi)
+
 <a name="getSecurityPriceTechnicalsFi"></a>
 # **getSecurityPriceTechnicalsFi**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsFi_v2)
+
 > ApiResponseSecurityForceIndex getSecurityPriceTechnicalsFi(identifier, startDate, endDate, pageSize, nextPage)
 
 Force Index
@@ -1161,6 +1498,9 @@ Force Index
 Returns the Force Index values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1196,6 +1536,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1210,8 +1552,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityForceIndex**](ApiResponseSecurityForceIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/ichimoku)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsIchimoku)
+
 <a name="getSecurityPriceTechnicalsIchimoku"></a>
 # **getSecurityPriceTechnicalsIchimoku**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsIchimoku_v2)
+
 > ApiResponseSecurityIchimokuKinkoHyo getSecurityPriceTechnicalsIchimoku(identifier, lowPeriod, mediumPeriod, highPeriod, startDate, endDate, pageSize, nextPage)
 
 Ichimoku Kinko Hyo
@@ -1219,6 +1573,9 @@ Ichimoku Kinko Hyo
 Returns the Ichimoku Kinko Hyo values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1257,6 +1614,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1274,8 +1633,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityIchimokuKinkoHyo**](ApiResponseSecurityIchimokuKinkoHyo.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/kc)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsKc)
+
 <a name="getSecurityPriceTechnicalsKc"></a>
 # **getSecurityPriceTechnicalsKc**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsKc_v2)
+
 > ApiResponseSecurityKeltnerChannel getSecurityPriceTechnicalsKc(identifier, period, startDate, endDate, pageSize, nextPage)
 
 Keltner Channel
@@ -1283,6 +1654,9 @@ Keltner Channel
 Returns the Keltner Channel values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1319,6 +1693,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1334,8 +1710,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityKeltnerChannel**](ApiResponseSecurityKeltnerChannel.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/kst)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsKst)
+
 <a name="getSecurityPriceTechnicalsKst"></a>
 # **getSecurityPriceTechnicalsKst**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsKst_v2)
+
 > ApiResponseSecurityKnowSureThing getSecurityPriceTechnicalsKst(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage)
 
 Know Sure Thing
@@ -1343,6 +1731,9 @@ Know Sure Thing
 Returns the Know Sure Thing values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1387,6 +1778,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1410,8 +1803,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityKnowSureThing**](ApiResponseSecurityKnowSureThing.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/macd)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsMacd)
+
 <a name="getSecurityPriceTechnicalsMacd"></a>
 # **getSecurityPriceTechnicalsMacd**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsMacd_v2)
+
 > ApiResponseSecurityMovingAverageConvergenceDivergence getSecurityPriceTechnicalsMacd(identifier, fastPeriod, slowPeriod, signalPeriod, priceKey, startDate, endDate, pageSize, nextPage)
 
 Moving Average Convergence Divergence
@@ -1419,6 +1824,9 @@ Moving Average Convergence Divergence
 Returns the Moving Average Convergence Divergence values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1458,6 +1866,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1476,8 +1886,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityMovingAverageConvergenceDivergence**](ApiResponseSecurityMovingAverageConvergenceDivergence.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/mfi)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsMfi)
+
 <a name="getSecurityPriceTechnicalsMfi"></a>
 # **getSecurityPriceTechnicalsMfi**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsMfi_v2)
+
 > ApiResponseSecurityMoneyFlowIndex getSecurityPriceTechnicalsMfi(identifier, period, startDate, endDate, pageSize, nextPage)
 
 Money Flow Index
@@ -1485,6 +1907,9 @@ Money Flow Index
 Returns the Money Flow Index values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1521,6 +1946,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1536,8 +1963,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityMoneyFlowIndex**](ApiResponseSecurityMoneyFlowIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/mi)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsMi)
+
 <a name="getSecurityPriceTechnicalsMi"></a>
 # **getSecurityPriceTechnicalsMi**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsMi_v2)
+
 > ApiResponseSecurityMassIndex getSecurityPriceTechnicalsMi(identifier, emaPeriod, sumPeriod, startDate, endDate, pageSize, nextPage)
 
 Mass Index
@@ -1545,6 +1984,9 @@ Mass Index
 Returns the Mass Index values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1582,6 +2024,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1598,8 +2042,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityMassIndex**](ApiResponseSecurityMassIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/nvi)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsNvi)
+
 <a name="getSecurityPriceTechnicalsNvi"></a>
 # **getSecurityPriceTechnicalsNvi**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsNvi_v2)
+
 > ApiResponseSecurityNegativeVolumeIndex getSecurityPriceTechnicalsNvi(identifier, startDate, endDate, pageSize, nextPage)
 
 Negative Volume Index
@@ -1607,6 +2063,9 @@ Negative Volume Index
 Returns the Negative Volume Index values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1642,6 +2101,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1656,8 +2117,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityNegativeVolumeIndex**](ApiResponseSecurityNegativeVolumeIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/obv)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsObv)
+
 <a name="getSecurityPriceTechnicalsObv"></a>
 # **getSecurityPriceTechnicalsObv**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsObv_v2)
+
 > ApiResponseSecurityOnBalanceVolume getSecurityPriceTechnicalsObv(identifier, startDate, endDate, pageSize, nextPage)
 
 On-balance Volume
@@ -1665,6 +2138,9 @@ On-balance Volume
 Returns the On-balance Volume values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1700,6 +2176,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1714,8 +2192,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityOnBalanceVolume**](ApiResponseSecurityOnBalanceVolume.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/obv_mean)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsObvMean)
+
 <a name="getSecurityPriceTechnicalsObvMean"></a>
 # **getSecurityPriceTechnicalsObvMean**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsObvMean_v2)
+
 > ApiResponseSecurityOnBalanceVolumeMean getSecurityPriceTechnicalsObvMean(identifier, period, startDate, endDate, pageSize, nextPage)
 
 On-balance Volume Mean
@@ -1723,6 +2213,9 @@ On-balance Volume Mean
 Returns the On-balance Volume Mean values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1759,6 +2252,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1774,8 +2269,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityOnBalanceVolumeMean**](ApiResponseSecurityOnBalanceVolumeMean.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/rsi)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsRsi)
+
 <a name="getSecurityPriceTechnicalsRsi"></a>
 # **getSecurityPriceTechnicalsRsi**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsRsi_v2)
+
 > ApiResponseSecurityRelativeStrengthIndex getSecurityPriceTechnicalsRsi(identifier, period, priceKey, startDate, endDate, pageSize, nextPage)
 
 Relative Strength Index
@@ -1783,6 +2290,9 @@ Relative Strength Index
 Returns the Relative Strength Index values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1820,6 +2330,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1836,8 +2348,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityRelativeStrengthIndex**](ApiResponseSecurityRelativeStrengthIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/sma)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsSma)
+
 <a name="getSecurityPriceTechnicalsSma"></a>
 # **getSecurityPriceTechnicalsSma**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsSma_v2)
+
 > ApiResponseSecuritySimpleMovingAverage getSecurityPriceTechnicalsSma(identifier, period, priceKey, startDate, endDate, pageSize, nextPage)
 
 Simple Moving Average
@@ -1845,6 +2369,9 @@ Simple Moving Average
 Returns the Simple Moving Average values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1882,6 +2409,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1898,8 +2427,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecuritySimpleMovingAverage**](ApiResponseSecuritySimpleMovingAverage.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/sr)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsSr)
+
 <a name="getSecurityPriceTechnicalsSr"></a>
 # **getSecurityPriceTechnicalsSr**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsSr_v2)
+
 > ApiResponseSecurityStochasticOscillator getSecurityPriceTechnicalsSr(identifier, period, signalPeriod, startDate, endDate, pageSize, nextPage)
 
 Stochastic Oscillator
@@ -1907,6 +2448,9 @@ Stochastic Oscillator
 Returns the Stochastic Oscillator values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -1944,6 +2488,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1960,8 +2506,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityStochasticOscillator**](ApiResponseSecurityStochasticOscillator.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/trix)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsTrix)
+
 <a name="getSecurityPriceTechnicalsTrix"></a>
 # **getSecurityPriceTechnicalsTrix**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsTrix_v2)
+
 > ApiResponseSecurityTripleExponentialAverage getSecurityPriceTechnicalsTrix(identifier, period, startDate, endDate, pageSize, nextPage)
 
 Triple Exponential Average
@@ -1969,6 +2527,9 @@ Triple Exponential Average
 Returns the Simple Moving Average values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2005,6 +2566,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2020,8 +2583,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityTripleExponentialAverage**](ApiResponseSecurityTripleExponentialAverage.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/tsi)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsTsi)
+
 <a name="getSecurityPriceTechnicalsTsi"></a>
 # **getSecurityPriceTechnicalsTsi**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsTsi_v2)
+
 > ApiResponseSecurityTrueStrengthIndex getSecurityPriceTechnicalsTsi(identifier, lowPeriod, highPeriod, priceKey, startDate, endDate, pageSize, nextPage)
 
 True Strength Index
@@ -2029,6 +2604,9 @@ True Strength Index
 Returns the True Strength Index values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2067,6 +2645,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2084,8 +2664,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityTrueStrengthIndex**](ApiResponseSecurityTrueStrengthIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/uo)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsUo)
+
 <a name="getSecurityPriceTechnicalsUo"></a>
 # **getSecurityPriceTechnicalsUo**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsUo_v2)
+
 > ApiResponseSecurityUltimateOscillator getSecurityPriceTechnicalsUo(identifier, shortPeriod, mediumPeriod, longPeriod, shortWeight, mediumWeight, longWeight, startDate, endDate, pageSize, nextPage)
 
 Ultimate Oscillator
@@ -2093,6 +2685,9 @@ Ultimate Oscillator
 Returns the Ultimate Oscillator values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2134,6 +2729,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2154,8 +2751,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityUltimateOscillator**](ApiResponseSecurityUltimateOscillator.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/vi)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsVi)
+
 <a name="getSecurityPriceTechnicalsVi"></a>
 # **getSecurityPriceTechnicalsVi**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsVi_v2)
+
 > ApiResponseSecurityVortexIndicator getSecurityPriceTechnicalsVi(identifier, period, startDate, endDate, pageSize, nextPage)
 
 Vortex Indicator
@@ -2163,6 +2772,9 @@ Vortex Indicator
 Returns the Vortex Indicator values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2199,6 +2811,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2214,8 +2828,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityVortexIndicator**](ApiResponseSecurityVortexIndicator.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/vpt)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsVpt)
+
 <a name="getSecurityPriceTechnicalsVpt"></a>
 # **getSecurityPriceTechnicalsVpt**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsVpt_v2)
+
 > ApiResponseSecurityVolumePriceTrend getSecurityPriceTechnicalsVpt(identifier, startDate, endDate, pageSize, nextPage)
 
 Volume-price Trend
@@ -2223,6 +2849,9 @@ Volume-price Trend
 Returns the Volume-price Trend values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2258,6 +2887,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2272,8 +2903,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityVolumePriceTrend**](ApiResponseSecurityVolumePriceTrend.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/vwap)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsVwap)
+
 <a name="getSecurityPriceTechnicalsVwap"></a>
 # **getSecurityPriceTechnicalsVwap**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsVwap_v2)
+
 > ApiResponseSecurityVolumeWeightedAveragePrice getSecurityPriceTechnicalsVwap(identifier, startDate, endDate, pageSize, nextPage)
 
 Volume Weighted Average Price
@@ -2281,6 +2924,9 @@ Volume Weighted Average Price
 Returns the Volume Weighted Average Price values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2316,6 +2962,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2330,8 +2978,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityVolumeWeightedAveragePrice**](ApiResponseSecurityVolumeWeightedAveragePrice.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/technicals/wr)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityPriceTechnicalsWr)
+
 <a name="getSecurityPriceTechnicalsWr"></a>
 # **getSecurityPriceTechnicalsWr**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityPriceTechnicalsWr_v2)
+
 > ApiResponseSecurityWilliamsR getSecurityPriceTechnicalsWr(identifier, period, startDate, endDate, pageSize, nextPage)
 
 Williams %R
@@ -2339,6 +2999,9 @@ Williams %R
 Returns the Williams %R values of Stock Prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2375,6 +3038,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2390,8 +3055,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseSecurityWilliamsR**](ApiResponseSecurityWilliamsR.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/realtime)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityRealtimePrice)
+
 <a name="getSecurityRealtimePrice"></a>
 # **getSecurityRealtimePrice**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityRealtimePrice_v2)
+
 > RealtimeStockPrice getSecurityRealtimePrice(identifier, source)
 
 Realtime Stock Price for Security
@@ -2399,6 +3076,9 @@ Realtime Stock Price for Security
 Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2431,6 +3111,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2442,8 +3124,20 @@ Name | Type | Description  | Notes
 
 [**RealtimeStockPrice**](RealtimeStockPrice.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/adjustments)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityStockPriceAdjustments)
+
 <a name="getSecurityStockPriceAdjustments"></a>
 # **getSecurityStockPriceAdjustments**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityStockPriceAdjustments_v2)
+
 > ApiResponseSecurityStockPriceAdjustments getSecurityStockPriceAdjustments(identifier, startDate, endDate, pageSize, nextPage)
 
 Stock Price Adjustments by Security
@@ -2451,6 +3145,9 @@ Stock Price Adjustments by Security
 Returns stock price adjustments for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2471,7 +3168,7 @@ public class Main {
     String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     LocalDate startDate = null; // LocalDate | Return price adjustments on or after the date
     LocalDate endDate = null; // LocalDate | Return price adjustments on or before the date
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -2486,6 +3183,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2493,15 +3192,27 @@ Name | Type | Description  | Notes
  **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
  **startDate** | **LocalDate**| Return price adjustments on or after the date | [optional]
  **endDate** | **LocalDate**| Return price adjustments on or before the date | [optional]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseSecurityStockPriceAdjustments**](ApiResponseSecurityStockPriceAdjustments.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityStockPrices)
+
 <a name="getSecurityStockPrices"></a>
 # **getSecurityStockPrices**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityStockPrices_v2)
+
 > ApiResponseSecurityStockPrices getSecurityStockPrices(identifier, startDate, endDate, frequency, pageSize, nextPage)
 
 Stock Prices by Security
@@ -2509,6 +3220,9 @@ Stock Prices by Security
 Return end-of-day stock prices for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2530,7 +3244,7 @@ public class Main {
     LocalDate startDate = null; // LocalDate | Return prices on or after the date
     LocalDate endDate = null; // LocalDate | Return prices on or before the date
     String frequency = "daily"; // String | Return stock prices in the given frequency
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -2545,6 +3259,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2553,15 +3269,339 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Return prices on or after the date | [optional]
  **endDate** | **LocalDate**| Return prices on or before the date | [optional]
  **frequency** | **String**| Return stock prices in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseSecurityStockPrices**](ApiResponseSecurityStockPrices.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/zacks/analyst_ratings)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityZacksAnalystRatings)
+
+<a name="getSecurityZacksAnalystRatings"></a>
+# **getSecurityZacksAnalystRatings**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityZacksAnalystRatings_v2)
+
+> ApiResponseSecurityZacksAnalystRatings getSecurityZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize)
+
+Zacks Analyst Ratings
+
+Returns buy, sell, and hold recommendations from analysts at brokerages for the Security with the given &#x60;identifier&#x60;. Zack’s storied research team aggregates and validates the ratings from professional analysts.
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
+
+    SecurityApi securityApi = new SecurityApi();
+
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String startDate = null; // String | Limit ratings to those on or after this date
+    String endDate = null; // String | Limit ratings to those on or before this date
+    BigDecimal meanGreater = null; // BigDecimal | Return only records with a mean (average) higher than this value
+    BigDecimal meanLess = null; // BigDecimal | Return only records with a mean (average) lower than this value
+    Integer strongBuysGreater = null; // Integer | Return only records with more than this many Strong Buy recommendations
+    Integer strongBuysLess = null; // Integer | Return only records with fewer than this many Strong Buy recommendations
+    Integer buysGreater = null; // Integer | Return only records with more than this many Buy recommendations
+    Integer buysLess = null; // Integer | Return only records with fewer than this many Buy recommendations
+    Integer holdsGreater = null; // Integer | Return only records with more than this many Hold recommendations
+    Integer holdsLess = null; // Integer | Return only records with fewer than this many Hold recommendations
+    Integer sellsGreater = null; // Integer | Return only records with more than this many Sell recommendations
+    Integer sellsLess = null; // Integer | Return only records with fewer than this many Sell recommendations
+    Integer strongSellsGreater = null; // Integer | Return only records with more than this many Strong Sell recommendations
+    Integer strongSellsLess = null; // Integer | Return only records with fewer than this many Strong Sell recommendations
+    Integer totalGreater = null; // Integer | Return only records with more than this many recommendations, regardless of type
+    Integer totalLess = null; // Integer | Return only records with fewer than this many recommendations, regardless of type
+    Integer pageSize = 100; // Integer | The number of results to return
+
+    try {
+        ApiResponseSecurityZacksAnalystRatings result = securityApi.getSecurityZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling SecurityApi#getSecurityZacksAnalystRatings");
+        e.printStackTrace();
+    }
+  
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
+ **startDate** | **String**| Limit ratings to those on or after this date | [optional]
+ **endDate** | **String**| Limit ratings to those on or before this date | [optional]
+ **meanGreater** | **BigDecimal**| Return only records with a mean (average) higher than this value | [optional]
+ **meanLess** | **BigDecimal**| Return only records with a mean (average) lower than this value | [optional]
+ **strongBuysGreater** | **Integer**| Return only records with more than this many Strong Buy recommendations | [optional]
+ **strongBuysLess** | **Integer**| Return only records with fewer than this many Strong Buy recommendations | [optional]
+ **buysGreater** | **Integer**| Return only records with more than this many Buy recommendations | [optional]
+ **buysLess** | **Integer**| Return only records with fewer than this many Buy recommendations | [optional]
+ **holdsGreater** | **Integer**| Return only records with more than this many Hold recommendations | [optional]
+ **holdsLess** | **Integer**| Return only records with fewer than this many Hold recommendations | [optional]
+ **sellsGreater** | **Integer**| Return only records with more than this many Sell recommendations | [optional]
+ **sellsLess** | **Integer**| Return only records with fewer than this many Sell recommendations | [optional]
+ **strongSellsGreater** | **Integer**| Return only records with more than this many Strong Sell recommendations | [optional]
+ **strongSellsLess** | **Integer**| Return only records with fewer than this many Strong Sell recommendations | [optional]
+ **totalGreater** | **Integer**| Return only records with more than this many recommendations, regardless of type | [optional]
+ **totalLess** | **Integer**| Return only records with fewer than this many recommendations, regardless of type | [optional]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
+
+### Return type
+
+[**ApiResponseSecurityZacksAnalystRatings**](ApiResponseSecurityZacksAnalystRatings.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/zacks/analyst_ratings/snapshot)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityZacksAnalystRatingsSnapshot)
+
+<a name="getSecurityZacksAnalystRatingsSnapshot"></a>
+# **getSecurityZacksAnalystRatingsSnapshot**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityZacksAnalystRatingsSnapshot_v2)
+
+> ApiResponseSecurityZacksAnalystRatingsSnapshot getSecurityZacksAnalystRatingsSnapshot(identifier, date)
+
+Zacks Analyst Ratings Snapshot
+
+Returns a snapshot of ratings data compared with previous timeframes for the Security with the given &#x60;identifier&#x60;. Also returns mean percentiles for comparing one security to the universe of securities covered by Zacks analyst ratings, at a specific point in time.
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
+
+    SecurityApi securityApi = new SecurityApi();
+
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String date = null; // String | Lookup a historical snapshot on the given date
+
+    try {
+        ApiResponseSecurityZacksAnalystRatingsSnapshot result = securityApi.getSecurityZacksAnalystRatingsSnapshot(identifier, date);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling SecurityApi#getSecurityZacksAnalystRatingsSnapshot");
+        e.printStackTrace();
+    }
+  
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
+ **date** | **String**| Lookup a historical snapshot on the given date | [optional]
+
+### Return type
+
+[**ApiResponseSecurityZacksAnalystRatingsSnapshot**](ApiResponseSecurityZacksAnalystRatingsSnapshot.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/zacks/eps_surprises)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityZacksEpsSurprises)
+
+<a name="getSecurityZacksEpsSurprises"></a>
+# **getSecurityZacksEpsSurprises**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityZacksEpsSurprises_v2)
+
+> ApiResponseSecurityZacksEPSSurprises getSecurityZacksEpsSurprises(identifier, pageSize, nextPage)
+
+Zacks EPS Surprises for Security
+
+Return Zacks EPS surprises for the Security with the given &#x60;identifier&#x60;.
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
+
+    SecurityApi securityApi = new SecurityApi();
+
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    Integer pageSize = 100; // Integer | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseSecurityZacksEPSSurprises result = securityApi.getSecurityZacksEpsSurprises(identifier, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling SecurityApi#getSecurityZacksEpsSurprises");
+        e.printStackTrace();
+    }
+  
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+
+### Return type
+
+[**ApiResponseSecurityZacksEPSSurprises**](ApiResponseSecurityZacksEPSSurprises.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/{identifier}/zacks/sales_surprises)
+
+[//]: # (DOC_LINK:SecurityApi.md#getSecurityZacksSalesSurprises)
+
+<a name="getSecurityZacksSalesSurprises"></a>
+# **getSecurityZacksSalesSurprises**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSecurityZacksSalesSurprises_v2)
+
+> ApiResponseSecurityZacksSalesSurprises getSecurityZacksSalesSurprises(identifier, pageSize, nextPage)
+
+Zacks Sales Surprises for Security
+
+Return Zacks sales surprises for the Security with the given &#x60;identifier&#x60;.
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR API KEY");
+
+    SecurityApi securityApi = new SecurityApi();
+
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    Integer pageSize = 100; // Integer | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+        ApiResponseSecurityZacksSalesSurprises result = securityApi.getSecurityZacksSalesSurprises(identifier, pageSize, nextPage);
+        System.out.println(result);
+    } catch (ApiException e) {
+        System.err.println("Exception when calling SecurityApi#getSecurityZacksSalesSurprises");
+        e.printStackTrace();
+    }
+  
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | **String**| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) |
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+
+### Return type
+
+[**ApiResponseSecurityZacksSalesSurprises**](ApiResponseSecurityZacksSalesSurprises.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/screen)
+
+[//]: # (DOC_LINK:SecurityApi.md#screenSecurities)
+
 <a name="screenSecurities"></a>
 # **screenSecurities**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/screenSecurities_v2)
+
 > List&lt;SecurityScreenResult&gt; screenSecurities(logic, orderColumn, orderDirection, primaryOnly, pageSize)
 
 Screen Securities
@@ -2569,6 +3609,9 @@ Screen Securities
 Screen Securities using complex logic
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2590,7 +3633,7 @@ public class Main {
     String orderColumn = "orderColumn_example"; // String | Results returned sorted by this column
     String orderDirection = "asc"; // String | Sort order to use with the order_column
     Boolean primaryOnly = false; // Boolean | Return only primary securities
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
 
     try {
         List<SecurityScreenResult> result = securityApi.screenSecurities(logic, orderColumn, orderDirection, primaryOnly, pageSize);
@@ -2604,6 +3647,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2612,14 +3657,26 @@ Name | Type | Description  | Notes
  **orderColumn** | **String**| Results returned sorted by this column | [optional]
  **orderDirection** | **String**| Sort order to use with the order_column | [optional] [default to asc] [enum: asc, desc]
  **primaryOnly** | **Boolean**| Return only primary securities | [optional] [default to false]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
 [**List&lt;SecurityScreenResult&gt;**](SecurityScreenResult.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/securities/search)
+
+[//]: # (DOC_LINK:SecurityApi.md#searchSecurities)
+
 <a name="searchSecurities"></a>
 # **searchSecurities**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchSecurities_v2)
+
 > ApiResponseSecuritiesSearch searchSecurities(query, pageSize)
 
 Search Securities
@@ -2627,6 +3684,9 @@ Search Securities
 Searches for Securities matching the text &#x60;query&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -2645,7 +3705,7 @@ public class Main {
     SecurityApi securityApi = new SecurityApi();
 
     String query = "Apple"; // String | 
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
 
     try {
         ApiResponseSecuritiesSearch result = securityApi.searchSecurities(query, pageSize);
@@ -2659,14 +3719,18 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**|  |
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
 [**ApiResponseSecuritiesSearch**](ApiResponseSecuritiesSearch.md)
+
+[//]: # (END_OPERATION)
 

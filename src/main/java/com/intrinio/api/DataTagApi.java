@@ -18,7 +18,6 @@ import java.io.IOException;
 
 import com.intrinio.models.ApiResponseDataTags;
 import com.intrinio.models.ApiResponseDataTagsSearch;
-import java.math.BigDecimal;
 import com.intrinio.models.DataTag;
 
 import java.lang.reflect.Type;
@@ -60,7 +59,7 @@ public class DataTagApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllDataTagsCall(String tag, String type, String parent, String statementCode, String fsTemplate, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllDataTagsCall(String tag, String type, String parent, String statementCode, String fsTemplate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -116,7 +115,7 @@ public class DataTagApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllDataTagsValidateBeforeCall(String tag, String type, String parent, String statementCode, String fsTemplate, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllDataTagsValidateBeforeCall(String tag, String type, String parent, String statementCode, String fsTemplate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
         com.squareup.okhttp.Call call = getAllDataTagsCall(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage, progressListener, progressRequestListener);
@@ -137,7 +136,7 @@ public class DataTagApi {
      * @return ApiResponseDataTags
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseDataTags getAllDataTags(String tag, String type, String parent, String statementCode, String fsTemplate, BigDecimal pageSize, String nextPage) throws ApiException {
+    public ApiResponseDataTags getAllDataTags(String tag, String type, String parent, String statementCode, String fsTemplate, Integer pageSize, String nextPage) throws ApiException {
         ApiResponse<ApiResponseDataTags> resp = getAllDataTagsWithHttpInfo(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
         return resp.getData();
     }
@@ -155,7 +154,7 @@ public class DataTagApi {
      * @return ApiResponse&lt;ApiResponseDataTags&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseDataTags> getAllDataTagsWithHttpInfo(String tag, String type, String parent, String statementCode, String fsTemplate, BigDecimal pageSize, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseDataTags> getAllDataTagsWithHttpInfo(String tag, String type, String parent, String statementCode, String fsTemplate, Integer pageSize, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getAllDataTagsValidateBeforeCall(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseDataTags>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -175,7 +174,7 @@ public class DataTagApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllDataTagsAsync(String tag, String type, String parent, String statementCode, String fsTemplate, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseDataTags> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllDataTagsAsync(String tag, String type, String parent, String statementCode, String fsTemplate, Integer pageSize, String nextPage, final ApiCallback<ApiResponseDataTags> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -333,7 +332,7 @@ public class DataTagApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call searchDataTagsCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call searchDataTagsCall(String query, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -379,7 +378,7 @@ public class DataTagApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call searchDataTagsValidateBeforeCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call searchDataTagsValidateBeforeCall(String query, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'query' is set
         if (query == null) {
@@ -400,7 +399,7 @@ public class DataTagApi {
      * @return ApiResponseDataTagsSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseDataTagsSearch searchDataTags(String query, BigDecimal pageSize) throws ApiException {
+    public ApiResponseDataTagsSearch searchDataTags(String query, Integer pageSize) throws ApiException {
         ApiResponse<ApiResponseDataTagsSearch> resp = searchDataTagsWithHttpInfo(query, pageSize);
         return resp.getData();
     }
@@ -413,7 +412,7 @@ public class DataTagApi {
      * @return ApiResponse&lt;ApiResponseDataTagsSearch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseDataTagsSearch> searchDataTagsWithHttpInfo(String query, BigDecimal pageSize) throws ApiException {
+    public ApiResponse<ApiResponseDataTagsSearch> searchDataTagsWithHttpInfo(String query, Integer pageSize) throws ApiException {
         com.squareup.okhttp.Call call = searchDataTagsValidateBeforeCall(query, pageSize, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseDataTagsSearch>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -428,7 +427,7 @@ public class DataTagApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchDataTagsAsync(String query, BigDecimal pageSize, final ApiCallback<ApiResponseDataTagsSearch> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchDataTagsAsync(String query, Integer pageSize, final ApiCallback<ApiResponseDataTagsSearch> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

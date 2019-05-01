@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * All the BAR prices, time, and volume for the given Crypto Currency Pair on the given Crypto Exchange.
@@ -20,7 +21,7 @@ import java.math.BigDecimal;
 
 public class CryptoPrice {
   @SerializedName("time")
-  private String time = null;
+  private OffsetDateTime time = null;
 
   @SerializedName("open")
   private BigDecimal open = null;
@@ -37,7 +38,7 @@ public class CryptoPrice {
   @SerializedName("volume")
   private BigDecimal volume = null;
 
-  public CryptoPrice time(String time) {
+  public CryptoPrice time(OffsetDateTime time) {
     this.time = time;
     return this;
   }
@@ -47,11 +48,11 @@ public class CryptoPrice {
    * @return time
   **/
   @ApiModelProperty(value = "The date and time of the beginning of the timeframe (in UTC). The open prices would be at this time, while close prices would be at this time plus the timeframe.")
-  public String getTime() {
+  public OffsetDateTime getTime() {
     return time;
   }
 
-  public void setTime(String time) {
+  public void setTime(OffsetDateTime time) {
     this.time = time;
   }
 

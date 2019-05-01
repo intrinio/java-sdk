@@ -6,7 +6,6 @@ import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseFilingNotes;
 import com.intrinio.models.ApiResponseFilingNotesSearch;
 import com.intrinio.models.ApiResponseFilings;
-import java.math.BigDecimal;
 import com.intrinio.models.Filing;
 import com.intrinio.models.FilingNote;
 import org.threeten.bp.LocalDate;
@@ -41,7 +40,7 @@ public class FilingApiTest {
         String reportType = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseFilings response = api.getAllFilings(company, reportType, startDate, endDate, pageSize, nextPage);
 
@@ -64,7 +63,7 @@ public class FilingApiTest {
         LocalDate filingEndDate = null;
         LocalDate periodEndedStartDate = null;
         LocalDate periodEndedEndDate = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseFilingNotes response = api.getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage);
 
@@ -149,8 +148,8 @@ public class FilingApiTest {
         String query = null;
         LocalDate filingStartDate = null;
         LocalDate filingEndDate = null;
-        BigDecimal pageSize = null;
-        BigDecimal pageSize2 = null;
+        Integer pageSize = null;
+        Integer pageSize2 = null;
         ApiResponseFilingNotesSearch response = api.searchNotes(query, filingStartDate, filingEndDate, pageSize, pageSize2);
 
         // TODO: test validations

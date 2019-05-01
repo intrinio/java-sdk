@@ -5,7 +5,6 @@ package com.intrinio.api;
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseDataTags;
 import com.intrinio.models.ApiResponseDataTagsSearch;
-import java.math.BigDecimal;
 import com.intrinio.models.DataTag;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -39,7 +38,7 @@ public class DataTagApiTest {
         String parent = null;
         String statementCode = null;
         String fsTemplate = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseDataTags response = api.getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
 
@@ -73,7 +72,7 @@ public class DataTagApiTest {
     @Test
     public void searchDataTagsTest() throws ApiException {
         String query = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         ApiResponseDataTagsSearch response = api.searchDataTags(query, pageSize);
 
         // TODO: test validations

@@ -8,8 +8,18 @@ Method | HTTP request | Description
 [**getDataPointText**](DataPointApi.md#getDataPointText) | **GET** /data_point/{identifier}/{tag}/text | Data Point (Text)
 
 
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/data_point/{identifier}/{tag}/number)
+
+[//]: # (DOC_LINK:DataPointApi.md#getDataPointNumber)
+
 <a name="getDataPointNumber"></a>
 # **getDataPointNumber**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getDataPointNumber_v2)
+
 > BigDecimal getDataPointNumber(identifier, tag)
 
 Data Point (Number)
@@ -17,6 +27,9 @@ Data Point (Number)
 Returns a numeric value for the given &#x60;tag&#x60; and the entity with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -49,6 +62,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -60,8 +75,20 @@ Name | Type | Description  | Notes
 
 [**BigDecimal**](BigDecimal.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/data_point/{identifier}/{tag}/text)
+
+[//]: # (DOC_LINK:DataPointApi.md#getDataPointText)
+
 <a name="getDataPointText"></a>
 # **getDataPointText**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getDataPointText_v2)
+
 > String getDataPointText(identifier, tag)
 
 Data Point (Text)
@@ -69,6 +96,9 @@ Data Point (Text)
 Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -101,6 +131,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -111,4 +143,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **String**
+
+[//]: # (END_OPERATION)
 

@@ -40,6 +40,10 @@ import com.intrinio.models.ApiResponseSecurityVolumePriceTrend;
 import com.intrinio.models.ApiResponseSecurityVolumeWeightedAveragePrice;
 import com.intrinio.models.ApiResponseSecurityVortexIndicator;
 import com.intrinio.models.ApiResponseSecurityWilliamsR;
+import com.intrinio.models.ApiResponseSecurityZacksAnalystRatings;
+import com.intrinio.models.ApiResponseSecurityZacksAnalystRatingsSnapshot;
+import com.intrinio.models.ApiResponseSecurityZacksEPSSurprises;
+import com.intrinio.models.ApiResponseSecurityZacksSalesSurprises;
 import java.math.BigDecimal;
 import com.intrinio.models.DividendRecord;
 import com.intrinio.models.EarningsRecord;
@@ -75,7 +79,7 @@ public class SecurityApiTest {
      */
     @Test
     public void getAllSecuritiesTest() throws ApiException {
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseSecurities response = api.getAllSecurities(pageSize, nextPage);
 
@@ -149,7 +153,7 @@ public class SecurityApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         String sortOrder = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseSecurityHistoricalData response = api.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
 
@@ -914,7 +918,7 @@ public class SecurityApiTest {
         String identifier = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseSecurityStockPriceAdjustments response = api.getSecurityStockPriceAdjustments(identifier, startDate, endDate, pageSize, nextPage);
 
@@ -935,9 +939,95 @@ public class SecurityApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         String frequency = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseSecurityStockPrices response = api.getSecurityStockPrices(identifier, startDate, endDate, frequency, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks Analyst Ratings
+     *
+     * Returns buy, sell, and hold recommendations from analysts at brokerages for the Security with the given &#x60;identifier&#x60;. Zack’s storied research team aggregates and validates the ratings from professional analysts.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityZacksAnalystRatingsTest() throws ApiException {
+        String identifier = null;
+        String startDate = null;
+        String endDate = null;
+        BigDecimal meanGreater = null;
+        BigDecimal meanLess = null;
+        Integer strongBuysGreater = null;
+        Integer strongBuysLess = null;
+        Integer buysGreater = null;
+        Integer buysLess = null;
+        Integer holdsGreater = null;
+        Integer holdsLess = null;
+        Integer sellsGreater = null;
+        Integer sellsLess = null;
+        Integer strongSellsGreater = null;
+        Integer strongSellsLess = null;
+        Integer totalGreater = null;
+        Integer totalLess = null;
+        Integer pageSize = null;
+        ApiResponseSecurityZacksAnalystRatings response = api.getSecurityZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks Analyst Ratings Snapshot
+     *
+     * Returns a snapshot of ratings data compared with previous timeframes for the Security with the given &#x60;identifier&#x60;. Also returns mean percentiles for comparing one security to the universe of securities covered by Zacks analyst ratings, at a specific point in time.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityZacksAnalystRatingsSnapshotTest() throws ApiException {
+        String identifier = null;
+        String date = null;
+        ApiResponseSecurityZacksAnalystRatingsSnapshot response = api.getSecurityZacksAnalystRatingsSnapshot(identifier, date);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks EPS Surprises for Security
+     *
+     * Return Zacks EPS surprises for the Security with the given &#x60;identifier&#x60;.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityZacksEpsSurprisesTest() throws ApiException {
+        String identifier = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseSecurityZacksEPSSurprises response = api.getSecurityZacksEpsSurprises(identifier, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks Sales Surprises for Security
+     *
+     * Return Zacks sales surprises for the Security with the given &#x60;identifier&#x60;.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityZacksSalesSurprisesTest() throws ApiException {
+        String identifier = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseSecurityZacksSalesSurprises response = api.getSecurityZacksSalesSurprises(identifier, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -956,7 +1046,7 @@ public class SecurityApiTest {
         String orderColumn = null;
         String orderDirection = null;
         Boolean primaryOnly = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         List<SecurityScreenResult> response = api.screenSecurities(logic, orderColumn, orderDirection, primaryOnly, pageSize);
 
         // TODO: test validations
@@ -973,7 +1063,7 @@ public class SecurityApiTest {
     @Test
     public void searchSecuritiesTest() throws ApiException {
         String query = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         ApiResponseSecuritiesSearch response = api.searchSecurities(query, pageSize);
 
         // TODO: test validations

@@ -43,7 +43,7 @@ public class OptionsApiTest {
         String expiration = null;
         String expirationAfter = null;
         String expirationBefore = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseOptions response = api.getOptions(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, pageSize, nextPage);
 
@@ -67,7 +67,7 @@ public class OptionsApiTest {
         BigDecimal strikeGreaterThan = null;
         BigDecimal strikeLessThan = null;
         String moneyness = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         ApiResponseOptionsChain response = api.getOptionsChain(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
 
         // TODO: test validations
@@ -104,7 +104,7 @@ public class OptionsApiTest {
         String identifier = null;
         String startDate = null;
         String endDate = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseOptionPrices response = api.getOptionsPrices(identifier, startDate, endDate, pageSize, nextPage);
 

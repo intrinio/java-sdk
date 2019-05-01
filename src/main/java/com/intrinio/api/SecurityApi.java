@@ -53,6 +53,10 @@ import com.intrinio.models.ApiResponseSecurityVolumePriceTrend;
 import com.intrinio.models.ApiResponseSecurityVolumeWeightedAveragePrice;
 import com.intrinio.models.ApiResponseSecurityVortexIndicator;
 import com.intrinio.models.ApiResponseSecurityWilliamsR;
+import com.intrinio.models.ApiResponseSecurityZacksAnalystRatings;
+import com.intrinio.models.ApiResponseSecurityZacksAnalystRatingsSnapshot;
+import com.intrinio.models.ApiResponseSecurityZacksEPSSurprises;
+import com.intrinio.models.ApiResponseSecurityZacksSalesSurprises;
 import java.math.BigDecimal;
 import com.intrinio.models.DividendRecord;
 import com.intrinio.models.EarningsRecord;
@@ -96,7 +100,7 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllSecuritiesCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllSecuritiesCall(Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -142,7 +146,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllSecuritiesValidateBeforeCall(BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllSecuritiesValidateBeforeCall(Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
         com.squareup.okhttp.Call call = getAllSecuritiesCall(pageSize, nextPage, progressListener, progressRequestListener);
@@ -158,7 +162,7 @@ public class SecurityApi {
      * @return ApiResponseSecurities
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurities getAllSecurities(BigDecimal pageSize, String nextPage) throws ApiException {
+    public ApiResponseSecurities getAllSecurities(Integer pageSize, String nextPage) throws ApiException {
         ApiResponse<ApiResponseSecurities> resp = getAllSecuritiesWithHttpInfo(pageSize, nextPage);
         return resp.getData();
     }
@@ -171,7 +175,7 @@ public class SecurityApi {
      * @return ApiResponse&lt;ApiResponseSecurities&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurities> getAllSecuritiesWithHttpInfo(BigDecimal pageSize, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseSecurities> getAllSecuritiesWithHttpInfo(Integer pageSize, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -186,7 +190,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllSecuritiesAsync(BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseSecurities> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllSecuritiesAsync(Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurities> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -617,7 +621,7 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityHistoricalDataCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityHistoricalDataCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -675,7 +679,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityHistoricalDataValidateBeforeCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityHistoricalDataValidateBeforeCall(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -708,7 +712,7 @@ public class SecurityApi {
      * @return ApiResponseSecurityHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurityHistoricalData getSecurityHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+    public ApiResponseSecurityHistoricalData getSecurityHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException {
         ApiResponse<ApiResponseSecurityHistoricalData> resp = getSecurityHistoricalDataWithHttpInfo(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
         return resp.getData();
     }
@@ -728,7 +732,7 @@ public class SecurityApi {
      * @return ApiResponse&lt;ApiResponseSecurityHistoricalData&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityHistoricalData> getSecurityHistoricalDataWithHttpInfo(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseSecurityHistoricalData> getSecurityHistoricalDataWithHttpInfo(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getSecurityHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityHistoricalData>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -750,7 +754,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityHistoricalDataAsync(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseSecurityHistoricalData> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityHistoricalDataAsync(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityHistoricalData> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6203,7 +6207,7 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsCall(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsCall(String identifier, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -6254,7 +6258,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -6278,7 +6282,7 @@ public class SecurityApi {
      * @return ApiResponseSecurityStockPriceAdjustments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurityStockPriceAdjustments getSecurityStockPriceAdjustments(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage) throws ApiException {
+    public ApiResponseSecurityStockPriceAdjustments getSecurityStockPriceAdjustments(String identifier, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException {
         ApiResponse<ApiResponseSecurityStockPriceAdjustments> resp = getSecurityStockPriceAdjustmentsWithHttpInfo(identifier, startDate, endDate, pageSize, nextPage);
         return resp.getData();
     }
@@ -6294,7 +6298,7 @@ public class SecurityApi {
      * @return ApiResponse&lt;ApiResponseSecurityStockPriceAdjustments&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityStockPriceAdjustments> getSecurityStockPriceAdjustmentsWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseSecurityStockPriceAdjustments> getSecurityStockPriceAdjustmentsWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getSecurityStockPriceAdjustmentsValidateBeforeCall(identifier, startDate, endDate, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityStockPriceAdjustments>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -6312,7 +6316,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsAsync(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseSecurityStockPriceAdjustments> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityStockPriceAdjustmentsAsync(String identifier, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityStockPriceAdjustments> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6351,7 +6355,7 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityStockPricesCall(String identifier, LocalDate startDate, LocalDate endDate, String frequency, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityStockPricesCall(String identifier, LocalDate startDate, LocalDate endDate, String frequency, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -6404,7 +6408,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityStockPricesValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, String frequency, BigDecimal pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityStockPricesValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, String frequency, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -6429,7 +6433,7 @@ public class SecurityApi {
      * @return ApiResponseSecurityStockPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurityStockPrices getSecurityStockPrices(String identifier, LocalDate startDate, LocalDate endDate, String frequency, BigDecimal pageSize, String nextPage) throws ApiException {
+    public ApiResponseSecurityStockPrices getSecurityStockPrices(String identifier, LocalDate startDate, LocalDate endDate, String frequency, Integer pageSize, String nextPage) throws ApiException {
         ApiResponse<ApiResponseSecurityStockPrices> resp = getSecurityStockPricesWithHttpInfo(identifier, startDate, endDate, frequency, pageSize, nextPage);
         return resp.getData();
     }
@@ -6446,7 +6450,7 @@ public class SecurityApi {
      * @return ApiResponse&lt;ApiResponseSecurityStockPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityStockPrices> getSecurityStockPricesWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, String frequency, BigDecimal pageSize, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseSecurityStockPrices> getSecurityStockPricesWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, String frequency, Integer pageSize, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getSecurityStockPricesValidateBeforeCall(identifier, startDate, endDate, frequency, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityStockPrices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -6465,7 +6469,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityStockPricesAsync(String identifier, LocalDate startDate, LocalDate endDate, String frequency, BigDecimal pageSize, String nextPage, final ApiCallback<ApiResponseSecurityStockPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityStockPricesAsync(String identifier, LocalDate startDate, LocalDate endDate, String frequency, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityStockPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6492,6 +6496,630 @@ public class SecurityApi {
         return call;
     }
     /**
+     * Build call for getSecurityZacksAnalystRatings
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param startDate Limit ratings to those on or after this date (optional)
+     * @param endDate Limit ratings to those on or before this date (optional)
+     * @param meanGreater Return only records with a mean (average) higher than this value (optional)
+     * @param meanLess Return only records with a mean (average) lower than this value (optional)
+     * @param strongBuysGreater Return only records with more than this many Strong Buy recommendations (optional)
+     * @param strongBuysLess Return only records with fewer than this many Strong Buy recommendations (optional)
+     * @param buysGreater Return only records with more than this many Buy recommendations (optional)
+     * @param buysLess Return only records with fewer than this many Buy recommendations (optional)
+     * @param holdsGreater Return only records with more than this many Hold recommendations (optional)
+     * @param holdsLess Return only records with fewer than this many Hold recommendations (optional)
+     * @param sellsGreater Return only records with more than this many Sell recommendations (optional)
+     * @param sellsLess Return only records with fewer than this many Sell recommendations (optional)
+     * @param strongSellsGreater Return only records with more than this many Strong Sell recommendations (optional)
+     * @param strongSellsLess Return only records with fewer than this many Strong Sell recommendations (optional)
+     * @param totalGreater Return only records with more than this many recommendations, regardless of type (optional)
+     * @param totalLess Return only records with fewer than this many recommendations, regardless of type (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityZacksAnalystRatingsCall(String identifier, String startDate, String endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/{identifier}/zacks/analyst_ratings"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (meanGreater != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("mean_greater", meanGreater));
+        if (meanLess != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("mean_less", meanLess));
+        if (strongBuysGreater != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strong_buys_greater", strongBuysGreater));
+        if (strongBuysLess != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strong_buys_less", strongBuysLess));
+        if (buysGreater != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("buys_greater", buysGreater));
+        if (buysLess != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("buys_less", buysLess));
+        if (holdsGreater != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("holds_greater", holdsGreater));
+        if (holdsLess != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("holds_less", holdsLess));
+        if (sellsGreater != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("sells_greater", sellsGreater));
+        if (sellsLess != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("sells_less", sellsLess));
+        if (strongSellsGreater != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strong_sells_greater", strongSellsGreater));
+        if (strongSellsLess != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strong_sells_less", strongSellsLess));
+        if (totalGreater != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("total_greater", totalGreater));
+        if (totalLess != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("total_less", totalLess));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityZacksAnalystRatingsValidateBeforeCall(String identifier, String startDate, String endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityZacksAnalystRatings(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityZacksAnalystRatingsCall(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks Analyst Ratings
+     * Returns buy, sell, and hold recommendations from analysts at brokerages for the Security with the given &#x60;identifier&#x60;. Zack’s storied research team aggregates and validates the ratings from professional analysts.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param startDate Limit ratings to those on or after this date (optional)
+     * @param endDate Limit ratings to those on or before this date (optional)
+     * @param meanGreater Return only records with a mean (average) higher than this value (optional)
+     * @param meanLess Return only records with a mean (average) lower than this value (optional)
+     * @param strongBuysGreater Return only records with more than this many Strong Buy recommendations (optional)
+     * @param strongBuysLess Return only records with fewer than this many Strong Buy recommendations (optional)
+     * @param buysGreater Return only records with more than this many Buy recommendations (optional)
+     * @param buysLess Return only records with fewer than this many Buy recommendations (optional)
+     * @param holdsGreater Return only records with more than this many Hold recommendations (optional)
+     * @param holdsLess Return only records with fewer than this many Hold recommendations (optional)
+     * @param sellsGreater Return only records with more than this many Sell recommendations (optional)
+     * @param sellsLess Return only records with fewer than this many Sell recommendations (optional)
+     * @param strongSellsGreater Return only records with more than this many Strong Sell recommendations (optional)
+     * @param strongSellsLess Return only records with fewer than this many Strong Sell recommendations (optional)
+     * @param totalGreater Return only records with more than this many recommendations, regardless of type (optional)
+     * @param totalLess Return only records with fewer than this many recommendations, regardless of type (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponseSecurityZacksAnalystRatings
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseSecurityZacksAnalystRatings getSecurityZacksAnalystRatings(String identifier, String startDate, String endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize) throws ApiException {
+        ApiResponse<ApiResponseSecurityZacksAnalystRatings> resp = getSecurityZacksAnalystRatingsWithHttpInfo(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks Analyst Ratings
+     * Returns buy, sell, and hold recommendations from analysts at brokerages for the Security with the given &#x60;identifier&#x60;. Zack’s storied research team aggregates and validates the ratings from professional analysts.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param startDate Limit ratings to those on or after this date (optional)
+     * @param endDate Limit ratings to those on or before this date (optional)
+     * @param meanGreater Return only records with a mean (average) higher than this value (optional)
+     * @param meanLess Return only records with a mean (average) lower than this value (optional)
+     * @param strongBuysGreater Return only records with more than this many Strong Buy recommendations (optional)
+     * @param strongBuysLess Return only records with fewer than this many Strong Buy recommendations (optional)
+     * @param buysGreater Return only records with more than this many Buy recommendations (optional)
+     * @param buysLess Return only records with fewer than this many Buy recommendations (optional)
+     * @param holdsGreater Return only records with more than this many Hold recommendations (optional)
+     * @param holdsLess Return only records with fewer than this many Hold recommendations (optional)
+     * @param sellsGreater Return only records with more than this many Sell recommendations (optional)
+     * @param sellsLess Return only records with fewer than this many Sell recommendations (optional)
+     * @param strongSellsGreater Return only records with more than this many Strong Sell recommendations (optional)
+     * @param strongSellsLess Return only records with fewer than this many Strong Sell recommendations (optional)
+     * @param totalGreater Return only records with more than this many recommendations, regardless of type (optional)
+     * @param totalLess Return only records with fewer than this many recommendations, regardless of type (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponse&lt;ApiResponseSecurityZacksAnalystRatings&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseSecurityZacksAnalystRatings> getSecurityZacksAnalystRatingsWithHttpInfo(String identifier, String startDate, String endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityZacksAnalystRatingsValidateBeforeCall(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityZacksAnalystRatings>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks Analyst Ratings (asynchronously)
+     * Returns buy, sell, and hold recommendations from analysts at brokerages for the Security with the given &#x60;identifier&#x60;. Zack’s storied research team aggregates and validates the ratings from professional analysts.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param startDate Limit ratings to those on or after this date (optional)
+     * @param endDate Limit ratings to those on or before this date (optional)
+     * @param meanGreater Return only records with a mean (average) higher than this value (optional)
+     * @param meanLess Return only records with a mean (average) lower than this value (optional)
+     * @param strongBuysGreater Return only records with more than this many Strong Buy recommendations (optional)
+     * @param strongBuysLess Return only records with fewer than this many Strong Buy recommendations (optional)
+     * @param buysGreater Return only records with more than this many Buy recommendations (optional)
+     * @param buysLess Return only records with fewer than this many Buy recommendations (optional)
+     * @param holdsGreater Return only records with more than this many Hold recommendations (optional)
+     * @param holdsLess Return only records with fewer than this many Hold recommendations (optional)
+     * @param sellsGreater Return only records with more than this many Sell recommendations (optional)
+     * @param sellsLess Return only records with fewer than this many Sell recommendations (optional)
+     * @param strongSellsGreater Return only records with more than this many Strong Sell recommendations (optional)
+     * @param strongSellsLess Return only records with fewer than this many Strong Sell recommendations (optional)
+     * @param totalGreater Return only records with more than this many recommendations, regardless of type (optional)
+     * @param totalLess Return only records with fewer than this many recommendations, regardless of type (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityZacksAnalystRatingsAsync(String identifier, String startDate, String endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, final ApiCallback<ApiResponseSecurityZacksAnalystRatings> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityZacksAnalystRatingsValidateBeforeCall(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityZacksAnalystRatings>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityZacksAnalystRatingsSnapshot
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param date Lookup a historical snapshot on the given date (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityZacksAnalystRatingsSnapshotCall(String identifier, String date, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/{identifier}/zacks/analyst_ratings/snapshot"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (date != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityZacksAnalystRatingsSnapshotValidateBeforeCall(String identifier, String date, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityZacksAnalystRatingsSnapshot(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityZacksAnalystRatingsSnapshotCall(identifier, date, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks Analyst Ratings Snapshot
+     * Returns a snapshot of ratings data compared with previous timeframes for the Security with the given &#x60;identifier&#x60;. Also returns mean percentiles for comparing one security to the universe of securities covered by Zacks analyst ratings, at a specific point in time.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param date Lookup a historical snapshot on the given date (optional)
+     * @return ApiResponseSecurityZacksAnalystRatingsSnapshot
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseSecurityZacksAnalystRatingsSnapshot getSecurityZacksAnalystRatingsSnapshot(String identifier, String date) throws ApiException {
+        ApiResponse<ApiResponseSecurityZacksAnalystRatingsSnapshot> resp = getSecurityZacksAnalystRatingsSnapshotWithHttpInfo(identifier, date);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks Analyst Ratings Snapshot
+     * Returns a snapshot of ratings data compared with previous timeframes for the Security with the given &#x60;identifier&#x60;. Also returns mean percentiles for comparing one security to the universe of securities covered by Zacks analyst ratings, at a specific point in time.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param date Lookup a historical snapshot on the given date (optional)
+     * @return ApiResponse&lt;ApiResponseSecurityZacksAnalystRatingsSnapshot&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseSecurityZacksAnalystRatingsSnapshot> getSecurityZacksAnalystRatingsSnapshotWithHttpInfo(String identifier, String date) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityZacksAnalystRatingsSnapshotValidateBeforeCall(identifier, date, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityZacksAnalystRatingsSnapshot>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks Analyst Ratings Snapshot (asynchronously)
+     * Returns a snapshot of ratings data compared with previous timeframes for the Security with the given &#x60;identifier&#x60;. Also returns mean percentiles for comparing one security to the universe of securities covered by Zacks analyst ratings, at a specific point in time.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param date Lookup a historical snapshot on the given date (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityZacksAnalystRatingsSnapshotAsync(String identifier, String date, final ApiCallback<ApiResponseSecurityZacksAnalystRatingsSnapshot> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityZacksAnalystRatingsSnapshotValidateBeforeCall(identifier, date, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityZacksAnalystRatingsSnapshot>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityZacksEpsSurprises
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityZacksEpsSurprisesCall(String identifier, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/{identifier}/zacks/eps_surprises"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityZacksEpsSurprisesValidateBeforeCall(String identifier, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityZacksEpsSurprises(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityZacksEpsSurprisesCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks EPS Surprises for Security
+     * Return Zacks EPS surprises for the Security with the given &#x60;identifier&#x60;.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseSecurityZacksEPSSurprises
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseSecurityZacksEPSSurprises getSecurityZacksEpsSurprises(String identifier, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSecurityZacksEPSSurprises> resp = getSecurityZacksEpsSurprisesWithHttpInfo(identifier, pageSize, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks EPS Surprises for Security
+     * Return Zacks EPS surprises for the Security with the given &#x60;identifier&#x60;.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseSecurityZacksEPSSurprises&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseSecurityZacksEPSSurprises> getSecurityZacksEpsSurprisesWithHttpInfo(String identifier, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityZacksEpsSurprisesValidateBeforeCall(identifier, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityZacksEPSSurprises>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks EPS Surprises for Security (asynchronously)
+     * Return Zacks EPS surprises for the Security with the given &#x60;identifier&#x60;.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityZacksEpsSurprisesAsync(String identifier, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityZacksEPSSurprises> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityZacksEpsSurprisesValidateBeforeCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityZacksEPSSurprises>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityZacksSalesSurprises
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityZacksSalesSurprisesCall(String identifier, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/{identifier}/zacks/sales_surprises"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityZacksSalesSurprisesValidateBeforeCall(String identifier, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityZacksSalesSurprises(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityZacksSalesSurprisesCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks Sales Surprises for Security
+     * Return Zacks sales surprises for the Security with the given &#x60;identifier&#x60;.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseSecurityZacksSalesSurprises
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseSecurityZacksSalesSurprises getSecurityZacksSalesSurprises(String identifier, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSecurityZacksSalesSurprises> resp = getSecurityZacksSalesSurprisesWithHttpInfo(identifier, pageSize, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks Sales Surprises for Security
+     * Return Zacks sales surprises for the Security with the given &#x60;identifier&#x60;.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseSecurityZacksSalesSurprises&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseSecurityZacksSalesSurprises> getSecurityZacksSalesSurprisesWithHttpInfo(String identifier, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityZacksSalesSurprisesValidateBeforeCall(identifier, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityZacksSalesSurprises>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks Sales Surprises for Security (asynchronously)
+     * Return Zacks sales surprises for the Security with the given &#x60;identifier&#x60;.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityZacksSalesSurprisesAsync(String identifier, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityZacksSalesSurprises> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityZacksSalesSurprisesValidateBeforeCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityZacksSalesSurprises>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for screenSecurities
      * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
@@ -6503,7 +7131,7 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call screenSecuritiesCall(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call screenSecuritiesCall(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = logic;
 
         // create path and map variables
@@ -6553,7 +7181,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call screenSecuritiesValidateBeforeCall(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call screenSecuritiesValidateBeforeCall(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
         com.squareup.okhttp.Call call = screenSecuritiesCall(logic, orderColumn, orderDirection, primaryOnly, pageSize, progressListener, progressRequestListener);
@@ -6572,7 +7200,7 @@ public class SecurityApi {
      * @return List&lt;SecurityScreenResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<SecurityScreenResult> screenSecurities(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, BigDecimal pageSize) throws ApiException {
+    public List<SecurityScreenResult> screenSecurities(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, Integer pageSize) throws ApiException {
         ApiResponse<List<SecurityScreenResult>> resp = screenSecuritiesWithHttpInfo(logic, orderColumn, orderDirection, primaryOnly, pageSize);
         return resp.getData();
     }
@@ -6588,7 +7216,7 @@ public class SecurityApi {
      * @return ApiResponse&lt;List&lt;SecurityScreenResult&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<SecurityScreenResult>> screenSecuritiesWithHttpInfo(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, BigDecimal pageSize) throws ApiException {
+    public ApiResponse<List<SecurityScreenResult>> screenSecuritiesWithHttpInfo(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, Integer pageSize) throws ApiException {
         com.squareup.okhttp.Call call = screenSecuritiesValidateBeforeCall(logic, orderColumn, orderDirection, primaryOnly, pageSize, null, null);
         Type localVarReturnType = new TypeToken<List<SecurityScreenResult>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -6606,7 +7234,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call screenSecuritiesAsync(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, BigDecimal pageSize, final ApiCallback<List<SecurityScreenResult>> callback) throws ApiException {
+    public com.squareup.okhttp.Call screenSecuritiesAsync(SecurityScreenGroup logic, String orderColumn, String orderDirection, Boolean primaryOnly, Integer pageSize, final ApiCallback<List<SecurityScreenResult>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -6641,7 +7269,7 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call searchSecuritiesCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call searchSecuritiesCall(String query, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -6687,7 +7315,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call searchSecuritiesValidateBeforeCall(String query, BigDecimal pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call searchSecuritiesValidateBeforeCall(String query, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'query' is set
         if (query == null) {
@@ -6708,7 +7336,7 @@ public class SecurityApi {
      * @return ApiResponseSecuritiesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecuritiesSearch searchSecurities(String query, BigDecimal pageSize) throws ApiException {
+    public ApiResponseSecuritiesSearch searchSecurities(String query, Integer pageSize) throws ApiException {
         ApiResponse<ApiResponseSecuritiesSearch> resp = searchSecuritiesWithHttpInfo(query, pageSize);
         return resp.getData();
     }
@@ -6721,7 +7349,7 @@ public class SecurityApi {
      * @return ApiResponse&lt;ApiResponseSecuritiesSearch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecuritiesSearch> searchSecuritiesWithHttpInfo(String query, BigDecimal pageSize) throws ApiException {
+    public ApiResponse<ApiResponseSecuritiesSearch> searchSecuritiesWithHttpInfo(String query, Integer pageSize) throws ApiException {
         com.squareup.okhttp.Call call = searchSecuritiesValidateBeforeCall(query, pageSize, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecuritiesSearch>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -6736,7 +7364,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchSecuritiesAsync(String query, BigDecimal pageSize, final ApiCallback<ApiResponseSecuritiesSearch> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchSecuritiesAsync(String query, Integer pageSize, final ApiCallback<ApiResponseSecuritiesSearch> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

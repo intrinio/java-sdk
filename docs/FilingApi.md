@@ -13,8 +13,18 @@ Method | HTTP request | Description
 [**searchNotes**](FilingApi.md#searchNotes) | **GET** /filings/notes/search | Search Filing Notes
 
 
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/filings)
+
+[//]: # (DOC_LINK:FilingApi.md#getAllFilings)
+
 <a name="getAllFilings"></a>
 # **getAllFilings**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllFilings_v2)
+
 > ApiResponseFilings getAllFilings(company, reportType, startDate, endDate, pageSize, nextPage)
 
 All Filings
@@ -22,6 +32,9 @@ All Filings
 Returns all Filings. Returns Filings matching parameters when supplied.
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -43,7 +56,7 @@ public class Main {
     String reportType = null; // String | Filter by report type
     LocalDate startDate = null; // LocalDate | Filed on or after the given date
     LocalDate endDate = null; // LocalDate | Filed before or after the given date
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -58,6 +71,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -66,15 +81,27 @@ Name | Type | Description  | Notes
  **reportType** | **String**| Filter by report type | [optional]
  **startDate** | **LocalDate**| Filed on or after the given date | [optional]
  **endDate** | **LocalDate**| Filed before or after the given date | [optional]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseFilings**](ApiResponseFilings.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/filings/notes)
+
+[//]: # (DOC_LINK:FilingApi.md#getAllNotes)
+
 <a name="getAllNotes"></a>
 # **getAllNotes**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllNotes_v2)
+
 > ApiResponseFilingNotes getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage)
 
 All Filing Notes
@@ -82,6 +109,9 @@ All Filing Notes
 Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -105,7 +135,7 @@ public class Main {
     LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
     LocalDate periodEndedStartDate = null; // LocalDate | Limit search to filings with a period end date on or after this date
     LocalDate periodEndedEndDate = null; // LocalDate | Limit search to filings with a period end date on or before this date
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -120,6 +150,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -130,15 +162,27 @@ Name | Type | Description  | Notes
  **filingEndDate** | **LocalDate**| Limit search to filings on or before this date | [optional]
  **periodEndedStartDate** | **LocalDate**| Limit search to filings with a period end date on or after this date | [optional]
  **periodEndedEndDate** | **LocalDate**| Limit search to filings with a period end date on or before this date | [optional]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseFilingNotes**](ApiResponseFilingNotes.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/filings/{id})
+
+[//]: # (DOC_LINK:FilingApi.md#getFilingById)
+
 <a name="getFilingById"></a>
 # **getFilingById**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getFilingById_v2)
+
 > Filing getFilingById(id)
 
 Lookup Filing
@@ -146,6 +190,9 @@ Lookup Filing
 Returns the Filing with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -177,6 +224,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -187,13 +236,28 @@ Name | Type | Description  | Notes
 
 [**Filing**](Filing.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/filings/notes/{identifier})
+
+[//]: # (DOC_LINK:FilingApi.md#getNote)
+
 <a name="getNote"></a>
 # **getNote**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getNote_v2)
+
 > FilingNote getNote(identifier, contentFormat)
 
 Filing Note by ID
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -226,6 +290,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -237,13 +303,28 @@ Name | Type | Description  | Notes
 
 [**FilingNote**](FilingNote.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/filings/notes/{identifier}/html)
+
+[//]: # (DOC_LINK:FilingApi.md#getNoteHtml)
+
 <a name="getNoteHtml"></a>
 # **getNoteHtml**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getNoteHtml_v2)
+
 > String getNoteHtml(identifier)
 
 Filing Note HTML
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -275,6 +356,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -285,13 +368,28 @@ Name | Type | Description  | Notes
 
 **String**
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/filings/notes/{identifier}/text)
+
+[//]: # (DOC_LINK:FilingApi.md#getNoteText)
+
 <a name="getNoteText"></a>
 # **getNoteText**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getNoteText_v2)
+
 > String getNoteText(identifier)
 
 Filing Note Text
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -323,6 +421,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -333,8 +433,20 @@ Name | Type | Description  | Notes
 
 **String**
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/filings/notes/search)
+
+[//]: # (DOC_LINK:FilingApi.md#searchNotes)
+
 <a name="searchNotes"></a>
 # **searchNotes**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchNotes_v2)
+
 > ApiResponseFilingNotesSearch searchNotes(query, filingStartDate, filingEndDate, pageSize, pageSize2)
 
 Search Filing Notes
@@ -342,6 +454,9 @@ Search Filing Notes
 Searches for Filing Notes using the &#x60;query&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -362,8 +477,8 @@ public class Main {
     String query = "inflation"; // String | Search for notes that contain all or parts of this text
     LocalDate filingStartDate = null; // LocalDate | Limit search to filings on or after this date
     LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
-    BigDecimal pageSize2 = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
+    Integer pageSize2 = 100; // Integer | The number of results to return
 
     try {
         ApiResponseFilingNotesSearch result = filingApi.searchNotes(query, filingStartDate, filingEndDate, pageSize, pageSize2);
@@ -377,6 +492,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -384,10 +501,12 @@ Name | Type | Description  | Notes
  **query** | **String**| Search for notes that contain all or parts of this text |
  **filingStartDate** | **LocalDate**| Limit search to filings on or after this date | [optional]
  **filingEndDate** | **LocalDate**| Limit search to filings on or before this date | [optional]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
- **pageSize2** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
+ **pageSize2** | **Integer**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
 [**ApiResponseFilingNotesSearch**](ApiResponseFilingNotesSearch.md)
+
+[//]: # (END_OPERATION)
 

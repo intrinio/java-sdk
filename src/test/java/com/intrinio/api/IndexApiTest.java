@@ -44,7 +44,7 @@ public class IndexApiTest {
      */
     @Test
     public void getAllEconomicIndicesTest() throws ApiException {
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseEconomicIndices response = api.getAllEconomicIndices(pageSize, nextPage);
 
@@ -61,7 +61,7 @@ public class IndexApiTest {
      */
     @Test
     public void getAllSicIndicesTest() throws ApiException {
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseSICIndices response = api.getAllSicIndices(pageSize, nextPage);
 
@@ -78,7 +78,7 @@ public class IndexApiTest {
      */
     @Test
     public void getAllStockMarketIndicesTest() throws ApiException {
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseStockMarketIndices response = api.getAllStockMarketIndices(pageSize, nextPage);
 
@@ -151,7 +151,7 @@ public class IndexApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         String sortOrder = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseEconomicIndexHistoricalData response = api.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
 
@@ -224,7 +224,7 @@ public class IndexApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         String sortOrder = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseSICIndexHistoricalData response = api.getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
 
@@ -297,7 +297,7 @@ public class IndexApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         String sortOrder = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseStockMarketIndexHistoricalData response = api.getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
 
@@ -315,7 +315,7 @@ public class IndexApiTest {
     @Test
     public void searchEconomicIndicesTest() throws ApiException {
         String query = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         ApiResponseEconomicIndicesSearch response = api.searchEconomicIndices(query, pageSize);
 
         // TODO: test validations
@@ -332,7 +332,7 @@ public class IndexApiTest {
     @Test
     public void searchSicIndicesTest() throws ApiException {
         String query = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         ApiResponseSICIndicesSearch response = api.searchSicIndices(query, pageSize);
 
         // TODO: test validations
@@ -349,7 +349,7 @@ public class IndexApiTest {
     @Test
     public void searchStockMarketsIndicesTest() throws ApiException {
         String query = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         ApiResponseStockMarketIndicesSearch response = api.searchStockMarketsIndices(query, pageSize);
 
         // TODO: test validations

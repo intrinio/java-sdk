@@ -7,8 +7,18 @@ Method | HTTP request | Description
 [**getHistoricalData**](HistoricalDataApi.md#getHistoricalData) | **GET** /historical_data/{identifier}/{tag} | Historical Data
 
 
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/historical_data/{identifier}/{tag})
+
+[//]: # (DOC_LINK:HistoricalDataApi.md#getHistoricalData)
+
 <a name="getHistoricalData"></a>
 # **getHistoricalData**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getHistoricalData_v2)
+
 > ApiResponseHistoricalData getHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
 Historical Data
@@ -16,6 +26,9 @@ Historical Data
 Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -40,7 +53,7 @@ public class Main {
     LocalDate startDate = null; // LocalDate | Get historical data on or after this date
     LocalDate endDate = null; // LocalDate | Get historical date on or before this date
     String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -55,6 +68,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -66,10 +81,12 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical date on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseHistoricalData**](ApiResponseHistoricalData.md)
+
+[//]: # (END_OPERATION)
 

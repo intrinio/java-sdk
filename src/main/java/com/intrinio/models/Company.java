@@ -115,6 +115,18 @@ public class Company {
   @SerializedName("standardized_active")
   private Boolean standardizedActive = null;
 
+  @SerializedName("first_fundamental_date")
+  private LocalDate firstFundamentalDate = null;
+
+  @SerializedName("last_fundamental_date")
+  private LocalDate lastFundamentalDate = null;
+
+  @SerializedName("first_stock_price_date")
+  private LocalDate firstStockPriceDate = null;
+
+  @SerializedName("last_stock_price_date")
+  private LocalDate lastStockPriceDate = null;
+
   public Company id(String id) {
     this.id = id;
     return this;
@@ -691,6 +703,78 @@ public class Company {
     this.standardizedActive = standardizedActive;
   }
 
+  public Company firstFundamentalDate(LocalDate firstFundamentalDate) {
+    this.firstFundamentalDate = firstFundamentalDate;
+    return this;
+  }
+
+   /**
+   * The period end date of the company&#39;s first reported fundamental
+   * @return firstFundamentalDate
+  **/
+  @ApiModelProperty(value = "The period end date of the company's first reported fundamental")
+  public LocalDate getFirstFundamentalDate() {
+    return firstFundamentalDate;
+  }
+
+  public void setFirstFundamentalDate(LocalDate firstFundamentalDate) {
+    this.firstFundamentalDate = firstFundamentalDate;
+  }
+
+  public Company lastFundamentalDate(LocalDate lastFundamentalDate) {
+    this.lastFundamentalDate = lastFundamentalDate;
+    return this;
+  }
+
+   /**
+   * The period end date of the company&#39;s last reported fundamental
+   * @return lastFundamentalDate
+  **/
+  @ApiModelProperty(value = "The period end date of the company's last reported fundamental")
+  public LocalDate getLastFundamentalDate() {
+    return lastFundamentalDate;
+  }
+
+  public void setLastFundamentalDate(LocalDate lastFundamentalDate) {
+    this.lastFundamentalDate = lastFundamentalDate;
+  }
+
+  public Company firstStockPriceDate(LocalDate firstStockPriceDate) {
+    this.firstStockPriceDate = firstStockPriceDate;
+    return this;
+  }
+
+   /**
+   * The date of the company&#39;s first stock price, based on the company&#39;s primary security, which is typically traded on US exchages
+   * @return firstStockPriceDate
+  **/
+  @ApiModelProperty(value = "The date of the company's first stock price, based on the company's primary security, which is typically traded on US exchages")
+  public LocalDate getFirstStockPriceDate() {
+    return firstStockPriceDate;
+  }
+
+  public void setFirstStockPriceDate(LocalDate firstStockPriceDate) {
+    this.firstStockPriceDate = firstStockPriceDate;
+  }
+
+  public Company lastStockPriceDate(LocalDate lastStockPriceDate) {
+    this.lastStockPriceDate = lastStockPriceDate;
+    return this;
+  }
+
+   /**
+   * The date of the company&#39;s last stock price, based on the company&#39;s primary security, which is typically traded on US exchages
+   * @return lastStockPriceDate
+  **/
+  @ApiModelProperty(value = "The date of the company's last stock price, based on the company's primary security, which is typically traded on US exchages")
+  public LocalDate getLastStockPriceDate() {
+    return lastStockPriceDate;
+  }
+
+  public void setLastStockPriceDate(LocalDate lastStockPriceDate) {
+    this.lastStockPriceDate = lastStockPriceDate;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -732,12 +816,16 @@ public class Company {
         Objects.equals(this.industryCategory, company.industryCategory) &&
         Objects.equals(this.industryGroup, company.industryGroup) &&
         Objects.equals(this.template, company.template) &&
-        Objects.equals(this.standardizedActive, company.standardizedActive);
+        Objects.equals(this.standardizedActive, company.standardizedActive) &&
+        Objects.equals(this.firstFundamentalDate, company.firstFundamentalDate) &&
+        Objects.equals(this.lastFundamentalDate, company.lastFundamentalDate) &&
+        Objects.equals(this.firstStockPriceDate, company.firstStockPriceDate) &&
+        Objects.equals(this.lastStockPriceDate, company.lastStockPriceDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, ticker, name, lei, legalName, stockExchange, sic, shortDescription, longDescription, ceo, companyUrl, businessAddress, mailingAddress, businessPhoneNo, hqAddress1, hqAddress2, hqAddressCity, hqAddressPostalCode, entityLegalForm, cik, latestFilingDate, hqState, hqCountry, incState, incCountry, employees, entityStatus, sector, industryCategory, industryGroup, template, standardizedActive);
+    return Objects.hash(id, ticker, name, lei, legalName, stockExchange, sic, shortDescription, longDescription, ceo, companyUrl, businessAddress, mailingAddress, businessPhoneNo, hqAddress1, hqAddress2, hqAddressCity, hqAddressPostalCode, entityLegalForm, cik, latestFilingDate, hqState, hqCountry, incState, incCountry, employees, entityStatus, sector, industryCategory, industryGroup, template, standardizedActive, firstFundamentalDate, lastFundamentalDate, firstStockPriceDate, lastStockPriceDate);
   }
 
 
@@ -778,6 +866,10 @@ public class Company {
     sb.append("    industryGroup: ").append(toIndentedString(industryGroup)).append("\n");
     sb.append("    template: ").append(toIndentedString(template)).append("\n");
     sb.append("    standardizedActive: ").append(toIndentedString(standardizedActive)).append("\n");
+    sb.append("    firstFundamentalDate: ").append(toIndentedString(firstFundamentalDate)).append("\n");
+    sb.append("    lastFundamentalDate: ").append(toIndentedString(lastFundamentalDate)).append("\n");
+    sb.append("    firstStockPriceDate: ").append(toIndentedString(firstStockPriceDate)).append("\n");
+    sb.append("    lastStockPriceDate: ").append(toIndentedString(lastStockPriceDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

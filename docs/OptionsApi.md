@@ -10,8 +10,18 @@ Method | HTTP request | Description
 [**getOptionsPrices**](OptionsApi.md#getOptionsPrices) | **GET** /options/prices/{identifier} | Option Prices
 
 
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/options/{symbol})
+
+[//]: # (DOC_LINK:OptionsApi.md#getOptions)
+
 <a name="getOptions"></a>
 # **getOptions**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getOptions_v2)
+
 > ApiResponseOptions getOptions(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, pageSize, nextPage)
 
 Options
@@ -19,6 +29,9 @@ Options
 Returns the master list of option contracts for a given symbol.
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -44,7 +57,7 @@ public class Main {
     String expiration = "2019-03-01"; // String | The expiration date of the option contract. This will return options contracts with expiration dates on this date.
     String expirationAfter = "2019-01-01"; // String | The expiration date of the option contract. This will return options contracts with expiration dates after this date.
     String expirationBefore = "2019-12-31"; // String | The expiration date of the option contract. This will return options contracts with expiration dates before this date.
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -59,6 +72,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -71,15 +86,27 @@ Name | Type | Description  | Notes
  **expiration** | **String**| The expiration date of the option contract. This will return options contracts with expiration dates on this date. | [optional]
  **expirationAfter** | **String**| The expiration date of the option contract. This will return options contracts with expiration dates after this date. | [optional]
  **expirationBefore** | **String**| The expiration date of the option contract. This will return options contracts with expiration dates before this date. | [optional]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseOptions**](ApiResponseOptions.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/options/chain/{symbol}/{expiration})
+
+[//]: # (DOC_LINK:OptionsApi.md#getOptionsChain)
+
 <a name="getOptionsChain"></a>
 # **getOptionsChain**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getOptionsChain_v2)
+
 > ApiResponseOptionsChain getOptionsChain(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize)
 
 Options Chain
@@ -87,6 +114,9 @@ Options Chain
 Returns all options contracts and their prices for the given symbol and expiration date.
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -111,7 +141,7 @@ public class Main {
     BigDecimal strikeGreaterThan = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices greater than this price.
     BigDecimal strikeLessThan = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices less than this price.
     String moneyness = "in_the_money"; // String | The moneyness of the options contracts to return. 'all' will return all options contracts. 'in_the_money' will return options contracts that are in the money (call options with strike prices below the current price, put options with strike prices above the current price). 'out_of_they_money' will return options contracts that are out of the money (call options with strike prices above the current price, put options with strike prices below the current price). 'near_the_money' will return options contracts that are $0.50 or less away from being in the money.
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
 
     try {
         ApiResponseOptionsChain result = optionsApi.getOptionsChain(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
@@ -125,6 +155,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -136,14 +168,26 @@ Name | Type | Description  | Notes
  **strikeGreaterThan** | **BigDecimal**| The strike price of the option contract. This will return options contracts with strike prices greater than this price. | [optional]
  **strikeLessThan** | **BigDecimal**| The strike price of the option contract. This will return options contracts with strike prices less than this price. | [optional]
  **moneyness** | **String**| The moneyness of the options contracts to return. &#39;all&#39; will return all options contracts. &#39;in_the_money&#39; will return options contracts that are in the money (call options with strike prices below the current price, put options with strike prices above the current price). &#39;out_of_they_money&#39; will return options contracts that are out of the money (call options with strike prices above the current price, put options with strike prices below the current price). &#39;near_the_money&#39; will return options contracts that are $0.50 or less away from being in the money. | [optional] [enum: all, in_the_money, out_of_the_money, near_the_money]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
 [**ApiResponseOptionsChain**](ApiResponseOptionsChain.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/options/expirations/{symbol})
+
+[//]: # (DOC_LINK:OptionsApi.md#getOptionsExpirations)
+
 <a name="getOptionsExpirations"></a>
 # **getOptionsExpirations**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getOptionsExpirations_v2)
+
 > ApiResponseOptionsExpirations getOptionsExpirations(symbol, after, before)
 
 Options Expirations
@@ -151,6 +195,9 @@ Options Expirations
 Returns all option contract expiration dates for a given symbol.
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -184,6 +231,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -196,8 +245,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseOptionsExpirations**](ApiResponseOptionsExpirations.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/options/prices/{identifier})
+
+[//]: # (DOC_LINK:OptionsApi.md#getOptionsPrices)
+
 <a name="getOptionsPrices"></a>
 # **getOptionsPrices**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getOptionsPrices_v2)
+
 > ApiResponseOptionPrices getOptionsPrices(identifier, startDate, endDate, pageSize, nextPage)
 
 Option Prices
@@ -205,6 +266,9 @@ Option Prices
 Returns all option prices for a given option contract identifier.
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -225,7 +289,7 @@ public class Main {
     String identifier = "null"; // String | The Intrinio ID or code of the options contract to request prices for.
     String startDate = "2019-01-01"; // String | Return option contract prices on or after this date.
     String endDate = "2019-12-31"; // String | Return option contract prices on or before this date.
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -240,6 +304,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -247,10 +313,12 @@ Name | Type | Description  | Notes
  **identifier** | **String**| The Intrinio ID or code of the options contract to request prices for. |
  **startDate** | **String**| Return option contract prices on or after this date. | [optional]
  **endDate** | **String**| Return option contract prices on or before this date. | [optional]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseOptionPrices**](ApiResponseOptionPrices.md)
+
+[//]: # (END_OPERATION)
 

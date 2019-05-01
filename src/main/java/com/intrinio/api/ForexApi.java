@@ -19,6 +19,7 @@ import java.io.IOException;
 import com.intrinio.models.ApiResponseForexCurrencies;
 import com.intrinio.models.ApiResponseForexPairs;
 import com.intrinio.models.ApiResponseForexPrices;
+import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -287,16 +288,17 @@ public class ForexApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getForexPricesCall(String pair, String timeframe, String timezone, String startDate, String startTime, String endDate, String endTime, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getForexPricesCall(String pair, String timeframe, String timezone, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/forex/prices/{pair}/{timeframe}"
-            .replaceAll("\\{" + "pair" + "\\}", apiClient.escapeString(pair.toString()))
-            .replaceAll("\\{" + "timeframe" + "\\}", apiClient.escapeString(timeframe.toString()));
+            .replaceAll("\\{" + "pair" + "\\}", apiClient.escapeString(pair.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (timeframe != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("timeframe", timeframe));
         if (timezone != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("timezone", timezone));
         if (startDate != null)
@@ -345,7 +347,7 @@ public class ForexApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getForexPricesValidateBeforeCall(String pair, String timeframe, String timezone, String startDate, String startTime, String endDate, String endTime, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getForexPricesValidateBeforeCall(String pair, String timeframe, String timezone, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'pair' is set
         if (pair == null) {
@@ -378,7 +380,7 @@ public class ForexApi {
      * @return ApiResponseForexPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseForexPrices getForexPrices(String pair, String timeframe, String timezone, String startDate, String startTime, String endDate, String endTime, Integer pageSize, String nextPage) throws ApiException {
+    public ApiResponseForexPrices getForexPrices(String pair, String timeframe, String timezone, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage) throws ApiException {
         ApiResponse<ApiResponseForexPrices> resp = getForexPricesWithHttpInfo(pair, timeframe, timezone, startDate, startTime, endDate, endTime, pageSize, nextPage);
         return resp.getData();
     }
@@ -398,7 +400,7 @@ public class ForexApi {
      * @return ApiResponse&lt;ApiResponseForexPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseForexPrices> getForexPricesWithHttpInfo(String pair, String timeframe, String timezone, String startDate, String startTime, String endDate, String endTime, Integer pageSize, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseForexPrices> getForexPricesWithHttpInfo(String pair, String timeframe, String timezone, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getForexPricesValidateBeforeCall(pair, timeframe, timezone, startDate, startTime, endDate, endTime, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseForexPrices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -420,7 +422,7 @@ public class ForexApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getForexPricesAsync(String pair, String timeframe, String timezone, String startDate, String startTime, String endDate, String endTime, Integer pageSize, String nextPage, final ApiCallback<ApiResponseForexPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getForexPricesAsync(String pair, String timeframe, String timezone, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ApiCallback<ApiResponseForexPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

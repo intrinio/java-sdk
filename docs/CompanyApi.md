@@ -18,8 +18,18 @@ Method | HTTP request | Description
 [**searchCompanies**](CompanyApi.md#searchCompanies) | **GET** /companies/search | Search Companies
 
 
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies)
+
+[//]: # (DOC_LINK:CompanyApi.md#getAllCompanies)
+
 <a name="getAllCompanies"></a>
 # **getAllCompanies**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllCompanies_v2)
+
 > ApiResponseCompanies getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage)
 
 All Companies
@@ -27,6 +37,9 @@ All Companies
 Returns all Companies. When parameters are specified, returns matching companies.
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -45,12 +58,12 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
 
     LocalDate latestFilingDate = null; // LocalDate | Last filing date
-    String sic = "3350"; // String | Standard Industrial Classification code
-    String template = "industrial"; // String | Template
-    String sector = "Basic Materials"; // String | Industry sector
-    String industryCategory = "Metals & Mining"; // String | Industry category
-    String industryGroup = "Aluminum"; // String | Industry group
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    String sic = null; // String | Standard Industrial Classification code
+    String template = null; // String | Template
+    String sector = null; // String | Industry sector
+    String industryCategory = null; // String | Industry category
+    String industryGroup = null; // String | Industry group
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -65,6 +78,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -75,15 +90,27 @@ Name | Type | Description  | Notes
  **sector** | **String**| Industry sector | [optional]
  **industryCategory** | **String**| Industry category | [optional]
  **industryGroup** | **String**| Industry group | [optional]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseCompanies**](ApiResponseCompanies.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies/news)
+
+[//]: # (DOC_LINK:CompanyApi.md#getAllCompanyNews)
+
 <a name="getAllCompanyNews"></a>
 # **getAllCompanyNews**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllCompanyNews_v2)
+
 > ApiResponseNews getAllCompanyNews(pageSize, nextPage)
 
 All News
@@ -91,6 +118,9 @@ All News
 Returns all News for all Companies
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -108,7 +138,7 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
 
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -123,19 +153,33 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseNews**](ApiResponseNews.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies/{identifier})
+
+[//]: # (DOC_LINK:CompanyApi.md#getCompany)
+
 <a name="getCompany"></a>
 # **getCompany**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompany_v2)
+
 > Company getCompany(identifier)
 
 Lookup Company
@@ -143,6 +187,9 @@ Lookup Company
 Returns the Company with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -174,6 +221,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -184,8 +233,20 @@ Name | Type | Description  | Notes
 
 [**Company**](Company.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies/{identifier}/data_point/{tag}/number)
+
+[//]: # (DOC_LINK:CompanyApi.md#getCompanyDataPointNumber)
+
 <a name="getCompanyDataPointNumber"></a>
 # **getCompanyDataPointNumber**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyDataPointNumber_v2)
+
 > BigDecimal getCompanyDataPointNumber(identifier, tag)
 
 Data Point (Number) for Company
@@ -193,6 +254,9 @@ Data Point (Number) for Company
 Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -225,6 +289,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -236,8 +302,20 @@ Name | Type | Description  | Notes
 
 [**BigDecimal**](BigDecimal.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies/{identifier}/data_point/{tag}/text)
+
+[//]: # (DOC_LINK:CompanyApi.md#getCompanyDataPointText)
+
 <a name="getCompanyDataPointText"></a>
 # **getCompanyDataPointText**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyDataPointText_v2)
+
 > String getCompanyDataPointText(identifier, tag)
 
 Data Point (Text) for Company
@@ -245,6 +323,9 @@ Data Point (Text) for Company
 Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -277,6 +358,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -288,8 +371,20 @@ Name | Type | Description  | Notes
 
 **String**
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies/{identifier}/filings)
+
+[//]: # (DOC_LINK:CompanyApi.md#getCompanyFilings)
+
 <a name="getCompanyFilings"></a>
 # **getCompanyFilings**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyFilings_v2)
+
 > ApiResponseCompanyFilings getCompanyFilings(identifier, pageSize, nextPage)
 
 All Filings by Company
@@ -297,6 +392,9 @@ All Filings by Company
 Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -315,7 +413,7 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
 
     String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -330,20 +428,34 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseCompanyFilings**](ApiResponseCompanyFilings.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies/{identifier}/fundamentals)
+
+[//]: # (DOC_LINK:CompanyApi.md#getCompanyFundamentals)
+
 <a name="getCompanyFundamentals"></a>
 # **getCompanyFundamentals**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyFundamentals_v2)
+
 > ApiResponseCompanyFundamentals getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage)
 
 All Fundamentals by Company
@@ -351,6 +463,9 @@ All Fundamentals by Company
 Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -372,12 +487,12 @@ public class Main {
     LocalDate filedAfter = null; // LocalDate | Filed on or after this date
     LocalDate filedBefore = null; // LocalDate | Filed on or before this date
     Boolean reportedOnly = false; // Boolean | Only as-reported fundamentals
-    Integer fiscalYear = 2017; // Integer | Only for the given fiscal year
+    Integer fiscalYear = null; // Integer | Only for the given fiscal year
     String statementCode = null; // String | Only of the given statement code
     String type = null; // String | Only of the given type
     LocalDate startDate = null; // LocalDate | Only on or after the given date
     LocalDate endDate = null; // LocalDate | Only on or before the given date
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -392,6 +507,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -405,15 +522,27 @@ Name | Type | Description  | Notes
  **type** | **String**| Only of the given type | [optional] [enum: QTR, YTD, FY, TTM]
  **startDate** | **LocalDate**| Only on or after the given date | [optional]
  **endDate** | **LocalDate**| Only on or before the given date | [optional]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseCompanyFundamentals**](ApiResponseCompanyFundamentals.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies/{identifier}/historical_data/{tag})
+
+[//]: # (DOC_LINK:CompanyApi.md#getCompanyHistoricalData)
+
 <a name="getCompanyHistoricalData"></a>
 # **getCompanyHistoricalData**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyHistoricalData_v2)
+
 > ApiResponseCompanyHistoricalData getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
 Historical Data for Company
@@ -421,6 +550,9 @@ Historical Data for Company
 Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -445,7 +577,7 @@ public class Main {
     LocalDate startDate = null; // LocalDate | Get historical data on or after this date
     LocalDate endDate = null; // LocalDate | Get historical data on or before this date
     String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -460,6 +592,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -471,15 +605,27 @@ Name | Type | Description  | Notes
  **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
  **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
  **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseCompanyHistoricalData**](ApiResponseCompanyHistoricalData.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies/{identifier}/news)
+
+[//]: # (DOC_LINK:CompanyApi.md#getCompanyNews)
+
 <a name="getCompanyNews"></a>
 # **getCompanyNews**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyNews_v2)
+
 > ApiResponseCompanyNews getCompanyNews(identifier, pageSize, nextPage)
 
 All News by Company
@@ -487,6 +633,9 @@ All News by Company
 Returns news for the Company with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -505,7 +654,7 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
 
     String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -520,20 +669,34 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | **String**| A Company identifier (Ticker, CIK, LEI, Intrinio ID) |
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseCompanyNews**](ApiResponseCompanyNews.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies/{identifier}/securities)
+
+[//]: # (DOC_LINK:CompanyApi.md#getCompanySecurities)
+
 <a name="getCompanySecurities"></a>
 # **getCompanySecurities**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanySecurities_v2)
+
 > ApiResponseCompanySecurities getCompanySecurities(identifier, nextPage)
 
 All Securities by Company
@@ -541,6 +704,9 @@ All Securities by Company
 Returns Securities for the Company with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -573,6 +739,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -584,8 +752,20 @@ Name | Type | Description  | Notes
 
 [**ApiResponseCompanySecurities**](ApiResponseCompanySecurities.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies/{identifier}/fundamentals/lookup/{statement_code}/{fiscal_year}/{fiscal_period})
+
+[//]: # (DOC_LINK:CompanyApi.md#lookupCompanyFundamental)
+
 <a name="lookupCompanyFundamental"></a>
 # **lookupCompanyFundamental**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/lookupCompanyFundamental_v2)
+
 > Fundamental lookupCompanyFundamental(identifier, statementCode, fiscalPeriod, fiscalYear)
 
 Lookup Fundamental by Company
@@ -593,6 +773,9 @@ Lookup Fundamental by Company
 Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -627,6 +810,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -640,8 +825,20 @@ Name | Type | Description  | Notes
 
 [**Fundamental**](Fundamental.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/companies/search)
+
+[//]: # (DOC_LINK:CompanyApi.md#searchCompanies)
+
 <a name="searchCompanies"></a>
 # **searchCompanies**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchCompanies_v2)
+
 > ApiResponseCompaniesSearch searchCompanies(query, pageSize)
 
 Search Companies
@@ -649,6 +846,9 @@ Search Companies
 Searches for Companies matching the text &#x60;query&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -667,7 +867,7 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
 
     String query = "Apple"; // String | Search parameters
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
 
     try {
         ApiResponseCompaniesSearch result = companyApi.searchCompanies(query, pageSize);
@@ -681,14 +881,18 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**| Search parameters |
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
 [**ApiResponseCompaniesSearch**](ApiResponseCompaniesSearch.md)
+
+[//]: # (END_OPERATION)
 

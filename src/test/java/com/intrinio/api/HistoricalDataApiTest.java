@@ -4,7 +4,6 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseHistoricalData;
-import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -40,7 +39,7 @@ public class HistoricalDataApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         String sortOrder = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseHistoricalData response = api.getHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
 

@@ -6,6 +6,7 @@ import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseForexCurrencies;
 import com.intrinio.models.ApiResponseForexPairs;
 import com.intrinio.models.ApiResponseForexPrices;
+import org.threeten.bp.LocalDate;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -66,9 +67,9 @@ public class ForexApiTest {
         String pair = null;
         String timeframe = null;
         String timezone = null;
-        String startDate = null;
+        LocalDate startDate = null;
         String startTime = null;
-        String endDate = null;
+        LocalDate endDate = null;
         String endTime = null;
         Integer pageSize = null;
         String nextPage = null;

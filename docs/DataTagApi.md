@@ -9,8 +9,18 @@ Method | HTTP request | Description
 [**searchDataTags**](DataTagApi.md#searchDataTags) | **GET** /data_tags/search | Search Data Tags
 
 
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/data_tags)
+
+[//]: # (DOC_LINK:DataTagApi.md#getAllDataTags)
+
 <a name="getAllDataTags"></a>
 # **getAllDataTags**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllDataTags_v2)
+
 > ApiResponseDataTags getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage)
 
 All Data Tags
@@ -18,6 +28,9 @@ All Data Tags
 Returns all Data Tags. Returns Data Tags matching parameters when specified.
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -40,7 +53,7 @@ public class Main {
     String parent = null; // String | ID of tag parent
     String statementCode = "income_statement"; // String | Statement Code
     String fsTemplate = "industrial"; // String | Template
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -55,6 +68,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -64,15 +79,27 @@ Name | Type | Description  | Notes
  **parent** | **String**| ID of tag parent | [optional]
  **statementCode** | **String**| Statement Code | [optional] [enum: income_statement, balance_sheet_statement, cash_flow_statement, calculations]
  **fsTemplate** | **String**| Template | [optional] [default to industrial] [enum: industrial, financial]
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseDataTags**](ApiResponseDataTags.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/data_tags/{identifier})
+
+[//]: # (DOC_LINK:DataTagApi.md#getDataTagById)
+
 <a name="getDataTagById"></a>
 # **getDataTagById**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getDataTagById_v2)
+
 > DataTag getDataTagById(identifier)
 
 Lookup Data Tag
@@ -80,6 +107,9 @@ Lookup Data Tag
 Returns the Data Tag with the given &#x60;identifier&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -111,6 +141,8 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -121,8 +153,20 @@ Name | Type | Description  | Notes
 
 [**DataTag**](DataTag.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERTATION)
+
+[//]: # (ENDPOINT:/data_tags/search)
+
+[//]: # (DOC_LINK:DataTagApi.md#searchDataTags)
+
 <a name="searchDataTags"></a>
 # **searchDataTags**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchDataTags_v2)
+
 > ApiResponseDataTagsSearch searchDataTags(query, pageSize)
 
 Search Data Tags
@@ -130,6 +174,9 @@ Search Data Tags
 Searches for Data Tags matching the text &#x60;query&#x60;
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -148,7 +195,7 @@ public class Main {
     DataTagApi dataTagApi = new DataTagApi();
 
     String query = "revenue"; // String | 
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return
 
     try {
         ApiResponseDataTagsSearch result = dataTagApi.searchDataTags(query, pageSize);
@@ -162,14 +209,18 @@ public class Main {
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | **String**|  |
- **pageSize** | **BigDecimal**| The number of results to return | [optional] [default to 100]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
 
 ### Return type
 
 [**ApiResponseDataTagsSearch**](ApiResponseDataTagsSearch.md)
+
+[//]: # (END_OPERATION)
 

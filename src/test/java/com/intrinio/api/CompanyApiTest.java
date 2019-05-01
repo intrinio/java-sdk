@@ -48,7 +48,7 @@ public class CompanyApiTest {
         String sector = null;
         String industryCategory = null;
         String industryGroup = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseCompanies response = api.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage);
 
@@ -65,7 +65,7 @@ public class CompanyApiTest {
      */
     @Test
     public void getAllCompanyNewsTest() throws ApiException {
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseNews response = api.getAllCompanyNews(pageSize, nextPage);
 
@@ -133,7 +133,7 @@ public class CompanyApiTest {
     @Test
     public void getCompanyFilingsTest() throws ApiException {
         String identifier = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseCompanyFilings response = api.getCompanyFilings(identifier, pageSize, nextPage);
 
@@ -159,7 +159,7 @@ public class CompanyApiTest {
         String type = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseCompanyFundamentals response = api.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage);
 
@@ -183,7 +183,7 @@ public class CompanyApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         String sortOrder = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseCompanyHistoricalData response = api.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
 
@@ -201,7 +201,7 @@ public class CompanyApiTest {
     @Test
     public void getCompanyNewsTest() throws ApiException {
         String identifier = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         String nextPage = null;
         ApiResponseCompanyNews response = api.getCompanyNews(identifier, pageSize, nextPage);
 
@@ -255,7 +255,7 @@ public class CompanyApiTest {
     @Test
     public void searchCompaniesTest() throws ApiException {
         String query = null;
-        BigDecimal pageSize = null;
+        Integer pageSize = null;
         ApiResponseCompaniesSearch response = api.searchCompanies(query, pageSize);
 
         // TODO: test validations
