@@ -1,7 +1,7 @@
 
-# ApiResponseCryptoTrueStrengthIndex
+## ApiResponseCryptoTrueStrengthIndex
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;TrueStrengthIndexTechnicalValue&gt;**](TrueStrengthIndexTechnicalValue.md) |  |  [optional]

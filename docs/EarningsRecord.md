@@ -1,7 +1,7 @@
 
-# EarningsRecord
+## EarningsRecord
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **quarter** | **String** | The letter “Q” followed by the quarter number the earnings information applies to |  [optional]
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 
 <a name="TimeOfDayEnum"></a>
-## Enum: TimeOfDayEnum
+### Enum: TimeOfDayEnum
 Name | Value
 ---- | -----
 BEFORE_MARKET | &quot;Before Market&quot;
@@ -40,7 +40,7 @@ UNSPECIFIED | &quot;Unspecified&quot;
 
 
 <a name="BoardOfDirectorsMeetingTypeEnum"></a>
-## Enum: BoardOfDirectorsMeetingTypeEnum
+### Enum: BoardOfDirectorsMeetingTypeEnum
 Name | Value
 ---- | -----
 B | &quot;B&quot;
@@ -48,7 +48,7 @@ S | &quot;S&quot;
 
 
 <a name="TypeEnum"></a>
-## Enum: TypeEnum
+### Enum: TypeEnum
 Name | Value
 ---- | -----
 V | &quot;V&quot;

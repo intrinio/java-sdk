@@ -1,7 +1,7 @@
 
-# CryptoAsk
+## CryptoAsk
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **price** | [**BigDecimal**](BigDecimal.md) | The ask price of the book entry. |  [optional]

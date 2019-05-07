@@ -1,7 +1,7 @@
 
-# ApiResponseSecurityStockPriceAdjustments
+## ApiResponseSecurityStockPriceAdjustments
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **stockPriceAdjustments** | [**List&lt;StockPriceAdjustmentSummary&gt;**](StockPriceAdjustmentSummary.md) | The stock price adjustments for the Security |  [optional]

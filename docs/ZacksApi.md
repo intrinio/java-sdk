@@ -10,20 +10,23 @@ Method | HTTP request | Description
 
 
 
-[//]: # (START_OPERTATION)
+[//]: # (START_OPERATION)
+
+[//]: # (OPERATION:getZacksAnalystRatings_v2)
 
 [//]: # (ENDPOINT:/zacks/analyst_ratings)
 
-[//]: # (DOC_LINK:ZacksApi.md#getZacksAnalystRatings)
+[//]: # (DOCUMENT_LINK:ZacksApi.md#getZacksAnalystRatings)
 
 <a name="getZacksAnalystRatings"></a>
-# **getZacksAnalystRatings**
+## **getZacksAnalystRatings**
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getZacksAnalystRatings_v2)
 
 > ApiResponseZacksAnalystRatings getZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage)
 
-Zacks Analyst Ratings
+#### Zacks Analyst Ratings
+
 
 Returns buy, sell, and hold recommendations from analysts at brokerages for all companies in the Zacks universe. Zack’s storied research team aggregates and validates the ratings from professional analysts.
 
@@ -105,6 +108,7 @@ Name | Type | Description  | Notes
  **totalLess** | **Integer**| Return only records with fewer than this many recommendations, regardless of type | [optional]
  **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+<br/>
 
 ### Return type
 
@@ -113,20 +117,23 @@ Name | Type | Description  | Notes
 [//]: # (END_OPERATION)
 
 
-[//]: # (START_OPERTATION)
+[//]: # (START_OPERATION)
+
+[//]: # (OPERATION:getZacksEpsSurprises_v2)
 
 [//]: # (ENDPOINT:/zacks/eps_surprises)
 
-[//]: # (DOC_LINK:ZacksApi.md#getZacksEpsSurprises)
+[//]: # (DOCUMENT_LINK:ZacksApi.md#getZacksEpsSurprises)
 
 <a name="getZacksEpsSurprises"></a>
-# **getZacksEpsSurprises**
+## **getZacksEpsSurprises**
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getZacksEpsSurprises_v2)
 
 > ApiResponseZacksEPSSurprises getZacksEpsSurprises(startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage)
 
-Zacks EPS Surprises
+#### Zacks EPS Surprises
+
 
 Returns Zacks eps surprise data for all Securities.
 
@@ -202,6 +209,7 @@ Name | Type | Description  | Notes
  **epsStdDevEstimateLess** | **BigDecimal**| Return only records with an EPS standard deviation less than this value | [optional]
  **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+<br/>
 
 ### Return type
 
@@ -210,20 +218,23 @@ Name | Type | Description  | Notes
 [//]: # (END_OPERATION)
 
 
-[//]: # (START_OPERTATION)
+[//]: # (START_OPERATION)
+
+[//]: # (OPERATION:getZacksSalesSurprises_v2)
 
 [//]: # (ENDPOINT:/zacks/sales_surprises)
 
-[//]: # (DOC_LINK:ZacksApi.md#getZacksSalesSurprises)
+[//]: # (DOCUMENT_LINK:ZacksApi.md#getZacksSalesSurprises)
 
 <a name="getZacksSalesSurprises"></a>
-# **getZacksSalesSurprises**
+## **getZacksSalesSurprises**
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getZacksSalesSurprises_v2)
 
 > ApiResponseZacksSalesSurprises getZacksSalesSurprises(startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage)
 
-Zacks Sales Surprises
+#### Zacks Sales Surprises
+
 
 Returns Zacks sales surprise data for all Securities.
 
@@ -299,6 +310,7 @@ Name | Type | Description  | Notes
  **salesStdDevEstimateLess** | **BigDecimal**| Return only records with a sales standard deviation less than this value | [optional]
  **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
  **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+<br/>
 
 ### Return type
 

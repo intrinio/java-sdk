@@ -1,7 +1,7 @@
 
-# ApiResponseForexPrices
+## ApiResponseForexPrices
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **prices** | [**List&lt;ForexPrice&gt;**](ForexPrice.md) |  |  [optional]

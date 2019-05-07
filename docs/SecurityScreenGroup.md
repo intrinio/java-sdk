@@ -1,7 +1,7 @@
 
-# SecurityScreenGroup
+## SecurityScreenGroup
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **operator** | **String** | The logic operator for the group (AND, OR, NOT) |  [optional]

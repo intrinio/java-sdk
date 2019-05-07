@@ -1,7 +1,7 @@
 
-# DataTag
+## DataTag
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | The Intrinio ID for the Data Tag |  [optional]
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 
 <a name="StatementTypeEnum"></a>
-## Enum: StatementTypeEnum
+### Enum: StatementTypeEnum
 Name | Value
 ---- | -----
 FINANCIAL | &quot;financial&quot;

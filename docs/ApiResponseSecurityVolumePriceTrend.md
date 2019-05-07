@@ -1,7 +1,7 @@
 
-# ApiResponseSecurityVolumePriceTrend
+## ApiResponseSecurityVolumePriceTrend
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;VolumePriceTrendTechnicalValue&gt;**](VolumePriceTrendTechnicalValue.md) |  |  [optional]

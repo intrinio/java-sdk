@@ -1,7 +1,7 @@
 
-# SecurityScreenClause
+## SecurityScreenClause
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **field** | **String** | The field to use when screening, such as an Intrinio Data Tag |  [optional]
@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 
 <a name="OperatorEnum"></a>
-## Enum: OperatorEnum
+### Enum: OperatorEnum
 Name | Value
 ---- | -----
 EQ | &quot;eq&quot;

@@ -1,7 +1,7 @@
 
-# HistoricalData
+## HistoricalData
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **date** | [**LocalDate**](LocalDate.md) | The date that the value is present |  [optional]

@@ -1,7 +1,7 @@
 
-# VolumeWeightedAveragePriceValue
+## VolumeWeightedAveragePriceValue
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time of the observation |  [optional]

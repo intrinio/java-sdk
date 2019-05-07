@@ -1,7 +1,7 @@
 
-# ApiResponseSecurityVortexIndicator
+## ApiResponseSecurityVortexIndicator
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;VortexIndicatorTechnicalValue&gt;**](VortexIndicatorTechnicalValue.md) |  |  [optional]

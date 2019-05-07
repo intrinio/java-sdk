@@ -1,7 +1,7 @@
 
-# ApiResponseSecurityMassIndex
+## ApiResponseSecurityMassIndex
 
-## Properties
+### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;MassIndexTechnicalValue&gt;**](MassIndexTechnicalValue.md) |  |  [optional]
