@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 
 <br/>
 <br/>
+
 **Enum: OperatorEnum**
 
 Name | Value
