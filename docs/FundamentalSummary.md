@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 
 
 <br/>
-<br/>
 
 **Enum: TypeEnum**
 

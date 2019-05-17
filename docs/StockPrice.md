@@ -21,7 +21,6 @@ Name | Type | Description | Notes
 
 
 <br/>
-<br/>
 
 **Enum: FrequencyEnum**
 

@@ -30,7 +30,6 @@ Name | Type | Description | Notes
 
 
 <br/>
-<br/>
 
 **Enum: TimeOfDayEnum**
 
@@ -43,7 +42,6 @@ UNSPECIFIED | &quot;Unspecified&quot;
 
 
 <br/>
-<br/>
 
 **Enum: BoardOfDirectorsMeetingTypeEnum**
 
@@ -53,7 +51,6 @@ B | &quot;B&quot;
 S | &quot;S&quot;
 
 
-<br/>
 <br/>
 
 **Enum: TypeEnum**
