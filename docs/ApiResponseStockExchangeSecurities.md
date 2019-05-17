@@ -1,7 +1,7 @@
 
-## ApiResponseStockExchangeSecurities
+### ApiResponseStockExchangeSecurities
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **securities** | [**List&lt;SecuritySummary&gt;**](SecuritySummary.md) | The securities traded on the Stock Exchange |  [optional]

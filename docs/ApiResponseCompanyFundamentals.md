@@ -1,7 +1,7 @@
 
-## ApiResponseCompanyFundamentals
+### ApiResponseCompanyFundamentals
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **fundamentals** | [**List&lt;FundamentalSummary&gt;**](FundamentalSummary.md) |  |  [optional]

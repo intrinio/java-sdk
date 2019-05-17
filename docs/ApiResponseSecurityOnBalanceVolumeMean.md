@@ -1,7 +1,7 @@
 
-## ApiResponseSecurityOnBalanceVolumeMean
+### ApiResponseSecurityOnBalanceVolumeMean
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;OnBalanceVolumeMeanTechnicalValue&gt;**](OnBalanceVolumeMeanTechnicalValue.md) |  |  [optional]

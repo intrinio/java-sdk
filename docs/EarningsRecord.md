@@ -1,7 +1,7 @@
 
-## EarningsRecord
+### EarningsRecord
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **quarter** | **String** | The letter “Q” followed by the quarter number the earnings information applies to |  [optional]
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 <br/>
 
-**Enum: TimeOfDayEnum**
+#### Enum: TimeOfDayEnum
 
 Name | Value
 ---- | -----
@@ -43,7 +43,7 @@ UNSPECIFIED | &quot;Unspecified&quot;
 
 <br/>
 
-**Enum: BoardOfDirectorsMeetingTypeEnum**
+#### Enum: BoardOfDirectorsMeetingTypeEnum
 
 Name | Value
 ---- | -----
@@ -53,7 +53,7 @@ S | &quot;S&quot;
 
 <br/>
 
-**Enum: TypeEnum**
+#### Enum: TypeEnum
 
 Name | Value
 ---- | -----

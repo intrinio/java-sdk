@@ -1,7 +1,7 @@
 
-## ApiResponseStockExchangeRealtimeStockPrices
+### ApiResponseStockExchangeRealtimeStockPrices
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **stockPrices** | [**List&lt;RealtimeStockPrice&gt;**](RealtimeStockPrice.md) | The realtime stock prices for all Securities traded on the Stock Exchange |  [optional]

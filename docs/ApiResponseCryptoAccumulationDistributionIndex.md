@@ -1,7 +1,7 @@
 
-## ApiResponseCryptoAccumulationDistributionIndex
+### ApiResponseCryptoAccumulationDistributionIndex
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;AccumulationDistributionIndexTechnicalValue&gt;**](AccumulationDistributionIndexTechnicalValue.md) |  |  [optional]

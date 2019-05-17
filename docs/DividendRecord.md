@@ -1,7 +1,7 @@
 
-## DividendRecord
+### DividendRecord
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **exDividend** | [**BigDecimal**](BigDecimal.md) | Amount of dividend in US dollars |  [optional]
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 <br/>
 
-**Enum: StatusEnum**
+#### Enum: StatusEnum
 
 Name | Value
 ---- | -----

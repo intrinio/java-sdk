@@ -1,7 +1,7 @@
 
-## ZacksEPSSurpriseSummary
+### ZacksEPSSurpriseSummary
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | The Intrinio ID for the record |  [optional]

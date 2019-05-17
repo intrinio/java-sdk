@@ -1,7 +1,7 @@
 
-## ApiResponseSecurityIntradayPrices
+### ApiResponseSecurityIntradayPrices
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **intradayPrices** | [**List&lt;IntradayStockPrice&gt;**](IntradayStockPrice.md) | The intraday stock prices for the Security |  [optional]
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 <br/>
 
-**Enum: SourceEnum**
+#### Enum: SourceEnum
 
 Name | Value
 ---- | -----

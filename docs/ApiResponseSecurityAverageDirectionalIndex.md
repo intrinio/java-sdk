@@ -1,7 +1,7 @@
 
-## ApiResponseSecurityAverageDirectionalIndex
+### ApiResponseSecurityAverageDirectionalIndex
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;AverageDirectionalIndexTechnicalValue&gt;**](AverageDirectionalIndexTechnicalValue.md) |  |  [optional]

@@ -1,7 +1,7 @@
 
-## ApiResponseZacksAnalystRatings
+### ApiResponseZacksAnalystRatings
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **analystRatings** | [**List&lt;ZacksAnalystRating&gt;**](ZacksAnalystRating.md) |  |  [optional]

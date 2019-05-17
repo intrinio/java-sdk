@@ -1,7 +1,7 @@
 
-## ApiResponseCryptoDetrendedPriceOscillator
+### ApiResponseCryptoDetrendedPriceOscillator
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;DetrendedPriceOscillatorTechnicalValue&gt;**](DetrendedPriceOscillatorTechnicalValue.md) |  |  [optional]

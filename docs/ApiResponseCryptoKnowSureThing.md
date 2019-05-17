@@ -1,7 +1,7 @@
 
-## ApiResponseCryptoKnowSureThing
+### ApiResponseCryptoKnowSureThing
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;KnowSureThingTechnicalValue&gt;**](KnowSureThingTechnicalValue.md) |  |  [optional]

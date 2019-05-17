@@ -1,7 +1,7 @@
 
-## ApiResponseSecurityNegativeVolumeIndex
+### ApiResponseSecurityNegativeVolumeIndex
 
-### Properties
+#### Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;NegativeVolumeIndexTechnicalValue&gt;**](NegativeVolumeIndexTechnicalValue.md) |  |  [optional]
