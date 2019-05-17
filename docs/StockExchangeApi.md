@@ -15,6 +15,16 @@ Method | HTTP request | Description
 
 [//]: # (START_OPERATION)
 
+[//]: # (CLASS:StockExchangeApi)
+
+[//]: # (METHOD:getAllStockExchanges)
+
+[//]: # (RETURN_TYPE:ApiResponseStockExchanges)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockExchanges.md)
+
 [//]: # (OPERATION:getAllStockExchanges_v2)
 
 [//]: # (ENDPOINT:/stock_exchanges)
@@ -26,12 +36,16 @@ Method | HTTP request | Description
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllStockExchanges_v2)
 
+[//]: # (START_OVERVIEW)
+
 > ApiResponseStockExchanges getAllStockExchanges(city, country, countryCode, pageSize)
 
 #### All Stock Exchanges
 
 
 Returns all Stock Exchanges matching the specified parameters
+
+[//]: # (END_OVERVIEW)
 
 ### Example
 
@@ -75,13 +89,18 @@ public class Main {
 
 ### Parameters
 
+[//]: # (START_PARAMETERS)
+
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **city** | **String**| Filter by city | [optional]
- **country** | **String**| Filter by country | [optional]
- **countryCode** | **String**| Filter by ISO country code | [optional]
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
+ **city** | **String**| Filter by city | [optional] &nbsp;
+ **country** | **String**| Filter by country | [optional] &nbsp;
+ **countryCode** | **String**| Filter by ISO country code | [optional] &nbsp;
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100] &nbsp;
 <br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
@@ -91,6 +110,16 @@ Name | Type | Description  | Notes
 
 
 [//]: # (START_OPERATION)
+
+[//]: # (CLASS:StockExchangeApi)
+
+[//]: # (METHOD:getStockExchangeById)
+
+[//]: # (RETURN_TYPE:StockExchange)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:StockExchange.md)
 
 [//]: # (OPERATION:getStockExchangeById_v2)
 
@@ -103,12 +132,16 @@ Name | Type | Description  | Notes
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockExchangeById_v2)
 
+[//]: # (START_OVERVIEW)
+
 > StockExchange getStockExchangeById(identifier)
 
 #### Lookup Stock Exchange
 
 
 Returns the Stock Exchange with the given &#x60;identifier&#x60;
+
+[//]: # (END_OVERVIEW)
 
 ### Example
 
@@ -149,10 +182,15 @@ public class Main {
 
 ### Parameters
 
+[//]: # (START_PARAMETERS)
+
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) |
+ **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
 <br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
@@ -162,6 +200,16 @@ Name | Type | Description  | Notes
 
 
 [//]: # (START_OPERATION)
+
+[//]: # (CLASS:StockExchangeApi)
+
+[//]: # (METHOD:getStockExchangePriceAdjustments)
+
+[//]: # (RETURN_TYPE:ApiResponseStockExchangeStockPriceAdjustments)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockExchangeStockPriceAdjustments.md)
 
 [//]: # (OPERATION:getStockExchangePriceAdjustments_v2)
 
@@ -174,12 +222,16 @@ Name | Type | Description  | Notes
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockExchangePriceAdjustments_v2)
 
+[//]: # (START_OVERVIEW)
+
 > ApiResponseStockExchangeStockPriceAdjustments getStockExchangePriceAdjustments(identifier, date, pageSize, nextPage)
 
 #### Stock Price Adjustments by Exchange
 
 
 Returns stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
+
+[//]: # (END_OVERVIEW)
 
 ### Example
 
@@ -223,13 +275,18 @@ public class Main {
 
 ### Parameters
 
+[//]: # (START_PARAMETERS)
+
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) |
- **date** | **LocalDate**| The date for which to return price adjustments | [optional]
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+ **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
+ **date** | **LocalDate**| The date for which to return price adjustments | [optional] &nbsp;
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
@@ -239,6 +296,16 @@ Name | Type | Description  | Notes
 
 
 [//]: # (START_OPERATION)
+
+[//]: # (CLASS:StockExchangeApi)
+
+[//]: # (METHOD:getStockExchangePrices)
+
+[//]: # (RETURN_TYPE:ApiResponseStockExchangeStockPrices)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockExchangeStockPrices.md)
 
 [//]: # (OPERATION:getStockExchangePrices_v2)
 
@@ -251,12 +318,16 @@ Name | Type | Description  | Notes
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockExchangePrices_v2)
 
+[//]: # (START_OVERVIEW)
+
 > ApiResponseStockExchangeStockPrices getStockExchangePrices(identifier, date, pageSize, nextPage)
 
 #### Stock Prices by Exchange
 
 
 Returns end-of-day stock prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
+
+[//]: # (END_OVERVIEW)
 
 ### Example
 
@@ -300,13 +371,18 @@ public class Main {
 
 ### Parameters
 
+[//]: # (START_PARAMETERS)
+
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) |
- **date** | **LocalDate**| The date for which to return prices | [optional]
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+ **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
+ **date** | **LocalDate**| The date for which to return prices | [optional] &nbsp;
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
@@ -316,6 +392,16 @@ Name | Type | Description  | Notes
 
 
 [//]: # (START_OPERATION)
+
+[//]: # (CLASS:StockExchangeApi)
+
+[//]: # (METHOD:getStockExchangeRealtimePrices)
+
+[//]: # (RETURN_TYPE:ApiResponseStockExchangeRealtimeStockPrices)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockExchangeRealtimeStockPrices.md)
 
 [//]: # (OPERATION:getStockExchangeRealtimePrices_v2)
 
@@ -328,12 +414,16 @@ Name | Type | Description  | Notes
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockExchangeRealtimePrices_v2)
 
+[//]: # (START_OVERVIEW)
+
 > ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(identifier, source, pageSize, nextPage)
 
 #### Realtime Stock Prices by Exchange
 
 
 Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
+
+[//]: # (END_OVERVIEW)
 
 ### Example
 
@@ -377,13 +467,18 @@ public class Main {
 
 ### Parameters
 
+[//]: # (START_PARAMETERS)
+
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) |
- **source** | **String**| Return realtime prices from the specified data source | [optional] [enum: iex, bats, bats_delayed]
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+ **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
+ **source** | **String**| Return realtime prices from the specified data source | [optional] [enum: iex, bats, bats_delayed] &nbsp;
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
@@ -393,6 +488,16 @@ Name | Type | Description  | Notes
 
 
 [//]: # (START_OPERATION)
+
+[//]: # (CLASS:StockExchangeApi)
+
+[//]: # (METHOD:getStockExchangeSecurities)
+
+[//]: # (RETURN_TYPE:ApiResponseStockExchangeSecurities)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockExchangeSecurities.md)
 
 [//]: # (OPERATION:getStockExchangeSecurities_v2)
 
@@ -405,12 +510,16 @@ Name | Type | Description  | Notes
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockExchangeSecurities_v2)
 
+[//]: # (START_OVERVIEW)
+
 > ApiResponseStockExchangeSecurities getStockExchangeSecurities(identifier, pageSize, nextPage)
 
 #### Securities by Exchange
 
 
 Returns Securities traded on the Stock Exchange with &#x60;identifier&#x60;
+
+[//]: # (END_OVERVIEW)
 
 ### Example
 
@@ -453,12 +562,17 @@ public class Main {
 
 ### Parameters
 
+[//]: # (START_PARAMETERS)
+
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) |
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+ **identifier** | **String**| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 

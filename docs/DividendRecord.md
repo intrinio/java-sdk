@@ -16,8 +16,7 @@ Name | Type | Description | Notes
 **security** | [**SecuritySummary**](SecuritySummary.md) |  |  [optional]
 
 
-<a name="StatusEnum"></a>
-### Enum: StatusEnum
+** Enum: StatusEnum **
 Name | Value
 ---- | -----
 P | &quot;P&quot;

@@ -15,8 +15,7 @@ Name | Type | Description | Notes
 **company** | [**CompanySummary**](CompanySummary.md) | The Company that the Fundamental was belongs to |  [optional]
 
 
-<a name="TypeEnum"></a>
-### Enum: TypeEnum
+** Enum: TypeEnum **
 Name | Value
 ---- | -----
 REPORTED | &quot;reported&quot;

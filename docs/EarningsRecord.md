@@ -29,8 +29,7 @@ Name | Type | Description | Notes
 **security** | [**SecuritySummary**](SecuritySummary.md) |  |  [optional]
 
 
-<a name="TimeOfDayEnum"></a>
-### Enum: TimeOfDayEnum
+** Enum: TimeOfDayEnum **
 Name | Value
 ---- | -----
 BEFORE_MARKET | &quot;Before Market&quot;
@@ -39,16 +38,14 @@ AFTER_MARKET | &quot;After Market&quot;
 UNSPECIFIED | &quot;Unspecified&quot;
 
 
-<a name="BoardOfDirectorsMeetingTypeEnum"></a>
-### Enum: BoardOfDirectorsMeetingTypeEnum
+** Enum: BoardOfDirectorsMeetingTypeEnum **
 Name | Value
 ---- | -----
 B | &quot;B&quot;
 S | &quot;S&quot;
 
 
-<a name="TypeEnum"></a>
-### Enum: TypeEnum
+** Enum: TypeEnum **
 Name | Value
 ---- | -----
 V | &quot;V&quot;

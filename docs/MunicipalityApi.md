@@ -12,6 +12,16 @@ Method | HTTP request | Description
 
 [//]: # (START_OPERATION)
 
+[//]: # (CLASS:MunicipalityApi)
+
+[//]: # (METHOD:getAllMunicipalities)
+
+[//]: # (RETURN_TYPE:ApiResponseMunicipalities)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseMunicipalities.md)
+
 [//]: # (OPERATION:getAllMunicipalities_v2)
 
 [//]: # (ENDPOINT:/municipalities)
@@ -23,11 +33,15 @@ Method | HTTP request | Description
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllMunicipalities_v2)
 
+[//]: # (START_OVERVIEW)
+
 > ApiResponseMunicipalities getAllMunicipalities(hasFinancials, governmentName, governmentType, areaName, areaType, city, state, zipcode, populationGreaterThan, populationLessThan, enrollmentGreaterThan, enrollmentLessThan, nextPage)
 
 #### All Municipalities
 
 
+
+[//]: # (END_OVERVIEW)
 
 ### Example
 
@@ -80,22 +94,27 @@ public class Main {
 
 ### Parameters
 
+[//]: # (START_PARAMETERS)
+
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **hasFinancials** | **Boolean**| Return municipalities with financials | [optional]
- **governmentName** | **String**| Return municipalities with a government name matching the given query | [optional]
- **governmentType** | **String**| Return municipalities with the given government type | [optional]
- **areaName** | **String**| Return municipalities with an area name matching the given query | [optional]
- **areaType** | **String**| Return municipalities with the given area type | [optional] [enum: Borough, Census Borough, Census County, Census Division, Census Parish, City, City And County, County, Municipality, Parish]
- **city** | **String**| Return municipalities in the given city | [optional]
- **state** | **String**| Return municipalities in the given state | [optional]
- **zipcode** | **BigDecimal**| Return municipalities in the given zipcode | [optional]
- **populationGreaterThan** | **BigDecimal**| Return municipalities with a population greater than the given number | [optional]
- **populationLessThan** | **BigDecimal**| Return municipalities with a population less than the given number | [optional]
- **enrollmentGreaterThan** | **BigDecimal**| Return municipalities with an enrollment greater than the given number | [optional]
- **enrollmentLessThan** | **BigDecimal**| Return municipalities with an enrollment less than the given number | [optional]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+ **hasFinancials** | **Boolean**| Return municipalities with financials | [optional] &nbsp;
+ **governmentName** | **String**| Return municipalities with a government name matching the given query | [optional] &nbsp;
+ **governmentType** | **String**| Return municipalities with the given government type | [optional] &nbsp;
+ **areaName** | **String**| Return municipalities with an area name matching the given query | [optional] &nbsp;
+ **areaType** | **String**| Return municipalities with the given area type | [optional] [enum: Borough, Census Borough, Census County, Census Division, Census Parish, City, City And County, County, Municipality, Parish] &nbsp;
+ **city** | **String**| Return municipalities in the given city | [optional] &nbsp;
+ **state** | **String**| Return municipalities in the given state | [optional] &nbsp;
+ **zipcode** | **BigDecimal**| Return municipalities in the given zipcode | [optional] &nbsp;
+ **populationGreaterThan** | **BigDecimal**| Return municipalities with a population greater than the given number | [optional] &nbsp;
+ **populationLessThan** | **BigDecimal**| Return municipalities with a population less than the given number | [optional] &nbsp;
+ **enrollmentGreaterThan** | **BigDecimal**| Return municipalities with an enrollment greater than the given number | [optional] &nbsp;
+ **enrollmentLessThan** | **BigDecimal**| Return municipalities with an enrollment less than the given number | [optional] &nbsp;
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
@@ -105,6 +124,16 @@ Name | Type | Description  | Notes
 
 
 [//]: # (START_OPERATION)
+
+[//]: # (CLASS:MunicipalityApi)
+
+[//]: # (METHOD:getMunicipalityById)
+
+[//]: # (RETURN_TYPE:Municipality)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:Municipality.md)
 
 [//]: # (OPERATION:getMunicipalityById_v2)
 
@@ -117,12 +146,16 @@ Name | Type | Description  | Notes
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getMunicipalityById_v2)
 
+[//]: # (START_OVERVIEW)
+
 > Municipality getMunicipalityById(id)
 
 #### Municipality by ID
 
 
 Returns the Municipality with the given ID
+
+[//]: # (END_OVERVIEW)
 
 ### Example
 
@@ -163,10 +196,15 @@ public class Main {
 
 ### Parameters
 
+[//]: # (START_PARAMETERS)
+
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| An Intrinio ID of a Municipality |
+ **id** | **String**| An Intrinio ID of a Municipality | &nbsp;
 <br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
@@ -176,6 +214,16 @@ Name | Type | Description  | Notes
 
 
 [//]: # (START_OPERATION)
+
+[//]: # (CLASS:MunicipalityApi)
+
+[//]: # (METHOD:getMunicipalityFinancials)
+
+[//]: # (RETURN_TYPE:ApiResponseMunicipalitiyFinancials)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseMunicipalitiyFinancials.md)
 
 [//]: # (OPERATION:getMunicipalityFinancials_v2)
 
@@ -188,12 +236,16 @@ Name | Type | Description  | Notes
 
 [**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getMunicipalityFinancials_v2)
 
+[//]: # (START_OVERVIEW)
+
 > ApiResponseMunicipalitiyFinancials getMunicipalityFinancials(id, fiscalYear)
 
 #### Financials for a Municipality
 
 
 Returns financial statement data for the Municipality with the given ID
+
+[//]: # (END_OVERVIEW)
 
 ### Example
 
@@ -235,11 +287,16 @@ public class Main {
 
 ### Parameters
 
+[//]: # (START_PARAMETERS)
+
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **String**| An Intrinio ID of a Municipality |
- **fiscalYear** | **BigDecimal**| Return financials for the given fiscal year | [optional]
+ **id** | **String**| An Intrinio ID of a Municipality | &nbsp;
+ **fiscalYear** | **BigDecimal**| Return financials for the given fiscal year | [optional] &nbsp;
 <br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 

@@ -19,8 +19,7 @@ Name | Type | Description | Notes
 **adjVolume** | [**BigDecimal**](BigDecimal.md) | The number of shares exchanged during the period, adjusted for splits and dividends |  [optional]
 
 
-<a name="FrequencyEnum"></a>
-### Enum: FrequencyEnum
+** Enum: FrequencyEnum **
 Name | Value
 ---- | -----
 DAILY | &quot;daily&quot;
