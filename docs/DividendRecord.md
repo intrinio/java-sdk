@@ -10,12 +10,14 @@ Name | Type | Description | Notes
 **recordDate** | [**LocalDate**](LocalDate.md) | Date before which holders-of-record will receive the dividend |  [optional]
 **payDate** | [**LocalDate**](LocalDate.md) | Date the divdiend was paid |  [optional]
 **frequency** | **String** | Identifies payment frequency of announced dividend |  [optional]
-**status** | [**StatusEnum**](#StatusEnum) | Status of the dividend |  [optional]
+**status** | **StatusEnum** | Status of the dividend |  [optional]
 **forwardYield** | [**BigDecimal**](BigDecimal.md) | The forward dividend yield |  [optional]
 **forwardRate** | [**BigDecimal**](BigDecimal.md) | The forward dividend rate |  [optional]
 **security** | [**SecuritySummary**](SecuritySummary.md) |  |  [optional]
 
 
+<br/>
+<br/>
 **Enum: StatusEnum**
 
 Name | Value

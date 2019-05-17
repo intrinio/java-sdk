@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** | The readable name of the Data Tag |  [optional]
 **tag** | **String** | The code-name of the Data Tag |  [optional]
 **statementCode** | **String** | The code of the financial statement to which this Data Tag belongs |  [optional]
-**statementType** | [**StatementTypeEnum**](#StatementTypeEnum) | The format of the financial statment to which this Data Tag belongs |  [optional]
+**statementType** | **StatementTypeEnum** | The format of the financial statment to which this Data Tag belongs |  [optional]
 **parent** | **String** | The parent Data Tag forming the statement relationship with the factor |  [optional]
 **factor** | **String** | The operator forming the statement relationship between the child Data Tag (or Data Tags) and the parent Data Tag |  [optional]
 **balance** | **String** | Whether the Data Tag represents a credit or debit |  [optional]
@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **unit** | **String** | The unit of the Data Tag |  [optional]
 
 
+<br/>
+<br/>
 **Enum: StatementTypeEnum**
 
 Name | Value
