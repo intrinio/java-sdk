@@ -20,7 +20,8 @@ Name | Type | Description | Notes
 **security** | [**SecuritySummary**](SecuritySummary.md) | The Security of the stock price |  [optional]
 
 
-** Enum: FrequencyEnum **
+**Enum: FrequencyEnum**
+
 Name | Value
 ---- | -----
 DAILY | &quot;daily&quot;

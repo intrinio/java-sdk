@@ -9,7 +9,8 @@ Name | Type | Description | Notes
 **value** | **String** | The value to screen by |  [optional]
 
 
-** Enum: OperatorEnum **
+**Enum: OperatorEnum**
+
 Name | Value
 ---- | -----
 EQ | &quot;eq&quot;

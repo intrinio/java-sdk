@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **nextPage** | **String** | The token required to request the next page of the data |  [optional]
 
 
-** Enum: SourceEnum **
+**Enum: SourceEnum**
+
 Name | Value
 ---- | -----
 IEX | &quot;iex&quot;

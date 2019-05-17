@@ -16,7 +16,8 @@ Name | Type | Description | Notes
 **unit** | **String** | The unit of the Data Tag |  [optional]
 
 
-** Enum: StatementTypeEnum **
+**Enum: StatementTypeEnum**
+
 Name | Value
 ---- | -----
 FINANCIAL | &quot;financial&quot;

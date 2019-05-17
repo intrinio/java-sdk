@@ -14,7 +14,8 @@ Name | Type | Description | Notes
 **filingDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when the Fundamental was filed with the SEC |  [optional]
 
 
-** Enum: TypeEnum **
+**Enum: TypeEnum**
+
 Name | Value
 ---- | -----
 REPORTED | &quot;reported&quot;
