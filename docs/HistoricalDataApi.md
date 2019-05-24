@@ -7,45 +7,15 @@ Method | HTTP request | Description
 [**getHistoricalData**](HistoricalDataApi.md#getHistoricalData) | **GET** /historical_data/{identifier}/{tag} | Historical Data
 
 
-
-[//]: # (START_OPERATION)
-
-[//]: # (CLASS:HistoricalDataApi)
-
-[//]: # (METHOD:getHistoricalData)
-
-[//]: # (RETURN_TYPE:ApiResponseHistoricalData)
-
-[//]: # (RETURN_TYPE_KIND:object)
-
-[//]: # (RETURN_TYPE_DOC:ApiResponseHistoricalData.md)
-
-[//]: # (OPERATION:getHistoricalData_v2)
-
-[//]: # (ENDPOINT:/historical_data/{identifier}/{tag})
-
-[//]: # (DOCUMENT_LINK:HistoricalDataApi.md#getHistoricalData)
-
 <a name="getHistoricalData"></a>
-## **getHistoricalData**
-
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getHistoricalData_v2)
-
-[//]: # (START_OVERVIEW)
-
+# **getHistoricalData**
 > ApiResponseHistoricalData getHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
-#### Historical Data
-
+Historical Data
 
 Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
 
-[//]: # (END_OVERVIEW)
-
 ### Example
-
-[//]: # (START_CODE_EXAMPLE)
-
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -85,31 +55,21 @@ public class Main {
 }
 ```
 
-[//]: # (END_CODE_EXAMPLE)
-
 ### Parameters
-
-[//]: # (START_PARAMETERS)
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) | &nbsp;
- **tag** | **String**| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
- **frequency** | **String**| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly] &nbsp;
- **type** | **String**| Filter by type, when applicable | [optional] &nbsp;
- **startDate** | **LocalDate**| Get historical data on or after this date | [optional] &nbsp;
- **endDate** | **LocalDate**| Get historical date on or before this date | [optional] &nbsp;
- **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc] &nbsp;
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100] &nbsp;
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional] &nbsp;
-<br/>
-
-[//]: # (END_PARAMETERS)
+ **identifier** | **String**| An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) |
+ **tag** | **String**| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) |
+ **frequency** | **String**| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly]
+ **type** | **String**| Filter by type, when applicable | [optional]
+ **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
+ **endDate** | **LocalDate**| Get historical date on or before this date | [optional]
+ **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
+ **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
+ **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
 
 ### Return type
 
 [**ApiResponseHistoricalData**](ApiResponseHistoricalData.md)
-
-[//]: # (END_OPERATION)
 

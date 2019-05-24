@@ -1,7 +1,7 @@
 
-### ApiResponseCryptoRelativeStrengthIndex
+# ApiResponseCryptoRelativeStrengthIndex
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;RelativeStrengthIndexTechnicalValue&gt;**](RelativeStrengthIndexTechnicalValue.md) |  |  [optional]

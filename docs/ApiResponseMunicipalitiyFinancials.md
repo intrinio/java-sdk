@@ -1,7 +1,7 @@
 
-### ApiResponseMunicipalitiyFinancials
+# ApiResponseMunicipalitiyFinancials
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **financials** | [**List&lt;MunicipalityFinancial&gt;**](MunicipalityFinancial.md) |  |  [optional]

@@ -1,7 +1,7 @@
 
-### ReportedFinancial
+# ReportedFinancial
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **xbrlTag** | [**ReportedTag**](ReportedTag.md) |  |  [optional]

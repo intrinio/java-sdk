@@ -1,7 +1,7 @@
 
-### ApiResponseSecurityMoneyFlowIndex
+# ApiResponseSecurityMoneyFlowIndex
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;MoneyFlowIndexTechnicalValue&gt;**](MoneyFlowIndexTechnicalValue.md) |  |  [optional]

@@ -1,7 +1,7 @@
 
-### RealtimeStockPrice
+# RealtimeStockPrice
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **lastPrice** | [**BigDecimal**](BigDecimal.md) | The price of the last trade. |  [optional]

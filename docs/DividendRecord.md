@@ -1,7 +1,7 @@
 
-### DividendRecord
+# DividendRecord
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **exDividend** | [**BigDecimal**](BigDecimal.md) | Amount of dividend in US dollars |  [optional]
@@ -10,16 +10,14 @@ Name | Type | Description | Notes
 **recordDate** | [**LocalDate**](LocalDate.md) | Date before which holders-of-record will receive the dividend |  [optional]
 **payDate** | [**LocalDate**](LocalDate.md) | Date the divdiend was paid |  [optional]
 **frequency** | **String** | Identifies payment frequency of announced dividend |  [optional]
-**status** | **StatusEnum** | Status of the dividend |  [optional]
+**status** | [**StatusEnum**](#StatusEnum) | Status of the dividend |  [optional]
 **forwardYield** | [**BigDecimal**](BigDecimal.md) | The forward dividend yield |  [optional]
 **forwardRate** | [**BigDecimal**](BigDecimal.md) | The forward dividend rate |  [optional]
 **security** | [**SecuritySummary**](SecuritySummary.md) |  |  [optional]
 
 
-<br/>
-
-#### Enum: StatusEnum
-
+<a name="StatusEnum"></a>
+## Enum: StatusEnum
 Name | Value
 ---- | -----
 P | &quot;P&quot;

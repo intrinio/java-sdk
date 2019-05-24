@@ -1,7 +1,7 @@
 
-### Security
+# Security
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | The Intrinio ID for the Security |  [optional]

@@ -1,7 +1,7 @@
 
-### ApiResponseCompanyFilings
+# ApiResponseCompanyFilings
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **filings** | [**List&lt;FilingSummary&gt;**](FilingSummary.md) |  |  [optional]

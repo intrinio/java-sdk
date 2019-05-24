@@ -11,6 +11,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * DataTag
@@ -81,6 +82,9 @@ public class DataTag {
 
   @SerializedName("parent")
   private String parent = null;
+
+  @SerializedName("sequence")
+  private BigDecimal sequence = null;
 
   @SerializedName("factor")
   private String factor = null;
@@ -202,6 +206,24 @@ public class DataTag {
     this.parent = parent;
   }
 
+  public DataTag sequence(BigDecimal sequence) {
+    this.sequence = sequence;
+    return this;
+  }
+
+   /**
+   * The order in which the Data Tag appears in its logical group (such as a financial statement)
+   * @return sequence
+  **/
+  @ApiModelProperty(value = "The order in which the Data Tag appears in its logical group (such as a financial statement)")
+  public BigDecimal getSequence() {
+    return sequence;
+  }
+
+  public void setSequence(BigDecimal sequence) {
+    this.sequence = sequence;
+  }
+
   public DataTag factor(String factor) {
     this.factor = factor;
     return this;
@@ -290,6 +312,7 @@ public class DataTag {
         Objects.equals(this.statementCode, dataTag.statementCode) &&
         Objects.equals(this.statementType, dataTag.statementType) &&
         Objects.equals(this.parent, dataTag.parent) &&
+        Objects.equals(this.sequence, dataTag.sequence) &&
         Objects.equals(this.factor, dataTag.factor) &&
         Objects.equals(this.balance, dataTag.balance) &&
         Objects.equals(this.type, dataTag.type) &&
@@ -298,7 +321,7 @@ public class DataTag {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, tag, statementCode, statementType, parent, factor, balance, type, unit);
+    return Objects.hash(id, name, tag, statementCode, statementType, parent, sequence, factor, balance, type, unit);
   }
 
 
@@ -313,6 +336,7 @@ public class DataTag {
     sb.append("    statementCode: ").append(toIndentedString(statementCode)).append("\n");
     sb.append("    statementType: ").append(toIndentedString(statementType)).append("\n");
     sb.append("    parent: ").append(toIndentedString(parent)).append("\n");
+    sb.append("    sequence: ").append(toIndentedString(sequence)).append("\n");
     sb.append("    factor: ").append(toIndentedString(factor)).append("\n");
     sb.append("    balance: ").append(toIndentedString(balance)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

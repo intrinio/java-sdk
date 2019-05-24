@@ -732,6 +732,9 @@ public class CompanyApi {
     /**
      * Build call for getCompanyFilings
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
+     * @param startDate Filed on or after the given date (optional)
+     * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -739,7 +742,7 @@ public class CompanyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFilingsCall(String identifier, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFilingsCall(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -748,6 +751,12 @@ public class CompanyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (reportType != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("report_type", reportType));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -786,7 +795,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyFilingsValidateBeforeCall(String identifier, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyFilingsValidateBeforeCall(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -794,7 +803,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCompanyFilingsCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFilingsCall(identifier, reportType, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -803,13 +812,16 @@ public class CompanyApi {
      * All Filings by Company
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
+     * @param startDate Filed on or after the given date (optional)
+     * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyFilings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseCompanyFilings getCompanyFilings(String identifier, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanyFilings> resp = getCompanyFilingsWithHttpInfo(identifier, pageSize, nextPage);
+    public ApiResponseCompanyFilings getCompanyFilings(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseCompanyFilings> resp = getCompanyFilingsWithHttpInfo(identifier, reportType, startDate, endDate, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -817,13 +829,16 @@ public class CompanyApi {
      * All Filings by Company
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
+     * @param startDate Filed on or after the given date (optional)
+     * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanyFilings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanyFilings> getCompanyFilingsWithHttpInfo(String identifier, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanyFilings> getCompanyFilingsWithHttpInfo(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, reportType, startDate, endDate, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFilings>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -832,13 +847,16 @@ public class CompanyApi {
      * All Filings by Company (asynchronously)
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
+     * @param startDate Filed on or after the given date (optional)
+     * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFilingsAsync(String identifier, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanyFilings> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFilingsAsync(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanyFilings> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -859,7 +877,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, reportType, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFilings>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

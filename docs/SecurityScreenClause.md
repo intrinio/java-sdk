@@ -1,18 +1,16 @@
 
-### SecurityScreenClause
+# SecurityScreenClause
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **field** | **String** | The field to use when screening, such as an Intrinio Data Tag |  [optional]
-**operator** | **OperatorEnum** | The logic operator to use when screening |  [optional]
+**operator** | [**OperatorEnum**](#OperatorEnum) | The logic operator to use when screening |  [optional]
 **value** | **String** | The value to screen by |  [optional]
 
 
-<br/>
-
-#### Enum: OperatorEnum
-
+<a name="OperatorEnum"></a>
+## Enum: OperatorEnum
 Name | Value
 ---- | -----
 EQ | &quot;eq&quot;

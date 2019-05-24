@@ -1,7 +1,7 @@
 
-### ApiResponseSecurityVolumeWeightedAveragePrice
+# ApiResponseSecurityVolumeWeightedAveragePrice
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;VolumeWeightedAveragePriceValue&gt;**](VolumeWeightedAveragePriceValue.md) |  |  [optional]

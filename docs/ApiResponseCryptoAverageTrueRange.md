@@ -1,7 +1,7 @@
 
-### ApiResponseCryptoAverageTrueRange
+# ApiResponseCryptoAverageTrueRange
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;AverageTrueRangeTechnicalValue&gt;**](AverageTrueRangeTechnicalValue.md) |  |  [optional]

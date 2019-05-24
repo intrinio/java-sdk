@@ -1,7 +1,7 @@
 
-### ApiResponseSecurityTripleExponentialAverage
+# ApiResponseSecurityTripleExponentialAverage
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;TripleExponentialAverageTechnicalValue&gt;**](TripleExponentialAverageTechnicalValue.md) |  |  [optional]

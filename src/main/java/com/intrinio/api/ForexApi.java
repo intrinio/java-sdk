@@ -293,12 +293,11 @@ public class ForexApi {
 
         // create path and map variables
         String localVarPath = "/forex/prices/{pair}/{timeframe}"
-            .replaceAll("\\{" + "pair" + "\\}", apiClient.escapeString(pair.toString()));
+            .replaceAll("\\{" + "pair" + "\\}", apiClient.escapeString(pair.toString()))
+            .replaceAll("\\{" + "timeframe" + "\\}", apiClient.escapeString(timeframe.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (timeframe != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("timeframe", timeframe));
         if (timezone != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("timezone", timezone));
         if (startDate != null)

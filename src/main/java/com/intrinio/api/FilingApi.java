@@ -51,7 +51,7 @@ public class FilingApi {
     /**
      * Build call for getAllFilings
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -132,7 +132,7 @@ public class FilingApi {
      * All Filings
      * Returns all Filings. Returns Filings matching parameters when supplied.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -149,7 +149,7 @@ public class FilingApi {
      * All Filings
      * Returns all Filings. Returns Filings matching parameters when supplied.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -167,7 +167,7 @@ public class FilingApi {
      * All Filings (asynchronously)
      * Returns all Filings. Returns Filings matching parameters when supplied.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)

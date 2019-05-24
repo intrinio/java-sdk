@@ -1,7 +1,7 @@
 
-### ApiResponseSecurityMovingAverageConvergenceDivergence
+# ApiResponseSecurityMovingAverageConvergenceDivergence
 
-#### Properties
+## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **technicals** | [**List&lt;MovingAverageConvergenceDivergenceTechnicalValue&gt;**](MovingAverageConvergenceDivergenceTechnicalValue.md) |  |  [optional]

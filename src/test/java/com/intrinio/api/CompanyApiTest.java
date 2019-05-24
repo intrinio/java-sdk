@@ -133,9 +133,12 @@ public class CompanyApiTest {
     @Test
     public void getCompanyFilingsTest() throws ApiException {
         String identifier = null;
+        String reportType = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseCompanyFilings response = api.getCompanyFilings(identifier, pageSize, nextPage);
+        ApiResponseCompanyFilings response = api.getCompanyFilings(identifier, reportType, startDate, endDate, pageSize, nextPage);
 
         // TODO: test validations
     }
