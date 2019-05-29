@@ -12,6 +12,8 @@ Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a 
 
 Download the most recent release zip file and import all .jar files into your project as module dependencies.
 
+[Download intrinio-sdk-3.0.0.zip](https://github.com/intrinio/java-sdk/releases/download/3.0.0/intrinio-sdk-3.0.0.zip)
+
 Instructions for importing jar files into your IntelliJ project can be found here:
 
 https://www.jetbrains.com/help/idea/library.html#add-library-to-module-dependencies
