@@ -1,10 +1,24 @@
 
-# ApiResponseForexCurrencies
+[//]: # (CLASS:ApiResponseForexCurrencies)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**currencies** | [**List&lt;ForexCurrency&gt;**](ForexCurrency.md) |  |  [optional]
+[//]: # (KIND:object)
+
+### ApiResponseForexCurrencies
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**currencies** | [**List&lt;ForexCurrency&gt;**](ForexCurrency.md) |  &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:ForexCurrency)
+
+
 
 
 

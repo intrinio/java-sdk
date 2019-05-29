@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.intrinio.models.ApiResponseFilingFundamentals;
 import com.intrinio.models.ApiResponseFilingNotes;
 import com.intrinio.models.ApiResponseFilingNotesSearch;
 import com.intrinio.models.ApiResponseFilings;
@@ -51,7 +52,7 @@ public class FilingApi {
     /**
      * Build call for getAllFilings
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -132,7 +133,7 @@ public class FilingApi {
      * All Filings
      * Returns all Filings. Returns Filings matching parameters when supplied.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -149,7 +150,7 @@ public class FilingApi {
      * All Filings
      * Returns all Filings. Returns Filings matching parameters when supplied.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -167,7 +168,7 @@ public class FilingApi {
      * All Filings (asynchronously)
      * Returns all Filings. Returns Filings matching parameters when supplied.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type. Separate values with commas to return multiple report types. (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -205,7 +206,7 @@ public class FilingApi {
     /**
      * Build call for getAllNotes
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
-     * @param reportType Notes contained in filings that match the given report type (optional)
+     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param periodEndedStartDate Limit search to filings with a period end date on or after this date (optional)
@@ -287,7 +288,7 @@ public class FilingApi {
      * All Filing Notes
      * Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
-     * @param reportType Notes contained in filings that match the given report type (optional)
+     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param periodEndedStartDate Limit search to filings with a period end date on or after this date (optional)
@@ -306,7 +307,7 @@ public class FilingApi {
      * All Filing Notes
      * Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
-     * @param reportType Notes contained in filings that match the given report type (optional)
+     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param periodEndedStartDate Limit search to filings with a period end date on or after this date (optional)
@@ -326,7 +327,7 @@ public class FilingApi {
      * All Filing Notes (asynchronously)
      * Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
-     * @param reportType Notes contained in filings that match the given report type (optional)
+     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param periodEndedStartDate Limit search to filings with a period end date on or after this date (optional)
@@ -483,6 +484,171 @@ public class FilingApi {
 
         com.squareup.okhttp.Call call = getFilingByIdValidateBeforeCall(id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Filing>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getFilingFundamentals
+     * @param identifier A Filing identifier (required)
+     * @param statementCode Filters fundamentals by statement code (optional)
+     * @param type Filters fundamentals by type (optional)
+     * @param fiscalYear Filters fundamentals by fiscal year (optional)
+     * @param fiscalPeriod Filters fundamentals by fiscal period (optional)
+     * @param startDate Returns fundamentals on or after the given date (optional)
+     * @param endDate Returns fundamentals on or before the given date (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getFilingFundamentalsCall(String identifier, String statementCode, String type, Integer fiscalYear, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/filings/{identifier}/fundamentals"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (statementCode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("statement_code", statementCode));
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+        if (fiscalYear != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_year", fiscalYear));
+        if (fiscalPeriod != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_period", fiscalPeriod));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getFilingFundamentalsValidateBeforeCall(String identifier, String statementCode, String type, Integer fiscalYear, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getFilingFundamentals(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getFilingFundamentalsCall(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * All Fundamentals by Filing
+     * Returns all Fundamentals for the SEC Filing with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     * @param identifier A Filing identifier (required)
+     * @param statementCode Filters fundamentals by statement code (optional)
+     * @param type Filters fundamentals by type (optional)
+     * @param fiscalYear Filters fundamentals by fiscal year (optional)
+     * @param fiscalPeriod Filters fundamentals by fiscal period (optional)
+     * @param startDate Returns fundamentals on or after the given date (optional)
+     * @param endDate Returns fundamentals on or before the given date (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseFilingFundamentals
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseFilingFundamentals getFilingFundamentals(String identifier, String statementCode, String type, Integer fiscalYear, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseFilingFundamentals> resp = getFilingFundamentalsWithHttpInfo(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * All Fundamentals by Filing
+     * Returns all Fundamentals for the SEC Filing with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     * @param identifier A Filing identifier (required)
+     * @param statementCode Filters fundamentals by statement code (optional)
+     * @param type Filters fundamentals by type (optional)
+     * @param fiscalYear Filters fundamentals by fiscal year (optional)
+     * @param fiscalPeriod Filters fundamentals by fiscal period (optional)
+     * @param startDate Returns fundamentals on or after the given date (optional)
+     * @param endDate Returns fundamentals on or before the given date (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseFilingFundamentals&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseFilingFundamentals> getFilingFundamentalsWithHttpInfo(String identifier, String statementCode, String type, Integer fiscalYear, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getFilingFundamentalsValidateBeforeCall(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseFilingFundamentals>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * All Fundamentals by Filing (asynchronously)
+     * Returns all Fundamentals for the SEC Filing with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     * @param identifier A Filing identifier (required)
+     * @param statementCode Filters fundamentals by statement code (optional)
+     * @param type Filters fundamentals by type (optional)
+     * @param fiscalYear Filters fundamentals by fiscal year (optional)
+     * @param fiscalPeriod Filters fundamentals by fiscal period (optional)
+     * @param startDate Returns fundamentals on or after the given date (optional)
+     * @param endDate Returns fundamentals on or before the given date (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getFilingFundamentalsAsync(String identifier, String statementCode, String type, Integer fiscalYear, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage, final ApiCallback<ApiResponseFilingFundamentals> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getFilingFundamentalsValidateBeforeCall(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseFilingFundamentals>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

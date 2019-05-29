@@ -24,13 +24,44 @@ Method | HTTP request | Description
 [**searchStockMarketsIndices**](IndexApi.md#searchStockMarketsIndices) | **GET** /indices/stock_market/search | Search Stock Market Indices
 
 
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getAllEconomicIndices)
+
+[//]: # (RETURN_TYPE:ApiResponseEconomicIndices)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseEconomicIndices.md)
+
+[//]: # (OPERATION:getAllEconomicIndices_v2)
+
+[//]: # (ENDPOINT:/indices/economic)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getAllEconomicIndices)
+
 <a name="getAllEconomicIndices"></a>
-# **getAllEconomicIndices**
+## **getAllEconomicIndices**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllEconomicIndices_v2)
+
+[//]: # (START_OVERVIEW)
+
 > ApiResponseEconomicIndices getAllEconomicIndices(pageSize, nextPage)
 
-All Economic Indices
+#### All Economic Indices
+
+
+
+[//]: # (END_OVERVIEW)
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -44,7 +75,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -52,35 +83,76 @@ public class Main {
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
-        ApiResponseEconomicIndices result = indexApi.getAllEconomicIndices(pageSize, nextPage);
-        System.out.println(result);
+      ApiResponseEconomicIndices result = indexApi.getAllEconomicIndices(pageSize, nextPage);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getAllEconomicIndices");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getAllEconomicIndices");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**ApiResponseEconomicIndices**](ApiResponseEconomicIndices.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getAllSicIndices)
+
+[//]: # (RETURN_TYPE:ApiResponseSICIndices)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseSICIndices.md)
+
+[//]: # (OPERATION:getAllSicIndices_v2)
+
+[//]: # (ENDPOINT:/indices/sic)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getAllSicIndices)
+
 <a name="getAllSicIndices"></a>
-# **getAllSicIndices**
+## **getAllSicIndices**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllSicIndices_v2)
+
+[//]: # (START_OVERVIEW)
+
 > ApiResponseSICIndices getAllSicIndices(pageSize, nextPage)
 
-All SIC Indices
+#### All SIC Indices
+
+
+
+[//]: # (END_OVERVIEW)
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -94,7 +166,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -102,35 +174,76 @@ public class Main {
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
-        ApiResponseSICIndices result = indexApi.getAllSicIndices(pageSize, nextPage);
-        System.out.println(result);
+      ApiResponseSICIndices result = indexApi.getAllSicIndices(pageSize, nextPage);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getAllSicIndices");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getAllSicIndices");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**ApiResponseSICIndices**](ApiResponseSICIndices.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getAllStockMarketIndices)
+
+[//]: # (RETURN_TYPE:ApiResponseStockMarketIndices)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockMarketIndices.md)
+
+[//]: # (OPERATION:getAllStockMarketIndices_v2)
+
+[//]: # (ENDPOINT:/indices/stock_market)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getAllStockMarketIndices)
+
 <a name="getAllStockMarketIndices"></a>
-# **getAllStockMarketIndices**
+## **getAllStockMarketIndices**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllStockMarketIndices_v2)
+
+[//]: # (START_OVERVIEW)
+
 > ApiResponseStockMarketIndices getAllStockMarketIndices(pageSize, nextPage)
 
-All Stock Market Indices
+#### All Stock Market Indices
+
+
+
+[//]: # (END_OVERVIEW)
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -144,7 +257,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -152,35 +265,76 @@ public class Main {
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
-        ApiResponseStockMarketIndices result = indexApi.getAllStockMarketIndices(pageSize, nextPage);
-        System.out.println(result);
+      ApiResponseStockMarketIndices result = indexApi.getAllStockMarketIndices(pageSize, nextPage);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getAllStockMarketIndices");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getAllStockMarketIndices");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**ApiResponseStockMarketIndices**](ApiResponseStockMarketIndices.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getEconomicIndexById)
+
+[//]: # (RETURN_TYPE:EconomicIndex)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:EconomicIndex.md)
+
+[//]: # (OPERATION:getEconomicIndexById_v2)
+
+[//]: # (ENDPOINT:/indices/economic/{identifier})
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getEconomicIndexById)
+
 <a name="getEconomicIndexById"></a>
-# **getEconomicIndexById**
+## **getEconomicIndexById**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getEconomicIndexById_v2)
+
+[//]: # (START_OVERVIEW)
+
 > EconomicIndex getEconomicIndexById(identifier)
 
-Lookup Economic Index
+#### Lookup Economic Index
+
+
+
+[//]: # (END_OVERVIEW)
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -194,43 +348,83 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
     String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
 
     try {
-        EconomicIndex result = indexApi.getEconomicIndexById(identifier);
-        System.out.println(result);
+      EconomicIndex result = indexApi.getEconomicIndexById(identifier);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getEconomicIndexById");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getEconomicIndexById");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**EconomicIndex**](EconomicIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getEconomicIndexDataPointNumber)
+
+[//]: # (RETURN_TYPE:BigDecimal)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:BigDecimal.md)
+
+[//]: # (OPERATION:getEconomicIndexDataPointNumber_v2)
+
+[//]: # (ENDPOINT:/indices/economic/{identifier}/data_point/{tag}/number)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getEconomicIndexDataPointNumber)
+
 <a name="getEconomicIndexDataPointNumber"></a>
-# **getEconomicIndexDataPointNumber**
+## **getEconomicIndexDataPointNumber**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getEconomicIndexDataPointNumber_v2)
+
+[//]: # (START_OVERVIEW)
+
 > BigDecimal getEconomicIndexDataPointNumber(identifier, tag)
 
-Data Point (Number) for an Economic Index
+#### Data Point (Number) for an Economic Index
+
 
 Returns a numeric value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -244,7 +438,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -252,37 +446,77 @@ public class Main {
     String tag = "level"; // String | An Intrinio data tag <a href='https://data.intrinio.com/data-tags/economic'>reference</a>
 
     try {
-        BigDecimal result = indexApi.getEconomicIndexDataPointNumber(identifier, tag);
-        System.out.println(result);
+      BigDecimal result = indexApi.getEconomicIndexDataPointNumber(identifier, tag);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getEconomicIndexDataPointNumber");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getEconomicIndexDataPointNumber");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag &lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags/economic&#39;&gt;reference&lt;/a&gt; |
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+ **tag** | String| An Intrinio data tag &lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags/economic&#39;&gt;reference&lt;/a&gt; | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**BigDecimal**](BigDecimal.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getEconomicIndexDataPointText)
+
+[//]: # (RETURN_TYPE:String)
+
+[//]: # (RETURN_TYPE_KIND:primitive)
+
+[//]: # (RETURN_TYPE_DOC:)
+
+[//]: # (OPERATION:getEconomicIndexDataPointText_v2)
+
+[//]: # (ENDPOINT:/indices/economic/{identifier}/data_point/{tag}/text)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getEconomicIndexDataPointText)
+
 <a name="getEconomicIndexDataPointText"></a>
-# **getEconomicIndexDataPointText**
+## **getEconomicIndexDataPointText**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getEconomicIndexDataPointText_v2)
+
+[//]: # (START_OVERVIEW)
+
 > String getEconomicIndexDataPointText(identifier, tag)
 
-Data Point (Text) for an Economic Index
+#### Data Point (Text) for an Economic Index
+
 
 Returns a text value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -296,7 +530,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -304,37 +538,77 @@ public class Main {
     String tag = "level"; // String | An Intrinio data tag ID or code-name
 
     try {
-        String result = indexApi.getEconomicIndexDataPointText(identifier, tag);
-        System.out.println(result);
+      String result = indexApi.getEconomicIndexDataPointText(identifier, tag);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getEconomicIndexDataPointText");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getEconomicIndexDataPointText");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+ **tag** | String| An Intrinio data tag ID or code-name | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 **String**
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getEconomicIndexHistoricalData)
+
+[//]: # (RETURN_TYPE:ApiResponseEconomicIndexHistoricalData)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseEconomicIndexHistoricalData.md)
+
+[//]: # (OPERATION:getEconomicIndexHistoricalData_v2)
+
+[//]: # (ENDPOINT:/indices/economic/{identifier}/historical_data/{tag})
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getEconomicIndexHistoricalData)
+
 <a name="getEconomicIndexHistoricalData"></a>
-# **getEconomicIndexHistoricalData**
+## **getEconomicIndexHistoricalData**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getEconomicIndexHistoricalData_v2)
+
+[//]: # (START_OVERVIEW)
+
 > ApiResponseEconomicIndexHistoricalData getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
-Historical Data for an Economic Index
+#### Historical Data for an Economic Index
+
 
 Returns historical values for the given &#x60;tag&#x60; and the Economic Index with the given &#x60;identifier&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -348,7 +622,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -362,41 +636,82 @@ public class Main {
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
-        ApiResponseEconomicIndexHistoricalData result = indexApi.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
-        System.out.println(result);
+      ApiResponseEconomicIndexHistoricalData result = indexApi.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getEconomicIndexHistoricalData");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getEconomicIndexHistoricalData");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag &lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags/economic&#39;&gt;reference&lt;/a&gt; |
- **type** | **String**| Filter by type, when applicable | [optional]
- **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
- **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
- **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+ **tag** | String| An Intrinio data tag &lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags/economic&#39;&gt;reference&lt;/a&gt; | &nbsp;
+ **type** | String| Filter by type, when applicable | [optional] &nbsp;
+ **startDate** | LocalDate| Get historical data on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Get historical data on or before this date | [optional] &nbsp;
+ **sortOrder** | String| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**ApiResponseEconomicIndexHistoricalData**](ApiResponseEconomicIndexHistoricalData.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getSicIndexById)
+
+[//]: # (RETURN_TYPE:SICIndex)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:SICIndex.md)
+
+[//]: # (OPERATION:getSicIndexById_v2)
+
+[//]: # (ENDPOINT:/indices/sic/{identifier})
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getSicIndexById)
+
 <a name="getSicIndexById"></a>
-# **getSicIndexById**
+## **getSicIndexById**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSicIndexById_v2)
+
+[//]: # (START_OVERVIEW)
+
 > SICIndex getSicIndexById(identifier)
 
-Lookup SIC Index
+#### Lookup SIC Index
+
+
+
+[//]: # (END_OVERVIEW)
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -410,43 +725,83 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
     String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
 
     try {
-        SICIndex result = indexApi.getSicIndexById(identifier);
-        System.out.println(result);
+      SICIndex result = indexApi.getSicIndexById(identifier);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getSicIndexById");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getSicIndexById");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**SICIndex**](SICIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getSicIndexDataPointNumber)
+
+[//]: # (RETURN_TYPE:BigDecimal)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:BigDecimal.md)
+
+[//]: # (OPERATION:getSicIndexDataPointNumber_v2)
+
+[//]: # (ENDPOINT:/indices/sic/{identifier}/data_point/{tag}/number)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getSicIndexDataPointNumber)
+
 <a name="getSicIndexDataPointNumber"></a>
-# **getSicIndexDataPointNumber**
+## **getSicIndexDataPointNumber**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSicIndexDataPointNumber_v2)
+
+[//]: # (START_OVERVIEW)
+
 > BigDecimal getSicIndexDataPointNumber(identifier, tag)
 
-Data Point (Number) for an SIC Index
+#### Data Point (Number) for an SIC Index
+
 
 Returns a numeric value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -460,7 +815,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -468,37 +823,77 @@ public class Main {
     String tag = "level"; // String | An Intrinio data tag ID or code-name
 
     try {
-        BigDecimal result = indexApi.getSicIndexDataPointNumber(identifier, tag);
-        System.out.println(result);
+      BigDecimal result = indexApi.getSicIndexDataPointNumber(identifier, tag);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getSicIndexDataPointNumber");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getSicIndexDataPointNumber");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+ **tag** | String| An Intrinio data tag ID or code-name | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**BigDecimal**](BigDecimal.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getSicIndexDataPointText)
+
+[//]: # (RETURN_TYPE:String)
+
+[//]: # (RETURN_TYPE_KIND:primitive)
+
+[//]: # (RETURN_TYPE_DOC:)
+
+[//]: # (OPERATION:getSicIndexDataPointText_v2)
+
+[//]: # (ENDPOINT:/indices/sic/{identifier}/data_point/{tag}/text)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getSicIndexDataPointText)
+
 <a name="getSicIndexDataPointText"></a>
-# **getSicIndexDataPointText**
+## **getSicIndexDataPointText**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSicIndexDataPointText_v2)
+
+[//]: # (START_OVERVIEW)
+
 > String getSicIndexDataPointText(identifier, tag)
 
-Data Point (Text) for an SIC Index
+#### Data Point (Text) for an SIC Index
+
 
 Returns a text value for the given &#x60;tag&#x60; for the SIC Index with the given &#x60;identifier&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -512,7 +907,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -520,37 +915,77 @@ public class Main {
     String tag = "level"; // String | An Intrinio data tag ID or code-name
 
     try {
-        String result = indexApi.getSicIndexDataPointText(identifier, tag);
-        System.out.println(result);
+      String result = indexApi.getSicIndexDataPointText(identifier, tag);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getSicIndexDataPointText");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getSicIndexDataPointText");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+ **tag** | String| An Intrinio data tag ID or code-name | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 **String**
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getSicIndexHistoricalData)
+
+[//]: # (RETURN_TYPE:ApiResponseSICIndexHistoricalData)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseSICIndexHistoricalData.md)
+
+[//]: # (OPERATION:getSicIndexHistoricalData_v2)
+
+[//]: # (ENDPOINT:/indices/sic/{identifier}/historical_data/{tag})
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getSicIndexHistoricalData)
+
 <a name="getSicIndexHistoricalData"></a>
-# **getSicIndexHistoricalData**
+## **getSicIndexHistoricalData**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSicIndexHistoricalData_v2)
+
+[//]: # (START_OVERVIEW)
+
 > ApiResponseSICIndexHistoricalData getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
-Historical Data for an SIC Index
+#### Historical Data for an SIC Index
+
 
 Returns historical values for the given &#x60;tag&#x60; and the SIC Index with the given &#x60;identifier&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -564,7 +999,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -578,41 +1013,82 @@ public class Main {
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
-        ApiResponseSICIndexHistoricalData result = indexApi.getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
-        System.out.println(result);
+      ApiResponseSICIndexHistoricalData result = indexApi.getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getSicIndexHistoricalData");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getSicIndexHistoricalData");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
- **type** | **String**| Filter by type, when applicable | [optional]
- **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
- **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
- **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+ **tag** | String| An Intrinio data tag ID or code-name | &nbsp;
+ **type** | String| Filter by type, when applicable | [optional] &nbsp;
+ **startDate** | LocalDate| Get historical data on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Get historical data on or before this date | [optional] &nbsp;
+ **sortOrder** | String| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**ApiResponseSICIndexHistoricalData**](ApiResponseSICIndexHistoricalData.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getStockMarketIndexById)
+
+[//]: # (RETURN_TYPE:StockMarketIndex)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:StockMarketIndex.md)
+
+[//]: # (OPERATION:getStockMarketIndexById_v2)
+
+[//]: # (ENDPOINT:/indices/stock_market/{identifier})
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getStockMarketIndexById)
+
 <a name="getStockMarketIndexById"></a>
-# **getStockMarketIndexById**
+## **getStockMarketIndexById**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockMarketIndexById_v2)
+
+[//]: # (START_OVERVIEW)
+
 > StockMarketIndex getStockMarketIndexById(identifier)
 
-Lookup Stock Market Index
+#### Lookup Stock Market Index
+
+
+
+[//]: # (END_OVERVIEW)
 
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -626,43 +1102,83 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
     String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
 
     try {
-        StockMarketIndex result = indexApi.getStockMarketIndexById(identifier);
-        System.out.println(result);
+      StockMarketIndex result = indexApi.getStockMarketIndexById(identifier);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getStockMarketIndexById");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getStockMarketIndexById");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**StockMarketIndex**](StockMarketIndex.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getStockMarketIndexDataPointNumber)
+
+[//]: # (RETURN_TYPE:BigDecimal)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:BigDecimal.md)
+
+[//]: # (OPERATION:getStockMarketIndexDataPointNumber_v2)
+
+[//]: # (ENDPOINT:/indices/stock_market/{identifier}/data_point/{tag}/number)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getStockMarketIndexDataPointNumber)
+
 <a name="getStockMarketIndexDataPointNumber"></a>
-# **getStockMarketIndexDataPointNumber**
+## **getStockMarketIndexDataPointNumber**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockMarketIndexDataPointNumber_v2)
+
+[//]: # (START_OVERVIEW)
+
 > BigDecimal getStockMarketIndexDataPointNumber(identifier, tag)
 
-Data Point (Number) for Stock Market Index
+#### Data Point (Number) for Stock Market Index
+
 
 Returns a numeric value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -676,7 +1192,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -684,37 +1200,77 @@ public class Main {
     String tag = "level"; // String | An Intrinio data tag ID or code-name
 
     try {
-        BigDecimal result = indexApi.getStockMarketIndexDataPointNumber(identifier, tag);
-        System.out.println(result);
+      BigDecimal result = indexApi.getStockMarketIndexDataPointNumber(identifier, tag);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getStockMarketIndexDataPointNumber");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getStockMarketIndexDataPointNumber");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+ **tag** | String| An Intrinio data tag ID or code-name | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**BigDecimal**](BigDecimal.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getStockMarketIndexDataPointText)
+
+[//]: # (RETURN_TYPE:String)
+
+[//]: # (RETURN_TYPE_KIND:primitive)
+
+[//]: # (RETURN_TYPE_DOC:)
+
+[//]: # (OPERATION:getStockMarketIndexDataPointText_v2)
+
+[//]: # (ENDPOINT:/indices/stock_market/{identifier}/data_point/{tag}/text)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getStockMarketIndexDataPointText)
+
 <a name="getStockMarketIndexDataPointText"></a>
-# **getStockMarketIndexDataPointText**
+## **getStockMarketIndexDataPointText**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockMarketIndexDataPointText_v2)
+
+[//]: # (START_OVERVIEW)
+
 > String getStockMarketIndexDataPointText(identifier, tag)
 
-Data Point (Text) for Stock Market Index
+#### Data Point (Text) for Stock Market Index
+
 
 Returns a text value for the given &#x60;tag&#x60; for the Stock Market Index with the given &#x60;identifier&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -728,7 +1284,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -736,37 +1292,77 @@ public class Main {
     String tag = "level"; // String | An Intrinio data tag ID or code-name
 
     try {
-        String result = indexApi.getStockMarketIndexDataPointText(identifier, tag);
-        System.out.println(result);
+      String result = indexApi.getStockMarketIndexDataPointText(identifier, tag);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getStockMarketIndexDataPointText");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getStockMarketIndexDataPointText");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+ **tag** | String| An Intrinio data tag ID or code-name | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 **String**
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getStockMarketIndexHistoricalData)
+
+[//]: # (RETURN_TYPE:ApiResponseStockMarketIndexHistoricalData)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockMarketIndexHistoricalData.md)
+
+[//]: # (OPERATION:getStockMarketIndexHistoricalData_v2)
+
+[//]: # (ENDPOINT:/indices/stock_market/{identifier}/historical_data/{tag})
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getStockMarketIndexHistoricalData)
+
 <a name="getStockMarketIndexHistoricalData"></a>
-# **getStockMarketIndexHistoricalData**
+## **getStockMarketIndexHistoricalData**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockMarketIndexHistoricalData_v2)
+
+[//]: # (START_OVERVIEW)
+
 > ApiResponseStockMarketIndexHistoricalData getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage)
 
-Historical Data for Stock Market Index
+#### Historical Data for Stock Market Index
+
 
 Returns historical values for the given &#x60;tag&#x60; and the Stock Market Index with the given &#x60;identifier&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -780,7 +1376,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -794,43 +1390,83 @@ public class Main {
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
-        ApiResponseStockMarketIndexHistoricalData result = indexApi.getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
-        System.out.println(result);
+      ApiResponseStockMarketIndexHistoricalData result = indexApi.getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#getStockMarketIndexHistoricalData");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#getStockMarketIndexHistoricalData");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | **String**| An Index Identifier (symbol, Intrinio ID) |
- **tag** | **String**| An Intrinio data tag ID or code-name |
- **type** | **String**| Filter by type, when applicable | [optional]
- **startDate** | **LocalDate**| Get historical data on or after this date | [optional]
- **endDate** | **LocalDate**| Get historical data on or before this date | [optional]
- **sortOrder** | **String**| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc]
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
- **nextPage** | **String**| Gets the next page of data from a previous API call | [optional]
+ **identifier** | String| An Index Identifier (symbol, Intrinio ID) | &nbsp;
+ **tag** | String| An Intrinio data tag ID or code-name | &nbsp;
+ **type** | String| Filter by type, when applicable | [optional] &nbsp;
+ **startDate** | LocalDate| Get historical data on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Get historical data on or before this date | [optional] &nbsp;
+ **sortOrder** | String| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**ApiResponseStockMarketIndexHistoricalData**](ApiResponseStockMarketIndexHistoricalData.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:searchEconomicIndices)
+
+[//]: # (RETURN_TYPE:ApiResponseEconomicIndicesSearch)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseEconomicIndicesSearch.md)
+
+[//]: # (OPERATION:searchEconomicIndices_v2)
+
+[//]: # (ENDPOINT:/indices/economic/search)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#searchEconomicIndices)
+
 <a name="searchEconomicIndices"></a>
-# **searchEconomicIndices**
+## **searchEconomicIndices**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchEconomicIndices_v2)
+
+[//]: # (START_OVERVIEW)
+
 > ApiResponseEconomicIndicesSearch searchEconomicIndices(query, pageSize)
 
-Search Economic Indices
+#### Search Economic Indices
+
 
 Searches for indices using the text in &#x60;query&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -844,7 +1480,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -852,37 +1488,77 @@ public class Main {
     Integer pageSize = 100; // Integer | The number of results to return
 
     try {
-        ApiResponseEconomicIndicesSearch result = indexApi.searchEconomicIndices(query, pageSize);
-        System.out.println(result);
+      ApiResponseEconomicIndicesSearch result = indexApi.searchEconomicIndices(query, pageSize);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#searchEconomicIndices");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#searchEconomicIndices");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | **String**| Search query |
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
+ **query** | String| Search query | &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**ApiResponseEconomicIndicesSearch**](ApiResponseEconomicIndicesSearch.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:searchSicIndices)
+
+[//]: # (RETURN_TYPE:ApiResponseSICIndicesSearch)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseSICIndicesSearch.md)
+
+[//]: # (OPERATION:searchSicIndices_v2)
+
+[//]: # (ENDPOINT:/indices/sic/search)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#searchSicIndices)
+
 <a name="searchSicIndices"></a>
-# **searchSicIndices**
+## **searchSicIndices**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchSicIndices_v2)
+
+[//]: # (START_OVERVIEW)
+
 > ApiResponseSICIndicesSearch searchSicIndices(query, pageSize)
 
-Search SIC Indices
+#### Search SIC Indices
+
 
 Searches for indices using the text in &#x60;query&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -896,7 +1572,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -904,37 +1580,77 @@ public class Main {
     Integer pageSize = 100; // Integer | The number of results to return
 
     try {
-        ApiResponseSICIndicesSearch result = indexApi.searchSicIndices(query, pageSize);
-        System.out.println(result);
+      ApiResponseSICIndicesSearch result = indexApi.searchSicIndices(query, pageSize);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#searchSicIndices");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#searchSicIndices");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | **String**| Search query |
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
+ **query** | String| Search query | &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**ApiResponseSICIndicesSearch**](ApiResponseSICIndicesSearch.md)
 
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:searchStockMarketsIndices)
+
+[//]: # (RETURN_TYPE:ApiResponseStockMarketIndicesSearch)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockMarketIndicesSearch.md)
+
+[//]: # (OPERATION:searchStockMarketsIndices_v2)
+
+[//]: # (ENDPOINT:/indices/stock_market/search)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#searchStockMarketsIndices)
+
 <a name="searchStockMarketsIndices"></a>
-# **searchStockMarketsIndices**
+## **searchStockMarketsIndices**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchStockMarketsIndices_v2)
+
+[//]: # (START_OVERVIEW)
+
 > ApiResponseStockMarketIndicesSearch searchStockMarketsIndices(query, pageSize)
 
-Search Stock Market Indices
+#### Search Stock Market Indices
+
 
 Searches for indices using the text in &#x60;query&#x60;
 
+[//]: # (END_OVERVIEW)
+
 ### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
 ```java
 import com.intrinio.api.*;
 import com.intrinio.models.*;
@@ -948,7 +1664,7 @@ public class Main {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR API KEY");
+    auth.setApiKey("YOUR_API_KEY");
 
     IndexApi indexApi = new IndexApi();
 
@@ -956,25 +1672,35 @@ public class Main {
     Integer pageSize = 100; // Integer | The number of results to return
 
     try {
-        ApiResponseStockMarketIndicesSearch result = indexApi.searchStockMarketsIndices(query, pageSize);
-        System.out.println(result);
+      ApiResponseStockMarketIndicesSearch result = indexApi.searchStockMarketsIndices(query, pageSize);
+      System.out.println(result);
     } catch (ApiException e) {
-        System.err.println("Exception when calling IndexApi#searchStockMarketsIndices");
-        e.printStackTrace();
+      System.err.println("Exception when calling IndexApi#searchStockMarketsIndices");
+      e.printStackTrace();
     }
   
   }
 }
 ```
 
+[//]: # (END_CODE_EXAMPLE)
+
 ### Parameters
+
+[//]: # (START_PARAMETERS)
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query** | **String**| Search query |
- **pageSize** | **Integer**| The number of results to return | [optional] [default to 100]
+ **query** | String| Search query | &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
 
 ### Return type
 
 [**ApiResponseStockMarketIndicesSearch**](ApiResponseStockMarketIndicesSearch.md)
+
+[//]: # (END_OPERATION)
 

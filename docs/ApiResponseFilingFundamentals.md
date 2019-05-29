@@ -1,9 +1,9 @@
 
-[//]: # (CLASS:ApiResponseCompanyFundamentals)
+[//]: # (CLASS:ApiResponseFilingFundamentals)
 
 [//]: # (KIND:object)
 
-### ApiResponseCompanyFundamentals
+### ApiResponseFilingFundamentals
 
 #### Properties
 
@@ -12,7 +12,7 @@
 Name | Type | Description
 ------------ | ------------- | -------------
 **fundamentals** | [**List&lt;FundamentalSummary&gt;**](FundamentalSummary.md) |  &nbsp;
-**company** | [**CompanySummary**](CompanySummary.md) |  &nbsp;
+**filing** | [**FilingSummary**](FilingSummary.md) |  &nbsp;
 **nextPage** | String | The token required to request the next page of the data &nbsp;
 
 [//]: # (END_DEFINITION)
@@ -21,7 +21,7 @@ Name | Type | Description
 [//]: # (CONTAINED_CLASS:FundamentalSummary)
 
 
-[//]: # (CONTAINED_CLASS:CompanySummary)
+[//]: # (CONTAINED_CLASS:FilingSummary)
 
 
 

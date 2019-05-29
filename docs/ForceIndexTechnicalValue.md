@@ -1,11 +1,25 @@
 
-# ForceIndexTechnicalValue
+[//]: # (CLASS:ForceIndexTechnicalValue)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation |  [optional]
-**fi** | **Float** | The Force Index calculation value |  [optional]
+[//]: # (KIND:object)
+
+### ForceIndexTechnicalValue
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation &nbsp;
+**fi** | Float | The Force Index calculation value &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
 
 
 

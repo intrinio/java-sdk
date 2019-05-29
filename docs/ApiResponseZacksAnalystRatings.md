@@ -1,11 +1,25 @@
 
-# ApiResponseZacksAnalystRatings
+[//]: # (CLASS:ApiResponseZacksAnalystRatings)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**analystRatings** | [**List&lt;ZacksAnalystRating&gt;**](ZacksAnalystRating.md) |  |  [optional]
-**nextPage** | **String** | The token required to request the next page of the data |  [optional]
+[//]: # (KIND:object)
+
+### ApiResponseZacksAnalystRatings
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**analystRatings** | [**List&lt;ZacksAnalystRating&gt;**](ZacksAnalystRating.md) |  &nbsp;
+**nextPage** | String | The token required to request the next page of the data &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:ZacksAnalystRating)
+
+
 
 
 

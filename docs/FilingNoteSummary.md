@@ -1,12 +1,26 @@
 
-# FilingNoteSummary
+[//]: # (CLASS:FilingNoteSummary)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **String** | The Intrinio ID of the note |  [optional]
-**xbrlTag** | **String** | The XBRL tag used for the note by the filing entity |  [optional]
-**filing** | [**FilingNoteFiling**](FilingNoteFiling.md) |  |  [optional]
+[//]: # (KIND:object)
+
+### FilingNoteSummary
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**id** | String | The Intrinio ID of the note &nbsp;
+**xbrlTag** | String | The XBRL tag used for the note by the filing entity &nbsp;
+**filing** | [**FilingNoteFiling**](FilingNoteFiling.md) |  &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:FilingNoteFiling)
+
+
 
 
 

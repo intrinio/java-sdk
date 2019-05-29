@@ -1,23 +1,56 @@
 
-# DividendRecord
+[//]: # (CLASS:DividendRecord)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**exDividend** | [**BigDecimal**](BigDecimal.md) | Amount of dividend in US dollars |  [optional]
-**currency** | **String** | The 3-digit currency code the dividend amount was reported in |  [optional]
-**announcementDate** | [**LocalDate**](LocalDate.md) | Date dividend was announced |  [optional]
-**recordDate** | [**LocalDate**](LocalDate.md) | Date before which holders-of-record will receive the dividend |  [optional]
-**payDate** | [**LocalDate**](LocalDate.md) | Date the divdiend was paid |  [optional]
-**frequency** | **String** | Identifies payment frequency of announced dividend |  [optional]
-**status** | [**StatusEnum**](#StatusEnum) | Status of the dividend |  [optional]
-**forwardYield** | [**BigDecimal**](BigDecimal.md) | The forward dividend yield |  [optional]
-**forwardRate** | [**BigDecimal**](BigDecimal.md) | The forward dividend rate |  [optional]
-**security** | [**SecuritySummary**](SecuritySummary.md) |  |  [optional]
+[//]: # (KIND:object)
+
+### DividendRecord
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**exDividend** | [**BigDecimal**](BigDecimal.md) | Amount of dividend in US dollars &nbsp;
+**currency** | String | The 3-digit currency code the dividend amount was reported in &nbsp;
+**announcementDate** | [**LocalDate**](LocalDate.md) | Date dividend was announced &nbsp;
+**recordDate** | [**LocalDate**](LocalDate.md) | Date before which holders-of-record will receive the dividend &nbsp;
+**payDate** | [**LocalDate**](LocalDate.md) | Date the divdiend was paid &nbsp;
+**frequency** | String | Identifies payment frequency of announced dividend &nbsp;
+**status** | StatusEnum | Status of the dividend &nbsp;
+**forwardYield** | [**BigDecimal**](BigDecimal.md) | The forward dividend yield &nbsp;
+**forwardRate** | [**BigDecimal**](BigDecimal.md) | The forward dividend rate &nbsp;
+**security** | [**SecuritySummary**](SecuritySummary.md) |  &nbsp;
+
+[//]: # (END_DEFINITION)
 
 
-<a name="StatusEnum"></a>
-## Enum: StatusEnum
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:SecuritySummary)
+
+
+
+<br/>
+
+#### Enum: StatusEnum
+
 Name | Value
 ---- | -----
 P | &quot;P&quot;

@@ -1,11 +1,25 @@
 
-# ApiResponseSecurities
+[//]: # (CLASS:ApiResponseSecurities)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**securities** | [**List&lt;SecuritySummary&gt;**](SecuritySummary.md) |  |  [optional]
-**nextPage** | **String** | The token required to request the next page of the data |  [optional]
+[//]: # (KIND:object)
+
+### ApiResponseSecurities
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**securities** | [**List&lt;SecuritySummary&gt;**](SecuritySummary.md) |  &nbsp;
+**nextPage** | String | The token required to request the next page of the data &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:SecuritySummary)
+
+
 
 
 

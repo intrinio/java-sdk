@@ -1,10 +1,24 @@
 
-# ApiResponseEconomicIndicesSearch
+[//]: # (CLASS:ApiResponseEconomicIndicesSearch)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**indices** | [**List&lt;EconomicIndexSummary&gt;**](EconomicIndexSummary.md) |  |  [optional]
+[//]: # (KIND:object)
+
+### ApiResponseEconomicIndicesSearch
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**indices** | [**List&lt;EconomicIndexSummary&gt;**](EconomicIndexSummary.md) |  &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:EconomicIndexSummary)
+
+
 
 
 

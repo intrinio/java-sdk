@@ -1,11 +1,28 @@
 
-# OptionChain
+[//]: # (CLASS:OptionChain)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**option** | [**Option**](Option.md) |  |  [optional]
-**price** | [**OptionPrice**](OptionPrice.md) |  |  [optional]
+[//]: # (KIND:object)
+
+### OptionChain
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**option** | [**Option**](Option.md) |  &nbsp;
+**price** | [**OptionPrice**](OptionPrice.md) |  &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:Option)
+
+
+[//]: # (CONTAINED_CLASS:OptionPrice)
+
+
 
 
 

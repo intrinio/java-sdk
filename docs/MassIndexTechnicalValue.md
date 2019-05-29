@@ -1,11 +1,25 @@
 
-# MassIndexTechnicalValue
+[//]: # (CLASS:MassIndexTechnicalValue)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation |  [optional]
-**mi** | **Float** | The Mass Index calculation value |  [optional]
+[//]: # (KIND:object)
+
+### MassIndexTechnicalValue
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation &nbsp;
+**mi** | Float | The Mass Index calculation value &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
 
 
 

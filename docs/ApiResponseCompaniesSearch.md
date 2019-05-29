@@ -1,10 +1,24 @@
 
-# ApiResponseCompaniesSearch
+[//]: # (CLASS:ApiResponseCompaniesSearch)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**companies** | [**List&lt;CompanySummary&gt;**](CompanySummary.md) |  |  [optional]
+[//]: # (KIND:object)
+
+### ApiResponseCompaniesSearch
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**companies** | [**List&lt;CompanySummary&gt;**](CompanySummary.md) |  &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:CompanySummary)
+
+
 
 
 

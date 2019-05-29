@@ -1,13 +1,33 @@
 
-# ApiResponseSecurityTripleExponentialAverage
+[//]: # (CLASS:ApiResponseSecurityTripleExponentialAverage)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**technicals** | [**List&lt;TripleExponentialAverageTechnicalValue&gt;**](TripleExponentialAverageTechnicalValue.md) |  |  [optional]
-**indicator** | [**TechnicalIndicator**](TechnicalIndicator.md) | The name and symbol of the technical indicator |  [optional]
-**security** | [**SecuritySummary**](SecuritySummary.md) | The Security of the Stock Price |  [optional]
-**nextPage** | **String** | The token required to request the next page of the data |  [optional]
+[//]: # (KIND:object)
+
+### ApiResponseSecurityTripleExponentialAverage
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**technicals** | [**List&lt;TripleExponentialAverageTechnicalValue&gt;**](TripleExponentialAverageTechnicalValue.md) |  &nbsp;
+**indicator** | [**TechnicalIndicator**](TechnicalIndicator.md) | The name and symbol of the technical indicator &nbsp;
+**security** | [**SecuritySummary**](SecuritySummary.md) | The Security of the Stock Price &nbsp;
+**nextPage** | String | The token required to request the next page of the data &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:TripleExponentialAverageTechnicalValue)
+
+
+[//]: # (CONTAINED_CLASS:TechnicalIndicator)
+
+
+[//]: # (CONTAINED_CLASS:SecuritySummary)
+
+
 
 
 

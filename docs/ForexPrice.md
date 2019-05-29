@@ -1,19 +1,30 @@
 
-# ForexPrice
+[//]: # (CLASS:ForexPrice)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**occurredAt** | **String** | The timestamp of the beginning of the timeframe. The open prices would be at this time, while close prices would be at this time plus the timeframe. |  [optional]
-**openBid** | **Float** | Open bid |  [optional]
-**highBid** | **Float** | High bid |  [optional]
-**lowBid** | **Float** | Low bid |  [optional]
-**closeBid** | **Float** | Close bid |  [optional]
-**openAsk** | **Float** | Open ask |  [optional]
-**highAsk** | **Float** | High ask |  [optional]
-**lowAsk** | **Float** | Low ask |  [optional]
-**closeAsk** | **Float** | Close ask |  [optional]
-**totalTicks** | **Integer** | Total ticks |  [optional]
+[//]: # (KIND:object)
+
+### ForexPrice
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**occurredAt** | String | The timestamp of the beginning of the timeframe. The open prices would be at this time, while close prices would be at this time plus the timeframe. &nbsp;
+**openBid** | Float | Open bid &nbsp;
+**highBid** | Float | High bid &nbsp;
+**lowBid** | Float | Low bid &nbsp;
+**closeBid** | Float | Close bid &nbsp;
+**openAsk** | Float | Open ask &nbsp;
+**highAsk** | Float | High ask &nbsp;
+**lowAsk** | Float | Low ask &nbsp;
+**closeAsk** | Float | Close ask &nbsp;
+**totalTicks** | Integer | Total ticks &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
 
 
 

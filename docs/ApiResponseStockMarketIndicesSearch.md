@@ -1,10 +1,24 @@
 
-# ApiResponseStockMarketIndicesSearch
+[//]: # (CLASS:ApiResponseStockMarketIndicesSearch)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**indices** | [**List&lt;StockMarketIndexSummary&gt;**](StockMarketIndexSummary.md) |  |  [optional]
+[//]: # (KIND:object)
+
+### ApiResponseStockMarketIndicesSearch
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**indices** | [**List&lt;StockMarketIndexSummary&gt;**](StockMarketIndexSummary.md) |  &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:StockMarketIndexSummary)
+
+
 
 
 

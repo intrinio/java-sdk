@@ -1,11 +1,25 @@
 
-# WilliamsRTechnicalValue
+[//]: # (CLASS:WilliamsRTechnicalValue)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation |  [optional]
-**wr** | **Float** | The Willaims %R calculation value |  [optional]
+[//]: # (KIND:object)
+
+### WilliamsRTechnicalValue
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation &nbsp;
+**wr** | Float | The Willaims %R calculation value &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
 
 
 

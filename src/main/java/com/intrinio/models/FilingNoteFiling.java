@@ -55,10 +55,10 @@ public class FilingNoteFiling {
   }
 
    /**
-   * The type of report (10-Q, 10-K, etc) filed
+   * The filing &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;
    * @return reportType
   **/
-  @ApiModelProperty(value = "The type of report (10-Q, 10-K, etc) filed")
+  @ApiModelProperty(value = "The filing <a href=\"/documentation/sec_filing_report_types\" target=\"_blank\">report type</a>")
   public String getReportType() {
     return reportType;
   }

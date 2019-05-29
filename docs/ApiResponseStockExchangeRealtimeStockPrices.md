@@ -1,11 +1,28 @@
 
-# ApiResponseStockExchangeRealtimeStockPrices
+[//]: # (CLASS:ApiResponseStockExchangeRealtimeStockPrices)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**stockPrices** | [**List&lt;RealtimeStockPrice&gt;**](RealtimeStockPrice.md) | The realtime stock prices for all Securities traded on the Stock Exchange |  [optional]
-**stockExchange** | [**StockExchange**](StockExchange.md) | The Stock Exchange resolved from the given identifier |  [optional]
+[//]: # (KIND:object)
+
+### ApiResponseStockExchangeRealtimeStockPrices
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**stockPrices** | [**List&lt;RealtimeStockPrice&gt;**](RealtimeStockPrice.md) | The realtime stock prices for all Securities traded on the Stock Exchange &nbsp;
+**stockExchange** | [**StockExchange**](StockExchange.md) | The Stock Exchange resolved from the given identifier &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:RealtimeStockPrice)
+
+
+[//]: # (CONTAINED_CLASS:StockExchange)
+
+
 
 
 

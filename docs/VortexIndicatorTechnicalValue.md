@@ -1,12 +1,26 @@
 
-# VortexIndicatorTechnicalValue
+[//]: # (CLASS:VortexIndicatorTechnicalValue)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation |  [optional]
-**negativeVi** | **Float** | The negative Vortex Indicator value |  [optional]
-**positiveVi** | **Float** | The positive Vortex Indicator value |  [optional]
+[//]: # (KIND:object)
+
+### VortexIndicatorTechnicalValue
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation &nbsp;
+**negativeVi** | Float | The negative Vortex Indicator value &nbsp;
+**positiveVi** | Float | The positive Vortex Indicator value &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
 
 
 

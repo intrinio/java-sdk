@@ -1,11 +1,25 @@
 
-# CommodityChannelIndexTechnicalValue
+[//]: # (CLASS:CommodityChannelIndexTechnicalValue)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation |  [optional]
-**cci** | **Float** | The Commodity Channel Index calculation value |  [optional]
+[//]: # (KIND:object)
+
+### CommodityChannelIndexTechnicalValue
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation &nbsp;
+**cci** | Float | The Commodity Channel Index calculation value &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
 
 
 

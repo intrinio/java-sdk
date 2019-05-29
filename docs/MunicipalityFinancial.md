@@ -1,51 +1,188 @@
 
-# MunicipalityFinancial
+[//]: # (CLASS:MunicipalityFinancial)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**fiscalYear** | [**BigDecimal**](BigDecimal.md) | The fiscal year from which the financial data came from |  [optional]
-**currentAssets** | [**BigDecimal**](BigDecimal.md) | Government-wide holdings that can be liquidated on short notice |  [optional]
-**nonCurrentAssets** | [**BigDecimal**](BigDecimal.md) | Government-wide holdings not intended for near-term liquidation |  [optional]
-**deferredOutflows** | [**BigDecimal**](BigDecimal.md) | Government-wide consumptions of net position applicable to a future year |  [optional]
-**totalAssets** | [**BigDecimal**](BigDecimal.md) | Government-wide holdings |  [optional]
-**totalAssetsPlusDeferredOutflows** | [**BigDecimal**](BigDecimal.md) | Sum of government-wide total assets and deferred outflows of resources |  [optional]
-**currentLiabilities** | [**BigDecimal**](BigDecimal.md) | Government-wide liabilities that typically become due within one year |  [optional]
-**currentPortionOfLongTermDebt** | [**BigDecimal**](BigDecimal.md) | Government-wide portion of long term obligations, such as bond and loan debt coming due within the next year |  [optional]
-**netPensionLiability** | [**BigDecimal**](BigDecimal.md) | Government-wide liability for employee pensions net of the fiduciary net position of pension plans in which the government has an interest |  [optional]
-**netOpebLiability** | [**BigDecimal**](BigDecimal.md) | Government-wide liability for other postemployment benefits (OPEB). These are benefits (such as death benefits, life insurance, disability, and long-term care) that are paid in the period after employment and that are provided separately from a pension plan, as well as healthcare benefits paid in the period after employment, regardless of the manner in which they are provided. OPEB does not include termination benefits or termination payments for sick leave. Liability is reported net of any OPEB assets the government may control. |  [optional]
-**allOtherLongTermDebt** | [**BigDecimal**](BigDecimal.md) | Government-wide liabilities not elsewhere classified |  [optional]
-**totalLiabilities** | [**BigDecimal**](BigDecimal.md) | The sum of the Municipality&#39;s all other long term debt, net open liability, net pension liability, and current portion of long term debt |  [optional]
-**deferredInflows** | [**BigDecimal**](BigDecimal.md) | Government-wide acquisitions of net position applicable to a future year |  [optional]
-**totalLiabilitiesPlusDeferredInflows** | [**BigDecimal**](BigDecimal.md) | Sum of government-wide liabilities and deferred inflows of resources |  [optional]
-**totalNetPosition** | [**BigDecimal**](BigDecimal.md) | Government-wide assets and deferred outflows less government-wide liabilities and deferred inflows |  [optional]
-**totalUnrestrictedNetPosition** | [**BigDecimal**](BigDecimal.md) | Net amount of government-wide assets, deferred outflows of resources, liabilities, and deferred inflows of resources that are not included in the determination of net investment in capital assets or the restricted components of net position |  [optional]
-**totalExpenses** | [**BigDecimal**](BigDecimal.md) | Decreases in net position that occurred during the past year, government-wide |  [optional]
-**chargesForServices** | [**BigDecimal**](BigDecimal.md) | Charges for services is the term used for a broad category of program revenues that arise from charges to customers, applicants, or others who purchase, use, or directly benefit from the goods, services, or privileges provided, or are otherwise directly affected by the services. Revenues in this category include fees charged for specific services, such as water use or garbage collection; licenses and permits, such as dog licenses, liquor licenses, and building permits; operating special assessments, such as for street cleaning or special street lighting; and any other amounts charged to service recipients. Fines and forfeitures are also included in this category because they result from direct charges to those who are otherwise directly affected by a program or service, even though they receive no benefit. Payments from other governments for goods or services should be reported in this category. |  [optional]
-**operatingGrantsAndContributions** | [**BigDecimal**](BigDecimal.md) | Program-specific grants and contributions - includes revenues arising from mandatory and voluntary nonexchange transactions with other governments, organizations, or individuals that are restricted for use in a particular program. Some grants and contributions consist of capital assets or resources that are restricted for capital purposes—to purchase, construct, or renovate capital assets associated with a specific program. These should be reported separately from grants and contributions that may be used either for operating expenses or for capital expenditures of the program at the discretion of the reporting government. These categories of program revenue are specifically attributable to a program and reduce the net expense of that program to the reporting government. For example, a state may provide an operating grant to a county sheriff&#39;s department for a drug-awareness-and-enforcement program. |  [optional]
-**capitalGrantsAndContributions** | [**BigDecimal**](BigDecimal.md) | Program-specific grants and contributions - includes revenues arising from mandatory and voluntary nonexchange transactions with other governments, organizations, or individuals that are restricted for use in a particular program. Some grants and contributions consist of capital assets or resources that are restricted for capital purposes—to purchase, construct, or renovate capital assets associated with a specific program. These should be reported separately from grants and contributions that may be used either for operating expenses or for capital expenditures of the program at the discretion of the reporting government. These categories of program revenue are specifically attributable to a program and reduce the net expense of that program to the reporting government. For example, a state may provide a capital grant to finance construction of a new jail. |  [optional]
-**generalRevenues** | [**BigDecimal**](BigDecimal.md) | All revenues are general revenues unless they are required to be reported as program revenues. All taxes, even those that are levied for a specific purpose, are general revenues and should be reported by type of tax—for example, sales tax, property tax, franchise tax, income tax. All other nontax revenues (including interest, grants, and contributions) that do not meet the criteria to be reported as program revenues should also be reported as general revenues. General revenues should be reported after total net expense of the government&#39;s functions. |  [optional]
-**otherRevenues** | [**BigDecimal**](BigDecimal.md) | Government-wide revenues not elsewhere classified |  [optional]
-**totalRevenues** | [**BigDecimal**](BigDecimal.md) | Increases in net position that occurred during the past year, government-wide |  [optional]
-**changeInNetAssets** | [**BigDecimal**](BigDecimal.md) | Difference between the government&#39;s net position at the end of the fiscal year and the government&#39;s net position at the beginning of the fiscal year |  [optional]
-**nonSpendableGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | The portion of general fund balance classified as nonspendable. The nonspendable fund balance classification includes amounts that cannot be spent because they are either (a) not in spendable form or (b) legally or contractually required to be maintained intact. The “not in spendable form” criterion includes items that are not expected to be converted to cash, for example, inventories and prepaid amounts. It also includes the long-term amount of loans and notes receivable, as well as property acquired for resale. However, if the use of the proceeds from the collection of those receivables or from the sale of those properties is restricted, committed, or assigned, then they should be included in the appropriate fund balance classification (restricted, committed, or assigned), rather than nonspendable fund balance. The corpus (or principal) of a permanent fund is an example of an amount that is legally or contractually required to be maintained intact. |  [optional]
-**restrictedGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | The portion of general fund balance classified as restricted. Fund balance should be reported as restricted when constraints placed on the use of resources are either (a) Externally imposed by creditors (such as through debt covenants), grantors, contributors, or laws or regulations of other governments or (b) Imposed by law through constitutional provisions or enabling legislation. |  [optional]
-**committedGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | The portion of general fund balance classified as committed. Amounts that can only be used for specific purposes pursuant to constraints imposed by formal action of the government’s highest level of decision-making authority should be reported as committed fund balance. Those committed amounts cannot be used for any other purpose unless the government removes or changes the specified use by taking the same type of action (for example, legislation, resolution, ordinance) it employed to previously commit those amounts. The authorization specifying the purposes for which amounts can be used should have the consent of both the legislative and executive branches of the government, if applicable. Committed fund balance also should incorporate contractual obligations to the extent that existing resources in the fund have been specifically committed for use in satisfying those contractual requirements. |  [optional]
-**unassignedGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | The portion of general fund balance classified as unassigned. Unassigned fund balance is the residual classification for the general fund. This classification represents fund balance that has not been assigned to other funds and that has not been restricted, committed, or assigned to specific purposes within the general fund. The general fund should be the only fund that reports a positive unassigned fund balance amount. In other governmental funds, if expenditures incurred for specific purposes exceeded the amounts restricted, committed, or assigned to those purposes, it may be necessary to report a negative unassigned fund balance. |  [optional]
-**assignedGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | The portion of general fund balance classified as assigned. Amounts that are constrained by the government’s intent to be used for specific purposes, but are neither restricted nor committed, should be reported as assigned fund balance, except for stabilization arrangements.. Intent should be expressed by (a) the governing body itself or (b) a body (a budget or finance committee, for example) or official to which the governing body has delegated the authority to assign amounts to be used for specific purposes. |  [optional]
-**totalGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | General fund balance in all classifications. Fund balance is the difference between governmental fund assets and deferred outflows of resources, and liabilities and deferred inflows of resources. It is sometimes referred to as fund equity. The general fund is used to account for and report all financial resources not accounted for and reported in another governmental fund. |  [optional]
-**nonSpendableGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of fund balances that are classified as nonspendable. The nonspendable fund balance classification includes amounts that cannot be spent because they are either (a) not in spendable form or (b) legally or contractually required to be maintained intact. The “not in spendable form” criterion includes items that are not expected to be converted to cash, for example, inventories and prepaid amounts. It also includes the long-term amount of loans and notes receivable, as well as property acquired for resale. However, if the use of the proceeds from the collection of those receivables or from the sale of those properties is restricted, committed, or assigned, then they should be included in the appropriate fund balance classification (restricted, committed, or assigned), rather than nonspendable fund balance. |  [optional]
-**restrictedGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of fund balances that are classified as restricted. Fund balance should be reported as restricted when constraints placed on the use of resources are either (a) Externally imposed by creditors (such as through debt covenants), grantors, contributors, or laws or regulations of other governments; or (b) Imposed by law through constitutional provisions or enabling legislation. |  [optional]
-**committedGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of fund balances that are classified as committed. Amounts that can only be used for specific purposes pursuant to constraints imposed by formal action of the government’s highest level of decision-making authority should be reported as committed fund balance. Those committed amounts cannot be used for any other purpose unless the government removes or changes the specified use by taking the same type of action (for example, legislation, resolution, ordinance) it employed to previously commit those amounts. The authorization specifying the purposes for which amounts can be used should have the consent of both the legislative and executive branches of the government, if applicable. Committed fund balance also should incorporate contractual obligations to the extent that existing resources in the fund have been specifically committed for use in satisfying those contractual requirements. |  [optional]
-**unassignedGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of fund balances that are classified as unassigned. Unassigned fund balance is the residual classification for the general fund. This classification represents fund balance that has not been assigned to other funds and that has not been restricted, committed, or assigned to specific purposes within the general fund. The general fund should be the only fund that reports a positive unassigned fund balance amount. In other governmental funds, if expenditures incurred for specific purposes exceeded the amounts restricted, committed, or assigned to those purposes, it may be necessary to report a negative unassigned fund balance. |  [optional]
-**assignedGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of fund balances that are classified as assigned. Amounts that are constrained by the government’s intent to be used for specific purposes, but are neither restricted nor committed, should be reported as assigned fund balance, except for stabilization arrangements.. Intent should be expressed by (a) the governing body itself or (b) a body (a budget or finance committee, for example) or official to which the governing body has delegated the authority to assign amounts to be used for specific purposes. |  [optional]
-**totalGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of all fund balances in any classification. Fund balance is the difference between governmental fund assets and deferred outflows of resources, and liabilities and deferred inflows of resources. It is sometimes referred to as fund equity. Governmental funds are used to account for general government activities that are financed primarily through taxes, intergovernmental revenues, and other nonexchange revenues. |  [optional]
-**generalFundRevenues** | [**BigDecimal**](BigDecimal.md) | Increases in financial resources attributable to the general fund. The general fund is used to account for and report all financial resources not accounted for and reported in another governmental fund. |  [optional]
-**generalFundExpenditures** | [**BigDecimal**](BigDecimal.md) | Decreases in financial resources attributable to the general fund. The general fund is used to account for and report all financial resources not accounted for and reported in another governmental fund. |  [optional]
-**generalFundRevenuesOverUnderExpenditure** | [**BigDecimal**](BigDecimal.md) | Difference between general fund revenues and expenditures.  If positive, this amount is called a surplus.  If negative, it represents a deficit. The general fund is used to account for and report all financial resources not accounted for and reported in another governmental fund. |  [optional]
-**governmentalFundRevenues** | [**BigDecimal**](BigDecimal.md) | Increases in financial resources attributable to any governmental fund. Governmental funds are used to account for general government activities that are financed primarily through taxes, intergovernmental revenues, and other nonexchange revenues. |  [optional]
-**governmentalFundExpenditures** | [**BigDecimal**](BigDecimal.md) | Decreases in financial resources attributable to any governmental fund. Governmental funds are used to account for general government activities that are financed primarily through taxes, intergovernmental revenues, and other nonexchange revenues. |  [optional]
-**governmentalFundRevenuesOverUnderExpenditure** | [**BigDecimal**](BigDecimal.md) | Difference between revenues and expenditures attributable to all governmental funds.  If positive, this amount is called a surplus.  If negative, it represents a deficit. Governmental funds are used to account for general government activities that are financed primarily through taxes, intergovernmental revenues, and other nonexchange revenues. |  [optional]
+[//]: # (KIND:object)
+
+### MunicipalityFinancial
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**fiscalYear** | [**BigDecimal**](BigDecimal.md) | The fiscal year from which the financial data came from &nbsp;
+**currentAssets** | [**BigDecimal**](BigDecimal.md) | Government-wide holdings that can be liquidated on short notice &nbsp;
+**nonCurrentAssets** | [**BigDecimal**](BigDecimal.md) | Government-wide holdings not intended for near-term liquidation &nbsp;
+**deferredOutflows** | [**BigDecimal**](BigDecimal.md) | Government-wide consumptions of net position applicable to a future year &nbsp;
+**totalAssets** | [**BigDecimal**](BigDecimal.md) | Government-wide holdings &nbsp;
+**totalAssetsPlusDeferredOutflows** | [**BigDecimal**](BigDecimal.md) | Sum of government-wide total assets and deferred outflows of resources &nbsp;
+**currentLiabilities** | [**BigDecimal**](BigDecimal.md) | Government-wide liabilities that typically become due within one year &nbsp;
+**currentPortionOfLongTermDebt** | [**BigDecimal**](BigDecimal.md) | Government-wide portion of long term obligations, such as bond and loan debt coming due within the next year &nbsp;
+**netPensionLiability** | [**BigDecimal**](BigDecimal.md) | Government-wide liability for employee pensions net of the fiduciary net position of pension plans in which the government has an interest &nbsp;
+**netOpebLiability** | [**BigDecimal**](BigDecimal.md) | Government-wide liability for other postemployment benefits (OPEB). These are benefits (such as death benefits, life insurance, disability, and long-term care) that are paid in the period after employment and that are provided separately from a pension plan, as well as healthcare benefits paid in the period after employment, regardless of the manner in which they are provided. OPEB does not include termination benefits or termination payments for sick leave. Liability is reported net of any OPEB assets the government may control. &nbsp;
+**allOtherLongTermDebt** | [**BigDecimal**](BigDecimal.md) | Government-wide liabilities not elsewhere classified &nbsp;
+**totalLiabilities** | [**BigDecimal**](BigDecimal.md) | The sum of the Municipality&#39;s all other long term debt, net open liability, net pension liability, and current portion of long term debt &nbsp;
+**deferredInflows** | [**BigDecimal**](BigDecimal.md) | Government-wide acquisitions of net position applicable to a future year &nbsp;
+**totalLiabilitiesPlusDeferredInflows** | [**BigDecimal**](BigDecimal.md) | Sum of government-wide liabilities and deferred inflows of resources &nbsp;
+**totalNetPosition** | [**BigDecimal**](BigDecimal.md) | Government-wide assets and deferred outflows less government-wide liabilities and deferred inflows &nbsp;
+**totalUnrestrictedNetPosition** | [**BigDecimal**](BigDecimal.md) | Net amount of government-wide assets, deferred outflows of resources, liabilities, and deferred inflows of resources that are not included in the determination of net investment in capital assets or the restricted components of net position &nbsp;
+**totalExpenses** | [**BigDecimal**](BigDecimal.md) | Decreases in net position that occurred during the past year, government-wide &nbsp;
+**chargesForServices** | [**BigDecimal**](BigDecimal.md) | Charges for services is the term used for a broad category of program revenues that arise from charges to customers, applicants, or others who purchase, use, or directly benefit from the goods, services, or privileges provided, or are otherwise directly affected by the services. Revenues in this category include fees charged for specific services, such as water use or garbage collection; licenses and permits, such as dog licenses, liquor licenses, and building permits; operating special assessments, such as for street cleaning or special street lighting; and any other amounts charged to service recipients. Fines and forfeitures are also included in this category because they result from direct charges to those who are otherwise directly affected by a program or service, even though they receive no benefit. Payments from other governments for goods or services should be reported in this category. &nbsp;
+**operatingGrantsAndContributions** | [**BigDecimal**](BigDecimal.md) | Program-specific grants and contributions - includes revenues arising from mandatory and voluntary nonexchange transactions with other governments, organizations, or individuals that are restricted for use in a particular program. Some grants and contributions consist of capital assets or resources that are restricted for capital purposes—to purchase, construct, or renovate capital assets associated with a specific program. These should be reported separately from grants and contributions that may be used either for operating expenses or for capital expenditures of the program at the discretion of the reporting government. These categories of program revenue are specifically attributable to a program and reduce the net expense of that program to the reporting government. For example, a state may provide an operating grant to a county sheriff&#39;s department for a drug-awareness-and-enforcement program. &nbsp;
+**capitalGrantsAndContributions** | [**BigDecimal**](BigDecimal.md) | Program-specific grants and contributions - includes revenues arising from mandatory and voluntary nonexchange transactions with other governments, organizations, or individuals that are restricted for use in a particular program. Some grants and contributions consist of capital assets or resources that are restricted for capital purposes—to purchase, construct, or renovate capital assets associated with a specific program. These should be reported separately from grants and contributions that may be used either for operating expenses or for capital expenditures of the program at the discretion of the reporting government. These categories of program revenue are specifically attributable to a program and reduce the net expense of that program to the reporting government. For example, a state may provide a capital grant to finance construction of a new jail. &nbsp;
+**generalRevenues** | [**BigDecimal**](BigDecimal.md) | All revenues are general revenues unless they are required to be reported as program revenues. All taxes, even those that are levied for a specific purpose, are general revenues and should be reported by type of tax—for example, sales tax, property tax, franchise tax, income tax. All other nontax revenues (including interest, grants, and contributions) that do not meet the criteria to be reported as program revenues should also be reported as general revenues. General revenues should be reported after total net expense of the government&#39;s functions. &nbsp;
+**otherRevenues** | [**BigDecimal**](BigDecimal.md) | Government-wide revenues not elsewhere classified &nbsp;
+**totalRevenues** | [**BigDecimal**](BigDecimal.md) | Increases in net position that occurred during the past year, government-wide &nbsp;
+**changeInNetAssets** | [**BigDecimal**](BigDecimal.md) | Difference between the government&#39;s net position at the end of the fiscal year and the government&#39;s net position at the beginning of the fiscal year &nbsp;
+**nonSpendableGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | The portion of general fund balance classified as nonspendable. The nonspendable fund balance classification includes amounts that cannot be spent because they are either (a) not in spendable form or (b) legally or contractually required to be maintained intact. The “not in spendable form” criterion includes items that are not expected to be converted to cash, for example, inventories and prepaid amounts. It also includes the long-term amount of loans and notes receivable, as well as property acquired for resale. However, if the use of the proceeds from the collection of those receivables or from the sale of those properties is restricted, committed, or assigned, then they should be included in the appropriate fund balance classification (restricted, committed, or assigned), rather than nonspendable fund balance. The corpus (or principal) of a permanent fund is an example of an amount that is legally or contractually required to be maintained intact. &nbsp;
+**restrictedGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | The portion of general fund balance classified as restricted. Fund balance should be reported as restricted when constraints placed on the use of resources are either (a) Externally imposed by creditors (such as through debt covenants), grantors, contributors, or laws or regulations of other governments or (b) Imposed by law through constitutional provisions or enabling legislation. &nbsp;
+**committedGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | The portion of general fund balance classified as committed. Amounts that can only be used for specific purposes pursuant to constraints imposed by formal action of the government’s highest level of decision-making authority should be reported as committed fund balance. Those committed amounts cannot be used for any other purpose unless the government removes or changes the specified use by taking the same type of action (for example, legislation, resolution, ordinance) it employed to previously commit those amounts. The authorization specifying the purposes for which amounts can be used should have the consent of both the legislative and executive branches of the government, if applicable. Committed fund balance also should incorporate contractual obligations to the extent that existing resources in the fund have been specifically committed for use in satisfying those contractual requirements. &nbsp;
+**unassignedGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | The portion of general fund balance classified as unassigned. Unassigned fund balance is the residual classification for the general fund. This classification represents fund balance that has not been assigned to other funds and that has not been restricted, committed, or assigned to specific purposes within the general fund. The general fund should be the only fund that reports a positive unassigned fund balance amount. In other governmental funds, if expenditures incurred for specific purposes exceeded the amounts restricted, committed, or assigned to those purposes, it may be necessary to report a negative unassigned fund balance. &nbsp;
+**assignedGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | The portion of general fund balance classified as assigned. Amounts that are constrained by the government’s intent to be used for specific purposes, but are neither restricted nor committed, should be reported as assigned fund balance, except for stabilization arrangements.. Intent should be expressed by (a) the governing body itself or (b) a body (a budget or finance committee, for example) or official to which the governing body has delegated the authority to assign amounts to be used for specific purposes. &nbsp;
+**totalGeneralFundBalance** | [**BigDecimal**](BigDecimal.md) | General fund balance in all classifications. Fund balance is the difference between governmental fund assets and deferred outflows of resources, and liabilities and deferred inflows of resources. It is sometimes referred to as fund equity. The general fund is used to account for and report all financial resources not accounted for and reported in another governmental fund. &nbsp;
+**nonSpendableGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of fund balances that are classified as nonspendable. The nonspendable fund balance classification includes amounts that cannot be spent because they are either (a) not in spendable form or (b) legally or contractually required to be maintained intact. The “not in spendable form” criterion includes items that are not expected to be converted to cash, for example, inventories and prepaid amounts. It also includes the long-term amount of loans and notes receivable, as well as property acquired for resale. However, if the use of the proceeds from the collection of those receivables or from the sale of those properties is restricted, committed, or assigned, then they should be included in the appropriate fund balance classification (restricted, committed, or assigned), rather than nonspendable fund balance. &nbsp;
+**restrictedGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of fund balances that are classified as restricted. Fund balance should be reported as restricted when constraints placed on the use of resources are either (a) Externally imposed by creditors (such as through debt covenants), grantors, contributors, or laws or regulations of other governments; or (b) Imposed by law through constitutional provisions or enabling legislation. &nbsp;
+**committedGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of fund balances that are classified as committed. Amounts that can only be used for specific purposes pursuant to constraints imposed by formal action of the government’s highest level of decision-making authority should be reported as committed fund balance. Those committed amounts cannot be used for any other purpose unless the government removes or changes the specified use by taking the same type of action (for example, legislation, resolution, ordinance) it employed to previously commit those amounts. The authorization specifying the purposes for which amounts can be used should have the consent of both the legislative and executive branches of the government, if applicable. Committed fund balance also should incorporate contractual obligations to the extent that existing resources in the fund have been specifically committed for use in satisfying those contractual requirements. &nbsp;
+**unassignedGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of fund balances that are classified as unassigned. Unassigned fund balance is the residual classification for the general fund. This classification represents fund balance that has not been assigned to other funds and that has not been restricted, committed, or assigned to specific purposes within the general fund. The general fund should be the only fund that reports a positive unassigned fund balance amount. In other governmental funds, if expenditures incurred for specific purposes exceeded the amounts restricted, committed, or assigned to those purposes, it may be necessary to report a negative unassigned fund balance. &nbsp;
+**assignedGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of fund balances that are classified as assigned. Amounts that are constrained by the government’s intent to be used for specific purposes, but are neither restricted nor committed, should be reported as assigned fund balance, except for stabilization arrangements.. Intent should be expressed by (a) the governing body itself or (b) a body (a budget or finance committee, for example) or official to which the governing body has delegated the authority to assign amounts to be used for specific purposes. &nbsp;
+**totalGovernmentalFundBalance** | [**BigDecimal**](BigDecimal.md) | For all governmental funds, the aggregate of all fund balances in any classification. Fund balance is the difference between governmental fund assets and deferred outflows of resources, and liabilities and deferred inflows of resources. It is sometimes referred to as fund equity. Governmental funds are used to account for general government activities that are financed primarily through taxes, intergovernmental revenues, and other nonexchange revenues. &nbsp;
+**generalFundRevenues** | [**BigDecimal**](BigDecimal.md) | Increases in financial resources attributable to the general fund. The general fund is used to account for and report all financial resources not accounted for and reported in another governmental fund. &nbsp;
+**generalFundExpenditures** | [**BigDecimal**](BigDecimal.md) | Decreases in financial resources attributable to the general fund. The general fund is used to account for and report all financial resources not accounted for and reported in another governmental fund. &nbsp;
+**generalFundRevenuesOverUnderExpenditure** | [**BigDecimal**](BigDecimal.md) | Difference between general fund revenues and expenditures.  If positive, this amount is called a surplus.  If negative, it represents a deficit. The general fund is used to account for and report all financial resources not accounted for and reported in another governmental fund. &nbsp;
+**governmentalFundRevenues** | [**BigDecimal**](BigDecimal.md) | Increases in financial resources attributable to any governmental fund. Governmental funds are used to account for general government activities that are financed primarily through taxes, intergovernmental revenues, and other nonexchange revenues. &nbsp;
+**governmentalFundExpenditures** | [**BigDecimal**](BigDecimal.md) | Decreases in financial resources attributable to any governmental fund. Governmental funds are used to account for general government activities that are financed primarily through taxes, intergovernmental revenues, and other nonexchange revenues. &nbsp;
+**governmentalFundRevenuesOverUnderExpenditure** | [**BigDecimal**](BigDecimal.md) | Difference between revenues and expenditures attributable to all governmental funds.  If positive, this amount is called a surplus.  If negative, it represents a deficit. Governmental funds are used to account for general government activities that are financed primarily through taxes, intergovernmental revenues, and other nonexchange revenues. &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
 
 
 

@@ -1,12 +1,29 @@
 
-# ApiResponseSecurityZacksEPSSurprises
+[//]: # (CLASS:ApiResponseSecurityZacksEPSSurprises)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**epsSurprises** | [**List&lt;ZacksEPSSurpriseSummary&gt;**](ZacksEPSSurpriseSummary.md) |  |  [optional]
-**security** | [**SecuritySummary**](SecuritySummary.md) | The Security resolved from the given identifier |  [optional]
-**nextPage** | **String** | The token required to request the next page of the data |  [optional]
+[//]: # (KIND:object)
+
+### ApiResponseSecurityZacksEPSSurprises
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**epsSurprises** | [**List&lt;ZacksEPSSurpriseSummary&gt;**](ZacksEPSSurpriseSummary.md) |  &nbsp;
+**security** | [**SecuritySummary**](SecuritySummary.md) | The Security resolved from the given identifier &nbsp;
+**nextPage** | String | The token required to request the next page of the data &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:ZacksEPSSurpriseSummary)
+
+
+[//]: # (CONTAINED_CLASS:SecuritySummary)
+
+
 
 
 

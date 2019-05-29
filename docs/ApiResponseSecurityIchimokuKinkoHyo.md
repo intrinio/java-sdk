@@ -1,13 +1,33 @@
 
-# ApiResponseSecurityIchimokuKinkoHyo
+[//]: # (CLASS:ApiResponseSecurityIchimokuKinkoHyo)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**technicals** | [**List&lt;IchimokuKinkoHyoTechnicalValue&gt;**](IchimokuKinkoHyoTechnicalValue.md) |  |  [optional]
-**indicator** | [**TechnicalIndicator**](TechnicalIndicator.md) | The name and symbol of the technical indicator |  [optional]
-**security** | [**SecuritySummary**](SecuritySummary.md) | The Security of the Stock Price |  [optional]
-**nextPage** | **String** | The token required to request the next page of the data |  [optional]
+[//]: # (KIND:object)
+
+### ApiResponseSecurityIchimokuKinkoHyo
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**technicals** | [**List&lt;IchimokuKinkoHyoTechnicalValue&gt;**](IchimokuKinkoHyoTechnicalValue.md) |  &nbsp;
+**indicator** | [**TechnicalIndicator**](TechnicalIndicator.md) | The name and symbol of the technical indicator &nbsp;
+**security** | [**SecuritySummary**](SecuritySummary.md) | The Security of the Stock Price &nbsp;
+**nextPage** | String | The token required to request the next page of the data &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:IchimokuKinkoHyoTechnicalValue)
+
+
+[//]: # (CONTAINED_CLASS:TechnicalIndicator)
+
+
+[//]: # (CONTAINED_CLASS:SecuritySummary)
+
+
 
 
 

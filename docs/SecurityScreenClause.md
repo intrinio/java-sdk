@@ -1,16 +1,28 @@
 
-# SecurityScreenClause
+[//]: # (CLASS:SecurityScreenClause)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**field** | **String** | The field to use when screening, such as an Intrinio Data Tag |  [optional]
-**operator** | [**OperatorEnum**](#OperatorEnum) | The logic operator to use when screening |  [optional]
-**value** | **String** | The value to screen by |  [optional]
+[//]: # (KIND:object)
+
+### SecurityScreenClause
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**field** | String | The field to use when screening, such as an Intrinio Data Tag &nbsp;
+**operator** | OperatorEnum | The logic operator to use when screening &nbsp;
+**value** | String | The value to screen by &nbsp;
+
+[//]: # (END_DEFINITION)
 
 
-<a name="OperatorEnum"></a>
-## Enum: OperatorEnum
+
+<br/>
+
+#### Enum: OperatorEnum
+
 Name | Value
 ---- | -----
 EQ | &quot;eq&quot;

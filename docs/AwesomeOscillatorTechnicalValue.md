@@ -1,11 +1,25 @@
 
-# AwesomeOscillatorTechnicalValue
+[//]: # (CLASS:AwesomeOscillatorTechnicalValue)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation |  [optional]
-**ao** | **Float** | The Awesome Oscillator calculation value |  [optional]
+[//]: # (KIND:object)
+
+### AwesomeOscillatorTechnicalValue
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation &nbsp;
+**ao** | Float | The Awesome Oscillator calculation value &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
 
 
 

@@ -1,11 +1,25 @@
 
-# MoneyFlowIndexTechnicalValue
+[//]: # (CLASS:MoneyFlowIndexTechnicalValue)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation |  [optional]
-**mfi** | **Float** | The Money Flow Index calculation value |  [optional]
+[//]: # (KIND:object)
+
+### MoneyFlowIndexTechnicalValue
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation &nbsp;
+**mfi** | Float | The Money Flow Index calculation value &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
 
 
 

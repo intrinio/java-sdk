@@ -1,18 +1,35 @@
 
-# ZacksAnalystRatingSummary
+[//]: # (CLASS:ZacksAnalystRatingSummary)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **String** | The Intrinio ID for the record |  [optional]
-**date** | [**LocalDate**](LocalDate.md) | The date of the Zacks Analyst Rating. |  [optional]
-**mean** | [**BigDecimal**](BigDecimal.md) | The mean (average) weighing of analyst recommendations, from 1 (strong buy) to 5 (strong sell). |  [optional]
-**strongBuys** | **Integer** | The number of analysts recommending Strong Buy. |  [optional]
-**buys** | **Integer** | The number of analysts recommending Buy. |  [optional]
-**holds** | **Integer** | The number of analysts recommending Hold. |  [optional]
-**sells** | **Integer** | The number of analysts recommending Sell. |  [optional]
-**strongSells** | **Integer** | The number of analysts recommending Strong Sell. |  [optional]
-**total** | **Integer** | The total number of analyst recommendations. |  [optional]
+[//]: # (KIND:object)
+
+### ZacksAnalystRatingSummary
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**id** | String | The Intrinio ID for the record &nbsp;
+**date** | [**LocalDate**](LocalDate.md) | The date of the Zacks Analyst Rating. &nbsp;
+**mean** | [**BigDecimal**](BigDecimal.md) | The mean (average) weighing of analyst recommendations, from 1 (strong buy) to 5 (strong sell). &nbsp;
+**strongBuys** | Integer | The number of analysts recommending Strong Buy. &nbsp;
+**buys** | Integer | The number of analysts recommending Buy. &nbsp;
+**holds** | Integer | The number of analysts recommending Hold. &nbsp;
+**sells** | Integer | The number of analysts recommending Sell. &nbsp;
+**strongSells** | Integer | The number of analysts recommending Strong Sell. &nbsp;
+**total** | Integer | The total number of analyst recommendations. &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
 
 
 

@@ -1,21 +1,45 @@
 
-# FundamentalSummary
+[//]: # (CLASS:FundamentalSummary)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**id** | **String** | The Intrinio ID of the Fundamental |  [optional]
-**statementCode** | **String** | The code of the financial statement that the Fundamental represents |  [optional]
-**fiscalYear** | [**BigDecimal**](BigDecimal.md) | The fiscal year |  [optional]
-**fiscalPeriod** | **String** | The fiscal period |  [optional]
-**type** | [**TypeEnum**](#TypeEnum) | The type of Fundamental |  [optional]
-**startDate** | [**LocalDate**](LocalDate.md) | The period start date |  [optional]
-**endDate** | [**LocalDate**](LocalDate.md) | The period start date |  [optional]
-**filingDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when the Fundamental was filed with the SEC |  [optional]
+[//]: # (KIND:object)
+
+### FundamentalSummary
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**id** | String | The Intrinio ID of the Fundamental &nbsp;
+**statementCode** | String | The code of the financial statement that the Fundamental represents &nbsp;
+**fiscalYear** | [**BigDecimal**](BigDecimal.md) | The fiscal year &nbsp;
+**fiscalPeriod** | String | The fiscal period &nbsp;
+**type** | TypeEnum | The type of Fundamental &nbsp;
+**startDate** | [**LocalDate**](LocalDate.md) | The period start date &nbsp;
+**endDate** | [**LocalDate**](LocalDate.md) | The period start date &nbsp;
+**filingDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when the Fundamental was filed with the SEC &nbsp;
+
+[//]: # (END_DEFINITION)
 
 
-<a name="TypeEnum"></a>
-## Enum: TypeEnum
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+
+<br/>
+
+#### Enum: TypeEnum
+
 Name | Value
 ---- | -----
 REPORTED | &quot;reported&quot;

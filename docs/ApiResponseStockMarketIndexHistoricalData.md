@@ -1,12 +1,29 @@
 
-# ApiResponseStockMarketIndexHistoricalData
+[//]: # (CLASS:ApiResponseStockMarketIndexHistoricalData)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**historicalData** | [**List&lt;HistoricalData&gt;**](HistoricalData.md) |  |  [optional]
-**index** | [**StockMarketIndexSummary**](StockMarketIndexSummary.md) |  |  [optional]
-**nextPage** | **String** | The token required to request the next page of the data |  [optional]
+[//]: # (KIND:object)
+
+### ApiResponseStockMarketIndexHistoricalData
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**historicalData** | [**List&lt;HistoricalData&gt;**](HistoricalData.md) |  &nbsp;
+**index** | [**StockMarketIndexSummary**](StockMarketIndexSummary.md) |  &nbsp;
+**nextPage** | String | The token required to request the next page of the data &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:HistoricalData)
+
+
+[//]: # (CONTAINED_CLASS:StockMarketIndexSummary)
+
+
 
 
 

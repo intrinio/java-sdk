@@ -1,11 +1,28 @@
 
-# SecurityScreenResult
+[//]: # (CLASS:SecurityScreenResult)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**security** | [**SecuritySummary**](SecuritySummary.md) |  |  [optional]
-**data** | [**List&lt;SecurityScreenResultData&gt;**](SecurityScreenResultData.md) |  |  [optional]
+[//]: # (KIND:object)
+
+### SecurityScreenResult
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**security** | [**SecuritySummary**](SecuritySummary.md) |  &nbsp;
+**data** | [**List&lt;SecurityScreenResultData&gt;**](SecurityScreenResultData.md) |  &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:SecuritySummary)
+
+
+[//]: # (CONTAINED_CLASS:SecurityScreenResultData)
+
+
 
 
 

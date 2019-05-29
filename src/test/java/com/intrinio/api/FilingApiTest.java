@@ -3,6 +3,7 @@
 package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
+import com.intrinio.models.ApiResponseFilingFundamentals;
 import com.intrinio.models.ApiResponseFilingNotes;
 import com.intrinio.models.ApiResponseFilingNotesSearch;
 import com.intrinio.models.ApiResponseFilings;
@@ -82,6 +83,29 @@ public class FilingApiTest {
     public void getFilingByIdTest() throws ApiException {
         String id = null;
         Filing response = api.getFilingById(id);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * All Fundamentals by Filing
+     *
+     * Returns all Fundamentals for the SEC Filing with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getFilingFundamentalsTest() throws ApiException {
+        String identifier = null;
+        String statementCode = null;
+        String type = null;
+        Integer fiscalYear = null;
+        String fiscalPeriod = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        String nextPage = null;
+        ApiResponseFilingFundamentals response = api.getFilingFundamentals(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage);
 
         // TODO: test validations
     }

@@ -1,11 +1,25 @@
 
-# TrueStrengthIndexTechnicalValue
+[//]: # (CLASS:TrueStrengthIndexTechnicalValue)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation |  [optional]
-**tsi** | **Float** | The True Strength Index calculation value |  [optional]
+[//]: # (KIND:object)
+
+### TrueStrengthIndexTechnicalValue
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation &nbsp;
+**tsi** | Float | The True Strength Index calculation value &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
 
 
 

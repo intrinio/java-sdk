@@ -1,11 +1,25 @@
 
-# SimpleMovingAverageTechnicalValue
+[//]: # (CLASS:SimpleMovingAverageTechnicalValue)
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation |  [optional]
-**sma** | **Float** | The Simple Moving Average calculation value |  [optional]
+[//]: # (KIND:object)
+
+### SimpleMovingAverageTechnicalValue
+
+#### Properties
+
+[//]: # (START_DEFINITION)
+
+Name | Type | Description
+------------ | ------------- | -------------
+**dateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date_time of the observation &nbsp;
+**sma** | Float | The Simple Moving Average calculation value &nbsp;
+
+[//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
 
 
 
