@@ -34,7 +34,7 @@ Method | HTTP request | Description
 <a name="getAllStockExchanges"></a>
 ## **getAllStockExchanges**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllStockExchanges_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllStockExchanges_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 <a name="getStockExchangeById"></a>
 ## **getStockExchangeById**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockExchangeById_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockExchangeById_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 <a name="getStockExchangePriceAdjustments"></a>
 ## **getStockExchangePriceAdjustments**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockExchangePriceAdjustments_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockExchangePriceAdjustments_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -316,7 +316,7 @@ Name | Type | Description  | Notes
 <a name="getStockExchangePrices"></a>
 ## **getStockExchangePrices**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockExchangePrices_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockExchangePrices_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -412,7 +412,7 @@ Name | Type | Description  | Notes
 <a name="getStockExchangeRealtimePrices"></a>
 ## **getStockExchangeRealtimePrices**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockExchangeRealtimePrices_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockExchangeRealtimePrices_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -508,7 +508,7 @@ Name | Type | Description  | Notes
 <a name="getStockExchangeSecurities"></a>
 ## **getStockExchangeSecurities**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockExchangeSecurities_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockExchangeSecurities_v2)
 
 [//]: # (START_OVERVIEW)
 

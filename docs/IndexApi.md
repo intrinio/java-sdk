@@ -46,7 +46,7 @@ Method | HTTP request | Description
 <a name="getAllEconomicIndices"></a>
 ## **getAllEconomicIndices**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllEconomicIndices_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllEconomicIndices_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 <a name="getAllSicIndices"></a>
 ## **getAllSicIndices**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllSicIndices_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllSicIndices_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 <a name="getAllStockMarketIndices"></a>
 ## **getAllStockMarketIndices**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllStockMarketIndices_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllStockMarketIndices_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -319,7 +319,7 @@ Name | Type | Description  | Notes
 <a name="getEconomicIndexById"></a>
 ## **getEconomicIndexById**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getEconomicIndexById_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getEconomicIndexById_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -408,7 +408,7 @@ Name | Type | Description  | Notes
 <a name="getEconomicIndexDataPointNumber"></a>
 ## **getEconomicIndexDataPointNumber**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getEconomicIndexDataPointNumber_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getEconomicIndexDataPointNumber_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 <a name="getEconomicIndexDataPointText"></a>
 ## **getEconomicIndexDataPointText**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getEconomicIndexDataPointText_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getEconomicIndexDataPointText_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -592,7 +592,7 @@ Name | Type | Description  | Notes
 <a name="getEconomicIndexHistoricalData"></a>
 ## **getEconomicIndexHistoricalData**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getEconomicIndexHistoricalData_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getEconomicIndexHistoricalData_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -696,7 +696,7 @@ Name | Type | Description  | Notes
 <a name="getSicIndexById"></a>
 ## **getSicIndexById**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSicIndexById_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSicIndexById_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -785,7 +785,7 @@ Name | Type | Description  | Notes
 <a name="getSicIndexDataPointNumber"></a>
 ## **getSicIndexDataPointNumber**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSicIndexDataPointNumber_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSicIndexDataPointNumber_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -877,7 +877,7 @@ Name | Type | Description  | Notes
 <a name="getSicIndexDataPointText"></a>
 ## **getSicIndexDataPointText**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSicIndexDataPointText_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSicIndexDataPointText_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -969,7 +969,7 @@ Name | Type | Description  | Notes
 <a name="getSicIndexHistoricalData"></a>
 ## **getSicIndexHistoricalData**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getSicIndexHistoricalData_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSicIndexHistoricalData_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -1073,7 +1073,7 @@ Name | Type | Description  | Notes
 <a name="getStockMarketIndexById"></a>
 ## **getStockMarketIndexById**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockMarketIndexById_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockMarketIndexById_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -1162,7 +1162,7 @@ Name | Type | Description  | Notes
 <a name="getStockMarketIndexDataPointNumber"></a>
 ## **getStockMarketIndexDataPointNumber**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockMarketIndexDataPointNumber_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockMarketIndexDataPointNumber_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -1254,7 +1254,7 @@ Name | Type | Description  | Notes
 <a name="getStockMarketIndexDataPointText"></a>
 ## **getStockMarketIndexDataPointText**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockMarketIndexDataPointText_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockMarketIndexDataPointText_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -1346,7 +1346,7 @@ Name | Type | Description  | Notes
 <a name="getStockMarketIndexHistoricalData"></a>
 ## **getStockMarketIndexHistoricalData**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getStockMarketIndexHistoricalData_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockMarketIndexHistoricalData_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -1450,7 +1450,7 @@ Name | Type | Description  | Notes
 <a name="searchEconomicIndices"></a>
 ## **searchEconomicIndices**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchEconomicIndices_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/searchEconomicIndices_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -1542,7 +1542,7 @@ Name | Type | Description  | Notes
 <a name="searchSicIndices"></a>
 ## **searchSicIndices**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchSicIndices_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/searchSicIndices_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -1634,7 +1634,7 @@ Name | Type | Description  | Notes
 <a name="searchStockMarketsIndices"></a>
 ## **searchStockMarketsIndices**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchStockMarketsIndices_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/searchStockMarketsIndices_v2)
 
 [//]: # (START_OVERVIEW)
 

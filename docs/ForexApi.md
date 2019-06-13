@@ -31,7 +31,7 @@ Method | HTTP request | Description
 <a name="getForexCurrencies"></a>
 ## **getForexCurrencies**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getForexCurrencies_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getForexCurrencies_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -117,7 +117,7 @@ This endpoint does not need any parameter.
 <a name="getForexPairs"></a>
 ## **getForexPairs**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getForexPairs_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getForexPairs_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -203,7 +203,7 @@ This endpoint does not need any parameter.
 <a name="getForexPrices"></a>
 ## **getForexPrices**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getForexPrices_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getForexPrices_v2)
 
 [//]: # (START_OVERVIEW)
 

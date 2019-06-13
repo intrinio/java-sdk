@@ -36,7 +36,7 @@ Method | HTTP request | Description
 <a name="getAllFilings"></a>
 ## **getAllFilings**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllFilings_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllFilings_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -136,7 +136,7 @@ Name | Type | Description  | Notes
 <a name="getAllNotes"></a>
 ## **getAllNotes**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllNotes_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllNotes_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 <a name="getFilingById"></a>
 ## **getFilingById**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getFilingById_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getFilingById_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 <a name="getFilingFundamentals"></a>
 ## **getFilingFundamentals**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getFilingFundamentals_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getFilingFundamentals_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -434,7 +434,7 @@ Name | Type | Description  | Notes
 <a name="getNote"></a>
 ## **getNote**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getNote_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getNote_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -525,7 +525,7 @@ Name | Type | Description  | Notes
 <a name="getNoteHtml"></a>
 ## **getNoteHtml**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getNoteHtml_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getNoteHtml_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -614,7 +614,7 @@ Name | Type | Description  | Notes
 <a name="getNoteText"></a>
 ## **getNoteText**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getNoteText_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getNoteText_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -703,7 +703,7 @@ Name | Type | Description  | Notes
 <a name="searchNotes"></a>
 ## **searchNotes**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchNotes_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/searchNotes_v2)
 
 [//]: # (START_OVERVIEW)
 

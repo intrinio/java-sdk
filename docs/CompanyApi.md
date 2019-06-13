@@ -40,7 +40,7 @@ Method | HTTP request | Description
 <a name="getAllCompanies"></a>
 ## **getAllCompanies**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllCompanies_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllCompanies_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 <a name="getAllCompanyNews"></a>
 ## **getAllCompanyNews**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getAllCompanyNews_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllCompanyNews_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -236,7 +236,7 @@ Name | Type | Description  | Notes
 <a name="getCompany"></a>
 ## **getCompany**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompany_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getCompany_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 <a name="getCompanyDataPointNumber"></a>
 ## **getCompanyDataPointNumber**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyDataPointNumber_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getCompanyDataPointNumber_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -418,7 +418,7 @@ Name | Type | Description  | Notes
 <a name="getCompanyDataPointText"></a>
 ## **getCompanyDataPointText**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyDataPointText_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getCompanyDataPointText_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -510,7 +510,7 @@ Name | Type | Description  | Notes
 <a name="getCompanyFilings"></a>
 ## **getCompanyFilings**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyFilings_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getCompanyFilings_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
 <a name="getCompanyFundamentals"></a>
 ## **getCompanyFundamentals**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyFundamentals_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getCompanyFundamentals_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -720,7 +720,7 @@ Name | Type | Description  | Notes
 <a name="getCompanyHistoricalData"></a>
 ## **getCompanyHistoricalData**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyHistoricalData_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getCompanyHistoricalData_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -826,7 +826,7 @@ Name | Type | Description  | Notes
 <a name="getCompanyNews"></a>
 ## **getCompanyNews**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanyNews_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getCompanyNews_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -920,7 +920,7 @@ Name | Type | Description  | Notes
 <a name="getCompanySecurities"></a>
 ## **getCompanySecurities**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getCompanySecurities_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getCompanySecurities_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -1012,7 +1012,7 @@ Name | Type | Description  | Notes
 <a name="lookupCompanyFundamental"></a>
 ## **lookupCompanyFundamental**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/lookupCompanyFundamental_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/lookupCompanyFundamental_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -1108,7 +1108,7 @@ Name | Type | Description  | Notes
 <a name="searchCompanies"></a>
 ## **searchCompanies**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/searchCompanies_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/searchCompanies_v2)
 
 [//]: # (START_OVERVIEW)
 

@@ -32,7 +32,7 @@ Method | HTTP request | Description
 <a name="getFundamentalById"></a>
 ## **getFundamentalById**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getFundamentalById_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getFundamentalById_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 <a name="getFundamentalReportedFinancials"></a>
 ## **getFundamentalReportedFinancials**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getFundamentalReportedFinancials_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getFundamentalReportedFinancials_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 <a name="getFundamentalStandardizedFinancials"></a>
 ## **getFundamentalStandardizedFinancials**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/getFundamentalStandardizedFinancials_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getFundamentalStandardizedFinancials_v2)
 
 [//]: # (START_OVERVIEW)
 
@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 <a name="lookupFundamental"></a>
 ## **lookupFundamental**
 
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/api_v2/lookupFundamental_v2)
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/lookupFundamental_v2)
 
 [//]: # (START_OVERVIEW)
 
