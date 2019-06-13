@@ -5,22 +5,16 @@ To get an API key, [sign up here](https://intrinio.com/).
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
 - API version: 2.7.0
-- Package version: 3.1.0
+- Package version: 
 
 
 ## Installation
 
 Download the most recent release zip file and import all .jar files into your project as module dependencies.
 
-[Download intrinio-sdk-3.1.0.zip](https://github.com/intrinio/java-sdk/releases/download/3.1.0/intrinio-sdk-3.1.0.zip)
-
 Instructions for importing jar files into your IntelliJ project can be found here:
 
 https://www.jetbrains.com/help/idea/library.html#add-library-to-module-dependencies
-
-## SDK Code Examples
-
-Code examples for Intrinio SDKs are available at https://github.com/intrinio/sdk-code-samples
 
 ## Getting Started
 
@@ -70,7 +64,7 @@ It's recommended to create one instance of `ApiClient` per thread in a multithre
 
 Complete documentation for the Intrinio Java SDK is available on the Intrinio website.
 
-[View Intrinio Java SDK Documentation](https://docs.intrinio.com/documentation/api_v2/java)
+[View Intrinio Java SDK Documentation](https://docs.intrinio.com/documentation/java)
 
 A listing of classes and methods is also provided below:
 
@@ -519,3 +513,4 @@ Class | Method | HTTP request | Description
  - [ZacksEPSSurpriseSummary](docs/ZacksEPSSurpriseSummary.md)
  - [ZacksSalesSurprise](docs/ZacksSalesSurprise.md)
  - [ZacksSalesSurpriseSummary](docs/ZacksSalesSurpriseSummary.md)
+
