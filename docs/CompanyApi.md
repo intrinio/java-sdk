@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**getCompanyFilings**](CompanyApi.md#getCompanyFilings) | **GET** /companies/{identifier}/filings | All Filings by Company
 [**getCompanyFundamentals**](CompanyApi.md#getCompanyFundamentals) | **GET** /companies/{identifier}/fundamentals | All Fundamentals by Company
 [**getCompanyHistoricalData**](CompanyApi.md#getCompanyHistoricalData) | **GET** /companies/{identifier}/historical_data/{tag} | Historical Data for Company
+[**getCompanyIpos**](CompanyApi.md#getCompanyIpos) | **GET** /companies/ipos | IPOs
 [**getCompanyNews**](CompanyApi.md#getCompanyNews) | **GET** /companies/{identifier}/news | All News by Company
 [**getCompanySecurities**](CompanyApi.md#getCompanySecurities) | **GET** /companies/{identifier}/securities | All Securities by Company
 [**lookupCompanyFundamental**](CompanyApi.md#lookupCompanyFundamental) | **GET** /companies/{identifier}/fundamentals/lookup/{statement_code}/{fiscal_year}/{fiscal_period} | Lookup Fundamental by Company
@@ -44,7 +45,7 @@ Method | HTTP request | Description
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseCompanies getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage)
+> ApiResponseCompanies getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage)
 
 #### All Companies
 
@@ -75,16 +76,18 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
 
     LocalDate latestFilingDate = null; // LocalDate | Last filing date
-    String sic = null; // String | Standard Industrial Classification code
-    String template = null; // String | Template
-    String sector = null; // String | Industry sector
-    String industryCategory = null; // String | Industry category
-    String industryGroup = null; // String | Industry group
+    String sic = null; // String | Return companies with the given Standard Industrial Classification code
+    String template = null; // String | Return companies with the given financial statement template
+    String sector = null; // String | Return companies in the given industry sector
+    String industryCategory = null; // String | Return companies in the given industry category
+    String industryGroup = null; // String | Return companies in the given industry group
+    Boolean hasFundamentals = true; // Boolean | Return only companies that have fundamentals when true
+    Boolean hasStockPrices = true; // Boolean | Return only companies that have stock prices when true
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
-      ApiResponseCompanies result = companyApi.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage);
+      ApiResponseCompanies result = companyApi.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CompanyApi#getAllCompanies");
@@ -105,11 +108,13 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **latestFilingDate** | LocalDate| Last filing date | [optional] &nbsp;
- **sic** | String| Standard Industrial Classification code | [optional] &nbsp;
- **template** | String| Template | [optional] [enum: industrial, financial] &nbsp;
- **sector** | String| Industry sector | [optional] &nbsp;
- **industryCategory** | String| Industry category | [optional] &nbsp;
- **industryGroup** | String| Industry group | [optional] &nbsp;
+ **sic** | String| Return companies with the given Standard Industrial Classification code | [optional] &nbsp;
+ **template** | String| Return companies with the given financial statement template | [optional] [enum: industrial, financial] &nbsp;
+ **sector** | String| Return companies in the given industry sector | [optional] &nbsp;
+ **industryCategory** | String| Return companies in the given industry category | [optional] &nbsp;
+ **industryGroup** | String| Return companies in the given industry group | [optional] &nbsp;
+ **hasFundamentals** | Boolean| Return only companies that have fundamentals when true | [optional] &nbsp;
+ **hasStockPrices** | Boolean| Return only companies that have stock prices when true | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
@@ -757,9 +762,9 @@ public class Main {
     String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
     String tag = "marketcap"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
     String frequency = "daily"; // String | Return historical data in the given frequency
-    String type = null; // String | Filter by type, when applicable
-    LocalDate startDate = null; // LocalDate | Get historical data on or after this date
-    LocalDate endDate = null; // LocalDate | Get historical data on or before this date
+    String type = null; // String | Return historical data for given fiscal period type
+    LocalDate startDate = null; // LocalDate | Return historical data on or after this date
+    LocalDate endDate = null; // LocalDate | Return historical data on or before this date
     String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
@@ -788,9 +793,9 @@ Name | Type | Description  | Notes
  **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
  **tag** | String| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
  **frequency** | String| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly] &nbsp;
- **type** | String| Filter by type, when applicable | [optional] &nbsp;
- **startDate** | LocalDate| Get historical data on or after this date | [optional] &nbsp;
- **endDate** | LocalDate| Get historical data on or before this date | [optional] &nbsp;
+ **type** | String| Return historical data for given fiscal period type | [optional] [enum: FY, QTR, TTM] &nbsp;
+ **startDate** | LocalDate| Return historical data on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Return historical data on or before this date | [optional] &nbsp;
  **sortOrder** | String| Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; | [optional] [default to desc] [enum: asc, desc] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
@@ -801,6 +806,98 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseCompanyHistoricalData**](ApiResponseCompanyHistoricalData.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:CompanyApi)
+
+[//]: # (METHOD:getCompanyIpos)
+
+[//]: # (RETURN_TYPE:ApiResponseInitialPublicOfferings)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseInitialPublicOfferings.md)
+
+[//]: # (OPERATION:getCompanyIpos_v2)
+
+[//]: # (ENDPOINT:/companies/ipos)
+
+[//]: # (DOCUMENT_LINK:CompanyApi.md#getCompanyIpos)
+
+<a name="getCompanyIpos"></a>
+## **getCompanyIpos**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getCompanyIpos_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseInitialPublicOfferings getCompanyIpos(pageSize, nextPage)
+
+#### IPOs
+
+
+Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+
+    CompanyApi companyApi = new CompanyApi();
+
+    Integer pageSize = 100; // Integer | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+      ApiResponseInitialPublicOfferings result = companyApi.getCompanyIpos(pageSize, nextPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling CompanyApi#getCompanyIpos");
+      e.printStackTrace();
+    }
+  
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseInitialPublicOfferings**](ApiResponseInitialPublicOfferings.md)
 
 [//]: # (END_OPERATION)
 

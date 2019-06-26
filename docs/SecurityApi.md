@@ -80,12 +80,12 @@ Method | HTTP request | Description
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseSecurities getAllSecurities(pageSize, nextPage)
+> ApiResponseSecurities getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage)
 
 #### All Securities
 
 
-Returns all Securities to which you have access.
+Returns all Securities to which you have access. When parameters are specified, returns matching Securities.
 
 [//]: # (END_OVERVIEW)
 
@@ -110,11 +110,27 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
 
+    Boolean active = true; // Boolean | When true, return securities that are active. When false, return securities that are not active. A security is considered active if it has traded or has had a corporate action in the past 30 days, and has not been merged into another security (such as due to ticker changes or corporate restructurings).
+    Boolean delisted = false; // Boolean | When true, return securities that have been delisted from their exchange. Note that there may be a newer security for the same company that has been relisted on a differente exchange. When false, return securities that have not been delisted.
+    String code = null; // String | Return securities classified with the given code (<a href=\"/documentation/security_codes\" target=\"_blank\">reference</a>).
+    String currency = null; // String | Return securities traded in the given 3-digit ISO 4217 currency code (<a href=\"https://en.wikipedia.org/wiki/ISO_4217\" target=\"_blank\">reference</a>).
+    String ticker = null; // String | Return securities traded with the given ticker. Note that securities across the world (and through time) may trade with the same ticker but represent different companies. Use this in conjuction with other parameters for more specificity.
+    String name = null; // String | Return securities with the given text in their name (not case sensitive).
+    String compositeMic = null; // String | Return securities classified under the composite exchange with the given Market Identification Code (MIC). A composite exchange may or may not be a real exchange.  For example, the USCOMP exchange (our only composite exchange to date) is a combination of exchanges with the following MICs: ARCX, XASE, XPOR, FINR, XCIS, XNAS, XNYS, BATS.  This composite grouping is done for user convenience.  At this time, all US securities are classified under the composite exchange with MIC USCOMP.  To query for specific US exchanges, use the exchange_mic parameter below. 
+    String exchangeMic = null; // String | The MIC code of the exchange where the security is actually traded.
+    LocalDate stockPricesAfter = null; // LocalDate | Return securities with end-of-day stock prices on or after this date.
+    LocalDate stockPricesBefore = null; // LocalDate | Return securities with end-of-day stock prices on or before this date.
+    String cik = null; // String | Return securities belonging to the company with the given Central Index Key (CIK).
+    String figi = null; // String | Return securities with the given Exchange Level FIGI (<a href=\"https://www.openfigi.com/about\" target=\"_blank\">reference</a>).
+    String compositeFigi = null; // String | Return securities with the given Country Composite FIGI (<a href=\"https://www.openfigi.com/about\" target=\"_blank\">reference</a>).
+    String shareClassFigi = null; // String | Return securities with the given Global Share Class FIGI (<a href=\"https://www.openfigi.com/about\" target=\"_blank\">reference</a>).
+    String figiUniqueId = null; // String | Return securities with the given FIGI Unique ID (<a href=\"https://www.openfigi.com/about\" target=\"_blank\">reference</a>).
+    Boolean includeNonFigi = false; // Boolean | When true, include securities that do not have a FIGI. By default, this is false. If this parameter is not specified, only securities with a FIGI are returned.
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
-      ApiResponseSecurities result = securityApi.getAllSecurities(pageSize, nextPage);
+      ApiResponseSecurities result = securityApi.getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SecurityApi#getAllSecurities");
@@ -134,6 +150,22 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **active** | Boolean| When true, return securities that are active. When false, return securities that are not active. A security is considered active if it has traded or has had a corporate action in the past 30 days, and has not been merged into another security (such as due to ticker changes or corporate restructurings). | [optional] &nbsp;
+ **delisted** | Boolean| When true, return securities that have been delisted from their exchange. Note that there may be a newer security for the same company that has been relisted on a differente exchange. When false, return securities that have not been delisted. | [optional] &nbsp;
+ **code** | String| Return securities classified with the given code (&lt;a href&#x3D;\&quot;/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). | [optional] &nbsp;
+ **currency** | String| Return securities traded in the given 3-digit ISO 4217 currency code (&lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_4217\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). | [optional] &nbsp;
+ **ticker** | String| Return securities traded with the given ticker. Note that securities across the world (and through time) may trade with the same ticker but represent different companies. Use this in conjuction with other parameters for more specificity. | [optional] &nbsp;
+ **name** | String| Return securities with the given text in their name (not case sensitive). | [optional] &nbsp;
+ **compositeMic** | String| Return securities classified under the composite exchange with the given Market Identification Code (MIC). A composite exchange may or may not be a real exchange.  For example, the USCOMP exchange (our only composite exchange to date) is a combination of exchanges with the following MICs: ARCX, XASE, XPOR, FINR, XCIS, XNAS, XNYS, BATS.  This composite grouping is done for user convenience.  At this time, all US securities are classified under the composite exchange with MIC USCOMP.  To query for specific US exchanges, use the exchange_mic parameter below.  | [optional] &nbsp;
+ **exchangeMic** | String| The MIC code of the exchange where the security is actually traded. | [optional] &nbsp;
+ **stockPricesAfter** | LocalDate| Return securities with end-of-day stock prices on or after this date. | [optional] &nbsp;
+ **stockPricesBefore** | LocalDate| Return securities with end-of-day stock prices on or before this date. | [optional] &nbsp;
+ **cik** | String| Return securities belonging to the company with the given Central Index Key (CIK). | [optional] &nbsp;
+ **figi** | String| Return securities with the given Exchange Level FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). | [optional] &nbsp;
+ **compositeFigi** | String| Return securities with the given Country Composite FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). | [optional] &nbsp;
+ **shareClassFigi** | String| Return securities with the given Global Share Class FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). | [optional] &nbsp;
+ **figiUniqueId** | String| Return securities with the given FIGI Unique ID (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). | [optional] &nbsp;
+ **includeNonFigi** | Boolean| When true, include securities that do not have a FIGI. By default, this is false. If this parameter is not specified, only securities with a FIGI are returned. | [optional] [default to false] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
@@ -4011,7 +4043,7 @@ public class Main {
     SecurityApi securityApi = new SecurityApi();
 
     String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    String source = null; // String | Return the realtime price from the specified data source
+    String source = null; // String | Return the realtime price from the specified data source. If no source is specified, the best source available is used.
 
     try {
       RealtimeStockPrice result = securityApi.getSecurityRealtimePrice(identifier, source);
@@ -4035,7 +4067,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
- **source** | String| Return the realtime price from the specified data source | [optional] [enum: iex, bats, bats_delayed] &nbsp;
+ **source** | String| Return the realtime price from the specified data source. If no source is specified, the best source available is used. | [optional] [enum: iex, bats, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.7.0
-- Package version: 3.1.0
+- API version: 2.8.0
+- Package version: 3.2.0
 
 
 ## Installation
@@ -78,6 +78,7 @@ Class | Method | HTTP request | Description
 *CompanyApi* | [**getCompanyFilings**](docs/CompanyApi.md#getCompanyFilings) | **GET** /companies/{identifier}/filings | All Filings by Company
 *CompanyApi* | [**getCompanyFundamentals**](docs/CompanyApi.md#getCompanyFundamentals) | **GET** /companies/{identifier}/fundamentals | All Fundamentals by Company
 *CompanyApi* | [**getCompanyHistoricalData**](docs/CompanyApi.md#getCompanyHistoricalData) | **GET** /companies/{identifier}/historical_data/{tag} | Historical Data for Company
+*CompanyApi* | [**getCompanyIpos**](docs/CompanyApi.md#getCompanyIpos) | **GET** /companies/ipos | IPOs
 *CompanyApi* | [**getCompanyNews**](docs/CompanyApi.md#getCompanyNews) | **GET** /companies/{identifier}/news | All News by Company
 *CompanyApi* | [**getCompanySecurities**](docs/CompanyApi.md#getCompanySecurities) | **GET** /companies/{identifier}/securities | All Securities by Company
 *CompanyApi* | [**lookupCompanyFundamental**](docs/CompanyApi.md#lookupCompanyFundamental) | **GET** /companies/{identifier}/fundamentals/lookup/{statement_code}/{fiscal_year}/{fiscal_period} | Lookup Fundamental by Company
@@ -352,6 +353,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseForexPairs](docs/ApiResponseForexPairs.md)
  - [ApiResponseForexPrices](docs/ApiResponseForexPrices.md)
  - [ApiResponseHistoricalData](docs/ApiResponseHistoricalData.md)
+ - [ApiResponseInitialPublicOfferings](docs/ApiResponseInitialPublicOfferings.md)
  - [ApiResponseMunicipalities](docs/ApiResponseMunicipalities.md)
  - [ApiResponseMunicipalitiyFinancials](docs/ApiResponseMunicipalitiyFinancials.md)
  - [ApiResponseNews](docs/ApiResponseNews.md)
@@ -425,6 +427,7 @@ Class | Method | HTTP request | Description
  - [CommodityChannelIndexTechnicalValue](docs/CommodityChannelIndexTechnicalValue.md)
  - [Company](docs/Company.md)
  - [CompanyFiling](docs/CompanyFiling.md)
+ - [CompanyInitialPublicOffering](docs/CompanyInitialPublicOffering.md)
  - [CompanyNews](docs/CompanyNews.md)
  - [CompanyNewsSummary](docs/CompanyNewsSummary.md)
  - [CompanySummary](docs/CompanySummary.md)

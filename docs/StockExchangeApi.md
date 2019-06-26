@@ -447,7 +447,7 @@ public class Main {
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
     String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
-    String source = null; // String | Return realtime prices from the specified data source
+    String source = null; // String | Return realtime prices from the specified data source. If no source is specified, all sources are used.
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
@@ -473,7 +473,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
- **source** | String| Return realtime prices from the specified data source | [optional] [enum: iex, bats, bats_delayed] &nbsp;
+ **source** | String| Return realtime prices from the specified data source. If no source is specified, all sources are used. | [optional] [enum: iex, bats, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>

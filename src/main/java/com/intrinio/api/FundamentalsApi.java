@@ -357,7 +357,7 @@ public class FundamentalsApi {
 
     /**
      * Standardized Financials
-     * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies fundamentals. For example, it is possible to compare total revenues between two companies as of a certain point in time, or within a single company across multiple time periods. This is not possible using the as reported financial statements because of the inherent complexity of reporting standards.
+     * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies&#39; fundamentals.
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
      * @return ApiResponseStandardizedFinancials
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -369,7 +369,7 @@ public class FundamentalsApi {
 
     /**
      * Standardized Financials
-     * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies fundamentals. For example, it is possible to compare total revenues between two companies as of a certain point in time, or within a single company across multiple time periods. This is not possible using the as reported financial statements because of the inherent complexity of reporting standards.
+     * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies&#39; fundamentals.
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
      * @return ApiResponse&lt;ApiResponseStandardizedFinancials&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -382,7 +382,7 @@ public class FundamentalsApi {
 
     /**
      * Standardized Financials (asynchronously)
-     * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies fundamentals. For example, it is possible to compare total revenues between two companies as of a certain point in time, or within a single company across multiple time periods. This is not possible using the as reported financial statements because of the inherent complexity of reporting standards.
+     * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies&#39; fundamentals.
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call

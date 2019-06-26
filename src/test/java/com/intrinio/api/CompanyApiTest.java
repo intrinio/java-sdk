@@ -10,6 +10,7 @@ import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
 import com.intrinio.models.ApiResponseCompanySecurities;
+import com.intrinio.models.ApiResponseInitialPublicOfferings;
 import com.intrinio.models.ApiResponseNews;
 import java.math.BigDecimal;
 import com.intrinio.models.Company;
@@ -48,9 +49,11 @@ public class CompanyApiTest {
         String sector = null;
         String industryCategory = null;
         String industryGroup = null;
+        Boolean hasFundamentals = null;
+        Boolean hasStockPrices = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseCompanies response = api.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage);
+        ApiResponseCompanies response = api.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -189,6 +192,23 @@ public class CompanyApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseCompanyHistoricalData response = api.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * IPOs
+     *
+     * Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCompanyIposTest() throws ApiException {
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseInitialPublicOfferings response = api.getCompanyIpos(pageSize, nextPage);
 
         // TODO: test validations
     }

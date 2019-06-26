@@ -93,6 +93,22 @@ public class SecurityApi {
 
     /**
      * Build call for getAllSecurities
+     * @param active When true, return securities that are active. When false, return securities that are not active. A security is considered active if it has traded or has had a corporate action in the past 30 days, and has not been merged into another security (such as due to ticker changes or corporate restructurings). (optional)
+     * @param delisted When true, return securities that have been delisted from their exchange. Note that there may be a newer security for the same company that has been relisted on a differente exchange. When false, return securities that have not been delisted. (optional)
+     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param currency Return securities traded in the given 3-digit ISO 4217 currency code (&lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_4217\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param ticker Return securities traded with the given ticker. Note that securities across the world (and through time) may trade with the same ticker but represent different companies. Use this in conjuction with other parameters for more specificity. (optional)
+     * @param name Return securities with the given text in their name (not case sensitive). (optional)
+     * @param compositeMic Return securities classified under the composite exchange with the given Market Identification Code (MIC). A composite exchange may or may not be a real exchange.  For example, the USCOMP exchange (our only composite exchange to date) is a combination of exchanges with the following MICs: ARCX, XASE, XPOR, FINR, XCIS, XNAS, XNYS, BATS.  This composite grouping is done for user convenience.  At this time, all US securities are classified under the composite exchange with MIC USCOMP.  To query for specific US exchanges, use the exchange_mic parameter below.  (optional)
+     * @param exchangeMic The MIC code of the exchange where the security is actually traded. (optional)
+     * @param stockPricesAfter Return securities with end-of-day stock prices on or after this date. (optional)
+     * @param stockPricesBefore Return securities with end-of-day stock prices on or before this date. (optional)
+     * @param cik Return securities belonging to the company with the given Central Index Key (CIK). (optional)
+     * @param figi Return securities with the given Exchange Level FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param compositeFigi Return securities with the given Country Composite FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param shareClassFigi Return securities with the given Global Share Class FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param figiUniqueId Return securities with the given FIGI Unique ID (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param includeNonFigi When true, include securities that do not have a FIGI. By default, this is false. If this parameter is not specified, only securities with a FIGI are returned. (optional, default to false)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -100,7 +116,7 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllSecuritiesCall(Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllSecuritiesCall(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -108,6 +124,38 @@ public class SecurityApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (active != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("active", active));
+        if (delisted != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("delisted", delisted));
+        if (code != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("code", code));
+        if (currency != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("currency", currency));
+        if (ticker != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ticker", ticker));
+        if (name != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("name", name));
+        if (compositeMic != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("composite_mic", compositeMic));
+        if (exchangeMic != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("exchange_mic", exchangeMic));
+        if (stockPricesAfter != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("stock_prices_after", stockPricesAfter));
+        if (stockPricesBefore != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("stock_prices_before", stockPricesBefore));
+        if (cik != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("cik", cik));
+        if (figi != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("figi", figi));
+        if (compositeFigi != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("composite_figi", compositeFigi));
+        if (shareClassFigi != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("share_class_figi", shareClassFigi));
+        if (figiUniqueId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("figi_unique_id", figiUniqueId));
+        if (includeNonFigi != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("include_non_figi", includeNonFigi));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -146,51 +194,99 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllSecuritiesValidateBeforeCall(Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllSecuritiesValidateBeforeCall(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllSecuritiesCall(pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllSecuritiesCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * All Securities
-     * Returns all Securities to which you have access.
+     * Returns all Securities to which you have access. When parameters are specified, returns matching Securities.
+     * @param active When true, return securities that are active. When false, return securities that are not active. A security is considered active if it has traded or has had a corporate action in the past 30 days, and has not been merged into another security (such as due to ticker changes or corporate restructurings). (optional)
+     * @param delisted When true, return securities that have been delisted from their exchange. Note that there may be a newer security for the same company that has been relisted on a differente exchange. When false, return securities that have not been delisted. (optional)
+     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param currency Return securities traded in the given 3-digit ISO 4217 currency code (&lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_4217\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param ticker Return securities traded with the given ticker. Note that securities across the world (and through time) may trade with the same ticker but represent different companies. Use this in conjuction with other parameters for more specificity. (optional)
+     * @param name Return securities with the given text in their name (not case sensitive). (optional)
+     * @param compositeMic Return securities classified under the composite exchange with the given Market Identification Code (MIC). A composite exchange may or may not be a real exchange.  For example, the USCOMP exchange (our only composite exchange to date) is a combination of exchanges with the following MICs: ARCX, XASE, XPOR, FINR, XCIS, XNAS, XNYS, BATS.  This composite grouping is done for user convenience.  At this time, all US securities are classified under the composite exchange with MIC USCOMP.  To query for specific US exchanges, use the exchange_mic parameter below.  (optional)
+     * @param exchangeMic The MIC code of the exchange where the security is actually traded. (optional)
+     * @param stockPricesAfter Return securities with end-of-day stock prices on or after this date. (optional)
+     * @param stockPricesBefore Return securities with end-of-day stock prices on or before this date. (optional)
+     * @param cik Return securities belonging to the company with the given Central Index Key (CIK). (optional)
+     * @param figi Return securities with the given Exchange Level FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param compositeFigi Return securities with the given Country Composite FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param shareClassFigi Return securities with the given Global Share Class FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param figiUniqueId Return securities with the given FIGI Unique ID (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param includeNonFigi When true, include securities that do not have a FIGI. By default, this is false. If this parameter is not specified, only securities with a FIGI are returned. (optional, default to false)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurities
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurities getAllSecurities(Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurities> resp = getAllSecuritiesWithHttpInfo(pageSize, nextPage);
+    public ApiResponseSecurities getAllSecurities(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSecurities> resp = getAllSecuritiesWithHttpInfo(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage);
         return resp.getData();
     }
 
     /**
      * All Securities
-     * Returns all Securities to which you have access.
+     * Returns all Securities to which you have access. When parameters are specified, returns matching Securities.
+     * @param active When true, return securities that are active. When false, return securities that are not active. A security is considered active if it has traded or has had a corporate action in the past 30 days, and has not been merged into another security (such as due to ticker changes or corporate restructurings). (optional)
+     * @param delisted When true, return securities that have been delisted from their exchange. Note that there may be a newer security for the same company that has been relisted on a differente exchange. When false, return securities that have not been delisted. (optional)
+     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param currency Return securities traded in the given 3-digit ISO 4217 currency code (&lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_4217\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param ticker Return securities traded with the given ticker. Note that securities across the world (and through time) may trade with the same ticker but represent different companies. Use this in conjuction with other parameters for more specificity. (optional)
+     * @param name Return securities with the given text in their name (not case sensitive). (optional)
+     * @param compositeMic Return securities classified under the composite exchange with the given Market Identification Code (MIC). A composite exchange may or may not be a real exchange.  For example, the USCOMP exchange (our only composite exchange to date) is a combination of exchanges with the following MICs: ARCX, XASE, XPOR, FINR, XCIS, XNAS, XNYS, BATS.  This composite grouping is done for user convenience.  At this time, all US securities are classified under the composite exchange with MIC USCOMP.  To query for specific US exchanges, use the exchange_mic parameter below.  (optional)
+     * @param exchangeMic The MIC code of the exchange where the security is actually traded. (optional)
+     * @param stockPricesAfter Return securities with end-of-day stock prices on or after this date. (optional)
+     * @param stockPricesBefore Return securities with end-of-day stock prices on or before this date. (optional)
+     * @param cik Return securities belonging to the company with the given Central Index Key (CIK). (optional)
+     * @param figi Return securities with the given Exchange Level FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param compositeFigi Return securities with the given Country Composite FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param shareClassFigi Return securities with the given Global Share Class FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param figiUniqueId Return securities with the given FIGI Unique ID (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param includeNonFigi When true, include securities that do not have a FIGI. By default, this is false. If this parameter is not specified, only securities with a FIGI are returned. (optional, default to false)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurities&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurities> getAllSecuritiesWithHttpInfo(Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurities> getAllSecuritiesWithHttpInfo(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * All Securities (asynchronously)
-     * Returns all Securities to which you have access.
+     * Returns all Securities to which you have access. When parameters are specified, returns matching Securities.
+     * @param active When true, return securities that are active. When false, return securities that are not active. A security is considered active if it has traded or has had a corporate action in the past 30 days, and has not been merged into another security (such as due to ticker changes or corporate restructurings). (optional)
+     * @param delisted When true, return securities that have been delisted from their exchange. Note that there may be a newer security for the same company that has been relisted on a differente exchange. When false, return securities that have not been delisted. (optional)
+     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param currency Return securities traded in the given 3-digit ISO 4217 currency code (&lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_4217\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param ticker Return securities traded with the given ticker. Note that securities across the world (and through time) may trade with the same ticker but represent different companies. Use this in conjuction with other parameters for more specificity. (optional)
+     * @param name Return securities with the given text in their name (not case sensitive). (optional)
+     * @param compositeMic Return securities classified under the composite exchange with the given Market Identification Code (MIC). A composite exchange may or may not be a real exchange.  For example, the USCOMP exchange (our only composite exchange to date) is a combination of exchanges with the following MICs: ARCX, XASE, XPOR, FINR, XCIS, XNAS, XNYS, BATS.  This composite grouping is done for user convenience.  At this time, all US securities are classified under the composite exchange with MIC USCOMP.  To query for specific US exchanges, use the exchange_mic parameter below.  (optional)
+     * @param exchangeMic The MIC code of the exchange where the security is actually traded. (optional)
+     * @param stockPricesAfter Return securities with end-of-day stock prices on or after this date. (optional)
+     * @param stockPricesBefore Return securities with end-of-day stock prices on or before this date. (optional)
+     * @param cik Return securities belonging to the company with the given Central Index Key (CIK). (optional)
+     * @param figi Return securities with the given Exchange Level FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param compositeFigi Return securities with the given Country Composite FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param shareClassFigi Return securities with the given Global Share Class FIGI (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param figiUniqueId Return securities with the given FIGI Unique ID (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param includeNonFigi When true, include securities that do not have a FIGI. By default, this is false. If this parameter is not specified, only securities with a FIGI are returned. (optional, default to false)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllSecuritiesAsync(Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurities> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllSecuritiesAsync(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurities> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -211,7 +307,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -6069,7 +6165,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityRealtimePrice
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return the realtime price from the specified data source (optional)
+     * @param source Return the realtime price from the specified data source. If no source is specified, the best source available is used. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -6137,7 +6233,7 @@ public class SecurityApi {
      * Realtime Stock Price for Security
      * Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return the realtime price from the specified data source (optional)
+     * @param source Return the realtime price from the specified data source. If no source is specified, the best source available is used. (optional)
      * @return RealtimeStockPrice
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -6150,7 +6246,7 @@ public class SecurityApi {
      * Realtime Stock Price for Security
      * Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return the realtime price from the specified data source (optional)
+     * @param source Return the realtime price from the specified data source. If no source is specified, the best source available is used. (optional)
      * @return ApiResponse&lt;RealtimeStockPrice&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -6164,7 +6260,7 @@ public class SecurityApi {
      * Realtime Stock Price for Security (asynchronously)
      * Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return the realtime price from the specified data source (optional)
+     * @param source Return the realtime price from the specified data source. If no source is specified, the best source available is used. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

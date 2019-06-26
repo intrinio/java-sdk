@@ -23,6 +23,7 @@ import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
 import com.intrinio.models.ApiResponseCompanySecurities;
+import com.intrinio.models.ApiResponseInitialPublicOfferings;
 import com.intrinio.models.ApiResponseNews;
 import java.math.BigDecimal;
 import com.intrinio.models.Company;
@@ -57,11 +58,13 @@ public class CompanyApi {
     /**
      * Build call for getAllCompanies
      * @param latestFilingDate Last filing date (optional)
-     * @param sic Standard Industrial Classification code (optional)
-     * @param template Template (optional)
-     * @param sector Industry sector (optional)
-     * @param industryCategory Industry category (optional)
-     * @param industryGroup Industry group (optional)
+     * @param sic Return companies with the given Standard Industrial Classification code (optional)
+     * @param template Return companies with the given financial statement template (optional)
+     * @param sector Return companies in the given industry sector (optional)
+     * @param industryCategory Return companies in the given industry category (optional)
+     * @param industryGroup Return companies in the given industry group (optional)
+     * @param hasFundamentals Return only companies that have fundamentals when true (optional)
+     * @param hasStockPrices Return only companies that have stock prices when true (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -69,7 +72,7 @@ public class CompanyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllCompaniesCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompaniesCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -89,6 +92,10 @@ public class CompanyApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("industry_category", industryCategory));
         if (industryGroup != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("industry_group", industryGroup));
+        if (hasFundamentals != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("has_fundamentals", hasFundamentals));
+        if (hasStockPrices != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("has_stock_prices", hasStockPrices));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -127,10 +134,10 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllCompaniesValidateBeforeCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllCompaniesValidateBeforeCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllCompaniesCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompaniesCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -139,18 +146,20 @@ public class CompanyApi {
      * All Companies
      * Returns all Companies. When parameters are specified, returns matching companies.
      * @param latestFilingDate Last filing date (optional)
-     * @param sic Standard Industrial Classification code (optional)
-     * @param template Template (optional)
-     * @param sector Industry sector (optional)
-     * @param industryCategory Industry category (optional)
-     * @param industryGroup Industry group (optional)
+     * @param sic Return companies with the given Standard Industrial Classification code (optional)
+     * @param template Return companies with the given financial statement template (optional)
+     * @param sector Return companies in the given industry sector (optional)
+     * @param industryCategory Return companies in the given industry category (optional)
+     * @param industryGroup Return companies in the given industry group (optional)
+     * @param hasFundamentals Return only companies that have fundamentals when true (optional)
+     * @param hasStockPrices Return only companies that have stock prices when true (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanies
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseCompanies getAllCompanies(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanies> resp = getAllCompaniesWithHttpInfo(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage);
+    public ApiResponseCompanies getAllCompanies(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseCompanies> resp = getAllCompaniesWithHttpInfo(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -158,18 +167,20 @@ public class CompanyApi {
      * All Companies
      * Returns all Companies. When parameters are specified, returns matching companies.
      * @param latestFilingDate Last filing date (optional)
-     * @param sic Standard Industrial Classification code (optional)
-     * @param template Template (optional)
-     * @param sector Industry sector (optional)
-     * @param industryCategory Industry category (optional)
-     * @param industryGroup Industry group (optional)
+     * @param sic Return companies with the given Standard Industrial Classification code (optional)
+     * @param template Return companies with the given financial statement template (optional)
+     * @param sector Return companies in the given industry sector (optional)
+     * @param industryCategory Return companies in the given industry category (optional)
+     * @param industryGroup Return companies in the given industry group (optional)
+     * @param hasFundamentals Return only companies that have fundamentals when true (optional)
+     * @param hasStockPrices Return only companies that have stock prices when true (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanies&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanies> getAllCompaniesWithHttpInfo(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanies> getAllCompaniesWithHttpInfo(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -178,18 +189,20 @@ public class CompanyApi {
      * All Companies (asynchronously)
      * Returns all Companies. When parameters are specified, returns matching companies.
      * @param latestFilingDate Last filing date (optional)
-     * @param sic Standard Industrial Classification code (optional)
-     * @param template Template (optional)
-     * @param sector Industry sector (optional)
-     * @param industryCategory Industry category (optional)
-     * @param industryGroup Industry group (optional)
+     * @param sic Return companies with the given Standard Industrial Classification code (optional)
+     * @param template Return companies with the given financial statement template (optional)
+     * @param sector Return companies in the given industry sector (optional)
+     * @param industryCategory Return companies in the given industry category (optional)
+     * @param industryGroup Return companies in the given industry group (optional)
+     * @param hasFundamentals Return only companies that have fundamentals when true (optional)
+     * @param hasStockPrices Return only companies that have stock prices when true (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllCompaniesAsync(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanies> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompaniesAsync(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanies> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -210,7 +223,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1070,9 +1083,9 @@ public class CompanyApi {
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
-     * @param type Filter by type, when applicable (optional)
-     * @param startDate Get historical data on or after this date (optional)
-     * @param endDate Get historical data on or before this date (optional)
+     * @param type Return historical data for given fiscal period type (optional)
+     * @param startDate Return historical data on or after this date (optional)
+     * @param endDate Return historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1163,9 +1176,9 @@ public class CompanyApi {
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
-     * @param type Filter by type, when applicable (optional)
-     * @param startDate Get historical data on or after this date (optional)
-     * @param endDate Get historical data on or before this date (optional)
+     * @param type Return historical data for given fiscal period type (optional)
+     * @param startDate Return historical data on or after this date (optional)
+     * @param endDate Return historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1183,9 +1196,9 @@ public class CompanyApi {
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
-     * @param type Filter by type, when applicable (optional)
-     * @param startDate Get historical data on or after this date (optional)
-     * @param endDate Get historical data on or before this date (optional)
+     * @param type Return historical data for given fiscal period type (optional)
+     * @param startDate Return historical data on or after this date (optional)
+     * @param endDate Return historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1204,9 +1217,9 @@ public class CompanyApi {
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
-     * @param type Filter by type, when applicable (optional)
-     * @param startDate Get historical data on or after this date (optional)
-     * @param endDate Get historical data on or before this date (optional)
+     * @param type Return historical data for given fiscal period type (optional)
+     * @param startDate Return historical data on or after this date (optional)
+     * @param endDate Return historical data on or before this date (optional)
      * @param sortOrder Sort by date &#x60;asc&#x60; or &#x60;desc&#x60; (optional, default to desc)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1237,6 +1250,131 @@ public class CompanyApi {
 
         com.squareup.okhttp.Call call = getCompanyHistoricalDataValidateBeforeCall(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyHistoricalData>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getCompanyIpos
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getCompanyIposCall(Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/companies/ipos";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getCompanyIposValidateBeforeCall(Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getCompanyIposCall(pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * IPOs
+     * Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseInitialPublicOfferings
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseInitialPublicOfferings getCompanyIpos(Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseInitialPublicOfferings> resp = getCompanyIposWithHttpInfo(pageSize, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * IPOs
+     * Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseInitialPublicOfferings&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseInitialPublicOfferings> getCompanyIposWithHttpInfo(Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyIposValidateBeforeCall(pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseInitialPublicOfferings>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * IPOs (asynchronously)
+     * Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getCompanyIposAsync(Integer pageSize, String nextPage, final ApiCallback<ApiResponseInitialPublicOfferings> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getCompanyIposValidateBeforeCall(pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseInitialPublicOfferings>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

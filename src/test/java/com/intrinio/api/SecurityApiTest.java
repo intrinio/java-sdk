@@ -72,16 +72,32 @@ public class SecurityApiTest {
     /**
      * All Securities
      *
-     * Returns all Securities to which you have access.
+     * Returns all Securities to which you have access. When parameters are specified, returns matching Securities.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
     public void getAllSecuritiesTest() throws ApiException {
+        Boolean active = null;
+        Boolean delisted = null;
+        String code = null;
+        String currency = null;
+        String ticker = null;
+        String name = null;
+        String compositeMic = null;
+        String exchangeMic = null;
+        LocalDate stockPricesAfter = null;
+        LocalDate stockPricesBefore = null;
+        String cik = null;
+        String figi = null;
+        String compositeFigi = null;
+        String shareClassFigi = null;
+        String figiUniqueId = null;
+        Boolean includeNonFigi = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseSecurities response = api.getAllSecurities(pageSize, nextPage);
+        ApiResponseSecurities response = api.getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage);
 
         // TODO: test validations
     }

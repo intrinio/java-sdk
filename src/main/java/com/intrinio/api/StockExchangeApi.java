@@ -594,7 +594,7 @@ public class StockExchangeApi {
     /**
      * Build call for getStockExchangeRealtimePrices
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param source Return realtime prices from the specified data source (optional)
+     * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -668,7 +668,7 @@ public class StockExchangeApi {
      * Realtime Stock Prices by Exchange
      * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param source Return realtime prices from the specified data source (optional)
+     * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockExchangeRealtimeStockPrices
@@ -683,7 +683,7 @@ public class StockExchangeApi {
      * Realtime Stock Prices by Exchange
      * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param source Return realtime prices from the specified data source (optional)
+     * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseStockExchangeRealtimeStockPrices&gt;
@@ -699,7 +699,7 @@ public class StockExchangeApi {
      * Realtime Stock Prices by Exchange (asynchronously)
      * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param source Return realtime prices from the specified data source (optional)
+     * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
