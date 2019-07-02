@@ -206,9 +206,15 @@ public class CompanyApiTest {
      */
     @Test
     public void getCompanyIposTest() throws ApiException {
+        String ticker = null;
+        String status = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        Integer offerAmountGreaterThan = null;
+        Integer offerAmountLessThan = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseInitialPublicOfferings response = api.getCompanyIpos(pageSize, nextPage);
+        ApiResponseInitialPublicOfferings response = api.getCompanyIpos(ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage);
 
         // TODO: test validations
     }

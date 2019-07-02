@@ -27,6 +27,9 @@ public class ApiResponseStockExchangeRealtimeStockPrices {
   @SerializedName("stock_exchange")
   private StockExchange stockExchange = null;
 
+  @SerializedName("next_page")
+  private String nextPage = null;
+
   public ApiResponseStockExchangeRealtimeStockPrices stockPrices(List<RealtimeStockPrice> stockPrices) {
     this.stockPrices = stockPrices;
     return this;
@@ -71,6 +74,24 @@ public class ApiResponseStockExchangeRealtimeStockPrices {
     this.stockExchange = stockExchange;
   }
 
+  public ApiResponseStockExchangeRealtimeStockPrices nextPage(String nextPage) {
+    this.nextPage = nextPage;
+    return this;
+  }
+
+   /**
+   * The token required to request the next page of the data
+   * @return nextPage
+  **/
+  @ApiModelProperty(value = "The token required to request the next page of the data")
+  public String getNextPage() {
+    return nextPage;
+  }
+
+  public void setNextPage(String nextPage) {
+    this.nextPage = nextPage;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -82,12 +103,13 @@ public class ApiResponseStockExchangeRealtimeStockPrices {
     }
     ApiResponseStockExchangeRealtimeStockPrices apiResponseStockExchangeRealtimeStockPrices = (ApiResponseStockExchangeRealtimeStockPrices) o;
     return Objects.equals(this.stockPrices, apiResponseStockExchangeRealtimeStockPrices.stockPrices) &&
-        Objects.equals(this.stockExchange, apiResponseStockExchangeRealtimeStockPrices.stockExchange);
+        Objects.equals(this.stockExchange, apiResponseStockExchangeRealtimeStockPrices.stockExchange) &&
+        Objects.equals(this.nextPage, apiResponseStockExchangeRealtimeStockPrices.nextPage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(stockPrices, stockExchange);
+    return Objects.hash(stockPrices, stockExchange, nextPage);
   }
 
 
@@ -98,6 +120,7 @@ public class ApiResponseStockExchangeRealtimeStockPrices {
     
     sb.append("    stockPrices: ").append(toIndentedString(stockPrices)).append("\n");
     sb.append("    stockExchange: ").append(toIndentedString(stockExchange)).append("\n");
+    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
     sb.append("}");
     return sb.toString();
   }

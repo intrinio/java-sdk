@@ -835,7 +835,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseInitialPublicOfferings getCompanyIpos(pageSize, nextPage)
+> ApiResponseInitialPublicOfferings getCompanyIpos(ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage)
 
 #### IPOs
 
@@ -865,11 +865,17 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
 
+    String ticker = null; // String | Return IPOs with the given ticker (typically the IPO for the company)
+    String status = null; // String | Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occured and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand
+    LocalDate startDate = null; // LocalDate | Return IPOs on or after the given date
+    LocalDate endDate = null; // LocalDate | Return IPOs on or before the given date
+    Integer offerAmountGreaterThan = null; // Integer | Return IPOs with an offer dollar amount greater than the given amount
+    Integer offerAmountLessThan = null; // Integer | Return IPOs with an offer dollar amount less than the given amount
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
-      ApiResponseInitialPublicOfferings result = companyApi.getCompanyIpos(pageSize, nextPage);
+      ApiResponseInitialPublicOfferings result = companyApi.getCompanyIpos(ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CompanyApi#getCompanyIpos");
@@ -889,6 +895,12 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **ticker** | String| Return IPOs with the given ticker (typically the IPO for the company) | [optional] &nbsp;
+ **status** | String| Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occured and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand | [optional] [enum: upcoming, priced, withdrawn] &nbsp;
+ **startDate** | LocalDate| Return IPOs on or after the given date | [optional] &nbsp;
+ **endDate** | LocalDate| Return IPOs on or before the given date | [optional] &nbsp;
+ **offerAmountGreaterThan** | Integer| Return IPOs with an offer dollar amount greater than the given amount | [optional] &nbsp;
+ **offerAmountLessThan** | Integer| Return IPOs with an offer dollar amount less than the given amount | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>

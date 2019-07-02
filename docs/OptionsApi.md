@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsChain getOptionsChain(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize)
+> ApiResponseOptionsChain getOptionsChain(symbol, expiration, date, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize)
 
 #### Options Chain
 
@@ -175,7 +175,8 @@ public class Main {
     OptionsApi optionsApi = new OptionsApi();
 
     String symbol = "MSFT"; // String | The option symbol, corresponding to the underlying security.
-    String expiration = "2019-03-06"; // String | The expiration date of the options contract
+    String expiration = "2019-04-05"; // String | The expiration date of the options contract
+    LocalDate date = null; // LocalDate | The date of the option price. Returns option prices on this date.
     String type = "put"; // String | The option contract type.
     BigDecimal strike = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike price equal to this price.
     BigDecimal strikeGreaterThan = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices greater than this price.
@@ -184,7 +185,7 @@ public class Main {
     Integer pageSize = 100; // Integer | The number of results to return
 
     try {
-      ApiResponseOptionsChain result = optionsApi.getOptionsChain(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
+      ApiResponseOptionsChain result = optionsApi.getOptionsChain(symbol, expiration, date, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling OptionsApi#getOptionsChain");
@@ -206,6 +207,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | String| The option symbol, corresponding to the underlying security. | &nbsp;
  **expiration** | String| The expiration date of the options contract | &nbsp;
+ **date** | LocalDate| The date of the option price. Returns option prices on this date. | [optional] &nbsp;
  **type** | String| The option contract type. | [optional] [enum: call, put] &nbsp;
  **strike** | BigDecimal| The strike price of the option contract. This will return options contracts with strike price equal to this price. | [optional] &nbsp;
  **strikeGreaterThan** | BigDecimal| The strike price of the option contract. This will return options contracts with strike prices greater than this price. | [optional] &nbsp;

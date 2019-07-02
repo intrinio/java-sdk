@@ -8,6 +8,7 @@ import com.intrinio.models.ApiResponseOptions;
 import com.intrinio.models.ApiResponseOptionsChain;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import java.math.BigDecimal;
+import org.threeten.bp.LocalDate;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -62,13 +63,14 @@ public class OptionsApiTest {
     public void getOptionsChainTest() throws ApiException {
         String symbol = null;
         String expiration = null;
+        LocalDate date = null;
         String type = null;
         BigDecimal strike = null;
         BigDecimal strikeGreaterThan = null;
         BigDecimal strikeLessThan = null;
         String moneyness = null;
         Integer pageSize = null;
-        ApiResponseOptionsChain response = api.getOptionsChain(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
+        ApiResponseOptionsChain response = api.getOptionsChain(symbol, expiration, date, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
 
         // TODO: test validations
     }

@@ -1255,6 +1255,12 @@ public class CompanyApi {
     }
     /**
      * Build call for getCompanyIpos
+     * @param ticker Return IPOs with the given ticker (typically the IPO for the company) (optional)
+     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occured and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
+     * @param startDate Return IPOs on or after the given date (optional)
+     * @param endDate Return IPOs on or before the given date (optional)
+     * @param offerAmountGreaterThan Return IPOs with an offer dollar amount greater than the given amount (optional)
+     * @param offerAmountLessThan Return IPOs with an offer dollar amount less than the given amount (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -1262,7 +1268,7 @@ public class CompanyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyIposCall(Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyIposCall(String ticker, String status, LocalDate startDate, LocalDate endDate, Integer offerAmountGreaterThan, Integer offerAmountLessThan, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1270,6 +1276,18 @@ public class CompanyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (ticker != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ticker", ticker));
+        if (status != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("status", status));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (offerAmountGreaterThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("offer_amount_greater_than", offerAmountGreaterThan));
+        if (offerAmountLessThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("offer_amount_less_than", offerAmountLessThan));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -1308,10 +1326,10 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyIposValidateBeforeCall(Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyIposValidateBeforeCall(String ticker, String status, LocalDate startDate, LocalDate endDate, Integer offerAmountGreaterThan, Integer offerAmountLessThan, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getCompanyIposCall(pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyIposCall(ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1319,26 +1337,38 @@ public class CompanyApi {
     /**
      * IPOs
      * Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+     * @param ticker Return IPOs with the given ticker (typically the IPO for the company) (optional)
+     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occured and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
+     * @param startDate Return IPOs on or after the given date (optional)
+     * @param endDate Return IPOs on or before the given date (optional)
+     * @param offerAmountGreaterThan Return IPOs with an offer dollar amount greater than the given amount (optional)
+     * @param offerAmountLessThan Return IPOs with an offer dollar amount less than the given amount (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseInitialPublicOfferings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseInitialPublicOfferings getCompanyIpos(Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseInitialPublicOfferings> resp = getCompanyIposWithHttpInfo(pageSize, nextPage);
+    public ApiResponseInitialPublicOfferings getCompanyIpos(String ticker, String status, LocalDate startDate, LocalDate endDate, Integer offerAmountGreaterThan, Integer offerAmountLessThan, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseInitialPublicOfferings> resp = getCompanyIposWithHttpInfo(ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage);
         return resp.getData();
     }
 
     /**
      * IPOs
      * Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+     * @param ticker Return IPOs with the given ticker (typically the IPO for the company) (optional)
+     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occured and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
+     * @param startDate Return IPOs on or after the given date (optional)
+     * @param endDate Return IPOs on or before the given date (optional)
+     * @param offerAmountGreaterThan Return IPOs with an offer dollar amount greater than the given amount (optional)
+     * @param offerAmountLessThan Return IPOs with an offer dollar amount less than the given amount (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseInitialPublicOfferings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseInitialPublicOfferings> getCompanyIposWithHttpInfo(Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyIposValidateBeforeCall(pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseInitialPublicOfferings> getCompanyIposWithHttpInfo(String ticker, String status, LocalDate startDate, LocalDate endDate, Integer offerAmountGreaterThan, Integer offerAmountLessThan, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyIposValidateBeforeCall(ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseInitialPublicOfferings>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1346,13 +1376,19 @@ public class CompanyApi {
     /**
      * IPOs (asynchronously)
      * Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+     * @param ticker Return IPOs with the given ticker (typically the IPO for the company) (optional)
+     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occured and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
+     * @param startDate Return IPOs on or after the given date (optional)
+     * @param endDate Return IPOs on or before the given date (optional)
+     * @param offerAmountGreaterThan Return IPOs with an offer dollar amount greater than the given amount (optional)
+     * @param offerAmountLessThan Return IPOs with an offer dollar amount less than the given amount (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyIposAsync(Integer pageSize, String nextPage, final ApiCallback<ApiResponseInitialPublicOfferings> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyIposAsync(String ticker, String status, LocalDate startDate, LocalDate endDate, Integer offerAmountGreaterThan, Integer offerAmountLessThan, Integer pageSize, String nextPage, final ApiCallback<ApiResponseInitialPublicOfferings> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1373,7 +1409,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyIposValidateBeforeCall(pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyIposValidateBeforeCall(ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseInitialPublicOfferings>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

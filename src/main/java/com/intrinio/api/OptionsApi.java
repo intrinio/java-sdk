@@ -21,6 +21,7 @@ import com.intrinio.models.ApiResponseOptions;
 import com.intrinio.models.ApiResponseOptionsChain;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import java.math.BigDecimal;
+import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -228,6 +229,7 @@ public class OptionsApi {
      * Build call for getOptionsChain
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
+     * @param date The date of the option price. Returns option prices on this date. (optional)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
@@ -239,7 +241,7 @@ public class OptionsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOptionsChainCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String moneyness, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsChainCall(String symbol, String expiration, LocalDate date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String moneyness, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -249,6 +251,8 @@ public class OptionsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (date != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
         if (type != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
         if (strike != null)
@@ -295,7 +299,7 @@ public class OptionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOptionsChainValidateBeforeCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String moneyness, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getOptionsChainValidateBeforeCall(String symbol, String expiration, LocalDate date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String moneyness, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'symbol' is set
         if (symbol == null) {
@@ -308,7 +312,7 @@ public class OptionsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getOptionsChainCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsChainCall(symbol, expiration, date, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize, progressListener, progressRequestListener);
         return call;
 
     }
@@ -318,6 +322,7 @@ public class OptionsApi {
      * Returns all options contracts and their prices for the given symbol and expiration date.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
+     * @param date The date of the option price. Returns option prices on this date. (optional)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
@@ -327,8 +332,8 @@ public class OptionsApi {
      * @return ApiResponseOptionsChain
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseOptionsChain getOptionsChain(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String moneyness, Integer pageSize) throws ApiException {
-        ApiResponse<ApiResponseOptionsChain> resp = getOptionsChainWithHttpInfo(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
+    public ApiResponseOptionsChain getOptionsChain(String symbol, String expiration, LocalDate date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String moneyness, Integer pageSize) throws ApiException {
+        ApiResponse<ApiResponseOptionsChain> resp = getOptionsChainWithHttpInfo(symbol, expiration, date, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
         return resp.getData();
     }
 
@@ -337,6 +342,7 @@ public class OptionsApi {
      * Returns all options contracts and their prices for the given symbol and expiration date.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
+     * @param date The date of the option price. Returns option prices on this date. (optional)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
@@ -346,8 +352,8 @@ public class OptionsApi {
      * @return ApiResponse&lt;ApiResponseOptionsChain&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseOptionsChain> getOptionsChainWithHttpInfo(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String moneyness, Integer pageSize) throws ApiException {
-        com.squareup.okhttp.Call call = getOptionsChainValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize, null, null);
+    public ApiResponse<ApiResponseOptionsChain> getOptionsChainWithHttpInfo(String symbol, String expiration, LocalDate date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String moneyness, Integer pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsChainValidateBeforeCall(symbol, expiration, date, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsChain>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -357,6 +363,7 @@ public class OptionsApi {
      * Returns all options contracts and their prices for the given symbol and expiration date.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
+     * @param date The date of the option price. Returns option prices on this date. (optional)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
@@ -367,7 +374,7 @@ public class OptionsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getOptionsChainAsync(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String moneyness, Integer pageSize, final ApiCallback<ApiResponseOptionsChain> callback) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsChainAsync(String symbol, String expiration, LocalDate date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String moneyness, Integer pageSize, final ApiCallback<ApiResponseOptionsChain> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -388,7 +395,7 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getOptionsChainValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsChainValidateBeforeCall(symbol, expiration, date, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsChain>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
