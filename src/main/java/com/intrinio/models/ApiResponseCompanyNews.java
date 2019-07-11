@@ -8,7 +8,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.intrinio.models.CompanyNews;
+import com.intrinio.models.CompanyNewsSummary;
 import com.intrinio.models.CompanySummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ApiResponseCompanyNews {
   @SerializedName("news")
-  private List<CompanyNews> news = null;
+  private List<CompanyNewsSummary> news = null;
 
   @SerializedName("company")
   private CompanySummary company = null;
@@ -30,14 +30,14 @@ public class ApiResponseCompanyNews {
   @SerializedName("next_page")
   private String nextPage = null;
 
-  public ApiResponseCompanyNews news(List<CompanyNews> news) {
+  public ApiResponseCompanyNews news(List<CompanyNewsSummary> news) {
     this.news = news;
     return this;
   }
 
-  public ApiResponseCompanyNews addNewsItem(CompanyNews newsItem) {
+  public ApiResponseCompanyNews addNewsItem(CompanyNewsSummary newsItem) {
     if (this.news == null) {
-      this.news = new ArrayList<CompanyNews>();
+      this.news = new ArrayList<CompanyNewsSummary>();
     }
     this.news.add(newsItem);
     return this;
@@ -48,11 +48,11 @@ public class ApiResponseCompanyNews {
    * @return news
   **/
   @ApiModelProperty(value = "")
-  public List<CompanyNews> getNews() {
+  public List<CompanyNewsSummary> getNews() {
     return news;
   }
 
-  public void setNews(List<CompanyNews> news) {
+  public void setNews(List<CompanyNewsSummary> news) {
     this.news = news;
   }
 

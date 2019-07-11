@@ -1033,13 +1033,12 @@ public class FilingApi {
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
-     * @param pageSize2 The number of results to return (optional, default to 100)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call searchNotesCall(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize, Integer pageSize2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call searchNotesCall(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1055,8 +1054,6 @@ public class FilingApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("filing_end_date", filingEndDate));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
-        if (pageSize2 != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize2));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1091,7 +1088,7 @@ public class FilingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call searchNotesValidateBeforeCall(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize, Integer pageSize2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call searchNotesValidateBeforeCall(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'query' is set
         if (query == null) {
@@ -1099,7 +1096,7 @@ public class FilingApi {
         }
         
 
-        com.squareup.okhttp.Call call = searchNotesCall(query, filingStartDate, filingEndDate, pageSize, pageSize2, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchNotesCall(query, filingStartDate, filingEndDate, pageSize, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1111,12 +1108,11 @@ public class FilingApi {
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
-     * @param pageSize2 The number of results to return (optional, default to 100)
      * @return ApiResponseFilingNotesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseFilingNotesSearch searchNotes(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize, Integer pageSize2) throws ApiException {
-        ApiResponse<ApiResponseFilingNotesSearch> resp = searchNotesWithHttpInfo(query, filingStartDate, filingEndDate, pageSize, pageSize2);
+    public ApiResponseFilingNotesSearch searchNotes(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize) throws ApiException {
+        ApiResponse<ApiResponseFilingNotesSearch> resp = searchNotesWithHttpInfo(query, filingStartDate, filingEndDate, pageSize);
         return resp.getData();
     }
 
@@ -1127,12 +1123,11 @@ public class FilingApi {
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
-     * @param pageSize2 The number of results to return (optional, default to 100)
      * @return ApiResponse&lt;ApiResponseFilingNotesSearch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseFilingNotesSearch> searchNotesWithHttpInfo(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize, Integer pageSize2) throws ApiException {
-        com.squareup.okhttp.Call call = searchNotesValidateBeforeCall(query, filingStartDate, filingEndDate, pageSize, pageSize2, null, null);
+    public ApiResponse<ApiResponseFilingNotesSearch> searchNotesWithHttpInfo(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = searchNotesValidateBeforeCall(query, filingStartDate, filingEndDate, pageSize, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseFilingNotesSearch>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1144,12 +1139,11 @@ public class FilingApi {
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
-     * @param pageSize2 The number of results to return (optional, default to 100)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchNotesAsync(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize, Integer pageSize2, final ApiCallback<ApiResponseFilingNotesSearch> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchNotesAsync(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize, final ApiCallback<ApiResponseFilingNotesSearch> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1170,7 +1164,7 @@ public class FilingApi {
             };
         }
 
-        com.squareup.okhttp.Call call = searchNotesValidateBeforeCall(query, filingStartDate, filingEndDate, pageSize, pageSize2, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchNotesValidateBeforeCall(query, filingStartDate, filingEndDate, pageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseFilingNotesSearch>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

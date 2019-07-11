@@ -134,10 +134,10 @@ public class CompanyNews {
   }
 
    /**
-   * The Company that the Fundamental was belongs to
+   * The Company to which the new article pertains
    * @return company
   **/
-  @ApiModelProperty(value = "The Company that the Fundamental was belongs to")
+  @ApiModelProperty(value = "The Company to which the new article pertains")
   public CompanySummary getCompany() {
     return company;
   }

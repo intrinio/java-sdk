@@ -707,7 +707,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseFilingNotesSearch searchNotes(query, filingStartDate, filingEndDate, pageSize, pageSize2)
+> ApiResponseFilingNotesSearch searchNotes(query, filingStartDate, filingEndDate, pageSize)
 
 #### Search Filing Notes
 
@@ -741,10 +741,9 @@ public class Main {
     LocalDate filingStartDate = null; // LocalDate | Limit search to filings on or after this date
     LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
     Integer pageSize = 100; // Integer | The number of results to return
-    Integer pageSize2 = 100; // Integer | The number of results to return
 
     try {
-      ApiResponseFilingNotesSearch result = filingApi.searchNotes(query, filingStartDate, filingEndDate, pageSize, pageSize2);
+      ApiResponseFilingNotesSearch result = filingApi.searchNotes(query, filingStartDate, filingEndDate, pageSize);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FilingApi#searchNotes");
@@ -768,7 +767,6 @@ Name | Type | Description  | Notes
  **filingStartDate** | LocalDate| Limit search to filings on or after this date | [optional] &nbsp;
  **filingEndDate** | LocalDate| Limit search to filings on or before this date | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
- **pageSize2** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

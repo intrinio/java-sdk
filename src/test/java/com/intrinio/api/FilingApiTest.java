@@ -173,8 +173,7 @@ public class FilingApiTest {
         LocalDate filingStartDate = null;
         LocalDate filingEndDate = null;
         Integer pageSize = null;
-        Integer pageSize2 = null;
-        ApiResponseFilingNotesSearch response = api.searchNotes(query, filingStartDate, filingEndDate, pageSize, pageSize2);
+        ApiResponseFilingNotesSearch response = api.searchNotes(query, filingStartDate, filingEndDate, pageSize);
 
         // TODO: test validations
     }

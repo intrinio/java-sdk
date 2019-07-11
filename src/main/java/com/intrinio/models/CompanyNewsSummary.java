@@ -11,6 +11,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * A news article about a company
@@ -25,7 +26,7 @@ public class CompanyNewsSummary {
   private String title = null;
 
   @SerializedName("publication_date")
-  private String publicationDate = null;
+  private OffsetDateTime publicationDate = null;
 
   @SerializedName("url")
   private String url = null;
@@ -69,7 +70,7 @@ public class CompanyNewsSummary {
     this.title = title;
   }
 
-  public CompanyNewsSummary publicationDate(String publicationDate) {
+  public CompanyNewsSummary publicationDate(OffsetDateTime publicationDate) {
     this.publicationDate = publicationDate;
     return this;
   }
@@ -79,11 +80,11 @@ public class CompanyNewsSummary {
    * @return publicationDate
   **/
   @ApiModelProperty(value = "The publication date of the news article")
-  public String getPublicationDate() {
+  public OffsetDateTime getPublicationDate() {
     return publicationDate;
   }
 
-  public void setPublicationDate(String publicationDate) {
+  public void setPublicationDate(OffsetDateTime publicationDate) {
     this.publicationDate = publicationDate;
   }
 

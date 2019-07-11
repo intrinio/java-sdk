@@ -4740,7 +4740,7 @@ public class Main {
     String orderColumn = "orderColumn_example"; // String | Results returned sorted by this column
     String orderDirection = "asc"; // String | Sort order to use with the order_column
     Boolean primaryOnly = false; // Boolean | Return only primary securities
-    Integer pageSize = 100; // Integer | The number of results to return
+    Integer pageSize = 100; // Integer | The number of results to return. Maximum for this endpoint is 50000.
 
     try {
       List<SecurityScreenResult> result = securityApi.screenSecurities(logic, orderColumn, orderDirection, primaryOnly, pageSize);
@@ -4767,7 +4767,7 @@ Name | Type | Description  | Notes
  **orderColumn** | String| Results returned sorted by this column | [optional] &nbsp;
  **orderDirection** | String| Sort order to use with the order_column | [optional] [default to asc] [enum: asc, desc] &nbsp;
  **primaryOnly** | Boolean| Return only primary securities | [optional] [default to false] &nbsp;
- **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **pageSize** | Integer| The number of results to return. Maximum for this endpoint is 50000. | [optional] [default to 100] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

@@ -7221,7 +7221,7 @@ public class SecurityApi {
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param pageSize The number of results to return. Maximum for this endpoint is 50000. (optional, default to 100)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -7292,7 +7292,7 @@ public class SecurityApi {
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param pageSize The number of results to return. Maximum for this endpoint is 50000. (optional, default to 100)
      * @return List&lt;SecurityScreenResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -7308,7 +7308,7 @@ public class SecurityApi {
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param pageSize The number of results to return. Maximum for this endpoint is 50000. (optional, default to 100)
      * @return ApiResponse&lt;List&lt;SecurityScreenResult&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -7325,7 +7325,7 @@ public class SecurityApi {
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param pageSize The number of results to return. Maximum for this endpoint is 50000. (optional, default to 100)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
