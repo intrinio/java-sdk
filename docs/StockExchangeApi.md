@@ -68,9 +68,9 @@ public class Main {
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
-    String city = "city_example"; // String | Filter by city
-    String country = "CHINA"; // String | Filter by country
-    String countryCode = "countryCode_example"; // String | Filter by ISO country code
+    String city = "New York"; // String | Filter by city
+    String country = "UNITED STATES OF AMERICA"; // String | Filter by country
+    String countryCode = "US"; // String | Filter by ISO country code
     Integer pageSize = 100; // Integer | The number of results to return
 
     try {

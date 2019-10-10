@@ -184,10 +184,10 @@ public class Security {
   }
 
    /**
-   * A 2-3 digit code classifying the Security (&lt;a href&#x3D;\&quot;/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;)
+   * A 2-3 digit code classifying the Security (&lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;)
    * @return code
   **/
-  @ApiModelProperty(value = "A 2-3 digit code classifying the Security (<a href=\"/documentation/security_codes\" target=\"_blank\">reference</a>)")
+  @ApiModelProperty(value = "A 2-3 digit code classifying the Security (<a href=\"https://docs.intrinio.com/documentation/security_codes\" target=\"_blank\">reference</a>)")
   public String getCode() {
     return code;
   }

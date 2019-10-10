@@ -71,7 +71,7 @@ public class Main {
     FilingApi filingApi = new FilingApi();
 
     String company = "AAPL"; // String | Filings for the given `company` identifier (ticker, CIK, LEI, Intrinio ID)
-    String reportType = null; // String | Filter by report type. Separate values with commas to return multiple The filing <a href=\"/documentation/sec_filing_report_types\" target=\"_blank\">report types</a>.
+    String reportType = null; // String | Filter by report type. Separate values with commas to return multiple The filing <a href=\"https://docs.intrinio.com/documentation/sec_filing_report_types\" target=\"_blank\">report types</a>.
     LocalDate startDate = null; // LocalDate | Filed on or after the given date
     LocalDate endDate = null; // LocalDate | Filed before or after the given date
     Integer pageSize = 100; // Integer | The number of results to return
@@ -99,7 +99,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **company** | String| Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) | &nbsp;
- **reportType** | String| Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. | [optional] &nbsp;
+ **reportType** | String| Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. | [optional] &nbsp;
  **startDate** | LocalDate| Filed on or after the given date | [optional] &nbsp;
  **endDate** | LocalDate| Filed before or after the given date | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
@@ -171,7 +171,7 @@ public class Main {
     FilingApi filingApi = new FilingApi();
 
     String company = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-    String reportType = "10-Q"; // String | Notes contained in filings that match the given <a href=\"/documentation/sec_filing_report_types\" target=\"_blank\">report type</a>
+    String reportType = "10-Q"; // String | Notes contained in filings that match the given <a href=\"https://docs.intrinio.com/documentation/sec_filing_report_types\" target=\"_blank\">report type</a>
     LocalDate filingStartDate = null; // LocalDate | Limit search to filings on or after this date
     LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
     LocalDate periodEndedStartDate = null; // LocalDate | Limit search to filings with a period end date on or after this date
@@ -201,7 +201,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **company** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | [optional] &nbsp;
- **reportType** | String| Notes contained in filings that match the given &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; | [optional] [enum: 10-Q, 10-K] &nbsp;
+ **reportType** | String| Notes contained in filings that match the given &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; | [optional] [enum: 10-Q, 10-K] &nbsp;
  **filingStartDate** | LocalDate| Limit search to filings on or after this date | [optional] &nbsp;
  **filingEndDate** | LocalDate| Limit search to filings on or before this date | [optional] &nbsp;
  **periodEndedStartDate** | LocalDate| Limit search to filings with a period end date on or after this date | [optional] &nbsp;
@@ -467,7 +467,7 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String identifier = "xbn_3fghz"; // String | The Intrinio ID of the filing note
+    String identifier = "xbn_ydK3QL"; // String | The Intrinio ID of the filing note
     String contentFormat = "text"; // String | Returns content in html (as filed) or plain text
 
     try {
@@ -558,7 +558,7 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String identifier = "xbn_3fghz"; // String | The Intrinio ID of the filing note
+    String identifier = "xbn_ydK3QL"; // String | The Intrinio ID of the filing note
 
     try {
       String result = filingApi.getNoteHtml(identifier);
@@ -647,7 +647,7 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String identifier = "xbn_3fghz"; // String | The Intrinio ID of the filing note
+    String identifier = "xbn_ydK3QL"; // String | The Intrinio ID of the filing note
 
     try {
       String result = filingApi.getNoteText(identifier);

@@ -123,10 +123,10 @@ public class ApiResponseCryptoPrices {
   }
 
    /**
-   * The token required to request the next page of the data
+   * The token required to request the next page of the data. If null, no further results are available.
    * @return nextPage
   **/
-  @ApiModelProperty(value = "The token required to request the next page of the data")
+  @ApiModelProperty(value = "The token required to request the next page of the data. If null, no further results are available.")
   public String getNextPage() {
     return nextPage;
   }

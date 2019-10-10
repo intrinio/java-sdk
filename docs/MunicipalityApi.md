@@ -65,12 +65,12 @@ public class Main {
     MunicipalityApi municipalityApi = new MunicipalityApi();
 
     Boolean hasFinancials = true; // Boolean | Return municipalities with financials
-    String governmentName = "governmentName_example"; // String | Return municipalities with a government name matching the given query
-    String governmentType = "governmentType_example"; // String | Return municipalities with the given government type
-    String areaName = "areaName_example"; // String | Return municipalities with an area name matching the given query
-    String areaType = "areaType_example"; // String | Return municipalities with the given area type
-    String city = "city_example"; // String | Return municipalities in the given city
-    String state = "state_example"; // String | Return municipalities in the given state
+    String governmentName = null; // String | Return municipalities with a government name matching the given query
+    String governmentType = null; // String | Return municipalities with the given government type
+    String areaName = null; // String | Return municipalities with an area name matching the given query
+    String areaType = null; // String | Return municipalities with the given area type
+    String city = null; // String | Return municipalities in the given city
+    String state = null; // String | Return municipalities in the given state
     BigDecimal zipcode = null; // BigDecimal | Return municipalities in the given zipcode
     BigDecimal populationGreaterThan = null; // BigDecimal | Return municipalities with a population greater than the given number
     BigDecimal populationLessThan = null; // BigDecimal | Return municipalities with a population less than the given number

@@ -129,10 +129,10 @@ public class CompanyFiling {
   }
 
    /**
-   * The filing &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;
+   * The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;
    * @return reportType
   **/
-  @ApiModelProperty(value = "The filing <a href=\"/documentation/sec_filing_report_types\" target=\"_blank\">report type</a>")
+  @ApiModelProperty(value = "The filing <a href=\"https://docs.intrinio.com/documentation/sec_filing_report_types\" target=\"_blank\">report type</a>")
   public String getReportType() {
     return reportType;
   }

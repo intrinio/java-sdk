@@ -192,7 +192,9 @@ public class SecurityApiTest {
         String startTime = null;
         LocalDate endDate = null;
         String endTime = null;
-        ApiResponseSecurityIntradayPrices response = api.getSecurityIntradayPrices(identifier, source, startDate, startTime, endDate, endTime);
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseSecurityIntradayPrices response = api.getSecurityIntradayPrices(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage);
 
         // TODO: test validations
     }

@@ -745,7 +745,7 @@ public class CompanyApi {
     /**
      * Build call for getCompanyFilings
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
+     * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -825,7 +825,7 @@ public class CompanyApi {
      * All Filings by Company
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
+     * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -842,7 +842,7 @@ public class CompanyApi {
      * All Filings by Company
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
+     * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -860,7 +860,7 @@ public class CompanyApi {
      * All Filings by Company (asynchronously)
      * Returns a complete list of SEC filings for the Company with the given &#x60;identifier&#x60;
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
+     * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)

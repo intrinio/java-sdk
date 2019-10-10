@@ -52,7 +52,7 @@ public class FilingApi {
     /**
      * Build call for getAllFilings
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -133,7 +133,7 @@ public class FilingApi {
      * All Filings
      * Returns all Filings. Returns Filings matching parameters when supplied.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -150,7 +150,7 @@ public class FilingApi {
      * All Filings
      * Returns all Filings. Returns Filings matching parameters when supplied.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -168,7 +168,7 @@ public class FilingApi {
      * All Filings (asynchronously)
      * Returns all Filings. Returns Filings matching parameters when supplied.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
-     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
+     * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -206,7 +206,7 @@ public class FilingApi {
     /**
      * Build call for getAllNotes
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
-     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
+     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param periodEndedStartDate Limit search to filings with a period end date on or after this date (optional)
@@ -288,7 +288,7 @@ public class FilingApi {
      * All Filing Notes
      * Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
-     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
+     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param periodEndedStartDate Limit search to filings with a period end date on or after this date (optional)
@@ -307,7 +307,7 @@ public class FilingApi {
      * All Filing Notes
      * Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
-     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
+     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param periodEndedStartDate Limit search to filings with a period end date on or after this date (optional)
@@ -327,7 +327,7 @@ public class FilingApi {
      * All Filing Notes (asynchronously)
      * Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
-     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
+     * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
      * @param periodEndedStartDate Limit search to filings with a period end date on or after this date (optional)

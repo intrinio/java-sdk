@@ -550,7 +550,7 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
 
     String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-    String reportType = null; // String | Filter by <a href=\"/documentation/sec_filing_report_types\" target=\"_blank\">report type</a>. Separate values with commas to return multiple report types.
+    String reportType = null; // String | Filter by <a href=\"https://docs.intrinio.com/documentation/sec_filing_report_types\" target=\"_blank\">report type</a>. Separate values with commas to return multiple report types.
     LocalDate startDate = null; // LocalDate | Filed on or after the given date
     LocalDate endDate = null; // LocalDate | Filed before or after the given date
     Integer pageSize = 100; // Integer | The number of results to return
@@ -578,7 +578,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
- **reportType** | String| Filter by &lt;a href&#x3D;\&quot;/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. | [optional] &nbsp;
+ **reportType** | String| Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. | [optional] &nbsp;
  **startDate** | LocalDate| Filed on or after the given date | [optional] &nbsp;
  **endDate** | LocalDate| Filed before or after the given date | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;

@@ -95,7 +95,7 @@ public class SecurityApi {
      * Build call for getAllSecurities
      * @param active When true, return securities that are active. When false, return securities that are not active. A security is considered active if it has traded or has had a corporate action in the past 30 days, and has not been merged into another security (such as due to ticker changes or corporate restructurings). (optional)
      * @param delisted When true, return securities that have been delisted from their exchange. Note that there may be a newer security for the same company that has been relisted on a differente exchange. When false, return securities that have not been delisted. (optional)
-     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param currency Return securities traded in the given 3-digit ISO 4217 currency code (&lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_4217\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param ticker Return securities traded with the given ticker. Note that securities across the world (and through time) may trade with the same ticker but represent different companies. Use this in conjuction with other parameters for more specificity. (optional)
      * @param name Return securities with the given text in their name (not case sensitive). (optional)
@@ -207,7 +207,7 @@ public class SecurityApi {
      * Returns all Securities to which you have access. When parameters are specified, returns matching Securities.
      * @param active When true, return securities that are active. When false, return securities that are not active. A security is considered active if it has traded or has had a corporate action in the past 30 days, and has not been merged into another security (such as due to ticker changes or corporate restructurings). (optional)
      * @param delisted When true, return securities that have been delisted from their exchange. Note that there may be a newer security for the same company that has been relisted on a differente exchange. When false, return securities that have not been delisted. (optional)
-     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param currency Return securities traded in the given 3-digit ISO 4217 currency code (&lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_4217\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param ticker Return securities traded with the given ticker. Note that securities across the world (and through time) may trade with the same ticker but represent different companies. Use this in conjuction with other parameters for more specificity. (optional)
      * @param name Return securities with the given text in their name (not case sensitive). (optional)
@@ -236,7 +236,7 @@ public class SecurityApi {
      * Returns all Securities to which you have access. When parameters are specified, returns matching Securities.
      * @param active When true, return securities that are active. When false, return securities that are not active. A security is considered active if it has traded or has had a corporate action in the past 30 days, and has not been merged into another security (such as due to ticker changes or corporate restructurings). (optional)
      * @param delisted When true, return securities that have been delisted from their exchange. Note that there may be a newer security for the same company that has been relisted on a differente exchange. When false, return securities that have not been delisted. (optional)
-     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param currency Return securities traded in the given 3-digit ISO 4217 currency code (&lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_4217\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param ticker Return securities traded with the given ticker. Note that securities across the world (and through time) may trade with the same ticker but represent different companies. Use this in conjuction with other parameters for more specificity. (optional)
      * @param name Return securities with the given text in their name (not case sensitive). (optional)
@@ -266,7 +266,7 @@ public class SecurityApi {
      * Returns all Securities to which you have access. When parameters are specified, returns matching Securities.
      * @param active When true, return securities that are active. When false, return securities that are not active. A security is considered active if it has traded or has had a corporate action in the past 30 days, and has not been merged into another security (such as due to ticker changes or corporate restructurings). (optional)
      * @param delisted When true, return securities that have been delisted from their exchange. Note that there may be a newer security for the same company that has been relisted on a differente exchange. When false, return securities that have not been delisted. (optional)
-     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
+     * @param code Return securities classified with the given code (&lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/security_codes\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param currency Return securities traded in the given 3-digit ISO 4217 currency code (&lt;a href&#x3D;\&quot;https://en.wikipedia.org/wiki/ISO_4217\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param ticker Return securities traded with the given ticker. Note that securities across the world (and through time) may trade with the same ticker but represent different companies. Use this in conjuction with other parameters for more specificity. (optional)
      * @param name Return securities with the given text in their name (not case sensitive). (optional)
@@ -884,12 +884,14 @@ public class SecurityApi {
      * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
      * @param endDate Return intraday prices stopping at the specified date (optional)
      * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityIntradayPricesCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityIntradayPricesCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -908,6 +910,10 @@ public class SecurityApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (endTime != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("end_time", endTime));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -942,7 +948,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityIntradayPricesValidateBeforeCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityIntradayPricesValidateBeforeCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -950,7 +956,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityIntradayPricesCall(identifier, source, startDate, startTime, endDate, endTime, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityIntradayPricesCall(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -964,11 +970,13 @@ public class SecurityApi {
      * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
      * @param endDate Return intraday prices stopping at the specified date (optional)
      * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityIntradayPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseSecurityIntradayPrices getSecurityIntradayPrices(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime) throws ApiException {
-        ApiResponse<ApiResponseSecurityIntradayPrices> resp = getSecurityIntradayPricesWithHttpInfo(identifier, source, startDate, startTime, endDate, endTime);
+    public ApiResponseSecurityIntradayPrices getSecurityIntradayPrices(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseSecurityIntradayPrices> resp = getSecurityIntradayPricesWithHttpInfo(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -981,11 +989,13 @@ public class SecurityApi {
      * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
      * @param endDate Return intraday prices stopping at the specified date (optional)
      * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurityIntradayPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityIntradayPrices> getSecurityIntradayPricesWithHttpInfo(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityIntradayPricesValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, null, null);
+    public ApiResponse<ApiResponseSecurityIntradayPrices> getSecurityIntradayPricesWithHttpInfo(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityIntradayPricesValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityIntradayPrices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -999,11 +1009,13 @@ public class SecurityApi {
      * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
      * @param endDate Return intraday prices stopping at the specified date (optional)
      * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityIntradayPricesAsync(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, final ApiCallback<ApiResponseSecurityIntradayPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityIntradayPricesAsync(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityIntradayPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1024,7 +1036,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityIntradayPricesValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityIntradayPricesValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityIntradayPrices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -7217,7 +7229,7 @@ public class SecurityApi {
     }
     /**
      * Build call for screenSecurities
-     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
+     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
@@ -7288,7 +7300,7 @@ public class SecurityApi {
     /**
      * Screen Securities
      * Screen Securities using complex logic
-     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
+     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
@@ -7304,7 +7316,7 @@ public class SecurityApi {
     /**
      * Screen Securities
      * Screen Securities using complex logic
-     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
+     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
@@ -7321,7 +7333,7 @@ public class SecurityApi {
     /**
      * Screen Securities (asynchronously)
      * Screen Securities using complex logic
-     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
+     * @param logic The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. (optional)
      * @param orderColumn Results returned sorted by this column (optional)
      * @param orderDirection Sort order to use with the order_column (optional, default to asc)
      * @param primaryOnly Return only primary securities (optional, default to false)
