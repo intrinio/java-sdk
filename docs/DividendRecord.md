@@ -20,6 +20,7 @@ Name | Type | Description
 **status** | StatusEnum | Status of the dividend &nbsp;
 **forwardYield** | [**BigDecimal**](BigDecimal.md) | The forward dividend yield &nbsp;
 **forwardRate** | [**BigDecimal**](BigDecimal.md) | The forward dividend rate &nbsp;
+**lastExDividendDate** | [**LocalDate**](LocalDate.md) | The last reported day the stock starts trading without the value of its next dividend payment &nbsp;
 **security** | [**SecuritySummary**](SecuritySummary.md) |  &nbsp;
 
 [//]: # (END_DEFINITION)
@@ -41,6 +42,9 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
 
 
 [//]: # (CONTAINED_CLASS:SecuritySummary)

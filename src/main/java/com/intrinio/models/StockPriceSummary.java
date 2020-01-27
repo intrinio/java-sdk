@@ -140,7 +140,7 @@ public class StockPriceSummary {
    * @return intraperiod
   **/
   @ApiModelProperty(value = "If true, the stock price represents an unfinished period (be it day, week, quarter, month, or year), meaning that the close price is the latest price available, not the official close price for the period")
-  public Boolean isisIntraperiod() {
+  public Boolean isIntraperiod() {
     return intraperiod;
   }
 

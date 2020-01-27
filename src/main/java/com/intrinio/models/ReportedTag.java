@@ -121,7 +121,7 @@ public class ReportedTag {
    * @return _abstract
   **/
   @ApiModelProperty(value = "If true, the tag is an abstract and does not represent a nominal value")
-  public Boolean isisAbstract() {
+  public Boolean isAbstract() {
     return _abstract;
   }
 

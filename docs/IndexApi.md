@@ -629,8 +629,8 @@ public class Main {
     String identifier = "$GDP"; // String | An Index Identifier (symbol, Intrinio ID)
     String tag = "level"; // String | An Intrinio data tag <a href='https://data.intrinio.com/data-tags/economic'>reference</a>
     String type = null; // String | Filter by type, when applicable
-    LocalDate startDate = null; // LocalDate | Get historical data on or after this date
-    LocalDate endDate = null; // LocalDate | Get historical data on or before this date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Get historical data on or after this date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Get historical data on or before this date
     String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
@@ -1006,8 +1006,8 @@ public class Main {
     String identifier = "$SIC.1"; // String | An Index Identifier (symbol, Intrinio ID)
     String tag = "marketcap"; // String | An Intrinio data tag ID or code-name
     String type = null; // String | Filter by type, when applicable
-    LocalDate startDate = null; // LocalDate | Get historical data on or after this date
-    LocalDate endDate = null; // LocalDate | Get historical data on or before this date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Get historical data on or after this date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Get historical data on or before this date
     String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
@@ -1383,8 +1383,8 @@ public class Main {
     String identifier = "$DJI"; // String | An Index Identifier (symbol, Intrinio ID)
     String tag = "level"; // String | An Intrinio data tag ID or code-name
     String type = null; // String | Filter by type, when applicable
-    LocalDate startDate = null; // LocalDate | Get historical data on or after this date
-    LocalDate endDate = null; // LocalDate | Get historical data on or before this date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Get historical data on or after this date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Get historical data on or before this date
     String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call

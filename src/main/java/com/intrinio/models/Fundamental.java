@@ -94,6 +94,9 @@ public class Fundamental {
   @SerializedName("filing_date")
   private OffsetDateTime filingDate = null;
 
+  @SerializedName("is_latest")
+  private Boolean isLatest = null;
+
   @SerializedName("company")
   private CompanySummary company = null;
 
@@ -241,6 +244,24 @@ public class Fundamental {
     this.filingDate = filingDate;
   }
 
+  public Fundamental isLatest(Boolean isLatest) {
+    this.isLatest = isLatest;
+    return this;
+  }
+
+   /**
+   * Is this the latest fundamental available based on the company&#39;s most recent filings? Use the Lookup Fundamental endpoint to find the latest fundamental (&lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/web_api/lookup_fundamental_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;)
+   * @return isLatest
+  **/
+  @ApiModelProperty(value = "Is this the latest fundamental available based on the company's most recent filings? Use the Lookup Fundamental endpoint to find the latest fundamental (<a href=\"https://docs.intrinio.com/documentation/web_api/lookup_fundamental_v2\" target=\"_blank\">reference</a>)")
+  public Boolean isIsLatest() {
+    return isLatest;
+  }
+
+  public void setIsLatest(Boolean isLatest) {
+    this.isLatest = isLatest;
+  }
+
   public Fundamental company(CompanySummary company) {
     this.company = company;
     return this;
@@ -277,12 +298,13 @@ public class Fundamental {
         Objects.equals(this.startDate, fundamental.startDate) &&
         Objects.equals(this.endDate, fundamental.endDate) &&
         Objects.equals(this.filingDate, fundamental.filingDate) &&
+        Objects.equals(this.isLatest, fundamental.isLatest) &&
         Objects.equals(this.company, fundamental.company);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, company);
+    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, isLatest, company);
   }
 
 
@@ -299,6 +321,7 @@ public class Fundamental {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    filingDate: ").append(toIndentedString(filingDate)).append("\n");
+    sb.append("    isLatest: ").append(toIndentedString(isLatest)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -240,9 +240,9 @@ public class Main {
     String pair = "EURUSD"; // String | The Forex Currency Pair code
     String timeframe = "D1"; // String | The time interval for the quotes
     String timezone = "UTC"; // String | Returns trading times in this timezone
-    LocalDate startDate = null; // LocalDate | Return Forex Prices on or after this date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Return Forex Prices on or after this date
     String startTime = null; // String | Return Forex Prices at or after this time (24-hour)
-    LocalDate endDate = null; // LocalDate | Return Forex Prices on or before this date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Return Forex Prices on or before this date
     String endTime = null; // String | Return Forex Prices at or before this time (24-hour)
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call

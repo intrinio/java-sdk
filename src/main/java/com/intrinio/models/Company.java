@@ -695,7 +695,7 @@ public class Company {
    * @return standardizedActive
   **/
   @ApiModelProperty(value = "If true, the company has standardized and as reported fundamental data via the Intrinio API; if false, the company has as-reported data only")
-  public Boolean isisStandardizedActive() {
+  public Boolean isStandardizedActive() {
     return standardizedActive;
   }
 

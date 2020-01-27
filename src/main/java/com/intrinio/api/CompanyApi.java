@@ -57,7 +57,7 @@ public class CompanyApi {
 
     /**
      * Build call for getAllCompanies
-     * @param latestFilingDate Last filing date (optional)
+     * @param latestFilingDate Return companies whose latest 10-Q or 10-K was filed on or after this date (optional)
      * @param sic Return companies with the given Standard Industrial Classification code (optional)
      * @param template Return companies with the given financial statement template (optional)
      * @param sector Return companies in the given industry sector (optional)
@@ -145,7 +145,7 @@ public class CompanyApi {
     /**
      * All Companies
      * Returns all Companies. When parameters are specified, returns matching companies.
-     * @param latestFilingDate Last filing date (optional)
+     * @param latestFilingDate Return companies whose latest 10-Q or 10-K was filed on or after this date (optional)
      * @param sic Return companies with the given Standard Industrial Classification code (optional)
      * @param template Return companies with the given financial statement template (optional)
      * @param sector Return companies in the given industry sector (optional)
@@ -166,7 +166,7 @@ public class CompanyApi {
     /**
      * All Companies
      * Returns all Companies. When parameters are specified, returns matching companies.
-     * @param latestFilingDate Last filing date (optional)
+     * @param latestFilingDate Return companies whose latest 10-Q or 10-K was filed on or after this date (optional)
      * @param sic Return companies with the given Standard Industrial Classification code (optional)
      * @param template Return companies with the given financial statement template (optional)
      * @param sector Return companies in the given industry sector (optional)
@@ -188,7 +188,7 @@ public class CompanyApi {
     /**
      * All Companies (asynchronously)
      * Returns all Companies. When parameters are specified, returns matching companies.
-     * @param latestFilingDate Last filing date (optional)
+     * @param latestFilingDate Return companies whose latest 10-Q or 10-K was filed on or after this date (optional)
      * @param sic Return companies with the given Standard Industrial Classification code (optional)
      * @param template Return companies with the given financial statement template (optional)
      * @param sector Return companies in the given industry sector (optional)

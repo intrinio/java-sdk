@@ -176,7 +176,7 @@ public class Main {
 
     String symbol = "MSFT"; // String | The option symbol, corresponding to the underlying security.
     String expiration = "2019-04-05"; // String | The expiration date of the options contract
-    LocalDate date = null; // LocalDate | The date of the option price. Returns option prices on this date.
+    LocalDate date = LocalDate.now(); // LocalDate | The date of the option price. Returns option prices on this date.
     String type = "put"; // String | The option contract type.
     BigDecimal strike = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike price equal to this price.
     BigDecimal strikeGreaterThan = null; // BigDecimal | The strike price of the option contract. This will return options contracts with strike prices greater than this price.
@@ -374,7 +374,7 @@ public class Main {
 
     OptionsApi optionsApi = new OptionsApi();
 
-    String identifier = "null"; // String | The Intrinio ID or code of the options contract to request prices for.
+    String identifier = "identifier_example"; // String | The Intrinio ID or code of the options contract to request prices for.
     String startDate = "2019-01-01"; // String | Return option contract prices on or after this date.
     String endDate = "2019-12-31"; // String | Return option contract prices on or before this date.
     Integer pageSize = 100; // Integer | The number of results to return

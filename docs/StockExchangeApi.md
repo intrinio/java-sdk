@@ -255,7 +255,7 @@ public class Main {
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
     String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
-    LocalDate date = null; // LocalDate | The date for which to return price adjustments
+    LocalDate date = LocalDate.now(); // LocalDate | The date for which to return price adjustments
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
@@ -351,7 +351,7 @@ public class Main {
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
 
     String identifier = "USCOMP"; // String | A Stock Exchange identifier (MIC or Intrinio ID)
-    LocalDate date = null; // LocalDate | The date for which to return prices
+    LocalDate date = LocalDate.now(); // LocalDate | The date for which to return prices
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 

@@ -233,6 +233,9 @@ public class EarningsRecord {
   @SerializedName("next_earnings_fiscal_year")
   private Integer nextEarningsFiscalYear = null;
 
+  @SerializedName("preliminary_earnings_date")
+  private LocalDate preliminaryEarningsDate = null;
+
   @SerializedName("security")
   private SecuritySummary security = null;
 
@@ -632,6 +635,24 @@ public class EarningsRecord {
     this.nextEarningsFiscalYear = nextEarningsFiscalYear;
   }
 
+  public EarningsRecord preliminaryEarningsDate(LocalDate preliminaryEarningsDate) {
+    this.preliminaryEarningsDate = preliminaryEarningsDate;
+    return this;
+  }
+
+   /**
+   * The release date of a preliminary earnings report
+   * @return preliminaryEarningsDate
+  **/
+  @ApiModelProperty(value = "The release date of a preliminary earnings report")
+  public LocalDate getPreliminaryEarningsDate() {
+    return preliminaryEarningsDate;
+  }
+
+  public void setPreliminaryEarningsDate(LocalDate preliminaryEarningsDate) {
+    this.preliminaryEarningsDate = preliminaryEarningsDate;
+  }
+
   public EarningsRecord security(SecuritySummary security) {
     this.security = security;
     return this;
@@ -682,12 +703,13 @@ public class EarningsRecord {
         Objects.equals(this.nextEarningsDate, earningsRecord.nextEarningsDate) &&
         Objects.equals(this.nextEarningsQuarter, earningsRecord.nextEarningsQuarter) &&
         Objects.equals(this.nextEarningsFiscalYear, earningsRecord.nextEarningsFiscalYear) &&
+        Objects.equals(this.preliminaryEarningsDate, earningsRecord.preliminaryEarningsDate) &&
         Objects.equals(this.security, earningsRecord.security);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(quarter, timeOfDay, broadcastUrl, transcriptUrl, transcriptQuarter, transcriptFiscalYear, conferenceCallDate, conferenceCallTime, conferenceCallPhoneNumber, conferenceCallPasscode, lastConfirmationDate, boardOfDirectorsMeetingDate, boardOfDirectorsMeetingType, companyWebsite, q1Date, q2Date, q3Date, q4Date, type, nextEarningsDate, nextEarningsQuarter, nextEarningsFiscalYear, security);
+    return Objects.hash(quarter, timeOfDay, broadcastUrl, transcriptUrl, transcriptQuarter, transcriptFiscalYear, conferenceCallDate, conferenceCallTime, conferenceCallPhoneNumber, conferenceCallPasscode, lastConfirmationDate, boardOfDirectorsMeetingDate, boardOfDirectorsMeetingType, companyWebsite, q1Date, q2Date, q3Date, q4Date, type, nextEarningsDate, nextEarningsQuarter, nextEarningsFiscalYear, preliminaryEarningsDate, security);
   }
 
 
@@ -718,6 +740,7 @@ public class EarningsRecord {
     sb.append("    nextEarningsDate: ").append(toIndentedString(nextEarningsDate)).append("\n");
     sb.append("    nextEarningsQuarter: ").append(toIndentedString(nextEarningsQuarter)).append("\n");
     sb.append("    nextEarningsFiscalYear: ").append(toIndentedString(nextEarningsFiscalYear)).append("\n");
+    sb.append("    preliminaryEarningsDate: ").append(toIndentedString(preliminaryEarningsDate)).append("\n");
     sb.append("    security: ").append(toIndentedString(security)).append("\n");
     sb.append("}");
     return sb.toString();

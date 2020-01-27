@@ -67,8 +67,8 @@ public class Main {
     String tag = "marketcap"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
     String frequency = "daily"; // String | Return historical data in the given frequency
     String type = null; // String | Filter by type, when applicable
-    LocalDate startDate = null; // LocalDate | Get historical data on or after this date
-    LocalDate endDate = null; // LocalDate | Get historical date on or before this date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Get historical data on or after this date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Get historical date on or before this date
     String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call

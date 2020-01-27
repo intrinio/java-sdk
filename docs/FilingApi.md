@@ -72,8 +72,8 @@ public class Main {
 
     String company = "AAPL"; // String | Filings for the given `company` identifier (ticker, CIK, LEI, Intrinio ID)
     String reportType = null; // String | Filter by report type. Separate values with commas to return multiple The filing <a href=\"https://docs.intrinio.com/documentation/sec_filing_report_types\" target=\"_blank\">report types</a>.
-    LocalDate startDate = null; // LocalDate | Filed on or after the given date
-    LocalDate endDate = null; // LocalDate | Filed before or after the given date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Filed on or after the given date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Filed before or after the given date
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
@@ -172,10 +172,10 @@ public class Main {
 
     String company = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
     String reportType = "10-Q"; // String | Notes contained in filings that match the given <a href=\"https://docs.intrinio.com/documentation/sec_filing_report_types\" target=\"_blank\">report type</a>
-    LocalDate filingStartDate = null; // LocalDate | Limit search to filings on or after this date
-    LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
-    LocalDate periodEndedStartDate = null; // LocalDate | Limit search to filings with a period end date on or after this date
-    LocalDate periodEndedEndDate = null; // LocalDate | Limit search to filings with a period end date on or before this date
+    LocalDate filingStartDate = LocalDate.now(); // LocalDate | Limit search to filings on or after this date
+    LocalDate filingEndDate = LocalDate.now(); // LocalDate | Limit search to filings on or before this date
+    LocalDate periodEndedStartDate = LocalDate.now(); // LocalDate | Limit search to filings with a period end date on or after this date
+    LocalDate periodEndedEndDate = LocalDate.now(); // LocalDate | Limit search to filings with a period end date on or before this date
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
@@ -369,8 +369,8 @@ public class Main {
     String type = null; // String | Filters fundamentals by type
     Integer fiscalYear = null; // Integer | Filters fundamentals by fiscal year
     String fiscalPeriod = null; // String | Filters fundamentals by fiscal period
-    LocalDate startDate = null; // LocalDate | Returns fundamentals on or after the given date
-    LocalDate endDate = null; // LocalDate | Returns fundamentals on or before the given date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Returns fundamentals on or after the given date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Returns fundamentals on or before the given date
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
@@ -738,8 +738,8 @@ public class Main {
     FilingApi filingApi = new FilingApi();
 
     String query = "inflation"; // String | Search for notes that contain all or parts of this text
-    LocalDate filingStartDate = null; // LocalDate | Limit search to filings on or after this date
-    LocalDate filingEndDate = null; // LocalDate | Limit search to filings on or before this date
+    LocalDate filingStartDate = LocalDate.now(); // LocalDate | Limit search to filings on or after this date
+    LocalDate filingEndDate = LocalDate.now(); // LocalDate | Limit search to filings on or before this date
     Integer pageSize = 100; // Integer | The number of results to return
 
     try {

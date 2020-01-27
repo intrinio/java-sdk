@@ -99,6 +99,9 @@ public class DividendRecord {
   @SerializedName("forward_rate")
   private BigDecimal forwardRate = null;
 
+  @SerializedName("last_ex_dividend_date")
+  private LocalDate lastExDividendDate = null;
+
   @SerializedName("security")
   private SecuritySummary security = null;
 
@@ -264,6 +267,24 @@ public class DividendRecord {
     this.forwardRate = forwardRate;
   }
 
+  public DividendRecord lastExDividendDate(LocalDate lastExDividendDate) {
+    this.lastExDividendDate = lastExDividendDate;
+    return this;
+  }
+
+   /**
+   * The last reported day the stock starts trading without the value of its next dividend payment
+   * @return lastExDividendDate
+  **/
+  @ApiModelProperty(value = "The last reported day the stock starts trading without the value of its next dividend payment")
+  public LocalDate getLastExDividendDate() {
+    return lastExDividendDate;
+  }
+
+  public void setLastExDividendDate(LocalDate lastExDividendDate) {
+    this.lastExDividendDate = lastExDividendDate;
+  }
+
   public DividendRecord security(SecuritySummary security) {
     this.security = security;
     return this;
@@ -301,12 +322,13 @@ public class DividendRecord {
         Objects.equals(this.status, dividendRecord.status) &&
         Objects.equals(this.forwardYield, dividendRecord.forwardYield) &&
         Objects.equals(this.forwardRate, dividendRecord.forwardRate) &&
+        Objects.equals(this.lastExDividendDate, dividendRecord.lastExDividendDate) &&
         Objects.equals(this.security, dividendRecord.security);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(exDividend, currency, announcementDate, recordDate, payDate, frequency, status, forwardYield, forwardRate, security);
+    return Objects.hash(exDividend, currency, announcementDate, recordDate, payDate, frequency, status, forwardYield, forwardRate, lastExDividendDate, security);
   }
 
 
@@ -324,6 +346,7 @@ public class DividendRecord {
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    forwardYield: ").append(toIndentedString(forwardYield)).append("\n");
     sb.append("    forwardRate: ").append(toIndentedString(forwardRate)).append("\n");
+    sb.append("    lastExDividendDate: ").append(toIndentedString(lastExDividendDate)).append("\n");
     sb.append("    security: ").append(toIndentedString(security)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -75,7 +75,7 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
 
-    LocalDate latestFilingDate = null; // LocalDate | Last filing date
+    LocalDate latestFilingDate = LocalDate.now(); // LocalDate | Return companies whose latest 10-Q or 10-K was filed on or after this date
     String sic = null; // String | Return companies with the given Standard Industrial Classification code
     String template = null; // String | Return companies with the given financial statement template
     String sector = null; // String | Return companies in the given industry sector
@@ -107,7 +107,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **latestFilingDate** | LocalDate| Last filing date | [optional] &nbsp;
+ **latestFilingDate** | LocalDate| Return companies whose latest 10-Q or 10-K was filed on or after this date | [optional] &nbsp;
  **sic** | String| Return companies with the given Standard Industrial Classification code | [optional] &nbsp;
  **template** | String| Return companies with the given financial statement template | [optional] [enum: industrial, financial] &nbsp;
  **sector** | String| Return companies in the given industry sector | [optional] &nbsp;
@@ -551,8 +551,8 @@ public class Main {
 
     String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
     String reportType = null; // String | Filter by <a href=\"https://docs.intrinio.com/documentation/sec_filing_report_types\" target=\"_blank\">report type</a>. Separate values with commas to return multiple report types.
-    LocalDate startDate = null; // LocalDate | Filed on or after the given date
-    LocalDate endDate = null; // LocalDate | Filed before or after the given date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Filed on or after the given date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Filed before or after the given date
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
@@ -650,14 +650,14 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
 
     String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-    LocalDate filedAfter = null; // LocalDate | Filed on or after this date
-    LocalDate filedBefore = null; // LocalDate | Filed on or before this date
+    LocalDate filedAfter = LocalDate.now(); // LocalDate | Filed on or after this date
+    LocalDate filedBefore = LocalDate.now(); // LocalDate | Filed on or before this date
     Boolean reportedOnly = false; // Boolean | Only as-reported fundamentals
     Integer fiscalYear = null; // Integer | Only for the given fiscal year
     String statementCode = null; // String | Only of the given statement code
     String type = null; // String | Only of the given type
-    LocalDate startDate = null; // LocalDate | Only on or after the given date
-    LocalDate endDate = null; // LocalDate | Only on or before the given date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Only on or after the given date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Only on or before the given date
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
@@ -763,8 +763,8 @@ public class Main {
     String tag = "marketcap"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
     String frequency = "daily"; // String | Return historical data in the given frequency
     String type = null; // String | Return historical data for given fiscal period type
-    LocalDate startDate = null; // LocalDate | Return historical data on or after this date
-    LocalDate endDate = null; // LocalDate | Return historical data on or before this date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Return historical data on or after this date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Return historical data on or before this date
     String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
@@ -867,8 +867,8 @@ public class Main {
 
     String ticker = null; // String | Return IPOs with the given ticker (typically the IPO for the company)
     String status = null; // String | Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occured and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand
-    LocalDate startDate = null; // LocalDate | Return IPOs on or after the given date
-    LocalDate endDate = null; // LocalDate | Return IPOs on or before the given date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Return IPOs on or after the given date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Return IPOs on or before the given date
     Integer offerAmountGreaterThan = null; // Integer | Return IPOs with an offer dollar amount greater than the given amount
     Integer offerAmountLessThan = null; // Integer | Return IPOs with an offer dollar amount less than the given amount
     Integer pageSize = 100; // Integer | The number of results to return

@@ -33,9 +33,13 @@ Name | Type | Description
 **nextEarningsDate** | [**LocalDate**](LocalDate.md) | Next earnings date &nbsp;
 **nextEarningsQuarter** | String | The quarter of the next earnings release &nbsp;
 **nextEarningsFiscalYear** | Integer | The fiscal year associated with next earnings date and next earnings quarter &nbsp;
+**preliminaryEarningsDate** | [**LocalDate**](LocalDate.md) | The release date of a preliminary earnings report &nbsp;
 **security** | [**SecuritySummary**](SecuritySummary.md) |  &nbsp;
 
 [//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
 
 
 [//]: # (CONTAINED_CLASS:LocalDate)

@@ -118,8 +118,8 @@ public class Main {
     String name = null; // String | Return securities with the given text in their name (not case sensitive).
     String compositeMic = null; // String | Return securities classified under the composite exchange with the given Market Identification Code (MIC). A composite exchange may or may not be a real exchange.  For example, the USCOMP exchange (our only composite exchange to date) is a combination of exchanges with the following MICs: ARCX, XASE, XPOR, FINR, XCIS, XNAS, XNYS, BATS.  This composite grouping is done for user convenience.  At this time, all US securities are classified under the composite exchange with MIC USCOMP.  To query for specific US exchanges, use the exchange_mic parameter below. 
     String exchangeMic = null; // String | The MIC code of the exchange where the security is actually traded.
-    LocalDate stockPricesAfter = null; // LocalDate | Return securities with end-of-day stock prices on or after this date.
-    LocalDate stockPricesBefore = null; // LocalDate | Return securities with end-of-day stock prices on or before this date.
+    LocalDate stockPricesAfter = LocalDate.now(); // LocalDate | Return securities with end-of-day stock prices on or after this date.
+    LocalDate stockPricesBefore = LocalDate.now(); // LocalDate | Return securities with end-of-day stock prices on or before this date.
     String cik = null; // String | Return securities belonging to the company with the given Central Index Key (CIK).
     String figi = null; // String | Return securities with the given Exchange Level FIGI (<a href=\"https://www.openfigi.com/about\" target=\"_blank\">reference</a>).
     String compositeFigi = null; // String | Return securities with the given Country Composite FIGI (<a href=\"https://www.openfigi.com/about\" target=\"_blank\">reference</a>).
@@ -512,8 +512,8 @@ public class Main {
     String tag = "adj_close_price"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
     String frequency = "daily"; // String | Return historical data in the given frequency
     String type = null; // String | Filter by type, when applicable
-    LocalDate startDate = null; // LocalDate | Get historical data on or after this date
-    LocalDate endDate = null; // LocalDate | Get historical date on or before this date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Get historical data on or after this date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Get historical date on or before this date
     String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
@@ -616,9 +616,9 @@ public class Main {
 
     String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     String source = null; // String | Return intraday prices from the specified data source
-    LocalDate startDate = null; // LocalDate | Return intraday prices starting at the specified date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Return intraday prices starting at the specified date
     String startTime = null; // String | Return intraday prices starting at the specified time on the `start_date` (timezone is UTC)
-    LocalDate endDate = null; // LocalDate | Return intraday prices stopping at the specified date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Return intraday prices stopping at the specified date
     String endTime = null; // String | Return intraday prices stopping at the specified time on the `end_date` (timezone is UTC)
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
@@ -4139,8 +4139,8 @@ public class Main {
     SecurityApi securityApi = new SecurityApi();
 
     String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    LocalDate startDate = null; // LocalDate | Return price adjustments on or after the date
-    LocalDate endDate = null; // LocalDate | Return price adjustments on or before the date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Return price adjustments on or after the date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Return price adjustments on or before the date
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
@@ -4237,8 +4237,8 @@ public class Main {
     SecurityApi securityApi = new SecurityApi();
 
     String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    LocalDate startDate = null; // LocalDate | Return prices on or after the date
-    LocalDate endDate = null; // LocalDate | Return prices on or before the date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Return prices on or after the date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Return prices on or before the date
     String frequency = "daily"; // String | Return stock prices in the given frequency
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call

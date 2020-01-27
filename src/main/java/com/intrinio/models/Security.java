@@ -430,7 +430,7 @@ public class Security {
    * @return active
   **/
   @ApiModelProperty(value = "If true, the Security is active and has been recently traded")
-  public Boolean isisActive() {
+  public Boolean isActive() {
     return active;
   }
 
@@ -448,7 +448,7 @@ public class Security {
    * @return etf
   **/
   @ApiModelProperty(value = "If true, this Security is an ETF")
-  public Boolean isisEtf() {
+  public Boolean isEtf() {
     return etf;
   }
 
@@ -466,7 +466,7 @@ public class Security {
    * @return delisted
   **/
   @ApiModelProperty(value = "If true, the Security is no longer traded on the exchange")
-  public Boolean isisDelisted() {
+  public Boolean isDelisted() {
     return delisted;
   }
 
@@ -484,7 +484,7 @@ public class Security {
    * @return primaryListing
   **/
   @ApiModelProperty(value = "If true, the Security is the primary issue for the company, otherwise it is a secondary issue on a secondary stock exchange")
-  public Boolean isisPrimaryListing() {
+  public Boolean isPrimaryListing() {
     return primaryListing;
   }
 
@@ -502,7 +502,7 @@ public class Security {
    * @return primarySecurity
   **/
   @ApiModelProperty(value = "If true, the Security is considered by Intrinio to be the primary Security for its company")
-  public Boolean isisPrimarySecurity() {
+  public Boolean isPrimarySecurity() {
     return primarySecurity;
   }
 
