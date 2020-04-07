@@ -41,9 +41,11 @@ public class FilingApiTest {
         String reportType = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
+        String industryCategory = null;
+        String industryGroup = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseFilings response = api.getAllFilings(company, reportType, startDate, endDate, pageSize, nextPage);
+        ApiResponseFilings response = api.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -106,6 +108,38 @@ public class FilingApiTest {
         LocalDate endDate = null;
         String nextPage = null;
         ApiResponseFilingFundamentals response = api.getFilingFundamentals(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Filing Html
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getFilingHtmlTest() throws ApiException {
+        String identifier = null;
+        String response = api.getFilingHtml(identifier);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Filing Text
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getFilingTextTest() throws ApiException {
+        String identifier = null;
+        String response = api.getFilingText(identifier);
 
         // TODO: test validations
     }

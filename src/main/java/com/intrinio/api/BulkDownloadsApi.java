@@ -101,7 +101,7 @@ public class BulkDownloadsApi {
     }
 
     /**
-     * Bulk Downloads
+     * All Links
      * Returns all active bulk downloads for your account with links to download.
      * @return ApiResponseBulkDownloadLinks
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -112,7 +112,7 @@ public class BulkDownloadsApi {
     }
 
     /**
-     * Bulk Downloads
+     * All Links
      * Returns all active bulk downloads for your account with links to download.
      * @return ApiResponse&lt;ApiResponseBulkDownloadLinks&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -124,7 +124,7 @@ public class BulkDownloadsApi {
     }
 
     /**
-     * Bulk Downloads (asynchronously)
+     * All Links (asynchronously)
      * Returns all active bulk downloads for your account with links to download.
      * @param callback The callback to be executed when the API call finishes
      * @return The request call

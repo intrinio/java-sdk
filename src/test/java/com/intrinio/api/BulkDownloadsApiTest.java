@@ -22,7 +22,7 @@ public class BulkDownloadsApiTest {
 
     
     /**
-     * Bulk Downloads
+     * All Links
      *
      * Returns all active bulk downloads for your account with links to download.
      *

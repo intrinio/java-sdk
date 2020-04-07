@@ -55,6 +55,8 @@ public class FilingApi {
      * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
+     * @param industryCategory Return companies in the given industry category (optional)
+     * @param industryGroup Return companies in the given industry group (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -62,7 +64,7 @@ public class FilingApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllFilingsCall(String company, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllFilingsCall(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -78,6 +80,10 @@ public class FilingApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
         if (endDate != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (industryCategory != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("industry_category", industryCategory));
+        if (industryGroup != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("industry_group", industryGroup));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -116,7 +122,7 @@ public class FilingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllFilingsValidateBeforeCall(String company, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllFilingsValidateBeforeCall(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'company' is set
         if (company == null) {
@@ -124,7 +130,7 @@ public class FilingApi {
         }
         
 
-        com.squareup.okhttp.Call call = getAllFilingsCall(company, reportType, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllFilingsCall(company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -136,13 +142,15 @@ public class FilingApi {
      * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
+     * @param industryCategory Return companies in the given industry category (optional)
+     * @param industryGroup Return companies in the given industry group (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseFilings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseFilings getAllFilings(String company, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseFilings> resp = getAllFilingsWithHttpInfo(company, reportType, startDate, endDate, pageSize, nextPage);
+    public ApiResponseFilings getAllFilings(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseFilings> resp = getAllFilingsWithHttpInfo(company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage);
         return resp.getData();
     }
 
@@ -153,13 +161,15 @@ public class FilingApi {
      * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
+     * @param industryCategory Return companies in the given industry category (optional)
+     * @param industryGroup Return companies in the given industry group (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseFilings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseFilings> getAllFilingsWithHttpInfo(String company, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllFilingsValidateBeforeCall(company, reportType, startDate, endDate, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseFilings> getAllFilingsWithHttpInfo(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllFilingsValidateBeforeCall(company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseFilings>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -171,13 +181,15 @@ public class FilingApi {
      * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
+     * @param industryCategory Return companies in the given industry category (optional)
+     * @param industryGroup Return companies in the given industry group (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllFilingsAsync(String company, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ApiCallback<ApiResponseFilings> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllFilingsAsync(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Integer pageSize, String nextPage, final ApiCallback<ApiResponseFilings> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -198,7 +210,7 @@ public class FilingApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllFilingsValidateBeforeCall(company, reportType, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllFilingsValidateBeforeCall(company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseFilings>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -649,6 +661,252 @@ public class FilingApi {
 
         com.squareup.okhttp.Call call = getFilingFundamentalsValidateBeforeCall(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseFilingFundamentals>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getFilingHtml
+     * @param identifier A Filing identifier (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getFilingHtmlCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/filings/{identifier}/html"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/html"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getFilingHtmlValidateBeforeCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getFilingHtml(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getFilingHtmlCall(identifier, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Filing Html
+     * 
+     * @param identifier A Filing identifier (required)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public String getFilingHtml(String identifier) throws ApiException {
+        ApiResponse<String> resp = getFilingHtmlWithHttpInfo(identifier);
+        return resp.getData();
+    }
+
+    /**
+     * Filing Html
+     * 
+     * @param identifier A Filing identifier (required)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<String> getFilingHtmlWithHttpInfo(String identifier) throws ApiException {
+        com.squareup.okhttp.Call call = getFilingHtmlValidateBeforeCall(identifier, null, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Filing Html (asynchronously)
+     * 
+     * @param identifier A Filing identifier (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getFilingHtmlAsync(String identifier, final ApiCallback<String> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getFilingHtmlValidateBeforeCall(identifier, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getFilingText
+     * @param identifier A Filing identifier (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getFilingTextCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/filings/{identifier}/text"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain; charset=utf-8"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getFilingTextValidateBeforeCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getFilingText(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getFilingTextCall(identifier, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Filing Text
+     * 
+     * @param identifier A Filing identifier (required)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public String getFilingText(String identifier) throws ApiException {
+        ApiResponse<String> resp = getFilingTextWithHttpInfo(identifier);
+        return resp.getData();
+    }
+
+    /**
+     * Filing Text
+     * 
+     * @param identifier A Filing identifier (required)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<String> getFilingTextWithHttpInfo(String identifier) throws ApiException {
+        com.squareup.okhttp.Call call = getFilingTextValidateBeforeCall(identifier, null, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Filing Text (asynchronously)
+     * 
+     * @param identifier A Filing identifier (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getFilingTextAsync(String identifier, final ApiCallback<String> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getFilingTextValidateBeforeCall(identifier, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

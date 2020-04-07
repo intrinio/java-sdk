@@ -48,6 +48,15 @@ public class Filing {
   @SerializedName("instance_url")
   private String instanceUrl = null;
 
+  @SerializedName("industry_category")
+  private String industryCategory = null;
+
+  @SerializedName("industry_group")
+  private String industryGroup = null;
+
+  @SerializedName("word_count")
+  private Integer wordCount = null;
+
   @SerializedName("company")
   private CompanySummary company = null;
 
@@ -213,6 +222,60 @@ public class Filing {
     this.instanceUrl = instanceUrl;
   }
 
+  public Filing industryCategory(String industryCategory) {
+    this.industryCategory = industryCategory;
+    return this;
+  }
+
+   /**
+   * The company&#39;s operating industry category
+   * @return industryCategory
+  **/
+  @ApiModelProperty(value = "The company's operating industry category")
+  public String getIndustryCategory() {
+    return industryCategory;
+  }
+
+  public void setIndustryCategory(String industryCategory) {
+    this.industryCategory = industryCategory;
+  }
+
+  public Filing industryGroup(String industryGroup) {
+    this.industryGroup = industryGroup;
+    return this;
+  }
+
+   /**
+   * The company&#39;s operating industry group
+   * @return industryGroup
+  **/
+  @ApiModelProperty(value = "The company's operating industry group")
+  public String getIndustryGroup() {
+    return industryGroup;
+  }
+
+  public void setIndustryGroup(String industryGroup) {
+    this.industryGroup = industryGroup;
+  }
+
+  public Filing wordCount(Integer wordCount) {
+    this.wordCount = wordCount;
+    return this;
+  }
+
+   /**
+   * The number of words in the filing
+   * @return wordCount
+  **/
+  @ApiModelProperty(value = "The number of words in the filing")
+  public Integer getWordCount() {
+    return wordCount;
+  }
+
+  public void setWordCount(Integer wordCount) {
+    this.wordCount = wordCount;
+  }
+
   public Filing company(CompanySummary company) {
     this.company = company;
     return this;
@@ -250,12 +313,15 @@ public class Filing {
         Objects.equals(this.filingUrl, filing.filingUrl) &&
         Objects.equals(this.reportUrl, filing.reportUrl) &&
         Objects.equals(this.instanceUrl, filing.instanceUrl) &&
+        Objects.equals(this.industryCategory, filing.industryCategory) &&
+        Objects.equals(this.industryGroup, filing.industryGroup) &&
+        Objects.equals(this.wordCount, filing.wordCount) &&
         Objects.equals(this.company, filing.company);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, filingDate, acceptedDate, periodEndDate, reportType, secUniqueId, filingUrl, reportUrl, instanceUrl, company);
+    return Objects.hash(id, filingDate, acceptedDate, periodEndDate, reportType, secUniqueId, filingUrl, reportUrl, instanceUrl, industryCategory, industryGroup, wordCount, company);
   }
 
 
@@ -273,6 +339,9 @@ public class Filing {
     sb.append("    filingUrl: ").append(toIndentedString(filingUrl)).append("\n");
     sb.append("    reportUrl: ").append(toIndentedString(reportUrl)).append("\n");
     sb.append("    instanceUrl: ").append(toIndentedString(instanceUrl)).append("\n");
+    sb.append("    industryCategory: ").append(toIndentedString(industryCategory)).append("\n");
+    sb.append("    industryGroup: ").append(toIndentedString(industryGroup)).append("\n");
+    sb.append("    wordCount: ").append(toIndentedString(wordCount)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("}");
     return sb.toString();

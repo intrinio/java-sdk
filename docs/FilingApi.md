@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**getAllNotes**](FilingApi.md#getAllNotes) | **GET** /filings/notes | All Filing Notes
 [**getFilingById**](FilingApi.md#getFilingById) | **GET** /filings/{id} | Lookup Filing
 [**getFilingFundamentals**](FilingApi.md#getFilingFundamentals) | **GET** /filings/{identifier}/fundamentals | All Fundamentals by Filing
+[**getFilingHtml**](FilingApi.md#getFilingHtml) | **GET** /filings/{identifier}/html | Filing Html
+[**getFilingText**](FilingApi.md#getFilingText) | **GET** /filings/{identifier}/text | Filing Text
 [**getNote**](FilingApi.md#getNote) | **GET** /filings/notes/{identifier} | Filing Note by ID
 [**getNoteHtml**](FilingApi.md#getNoteHtml) | **GET** /filings/notes/{identifier}/html | Filing Note HTML
 [**getNoteText**](FilingApi.md#getNoteText) | **GET** /filings/notes/{identifier}/text | Filing Note Text
@@ -40,7 +42,7 @@ Method | HTTP request | Description
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseFilings getAllFilings(company, reportType, startDate, endDate, pageSize, nextPage)
+> ApiResponseFilings getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage)
 
 #### All Filings
 
@@ -74,11 +76,13 @@ public class Main {
     String reportType = null; // String | Filter by report type. Separate values with commas to return multiple The filing <a href=\"https://docs.intrinio.com/documentation/sec_filing_report_types\" target=\"_blank\">report types</a>.
     LocalDate startDate = LocalDate.now(); // LocalDate | Filed on or after the given date
     LocalDate endDate = LocalDate.now(); // LocalDate | Filed before or after the given date
+    String industryCategory = null; // String | Return companies in the given industry category
+    String industryGroup = null; // String | Return companies in the given industry group
     Integer pageSize = 100; // Integer | The number of results to return
     String nextPage = null; // String | Gets the next page of data from a previous API call
 
     try {
-      ApiResponseFilings result = filingApi.getAllFilings(company, reportType, startDate, endDate, pageSize, nextPage);
+      ApiResponseFilings result = filingApi.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling FilingApi#getAllFilings");
@@ -102,6 +106,8 @@ Name | Type | Description  | Notes
  **reportType** | String| Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. | [optional] &nbsp;
  **startDate** | LocalDate| Filed on or after the given date | [optional] &nbsp;
  **endDate** | LocalDate| Filed before or after the given date | [optional] &nbsp;
+ **industryCategory** | String| Return companies in the given industry category | [optional] &nbsp;
+ **industryGroup** | String| Return companies in the given industry group | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
@@ -409,6 +415,184 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseFilingFundamentals**](ApiResponseFilingFundamentals.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:FilingApi)
+
+[//]: # (METHOD:getFilingHtml)
+
+[//]: # (RETURN_TYPE:String)
+
+[//]: # (RETURN_TYPE_KIND:primitive)
+
+[//]: # (RETURN_TYPE_DOC:)
+
+[//]: # (OPERATION:getFilingHtml_v2)
+
+[//]: # (ENDPOINT:/filings/{identifier}/html)
+
+[//]: # (DOCUMENT_LINK:FilingApi.md#getFilingHtml)
+
+<a name="getFilingHtml"></a>
+## **getFilingHtml**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getFilingHtml_v2)
+
+[//]: # (START_OVERVIEW)
+
+> String getFilingHtml(identifier)
+
+#### Filing Html
+
+
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+
+    FilingApi filingApi = new FilingApi();
+
+    String identifier = "fil_B73xBG"; // String | A Filing identifier
+
+    try {
+      String result = filingApi.getFilingHtml(identifier);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilingApi#getFilingHtml");
+      e.printStackTrace();
+    }
+  
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Filing identifier | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+**String**
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:FilingApi)
+
+[//]: # (METHOD:getFilingText)
+
+[//]: # (RETURN_TYPE:String)
+
+[//]: # (RETURN_TYPE_KIND:primitive)
+
+[//]: # (RETURN_TYPE_DOC:)
+
+[//]: # (OPERATION:getFilingText_v2)
+
+[//]: # (ENDPOINT:/filings/{identifier}/text)
+
+[//]: # (DOCUMENT_LINK:FilingApi.md#getFilingText)
+
+<a name="getFilingText"></a>
+## **getFilingText**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getFilingText_v2)
+
+[//]: # (START_OVERVIEW)
+
+> String getFilingText(identifier)
+
+#### Filing Text
+
+
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+
+    FilingApi filingApi = new FilingApi();
+
+    String identifier = "fil_B73xBG"; // String | A Filing identifier
+
+    try {
+      String result = filingApi.getFilingText(identifier);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling FilingApi#getFilingText");
+      e.printStackTrace();
+    }
+  
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Filing identifier | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+**String**
 
 [//]: # (END_OPERATION)
 
