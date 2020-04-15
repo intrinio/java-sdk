@@ -17,9 +17,14 @@ import java.io.IOException;
 
 
 import com.intrinio.models.ApiResponseZacksAnalystRatings;
+import com.intrinio.models.ApiResponseZacksEPSEstimates;
+import com.intrinio.models.ApiResponseZacksEPSGrowthRates;
 import com.intrinio.models.ApiResponseZacksEPSSurprises;
+import com.intrinio.models.ApiResponseZacksLongTermGrowthRates;
 import com.intrinio.models.ApiResponseZacksSalesSurprises;
+import com.intrinio.models.ApiResponseZacksTargetPriceConsensuses;
 import java.math.BigDecimal;
+import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -72,7 +77,7 @@ public class ZacksApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getZacksAnalystRatingsCall(String identifier, String startDate, String endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getZacksAnalystRatingsCall(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -152,7 +157,7 @@ public class ZacksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getZacksAnalystRatingsValidateBeforeCall(String identifier, String startDate, String endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getZacksAnalystRatingsValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
         com.squareup.okhttp.Call call = getZacksAnalystRatingsCall(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage, progressListener, progressRequestListener);
@@ -185,7 +190,7 @@ public class ZacksApi {
      * @return ApiResponseZacksAnalystRatings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseZacksAnalystRatings getZacksAnalystRatings(String identifier, String startDate, String endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage) throws ApiException {
+    public ApiResponseZacksAnalystRatings getZacksAnalystRatings(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage) throws ApiException {
         ApiResponse<ApiResponseZacksAnalystRatings> resp = getZacksAnalystRatingsWithHttpInfo(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage);
         return resp.getData();
     }
@@ -215,7 +220,7 @@ public class ZacksApi {
      * @return ApiResponse&lt;ApiResponseZacksAnalystRatings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseZacksAnalystRatings> getZacksAnalystRatingsWithHttpInfo(String identifier, String startDate, String endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseZacksAnalystRatings> getZacksAnalystRatingsWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getZacksAnalystRatingsValidateBeforeCall(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseZacksAnalystRatings>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -247,7 +252,7 @@ public class ZacksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getZacksAnalystRatingsAsync(String identifier, String startDate, String endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksAnalystRatings> callback) throws ApiException {
+    public com.squareup.okhttp.Call getZacksAnalystRatingsAsync(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksAnalystRatings> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -274,6 +279,316 @@ public class ZacksApi {
         return call;
     }
     /**
+     * Build call for getZacksEpsEstimates
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param startDate Limit EPS estimates to those on or after this date (optional)
+     * @param endDate Limit EPS estimates to those on or before this date (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param calendarYear Only for the given calendar year (optional)
+     * @param calendarPeriod The calendar period (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksEpsEstimatesCall(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/eps_estimates";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (identifier != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("identifier", identifier));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (fiscalYear != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_year", fiscalYear));
+        if (fiscalPeriod != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_period", fiscalPeriod));
+        if (calendarYear != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("calendar_year", calendarYear));
+        if (calendarPeriod != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("calendar_period", calendarPeriod));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksEpsEstimatesValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getZacksEpsEstimatesCall(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks EPS Estimates
+     * Returns Zacks consensus earnings-per-share (EPS) data for all Companies.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param startDate Limit EPS estimates to those on or after this date (optional)
+     * @param endDate Limit EPS estimates to those on or before this date (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param calendarYear Only for the given calendar year (optional)
+     * @param calendarPeriod The calendar period (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseZacksEPSEstimates
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseZacksEPSEstimates getZacksEpsEstimates(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseZacksEPSEstimates> resp = getZacksEpsEstimatesWithHttpInfo(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks EPS Estimates
+     * Returns Zacks consensus earnings-per-share (EPS) data for all Companies.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param startDate Limit EPS estimates to those on or after this date (optional)
+     * @param endDate Limit EPS estimates to those on or before this date (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param calendarYear Only for the given calendar year (optional)
+     * @param calendarPeriod The calendar period (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseZacksEPSEstimates&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseZacksEPSEstimates> getZacksEpsEstimatesWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksEpsEstimatesValidateBeforeCall(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksEPSEstimates>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks EPS Estimates (asynchronously)
+     * Returns Zacks consensus earnings-per-share (EPS) data for all Companies.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param startDate Limit EPS estimates to those on or after this date (optional)
+     * @param endDate Limit EPS estimates to those on or before this date (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param calendarYear Only for the given calendar year (optional)
+     * @param calendarPeriod The calendar period (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksEpsEstimatesAsync(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksEPSEstimates> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksEpsEstimatesValidateBeforeCall(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksEPSEstimates>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getZacksEpsGrowthRates
+     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param industryGroupName Return only growth rates for companies in the given Zacks industry group name (optional)
+     * @param industryGroupNumber Return only growth rates for companies in the given Zacks industry group number (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksEpsGrowthRatesCall(String company, String industryGroupName, String industryGroupNumber, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/eps_growth_rates";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (company != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("company", company));
+        if (industryGroupName != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("industry_group_name", industryGroupName));
+        if (industryGroupNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("industry_group_number", industryGroupNumber));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksEpsGrowthRatesValidateBeforeCall(String company, String industryGroupName, String industryGroupNumber, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getZacksEpsGrowthRatesCall(company, industryGroupName, industryGroupNumber, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks EPS Growth Rates
+     * Returns the latest Zacks EPS growth rates
+     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param industryGroupName Return only growth rates for companies in the given Zacks industry group name (optional)
+     * @param industryGroupNumber Return only growth rates for companies in the given Zacks industry group number (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseZacksEPSGrowthRates
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseZacksEPSGrowthRates getZacksEpsGrowthRates(String company, String industryGroupName, String industryGroupNumber, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseZacksEPSGrowthRates> resp = getZacksEpsGrowthRatesWithHttpInfo(company, industryGroupName, industryGroupNumber, pageSize, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks EPS Growth Rates
+     * Returns the latest Zacks EPS growth rates
+     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param industryGroupName Return only growth rates for companies in the given Zacks industry group name (optional)
+     * @param industryGroupNumber Return only growth rates for companies in the given Zacks industry group number (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseZacksEPSGrowthRates&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseZacksEPSGrowthRates> getZacksEpsGrowthRatesWithHttpInfo(String company, String industryGroupName, String industryGroupNumber, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksEpsGrowthRatesValidateBeforeCall(company, industryGroupName, industryGroupNumber, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksEPSGrowthRates>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks EPS Growth Rates (asynchronously)
+     * Returns the latest Zacks EPS growth rates
+     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param industryGroupName Return only growth rates for companies in the given Zacks industry group name (optional)
+     * @param industryGroupNumber Return only growth rates for companies in the given Zacks industry group number (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksEpsGrowthRatesAsync(String company, String industryGroupName, String industryGroupNumber, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksEPSGrowthRates> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksEpsGrowthRatesValidateBeforeCall(company, industryGroupName, industryGroupNumber, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksEPSGrowthRates>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getZacksEpsSurprises
      * @param startDate Limit EPS surprises to those on or after this date (optional)
      * @param endDate Limit EPS surprises to those on or before this date (optional)
@@ -296,7 +611,7 @@ public class ZacksApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getZacksEpsSurprisesCall(String startDate, String endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getZacksEpsSurprisesCall(LocalDate startDate, LocalDate endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -370,7 +685,7 @@ public class ZacksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getZacksEpsSurprisesValidateBeforeCall(String startDate, String endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getZacksEpsSurprisesValidateBeforeCall(LocalDate startDate, LocalDate endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
         com.squareup.okhttp.Call call = getZacksEpsSurprisesCall(startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage, progressListener, progressRequestListener);
@@ -400,7 +715,7 @@ public class ZacksApi {
      * @return ApiResponseZacksEPSSurprises
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseZacksEPSSurprises getZacksEpsSurprises(String startDate, String endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException {
+    public ApiResponseZacksEPSSurprises getZacksEpsSurprises(LocalDate startDate, LocalDate endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException {
         ApiResponse<ApiResponseZacksEPSSurprises> resp = getZacksEpsSurprisesWithHttpInfo(startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage);
         return resp.getData();
     }
@@ -427,7 +742,7 @@ public class ZacksApi {
      * @return ApiResponse&lt;ApiResponseZacksEPSSurprises&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseZacksEPSSurprises> getZacksEpsSurprisesWithHttpInfo(String startDate, String endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseZacksEPSSurprises> getZacksEpsSurprisesWithHttpInfo(LocalDate startDate, LocalDate endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getZacksEpsSurprisesValidateBeforeCall(startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseZacksEPSSurprises>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -456,7 +771,7 @@ public class ZacksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getZacksEpsSurprisesAsync(String startDate, String endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksEPSSurprises> callback) throws ApiException {
+    public com.squareup.okhttp.Call getZacksEpsSurprisesAsync(LocalDate startDate, LocalDate endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksEPSSurprises> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -483,6 +798,137 @@ public class ZacksApi {
         return call;
     }
     /**
+     * Build call for getZacksLongTermGrowthRates
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksLongTermGrowthRatesCall(String identifier, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/long_term_growth_rates";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (identifier != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("identifier", identifier));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksLongTermGrowthRatesValidateBeforeCall(String identifier, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getZacksLongTermGrowthRatesCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks Long Term Growth Rates
+     * Returns the latest Zacks long term growth rates
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseZacksLongTermGrowthRates
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseZacksLongTermGrowthRates getZacksLongTermGrowthRates(String identifier, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseZacksLongTermGrowthRates> resp = getZacksLongTermGrowthRatesWithHttpInfo(identifier, pageSize, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks Long Term Growth Rates
+     * Returns the latest Zacks long term growth rates
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseZacksLongTermGrowthRates&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseZacksLongTermGrowthRates> getZacksLongTermGrowthRatesWithHttpInfo(String identifier, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksLongTermGrowthRatesValidateBeforeCall(identifier, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksLongTermGrowthRates>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks Long Term Growth Rates (asynchronously)
+     * Returns the latest Zacks long term growth rates
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksLongTermGrowthRatesAsync(String identifier, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksLongTermGrowthRates> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksLongTermGrowthRatesValidateBeforeCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksLongTermGrowthRates>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getZacksSalesSurprises
      * @param startDate Limit sales surprises to those on or after this date (optional)
      * @param endDate Limit sales surprises to those on or before this date (optional)
@@ -505,7 +951,7 @@ public class ZacksApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getZacksSalesSurprisesCall(String startDate, String endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getZacksSalesSurprisesCall(LocalDate startDate, LocalDate endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -579,7 +1025,7 @@ public class ZacksApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getZacksSalesSurprisesValidateBeforeCall(String startDate, String endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getZacksSalesSurprisesValidateBeforeCall(LocalDate startDate, LocalDate endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
         com.squareup.okhttp.Call call = getZacksSalesSurprisesCall(startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage, progressListener, progressRequestListener);
@@ -609,7 +1055,7 @@ public class ZacksApi {
      * @return ApiResponseZacksSalesSurprises
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponseZacksSalesSurprises getZacksSalesSurprises(String startDate, String endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException {
+    public ApiResponseZacksSalesSurprises getZacksSalesSurprises(LocalDate startDate, LocalDate endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException {
         ApiResponse<ApiResponseZacksSalesSurprises> resp = getZacksSalesSurprisesWithHttpInfo(startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage);
         return resp.getData();
     }
@@ -636,7 +1082,7 @@ public class ZacksApi {
      * @return ApiResponse&lt;ApiResponseZacksSalesSurprises&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseZacksSalesSurprises> getZacksSalesSurprisesWithHttpInfo(String startDate, String endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseZacksSalesSurprises> getZacksSalesSurprisesWithHttpInfo(LocalDate startDate, LocalDate endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getZacksSalesSurprisesValidateBeforeCall(startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseZacksSalesSurprises>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -665,7 +1111,7 @@ public class ZacksApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getZacksSalesSurprisesAsync(String startDate, String endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksSalesSurprises> callback) throws ApiException {
+    public com.squareup.okhttp.Call getZacksSalesSurprisesAsync(LocalDate startDate, LocalDate endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksSalesSurprises> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -688,6 +1134,143 @@ public class ZacksApi {
 
         com.squareup.okhttp.Call call = getZacksSalesSurprisesValidateBeforeCall(startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseZacksSalesSurprises>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getZacksTargetPriceConsensuses
+     * @param identifier Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param industryGroupNumber Return only growth rates for companies in the given Zacks industry group number (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksTargetPriceConsensusesCall(String identifier, String industryGroupNumber, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/target_price_consensuses";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (identifier != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("identifier", identifier));
+        if (industryGroupNumber != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("industry_group_number", industryGroupNumber));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksTargetPriceConsensusesValidateBeforeCall(String identifier, String industryGroupNumber, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getZacksTargetPriceConsensusesCall(identifier, industryGroupNumber, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks Target Price Consensuses
+     * Returns the latest Zacks target price consensus data
+     * @param identifier Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param industryGroupNumber Return only growth rates for companies in the given Zacks industry group number (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseZacksTargetPriceConsensuses
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseZacksTargetPriceConsensuses getZacksTargetPriceConsensuses(String identifier, String industryGroupNumber, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseZacksTargetPriceConsensuses> resp = getZacksTargetPriceConsensusesWithHttpInfo(identifier, industryGroupNumber, pageSize, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks Target Price Consensuses
+     * Returns the latest Zacks target price consensus data
+     * @param identifier Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param industryGroupNumber Return only growth rates for companies in the given Zacks industry group number (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseZacksTargetPriceConsensuses&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseZacksTargetPriceConsensuses> getZacksTargetPriceConsensusesWithHttpInfo(String identifier, String industryGroupNumber, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksTargetPriceConsensusesValidateBeforeCall(identifier, industryGroupNumber, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksTargetPriceConsensuses>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks Target Price Consensuses (asynchronously)
+     * Returns the latest Zacks target price consensus data
+     * @param identifier Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param industryGroupNumber Return only growth rates for companies in the given Zacks industry group number (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksTargetPriceConsensusesAsync(String identifier, String industryGroupNumber, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksTargetPriceConsensuses> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksTargetPriceConsensusesValidateBeforeCall(identifier, industryGroupNumber, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksTargetPriceConsensuses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -5,8 +5,12 @@ All URIs are relative to *https://api-v2.intrinio.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getZacksAnalystRatings**](ZacksApi.md#getZacksAnalystRatings) | **GET** /zacks/analyst_ratings | Zacks Analyst Ratings
+[**getZacksEpsEstimates**](ZacksApi.md#getZacksEpsEstimates) | **GET** /zacks/eps_estimates | Zacks EPS Estimates
+[**getZacksEpsGrowthRates**](ZacksApi.md#getZacksEpsGrowthRates) | **GET** /zacks/eps_growth_rates | Zacks EPS Growth Rates
 [**getZacksEpsSurprises**](ZacksApi.md#getZacksEpsSurprises) | **GET** /zacks/eps_surprises | Zacks EPS Surprises
+[**getZacksLongTermGrowthRates**](ZacksApi.md#getZacksLongTermGrowthRates) | **GET** /zacks/long_term_growth_rates | Zacks Long Term Growth Rates
 [**getZacksSalesSurprises**](ZacksApi.md#getZacksSalesSurprises) | **GET** /zacks/sales_surprises | Zacks Sales Surprises
+[**getZacksTargetPriceConsensuses**](ZacksApi.md#getZacksTargetPriceConsensuses) | **GET** /zacks/target_price_consensuses | Zacks Target Price Consensuses
 
 
 
@@ -66,8 +70,8 @@ public class Main {
     ZacksApi zacksApi = new ZacksApi();
 
     String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    String startDate = null; // String | Limit ratings to those on or after this date
-    String endDate = null; // String | Limit ratings to those on or before this date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Limit ratings to those on or after this date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Limit ratings to those on or before this date
     BigDecimal meanGreater = null; // BigDecimal | Return only records with a mean (average) higher than this value
     BigDecimal meanLess = null; // BigDecimal | Return only records with a mean (average) lower than this value
     Integer strongBuysGreater = null; // Integer | Return only records with more than this many Strong Buy recommendations
@@ -107,8 +111,8 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | [optional] &nbsp;
- **startDate** | String| Limit ratings to those on or after this date | [optional] &nbsp;
- **endDate** | String| Limit ratings to those on or before this date | [optional] &nbsp;
+ **startDate** | LocalDate| Limit ratings to those on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Limit ratings to those on or before this date | [optional] &nbsp;
  **meanGreater** | BigDecimal| Return only records with a mean (average) higher than this value | [optional] &nbsp;
  **meanLess** | BigDecimal| Return only records with a mean (average) lower than this value | [optional] &nbsp;
  **strongBuysGreater** | Integer| Return only records with more than this many Strong Buy recommendations | [optional] &nbsp;
@@ -132,6 +136,210 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseZacksAnalystRatings**](ApiResponseZacksAnalystRatings.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:ZacksApi)
+
+[//]: # (METHOD:getZacksEpsEstimates)
+
+[//]: # (RETURN_TYPE:ApiResponseZacksEPSEstimates)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseZacksEPSEstimates.md)
+
+[//]: # (OPERATION:getZacksEpsEstimates_v2)
+
+[//]: # (ENDPOINT:/zacks/eps_estimates)
+
+[//]: # (DOCUMENT_LINK:ZacksApi.md#getZacksEpsEstimates)
+
+<a name="getZacksEpsEstimates"></a>
+## **getZacksEpsEstimates**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getZacksEpsEstimates_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseZacksEPSEstimates getZacksEpsEstimates(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage)
+
+#### Zacks EPS Estimates
+
+
+Returns Zacks consensus earnings-per-share (EPS) data for all Companies.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+
+    ZacksApi zacksApi = new ZacksApi();
+
+    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
+    LocalDate startDate = LocalDate.now(); // LocalDate | Limit EPS estimates to those on or after this date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Limit EPS estimates to those on or before this date
+    Integer fiscalYear = null; // Integer | Only for the given fiscal year
+    String fiscalPeriod = null; // String | The fiscal period
+    Integer calendarYear = null; // Integer | Only for the given calendar year
+    String calendarPeriod = null; // String | The calendar period
+    Integer pageSize = 100; // Integer | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+      ApiResponseZacksEPSEstimates result = zacksApi.getZacksEpsEstimates(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ZacksApi#getZacksEpsEstimates");
+      e.printStackTrace();
+    }
+  
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | [optional] &nbsp;
+ **startDate** | LocalDate| Limit EPS estimates to those on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Limit EPS estimates to those on or before this date | [optional] &nbsp;
+ **fiscalYear** | Integer| Only for the given fiscal year | [optional] &nbsp;
+ **fiscalPeriod** | String| The fiscal period | [optional] [enum: Q1TTM, Q2TTM, Q3TTM, FY, Q1, Q2, Q3, Q4, Q2YTD, Q3YTD] &nbsp;
+ **calendarYear** | Integer| Only for the given calendar year | [optional] &nbsp;
+ **calendarPeriod** | String| The calendar period | [optional] [enum: Q1TTM, Q2TTM, Q3TTM, FY, Q1, Q2, Q3, Q4, Q2YTD, Q3YTD] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseZacksEPSEstimates**](ApiResponseZacksEPSEstimates.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:ZacksApi)
+
+[//]: # (METHOD:getZacksEpsGrowthRates)
+
+[//]: # (RETURN_TYPE:ApiResponseZacksEPSGrowthRates)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseZacksEPSGrowthRates.md)
+
+[//]: # (OPERATION:getZacksEpsGrowthRates_v2)
+
+[//]: # (ENDPOINT:/zacks/eps_growth_rates)
+
+[//]: # (DOCUMENT_LINK:ZacksApi.md#getZacksEpsGrowthRates)
+
+<a name="getZacksEpsGrowthRates"></a>
+## **getZacksEpsGrowthRates**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getZacksEpsGrowthRates_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseZacksEPSGrowthRates getZacksEpsGrowthRates(company, industryGroupName, industryGroupNumber, pageSize, nextPage)
+
+#### Zacks EPS Growth Rates
+
+
+Returns the latest Zacks EPS growth rates
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+
+    ZacksApi zacksApi = new ZacksApi();
+
+    String company = "AAPL"; // String | Filings for the given `company` identifier (ticker, CIK, LEI, Intrinio ID)
+    String industryGroupName = null; // String | Return only growth rates for companies in the given Zacks industry group name
+    String industryGroupNumber = null; // String | Return only growth rates for companies in the given Zacks industry group number
+    Integer pageSize = 100; // Integer | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+      ApiResponseZacksEPSGrowthRates result = zacksApi.getZacksEpsGrowthRates(company, industryGroupName, industryGroupNumber, pageSize, nextPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ZacksApi#getZacksEpsGrowthRates");
+      e.printStackTrace();
+    }
+  
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **company** | String| Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) | [optional] &nbsp;
+ **industryGroupName** | String| Return only growth rates for companies in the given Zacks industry group name | [optional] &nbsp;
+ **industryGroupNumber** | String| Return only growth rates for companies in the given Zacks industry group number | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseZacksEPSGrowthRates**](ApiResponseZacksEPSGrowthRates.md)
 
 [//]: # (END_OPERATION)
 
@@ -191,8 +399,8 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String startDate = null; // String | Limit EPS surprises to those on or after this date
-    String endDate = null; // String | Limit EPS surprises to those on or before this date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Limit EPS surprises to those on or after this date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Limit EPS surprises to those on or before this date
     BigDecimal epsActualGreater = null; // BigDecimal | Return only records with an actual EPS higher than this value
     BigDecimal epsActualLess = null; // BigDecimal | Return only records with an actual EPS lower than this value
     BigDecimal epsMeanEstimateGreater = null; // BigDecimal | Return only records with an EPS mean estimate greater than this value
@@ -229,8 +437,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **startDate** | String| Limit EPS surprises to those on or after this date | [optional] &nbsp;
- **endDate** | String| Limit EPS surprises to those on or before this date | [optional] &nbsp;
+ **startDate** | LocalDate| Limit EPS surprises to those on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Limit EPS surprises to those on or before this date | [optional] &nbsp;
  **epsActualGreater** | BigDecimal| Return only records with an actual EPS higher than this value | [optional] &nbsp;
  **epsActualLess** | BigDecimal| Return only records with an actual EPS lower than this value | [optional] &nbsp;
  **epsMeanEstimateGreater** | BigDecimal| Return only records with an EPS mean estimate greater than this value | [optional] &nbsp;
@@ -252,6 +460,100 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseZacksEPSSurprises**](ApiResponseZacksEPSSurprises.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:ZacksApi)
+
+[//]: # (METHOD:getZacksLongTermGrowthRates)
+
+[//]: # (RETURN_TYPE:ApiResponseZacksLongTermGrowthRates)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseZacksLongTermGrowthRates.md)
+
+[//]: # (OPERATION:getZacksLongTermGrowthRates_v2)
+
+[//]: # (ENDPOINT:/zacks/long_term_growth_rates)
+
+[//]: # (DOCUMENT_LINK:ZacksApi.md#getZacksLongTermGrowthRates)
+
+<a name="getZacksLongTermGrowthRates"></a>
+## **getZacksLongTermGrowthRates**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getZacksLongTermGrowthRates_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseZacksLongTermGrowthRates getZacksLongTermGrowthRates(identifier, pageSize, nextPage)
+
+#### Zacks Long Term Growth Rates
+
+
+Returns the latest Zacks long term growth rates
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+
+    ZacksApi zacksApi = new ZacksApi();
+
+    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    Integer pageSize = 100; // Integer | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+      ApiResponseZacksLongTermGrowthRates result = zacksApi.getZacksLongTermGrowthRates(identifier, pageSize, nextPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ZacksApi#getZacksLongTermGrowthRates");
+      e.printStackTrace();
+    }
+  
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseZacksLongTermGrowthRates**](ApiResponseZacksLongTermGrowthRates.md)
 
 [//]: # (END_OPERATION)
 
@@ -311,8 +613,8 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String startDate = null; // String | Limit sales surprises to those on or after this date
-    String endDate = null; // String | Limit sales surprises to those on or before this date
+    LocalDate startDate = LocalDate.now(); // LocalDate | Limit sales surprises to those on or after this date
+    LocalDate endDate = LocalDate.now(); // LocalDate | Limit sales surprises to those on or before this date
     BigDecimal salesActualGreater = null; // BigDecimal | Return only records with an actual sales higher than this value
     BigDecimal salesActualLess = null; // BigDecimal | Return only records with an actual sales lower than this value
     BigDecimal salesMeanEstimateGreater = null; // BigDecimal | Return only records with a sales mean estimate greater than this value
@@ -349,8 +651,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **startDate** | String| Limit sales surprises to those on or after this date | [optional] &nbsp;
- **endDate** | String| Limit sales surprises to those on or before this date | [optional] &nbsp;
+ **startDate** | LocalDate| Limit sales surprises to those on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Limit sales surprises to those on or before this date | [optional] &nbsp;
  **salesActualGreater** | BigDecimal| Return only records with an actual sales higher than this value | [optional] &nbsp;
  **salesActualLess** | BigDecimal| Return only records with an actual sales lower than this value | [optional] &nbsp;
  **salesMeanEstimateGreater** | BigDecimal| Return only records with a sales mean estimate greater than this value | [optional] &nbsp;
@@ -372,6 +674,102 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseZacksSalesSurprises**](ApiResponseZacksSalesSurprises.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:ZacksApi)
+
+[//]: # (METHOD:getZacksTargetPriceConsensuses)
+
+[//]: # (RETURN_TYPE:ApiResponseZacksTargetPriceConsensuses)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseZacksTargetPriceConsensuses.md)
+
+[//]: # (OPERATION:getZacksTargetPriceConsensuses_v2)
+
+[//]: # (ENDPOINT:/zacks/target_price_consensuses)
+
+[//]: # (DOCUMENT_LINK:ZacksApi.md#getZacksTargetPriceConsensuses)
+
+<a name="getZacksTargetPriceConsensuses"></a>
+## **getZacksTargetPriceConsensuses**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getZacksTargetPriceConsensuses_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseZacksTargetPriceConsensuses getZacksTargetPriceConsensuses(identifier, industryGroupNumber, pageSize, nextPage)
+
+#### Zacks Target Price Consensuses
+
+
+Returns the latest Zacks target price consensus data
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+
+public class Main {
+  public static void main(String[] args) {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+
+    ZacksApi zacksApi = new ZacksApi();
+
+    String identifier = "AAPL"; // String | Filings for the given `company` identifier (ticker, CIK, LEI, Intrinio ID)
+    String industryGroupNumber = null; // String | Return only growth rates for companies in the given Zacks industry group number
+    Integer pageSize = 100; // Integer | The number of results to return
+    String nextPage = null; // String | Gets the next page of data from a previous API call
+
+    try {
+      ApiResponseZacksTargetPriceConsensuses result = zacksApi.getZacksTargetPriceConsensuses(identifier, industryGroupNumber, pageSize, nextPage);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ZacksApi#getZacksTargetPriceConsensuses");
+      e.printStackTrace();
+    }
+  
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) | [optional] &nbsp;
+ **industryGroupNumber** | String| Return only growth rates for companies in the given Zacks industry group number | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseZacksTargetPriceConsensuses**](ApiResponseZacksTargetPriceConsensuses.md)
 
 [//]: # (END_OPERATION)
 

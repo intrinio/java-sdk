@@ -4,9 +4,14 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseZacksAnalystRatings;
+import com.intrinio.models.ApiResponseZacksEPSEstimates;
+import com.intrinio.models.ApiResponseZacksEPSGrowthRates;
 import com.intrinio.models.ApiResponseZacksEPSSurprises;
+import com.intrinio.models.ApiResponseZacksLongTermGrowthRates;
 import com.intrinio.models.ApiResponseZacksSalesSurprises;
+import com.intrinio.models.ApiResponseZacksTargetPriceConsensuses;
 import java.math.BigDecimal;
+import org.threeten.bp.LocalDate;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -35,8 +40,8 @@ public class ZacksApiTest {
     @Test
     public void getZacksAnalystRatingsTest() throws ApiException {
         String identifier = null;
-        String startDate = null;
-        String endDate = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
         BigDecimal meanGreater = null;
         BigDecimal meanLess = null;
         Integer strongBuysGreater = null;
@@ -59,6 +64,50 @@ public class ZacksApiTest {
     }
     
     /**
+     * Zacks EPS Estimates
+     *
+     * Returns Zacks consensus earnings-per-share (EPS) data for all Companies.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksEpsEstimatesTest() throws ApiException {
+        String identifier = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        Integer fiscalYear = null;
+        String fiscalPeriod = null;
+        Integer calendarYear = null;
+        String calendarPeriod = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseZacksEPSEstimates response = api.getZacksEpsEstimates(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks EPS Growth Rates
+     *
+     * Returns the latest Zacks EPS growth rates
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksEpsGrowthRatesTest() throws ApiException {
+        String company = null;
+        String industryGroupName = null;
+        String industryGroupNumber = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseZacksEPSGrowthRates response = api.getZacksEpsGrowthRates(company, industryGroupName, industryGroupNumber, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Zacks EPS Surprises
      *
      * Returns Zacks eps surprise data for all Securities.
@@ -68,8 +117,8 @@ public class ZacksApiTest {
      */
     @Test
     public void getZacksEpsSurprisesTest() throws ApiException {
-        String startDate = null;
-        String endDate = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
         BigDecimal epsActualGreater = null;
         BigDecimal epsActualLess = null;
         BigDecimal epsMeanEstimateGreater = null;
@@ -90,6 +139,24 @@ public class ZacksApiTest {
     }
     
     /**
+     * Zacks Long Term Growth Rates
+     *
+     * Returns the latest Zacks long term growth rates
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksLongTermGrowthRatesTest() throws ApiException {
+        String identifier = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseZacksLongTermGrowthRates response = api.getZacksLongTermGrowthRates(identifier, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Zacks Sales Surprises
      *
      * Returns Zacks sales surprise data for all Securities.
@@ -99,8 +166,8 @@ public class ZacksApiTest {
      */
     @Test
     public void getZacksSalesSurprisesTest() throws ApiException {
-        String startDate = null;
-        String endDate = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
         BigDecimal salesActualGreater = null;
         BigDecimal salesActualLess = null;
         BigDecimal salesMeanEstimateGreater = null;
@@ -116,6 +183,25 @@ public class ZacksApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseZacksSalesSurprises response = api.getZacksSalesSurprises(startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks Target Price Consensuses
+     *
+     * Returns the latest Zacks target price consensus data
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksTargetPriceConsensusesTest() throws ApiException {
+        String identifier = null;
+        String industryGroupNumber = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseZacksTargetPriceConsensuses response = api.getZacksTargetPriceConsensuses(identifier, industryGroupNumber, pageSize, nextPage);
 
         // TODO: test validations
     }

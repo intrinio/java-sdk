@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.10.0
-- Package version: 5.3.0
+- API version: 2.11.0
+- Package version: 
 
 
 ## Installation
@@ -218,8 +218,12 @@ Class | Method | HTTP request | Description
 *TechnicalApi* | [**getSecurityPriceTechnicalsVwap**](docs/TechnicalApi.md#getSecurityPriceTechnicalsVwap) | **GET** /securities/{identifier}/prices/technicals/vwap | Volume Weighted Average Price
 *TechnicalApi* | [**getSecurityPriceTechnicalsWr**](docs/TechnicalApi.md#getSecurityPriceTechnicalsWr) | **GET** /securities/{identifier}/prices/technicals/wr | Williams %R
 *ZacksApi* | [**getZacksAnalystRatings**](docs/ZacksApi.md#getZacksAnalystRatings) | **GET** /zacks/analyst_ratings | Zacks Analyst Ratings
+*ZacksApi* | [**getZacksEpsEstimates**](docs/ZacksApi.md#getZacksEpsEstimates) | **GET** /zacks/eps_estimates | Zacks EPS Estimates
+*ZacksApi* | [**getZacksEpsGrowthRates**](docs/ZacksApi.md#getZacksEpsGrowthRates) | **GET** /zacks/eps_growth_rates | Zacks EPS Growth Rates
 *ZacksApi* | [**getZacksEpsSurprises**](docs/ZacksApi.md#getZacksEpsSurprises) | **GET** /zacks/eps_surprises | Zacks EPS Surprises
+*ZacksApi* | [**getZacksLongTermGrowthRates**](docs/ZacksApi.md#getZacksLongTermGrowthRates) | **GET** /zacks/long_term_growth_rates | Zacks Long Term Growth Rates
 *ZacksApi* | [**getZacksSalesSurprises**](docs/ZacksApi.md#getZacksSalesSurprises) | **GET** /zacks/sales_surprises | Zacks Sales Surprises
+*ZacksApi* | [**getZacksTargetPriceConsensuses**](docs/ZacksApi.md#getZacksTargetPriceConsensuses) | **GET** /zacks/target_price_consensuses | Zacks Target Price Consensuses
 
 
 ## Documentation for Models
@@ -309,8 +313,12 @@ Class | Method | HTTP request | Description
  - [ApiResponseStockMarketIndices](docs/ApiResponseStockMarketIndices.md)
  - [ApiResponseStockMarketIndicesSearch](docs/ApiResponseStockMarketIndicesSearch.md)
  - [ApiResponseZacksAnalystRatings](docs/ApiResponseZacksAnalystRatings.md)
+ - [ApiResponseZacksEPSEstimates](docs/ApiResponseZacksEPSEstimates.md)
+ - [ApiResponseZacksEPSGrowthRates](docs/ApiResponseZacksEPSGrowthRates.md)
  - [ApiResponseZacksEPSSurprises](docs/ApiResponseZacksEPSSurprises.md)
+ - [ApiResponseZacksLongTermGrowthRates](docs/ApiResponseZacksLongTermGrowthRates.md)
  - [ApiResponseZacksSalesSurprises](docs/ApiResponseZacksSalesSurprises.md)
+ - [ApiResponseZacksTargetPriceConsensuses](docs/ApiResponseZacksTargetPriceConsensuses.md)
  - [AverageDailyTradingVolumeTechnicalValue](docs/AverageDailyTradingVolumeTechnicalValue.md)
  - [AverageDirectionalIndexTechnicalValue](docs/AverageDirectionalIndexTechnicalValue.md)
  - [AverageTrueRangeTechnicalValue](docs/AverageTrueRangeTechnicalValue.md)
@@ -396,7 +404,12 @@ Class | Method | HTTP request | Description
  - [ZacksAnalystRating](docs/ZacksAnalystRating.md)
  - [ZacksAnalystRatingSnapshot](docs/ZacksAnalystRatingSnapshot.md)
  - [ZacksAnalystRatingSummary](docs/ZacksAnalystRatingSummary.md)
+ - [ZacksEPSEstimate](docs/ZacksEPSEstimate.md)
+ - [ZacksEPSGrowthRate](docs/ZacksEPSGrowthRate.md)
  - [ZacksEPSSurprise](docs/ZacksEPSSurprise.md)
  - [ZacksEPSSurpriseSummary](docs/ZacksEPSSurpriseSummary.md)
+ - [ZacksLongTermGrowthRate](docs/ZacksLongTermGrowthRate.md)
  - [ZacksSalesSurprise](docs/ZacksSalesSurprise.md)
  - [ZacksSalesSurpriseSummary](docs/ZacksSalesSurpriseSummary.md)
+ - [ZacksTargetPriceConsensus](docs/ZacksTargetPriceConsensus.md)
+
