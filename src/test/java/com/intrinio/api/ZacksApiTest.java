@@ -7,6 +7,10 @@ import com.intrinio.models.ApiResponseZacksAnalystRatings;
 import com.intrinio.models.ApiResponseZacksEPSEstimates;
 import com.intrinio.models.ApiResponseZacksEPSGrowthRates;
 import com.intrinio.models.ApiResponseZacksEPSSurprises;
+import com.intrinio.models.ApiResponseZacksETFHoldings;
+import com.intrinio.models.ApiResponseZacksInstitutionalHoldingCompanies;
+import com.intrinio.models.ApiResponseZacksInstitutionalHoldingOwners;
+import com.intrinio.models.ApiResponseZacksInstitutionalHoldings;
 import com.intrinio.models.ApiResponseZacksLongTermGrowthRates;
 import com.intrinio.models.ApiResponseZacksSalesSurprises;
 import com.intrinio.models.ApiResponseZacksTargetPriceConsensuses;
@@ -134,6 +138,82 @@ public class ZacksApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseZacksEPSSurprises response = api.getZacksEpsSurprises(startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks ETF Holdings
+     *
+     * Returns Zacks ETF holdings data
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksEtfHoldingsTest() throws ApiException {
+        String etfTicker = null;
+        String holdingSymbol = null;
+        BigDecimal weightGreater = null;
+        BigDecimal weightLess = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseZacksETFHoldings response = api.getZacksEtfHoldings(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks Institutional Holding Companies
+     *
+     * Returns Zacks institutional holding companies data
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksInstitutionalHoldingCompaniesTest() throws ApiException {
+        String ticker = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseZacksInstitutionalHoldingCompanies response = api.getZacksInstitutionalHoldingCompanies(ticker, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks Institutional Holding Owners
+     *
+     * Returns Zacks institutional holding owners data
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksInstitutionalHoldingOwnersTest() throws ApiException {
+        String cik = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseZacksInstitutionalHoldingOwners response = api.getZacksInstitutionalHoldingOwners(cik, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks Institutional Holdings
+     *
+     * Returns Zacks institutional holdings data
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksInstitutionalHoldingsTest() throws ApiException {
+        String ticker = null;
+        String ownerCik = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseZacksInstitutionalHoldings response = api.getZacksInstitutionalHoldings(ticker, ownerCik, pageSize, nextPage);
 
         // TODO: test validations
     }

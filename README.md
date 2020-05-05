@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.11.0
-- Package version: 
+- API version: 2.13.0
+- Package version: 5.4.0
 
 
 ## Installation
@@ -221,6 +221,10 @@ Class | Method | HTTP request | Description
 *ZacksApi* | [**getZacksEpsEstimates**](docs/ZacksApi.md#getZacksEpsEstimates) | **GET** /zacks/eps_estimates | Zacks EPS Estimates
 *ZacksApi* | [**getZacksEpsGrowthRates**](docs/ZacksApi.md#getZacksEpsGrowthRates) | **GET** /zacks/eps_growth_rates | Zacks EPS Growth Rates
 *ZacksApi* | [**getZacksEpsSurprises**](docs/ZacksApi.md#getZacksEpsSurprises) | **GET** /zacks/eps_surprises | Zacks EPS Surprises
+*ZacksApi* | [**getZacksEtfHoldings**](docs/ZacksApi.md#getZacksEtfHoldings) | **GET** /zacks/etf_holdings | Zacks ETF Holdings
+*ZacksApi* | [**getZacksInstitutionalHoldingCompanies**](docs/ZacksApi.md#getZacksInstitutionalHoldingCompanies) | **GET** /zacks/institutional_holdings/companies | Zacks Institutional Holding Companies
+*ZacksApi* | [**getZacksInstitutionalHoldingOwners**](docs/ZacksApi.md#getZacksInstitutionalHoldingOwners) | **GET** /zacks/institutional_holdings/owners | Zacks Institutional Holding Owners
+*ZacksApi* | [**getZacksInstitutionalHoldings**](docs/ZacksApi.md#getZacksInstitutionalHoldings) | **GET** /zacks/institutional_holdings | Zacks Institutional Holdings
 *ZacksApi* | [**getZacksLongTermGrowthRates**](docs/ZacksApi.md#getZacksLongTermGrowthRates) | **GET** /zacks/long_term_growth_rates | Zacks Long Term Growth Rates
 *ZacksApi* | [**getZacksSalesSurprises**](docs/ZacksApi.md#getZacksSalesSurprises) | **GET** /zacks/sales_surprises | Zacks Sales Surprises
 *ZacksApi* | [**getZacksTargetPriceConsensuses**](docs/ZacksApi.md#getZacksTargetPriceConsensuses) | **GET** /zacks/target_price_consensuses | Zacks Target Price Consensuses
@@ -316,6 +320,10 @@ Class | Method | HTTP request | Description
  - [ApiResponseZacksEPSEstimates](docs/ApiResponseZacksEPSEstimates.md)
  - [ApiResponseZacksEPSGrowthRates](docs/ApiResponseZacksEPSGrowthRates.md)
  - [ApiResponseZacksEPSSurprises](docs/ApiResponseZacksEPSSurprises.md)
+ - [ApiResponseZacksETFHoldings](docs/ApiResponseZacksETFHoldings.md)
+ - [ApiResponseZacksInstitutionalHoldingCompanies](docs/ApiResponseZacksInstitutionalHoldingCompanies.md)
+ - [ApiResponseZacksInstitutionalHoldingOwners](docs/ApiResponseZacksInstitutionalHoldingOwners.md)
+ - [ApiResponseZacksInstitutionalHoldings](docs/ApiResponseZacksInstitutionalHoldings.md)
  - [ApiResponseZacksLongTermGrowthRates](docs/ApiResponseZacksLongTermGrowthRates.md)
  - [ApiResponseZacksSalesSurprises](docs/ApiResponseZacksSalesSurprises.md)
  - [ApiResponseZacksTargetPriceConsensuses](docs/ApiResponseZacksTargetPriceConsensuses.md)
@@ -408,6 +416,13 @@ Class | Method | HTTP request | Description
  - [ZacksEPSGrowthRate](docs/ZacksEPSGrowthRate.md)
  - [ZacksEPSSurprise](docs/ZacksEPSSurprise.md)
  - [ZacksEPSSurpriseSummary](docs/ZacksEPSSurpriseSummary.md)
+ - [ZacksETFHolding](docs/ZacksETFHolding.md)
+ - [ZacksInstitutionalHolding](docs/ZacksInstitutionalHolding.md)
+ - [ZacksInstitutionalHoldingCompanyDetail](docs/ZacksInstitutionalHoldingCompanyDetail.md)
+ - [ZacksInstitutionalHoldingCompanySummary](docs/ZacksInstitutionalHoldingCompanySummary.md)
+ - [ZacksInstitutionalHoldingHistoricalSummary](docs/ZacksInstitutionalHoldingHistoricalSummary.md)
+ - [ZacksInstitutionalHoldingOwnerDetail](docs/ZacksInstitutionalHoldingOwnerDetail.md)
+ - [ZacksInstitutionalHoldingOwnerSummary](docs/ZacksInstitutionalHoldingOwnerSummary.md)
  - [ZacksLongTermGrowthRate](docs/ZacksLongTermGrowthRate.md)
  - [ZacksSalesSurprise](docs/ZacksSalesSurprise.md)
  - [ZacksSalesSurpriseSummary](docs/ZacksSalesSurpriseSummary.md)

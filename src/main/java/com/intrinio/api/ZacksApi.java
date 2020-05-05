@@ -20,6 +20,10 @@ import com.intrinio.models.ApiResponseZacksAnalystRatings;
 import com.intrinio.models.ApiResponseZacksEPSEstimates;
 import com.intrinio.models.ApiResponseZacksEPSGrowthRates;
 import com.intrinio.models.ApiResponseZacksEPSSurprises;
+import com.intrinio.models.ApiResponseZacksETFHoldings;
+import com.intrinio.models.ApiResponseZacksInstitutionalHoldingCompanies;
+import com.intrinio.models.ApiResponseZacksInstitutionalHoldingOwners;
+import com.intrinio.models.ApiResponseZacksInstitutionalHoldings;
 import com.intrinio.models.ApiResponseZacksLongTermGrowthRates;
 import com.intrinio.models.ApiResponseZacksSalesSurprises;
 import com.intrinio.models.ApiResponseZacksTargetPriceConsensuses;
@@ -794,6 +798,554 @@ public class ZacksApi {
 
         com.squareup.okhttp.Call call = getZacksEpsSurprisesValidateBeforeCall(startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseZacksEPSSurprises>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getZacksEtfHoldings
+     * @param etfTicker Return holdings of the ETF with the given ticker (optional)
+     * @param holdingSymbol Return holdings where the instrument being held has the given trading symbol (optional)
+     * @param weightGreater Return on the holdings with a weight greater than (optional)
+     * @param weightLess Return on the holdings with a weight less than (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksEtfHoldingsCall(String etfTicker, String holdingSymbol, BigDecimal weightGreater, BigDecimal weightLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/etf_holdings";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (etfTicker != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("etf_ticker", etfTicker));
+        if (holdingSymbol != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("holding_symbol", holdingSymbol));
+        if (weightGreater != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("weight_greater", weightGreater));
+        if (weightLess != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("weight_less", weightLess));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksEtfHoldingsValidateBeforeCall(String etfTicker, String holdingSymbol, BigDecimal weightGreater, BigDecimal weightLess, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getZacksEtfHoldingsCall(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks ETF Holdings
+     * Returns Zacks ETF holdings data
+     * @param etfTicker Return holdings of the ETF with the given ticker (optional)
+     * @param holdingSymbol Return holdings where the instrument being held has the given trading symbol (optional)
+     * @param weightGreater Return on the holdings with a weight greater than (optional)
+     * @param weightLess Return on the holdings with a weight less than (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseZacksETFHoldings
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseZacksETFHoldings getZacksEtfHoldings(String etfTicker, String holdingSymbol, BigDecimal weightGreater, BigDecimal weightLess, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseZacksETFHoldings> resp = getZacksEtfHoldingsWithHttpInfo(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks ETF Holdings
+     * Returns Zacks ETF holdings data
+     * @param etfTicker Return holdings of the ETF with the given ticker (optional)
+     * @param holdingSymbol Return holdings where the instrument being held has the given trading symbol (optional)
+     * @param weightGreater Return on the holdings with a weight greater than (optional)
+     * @param weightLess Return on the holdings with a weight less than (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseZacksETFHoldings&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseZacksETFHoldings> getZacksEtfHoldingsWithHttpInfo(String etfTicker, String holdingSymbol, BigDecimal weightGreater, BigDecimal weightLess, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksEtfHoldingsValidateBeforeCall(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksETFHoldings>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks ETF Holdings (asynchronously)
+     * Returns Zacks ETF holdings data
+     * @param etfTicker Return holdings of the ETF with the given ticker (optional)
+     * @param holdingSymbol Return holdings where the instrument being held has the given trading symbol (optional)
+     * @param weightGreater Return on the holdings with a weight greater than (optional)
+     * @param weightLess Return on the holdings with a weight less than (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksEtfHoldingsAsync(String etfTicker, String holdingSymbol, BigDecimal weightGreater, BigDecimal weightLess, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksETFHoldings> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksEtfHoldingsValidateBeforeCall(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksETFHoldings>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getZacksInstitutionalHoldingCompanies
+     * @param ticker Return companies with the given ticker (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksInstitutionalHoldingCompaniesCall(String ticker, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/institutional_holdings/companies";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (ticker != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ticker", ticker));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksInstitutionalHoldingCompaniesValidateBeforeCall(String ticker, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getZacksInstitutionalHoldingCompaniesCall(ticker, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks Institutional Holding Companies
+     * Returns Zacks institutional holding companies data
+     * @param ticker Return companies with the given ticker (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseZacksInstitutionalHoldingCompanies
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseZacksInstitutionalHoldingCompanies getZacksInstitutionalHoldingCompanies(String ticker, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseZacksInstitutionalHoldingCompanies> resp = getZacksInstitutionalHoldingCompaniesWithHttpInfo(ticker, pageSize, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks Institutional Holding Companies
+     * Returns Zacks institutional holding companies data
+     * @param ticker Return companies with the given ticker (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseZacksInstitutionalHoldingCompanies&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseZacksInstitutionalHoldingCompanies> getZacksInstitutionalHoldingCompaniesWithHttpInfo(String ticker, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksInstitutionalHoldingCompaniesValidateBeforeCall(ticker, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksInstitutionalHoldingCompanies>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks Institutional Holding Companies (asynchronously)
+     * Returns Zacks institutional holding companies data
+     * @param ticker Return companies with the given ticker (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksInstitutionalHoldingCompaniesAsync(String ticker, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksInstitutionalHoldingCompanies> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksInstitutionalHoldingCompaniesValidateBeforeCall(ticker, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksInstitutionalHoldingCompanies>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getZacksInstitutionalHoldingOwners
+     * @param cik Return owners with the given Central Index Key (CIK) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksInstitutionalHoldingOwnersCall(String cik, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/institutional_holdings/owners";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (cik != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("cik", cik));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksInstitutionalHoldingOwnersValidateBeforeCall(String cik, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getZacksInstitutionalHoldingOwnersCall(cik, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks Institutional Holding Owners
+     * Returns Zacks institutional holding owners data
+     * @param cik Return owners with the given Central Index Key (CIK) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseZacksInstitutionalHoldingOwners
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseZacksInstitutionalHoldingOwners getZacksInstitutionalHoldingOwners(String cik, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseZacksInstitutionalHoldingOwners> resp = getZacksInstitutionalHoldingOwnersWithHttpInfo(cik, pageSize, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks Institutional Holding Owners
+     * Returns Zacks institutional holding owners data
+     * @param cik Return owners with the given Central Index Key (CIK) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseZacksInstitutionalHoldingOwners&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseZacksInstitutionalHoldingOwners> getZacksInstitutionalHoldingOwnersWithHttpInfo(String cik, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksInstitutionalHoldingOwnersValidateBeforeCall(cik, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksInstitutionalHoldingOwners>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks Institutional Holding Owners (asynchronously)
+     * Returns Zacks institutional holding owners data
+     * @param cik Return owners with the given Central Index Key (CIK) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksInstitutionalHoldingOwnersAsync(String cik, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksInstitutionalHoldingOwners> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksInstitutionalHoldingOwnersValidateBeforeCall(cik, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksInstitutionalHoldingOwners>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getZacksInstitutionalHoldings
+     * @param ticker Return holdings where the company being held has the given ticker (optional)
+     * @param ownerCik Return holdings where the owner/holder has the given Central Index Key (CIK) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksInstitutionalHoldingsCall(String ticker, String ownerCik, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/institutional_holdings";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (ticker != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ticker", ticker));
+        if (ownerCik != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("owner_cik", ownerCik));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksInstitutionalHoldingsValidateBeforeCall(String ticker, String ownerCik, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getZacksInstitutionalHoldingsCall(ticker, ownerCik, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks Institutional Holdings
+     * Returns Zacks institutional holdings data
+     * @param ticker Return holdings where the company being held has the given ticker (optional)
+     * @param ownerCik Return holdings where the owner/holder has the given Central Index Key (CIK) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseZacksInstitutionalHoldings
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponseZacksInstitutionalHoldings getZacksInstitutionalHoldings(String ticker, String ownerCik, Integer pageSize, String nextPage) throws ApiException {
+        ApiResponse<ApiResponseZacksInstitutionalHoldings> resp = getZacksInstitutionalHoldingsWithHttpInfo(ticker, ownerCik, pageSize, nextPage);
+        return resp.getData();
+    }
+
+    /**
+     * Zacks Institutional Holdings
+     * Returns Zacks institutional holdings data
+     * @param ticker Return holdings where the company being held has the given ticker (optional)
+     * @param ownerCik Return holdings where the owner/holder has the given Central Index Key (CIK) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseZacksInstitutionalHoldings&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseZacksInstitutionalHoldings> getZacksInstitutionalHoldingsWithHttpInfo(String ticker, String ownerCik, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksInstitutionalHoldingsValidateBeforeCall(ticker, ownerCik, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksInstitutionalHoldings>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks Institutional Holdings (asynchronously)
+     * Returns Zacks institutional holdings data
+     * @param ticker Return holdings where the company being held has the given ticker (optional)
+     * @param ownerCik Return holdings where the owner/holder has the given Central Index Key (CIK) (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksInstitutionalHoldingsAsync(String ticker, String ownerCik, Integer pageSize, String nextPage, final ApiCallback<ApiResponseZacksInstitutionalHoldings> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksInstitutionalHoldingsValidateBeforeCall(ticker, ownerCik, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksInstitutionalHoldings>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
