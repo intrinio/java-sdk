@@ -121,7 +121,7 @@ public class SecurityApiTest {
     /**
      * Data Point (Number) for Security
      *
-     * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * $$v2_security_data_point_number_description$$
      *
      * @throws ApiException
      *          if the Api call fails
@@ -138,7 +138,7 @@ public class SecurityApiTest {
     /**
      * Data Point (Text) for Security
      *
-     * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * $$v2_security_data_point_text_description$$
      *
      * @throws ApiException
      *          if the Api call fails
@@ -155,7 +155,7 @@ public class SecurityApiTest {
     /**
      * Historical Data for Security
      *
-     * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
+     * $$v2_security_historical_data_description$$
      *
      * @throws ApiException
      *          if the Api call fails
@@ -179,7 +179,7 @@ public class SecurityApiTest {
     /**
      * Intraday Stock Prices for Security
      *
-     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
+     * $$v2_security_intraday_prices_description$$
      *
      * @throws ApiException
      *          if the Api call fails

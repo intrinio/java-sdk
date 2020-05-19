@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.13.0
-- Package version: 5.4.0
+- API version: 2.14.0
+- Package version: 5.6.0
 
 
 ## Installation
@@ -89,6 +89,12 @@ Class | Method | HTTP request | Description
 *DataTagApi* | [**getAllDataTags**](docs/DataTagApi.md#getAllDataTags) | **GET** /data_tags | All Data Tags
 *DataTagApi* | [**getDataTagById**](docs/DataTagApi.md#getDataTagById) | **GET** /data_tags/{identifier} | Lookup Data Tag
 *DataTagApi* | [**searchDataTags**](docs/DataTagApi.md#searchDataTags) | **GET** /data_tags/search | Search Data Tags
+*EtFsApi* | [**getAllEtfs**](docs/EtFsApi.md#getAllEtfs) | **GET** /etfs | All ETFs
+*EtFsApi* | [**getEtf**](docs/EtFsApi.md#getEtf) | **GET** /etfs/{identifier} | Lookup ETF
+*EtFsApi* | [**getEtfAnalytics**](docs/EtFsApi.md#getEtfAnalytics) | **GET** /etfs/{identifier}/analytics | ETF Analytics
+*EtFsApi* | [**getEtfHoldings**](docs/EtFsApi.md#getEtfHoldings) | **GET** /etfs/{identifier}/holdings | ETF Holdings
+*EtFsApi* | [**getEtfStats**](docs/EtFsApi.md#getEtfStats) | **GET** /etfs/{identifier}/stats | Exchange Traded Fund (ETF) stats
+*EtFsApi* | [**searchEtfs**](docs/EtFsApi.md#searchEtfs) | **GET** /etfs/search | Search ETFs
 *FilingApi* | [**getAllFilings**](docs/FilingApi.md#getAllFilings) | **GET** /filings | All Filings
 *FilingApi* | [**getAllNotes**](docs/FilingApi.md#getAllNotes) | **GET** /filings/notes | All Filing Notes
 *FilingApi* | [**getFilingById**](docs/FilingApi.md#getFilingById) | **GET** /filings/{id} | Lookup Filing
@@ -243,6 +249,8 @@ Class | Method | HTTP request | Description
  - [ApiResponseCompanySecurities](docs/ApiResponseCompanySecurities.md)
  - [ApiResponseDataTags](docs/ApiResponseDataTags.md)
  - [ApiResponseDataTagsSearch](docs/ApiResponseDataTagsSearch.md)
+ - [ApiResponseETFHoldings](docs/ApiResponseETFHoldings.md)
+ - [ApiResponseETFs](docs/ApiResponseETFs.md)
  - [ApiResponseEconomicIndexHistoricalData](docs/ApiResponseEconomicIndexHistoricalData.md)
  - [ApiResponseEconomicIndices](docs/ApiResponseEconomicIndices.md)
  - [ApiResponseEconomicIndicesSearch](docs/ApiResponseEconomicIndicesSearch.md)
@@ -347,6 +355,11 @@ Class | Method | HTTP request | Description
  - [DetrendedPriceOscillatorTechnicalValue](docs/DetrendedPriceOscillatorTechnicalValue.md)
  - [DividendRecord](docs/DividendRecord.md)
  - [DonchianChannelTechnicalValue](docs/DonchianChannelTechnicalValue.md)
+ - [ETF](docs/ETF.md)
+ - [ETFAnalytics](docs/ETFAnalytics.md)
+ - [ETFHolding](docs/ETFHolding.md)
+ - [ETFStats](docs/ETFStats.md)
+ - [ETFSummary](docs/ETFSummary.md)
  - [EarningsRecord](docs/EarningsRecord.md)
  - [EaseOfMovementTechnicalValue](docs/EaseOfMovementTechnicalValue.md)
  - [EconomicIndex](docs/EconomicIndex.md)

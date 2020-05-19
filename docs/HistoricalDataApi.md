@@ -38,7 +38,7 @@ Method | HTTP request | Description
 #### Historical Data
 
 
-Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
+$$v2_historical_data_description$$
 
 [//]: # (END_OVERVIEW)
 
@@ -63,8 +63,8 @@ public class Main {
 
     HistoricalDataApi historicalDataApi = new HistoricalDataApi();
 
-    String identifier = "AAPL"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-    String tag = "marketcap"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
+    String identifier = "$$v2_historical_data_identifier_default$$"; // String | $$v2_historical_data_identifier_description$$
+    String tag = "$$v2_historical_data_item_default$$"; // String | $$v2_historical_data_item_description$$
     String frequency = "daily"; // String | Return historical data in the given frequency
     String type = null; // String | Filter by type, when applicable
     LocalDate startDate = LocalDate.now(); // LocalDate | Get historical data on or after this date
@@ -94,8 +94,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | String| An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID) | &nbsp;
- **tag** | String| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
+ **identifier** | String| $$v2_historical_data_identifier_description$$ | &nbsp;
+ **tag** | String| $$v2_historical_data_item_description$$ | &nbsp;
  **frequency** | String| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly] &nbsp;
  **type** | String| Filter by type, when applicable | [optional] &nbsp;
  **startDate** | LocalDate| Get historical data on or after this date | [optional] &nbsp;

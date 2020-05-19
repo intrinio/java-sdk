@@ -25,7 +25,7 @@ public class HistoricalDataApiTest {
     /**
      * Historical Data
      *
-     * Returns historical values for the given &#x60;tag&#x60; and the entity represented by the given &#x60;identifier&#x60;
+     * $$v2_historical_data_description$$
      *
      * @throws ApiException
      *          if the Api call fails

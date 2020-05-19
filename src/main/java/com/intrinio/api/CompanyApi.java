@@ -478,8 +478,8 @@ public class CompanyApi {
     }
     /**
      * Build call for getCompanyDataPointNumber
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -549,9 +549,9 @@ public class CompanyApi {
 
     /**
      * Data Point (Number) for Company
-     * Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_data_point_number_description$$
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @return BigDecimal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -562,9 +562,9 @@ public class CompanyApi {
 
     /**
      * Data Point (Number) for Company
-     * Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_data_point_number_description$$
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @return ApiResponse&lt;BigDecimal&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -576,9 +576,9 @@ public class CompanyApi {
 
     /**
      * Data Point (Number) for Company (asynchronously)
-     * Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_data_point_number_description$$
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -611,8 +611,8 @@ public class CompanyApi {
     }
     /**
      * Build call for getCompanyDataPointText
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -682,9 +682,9 @@ public class CompanyApi {
 
     /**
      * Data Point (Text) for Company
-     * Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_data_point_text_description$$
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -695,9 +695,9 @@ public class CompanyApi {
 
     /**
      * Data Point (Text) for Company
-     * Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_data_point_text_description$$
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -709,9 +709,9 @@ public class CompanyApi {
 
     /**
      * Data Point (Text) for Company (asynchronously)
-     * Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_data_point_text_description$$
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1080,8 +1080,8 @@ public class CompanyApi {
     }
     /**
      * Build call for getCompanyHistoricalData
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_company_historical_data_item_description$$ (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Return historical data for given fiscal period type (optional)
      * @param startDate Return historical data on or after this date (optional)
@@ -1172,9 +1172,9 @@ public class CompanyApi {
 
     /**
      * Historical Data for Company
-     * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_historical_data_description$$
+     * @param identifier $$v2_company_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_company_historical_data_item_description$$ (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Return historical data for given fiscal period type (optional)
      * @param startDate Return historical data on or after this date (optional)
@@ -1192,9 +1192,9 @@ public class CompanyApi {
 
     /**
      * Historical Data for Company
-     * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_historical_data_description$$
+     * @param identifier $$v2_company_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_company_historical_data_item_description$$ (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Return historical data for given fiscal period type (optional)
      * @param startDate Return historical data on or after this date (optional)
@@ -1213,9 +1213,9 @@ public class CompanyApi {
 
     /**
      * Historical Data for Company (asynchronously)
-     * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_historical_data_description$$
+     * @param identifier $$v2_company_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_company_historical_data_item_description$$ (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Return historical data for given fiscal period type (optional)
      * @param startDate Return historical data on or after this date (optional)

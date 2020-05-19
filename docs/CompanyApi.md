@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 #### Data Point (Number) for Company
 
 
-Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+$$v2_company_data_point_number_description$$
 
 [//]: # (END_OVERVIEW)
 
@@ -365,8 +365,8 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
 
-    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-    String tag = "marketcap"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
+    String identifier = "$$v2_company_data_point_identifier_default$$"; // String | $$v2_company_data_point_identifier_description$$
+    String tag = "$$v2_company_data_point_item_number_default$$"; // String | $$v2_company_data_point_item_description$$
 
     try {
       BigDecimal result = companyApi.getCompanyDataPointNumber(identifier, tag);
@@ -389,8 +389,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
- **tag** | String| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
+ **identifier** | String| $$v2_company_data_point_identifier_description$$ | &nbsp;
+ **tag** | String| $$v2_company_data_point_item_description$$ | &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -432,7 +432,7 @@ Name | Type | Description  | Notes
 #### Data Point (Text) for Company
 
 
-Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+$$v2_company_data_point_text_description$$
 
 [//]: # (END_OVERVIEW)
 
@@ -457,8 +457,8 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
 
-    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-    String tag = "ceo"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
+    String identifier = "$$v2_company_data_point_identifier_default$$"; // String | $$v2_company_data_point_identifier_description$$
+    String tag = "$$v2_company_data_point_item_text_default$$"; // String | $$v2_company_data_point_item_description$$
 
     try {
       String result = companyApi.getCompanyDataPointText(identifier, tag);
@@ -481,8 +481,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
- **tag** | String| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
+ **identifier** | String| $$v2_company_data_point_identifier_description$$ | &nbsp;
+ **tag** | String| $$v2_company_data_point_item_description$$ | &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -734,7 +734,7 @@ Name | Type | Description  | Notes
 #### Historical Data for Company
 
 
-Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
+$$v2_company_historical_data_description$$
 
 [//]: # (END_OVERVIEW)
 
@@ -759,8 +759,8 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
 
-    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-    String tag = "marketcap"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
+    String identifier = "$$v2_company_historical_data_identifier_default$$"; // String | $$v2_company_historical_data_identifier_description$$
+    String tag = "$$v2_company_historical_data_item_default$$"; // String | $$v2_company_historical_data_item_description$$
     String frequency = "daily"; // String | Return historical data in the given frequency
     String type = null; // String | Return historical data for given fiscal period type
     LocalDate startDate = LocalDate.now(); // LocalDate | Return historical data on or after this date
@@ -790,8 +790,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
- **tag** | String| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
+ **identifier** | String| $$v2_company_historical_data_identifier_description$$ | &nbsp;
+ **tag** | String| $$v2_company_historical_data_item_description$$ | &nbsp;
  **frequency** | String| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly] &nbsp;
  **type** | String| Return historical data for given fiscal period type | [optional] [enum: FY, QTR, TTM] &nbsp;
  **startDate** | LocalDate| Return historical data on or after this date | [optional] &nbsp;

@@ -73,7 +73,7 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
+    String identifier = "$$v2_ticker_default$$"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
     LocalDate startDate = LocalDate.now(); // LocalDate | Limit ratings to those on or after this date
     LocalDate endDate = LocalDate.now(); // LocalDate | Limit ratings to those on or before this date
     BigDecimal meanGreater = null; // BigDecimal | Return only records with a mean (average) higher than this value
