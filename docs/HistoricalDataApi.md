@@ -53,9 +53,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -63,23 +64,19 @@ public class Main {
 
     HistoricalDataApi historicalDataApi = new HistoricalDataApi();
 
-    String identifier = "AAPL"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-    String tag = "marketcap"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
-    String frequency = "daily"; // String | Return historical data in the given frequency
-    String type = null; // String | Filter by type, when applicable
-    LocalDate startDate = LocalDate.now(); // LocalDate | Get historical data on or after this date
-    LocalDate endDate = LocalDate.now(); // LocalDate | Get historical date on or before this date
-    String sortOrder = "desc"; // String | Sort by date `asc` or `desc`
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    String tag = "marketcap";
+    String frequency = "daily";
+    String type = null;
+    LocalDate startDate = LocalDate.now();
+    LocalDate endDate = LocalDate.now();
+    String sortOrder = "desc";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseHistoricalData result = historicalDataApi.getHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling HistoricalDataApi#getHistoricalData");
-      e.printStackTrace();
-    }
+    
+    ApiResponseHistoricalData result = historicalDataApi.getHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }

@@ -63,9 +63,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -73,33 +74,29 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    LocalDate startDate = LocalDate.now(); // LocalDate | Limit ratings to those on or after this date
-    LocalDate endDate = LocalDate.now(); // LocalDate | Limit ratings to those on or before this date
-    BigDecimal meanGreater = null; // BigDecimal | Return only records with a mean (average) higher than this value
-    BigDecimal meanLess = null; // BigDecimal | Return only records with a mean (average) lower than this value
-    Integer strongBuysGreater = null; // Integer | Return only records with more than this many Strong Buy recommendations
-    Integer strongBuysLess = null; // Integer | Return only records with fewer than this many Strong Buy recommendations
-    Integer buysGreater = null; // Integer | Return only records with more than this many Buy recommendations
-    Integer buysLess = null; // Integer | Return only records with fewer than this many Buy recommendations
-    Integer holdsGreater = null; // Integer | Return only records with more than this many Hold recommendations
-    Integer holdsLess = null; // Integer | Return only records with fewer than this many Hold recommendations
-    Integer sellsGreater = null; // Integer | Return only records with more than this many Sell recommendations
-    Integer sellsLess = null; // Integer | Return only records with fewer than this many Sell recommendations
-    Integer strongSellsGreater = null; // Integer | Return only records with more than this many Strong Sell recommendations
-    Integer strongSellsLess = null; // Integer | Return only records with fewer than this many Strong Sell recommendations
-    Integer totalGreater = null; // Integer | Return only records with more than this many recommendations, regardless of type
-    Integer totalLess = null; // Integer | Return only records with fewer than this many recommendations, regardless of type
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    LocalDate startDate = LocalDate.now();
+    LocalDate endDate = LocalDate.now();
+    BigDecimal meanGreater = null;
+    BigDecimal meanLess = null;
+    Integer strongBuysGreater = null;
+    Integer strongBuysLess = null;
+    Integer buysGreater = null;
+    Integer buysLess = null;
+    Integer holdsGreater = null;
+    Integer holdsLess = null;
+    Integer sellsGreater = null;
+    Integer sellsLess = null;
+    Integer strongSellsGreater = null;
+    Integer strongSellsLess = null;
+    Integer totalGreater = null;
+    Integer totalLess = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseZacksAnalystRatings result = zacksApi.getZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ZacksApi#getZacksAnalystRatings");
-      e.printStackTrace();
-    }
+    
+    ApiResponseZacksAnalystRatings result = zacksApi.getZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -189,9 +186,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -199,23 +197,19 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String identifier = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-    LocalDate startDate = LocalDate.now(); // LocalDate | Limit EPS estimates to those on or after this date
-    LocalDate endDate = LocalDate.now(); // LocalDate | Limit EPS estimates to those on or before this date
-    Integer fiscalYear = null; // Integer | Only for the given fiscal year
-    String fiscalPeriod = null; // String | The fiscal period
-    Integer calendarYear = null; // Integer | Only for the given calendar year
-    String calendarPeriod = null; // String | The calendar period
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    LocalDate startDate = LocalDate.now();
+    LocalDate endDate = LocalDate.now();
+    Integer fiscalYear = null;
+    String fiscalPeriod = null;
+    Integer calendarYear = null;
+    String calendarPeriod = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseZacksEPSEstimates result = zacksApi.getZacksEpsEstimates(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ZacksApi#getZacksEpsEstimates");
-      e.printStackTrace();
-    }
+    
+    ApiResponseZacksEPSEstimates result = zacksApi.getZacksEpsEstimates(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -295,9 +289,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -305,19 +300,15 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String company = "AAPL"; // String | Filings for the given `company` identifier (ticker, CIK, LEI, Intrinio ID)
-    String industryGroupName = null; // String | Return only growth rates for companies in the given Zacks industry group name
-    String industryGroupNumber = null; // String | Return only growth rates for companies in the given Zacks industry group number
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String company = "AAPL";
+    String industryGroupName = null;
+    String industryGroupNumber = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseZacksEPSGrowthRates result = zacksApi.getZacksEpsGrowthRates(company, industryGroupName, industryGroupNumber, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ZacksApi#getZacksEpsGrowthRates");
-      e.printStackTrace();
-    }
+    
+    ApiResponseZacksEPSGrowthRates result = zacksApi.getZacksEpsGrowthRates(company, industryGroupName, industryGroupNumber, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -393,9 +384,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -403,30 +395,26 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    LocalDate startDate = LocalDate.now(); // LocalDate | Limit EPS surprises to those on or after this date
-    LocalDate endDate = LocalDate.now(); // LocalDate | Limit EPS surprises to those on or before this date
-    BigDecimal epsActualGreater = null; // BigDecimal | Return only records with an actual EPS higher than this value
-    BigDecimal epsActualLess = null; // BigDecimal | Return only records with an actual EPS lower than this value
-    BigDecimal epsMeanEstimateGreater = null; // BigDecimal | Return only records with an EPS mean estimate greater than this value
-    BigDecimal epsMeanEstimateLess = null; // BigDecimal | Return only records with an EPS mean estimate lower than this value
-    BigDecimal epsAmountDiffGreater = null; // BigDecimal | Return only records with an EPS amount difference greater than this value
-    BigDecimal epsAmountDiffLess = null; // BigDecimal | Return only records with an EPS amount difference less than this value
-    BigDecimal epsPercentDiffGreater = null; // BigDecimal | Return only records with an EPS percent difference greater than this value
-    BigDecimal epsPercentDiffLess = null; // BigDecimal | Return only records with an EPS percent difference less than this value
-    BigDecimal epsCountEstimateGreater = null; // BigDecimal | Return only records with an EPS count estimate greater than this value
-    BigDecimal epsCountEstimateLess = null; // BigDecimal | Return only records with an EPS count estimate less than this value
-    BigDecimal epsStdDevEstimateGreater = null; // BigDecimal | Return only records with an EPS standard deviation greater than this value
-    BigDecimal epsStdDevEstimateLess = null; // BigDecimal | Return only records with an EPS standard deviation less than this value
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    LocalDate startDate = LocalDate.now();
+    LocalDate endDate = LocalDate.now();
+    BigDecimal epsActualGreater = null;
+    BigDecimal epsActualLess = null;
+    BigDecimal epsMeanEstimateGreater = null;
+    BigDecimal epsMeanEstimateLess = null;
+    BigDecimal epsAmountDiffGreater = null;
+    BigDecimal epsAmountDiffLess = null;
+    BigDecimal epsPercentDiffGreater = null;
+    BigDecimal epsPercentDiffLess = null;
+    BigDecimal epsCountEstimateGreater = null;
+    BigDecimal epsCountEstimateLess = null;
+    BigDecimal epsStdDevEstimateGreater = null;
+    BigDecimal epsStdDevEstimateLess = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseZacksEPSSurprises result = zacksApi.getZacksEpsSurprises(startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ZacksApi#getZacksEpsSurprises");
-      e.printStackTrace();
-    }
+    
+    ApiResponseZacksEPSSurprises result = zacksApi.getZacksEpsSurprises(startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -513,9 +501,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -523,20 +512,16 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String etfTicker = null; // String | Return holdings of the ETF with the given ticker
-    String holdingSymbol = null; // String | Return holdings where the instrument being held has the given trading symbol
-    BigDecimal weightGreater = null; // BigDecimal | Return on the holdings with a weight greater than
-    BigDecimal weightLess = null; // BigDecimal | Return on the holdings with a weight less than
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String etfTicker = null;
+    String holdingSymbol = null;
+    BigDecimal weightGreater = null;
+    BigDecimal weightLess = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseZacksETFHoldings result = zacksApi.getZacksEtfHoldings(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ZacksApi#getZacksEtfHoldings");
-      e.printStackTrace();
-    }
+    
+    ApiResponseZacksETFHoldings result = zacksApi.getZacksEtfHoldings(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -613,9 +598,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -623,17 +609,13 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String ticker = null; // String | Return companies with the given ticker
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String ticker = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseZacksInstitutionalHoldingCompanies result = zacksApi.getZacksInstitutionalHoldingCompanies(ticker, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ZacksApi#getZacksInstitutionalHoldingCompanies");
-      e.printStackTrace();
-    }
+    
+    ApiResponseZacksInstitutionalHoldingCompanies result = zacksApi.getZacksInstitutionalHoldingCompanies(ticker, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -707,9 +689,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -717,17 +700,13 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String cik = null; // String | Return owners with the given Central Index Key (CIK)
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String cik = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseZacksInstitutionalHoldingOwners result = zacksApi.getZacksInstitutionalHoldingOwners(cik, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ZacksApi#getZacksInstitutionalHoldingOwners");
-      e.printStackTrace();
-    }
+    
+    ApiResponseZacksInstitutionalHoldingOwners result = zacksApi.getZacksInstitutionalHoldingOwners(cik, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -801,9 +780,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -811,18 +791,14 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String ticker = null; // String | Return holdings where the company being held has the given ticker
-    String ownerCik = null; // String | Return holdings where the owner/holder has the given Central Index Key (CIK)
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String ticker = null;
+    String ownerCik = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseZacksInstitutionalHoldings result = zacksApi.getZacksInstitutionalHoldings(ticker, ownerCik, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ZacksApi#getZacksInstitutionalHoldings");
-      e.printStackTrace();
-    }
+    
+    ApiResponseZacksInstitutionalHoldings result = zacksApi.getZacksInstitutionalHoldings(ticker, ownerCik, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -897,9 +873,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -907,17 +884,13 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseZacksLongTermGrowthRates result = zacksApi.getZacksLongTermGrowthRates(identifier, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ZacksApi#getZacksLongTermGrowthRates");
-      e.printStackTrace();
-    }
+    
+    ApiResponseZacksLongTermGrowthRates result = zacksApi.getZacksLongTermGrowthRates(identifier, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -991,9 +964,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1001,30 +975,26 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    LocalDate startDate = LocalDate.now(); // LocalDate | Limit sales surprises to those on or after this date
-    LocalDate endDate = LocalDate.now(); // LocalDate | Limit sales surprises to those on or before this date
-    BigDecimal salesActualGreater = null; // BigDecimal | Return only records with an actual sales higher than this value
-    BigDecimal salesActualLess = null; // BigDecimal | Return only records with an actual sales lower than this value
-    BigDecimal salesMeanEstimateGreater = null; // BigDecimal | Return only records with a sales mean estimate greater than this value
-    BigDecimal salesMeanEstimateLess = null; // BigDecimal | Return only records with a sales mean estimate lower than this value
-    BigDecimal salesAmountDiffGreater = null; // BigDecimal | Return only records with a sales amount difference greater than this value
-    BigDecimal salesAmountDiffLess = null; // BigDecimal | Return only records with a sales amount difference less than this value
-    BigDecimal salesPercentDiffGreater = null; // BigDecimal | Return only records with a sales percent difference greater than this value
-    BigDecimal salesPercentDiffLess = null; // BigDecimal | Return only records with a sales percent difference less than this value
-    BigDecimal salesCountEstimateGreater = null; // BigDecimal | Return only records with a sales count estimate greater than this value
-    BigDecimal salesCountEstimateLess = null; // BigDecimal | Return only records with a sales count estimate less than this value
-    BigDecimal salesStdDevEstimateGreater = null; // BigDecimal | Return only records with a sales standard deviation greater than this value
-    BigDecimal salesStdDevEstimateLess = null; // BigDecimal | Return only records with a sales standard deviation less than this value
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    LocalDate startDate = LocalDate.now();
+    LocalDate endDate = LocalDate.now();
+    BigDecimal salesActualGreater = null;
+    BigDecimal salesActualLess = null;
+    BigDecimal salesMeanEstimateGreater = null;
+    BigDecimal salesMeanEstimateLess = null;
+    BigDecimal salesAmountDiffGreater = null;
+    BigDecimal salesAmountDiffLess = null;
+    BigDecimal salesPercentDiffGreater = null;
+    BigDecimal salesPercentDiffLess = null;
+    BigDecimal salesCountEstimateGreater = null;
+    BigDecimal salesCountEstimateLess = null;
+    BigDecimal salesStdDevEstimateGreater = null;
+    BigDecimal salesStdDevEstimateLess = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseZacksSalesSurprises result = zacksApi.getZacksSalesSurprises(startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ZacksApi#getZacksSalesSurprises");
-      e.printStackTrace();
-    }
+    
+    ApiResponseZacksSalesSurprises result = zacksApi.getZacksSalesSurprises(startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -1111,9 +1081,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1121,18 +1092,14 @@ public class Main {
 
     ZacksApi zacksApi = new ZacksApi();
 
-    String identifier = "AAPL"; // String | Filings for the given `company` identifier (ticker, CIK, LEI, Intrinio ID)
-    String industryGroupNumber = null; // String | Return only growth rates for companies in the given Zacks industry group number
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    String industryGroupNumber = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseZacksTargetPriceConsensuses result = zacksApi.getZacksTargetPriceConsensuses(identifier, industryGroupNumber, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ZacksApi#getZacksTargetPriceConsensuses");
-      e.printStackTrace();
-    }
+    
+    ApiResponseZacksTargetPriceConsensuses result = zacksApi.getZacksTargetPriceConsensuses(identifier, industryGroupNumber, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }

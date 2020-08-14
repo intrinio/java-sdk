@@ -55,9 +55,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -65,21 +66,17 @@ public class Main {
 
     DataTagApi dataTagApi = new DataTagApi();
 
-    String tag = null; // String | Tag
-    String type = null; // String | Type
-    String parent = null; // String | ID of tag parent
-    String statementCode = "income_statement"; // String | Statement Code
-    String fsTemplate = "industrial"; // String | Template
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String tag = null;
+    String type = null;
+    String parent = null;
+    String statementCode = "income_statement";
+    String fsTemplate = "industrial";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseDataTags result = dataTagApi.getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DataTagApi#getAllDataTags");
-      e.printStackTrace();
-    }
+    
+    ApiResponseDataTags result = dataTagApi.getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -157,9 +154,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -167,15 +165,11 @@ public class Main {
 
     DataTagApi dataTagApi = new DataTagApi();
 
-    String identifier = "marketcap"; // String | The Intrinio ID or the code-name of the Data Tag
+    String identifier = "marketcap";
 
-    try {
-      DataTag result = dataTagApi.getDataTagById(identifier);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DataTagApi#getDataTagById");
-      e.printStackTrace();
-    }
+    
+    DataTag result = dataTagApi.getDataTagById(identifier);
+    System.out.println(result);
   
   }
 }
@@ -247,9 +241,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -257,16 +252,12 @@ public class Main {
 
     DataTagApi dataTagApi = new DataTagApi();
 
-    String query = "revenue"; // String | 
-    Integer pageSize = 100; // Integer | The number of results to return
+    String query = "revenue";
+    Integer pageSize = 100;
 
-    try {
-      ApiResponseDataTagsSearch result = dataTagApi.searchDataTags(query, pageSize);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DataTagApi#searchDataTags");
-      e.printStackTrace();
-    }
+    
+    ApiResponseDataTagsSearch result = dataTagApi.searchDataTags(query, pageSize);
+    System.out.println(result);
   
   }
 }

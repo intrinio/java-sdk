@@ -54,9 +54,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -64,27 +65,23 @@ public class Main {
 
     MunicipalityApi municipalityApi = new MunicipalityApi();
 
-    Boolean hasFinancials = true; // Boolean | Return municipalities with financials
-    String governmentName = null; // String | Return municipalities with a government name matching the given query
-    String governmentType = null; // String | Return municipalities with the given government type
-    String areaName = null; // String | Return municipalities with an area name matching the given query
-    String areaType = null; // String | Return municipalities with the given area type
-    String city = null; // String | Return municipalities in the given city
-    String state = null; // String | Return municipalities in the given state
-    BigDecimal zipcode = null; // BigDecimal | Return municipalities in the given zipcode
-    BigDecimal populationGreaterThan = null; // BigDecimal | Return municipalities with a population greater than the given number
-    BigDecimal populationLessThan = null; // BigDecimal | Return municipalities with a population less than the given number
-    BigDecimal enrollmentGreaterThan = null; // BigDecimal | Return municipalities with an enrollment greater than the given number
-    BigDecimal enrollmentLessThan = null; // BigDecimal | Return municipalities with an enrollment less than the given number
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    Boolean hasFinancials = true;
+    String governmentName = null;
+    String governmentType = null;
+    String areaName = null;
+    String areaType = null;
+    String city = null;
+    String state = null;
+    BigDecimal zipcode = null;
+    BigDecimal populationGreaterThan = null;
+    BigDecimal populationLessThan = null;
+    BigDecimal enrollmentGreaterThan = null;
+    BigDecimal enrollmentLessThan = null;
+    String nextPage = null;
 
-    try {
-      ApiResponseMunicipalities result = municipalityApi.getAllMunicipalities(hasFinancials, governmentName, governmentType, areaName, areaType, city, state, zipcode, populationGreaterThan, populationLessThan, enrollmentGreaterThan, enrollmentLessThan, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling MunicipalityApi#getAllMunicipalities");
-      e.printStackTrace();
-    }
+    
+    ApiResponseMunicipalities result = municipalityApi.getAllMunicipalities(hasFinancials, governmentName, governmentType, areaName, areaType, city, state, zipcode, populationGreaterThan, populationLessThan, enrollmentGreaterThan, enrollmentLessThan, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -168,9 +165,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -178,15 +176,11 @@ public class Main {
 
     MunicipalityApi municipalityApi = new MunicipalityApi();
 
-    String id = "mun_Xn7x4z"; // String | An Intrinio ID of a Municipality
+    String id = "mun_Xn7x4z";
 
-    try {
-      Municipality result = municipalityApi.getMunicipalityById(id);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling MunicipalityApi#getMunicipalityById");
-      e.printStackTrace();
-    }
+    
+    Municipality result = municipalityApi.getMunicipalityById(id);
+    System.out.println(result);
   
   }
 }
@@ -258,9 +252,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -268,16 +263,12 @@ public class Main {
 
     MunicipalityApi municipalityApi = new MunicipalityApi();
 
-    String id = "mun_Xn7x4z"; // String | An Intrinio ID of a Municipality
-    BigDecimal fiscalYear = null; // BigDecimal | Return financials for the given fiscal year
+    String id = "mun_Xn7x4z";
+    BigDecimal fiscalYear = null;
 
-    try {
-      ApiResponseMunicipalitiyFinancials result = municipalityApi.getMunicipalityFinancials(id, fiscalYear);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling MunicipalityApi#getMunicipalityFinancials");
-      e.printStackTrace();
-    }
+    
+    ApiResponseMunicipalitiyFinancials result = municipalityApi.getMunicipalityFinancials(id, fiscalYear);
+    System.out.println(result);
   
   }
 }

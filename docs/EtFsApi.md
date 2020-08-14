@@ -58,9 +58,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -68,17 +69,13 @@ public class Main {
 
     EtFsApi etFsApi = new EtFsApi();
 
-    String exchange = "XNAS"; // String | 
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String exchange = "XNAS";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseETFs result = etFsApi.getAllEtfs(exchange, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling EtFsApi#getAllEtfs");
-      e.printStackTrace();
-    }
+    
+    ApiResponseETFs result = etFsApi.getAllEtfs(exchange, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -152,9 +149,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -162,15 +160,11 @@ public class Main {
 
     EtFsApi etFsApi = new EtFsApi();
 
-    String identifier = "SPY"; // String | An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID)
+    String identifier = "SPY";
 
-    try {
-      ETF result = etFsApi.getEtf(identifier);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling EtFsApi#getEtf");
-      e.printStackTrace();
-    }
+    
+    ETF result = etFsApi.getEtf(identifier);
+    System.out.println(result);
   
   }
 }
@@ -242,9 +236,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -252,15 +247,11 @@ public class Main {
 
     EtFsApi etFsApi = new EtFsApi();
 
-    String identifier = "SPY"; // String | An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID)
+    String identifier = "SPY";
 
-    try {
-      ETFAnalytics result = etFsApi.getEtfAnalytics(identifier);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling EtFsApi#getEtfAnalytics");
-      e.printStackTrace();
-    }
+    
+    ETFAnalytics result = etFsApi.getEtfAnalytics(identifier);
+    System.out.println(result);
   
   }
 }
@@ -332,9 +323,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -342,17 +334,13 @@ public class Main {
 
     EtFsApi etFsApi = new EtFsApi();
 
-    String identifier = "SPY"; // String | An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID)
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "SPY";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseETFHoldings result = etFsApi.getEtfHoldings(identifier, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling EtFsApi#getEtfHoldings");
-      e.printStackTrace();
-    }
+    
+    ApiResponseETFHoldings result = etFsApi.getEtfHoldings(identifier, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -426,9 +414,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -436,15 +425,11 @@ public class Main {
 
     EtFsApi etFsApi = new EtFsApi();
 
-    String identifier = "SPY"; // String | An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID)
+    String identifier = "SPY";
 
-    try {
-      ETFStats result = etFsApi.getEtfStats(identifier);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling EtFsApi#getEtfStats");
-      e.printStackTrace();
-    }
+    
+    ETFStats result = etFsApi.getEtfStats(identifier);
+    System.out.println(result);
   
   }
 }
@@ -516,9 +501,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -526,15 +512,11 @@ public class Main {
 
     EtFsApi etFsApi = new EtFsApi();
 
-    String query = "iShares"; // String | 
+    String query = "iShares";
 
-    try {
-      ApiResponseETFs result = etFsApi.searchEtfs(query);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling EtFsApi#searchEtfs");
-      e.printStackTrace();
-    }
+    
+    ApiResponseETFs result = etFsApi.searchEtfs(query);
+    System.out.println(result);
   
   }
 }

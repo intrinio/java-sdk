@@ -83,9 +83,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -93,19 +94,15 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityAccumulationDistributionIndex result = technicalApi.getSecurityPriceTechnicalsAdi(identifier, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsAdi");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityAccumulationDistributionIndex result = technicalApi.getSecurityPriceTechnicalsAdi(identifier, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -181,9 +178,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -191,20 +189,16 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 22; // Integer | The number of observations, per period, to calculate Average Daily Trading Volume
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 22;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityAverageDailyTradingVolume result = technicalApi.getSecurityPriceTechnicalsAdtv(identifier, period, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsAdtv");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityAverageDailyTradingVolume result = technicalApi.getSecurityPriceTechnicalsAdtv(identifier, period, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -281,9 +275,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -291,20 +286,16 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 14; // Integer | The number of observations, per period, to calculate Average Directional Index
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 14;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityAverageDirectionalIndex result = technicalApi.getSecurityPriceTechnicalsAdx(identifier, period, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsAdx");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityAverageDirectionalIndex result = technicalApi.getSecurityPriceTechnicalsAdx(identifier, period, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -381,9 +372,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -391,21 +383,17 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer shortPeriod = 5; // Integer | The number of observations, per period, to calculate short period Simple Moving Average of the Awesome Oscillator
-    Integer longPeriod = 34; // Integer | The number of observations, per period, to calculate long period Simple Moving Average of the Awesome Oscillator
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer shortPeriod = 5;
+    Integer longPeriod = 34;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityAwesomeOscillator result = technicalApi.getSecurityPriceTechnicalsAo(identifier, shortPeriod, longPeriod, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsAo");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityAwesomeOscillator result = technicalApi.getSecurityPriceTechnicalsAo(identifier, shortPeriod, longPeriod, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -483,9 +471,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -493,20 +482,16 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 14; // Integer | The number of observations, per period, to calculate Average True Range
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 14;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityAverageTrueRange result = technicalApi.getSecurityPriceTechnicalsAtr(identifier, period, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsAtr");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityAverageTrueRange result = technicalApi.getSecurityPriceTechnicalsAtr(identifier, period, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -583,9 +568,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -593,22 +579,18 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 20; // Integer | The number of observations, per period, to calculate Bollinger Bands
-    Float standardDeviations = 2.0F; // Float | The number of standard deviations to calculate the upper and lower bands of the Bollinger Bands
-    String priceKey = "close"; // String | The Stock Price field to use when calculating Bollinger Bands
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 20;
+    Float standardDeviations = 2.0F;
+    String priceKey = "close";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityBollingerBands result = technicalApi.getSecurityPriceTechnicalsBb(identifier, period, standardDeviations, priceKey, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsBb");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityBollingerBands result = technicalApi.getSecurityPriceTechnicalsBb(identifier, period, standardDeviations, priceKey, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -687,9 +669,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -697,21 +680,17 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 20; // Integer | The number of observations, per period, to calculate Commodity Channel Index
-    Float constant = 0.015F; // Float | The number of observations, per period, to calculate Commodity Channel Index
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 20;
+    Float constant = 0.015F;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityCommodityChannelIndex result = technicalApi.getSecurityPriceTechnicalsCci(identifier, period, constant, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsCci");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityCommodityChannelIndex result = technicalApi.getSecurityPriceTechnicalsCci(identifier, period, constant, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -789,9 +768,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -799,20 +779,16 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 20; // Integer | The number of observations, per period, to calculate Chaikin Money Flow
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 20;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityChaikinMoneyFlow result = technicalApi.getSecurityPriceTechnicalsCmf(identifier, period, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsCmf");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityChaikinMoneyFlow result = technicalApi.getSecurityPriceTechnicalsCmf(identifier, period, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -889,9 +865,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -899,21 +876,17 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 20; // Integer | The number of observations, per period, to calculate Donchian Channel
-    String priceKey = "close"; // String | The Stock Price field to use when calculating Donchian Channel
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 20;
+    String priceKey = "close";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityDonchianChannel result = technicalApi.getSecurityPriceTechnicalsDc(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsDc");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityDonchianChannel result = technicalApi.getSecurityPriceTechnicalsDc(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -991,9 +964,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1001,21 +975,17 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 20; // Integer | The number of observations, per period, to calculate Detrended Price Oscillator
-    String priceKey = "close"; // String | The Stock Price field to use when calculating Detrended Price Oscillator
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 20;
+    String priceKey = "close";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityDetrendedPriceOscillator result = technicalApi.getSecurityPriceTechnicalsDpo(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsDpo");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityDetrendedPriceOscillator result = technicalApi.getSecurityPriceTechnicalsDpo(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -1093,9 +1063,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1103,20 +1074,16 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 20; // Integer | The number of observations, per period, to calculate Ease of Movement
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 20;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityEaseOfMovement result = technicalApi.getSecurityPriceTechnicalsEom(identifier, period, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsEom");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityEaseOfMovement result = technicalApi.getSecurityPriceTechnicalsEom(identifier, period, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -1193,9 +1160,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1203,19 +1171,15 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityForceIndex result = technicalApi.getSecurityPriceTechnicalsFi(identifier, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsFi");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityForceIndex result = technicalApi.getSecurityPriceTechnicalsFi(identifier, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -1291,9 +1255,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1301,22 +1266,18 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer lowPeriod = 9; // Integer | The number of observations, per period, to calculate Tenkan Sen (Conversion Line) of Ichimoku Kinko Hyo
-    Integer mediumPeriod = 26; // Integer | The number of observations, per period, to calculate Kijun Sen (Base Line), Senkou Span A (Leading Span A), and Chikou Span (Lagging Span) of Ichimoku Kinko Hyo
-    Integer highPeriod = 52; // Integer | The number of observations, per period, to calculate Senkou Span B (Leading Span B) of Ichimoku Kinko Hyo
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer lowPeriod = 9;
+    Integer mediumPeriod = 26;
+    Integer highPeriod = 52;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityIchimokuKinkoHyo result = technicalApi.getSecurityPriceTechnicalsIchimoku(identifier, lowPeriod, mediumPeriod, highPeriod, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsIchimoku");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityIchimokuKinkoHyo result = technicalApi.getSecurityPriceTechnicalsIchimoku(identifier, lowPeriod, mediumPeriod, highPeriod, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -1395,9 +1356,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1405,20 +1367,16 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 10; // Integer | The number of observations, per period, to calculate Kelter Channel
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 10;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityKeltnerChannel result = technicalApi.getSecurityPriceTechnicalsKc(identifier, period, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsKc");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityKeltnerChannel result = technicalApi.getSecurityPriceTechnicalsKc(identifier, period, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -1495,9 +1453,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1505,28 +1464,24 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer roc1 = 10; // Integer | The number of observations, per period, to calculate the rate-of-change for RCMA1
-    Integer roc2 = 15; // Integer | The number of observations, per period, to calculate the rate-of-change for RCMA2
-    Integer roc3 = 20; // Integer | The number of observations, per period, to calculate the rate-of-change for RCMA3
-    Integer roc4 = 30; // Integer | The number of observations, per period, to calculate the rate-of-change for RCMA4
-    Integer sma1 = 10; // Integer | The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1
-    Integer sma2 = 10; // Integer | The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2
-    Integer sma3 = 10; // Integer | The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3
-    Integer sma4 = 15; // Integer | The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA4
-    String priceKey = "close"; // String | The Stock Price field to use when calculating Know Sure Thing
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer roc1 = 10;
+    Integer roc2 = 15;
+    Integer roc3 = 20;
+    Integer roc4 = 30;
+    Integer sma1 = 10;
+    Integer sma2 = 10;
+    Integer sma3 = 10;
+    Integer sma4 = 15;
+    String priceKey = "close";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityKnowSureThing result = technicalApi.getSecurityPriceTechnicalsKst(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsKst");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityKnowSureThing result = technicalApi.getSecurityPriceTechnicalsKst(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -1611,9 +1566,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1621,23 +1577,19 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer fastPeriod = 12; // Integer | The number of observations, per period, to calculate the fast moving Exponential Moving Average for Moving Average Convergence Divergence
-    Integer slowPeriod = 26; // Integer | The number of observations, per period, to calculate the slow moving Exponential Moving Average for Moving Average Convergence Divergence
-    Integer signalPeriod = 9; // Integer | The number of observations, per period, to calculate the signal line for Moving Average Convergence Divergence
-    String priceKey = "close"; // String | The Stock Price field to use when calculating Moving Average Convergence Divergence
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer fastPeriod = 12;
+    Integer slowPeriod = 26;
+    Integer signalPeriod = 9;
+    String priceKey = "close";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityMovingAverageConvergenceDivergence result = technicalApi.getSecurityPriceTechnicalsMacd(identifier, fastPeriod, slowPeriod, signalPeriod, priceKey, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsMacd");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityMovingAverageConvergenceDivergence result = technicalApi.getSecurityPriceTechnicalsMacd(identifier, fastPeriod, slowPeriod, signalPeriod, priceKey, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -1717,9 +1669,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1727,20 +1680,16 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 14; // Integer | The number of observations, per period, to calculate Money Flow Index
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 14;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityMoneyFlowIndex result = technicalApi.getSecurityPriceTechnicalsMfi(identifier, period, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsMfi");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityMoneyFlowIndex result = technicalApi.getSecurityPriceTechnicalsMfi(identifier, period, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -1817,9 +1766,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1827,21 +1777,17 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer emaPeriod = 9; // Integer | The number of observations, per period, to calculate the single Exponential Moving Average and the Double Exponential Moving Average for Mass Index
-    Integer sumPeriod = 25; // Integer | The number of observations, per period, to calculate the sum of the Exponetinal Moving Average Ratios for Mass Index
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer emaPeriod = 9;
+    Integer sumPeriod = 25;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityMassIndex result = technicalApi.getSecurityPriceTechnicalsMi(identifier, emaPeriod, sumPeriod, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsMi");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityMassIndex result = technicalApi.getSecurityPriceTechnicalsMi(identifier, emaPeriod, sumPeriod, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -1919,9 +1865,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -1929,19 +1876,15 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityNegativeVolumeIndex result = technicalApi.getSecurityPriceTechnicalsNvi(identifier, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsNvi");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityNegativeVolumeIndex result = technicalApi.getSecurityPriceTechnicalsNvi(identifier, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -2017,9 +1960,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -2027,19 +1971,15 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityOnBalanceVolume result = technicalApi.getSecurityPriceTechnicalsObv(identifier, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsObv");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityOnBalanceVolume result = technicalApi.getSecurityPriceTechnicalsObv(identifier, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -2115,9 +2055,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -2125,20 +2066,16 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 10; // Integer | The number of observations, per period, to calculate On-balance Volume Mean
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 10;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityOnBalanceVolumeMean result = technicalApi.getSecurityPriceTechnicalsObvMean(identifier, period, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsObvMean");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityOnBalanceVolumeMean result = technicalApi.getSecurityPriceTechnicalsObvMean(identifier, period, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -2215,9 +2152,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -2225,21 +2163,17 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 14; // Integer | The number of observations, per period, to calculate Relative Strength Index
-    String priceKey = "close"; // String | The Stock Price field to use when calculating Relative Strength Index
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 14;
+    String priceKey = "close";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityRelativeStrengthIndex result = technicalApi.getSecurityPriceTechnicalsRsi(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsRsi");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityRelativeStrengthIndex result = technicalApi.getSecurityPriceTechnicalsRsi(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -2317,9 +2251,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -2327,21 +2262,17 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 20; // Integer | The number of observations, per period, to calculate Simple Moving Average
-    String priceKey = "close"; // String | The Stock Price field to use when calculating Simple Moving Average
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 20;
+    String priceKey = "close";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecuritySimpleMovingAverage result = technicalApi.getSecurityPriceTechnicalsSma(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsSma");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecuritySimpleMovingAverage result = technicalApi.getSecurityPriceTechnicalsSma(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -2419,9 +2350,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -2429,21 +2361,17 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 14; // Integer | The number of observations, per period, to calculate %K of Stochastic Oscillator
-    Integer signalPeriod = 3; // Integer | The number of observations, per period, to calculate the %D (the Simple Moving Average of %K) as a signal line for Stochastic Oscillator
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 14;
+    Integer signalPeriod = 3;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityStochasticOscillator result = technicalApi.getSecurityPriceTechnicalsSr(identifier, period, signalPeriod, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsSr");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityStochasticOscillator result = technicalApi.getSecurityPriceTechnicalsSr(identifier, period, signalPeriod, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -2521,9 +2449,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -2531,20 +2460,16 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 15; // Integer | The number of observations, per period, to calculate Exponential Moving Average for Triple Exponential Average
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 15;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityTripleExponentialAverage result = technicalApi.getSecurityPriceTechnicalsTrix(identifier, period, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsTrix");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityTripleExponentialAverage result = technicalApi.getSecurityPriceTechnicalsTrix(identifier, period, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -2621,9 +2546,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -2631,22 +2557,18 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer lowPeriod = 13; // Integer | The number of observations, per period, to calculate low period Exponential Moving Average for smoothing in True Strength Index
-    Integer highPeriod = 25; // Integer | The number of observations, per period, to calculate high period Exponential Moving Average for smoothing in True Strength Index
-    String priceKey = "close"; // String | The Stock Price field to use when calculating True Strength Index
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer lowPeriod = 13;
+    Integer highPeriod = 25;
+    String priceKey = "close";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityTrueStrengthIndex result = technicalApi.getSecurityPriceTechnicalsTsi(identifier, lowPeriod, highPeriod, priceKey, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsTsi");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityTrueStrengthIndex result = technicalApi.getSecurityPriceTechnicalsTsi(identifier, lowPeriod, highPeriod, priceKey, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -2725,9 +2647,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -2735,25 +2658,21 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer shortPeriod = 7; // Integer | The number of observations, per period, to calculate the short period for Ultimate Oscillator
-    Integer mediumPeriod = 14; // Integer | The number of observations, per period, to calculate the medium period for Ultimate Oscillator
-    Integer longPeriod = 28; // Integer | The number of observations, per period, to calculate the long period for Ultimate Oscillator
-    Float shortWeight = 4.0F; // Float | The weight of short Buying Pressure average for Ultimate Oscillator
-    Float mediumWeight = 2.0F; // Float | The weight of medium Buying Pressure average for Ultimate Oscillator
-    Float longWeight = 1.0F; // Float | The weight of long Buying Pressure average for Ultimate Oscillator
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer shortPeriod = 7;
+    Integer mediumPeriod = 14;
+    Integer longPeriod = 28;
+    Float shortWeight = 4.0F;
+    Float mediumWeight = 2.0F;
+    Float longWeight = 1.0F;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityUltimateOscillator result = technicalApi.getSecurityPriceTechnicalsUo(identifier, shortPeriod, mediumPeriod, longPeriod, shortWeight, mediumWeight, longWeight, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsUo");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityUltimateOscillator result = technicalApi.getSecurityPriceTechnicalsUo(identifier, shortPeriod, mediumPeriod, longPeriod, shortWeight, mediumWeight, longWeight, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -2835,9 +2754,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -2845,20 +2765,16 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 14; // Integer | The number of observations, per period, to calculate Vortex Indicator
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 14;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityVortexIndicator result = technicalApi.getSecurityPriceTechnicalsVi(identifier, period, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsVi");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityVortexIndicator result = technicalApi.getSecurityPriceTechnicalsVi(identifier, period, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -2935,9 +2851,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -2945,19 +2862,15 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityVolumePriceTrend result = technicalApi.getSecurityPriceTechnicalsVpt(identifier, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsVpt");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityVolumePriceTrend result = technicalApi.getSecurityPriceTechnicalsVpt(identifier, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -3033,9 +2946,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -3043,19 +2957,15 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityVolumeWeightedAveragePrice result = technicalApi.getSecurityPriceTechnicalsVwap(identifier, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsVwap");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityVolumeWeightedAveragePrice result = technicalApi.getSecurityPriceTechnicalsVwap(identifier, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -3131,9 +3041,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -3141,20 +3052,16 @@ public class Main {
 
     TechnicalApi technicalApi = new TechnicalApi();
 
-    String identifier = "AAPL"; // String | A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID)
-    Integer period = 14; // Integer | The number of observations, per period, to look-back when calculating Williams %R
-    String startDate = "2018-01-01"; // String | Return technical indicator values on or after the date
-    String endDate = "2019-01-01"; // String | Return technical indicator values on or before the date
-    BigDecimal pageSize = null; // BigDecimal | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "AAPL";
+    Integer period = 14;
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    BigDecimal pageSize = null;
+    String nextPage = null;
 
-    try {
-      ApiResponseSecurityWilliamsR result = technicalApi.getSecurityPriceTechnicalsWr(identifier, period, startDate, endDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TechnicalApi#getSecurityPriceTechnicalsWr");
-      e.printStackTrace();
-    }
+    
+    ApiResponseSecurityWilliamsR result = technicalApi.getSecurityPriceTechnicalsWr(identifier, period, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }

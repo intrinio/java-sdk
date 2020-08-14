@@ -55,9 +55,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -66,13 +67,9 @@ public class Main {
     ForexApi forexApi = new ForexApi();
 
 
-    try {
-      ApiResponseForexCurrencies result = forexApi.getForexCurrencies();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ForexApi#getForexCurrencies");
-      e.printStackTrace();
-    }
+    
+    ApiResponseForexCurrencies result = forexApi.getForexCurrencies();
+    System.out.println(result);
   
   }
 }
@@ -141,9 +138,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -152,13 +150,9 @@ public class Main {
     ForexApi forexApi = new ForexApi();
 
 
-    try {
-      ApiResponseForexPairs result = forexApi.getForexPairs();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ForexApi#getForexPairs");
-      e.printStackTrace();
-    }
+    
+    ApiResponseForexPairs result = forexApi.getForexPairs();
+    System.out.println(result);
   
   }
 }
@@ -227,9 +221,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -237,23 +232,19 @@ public class Main {
 
     ForexApi forexApi = new ForexApi();
 
-    String pair = "EURUSD"; // String | The Forex Currency Pair code
-    String timeframe = "D1"; // String | The time interval for the quotes
-    String timezone = "UTC"; // String | Returns trading times in this timezone
-    LocalDate startDate = LocalDate.now(); // LocalDate | Return Forex Prices on or after this date
-    String startTime = null; // String | Return Forex Prices at or after this time (24-hour)
-    LocalDate endDate = LocalDate.now(); // LocalDate | Return Forex Prices on or before this date
-    String endTime = null; // String | Return Forex Prices at or before this time (24-hour)
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String pair = "EURUSD";
+    String timeframe = "D1";
+    String timezone = "UTC";
+    LocalDate startDate = LocalDate.now();
+    String startTime = null;
+    LocalDate endDate = LocalDate.now();
+    String endTime = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseForexPrices result = forexApi.getForexPrices(pair, timeframe, timezone, startDate, startTime, endDate, endTime, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling ForexApi#getForexPrices");
-      e.printStackTrace();
-    }
+    
+    ApiResponseForexPrices result = forexApi.getForexPrices(pair, timeframe, timezone, startDate, startTime, endDate, endTime, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }

@@ -62,9 +62,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -72,22 +73,18 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String company = "AAPL"; // String | Filings for the given `company` identifier (ticker, CIK, LEI, Intrinio ID)
-    String reportType = null; // String | Filter by report type. Separate values with commas to return multiple The filing <a href=\"https://docs.intrinio.com/documentation/sec_filing_report_types\" target=\"_blank\">report types</a>.
-    LocalDate startDate = LocalDate.now(); // LocalDate | Filed on or after the given date
-    LocalDate endDate = LocalDate.now(); // LocalDate | Filed before or after the given date
-    String industryCategory = null; // String | Return companies in the given industry category
-    String industryGroup = null; // String | Return companies in the given industry group
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String company = "AAPL";
+    String reportType = null;
+    LocalDate startDate = LocalDate.now();
+    LocalDate endDate = LocalDate.now();
+    String industryCategory = null;
+    String industryGroup = null;
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseFilings result = filingApi.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilingApi#getAllFilings");
-      e.printStackTrace();
-    }
+    
+    ApiResponseFilings result = filingApi.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -166,9 +163,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -176,22 +174,18 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String company = "AAPL"; // String | A Company identifier (Ticker, CIK, LEI, Intrinio ID)
-    String reportType = "10-Q"; // String | Notes contained in filings that match the given <a href=\"https://docs.intrinio.com/documentation/sec_filing_report_types\" target=\"_blank\">report type</a>
-    LocalDate filingStartDate = LocalDate.now(); // LocalDate | Limit search to filings on or after this date
-    LocalDate filingEndDate = LocalDate.now(); // LocalDate | Limit search to filings on or before this date
-    LocalDate periodEndedStartDate = LocalDate.now(); // LocalDate | Limit search to filings with a period end date on or after this date
-    LocalDate periodEndedEndDate = LocalDate.now(); // LocalDate | Limit search to filings with a period end date on or before this date
-    Integer pageSize = 100; // Integer | The number of results to return
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String company = "AAPL";
+    String reportType = "10-Q";
+    LocalDate filingStartDate = LocalDate.now();
+    LocalDate filingEndDate = LocalDate.now();
+    LocalDate periodEndedStartDate = LocalDate.now();
+    LocalDate periodEndedEndDate = LocalDate.now();
+    Integer pageSize = 100;
+    String nextPage = null;
 
-    try {
-      ApiResponseFilingNotes result = filingApi.getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilingApi#getAllNotes");
-      e.printStackTrace();
-    }
+    
+    ApiResponseFilingNotes result = filingApi.getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -270,9 +264,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -280,15 +275,11 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String id = "fil_7Kn2P6"; // String | The Intrinio ID of the Filing
+    String id = "fil_7Kn2P6";
 
-    try {
-      Filing result = filingApi.getFilingById(id);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilingApi#getFilingById");
-      e.printStackTrace();
-    }
+    
+    Filing result = filingApi.getFilingById(id);
+    System.out.println(result);
   
   }
 }
@@ -360,9 +351,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -370,22 +362,18 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String identifier = "fil_B73xBG"; // String | A Filing identifier
-    String statementCode = null; // String | Filters fundamentals by statement code
-    String type = null; // String | Filters fundamentals by type
-    Integer fiscalYear = null; // Integer | Filters fundamentals by fiscal year
-    String fiscalPeriod = null; // String | Filters fundamentals by fiscal period
-    LocalDate startDate = LocalDate.now(); // LocalDate | Returns fundamentals on or after the given date
-    LocalDate endDate = LocalDate.now(); // LocalDate | Returns fundamentals on or before the given date
-    String nextPage = null; // String | Gets the next page of data from a previous API call
+    String identifier = "fil_B73xBG";
+    String statementCode = null;
+    String type = null;
+    Integer fiscalYear = null;
+    String fiscalPeriod = null;
+    LocalDate startDate = LocalDate.now();
+    LocalDate endDate = LocalDate.now();
+    String nextPage = null;
 
-    try {
-      ApiResponseFilingFundamentals result = filingApi.getFilingFundamentals(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilingApi#getFilingFundamentals");
-      e.printStackTrace();
-    }
+    
+    ApiResponseFilingFundamentals result = filingApi.getFilingFundamentals(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage);
+    System.out.println(result);
   
   }
 }
@@ -463,9 +451,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -473,15 +462,11 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String identifier = "fil_B73xBG"; // String | A Filing identifier
+    String identifier = "fil_B73xBG";
 
-    try {
-      String result = filingApi.getFilingHtml(identifier);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilingApi#getFilingHtml");
-      e.printStackTrace();
-    }
+    
+    String result = filingApi.getFilingHtml(identifier);
+    System.out.println(result);
   
   }
 }
@@ -552,9 +537,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -562,15 +548,11 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String identifier = "fil_B73xBG"; // String | A Filing identifier
+    String identifier = "fil_B73xBG";
 
-    try {
-      String result = filingApi.getFilingText(identifier);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilingApi#getFilingText");
-      e.printStackTrace();
-    }
+    
+    String result = filingApi.getFilingText(identifier);
+    System.out.println(result);
   
   }
 }
@@ -641,9 +623,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -651,16 +634,12 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String identifier = "xbn_ydK3QL"; // String | The Intrinio ID of the filing note
-    String contentFormat = "text"; // String | Returns content in html (as filed) or plain text
+    String identifier = "xbn_ydK3QL";
+    String contentFormat = "text";
 
-    try {
-      FilingNote result = filingApi.getNote(identifier, contentFormat);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilingApi#getNote");
-      e.printStackTrace();
-    }
+    
+    FilingNote result = filingApi.getNote(identifier, contentFormat);
+    System.out.println(result);
   
   }
 }
@@ -732,9 +711,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -742,15 +722,11 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String identifier = "xbn_ydK3QL"; // String | The Intrinio ID of the filing note
+    String identifier = "xbn_ydK3QL";
 
-    try {
-      String result = filingApi.getNoteHtml(identifier);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilingApi#getNoteHtml");
-      e.printStackTrace();
-    }
+    
+    String result = filingApi.getNoteHtml(identifier);
+    System.out.println(result);
   
   }
 }
@@ -821,9 +797,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -831,15 +808,11 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String identifier = "xbn_ydK3QL"; // String | The Intrinio ID of the filing note
+    String identifier = "xbn_ydK3QL";
 
-    try {
-      String result = filingApi.getNoteText(identifier);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilingApi#getNoteText");
-      e.printStackTrace();
-    }
+    
+    String result = filingApi.getNoteText(identifier);
+    System.out.println(result);
   
   }
 }
@@ -911,9 +884,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -921,18 +895,14 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
 
-    String query = "inflation"; // String | Search for notes that contain all or parts of this text
-    LocalDate filingStartDate = LocalDate.now(); // LocalDate | Limit search to filings on or after this date
-    LocalDate filingEndDate = LocalDate.now(); // LocalDate | Limit search to filings on or before this date
-    Integer pageSize = 100; // Integer | The number of results to return
+    String query = "inflation";
+    LocalDate filingStartDate = LocalDate.now();
+    LocalDate filingEndDate = LocalDate.now();
+    Integer pageSize = 100;
 
-    try {
-      ApiResponseFilingNotesSearch result = filingApi.searchNotes(query, filingStartDate, filingEndDate, pageSize);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling FilingApi#searchNotes");
-      e.printStackTrace();
-    }
+    
+    ApiResponseFilingNotesSearch result = filingApi.searchNotes(query, filingStartDate, filingEndDate, pageSize);
+    System.out.println(result);
   
   }
 }

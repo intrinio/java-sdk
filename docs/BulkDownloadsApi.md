@@ -53,9 +53,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -64,13 +65,9 @@ public class Main {
     BulkDownloadsApi bulkDownloadsApi = new BulkDownloadsApi();
 
 
-    try {
-      ApiResponseBulkDownloadLinks result = bulkDownloadsApi.getBulkDownloadLinks();
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling BulkDownloadsApi#getBulkDownloadLinks");
-      e.printStackTrace();
-    }
+    
+    ApiResponseBulkDownloadLinks result = bulkDownloadsApi.getBulkDownloadLinks();
+    System.out.println(result);
   
   }
 }

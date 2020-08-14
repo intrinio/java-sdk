@@ -54,9 +54,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -64,16 +65,12 @@ public class Main {
 
     DataPointApi dataPointApi = new DataPointApi();
 
-    String identifier = "AAPL"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-    String tag = "marketcap"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
+    String identifier = "AAPL";
+    String tag = "marketcap";
 
-    try {
-      BigDecimal result = dataPointApi.getDataPointNumber(identifier, tag);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DataPointApi#getDataPointNumber");
-      e.printStackTrace();
-    }
+    
+    BigDecimal result = dataPointApi.getDataPointNumber(identifier, tag);
+    System.out.println(result);
   
   }
 }
@@ -146,9 +143,10 @@ import com.intrinio.invoker.*;
 import com.intrinio.invoker.auth.*;
 import org.threeten.bp.*;
 import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
@@ -156,16 +154,12 @@ public class Main {
 
     DataPointApi dataPointApi = new DataPointApi();
 
-    String identifier = "AAPL"; // String | An identifier for an entity such as a Company, Security, Index, etc (Ticker, FIGI, ISIN, CUSIP, CIK, LEI, Intrinio ID)
-    String tag = "ceo"; // String | An Intrinio data tag ID or code (<a href='https://data.intrinio.com/data-tags'>reference</a>)
+    String identifier = "AAPL";
+    String tag = "ceo";
 
-    try {
-      String result = dataPointApi.getDataPointText(identifier, tag);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling DataPointApi#getDataPointText");
-      e.printStackTrace();
-    }
+    
+    String result = dataPointApi.getDataPointText(identifier, tag);
+    System.out.println(result);
   
   }
 }
