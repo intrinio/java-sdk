@@ -71,12 +71,12 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-
     String identifier = "AAPL";
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = null;
+    LocalDate endDate = null;
     BigDecimal meanGreater = null;
     BigDecimal meanLess = null;
     Integer strongBuysGreater = null;
@@ -93,11 +93,9 @@ public class Main {
     Integer totalLess = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseZacksAnalystRatings result = zacksApi.getZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -194,23 +192,21 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-
     String identifier = "AAPL";
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = null;
+    LocalDate endDate = null;
     Integer fiscalYear = null;
     String fiscalPeriod = null;
     Integer calendarYear = null;
     String calendarPeriod = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseZacksEPSEstimates result = zacksApi.getZacksEpsEstimates(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -297,19 +293,17 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-
     String company = "AAPL";
     String industryGroupName = null;
     String industryGroupNumber = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseZacksEPSGrowthRates result = zacksApi.getZacksEpsGrowthRates(company, industryGroupName, industryGroupNumber, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -392,11 +386,11 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = null;
+    LocalDate endDate = null;
     BigDecimal epsActualGreater = null;
     BigDecimal epsActualLess = null;
     BigDecimal epsMeanEstimateGreater = null;
@@ -411,11 +405,9 @@ public class Main {
     BigDecimal epsStdDevEstimateLess = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseZacksEPSSurprises result = zacksApi.getZacksEpsSurprises(startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -509,20 +501,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-
-    String etfTicker = null;
-    String holdingSymbol = null;
+    String etfTicker = "SPY";
+    String holdingSymbol = "AAPL";
     BigDecimal weightGreater = null;
     BigDecimal weightLess = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseZacksETFHoldings result = zacksApi.getZacksEtfHoldings(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -606,17 +596,15 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-
     String ticker = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseZacksInstitutionalHoldingCompanies result = zacksApi.getZacksInstitutionalHoldingCompanies(ticker, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -697,17 +685,15 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-
     String cik = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseZacksInstitutionalHoldingOwners result = zacksApi.getZacksInstitutionalHoldingOwners(cik, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -788,18 +774,16 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-
     String ticker = null;
     String ownerCik = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseZacksInstitutionalHoldings result = zacksApi.getZacksInstitutionalHoldings(ticker, ownerCik, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -881,17 +865,15 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-
     String identifier = "AAPL";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseZacksLongTermGrowthRates result = zacksApi.getZacksLongTermGrowthRates(identifier, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -972,11 +954,11 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = null;
+    LocalDate endDate = null;
     BigDecimal salesActualGreater = null;
     BigDecimal salesActualLess = null;
     BigDecimal salesMeanEstimateGreater = null;
@@ -991,11 +973,9 @@ public class Main {
     BigDecimal salesStdDevEstimateLess = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseZacksSalesSurprises result = zacksApi.getZacksSalesSurprises(startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1089,18 +1069,16 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-
     String identifier = "AAPL";
     String industryGroupNumber = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseZacksTargetPriceConsensuses result = zacksApi.getZacksTargetPriceConsensuses(identifier, industryGroupNumber, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```

@@ -73,10 +73,10 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
-    LocalDate latestFilingDate = LocalDate.now();
+    LocalDate latestFilingDate = null;
     String sic = null;
     String template = null;
     String sector = null;
@@ -86,11 +86,9 @@ public class Main {
     Boolean hasStockPrices = true;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseCompanies result = companyApi.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -178,16 +176,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseNews result = companyApi.getAllCompanyNews(pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -267,15 +263,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
     String identifier = "AAPL";
-
     
     Company result = companyApi.getCompany(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -354,16 +348,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
     String identifier = "AAPL";
     String tag = "marketcap";
-
     
     BigDecimal result = companyApi.getCompanyDataPointNumber(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```
@@ -443,16 +435,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
     String identifier = "AAPL";
     String tag = "ceo";
-
     
     String result = companyApi.getCompanyDataPointText(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```
@@ -532,20 +522,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
     String identifier = "AAPL";
     String reportType = null;
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = LocalDate.of(2015,1,01);
+    LocalDate endDate = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseCompanyFilings result = companyApi.getCompanyFilings(identifier, reportType, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -629,25 +617,23 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
     String identifier = "AAPL";
-    LocalDate filedAfter = LocalDate.now();
-    LocalDate filedBefore = LocalDate.now();
+    LocalDate filedAfter = null;
+    LocalDate filedBefore = null;
     Boolean reportedOnly = false;
     Integer fiscalYear = null;
     String statementCode = null;
     String type = null;
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = null;
+    LocalDate endDate = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -736,23 +722,21 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
     String identifier = "AAPL";
     String tag = "marketcap";
     String frequency = "daily";
     String type = null;
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = null;
     String sortOrder = "desc";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseCompanyHistoricalData result = companyApi.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -839,22 +823,20 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
-    String ticker = null;
+    String ticker = "UBER";
     String status = null;
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = null;
+    LocalDate endDate = null;
     Integer offerAmountGreaterThan = null;
     Integer offerAmountLessThan = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseInitialPublicOfferings result = companyApi.getCompanyIpos(ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -940,17 +922,15 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
     String identifier = "AAPL";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseCompanyNews result = companyApi.getCompanyNews(identifier, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1031,16 +1011,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
     String identifier = "AAPL";
     String nextPage = null;
-
     
     ApiResponseCompanySecurities result = companyApi.getCompanySecurities(identifier, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1120,18 +1098,16 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
     String identifier = "AAPL";
     String statementCode = "income_statement";
     String fiscalPeriod = "FY";
     Integer fiscalYear = 2017;
-
     
     Fundamental result = companyApi.lookupCompanyFundamental(identifier, statementCode, fiscalPeriod, fiscalYear);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1213,16 +1189,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-
     String query = "Apple";
     Integer pageSize = 100;
-
     
     ApiResponseCompaniesSearch result = companyApi.searchCompanies(query, pageSize);
     System.out.println(result);
-  
   }
 }
 ```

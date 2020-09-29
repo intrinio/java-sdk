@@ -27,7 +27,7 @@ public class MunicipalityApiTest {
     /**
      * All Municipalities
      *
-     * 
+     * Returns all Municipalities. When parameters are specified, returns matching municipalities.
      *
      * @throws ApiException
      *          if the Api call fails

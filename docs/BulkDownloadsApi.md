@@ -61,14 +61,12 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     BulkDownloadsApi bulkDownloadsApi = new BulkDownloadsApi();
-
-
     
     ApiResponseBulkDownloadLinks result = bulkDownloadsApi.getBulkDownloadLinks();
     System.out.println(result);
-  
   }
 }
 ```

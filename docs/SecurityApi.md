@@ -10,8 +10,8 @@ Method | HTTP request | Description
 [**getSecurityDataPointText**](SecurityApi.md#getSecurityDataPointText) | **GET** /securities/{identifier}/data_point/{tag}/text | Data Point (Text) for Security
 [**getSecurityHistoricalData**](SecurityApi.md#getSecurityHistoricalData) | **GET** /securities/{identifier}/historical_data/{tag} | Historical Data for Security
 [**getSecurityIntradayPrices**](SecurityApi.md#getSecurityIntradayPrices) | **GET** /securities/{identifier}/prices/intraday | Intraday Stock Prices for Security
-[**getSecurityLatestDividendRecord**](SecurityApi.md#getSecurityLatestDividendRecord) | **GET** /securities/{identifier}/dividends/latest | Lastest Dividend Record for Security
-[**getSecurityLatestEarningsRecord**](SecurityApi.md#getSecurityLatestEarningsRecord) | **GET** /securities/{identifier}/earnings/latest | Lastest Earnings Record for Security
+[**getSecurityLatestDividendRecord**](SecurityApi.md#getSecurityLatestDividendRecord) | **GET** /securities/{identifier}/dividends/latest | Latest Dividend Record for Security
+[**getSecurityLatestEarningsRecord**](SecurityApi.md#getSecurityLatestEarningsRecord) | **GET** /securities/{identifier}/earnings/latest | Latest Earnings Record for Security
 [**getSecurityPriceTechnicalsAdi**](SecurityApi.md#getSecurityPriceTechnicalsAdi) | **GET** /securities/{identifier}/prices/technicals/adi | Accumulation/Distribution Index
 [**getSecurityPriceTechnicalsAdtv**](SecurityApi.md#getSecurityPriceTechnicalsAdtv) | **GET** /securities/{identifier}/prices/technicals/adtv | Average Daily Trading Volume
 [**getSecurityPriceTechnicalsAdx**](SecurityApi.md#getSecurityPriceTechnicalsAdx) | **GET** /securities/{identifier}/prices/technicals/adx | Average Directional Index
@@ -108,9 +108,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     Boolean active = true;
     Boolean delisted = false;
     String code = null;
@@ -119,8 +119,8 @@ public class Main {
     String name = null;
     String compositeMic = null;
     String exchangeMic = null;
-    LocalDate stockPricesAfter = LocalDate.now();
-    LocalDate stockPricesBefore = LocalDate.now();
+    LocalDate stockPricesAfter = null;
+    LocalDate stockPricesBefore = null;
     String cik = null;
     String figi = null;
     String compositeFigi = null;
@@ -129,11 +129,9 @@ public class Main {
     Boolean includeNonFigi = false;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurities result = securityApi.getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -229,15 +227,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
-
     
     Security result = securityApi.getSecurityById(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -316,16 +312,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String tag = "close_price";
-
     
     BigDecimal result = securityApi.getSecurityDataPointNumber(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```
@@ -405,16 +399,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String tag = "figi";
-
     
     String result = securityApi.getSecurityDataPointText(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```
@@ -494,23 +486,21 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String tag = "adj_close_price";
     String frequency = "daily";
     String type = null;
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = null;
     String sortOrder = "desc";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityHistoricalData result = securityApi.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -597,22 +587,20 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String source = null;
-    LocalDate startDate = LocalDate.now();
+    LocalDate startDate = LocalDate.of(2018,1,01);
     String startTime = null;
-    LocalDate endDate = LocalDate.now();
+    LocalDate endDate = LocalDate.of(2019,1,01);
     String endTime = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityIntradayPrices result = securityApi.getSecurityIntradayPrices(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -629,9 +617,9 @@ Name | Type | Description  | Notes
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
  **source** | String| Return intraday prices from the specified data source | [optional] [enum: iex, bats] &nbsp;
  **startDate** | LocalDate| Return intraday prices starting at the specified date | [optional] &nbsp;
- **startTime** | String| Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) | [optional] &nbsp;
+ **startTime** | String| Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) | [optional] &nbsp;
  **endDate** | LocalDate| Return intraday prices stopping at the specified date | [optional] &nbsp;
- **endTime** | String| Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) | [optional] &nbsp;
+ **endTime** | String| Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
@@ -672,7 +660,7 @@ Name | Type | Description  | Notes
 
 > DividendRecord getSecurityLatestDividendRecord(identifier)
 
-#### Lastest Dividend Record for Security
+#### Latest Dividend Record for Security
 
 
 Returns the latest available dividend information for the Security with the given &#x60;identifier&#x60;
@@ -698,15 +686,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
-
     
     DividendRecord result = securityApi.getSecurityLatestDividendRecord(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -759,7 +745,7 @@ Name | Type | Description  | Notes
 
 > EarningsRecord getSecurityLatestEarningsRecord(identifier)
 
-#### Lastest Earnings Record for Security
+#### Latest Earnings Record for Security
 
 
 Returns latest available earnings information for the Security with the given &#x60;identifier&#x60;
@@ -785,15 +771,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
-
     
     EarningsRecord result = securityApi.getSecurityLatestEarningsRecord(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -872,19 +856,17 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityAccumulationDistributionIndex result = securityApi.getSecurityPriceTechnicalsAdi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -967,20 +949,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 22;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityAverageDailyTradingVolume result = securityApi.getSecurityPriceTechnicalsAdtv(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1064,20 +1044,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityAverageDirectionalIndex result = securityApi.getSecurityPriceTechnicalsAdx(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1161,9 +1139,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer shortPeriod = 5;
     Integer longPeriod = 34;
@@ -1171,11 +1149,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityAwesomeOscillator result = securityApi.getSecurityPriceTechnicalsAo(identifier, shortPeriod, longPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1260,20 +1236,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityAverageTrueRange result = securityApi.getSecurityPriceTechnicalsAtr(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1357,9 +1331,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 20;
     Float standardDeviations = 2.0F;
@@ -1368,11 +1342,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityBollingerBands result = securityApi.getSecurityPriceTechnicalsBb(identifier, period, standardDeviations, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1458,9 +1430,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 20;
     Float constant = 0.015F;
@@ -1468,11 +1440,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityCommodityChannelIndex result = securityApi.getSecurityPriceTechnicalsCci(identifier, period, constant, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1557,20 +1527,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 20;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityChaikinMoneyFlow result = securityApi.getSecurityPriceTechnicalsCmf(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1654,9 +1622,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 20;
     String priceKey = "close";
@@ -1664,11 +1632,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityDonchianChannel result = securityApi.getSecurityPriceTechnicalsDc(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1753,9 +1719,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 20;
     String priceKey = "close";
@@ -1763,11 +1729,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityDetrendedPriceOscillator result = securityApi.getSecurityPriceTechnicalsDpo(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1852,20 +1816,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 20;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityEaseOfMovement result = securityApi.getSecurityPriceTechnicalsEom(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1949,19 +1911,17 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityForceIndex result = securityApi.getSecurityPriceTechnicalsFi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -2044,9 +2004,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer lowPeriod = 9;
     Integer mediumPeriod = 26;
@@ -2055,11 +2015,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityIchimokuKinkoHyo result = securityApi.getSecurityPriceTechnicalsIchimoku(identifier, lowPeriod, mediumPeriod, highPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -2145,20 +2103,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 10;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityKeltnerChannel result = securityApi.getSecurityPriceTechnicalsKc(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -2242,9 +2198,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer roc1 = 10;
     Integer roc2 = 15;
@@ -2259,11 +2215,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityKnowSureThing result = securityApi.getSecurityPriceTechnicalsKst(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -2355,9 +2309,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer fastPeriod = 12;
     Integer slowPeriod = 26;
@@ -2367,11 +2321,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityMovingAverageConvergenceDivergence result = securityApi.getSecurityPriceTechnicalsMacd(identifier, fastPeriod, slowPeriod, signalPeriod, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -2458,20 +2410,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityMoneyFlowIndex result = securityApi.getSecurityPriceTechnicalsMfi(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -2555,9 +2505,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer emaPeriod = 9;
     Integer sumPeriod = 25;
@@ -2565,11 +2515,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityMassIndex result = securityApi.getSecurityPriceTechnicalsMi(identifier, emaPeriod, sumPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -2654,19 +2602,17 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityNegativeVolumeIndex result = securityApi.getSecurityPriceTechnicalsNvi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -2749,19 +2695,17 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityOnBalanceVolume result = securityApi.getSecurityPriceTechnicalsObv(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -2844,20 +2788,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 10;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityOnBalanceVolumeMean result = securityApi.getSecurityPriceTechnicalsObvMean(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -2941,9 +2883,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 14;
     String priceKey = "close";
@@ -2951,11 +2893,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityRelativeStrengthIndex result = securityApi.getSecurityPriceTechnicalsRsi(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -3040,9 +2980,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 20;
     String priceKey = "close";
@@ -3050,11 +2990,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecuritySimpleMovingAverage result = securityApi.getSecurityPriceTechnicalsSma(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -3139,9 +3077,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 14;
     Integer signalPeriod = 3;
@@ -3149,11 +3087,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityStochasticOscillator result = securityApi.getSecurityPriceTechnicalsSr(identifier, period, signalPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -3238,20 +3174,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 15;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityTripleExponentialAverage result = securityApi.getSecurityPriceTechnicalsTrix(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -3335,9 +3269,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer lowPeriod = 13;
     Integer highPeriod = 25;
@@ -3346,11 +3280,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityTrueStrengthIndex result = securityApi.getSecurityPriceTechnicalsTsi(identifier, lowPeriod, highPeriod, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -3436,9 +3368,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer shortPeriod = 7;
     Integer mediumPeriod = 14;
@@ -3450,11 +3382,9 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityUltimateOscillator result = securityApi.getSecurityPriceTechnicalsUo(identifier, shortPeriod, mediumPeriod, longPeriod, shortWeight, mediumWeight, longWeight, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -3543,20 +3473,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityVortexIndicator result = securityApi.getSecurityPriceTechnicalsVi(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -3640,19 +3568,17 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityVolumePriceTrend result = securityApi.getSecurityPriceTechnicalsVpt(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -3735,19 +3661,17 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityVolumeWeightedAveragePrice result = securityApi.getSecurityPriceTechnicalsVwap(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -3830,20 +3754,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     BigDecimal pageSize = null;
     String nextPage = null;
-
     
     ApiResponseSecurityWilliamsR result = securityApi.getSecurityPriceTechnicalsWr(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -3927,16 +3849,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String source = null;
-
     
     RealtimeStockPrice result = securityApi.getSecurityRealtimePrice(identifier, source);
     System.out.println(result);
-  
   }
 }
 ```
@@ -4016,19 +3936,17 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = LocalDate.of(2019,1,01);
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityStockPriceAdjustments result = securityApi.getSecurityStockPriceAdjustments(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -4111,20 +4029,18 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = LocalDate.of(2019,1,01);
     String frequency = "daily";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityStockPrices result = securityApi.getSecurityStockPrices(identifier, startDate, endDate, frequency, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -4208,9 +4124,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String startDate = null;
     String endDate = null;
@@ -4229,11 +4145,9 @@ public class Main {
     Integer totalGreater = null;
     Integer totalLess = null;
     Integer pageSize = 100;
-
     
     ApiResponseSecurityZacksAnalystRatings result = securityApi.getSecurityZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize);
     System.out.println(result);
-  
   }
 }
 ```
@@ -4329,16 +4243,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     String date = null;
-
     
     ApiResponseSecurityZacksAnalystRatingsSnapshot result = securityApi.getSecurityZacksAnalystRatingsSnapshot(identifier, date);
     System.out.println(result);
-  
   }
 }
 ```
@@ -4418,17 +4330,15 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityZacksEPSSurprises result = securityApi.getSecurityZacksEpsSurprises(identifier, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -4509,17 +4419,15 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String identifier = "AAPL";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSecurityZacksSalesSurprises result = securityApi.getSecurityZacksSalesSurprises(identifier, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -4600,15 +4508,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     SecurityScreenGroup logic = new SecurityScreenGroup();
     String orderColumn = "marketcap";
     String orderDirection = "asc";
     Boolean primaryOnly = false;
     Integer pageSize = 100;
-
     logic.setOperator("AND");
 
     SecurityScreenClause clauseOne = new SecurityScreenClause();
@@ -4630,7 +4537,6 @@ public class Main {
     
     List<SecurityScreenResult> result = securityApi.screenSecurities(logic, orderColumn, orderDirection, primaryOnly, pageSize);
     System.out.println(result);
-  
   }
 }
 ```
@@ -4713,16 +4619,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-
     String query = "Apple";
     Integer pageSize = 100;
-
     
     ApiResponseSecuritiesSearch result = securityApi.searchSecurities(query, pageSize);
     System.out.println(result);
-  
   }
 }
 ```

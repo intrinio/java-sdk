@@ -61,23 +61,21 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     HistoricalDataApi historicalDataApi = new HistoricalDataApi();
-
     String identifier = "AAPL";
     String tag = "marketcap";
     String frequency = "daily";
     String type = null;
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = LocalDate.of(2015,1,01);
+    LocalDate endDate = null;
     String sortOrder = "desc";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseHistoricalData result = historicalDataApi.getHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```

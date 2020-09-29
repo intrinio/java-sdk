@@ -27,6 +27,9 @@ public class RealtimeStockPrice {
   @SerializedName("last_time")
   private OffsetDateTime lastTime = null;
 
+  @SerializedName("last_size")
+  private BigDecimal lastSize = null;
+
   @SerializedName("bid_price")
   private BigDecimal bidPrice = null;
 
@@ -97,6 +100,24 @@ public class RealtimeStockPrice {
 
   public void setLastTime(OffsetDateTime lastTime) {
     this.lastTime = lastTime;
+  }
+
+  public RealtimeStockPrice lastSize(BigDecimal lastSize) {
+    this.lastSize = lastSize;
+    return this;
+  }
+
+   /**
+   * The size of the last trade.
+   * @return lastSize
+  **/
+  @ApiModelProperty(value = "The size of the last trade.")
+  public BigDecimal getLastSize() {
+    return lastSize;
+  }
+
+  public void setLastSize(BigDecimal lastSize) {
+    this.lastSize = lastSize;
   }
 
   public RealtimeStockPrice bidPrice(BigDecimal bidPrice) {
@@ -327,6 +348,7 @@ public class RealtimeStockPrice {
     RealtimeStockPrice realtimeStockPrice = (RealtimeStockPrice) o;
     return Objects.equals(this.lastPrice, realtimeStockPrice.lastPrice) &&
         Objects.equals(this.lastTime, realtimeStockPrice.lastTime) &&
+        Objects.equals(this.lastSize, realtimeStockPrice.lastSize) &&
         Objects.equals(this.bidPrice, realtimeStockPrice.bidPrice) &&
         Objects.equals(this.bidSize, realtimeStockPrice.bidSize) &&
         Objects.equals(this.askPrice, realtimeStockPrice.askPrice) &&
@@ -343,7 +365,7 @@ public class RealtimeStockPrice {
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastPrice, lastTime, bidPrice, bidSize, askPrice, askSize, openPrice, highPrice, lowPrice, exchangeVolume, marketVolume, updatedOn, source, security);
+    return Objects.hash(lastPrice, lastTime, lastSize, bidPrice, bidSize, askPrice, askSize, openPrice, highPrice, lowPrice, exchangeVolume, marketVolume, updatedOn, source, security);
   }
 
 
@@ -354,6 +376,7 @@ public class RealtimeStockPrice {
     
     sb.append("    lastPrice: ").append(toIndentedString(lastPrice)).append("\n");
     sb.append("    lastTime: ").append(toIndentedString(lastTime)).append("\n");
+    sb.append("    lastSize: ").append(toIndentedString(lastSize)).append("\n");
     sb.append("    bidPrice: ").append(toIndentedString(bidPrice)).append("\n");
     sb.append("    bidSize: ").append(toIndentedString(bidSize)).append("\n");
     sb.append("    askPrice: ").append(toIndentedString(askPrice)).append("\n");

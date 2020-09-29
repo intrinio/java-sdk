@@ -39,10 +39,21 @@ import com.intrinio.invoker.auth.HttpBasicAuth;
 import com.intrinio.invoker.auth.ApiKeyAuth;
 import com.intrinio.invoker.auth.OAuth;
 
+import java.lang.Exception;
+import com.evanlennick.retry4j.config.*;
+import com.evanlennick.retry4j.config.RetryConfigBuilder;
+import com.evanlennick.retry4j.CallExecutorBuilder;
+import com.evanlennick.retry4j.CallExecutor.*;
+import com.evanlennick.retry4j.Status;
+import java.util.concurrent.Callable;
+import com.evanlennick.retry4j.exception.RetriesExhaustedException;
+import com.evanlennick.retry4j.exception.UnexpectedException;
+
 public class ApiClient {
 
     private String basePath = "https://api-v2.intrinio.com";
     private boolean debugging = false;
+    private boolean allowRetries = true;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
 
@@ -74,7 +85,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/5.6.2/java");
+        setUserAgent("Swagger-Codegen/5.6.3/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
@@ -232,6 +243,11 @@ public class ApiClient {
     public ApiClient setLenientOnJson(boolean lenientOnJson) {
         this.json.setLenientOnJson(lenientOnJson);
         return this;
+    }
+  
+    public boolean setAllowRetries(boolean newAllowRetriesValue) {
+      allowRetries = newAllowRetriesValue;
+      return allowRetries;
     }
 
     /**
@@ -826,13 +842,29 @@ public class ApiClient {
      * @throws ApiException If fail to execute the call
      */
     public <T> ApiResponse<T> execute(Call call, Type returnType) throws ApiException {
-        try {
-            Response response = call.execute();
-            T data = handleResponse(response, returnType);
-            return new ApiResponse<T>(response.code(), response.headers().toMultimap(), data);
-        } catch (IOException e) {
-            throw new ApiException(e);
+        RetryConfigBuilder configBuilder = new RetryConfigBuilder();
+
+        if (allowRetries) {
+            configBuilder = configBuilder.exponentialBackoff5Tries5Sec();
+        } else {
+            configBuilder = configBuilder
+                    .withMaxNumberOfTries(1)
+                    .withNoWaitBackoff();
         }
+
+        RetryConfig config = configBuilder.build();
+
+       Callable<Response> callable = retryCallable(call);
+
+       try {
+           Status status = new CallExecutorBuilder().config(config).build().execute(callable);
+           Response response = (Response)status.getResult();
+
+           T data = handleResponse(response, returnType);
+           return new ApiResponse<T>(response.code(), response.headers().toMultimap(), data);
+       } catch (Exception e) {
+           throw new ApiException(e);
+       }
     }
 
     /**
@@ -994,6 +1026,26 @@ public class ApiClient {
         }
 
         return request;
+    }
+
+    public Callable<Response> retryCallable(Call call) {
+        final Call resultCall = call;
+
+        return new Callable() {
+            public Object call() throws ApiException {
+                try {
+                    Response response = resultCall.execute();
+
+                    if (!response.isSuccessful())
+                        throw new ApiException(response.message());
+                    else
+                        return response;
+                } catch (IOException e) {
+                    throw new ApiException(e.getMessage());
+                }
+
+            }
+        };
     }
 
     /**

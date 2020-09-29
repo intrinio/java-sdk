@@ -62,16 +62,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     DataPointApi dataPointApi = new DataPointApi();
-
     String identifier = "AAPL";
     String tag = "marketcap";
-
     
     BigDecimal result = dataPointApi.getDataPointNumber(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```
@@ -151,16 +149,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     DataPointApi dataPointApi = new DataPointApi();
-
     String identifier = "AAPL";
     String tag = "ceo";
-
     
     String result = dataPointApi.getDataPointText(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```

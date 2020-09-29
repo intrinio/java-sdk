@@ -144,7 +144,7 @@ public class MunicipalityApi {
 
     /**
      * All Municipalities
-     * 
+     * Returns all Municipalities. When parameters are specified, returns matching municipalities.
      * @param hasFinancials Return municipalities with financials (optional)
      * @param governmentName Return municipalities with a government name matching the given query (optional)
      * @param governmentType Return municipalities with the given government type (optional)
@@ -168,7 +168,7 @@ public class MunicipalityApi {
 
     /**
      * All Municipalities
-     * 
+     * Returns all Municipalities. When parameters are specified, returns matching municipalities.
      * @param hasFinancials Return municipalities with financials (optional)
      * @param governmentName Return municipalities with a government name matching the given query (optional)
      * @param governmentType Return municipalities with the given government type (optional)
@@ -193,7 +193,7 @@ public class MunicipalityApi {
 
     /**
      * All Municipalities (asynchronously)
-     * 
+     * Returns all Municipalities. When parameters are specified, returns matching municipalities.
      * @param hasFinancials Return municipalities with financials (optional)
      * @param governmentName Return municipalities with a government name matching the given query (optional)
      * @param governmentType Return municipalities with the given government type (optional)

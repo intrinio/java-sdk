@@ -77,16 +77,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseEconomicIndices result = indexApi.getAllEconomicIndices(pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -165,16 +163,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSICIndices result = indexApi.getAllSicIndices(pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -253,16 +249,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseStockMarketIndices result = indexApi.getAllStockMarketIndices(pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -341,15 +335,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String identifier = "$GDP";
-
     
     EconomicIndex result = indexApi.getEconomicIndexById(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -428,16 +420,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String identifier = "$GDP";
     String tag = "level";
-
     
     BigDecimal result = indexApi.getEconomicIndexDataPointNumber(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```
@@ -517,16 +507,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String identifier = "$GDP";
     String tag = "level";
-
     
     String result = indexApi.getEconomicIndexDataPointText(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```
@@ -606,22 +594,20 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String identifier = "$GDP";
     String tag = "level";
     String type = null;
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = null;
     String sortOrder = "desc";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseEconomicIndexHistoricalData result = indexApi.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -706,15 +692,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
-    String identifier = "$SIC.1";
-
+    String identifier = "$SIC.2911";
     
     SICIndex result = indexApi.getSicIndexById(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -793,16 +777,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
-    String identifier = "$SIC.1";
-    String tag = "level";
-
+    String identifier = "$SIC.2911";
+    String tag = "marketcap";
     
     BigDecimal result = indexApi.getSicIndexDataPointNumber(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```
@@ -882,16 +864,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
-    String identifier = "$SIC.1";
-    String tag = "level";
-
+    String identifier = "$SIC.2911";
+    String tag = "marketcap";
     
     String result = indexApi.getSicIndexDataPointText(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```
@@ -971,22 +951,20 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String identifier = "$SIC.1";
     String tag = "marketcap";
     String type = null;
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = null;
     String sortOrder = "desc";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseSICIndexHistoricalData result = indexApi.getSicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1071,15 +1049,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String identifier = "$DJI";
-
     
     StockMarketIndex result = indexApi.getStockMarketIndexById(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1158,16 +1134,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String identifier = "$DJI";
     String tag = "level";
-
     
     BigDecimal result = indexApi.getStockMarketIndexDataPointNumber(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1247,16 +1221,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String identifier = "$DJI";
     String tag = "level";
-
     
     String result = indexApi.getStockMarketIndexDataPointText(identifier, tag);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1336,22 +1308,20 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String identifier = "$DJI";
     String tag = "level";
     String type = null;
-    LocalDate startDate = LocalDate.now();
-    LocalDate endDate = LocalDate.now();
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = null;
     String sortOrder = "desc";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseStockMarketIndexHistoricalData result = indexApi.getStockMarketIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1437,16 +1407,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String query = "GDP";
     Integer pageSize = 100;
-
     
     ApiResponseEconomicIndicesSearch result = indexApi.searchEconomicIndices(query, pageSize);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1526,16 +1494,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String query = "agriculture";
     Integer pageSize = 100;
-
     
     ApiResponseSICIndicesSearch result = indexApi.searchSicIndices(query, pageSize);
     System.out.println(result);
-  
   }
 }
 ```
@@ -1615,16 +1581,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     IndexApi indexApi = new IndexApi();
-
     String query = "dow";
     Integer pageSize = 100;
-
     
     ApiResponseStockMarketIndicesSearch result = indexApi.searchStockMarketsIndices(query, pageSize);
     System.out.println(result);
-  
   }
 }
 ```

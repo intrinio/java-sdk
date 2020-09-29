@@ -13,6 +13,7 @@ Name | Type | Description
 ------------ | ------------- | -------------
 **lastPrice** | [**BigDecimal**](BigDecimal.md) | The price of the last trade. &nbsp;
 **lastTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when the last trade occurred. &nbsp;
+**lastSize** | [**BigDecimal**](BigDecimal.md) | The size of the last trade. &nbsp;
 **bidPrice** | [**BigDecimal**](BigDecimal.md) | The price of the top bid order. &nbsp;
 **bidSize** | [**BigDecimal**](BigDecimal.md) | The size of the top bid order. &nbsp;
 **askPrice** | [**BigDecimal**](BigDecimal.md) | The price of the top ask order. &nbsp;
@@ -33,6 +34,9 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)

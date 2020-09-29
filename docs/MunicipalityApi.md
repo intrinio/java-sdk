@@ -40,6 +40,7 @@ Method | HTTP request | Description
 #### All Municipalities
 
 
+Returns all Municipalities. When parameters are specified, returns matching municipalities.
 
 [//]: # (END_OVERVIEW)
 
@@ -62,10 +63,10 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     MunicipalityApi municipalityApi = new MunicipalityApi();
-
-    Boolean hasFinancials = true;
+    Boolean hasFinancials = null;
     String governmentName = null;
     String governmentType = null;
     String areaName = null;
@@ -78,11 +79,9 @@ public class Main {
     BigDecimal enrollmentGreaterThan = null;
     BigDecimal enrollmentLessThan = null;
     String nextPage = null;
-
     
     ApiResponseMunicipalities result = municipalityApi.getAllMunicipalities(hasFinancials, governmentName, governmentType, areaName, areaType, city, state, zipcode, populationGreaterThan, populationLessThan, enrollmentGreaterThan, enrollmentLessThan, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -173,15 +172,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     MunicipalityApi municipalityApi = new MunicipalityApi();
-
     String id = "mun_Xn7x4z";
-
     
     Municipality result = municipalityApi.getMunicipalityById(id);
     System.out.println(result);
-  
   }
 }
 ```
@@ -260,16 +257,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     MunicipalityApi municipalityApi = new MunicipalityApi();
-
     String id = "mun_Xn7x4z";
     BigDecimal fiscalYear = null;
-
     
     ApiResponseMunicipalitiyFinancials result = municipalityApi.getMunicipalityFinancials(id, fiscalYear);
     System.out.println(result);
-  
   }
 }
 ```

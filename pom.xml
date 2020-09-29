@@ -5,7 +5,7 @@
     <artifactId>intrinio-sdk</artifactId>
     <packaging>jar</packaging>
     <name>intrinio-sdk</name>
-    <version>5.6.2</version>
+    <version>5.6.3</version>
     <url>https://github.com/intrinio/java-sdk</url>
     <description>Access the Intrinio API</description>
     <scm>
@@ -221,6 +221,13 @@
                 <artifactId>threetenbp</artifactId>
                 <version>${threetenbp-version}</version>
             </dependency>
+        
+        <dependency>
+            <groupId>com.evanlennick</groupId>
+            <artifactId>retry4j</artifactId>
+            <version>0.15.0</version>
+        </dependency>
+        
         <!-- test dependencies -->
         <dependency>
             <groupId>junit</groupId>

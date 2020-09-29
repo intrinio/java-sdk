@@ -64,10 +64,10 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-
-    String symbol = "MSFT";
+    String symbol = "AAPL";
     String type = "put";
     BigDecimal strike = null;
     BigDecimal strikeGreaterThan = null;
@@ -77,11 +77,9 @@ public class Main {
     String expirationBefore = "2019-12-31";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseOptions result = optionsApi.getOptions(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -169,23 +167,21 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-
     String symbol = "MSFT";
     String expiration = "2019-04-05";
-    LocalDate date = LocalDate.now();
-    String type = "put";
+    LocalDate date = null;
+    String type = null;
     BigDecimal strike = null;
     BigDecimal strikeGreaterThan = null;
     BigDecimal strikeLessThan = null;
-    String moneyness = "in_the_money";
+    String moneyness = null;
     Integer pageSize = 100;
-
     
     ApiResponseOptionsChain result = optionsApi.getOptionsChain(symbol, expiration, date, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
     System.out.println(result);
-  
   }
 }
 ```
@@ -272,17 +268,15 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-
     String symbol = "MSFT";
     String after = "2019-01-01";
     String before = "2019-12-31";
-
     
     ApiResponseOptionsExpirations result = optionsApi.getOptionsExpirations(symbol, after, before);
     System.out.println(result);
-  
   }
 }
 ```
@@ -363,19 +357,17 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-
-    String identifier = "identifier_example";
+    String identifier = "MSFT190405C00118000";
     String startDate = "2019-01-01";
     String endDate = "2019-12-31";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseOptionPrices result = optionsApi.getOptionsPrices(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```

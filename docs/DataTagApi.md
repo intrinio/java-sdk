@@ -63,9 +63,9 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     DataTagApi dataTagApi = new DataTagApi();
-
     String tag = null;
     String type = null;
     String parent = null;
@@ -73,11 +73,9 @@ public class Main {
     String fsTemplate = "industrial";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseDataTags result = dataTagApi.getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -162,15 +160,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     DataTagApi dataTagApi = new DataTagApi();
-
     String identifier = "marketcap";
-
     
     DataTag result = dataTagApi.getDataTagById(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -249,16 +245,14 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     DataTagApi dataTagApi = new DataTagApi();
-
     String query = "revenue";
     Integer pageSize = 100;
-
     
     ApiResponseDataTagsSearch result = dataTagApi.searchDataTags(query, pageSize);
     System.out.println(result);
-  
   }
 }
 ```

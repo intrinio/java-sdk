@@ -66,18 +66,16 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-
     String city = "New York";
     String country = "UNITED STATES OF AMERICA";
     String countryCode = "US";
     Integer pageSize = 100;
-
     
     ApiResponseStockExchanges result = stockExchangeApi.getAllStockExchanges(city, country, countryCode, pageSize);
     System.out.println(result);
-  
   }
 }
 ```
@@ -159,15 +157,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-
     String identifier = "USCOMP";
-
     
     StockExchange result = stockExchangeApi.getStockExchangeById(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -246,18 +242,16 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-
     String identifier = "USCOMP";
-    LocalDate date = LocalDate.now();
+    LocalDate date = LocalDate.of(2018,8,14);
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustments(identifier, date, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -339,18 +333,16 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-
     String identifier = "USCOMP";
-    LocalDate date = LocalDate.now();
+    LocalDate date = LocalDate.of(2018,8,14);
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -432,18 +424,16 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-
     String identifier = "USCOMP";
     String source = null;
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -525,17 +515,15 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-
     String identifier = "USCOMP";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```

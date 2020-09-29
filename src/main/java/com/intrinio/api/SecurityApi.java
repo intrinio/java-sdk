@@ -881,9 +881,9 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param source Return intraday prices from the specified data source (optional)
      * @param startDate Return intraday prices starting at the specified date (optional)
-     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
+     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
      * @param endDate Return intraday prices stopping at the specified date (optional)
-     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -967,9 +967,9 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param source Return intraday prices from the specified data source (optional)
      * @param startDate Return intraday prices starting at the specified date (optional)
-     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
+     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
      * @param endDate Return intraday prices stopping at the specified date (optional)
-     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityIntradayPrices
@@ -986,9 +986,9 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param source Return intraday prices from the specified data source (optional)
      * @param startDate Return intraday prices starting at the specified date (optional)
-     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
+     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
      * @param endDate Return intraday prices stopping at the specified date (optional)
-     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurityIntradayPrices&gt;
@@ -1006,9 +1006,9 @@ public class SecurityApi {
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param source Return intraday prices from the specified data source (optional)
      * @param startDate Return intraday prices starting at the specified date (optional)
-     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (timezone is UTC) (optional)
+     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
      * @param endDate Return intraday prices stopping at the specified date (optional)
-     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (timezone is UTC) (optional)
+     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -1106,7 +1106,7 @@ public class SecurityApi {
     }
 
     /**
-     * Lastest Dividend Record for Security
+     * Latest Dividend Record for Security
      * Returns the latest available dividend information for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @return DividendRecord
@@ -1118,7 +1118,7 @@ public class SecurityApi {
     }
 
     /**
-     * Lastest Dividend Record for Security
+     * Latest Dividend Record for Security
      * Returns the latest available dividend information for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @return ApiResponse&lt;DividendRecord&gt;
@@ -1131,7 +1131,7 @@ public class SecurityApi {
     }
 
     /**
-     * Lastest Dividend Record for Security (asynchronously)
+     * Latest Dividend Record for Security (asynchronously)
      * Returns the latest available dividend information for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1229,7 +1229,7 @@ public class SecurityApi {
     }
 
     /**
-     * Lastest Earnings Record for Security
+     * Latest Earnings Record for Security
      * Returns latest available earnings information for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @return EarningsRecord
@@ -1241,7 +1241,7 @@ public class SecurityApi {
     }
 
     /**
-     * Lastest Earnings Record for Security
+     * Latest Earnings Record for Security
      * Returns latest available earnings information for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @return ApiResponse&lt;EarningsRecord&gt;
@@ -1254,7 +1254,7 @@ public class SecurityApi {
     }
 
     /**
-     * Lastest Earnings Record for Security (asynchronously)
+     * Latest Earnings Record for Security (asynchronously)
      * Returns latest available earnings information for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes

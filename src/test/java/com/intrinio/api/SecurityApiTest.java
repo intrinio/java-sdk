@@ -200,7 +200,7 @@ public class SecurityApiTest {
     }
     
     /**
-     * Lastest Dividend Record for Security
+     * Latest Dividend Record for Security
      *
      * Returns the latest available dividend information for the Security with the given &#x60;identifier&#x60;
      *
@@ -216,7 +216,7 @@ public class SecurityApiTest {
     }
     
     /**
-     * Lastest Earnings Record for Security
+     * Latest Earnings Record for Security
      *
      * Returns latest available earnings information for the Security with the given &#x60;identifier&#x60;
      *

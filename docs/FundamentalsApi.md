@@ -64,15 +64,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     FundamentalsApi fundamentalsApi = new FundamentalsApi();
-
     String id = "fun_ge9LlE";
-
     
     Fundamental result = fundamentalsApi.getFundamentalById(id);
     System.out.println(result);
-  
   }
 }
 ```
@@ -151,15 +149,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     FundamentalsApi fundamentalsApi = new FundamentalsApi();
-
     String id = "AAPL-income_statement-2018-Q1";
-
     
     ApiResponseReportedFinancials result = fundamentalsApi.getFundamentalReportedFinancials(id);
     System.out.println(result);
-  
   }
 }
 ```
@@ -238,15 +234,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     FundamentalsApi fundamentalsApi = new FundamentalsApi();
-
     String id = "AAPL-income_statement-2018-Q1";
-
     
     ApiResponseStandardizedFinancials result = fundamentalsApi.getFundamentalStandardizedFinancials(id);
     System.out.println(result);
-  
   }
 }
 ```
@@ -325,18 +319,16 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     FundamentalsApi fundamentalsApi = new FundamentalsApi();
-
     String identifier = "AAPL";
     String statementCode = "income_statement";
     Integer fiscalYear = 2017;
     String fiscalPeriod = "FY";
-
     
     Fundamental result = fundamentalsApi.lookupFundamental(identifier, statementCode, fiscalYear, fiscalPeriod);
     System.out.println(result);
-  
   }
 }
 ```

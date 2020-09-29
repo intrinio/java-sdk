@@ -66,17 +66,15 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-
     String exchange = "XNAS";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseETFs result = etFsApi.getAllEtfs(exchange, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -157,15 +155,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-
     String identifier = "SPY";
-
     
     ETF result = etFsApi.getEtf(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -244,15 +240,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-
     String identifier = "SPY";
-
     
     ETFAnalytics result = etFsApi.getEtfAnalytics(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -331,17 +325,15 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-
     String identifier = "SPY";
     Integer pageSize = 100;
     String nextPage = null;
-
     
     ApiResponseETFHoldings result = etFsApi.getEtfHoldings(identifier, pageSize, nextPage);
     System.out.println(result);
-  
   }
 }
 ```
@@ -422,15 +414,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-
     String identifier = "SPY";
-
     
     ETFStats result = etFsApi.getEtfStats(identifier);
     System.out.println(result);
-  
   }
 }
 ```
@@ -509,15 +499,13 @@ public class Main {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
     ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
     auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-
     String query = "iShares";
-
     
     ApiResponseETFs result = etFsApi.searchEtfs(query);
     System.out.println(result);
-  
   }
 }
 ```
