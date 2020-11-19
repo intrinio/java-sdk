@@ -33,7 +33,7 @@ public class ApiResponseZacksAnalystRatings {
 
   public ApiResponseZacksAnalystRatings addAnalystRatingsItem(ZacksAnalystRating analystRatingsItem) {
     if (this.analystRatings == null) {
-      this.analystRatings = new ArrayList<ZacksAnalystRating>();
+      this.analystRatings = new ArrayList<>();
     }
     this.analystRatings.add(analystRatingsItem);
     return this;

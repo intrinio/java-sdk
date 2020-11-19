@@ -311,7 +311,7 @@ public class Security {
 
   public Security addAlternateTickersItem(String alternateTickersItem) {
     if (this.alternateTickers == null) {
-      this.alternateTickers = new ArrayList<String>();
+      this.alternateTickers = new ArrayList<>();
     }
     this.alternateTickers.add(alternateTickersItem);
     return this;
@@ -589,7 +589,7 @@ public class Security {
 
   public Security addPreviousTickersItem(String previousTickersItem) {
     if (this.previousTickers == null) {
-      this.previousTickers = new ArrayList<String>();
+      this.previousTickers = new ArrayList<>();
     }
     this.previousTickers.add(previousTickersItem);
     return this;

@@ -19,6 +19,7 @@ import java.io.IOException;
 import com.intrinio.models.ApiResponseBulkDownloadLinks;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -105,10 +106,14 @@ public class BulkDownloadsApi {
      * Returns all active bulk downloads for your account with links to download.
      * @return ApiResponseBulkDownloadLinks
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseBulkDownloadLinks getBulkDownloadLinks() throws ApiException {
-        ApiResponse<ApiResponseBulkDownloadLinks> resp = getBulkDownloadLinksWithHttpInfo();
-        return resp.getData();
+    public ApiResponseBulkDownloadLinks getBulkDownloadLinks() throws ApiException, NoSuchMethodException {
+      Method targetMethod = BulkDownloadsApi.class.getMethod("getBulkDownloadLinksWithHttpInfo");
+      
+      Object[] apiCallArguments = {  };
+      ApiResponse<ApiResponseBulkDownloadLinks> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

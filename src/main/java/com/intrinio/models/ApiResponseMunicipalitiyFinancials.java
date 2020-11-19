@@ -34,7 +34,7 @@ public class ApiResponseMunicipalitiyFinancials {
 
   public ApiResponseMunicipalitiyFinancials addFinancialsItem(MunicipalityFinancial financialsItem) {
     if (this.financials == null) {
-      this.financials = new ArrayList<MunicipalityFinancial>();
+      this.financials = new ArrayList<>();
     }
     this.financials.add(financialsItem);
     return this;

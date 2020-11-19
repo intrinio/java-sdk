@@ -42,7 +42,7 @@ public class ApiResponseSecurityIchimokuKinkoHyo {
 
   public ApiResponseSecurityIchimokuKinkoHyo addTechnicalsItem(IchimokuKinkoHyoTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<IchimokuKinkoHyoTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

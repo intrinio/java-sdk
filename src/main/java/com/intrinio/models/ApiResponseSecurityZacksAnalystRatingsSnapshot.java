@@ -34,7 +34,7 @@ public class ApiResponseSecurityZacksAnalystRatingsSnapshot {
 
   public ApiResponseSecurityZacksAnalystRatingsSnapshot addSnapshotsItem(ZacksAnalystRatingSnapshot snapshotsItem) {
     if (this.snapshots == null) {
-      this.snapshots = new ArrayList<ZacksAnalystRatingSnapshot>();
+      this.snapshots = new ArrayList<>();
     }
     this.snapshots.add(snapshotsItem);
     return this;

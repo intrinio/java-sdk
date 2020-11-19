@@ -30,7 +30,7 @@ public class DataPointApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getDataPointNumberTest() throws ApiException {
+    public void getDataPointNumberTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         BigDecimal response = api.getDataPointNumber(identifier, tag);
@@ -47,7 +47,7 @@ public class DataPointApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getDataPointTextTest() throws ApiException {
+    public void getDataPointTextTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String response = api.getDataPointText(identifier, tag);

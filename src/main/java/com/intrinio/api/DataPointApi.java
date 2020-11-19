@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -121,10 +122,14 @@ public class DataPointApi {
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return BigDecimal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public BigDecimal getDataPointNumber(String identifier, String tag) throws ApiException {
-        ApiResponse<BigDecimal> resp = getDataPointNumberWithHttpInfo(identifier, tag);
-        return resp.getData();
+    public BigDecimal getDataPointNumber(String identifier, String tag) throws ApiException, NoSuchMethodException {
+      Method targetMethod = DataPointApi.class.getMethod("getDataPointNumberWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag };
+      ApiResponse<BigDecimal> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -254,10 +259,14 @@ public class DataPointApi {
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public String getDataPointText(String identifier, String tag) throws ApiException {
-        ApiResponse<String> resp = getDataPointTextWithHttpInfo(identifier, tag);
-        return resp.getData();
+    public String getDataPointText(String identifier, String tag) throws ApiException, NoSuchMethodException {
+      Method targetMethod = DataPointApi.class.getMethod("getDataPointTextWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag };
+      ApiResponse<String> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

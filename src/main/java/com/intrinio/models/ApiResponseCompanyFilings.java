@@ -37,7 +37,7 @@ public class ApiResponseCompanyFilings {
 
   public ApiResponseCompanyFilings addFilingsItem(FilingSummary filingsItem) {
     if (this.filings == null) {
-      this.filings = new ArrayList<FilingSummary>();
+      this.filings = new ArrayList<>();
     }
     this.filings.add(filingsItem);
     return this;

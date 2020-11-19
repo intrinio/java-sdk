@@ -42,7 +42,7 @@ public class ApiResponseSecurityAverageDirectionalIndex {
 
   public ApiResponseSecurityAverageDirectionalIndex addTechnicalsItem(AverageDirectionalIndexTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<AverageDirectionalIndexTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

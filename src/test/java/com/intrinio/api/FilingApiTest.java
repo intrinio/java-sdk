@@ -36,7 +36,7 @@ public class FilingApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllFilingsTest() throws ApiException {
+    public void getAllFilingsTest() throws ApiException, NoSuchMethodException {
         String company = null;
         String reportType = null;
         LocalDate startDate = null;
@@ -59,7 +59,7 @@ public class FilingApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllNotesTest() throws ApiException {
+    public void getAllNotesTest() throws ApiException, NoSuchMethodException {
         String company = null;
         String reportType = null;
         LocalDate filingStartDate = null;
@@ -82,7 +82,7 @@ public class FilingApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getFilingByIdTest() throws ApiException {
+    public void getFilingByIdTest() throws ApiException, NoSuchMethodException {
         String id = null;
         Filing response = api.getFilingById(id);
 
@@ -98,7 +98,7 @@ public class FilingApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getFilingFundamentalsTest() throws ApiException {
+    public void getFilingFundamentalsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String statementCode = null;
         String type = null;
@@ -121,7 +121,7 @@ public class FilingApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getFilingHtmlTest() throws ApiException {
+    public void getFilingHtmlTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String response = api.getFilingHtml(identifier);
 
@@ -137,7 +137,7 @@ public class FilingApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getFilingTextTest() throws ApiException {
+    public void getFilingTextTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String response = api.getFilingText(identifier);
 
@@ -153,7 +153,7 @@ public class FilingApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getNoteTest() throws ApiException {
+    public void getNoteTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String contentFormat = null;
         FilingNote response = api.getNote(identifier, contentFormat);
@@ -170,7 +170,7 @@ public class FilingApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getNoteHtmlTest() throws ApiException {
+    public void getNoteHtmlTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String response = api.getNoteHtml(identifier);
 
@@ -186,7 +186,7 @@ public class FilingApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getNoteTextTest() throws ApiException {
+    public void getNoteTextTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String response = api.getNoteText(identifier);
 
@@ -202,7 +202,7 @@ public class FilingApiTest {
      *          if the Api call fails
      */
     @Test
-    public void searchNotesTest() throws ApiException {
+    public void searchNotesTest() throws ApiException, NoSuchMethodException {
         String query = null;
         LocalDate filingStartDate = null;
         LocalDate filingEndDate = null;

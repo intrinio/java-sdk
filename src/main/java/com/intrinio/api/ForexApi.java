@@ -22,6 +22,7 @@ import com.intrinio.models.ApiResponseForexPrices;
 import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -108,10 +109,14 @@ public class ForexApi {
      * Returns a list of forex currencies for which prices are available.
      * @return ApiResponseForexCurrencies
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseForexCurrencies getForexCurrencies() throws ApiException {
-        ApiResponse<ApiResponseForexCurrencies> resp = getForexCurrenciesWithHttpInfo();
-        return resp.getData();
+    public ApiResponseForexCurrencies getForexCurrencies() throws ApiException, NoSuchMethodException {
+      Method targetMethod = ForexApi.class.getMethod("getForexCurrenciesWithHttpInfo");
+      
+      Object[] apiCallArguments = {  };
+      ApiResponse<ApiResponseForexCurrencies> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -221,10 +226,14 @@ public class ForexApi {
      * Returns a list of currency pairs used to request foreign exchange (forex) market price data. The currency that is used as the reference is called quote currency and the currency that is quoted in relation is called the base currency. For example, in the pair code “EURGBP” with a price of 0.88, one Euro (base currency) can be exchanged for 0.88 British Pounds (quote currency).
      * @return ApiResponseForexPairs
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseForexPairs getForexPairs() throws ApiException {
-        ApiResponse<ApiResponseForexPairs> resp = getForexPairsWithHttpInfo();
-        return resp.getData();
+    public ApiResponseForexPairs getForexPairs() throws ApiException, NoSuchMethodException {
+      Method targetMethod = ForexApi.class.getMethod("getForexPairsWithHttpInfo");
+      
+      Object[] apiCallArguments = {  };
+      ApiResponse<ApiResponseForexPairs> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -378,10 +387,14 @@ public class ForexApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseForexPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseForexPrices getForexPrices(String pair, String timeframe, String timezone, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseForexPrices> resp = getForexPricesWithHttpInfo(pair, timeframe, timezone, startDate, startTime, endDate, endTime, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseForexPrices getForexPrices(String pair, String timeframe, String timezone, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ForexApi.class.getMethod("getForexPricesWithHttpInfo", String.class, String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { pair, timeframe, timezone, startDate, startTime, endDate, endTime, pageSize, nextPage };
+      ApiResponse<ApiResponseForexPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

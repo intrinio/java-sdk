@@ -33,7 +33,7 @@ public class ApiResponseStockExchanges {
 
   public ApiResponseStockExchanges addStockExchangesItem(StockExchange stockExchangesItem) {
     if (this.stockExchanges == null) {
-      this.stockExchanges = new ArrayList<StockExchange>();
+      this.stockExchanges = new ArrayList<>();
     }
     this.stockExchanges.add(stockExchangesItem);
     return this;

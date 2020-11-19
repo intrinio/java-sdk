@@ -25,6 +25,7 @@ import com.intrinio.models.FilingNote;
 import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -148,10 +149,14 @@ public class FilingApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseFilings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseFilings getAllFilings(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseFilings> resp = getAllFilingsWithHttpInfo(company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseFilings getAllFilings(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FilingApi.class.getMethod("getAllFilingsWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage };
+      ApiResponse<ApiResponseFilings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -309,10 +314,14 @@ public class FilingApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseFilingNotes
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseFilingNotes getAllNotes(String company, String reportType, LocalDate filingStartDate, LocalDate filingEndDate, LocalDate periodEndedStartDate, LocalDate periodEndedEndDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseFilingNotes> resp = getAllNotesWithHttpInfo(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseFilingNotes getAllNotes(String company, String reportType, LocalDate filingStartDate, LocalDate filingEndDate, LocalDate periodEndedStartDate, LocalDate periodEndedEndDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FilingApi.class.getMethod("getAllNotesWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class, LocalDate.class, LocalDate.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage };
+      ApiResponse<ApiResponseFilingNotes> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -446,10 +455,14 @@ public class FilingApi {
      * @param id The Intrinio ID of the Filing (required)
      * @return Filing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public Filing getFilingById(String id) throws ApiException {
-        ApiResponse<Filing> resp = getFilingByIdWithHttpInfo(id);
-        return resp.getData();
+    public Filing getFilingById(String id) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FilingApi.class.getMethod("getFilingByIdWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { id };
+      ApiResponse<Filing> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -597,10 +610,14 @@ public class FilingApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseFilingFundamentals
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseFilingFundamentals getFilingFundamentals(String identifier, String statementCode, String type, Integer fiscalYear, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseFilingFundamentals> resp = getFilingFundamentalsWithHttpInfo(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage);
-        return resp.getData();
+    public ApiResponseFilingFundamentals getFilingFundamentals(String identifier, String statementCode, String type, Integer fiscalYear, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FilingApi.class.getMethod("getFilingFundamentalsWithHttpInfo", String.class, String.class, String.class, Integer.class, String.class, LocalDate.class, LocalDate.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage };
+      ApiResponse<ApiResponseFilingFundamentals> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -734,10 +751,14 @@ public class FilingApi {
      * @param identifier A Filing identifier (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public String getFilingHtml(String identifier) throws ApiException {
-        ApiResponse<String> resp = getFilingHtmlWithHttpInfo(identifier);
-        return resp.getData();
+    public String getFilingHtml(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FilingApi.class.getMethod("getFilingHtmlWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<String> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -857,10 +878,14 @@ public class FilingApi {
      * @param identifier A Filing identifier (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public String getFilingText(String identifier) throws ApiException {
-        ApiResponse<String> resp = getFilingTextWithHttpInfo(identifier);
-        return resp.getData();
+    public String getFilingText(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FilingApi.class.getMethod("getFilingTextWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<String> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -984,10 +1009,14 @@ public class FilingApi {
      * @param contentFormat Returns content in html (as filed) or plain text (optional, default to text)
      * @return FilingNote
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public FilingNote getNote(String identifier, String contentFormat) throws ApiException {
-        ApiResponse<FilingNote> resp = getNoteWithHttpInfo(identifier, contentFormat);
-        return resp.getData();
+    public FilingNote getNote(String identifier, String contentFormat) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FilingApi.class.getMethod("getNoteWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, contentFormat };
+      ApiResponse<FilingNote> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1109,10 +1138,14 @@ public class FilingApi {
      * @param identifier The Intrinio ID of the filing note (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public String getNoteHtml(String identifier) throws ApiException {
-        ApiResponse<String> resp = getNoteHtmlWithHttpInfo(identifier);
-        return resp.getData();
+    public String getNoteHtml(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FilingApi.class.getMethod("getNoteHtmlWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<String> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1232,10 +1265,14 @@ public class FilingApi {
      * @param identifier The Intrinio ID of the filing note (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public String getNoteText(String identifier) throws ApiException {
-        ApiResponse<String> resp = getNoteTextWithHttpInfo(identifier);
-        return resp.getData();
+    public String getNoteText(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FilingApi.class.getMethod("getNoteTextWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<String> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1368,10 +1405,14 @@ public class FilingApi {
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponseFilingNotesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseFilingNotesSearch searchNotes(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize) throws ApiException {
-        ApiResponse<ApiResponseFilingNotesSearch> resp = searchNotesWithHttpInfo(query, filingStartDate, filingEndDate, pageSize);
-        return resp.getData();
+    public ApiResponseFilingNotesSearch searchNotes(String query, LocalDate filingStartDate, LocalDate filingEndDate, Integer pageSize) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FilingApi.class.getMethod("searchNotesWithHttpInfo", String.class, LocalDate.class, LocalDate.class, Integer.class);
+      
+      Object[] apiCallArguments = { query, filingStartDate, filingEndDate, pageSize };
+      ApiResponse<ApiResponseFilingNotesSearch> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

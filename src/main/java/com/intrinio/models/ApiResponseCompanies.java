@@ -33,7 +33,7 @@ public class ApiResponseCompanies {
 
   public ApiResponseCompanies addCompaniesItem(CompanySummary companiesItem) {
     if (this.companies == null) {
-      this.companies = new ArrayList<CompanySummary>();
+      this.companies = new ArrayList<>();
     }
     this.companies.add(companiesItem);
     return this;

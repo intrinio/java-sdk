@@ -37,7 +37,7 @@ public class ApiResponseStockExchangeRealtimeStockPrices {
 
   public ApiResponseStockExchangeRealtimeStockPrices addStockPricesItem(RealtimeStockPrice stockPricesItem) {
     if (this.stockPrices == null) {
-      this.stockPrices = new ArrayList<RealtimeStockPrice>();
+      this.stockPrices = new ArrayList<>();
     }
     this.stockPrices.add(stockPricesItem);
     return this;

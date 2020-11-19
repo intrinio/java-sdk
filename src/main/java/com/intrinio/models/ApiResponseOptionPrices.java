@@ -37,7 +37,7 @@ public class ApiResponseOptionPrices {
 
   public ApiResponseOptionPrices addPricesItem(OptionPrice pricesItem) {
     if (this.prices == null) {
-      this.prices = new ArrayList<OptionPrice>();
+      this.prices = new ArrayList<>();
     }
     this.prices.add(pricesItem);
     return this;

@@ -42,7 +42,7 @@ public class ApiResponseSecurityEaseOfMovement {
 
   public ApiResponseSecurityEaseOfMovement addTechnicalsItem(EaseOfMovementTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<EaseOfMovementTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

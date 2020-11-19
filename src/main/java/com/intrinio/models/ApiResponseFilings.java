@@ -33,7 +33,7 @@ public class ApiResponseFilings {
 
   public ApiResponseFilings addFilingsItem(Filing filingsItem) {
     if (this.filings == null) {
-      this.filings = new ArrayList<Filing>();
+      this.filings = new ArrayList<>();
     }
     this.filings.add(filingsItem);
     return this;

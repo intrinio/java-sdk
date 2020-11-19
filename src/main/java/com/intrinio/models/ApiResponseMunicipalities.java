@@ -33,7 +33,7 @@ public class ApiResponseMunicipalities {
 
   public ApiResponseMunicipalities addMunicipalitiesItem(Municipality municipalitiesItem) {
     if (this.municipalities == null) {
-      this.municipalities = new ArrayList<Municipality>();
+      this.municipalities = new ArrayList<>();
     }
     this.municipalities.add(municipalitiesItem);
     return this;

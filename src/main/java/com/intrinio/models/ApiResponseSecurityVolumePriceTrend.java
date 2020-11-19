@@ -42,7 +42,7 @@ public class ApiResponseSecurityVolumePriceTrend {
 
   public ApiResponseSecurityVolumePriceTrend addTechnicalsItem(VolumePriceTrendTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<VolumePriceTrendTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

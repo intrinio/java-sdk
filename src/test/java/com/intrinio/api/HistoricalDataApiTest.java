@@ -31,7 +31,7 @@ public class HistoricalDataApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getHistoricalDataTest() throws ApiException {
+    public void getHistoricalDataTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String frequency = null;

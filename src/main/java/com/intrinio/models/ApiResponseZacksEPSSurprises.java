@@ -33,7 +33,7 @@ public class ApiResponseZacksEPSSurprises {
 
   public ApiResponseZacksEPSSurprises addEpsSurprisesItem(ZacksEPSSurprise epsSurprisesItem) {
     if (this.epsSurprises == null) {
-      this.epsSurprises = new ArrayList<ZacksEPSSurprise>();
+      this.epsSurprises = new ArrayList<>();
     }
     this.epsSurprises.add(epsSurprisesItem);
     return this;

@@ -33,7 +33,7 @@ public class ApiResponseZacksInstitutionalHoldingCompanies {
 
   public ApiResponseZacksInstitutionalHoldingCompanies addCompaniesItem(ZacksInstitutionalHoldingCompanyDetail companiesItem) {
     if (this.companies == null) {
-      this.companies = new ArrayList<ZacksInstitutionalHoldingCompanyDetail>();
+      this.companies = new ArrayList<>();
     }
     this.companies.add(companiesItem);
     return this;

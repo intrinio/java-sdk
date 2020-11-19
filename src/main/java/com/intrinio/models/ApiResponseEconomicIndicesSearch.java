@@ -30,7 +30,7 @@ public class ApiResponseEconomicIndicesSearch {
 
   public ApiResponseEconomicIndicesSearch addIndicesItem(EconomicIndexSummary indicesItem) {
     if (this.indices == null) {
-      this.indices = new ArrayList<EconomicIndexSummary>();
+      this.indices = new ArrayList<>();
     }
     this.indices.add(indicesItem);
     return this;

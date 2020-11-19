@@ -33,7 +33,7 @@ public class ApiResponseZacksEPSGrowthRates {
 
   public ApiResponseZacksEPSGrowthRates addEpsGrowthRatesItem(ZacksEPSGrowthRate epsGrowthRatesItem) {
     if (this.epsGrowthRates == null) {
-      this.epsGrowthRates = new ArrayList<ZacksEPSGrowthRate>();
+      this.epsGrowthRates = new ArrayList<>();
     }
     this.epsGrowthRates.add(epsGrowthRatesItem);
     return this;

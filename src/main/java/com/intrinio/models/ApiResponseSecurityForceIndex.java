@@ -42,7 +42,7 @@ public class ApiResponseSecurityForceIndex {
 
   public ApiResponseSecurityForceIndex addTechnicalsItem(ForceIndexTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<ForceIndexTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

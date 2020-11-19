@@ -42,7 +42,7 @@ public class ApiResponseSecurityUltimateOscillator {
 
   public ApiResponseSecurityUltimateOscillator addTechnicalsItem(UltimateOscillatorTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<UltimateOscillatorTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

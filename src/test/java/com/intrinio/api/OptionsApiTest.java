@@ -4,8 +4,10 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseOptionPrices;
+import com.intrinio.models.ApiResponseOptionPricesRealtime;
 import com.intrinio.models.ApiResponseOptions;
 import com.intrinio.models.ApiResponseOptionsChain;
+import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
@@ -35,7 +37,7 @@ public class OptionsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getOptionsTest() throws ApiException {
+    public void getOptionsTest() throws ApiException, NoSuchMethodException {
         String symbol = null;
         String type = null;
         BigDecimal strike = null;
@@ -60,7 +62,7 @@ public class OptionsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getOptionsChainTest() throws ApiException {
+    public void getOptionsChainTest() throws ApiException, NoSuchMethodException {
         String symbol = null;
         String expiration = null;
         LocalDate date = null;
@@ -76,6 +78,33 @@ public class OptionsApiTest {
     }
     
     /**
+     * Options Chain Realtime
+     *
+     * Returns all realtime options contracts and their prices for the given symbol and expiration date.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsChainRealtimeTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        String expiration = null;
+        String source = null;
+        String type = null;
+        BigDecimal strike = null;
+        BigDecimal strikeGreaterThan = null;
+        BigDecimal strikeLessThan = null;
+        BigDecimal volumeGreaterThan = null;
+        BigDecimal volumeLessThan = null;
+        BigDecimal openInterestGreaterThan = null;
+        BigDecimal openInterestLessThan = null;
+        String moneyness = null;
+        ApiResponseOptionsChainRealtime response = api.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Options Expirations
      *
      * Returns all option contract expiration dates for a given symbol.
@@ -84,7 +113,7 @@ public class OptionsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getOptionsExpirationsTest() throws ApiException {
+    public void getOptionsExpirationsTest() throws ApiException, NoSuchMethodException {
         String symbol = null;
         String after = null;
         String before = null;
@@ -102,13 +131,30 @@ public class OptionsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getOptionsPricesTest() throws ApiException {
+    public void getOptionsPricesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String startDate = null;
         String endDate = null;
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseOptionPrices response = api.getOptionsPrices(identifier, startDate, endDate, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Option Prices Realtime
+     *
+     * Returns all option prices for a given option contract identifier.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsPricesRealtimeTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String source = null;
+        ApiResponseOptionPricesRealtime response = api.getOptionsPricesRealtime(identifier, source);
 
         // TODO: test validations
     }

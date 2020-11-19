@@ -33,7 +33,7 @@ public class ApiResponseZacksETFHoldings {
 
   public ApiResponseZacksETFHoldings addHoldingsItem(ZacksETFHolding holdingsItem) {
     if (this.holdings == null) {
-      this.holdings = new ArrayList<ZacksETFHolding>();
+      this.holdings = new ArrayList<>();
     }
     this.holdings.add(holdingsItem);
     return this;

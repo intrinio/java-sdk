@@ -31,6 +31,7 @@ import com.intrinio.models.Fundamental;
 import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -157,10 +158,14 @@ public class CompanyApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanies
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanies getAllCompanies(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanies> resp = getAllCompaniesWithHttpInfo(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseCompanies getAllCompanies(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getAllCompaniesWithHttpInfo", LocalDate.class, String.class, String.class, String.class, String.class, String.class, Boolean.class, Boolean.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage };
+      ApiResponse<ApiResponseCompanies> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -298,10 +303,14 @@ public class CompanyApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseNews
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseNews getAllCompanyNews(Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseNews> resp = getAllCompanyNewsWithHttpInfo(pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseNews getAllCompanyNews(Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getAllCompanyNewsWithHttpInfo", Integer.class, String.class);
+      
+      Object[] apiCallArguments = { pageSize, nextPage };
+      ApiResponse<ApiResponseNews> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -423,10 +432,14 @@ public class CompanyApi {
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @return Company
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public Company getCompany(String identifier) throws ApiException {
-        ApiResponse<Company> resp = getCompanyWithHttpInfo(identifier);
-        return resp.getData();
+    public Company getCompany(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<Company> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -554,10 +567,14 @@ public class CompanyApi {
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return BigDecimal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public BigDecimal getCompanyDataPointNumber(String identifier, String tag) throws ApiException {
-        ApiResponse<BigDecimal> resp = getCompanyDataPointNumberWithHttpInfo(identifier, tag);
-        return resp.getData();
+    public BigDecimal getCompanyDataPointNumber(String identifier, String tag) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyDataPointNumberWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag };
+      ApiResponse<BigDecimal> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -687,10 +704,14 @@ public class CompanyApi {
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public String getCompanyDataPointText(String identifier, String tag) throws ApiException {
-        ApiResponse<String> resp = getCompanyDataPointTextWithHttpInfo(identifier, tag);
-        return resp.getData();
+    public String getCompanyDataPointText(String identifier, String tag) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyDataPointTextWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag };
+      ApiResponse<String> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -832,10 +853,14 @@ public class CompanyApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyFilings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanyFilings getCompanyFilings(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanyFilings> resp = getCompanyFilingsWithHttpInfo(identifier, reportType, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseCompanyFilings getCompanyFilings(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyFilingsWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, reportType, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseCompanyFilings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1005,10 +1030,14 @@ public class CompanyApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyFundamentals
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanyFundamentals getCompanyFundamentals(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanyFundamentals> resp = getCompanyFundamentalsWithHttpInfo(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseCompanyFundamentals getCompanyFundamentals(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyFundamentalsWithHttpInfo", String.class, LocalDate.class, LocalDate.class, Boolean.class, Integer.class, String.class, String.class, LocalDate.class, LocalDate.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseCompanyFundamentals> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1184,10 +1213,14 @@ public class CompanyApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanyHistoricalData getCompanyHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanyHistoricalData> resp = getCompanyHistoricalDataWithHttpInfo(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseCompanyHistoricalData getCompanyHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyHistoricalDataWithHttpInfo", String.class, String.class, String.class, String.class, LocalDate.class, LocalDate.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage };
+      ApiResponse<ApiResponseCompanyHistoricalData> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1347,10 +1380,14 @@ public class CompanyApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseInitialPublicOfferings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseInitialPublicOfferings getCompanyIpos(String ticker, String status, LocalDate startDate, LocalDate endDate, Integer offerAmountGreaterThan, Integer offerAmountLessThan, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseInitialPublicOfferings> resp = getCompanyIposWithHttpInfo(ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseInitialPublicOfferings getCompanyIpos(String ticker, String status, LocalDate startDate, LocalDate endDate, Integer offerAmountGreaterThan, Integer offerAmountLessThan, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyIposWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class, Integer.class, Integer.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage };
+      ApiResponse<ApiResponseInitialPublicOfferings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1492,10 +1529,14 @@ public class CompanyApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyNews
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanyNews getCompanyNews(String identifier, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanyNews> resp = getCompanyNewsWithHttpInfo(identifier, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseCompanyNews getCompanyNews(String identifier, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyNewsWithHttpInfo", String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, pageSize, nextPage };
+      ApiResponse<ApiResponseCompanyNews> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1623,10 +1664,14 @@ public class CompanyApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanySecurities
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanySecurities getCompanySecurities(String identifier, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseCompanySecurities> resp = getCompanySecuritiesWithHttpInfo(identifier, nextPage);
-        return resp.getData();
+    public ApiResponseCompanySecurities getCompanySecurities(String identifier, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanySecuritiesWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, nextPage };
+      ApiResponse<ApiResponseCompanySecurities> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1772,10 +1817,14 @@ public class CompanyApi {
      * @param fiscalYear The fiscal year (required)
      * @return Fundamental
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public Fundamental lookupCompanyFundamental(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear) throws ApiException {
-        ApiResponse<Fundamental> resp = lookupCompanyFundamentalWithHttpInfo(identifier, statementCode, fiscalPeriod, fiscalYear);
-        return resp.getData();
+    public Fundamental lookupCompanyFundamental(String identifier, String statementCode, String fiscalPeriod, Integer fiscalYear) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("lookupCompanyFundamentalWithHttpInfo", String.class, String.class, String.class, Integer.class);
+      
+      Object[] apiCallArguments = { identifier, statementCode, fiscalPeriod, fiscalYear };
+      ApiResponse<Fundamental> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1834,13 +1883,14 @@ public class CompanyApi {
     /**
      * Build call for searchCompanies
      * @param query Search parameters (required)
+     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call searchCompaniesCall(String query, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call searchCompaniesCall(String query, Boolean active, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1850,6 +1900,8 @@ public class CompanyApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (query != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
+        if (active != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("active", active));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
 
@@ -1886,7 +1938,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call searchCompaniesValidateBeforeCall(String query, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call searchCompaniesValidateBeforeCall(String query, Boolean active, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'query' is set
         if (query == null) {
@@ -1894,7 +1946,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = searchCompaniesCall(query, pageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchCompaniesCall(query, active, pageSize, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1903,25 +1955,31 @@ public class CompanyApi {
      * Search Companies
      * Searches for Companies matching the text &#x60;query&#x60;
      * @param query Search parameters (required)
+     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponseCompaniesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompaniesSearch searchCompanies(String query, Integer pageSize) throws ApiException {
-        ApiResponse<ApiResponseCompaniesSearch> resp = searchCompaniesWithHttpInfo(query, pageSize);
-        return resp.getData();
+    public ApiResponseCompaniesSearch searchCompanies(String query, Boolean active, Integer pageSize) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("searchCompaniesWithHttpInfo", String.class, Boolean.class, Integer.class);
+      
+      Object[] apiCallArguments = { query, active, pageSize };
+      ApiResponse<ApiResponseCompaniesSearch> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
      * Search Companies
      * Searches for Companies matching the text &#x60;query&#x60;
      * @param query Search parameters (required)
+     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponse&lt;ApiResponseCompaniesSearch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompaniesSearch> searchCompaniesWithHttpInfo(String query, Integer pageSize) throws ApiException {
-        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, pageSize, null, null);
+    public ApiResponse<ApiResponseCompaniesSearch> searchCompaniesWithHttpInfo(String query, Boolean active, Integer pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, active, pageSize, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompaniesSearch>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1930,12 +1988,13 @@ public class CompanyApi {
      * Search Companies (asynchronously)
      * Searches for Companies matching the text &#x60;query&#x60;
      * @param query Search parameters (required)
+     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchCompaniesAsync(String query, Integer pageSize, final ApiCallback<ApiResponseCompaniesSearch> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchCompaniesAsync(String query, Boolean active, Integer pageSize, final ApiCallback<ApiResponseCompaniesSearch> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1956,7 +2015,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, pageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, active, pageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompaniesSearch>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

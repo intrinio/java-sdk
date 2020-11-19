@@ -37,7 +37,7 @@ public class ApiResponseEconomicIndexHistoricalData {
 
   public ApiResponseEconomicIndexHistoricalData addHistoricalDataItem(HistoricalData historicalDataItem) {
     if (this.historicalData == null) {
-      this.historicalData = new ArrayList<HistoricalData>();
+      this.historicalData = new ArrayList<>();
     }
     this.historicalData.add(historicalDataItem);
     return this;

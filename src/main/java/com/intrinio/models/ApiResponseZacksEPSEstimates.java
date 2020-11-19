@@ -33,7 +33,7 @@ public class ApiResponseZacksEPSEstimates {
 
   public ApiResponseZacksEPSEstimates addEstimatesItem(ZacksEPSEstimate estimatesItem) {
     if (this.estimates == null) {
-      this.estimates = new ArrayList<ZacksEPSEstimate>();
+      this.estimates = new ArrayList<>();
     }
     this.estimates.add(estimatesItem);
     return this;

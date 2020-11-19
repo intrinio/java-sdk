@@ -42,7 +42,7 @@ public class ApiResponseSecurityNegativeVolumeIndex {
 
   public ApiResponseSecurityNegativeVolumeIndex addTechnicalsItem(NegativeVolumeIndexTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<NegativeVolumeIndexTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

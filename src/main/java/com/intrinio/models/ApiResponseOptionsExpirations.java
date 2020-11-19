@@ -29,7 +29,7 @@ public class ApiResponseOptionsExpirations {
 
   public ApiResponseOptionsExpirations addExpirationsItem(String expirationsItem) {
     if (this.expirations == null) {
-      this.expirations = new ArrayList<String>();
+      this.expirations = new ArrayList<>();
     }
     this.expirations.add(expirationsItem);
     return this;

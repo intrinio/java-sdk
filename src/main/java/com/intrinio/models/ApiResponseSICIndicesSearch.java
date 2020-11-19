@@ -30,7 +30,7 @@ public class ApiResponseSICIndicesSearch {
 
   public ApiResponseSICIndicesSearch addIndicesItem(SICIndex indicesItem) {
     if (this.indices == null) {
-      this.indices = new ArrayList<SICIndex>();
+      this.indices = new ArrayList<>();
     }
     this.indices.add(indicesItem);
     return this;

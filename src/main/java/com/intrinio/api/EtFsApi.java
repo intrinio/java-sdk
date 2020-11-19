@@ -23,6 +23,7 @@ import com.intrinio.models.ETFAnalytics;
 import com.intrinio.models.ETFStats;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -121,10 +122,14 @@ public class EtFsApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseETFs
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseETFs getAllEtfs(String exchange, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseETFs> resp = getAllEtfsWithHttpInfo(exchange, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseETFs getAllEtfs(String exchange, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = EtFsApi.class.getMethod("getAllEtfsWithHttpInfo", String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { exchange, pageSize, nextPage };
+      ApiResponse<ApiResponseETFs> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -248,10 +253,14 @@ public class EtFsApi {
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ETF
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ETF getEtf(String identifier) throws ApiException {
-        ApiResponse<ETF> resp = getEtfWithHttpInfo(identifier);
-        return resp.getData();
+    public ETF getEtf(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = EtFsApi.class.getMethod("getEtfWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<ETF> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -371,10 +380,14 @@ public class EtFsApi {
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ETFAnalytics
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ETFAnalytics getEtfAnalytics(String identifier) throws ApiException {
-        ApiResponse<ETFAnalytics> resp = getEtfAnalyticsWithHttpInfo(identifier);
-        return resp.getData();
+    public ETFAnalytics getEtfAnalytics(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = EtFsApi.class.getMethod("getEtfAnalyticsWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<ETFAnalytics> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -502,10 +515,14 @@ public class EtFsApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseETFHoldings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseETFHoldings getEtfHoldings(String identifier, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseETFHoldings> resp = getEtfHoldingsWithHttpInfo(identifier, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseETFHoldings getEtfHoldings(String identifier, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = EtFsApi.class.getMethod("getEtfHoldingsWithHttpInfo", String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, pageSize, nextPage };
+      ApiResponse<ApiResponseETFHoldings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -629,10 +646,14 @@ public class EtFsApi {
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ETFStats
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ETFStats getEtfStats(String identifier) throws ApiException {
-        ApiResponse<ETFStats> resp = getEtfStatsWithHttpInfo(identifier);
-        return resp.getData();
+    public ETFStats getEtfStats(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = EtFsApi.class.getMethod("getEtfStatsWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<ETFStats> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -753,10 +774,14 @@ public class EtFsApi {
      * @param query  (required)
      * @return ApiResponseETFs
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseETFs searchEtfs(String query) throws ApiException {
-        ApiResponse<ApiResponseETFs> resp = searchEtfsWithHttpInfo(query);
-        return resp.getData();
+    public ApiResponseETFs searchEtfs(String query) throws ApiException, NoSuchMethodException {
+      Method targetMethod = EtFsApi.class.getMethod("searchEtfsWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { query };
+      ApiResponse<ApiResponseETFs> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

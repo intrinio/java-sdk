@@ -42,7 +42,7 @@ public class ApiResponseSecurityRelativeStrengthIndex {
 
   public ApiResponseSecurityRelativeStrengthIndex addTechnicalsItem(RelativeStrengthIndexTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<RelativeStrengthIndexTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

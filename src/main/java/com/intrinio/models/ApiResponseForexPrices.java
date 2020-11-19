@@ -37,7 +37,7 @@ public class ApiResponseForexPrices {
 
   public ApiResponseForexPrices addPricesItem(ForexPrice pricesItem) {
     if (this.prices == null) {
-      this.prices = new ArrayList<ForexPrice>();
+      this.prices = new ArrayList<>();
     }
     this.prices.add(pricesItem);
     return this;

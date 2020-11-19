@@ -37,7 +37,7 @@ public class ApiResponseFilingFundamentals {
 
   public ApiResponseFilingFundamentals addFundamentalsItem(FundamentalSummary fundamentalsItem) {
     if (this.fundamentals == null) {
-      this.fundamentals = new ArrayList<FundamentalSummary>();
+      this.fundamentals = new ArrayList<>();
     }
     this.fundamentals.add(fundamentalsItem);
     return this;

@@ -1161,7 +1161,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseCompaniesSearch searchCompanies(query, pageSize)
+> ApiResponseCompaniesSearch searchCompanies(query, active, pageSize)
 
 #### Search Companies
 
@@ -1193,9 +1193,10 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
     String query = "Apple";
+    Boolean active = true;
     Integer pageSize = 100;
     
-    ApiResponseCompaniesSearch result = companyApi.searchCompanies(query, pageSize);
+    ApiResponseCompaniesSearch result = companyApi.searchCompanies(query, active, pageSize);
     System.out.println(result);
   }
 }
@@ -1211,6 +1212,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | String| Search parameters | &nbsp;
+ **active** | Boolean| When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
 <br/>
 

@@ -28,6 +28,8 @@ import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.text.DateFormat;
+import java.time.temporal.ChronoUnit;
+import java.time.Duration;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
@@ -85,7 +87,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/5.6.3/java");
+        setUserAgent("Swagger-Codegen/6.0.0/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
@@ -842,29 +844,13 @@ public class ApiClient {
      * @throws ApiException If fail to execute the call
      */
     public <T> ApiResponse<T> execute(Call call, Type returnType) throws ApiException {
-        RetryConfigBuilder configBuilder = new RetryConfigBuilder();
-
-        if (allowRetries) {
-            configBuilder = configBuilder.exponentialBackoff5Tries5Sec();
-        } else {
-            configBuilder = configBuilder
-                    .withMaxNumberOfTries(1)
-                    .withNoWaitBackoff();
+        try {
+            Response response = call.execute();
+            T data = handleResponse(response, returnType);
+            return new ApiResponse<T>(response.code(), response.headers().toMultimap(), data);
+        } catch (IOException e) {
+            throw new ApiException(e);
         }
-
-        RetryConfig config = configBuilder.build();
-
-       Callable<Response> callable = retryCallable(call);
-
-       try {
-           Status status = new CallExecutorBuilder().config(config).build().execute(callable);
-           Response response = (Response)status.getResult();
-
-           T data = handleResponse(response, returnType);
-           return new ApiResponse<T>(response.code(), response.headers().toMultimap(), data);
-       } catch (Exception e) {
-           throw new ApiException(e);
-       }
     }
 
     /**
@@ -1026,26 +1012,6 @@ public class ApiClient {
         }
 
         return request;
-    }
-
-    public Callable<Response> retryCallable(Call call) {
-        final Call resultCall = call;
-
-        return new Callable() {
-            public Object call() throws ApiException {
-                try {
-                    Response response = resultCall.execute();
-
-                    if (!response.isSuccessful())
-                        throw new ApiException(response.message());
-                    else
-                        return response;
-                } catch (IOException e) {
-                    throw new ApiException(e.getMessage());
-                }
-
-            }
-        };
     }
 
     /**
@@ -1243,5 +1209,75 @@ public class ApiClient {
         } catch (IOException e) {
             throw new AssertionError(e);
         }
+    }
+
+    public <T> Callable<T> retryCallable(final java.lang.reflect.Method apiFunction, final Object[] apiCallArguments) {
+        final java.lang.reflect.Method finalApiFunction = apiFunction;
+        final Object[] finalApiCallArguments = apiCallArguments;
+
+        return new Callable() {
+            public Object call() throws ApiException, InterruptedException {
+                try {
+                    Class declaringClass = finalApiFunction.getDeclaringClass();
+                    Object apiCallObject = declaringClass.getDeclaredConstructor().newInstance();
+
+                    ApiResponse<T> result = (ApiResponse<T>) finalApiFunction.invoke(apiCallObject, finalApiCallArguments);
+                    return result;
+                } catch (InvocationTargetException e) {
+                  ApiException targetException = (ApiException) e.getTargetException();
+                  throw targetException;
+                } catch (InstantiationException | NoSuchMethodException | IllegalAccessException e) {
+                    e.printStackTrace();
+                    throw new ApiException();
+                }
+
+            }
+        };
+    }
+    
+    public <T> ApiResponse<T> attemptApiCall(java.lang.reflect.Method apiFunction, Object[] apiCallArguments) throws ApiException {
+        RetryConfigBuilder configBuilder = new RetryConfigBuilder();
+
+        if (allowRetries) {
+            configBuilder = configBuilder
+                    .retryOnCustomExceptionLogic(ex -> {
+                        ApiException targetException = (ApiException) ex;
+                        int statusCode = targetException.getCode();
+                        boolean continueRetries = true;
+
+                        if (statusCode == 429) {
+                            try {
+                                int retryAfter = Integer.parseInt(targetException.getResponseHeaders().get("retry-after").iterator().next());
+                                TimeUnit.SECONDS.sleep(retryAfter);
+                            } catch (NullPointerException | InterruptedException e) {
+                                continueRetries = false;
+                            }
+                        } else if (statusCode >= 400 && statusCode < 500) {
+                            continueRetries = false;
+                        }
+                        return continueRetries;
+                    })
+                    .withMaxNumberOfTries(5)
+                    .withDelayBetweenTries(Duration.of(2, ChronoUnit.SECONDS))
+                    .withExponentialBackoff();
+
+        } else {
+            configBuilder = configBuilder
+                    .withMaxNumberOfTries(1)
+                    .withNoWaitBackoff();
+        }
+
+        RetryConfig config = configBuilder.build();
+
+       Callable<Response> callable = retryCallable(apiFunction, apiCallArguments);
+
+       try {
+           Status status = new CallExecutorBuilder().config(config).build().execute(callable);
+           ApiResponse result = (ApiResponse)status.getResult();
+
+           return result;
+       } catch (Exception e) {
+           throw e;
+       }
     }
 }

@@ -42,7 +42,7 @@ public class ApiResponseSecurityAverageTrueRange {
 
   public ApiResponseSecurityAverageTrueRange addTechnicalsItem(AverageTrueRangeTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<AverageTrueRangeTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

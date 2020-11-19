@@ -32,6 +32,7 @@ import com.intrinio.models.SICIndex;
 import com.intrinio.models.StockMarketIndex;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -126,10 +127,14 @@ public class IndexApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseEconomicIndices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseEconomicIndices getAllEconomicIndices(Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseEconomicIndices> resp = getAllEconomicIndicesWithHttpInfo(pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseEconomicIndices getAllEconomicIndices(Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getAllEconomicIndicesWithHttpInfo", Integer.class, String.class);
+      
+      Object[] apiCallArguments = { pageSize, nextPage };
+      ApiResponse<ApiResponseEconomicIndices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -251,10 +256,14 @@ public class IndexApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSICIndices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSICIndices getAllSicIndices(Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSICIndices> resp = getAllSicIndicesWithHttpInfo(pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSICIndices getAllSicIndices(Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getAllSicIndicesWithHttpInfo", Integer.class, String.class);
+      
+      Object[] apiCallArguments = { pageSize, nextPage };
+      ApiResponse<ApiResponseSICIndices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -376,10 +385,14 @@ public class IndexApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockMarketIndices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockMarketIndices getAllStockMarketIndices(Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseStockMarketIndices> resp = getAllStockMarketIndicesWithHttpInfo(pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseStockMarketIndices getAllStockMarketIndices(Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getAllStockMarketIndicesWithHttpInfo", Integer.class, String.class);
+      
+      Object[] apiCallArguments = { pageSize, nextPage };
+      ApiResponse<ApiResponseStockMarketIndices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -501,10 +514,14 @@ public class IndexApi {
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @return EconomicIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public EconomicIndex getEconomicIndexById(String identifier) throws ApiException {
-        ApiResponse<EconomicIndex> resp = getEconomicIndexByIdWithHttpInfo(identifier);
-        return resp.getData();
+    public EconomicIndex getEconomicIndexById(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getEconomicIndexByIdWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<EconomicIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -632,10 +649,14 @@ public class IndexApi {
      * @param tag An Intrinio data tag &lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags/economic&#39;&gt;reference&lt;/a&gt; (required)
      * @return BigDecimal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public BigDecimal getEconomicIndexDataPointNumber(String identifier, String tag) throws ApiException {
-        ApiResponse<BigDecimal> resp = getEconomicIndexDataPointNumberWithHttpInfo(identifier, tag);
-        return resp.getData();
+    public BigDecimal getEconomicIndexDataPointNumber(String identifier, String tag) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getEconomicIndexDataPointNumberWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag };
+      ApiResponse<BigDecimal> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -765,10 +786,14 @@ public class IndexApi {
      * @param tag An Intrinio data tag ID or code-name (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public String getEconomicIndexDataPointText(String identifier, String tag) throws ApiException {
-        ApiResponse<String> resp = getEconomicIndexDataPointTextWithHttpInfo(identifier, tag);
-        return resp.getData();
+    public String getEconomicIndexDataPointText(String identifier, String tag) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getEconomicIndexDataPointTextWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag };
+      ApiResponse<String> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -922,10 +947,14 @@ public class IndexApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseEconomicIndexHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseEconomicIndexHistoricalData getEconomicIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseEconomicIndexHistoricalData> resp = getEconomicIndexHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseEconomicIndexHistoricalData getEconomicIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getEconomicIndexHistoricalDataWithHttpInfo", String.class, String.class, String.class, LocalDate.class, LocalDate.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage };
+      ApiResponse<ApiResponseEconomicIndexHistoricalData> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1059,10 +1088,14 @@ public class IndexApi {
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @return SICIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public SICIndex getSicIndexById(String identifier) throws ApiException {
-        ApiResponse<SICIndex> resp = getSicIndexByIdWithHttpInfo(identifier);
-        return resp.getData();
+    public SICIndex getSicIndexById(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getSicIndexByIdWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<SICIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1190,10 +1223,14 @@ public class IndexApi {
      * @param tag An Intrinio data tag ID or code-name (required)
      * @return BigDecimal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public BigDecimal getSicIndexDataPointNumber(String identifier, String tag) throws ApiException {
-        ApiResponse<BigDecimal> resp = getSicIndexDataPointNumberWithHttpInfo(identifier, tag);
-        return resp.getData();
+    public BigDecimal getSicIndexDataPointNumber(String identifier, String tag) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getSicIndexDataPointNumberWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag };
+      ApiResponse<BigDecimal> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1323,10 +1360,14 @@ public class IndexApi {
      * @param tag An Intrinio data tag ID or code-name (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public String getSicIndexDataPointText(String identifier, String tag) throws ApiException {
-        ApiResponse<String> resp = getSicIndexDataPointTextWithHttpInfo(identifier, tag);
-        return resp.getData();
+    public String getSicIndexDataPointText(String identifier, String tag) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getSicIndexDataPointTextWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag };
+      ApiResponse<String> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1480,10 +1521,14 @@ public class IndexApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSICIndexHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSICIndexHistoricalData getSicIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSICIndexHistoricalData> resp = getSicIndexHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSICIndexHistoricalData getSicIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getSicIndexHistoricalDataWithHttpInfo", String.class, String.class, String.class, LocalDate.class, LocalDate.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage };
+      ApiResponse<ApiResponseSICIndexHistoricalData> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1617,10 +1662,14 @@ public class IndexApi {
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @return StockMarketIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public StockMarketIndex getStockMarketIndexById(String identifier) throws ApiException {
-        ApiResponse<StockMarketIndex> resp = getStockMarketIndexByIdWithHttpInfo(identifier);
-        return resp.getData();
+    public StockMarketIndex getStockMarketIndexById(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getStockMarketIndexByIdWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<StockMarketIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1748,10 +1797,14 @@ public class IndexApi {
      * @param tag An Intrinio data tag ID or code-name (required)
      * @return BigDecimal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public BigDecimal getStockMarketIndexDataPointNumber(String identifier, String tag) throws ApiException {
-        ApiResponse<BigDecimal> resp = getStockMarketIndexDataPointNumberWithHttpInfo(identifier, tag);
-        return resp.getData();
+    public BigDecimal getStockMarketIndexDataPointNumber(String identifier, String tag) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getStockMarketIndexDataPointNumberWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag };
+      ApiResponse<BigDecimal> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1881,10 +1934,14 @@ public class IndexApi {
      * @param tag An Intrinio data tag ID or code-name (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public String getStockMarketIndexDataPointText(String identifier, String tag) throws ApiException {
-        ApiResponse<String> resp = getStockMarketIndexDataPointTextWithHttpInfo(identifier, tag);
-        return resp.getData();
+    public String getStockMarketIndexDataPointText(String identifier, String tag) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getStockMarketIndexDataPointTextWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag };
+      ApiResponse<String> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -2038,10 +2095,14 @@ public class IndexApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockMarketIndexHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockMarketIndexHistoricalData getStockMarketIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseStockMarketIndexHistoricalData> resp = getStockMarketIndexHistoricalDataWithHttpInfo(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseStockMarketIndexHistoricalData getStockMarketIndexHistoricalData(String identifier, String tag, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getStockMarketIndexHistoricalDataWithHttpInfo", String.class, String.class, String.class, LocalDate.class, LocalDate.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage };
+      ApiResponse<ApiResponseStockMarketIndexHistoricalData> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -2180,10 +2241,14 @@ public class IndexApi {
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponseEconomicIndicesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseEconomicIndicesSearch searchEconomicIndices(String query, Integer pageSize) throws ApiException {
-        ApiResponse<ApiResponseEconomicIndicesSearch> resp = searchEconomicIndicesWithHttpInfo(query, pageSize);
-        return resp.getData();
+    public ApiResponseEconomicIndicesSearch searchEconomicIndices(String query, Integer pageSize) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("searchEconomicIndicesWithHttpInfo", String.class, Integer.class);
+      
+      Object[] apiCallArguments = { query, pageSize };
+      ApiResponse<ApiResponseEconomicIndicesSearch> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -2310,10 +2375,14 @@ public class IndexApi {
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponseSICIndicesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSICIndicesSearch searchSicIndices(String query, Integer pageSize) throws ApiException {
-        ApiResponse<ApiResponseSICIndicesSearch> resp = searchSicIndicesWithHttpInfo(query, pageSize);
-        return resp.getData();
+    public ApiResponseSICIndicesSearch searchSicIndices(String query, Integer pageSize) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("searchSicIndicesWithHttpInfo", String.class, Integer.class);
+      
+      Object[] apiCallArguments = { query, pageSize };
+      ApiResponse<ApiResponseSICIndicesSearch> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -2440,10 +2509,14 @@ public class IndexApi {
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponseStockMarketIndicesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockMarketIndicesSearch searchStockMarketsIndices(String query, Integer pageSize) throws ApiException {
-        ApiResponse<ApiResponseStockMarketIndicesSearch> resp = searchStockMarketsIndicesWithHttpInfo(query, pageSize);
-        return resp.getData();
+    public ApiResponseStockMarketIndicesSearch searchStockMarketsIndices(String query, Integer pageSize) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("searchStockMarketsIndicesWithHttpInfo", String.class, Integer.class);
+      
+      Object[] apiCallArguments = { query, pageSize };
+      ApiResponse<ApiResponseStockMarketIndicesSearch> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

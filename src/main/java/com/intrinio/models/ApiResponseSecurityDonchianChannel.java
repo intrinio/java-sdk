@@ -42,7 +42,7 @@ public class ApiResponseSecurityDonchianChannel {
 
   public ApiResponseSecurityDonchianChannel addTechnicalsItem(DonchianChannelTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<DonchianChannelTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

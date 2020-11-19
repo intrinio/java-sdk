@@ -42,7 +42,7 @@ public class ZacksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getZacksAnalystRatingsTest() throws ApiException {
+    public void getZacksAnalystRatingsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
@@ -76,7 +76,7 @@ public class ZacksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getZacksEpsEstimatesTest() throws ApiException {
+    public void getZacksEpsEstimatesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
@@ -100,7 +100,7 @@ public class ZacksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getZacksEpsGrowthRatesTest() throws ApiException {
+    public void getZacksEpsGrowthRatesTest() throws ApiException, NoSuchMethodException {
         String company = null;
         String industryGroupName = null;
         String industryGroupNumber = null;
@@ -120,7 +120,7 @@ public class ZacksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getZacksEpsSurprisesTest() throws ApiException {
+    public void getZacksEpsSurprisesTest() throws ApiException, NoSuchMethodException {
         LocalDate startDate = null;
         LocalDate endDate = null;
         BigDecimal epsActualGreater = null;
@@ -151,7 +151,7 @@ public class ZacksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getZacksEtfHoldingsTest() throws ApiException {
+    public void getZacksEtfHoldingsTest() throws ApiException, NoSuchMethodException {
         String etfTicker = null;
         String holdingSymbol = null;
         BigDecimal weightGreater = null;
@@ -172,7 +172,7 @@ public class ZacksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getZacksInstitutionalHoldingCompaniesTest() throws ApiException {
+    public void getZacksInstitutionalHoldingCompaniesTest() throws ApiException, NoSuchMethodException {
         String ticker = null;
         Integer pageSize = null;
         String nextPage = null;
@@ -190,7 +190,7 @@ public class ZacksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getZacksInstitutionalHoldingOwnersTest() throws ApiException {
+    public void getZacksInstitutionalHoldingOwnersTest() throws ApiException, NoSuchMethodException {
         String cik = null;
         Integer pageSize = null;
         String nextPage = null;
@@ -208,7 +208,7 @@ public class ZacksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getZacksInstitutionalHoldingsTest() throws ApiException {
+    public void getZacksInstitutionalHoldingsTest() throws ApiException, NoSuchMethodException {
         String ticker = null;
         String ownerCik = null;
         Integer pageSize = null;
@@ -227,7 +227,7 @@ public class ZacksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getZacksLongTermGrowthRatesTest() throws ApiException {
+    public void getZacksLongTermGrowthRatesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer pageSize = null;
         String nextPage = null;
@@ -245,7 +245,7 @@ public class ZacksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getZacksSalesSurprisesTest() throws ApiException {
+    public void getZacksSalesSurprisesTest() throws ApiException, NoSuchMethodException {
         LocalDate startDate = null;
         LocalDate endDate = null;
         BigDecimal salesActualGreater = null;
@@ -276,7 +276,7 @@ public class ZacksApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getZacksTargetPriceConsensusesTest() throws ApiException {
+    public void getZacksTargetPriceConsensusesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String industryGroupNumber = null;
         Integer pageSize = null;

@@ -30,7 +30,7 @@ public class ApiResponseOptionsChain {
 
   public ApiResponseOptionsChain addChainItem(OptionChain chainItem) {
     if (this.chain == null) {
-      this.chain = new ArrayList<OptionChain>();
+      this.chain = new ArrayList<>();
     }
     this.chain.add(chainItem);
     return this;

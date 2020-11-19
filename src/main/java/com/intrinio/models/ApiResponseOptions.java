@@ -33,7 +33,7 @@ public class ApiResponseOptions {
 
   public ApiResponseOptions addOptionsItem(Option optionsItem) {
     if (this.options == null) {
-      this.options = new ArrayList<Option>();
+      this.options = new ArrayList<>();
     }
     this.options.add(optionsItem);
     return this;

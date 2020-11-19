@@ -20,6 +20,7 @@ import com.intrinio.models.ApiResponseHistoricalData;
 import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -150,10 +151,14 @@ public class HistoricalDataApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseHistoricalData
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseHistoricalData getHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseHistoricalData> resp = getHistoricalDataWithHttpInfo(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseHistoricalData getHistoricalData(String identifier, String tag, String frequency, String type, LocalDate startDate, LocalDate endDate, String sortOrder, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = HistoricalDataApi.class.getMethod("getHistoricalDataWithHttpInfo", String.class, String.class, String.class, String.class, LocalDate.class, LocalDate.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage };
+      ApiResponse<ApiResponseHistoricalData> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

@@ -287,7 +287,7 @@ public class ZacksInstitutionalHolding {
 
   public ZacksInstitutionalHolding addHistoricalHoldingsItem(ZacksInstitutionalHoldingHistoricalSummary historicalHoldingsItem) {
     if (this.historicalHoldings == null) {
-      this.historicalHoldings = new ArrayList<ZacksInstitutionalHoldingHistoricalSummary>();
+      this.historicalHoldings = new ArrayList<>();
     }
     this.historicalHoldings.add(historicalHoldingsItem);
     return this;

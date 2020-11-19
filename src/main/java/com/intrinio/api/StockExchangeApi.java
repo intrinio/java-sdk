@@ -25,6 +25,7 @@ import org.threeten.bp.LocalDate;
 import com.intrinio.models.StockExchange;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -127,10 +128,14 @@ public class StockExchangeApi {
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponseStockExchanges
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockExchanges getAllStockExchanges(String city, String country, String countryCode, Integer pageSize) throws ApiException {
-        ApiResponse<ApiResponseStockExchanges> resp = getAllStockExchangesWithHttpInfo(city, country, countryCode, pageSize);
-        return resp.getData();
+    public ApiResponseStockExchanges getAllStockExchanges(String city, String country, String countryCode, Integer pageSize) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getAllStockExchangesWithHttpInfo", String.class, String.class, String.class, Integer.class);
+      
+      Object[] apiCallArguments = { city, country, countryCode, pageSize };
+      ApiResponse<ApiResponseStockExchanges> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -256,10 +261,14 @@ public class StockExchangeApi {
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @return StockExchange
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public StockExchange getStockExchangeById(String identifier) throws ApiException {
-        ApiResponse<StockExchange> resp = getStockExchangeByIdWithHttpInfo(identifier);
-        return resp.getData();
+    public StockExchange getStockExchangeById(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeByIdWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<StockExchange> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -391,10 +400,14 @@ public class StockExchangeApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockExchangeStockPriceAdjustments
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockExchangeStockPriceAdjustments getStockExchangePriceAdjustments(String identifier, LocalDate date, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseStockExchangeStockPriceAdjustments> resp = getStockExchangePriceAdjustmentsWithHttpInfo(identifier, date, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseStockExchangeStockPriceAdjustments getStockExchangePriceAdjustments(String identifier, LocalDate date, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangePriceAdjustmentsWithHttpInfo", String.class, LocalDate.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, date, pageSize, nextPage };
+      ApiResponse<ApiResponseStockExchangeStockPriceAdjustments> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -532,10 +545,14 @@ public class StockExchangeApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockExchangeStockPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockExchangeStockPrices getStockExchangePrices(String identifier, LocalDate date, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseStockExchangeStockPrices> resp = getStockExchangePricesWithHttpInfo(identifier, date, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseStockExchangeStockPrices getStockExchangePrices(String identifier, LocalDate date, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangePricesWithHttpInfo", String.class, LocalDate.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, date, pageSize, nextPage };
+      ApiResponse<ApiResponseStockExchangeStockPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -673,10 +690,14 @@ public class StockExchangeApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockExchangeRealtimeStockPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(String identifier, String source, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> resp = getStockExchangeRealtimePricesWithHttpInfo(identifier, source, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(String identifier, String source, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeRealtimePricesWithHttpInfo", String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, source, pageSize, nextPage };
+      ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -810,10 +831,14 @@ public class StockExchangeApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockExchangeSecurities
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockExchangeSecurities getStockExchangeSecurities(String identifier, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseStockExchangeSecurities> resp = getStockExchangeSecuritiesWithHttpInfo(identifier, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseStockExchangeSecurities getStockExchangeSecurities(String identifier, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeSecuritiesWithHttpInfo", String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, pageSize, nextPage };
+      ApiResponse<ApiResponseStockExchangeSecurities> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

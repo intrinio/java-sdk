@@ -42,7 +42,7 @@ public class ApiResponseSecurityWilliamsR {
 
   public ApiResponseSecurityWilliamsR addTechnicalsItem(WilliamsRTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<WilliamsRTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

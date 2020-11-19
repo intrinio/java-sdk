@@ -42,7 +42,7 @@ public class ApiResponseSecurityVortexIndicator {
 
   public ApiResponseSecurityVortexIndicator addTechnicalsItem(VortexIndicatorTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<VortexIndicatorTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

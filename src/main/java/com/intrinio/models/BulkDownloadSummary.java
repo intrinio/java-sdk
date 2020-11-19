@@ -136,7 +136,7 @@ public class BulkDownloadSummary {
 
   public BulkDownloadSummary addLinksItem(BulkDownloadLinks linksItem) {
     if (this.links == null) {
-      this.links = new ArrayList<BulkDownloadLinks>();
+      this.links = new ArrayList<>();
     }
     this.links.add(linksItem);
     return this;

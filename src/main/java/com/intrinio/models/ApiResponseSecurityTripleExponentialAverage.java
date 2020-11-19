@@ -42,7 +42,7 @@ public class ApiResponseSecurityTripleExponentialAverage {
 
   public ApiResponseSecurityTripleExponentialAverage addTechnicalsItem(TripleExponentialAverageTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<TripleExponentialAverageTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

@@ -37,7 +37,7 @@ public class ApiResponseSecurityStockPriceAdjustments {
 
   public ApiResponseSecurityStockPriceAdjustments addStockPriceAdjustmentsItem(StockPriceAdjustmentSummary stockPriceAdjustmentsItem) {
     if (this.stockPriceAdjustments == null) {
-      this.stockPriceAdjustments = new ArrayList<StockPriceAdjustmentSummary>();
+      this.stockPriceAdjustments = new ArrayList<>();
     }
     this.stockPriceAdjustments.add(stockPriceAdjustmentsItem);
     return this;

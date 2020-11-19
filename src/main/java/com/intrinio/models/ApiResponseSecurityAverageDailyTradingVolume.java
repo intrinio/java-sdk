@@ -42,7 +42,7 @@ public class ApiResponseSecurityAverageDailyTradingVolume {
 
   public ApiResponseSecurityAverageDailyTradingVolume addTechnicalsItem(AverageDailyTradingVolumeTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<AverageDailyTradingVolumeTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

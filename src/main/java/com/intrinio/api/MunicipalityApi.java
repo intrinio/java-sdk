@@ -22,6 +22,7 @@ import java.math.BigDecimal;
 import com.intrinio.models.Municipality;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -160,10 +161,14 @@ public class MunicipalityApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseMunicipalities
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseMunicipalities getAllMunicipalities(Boolean hasFinancials, String governmentName, String governmentType, String areaName, String areaType, String city, String state, BigDecimal zipcode, BigDecimal populationGreaterThan, BigDecimal populationLessThan, BigDecimal enrollmentGreaterThan, BigDecimal enrollmentLessThan, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseMunicipalities> resp = getAllMunicipalitiesWithHttpInfo(hasFinancials, governmentName, governmentType, areaName, areaType, city, state, zipcode, populationGreaterThan, populationLessThan, enrollmentGreaterThan, enrollmentLessThan, nextPage);
-        return resp.getData();
+    public ApiResponseMunicipalities getAllMunicipalities(Boolean hasFinancials, String governmentName, String governmentType, String areaName, String areaType, String city, String state, BigDecimal zipcode, BigDecimal populationGreaterThan, BigDecimal populationLessThan, BigDecimal enrollmentGreaterThan, BigDecimal enrollmentLessThan, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = MunicipalityApi.class.getMethod("getAllMunicipalitiesWithHttpInfo", Boolean.class, String.class, String.class, String.class, String.class, String.class, String.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, String.class);
+      
+      Object[] apiCallArguments = { hasFinancials, governmentName, governmentType, areaName, areaType, city, state, zipcode, populationGreaterThan, populationLessThan, enrollmentGreaterThan, enrollmentLessThan, nextPage };
+      ApiResponse<ApiResponseMunicipalities> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -307,10 +312,14 @@ public class MunicipalityApi {
      * @param id An Intrinio ID of a Municipality (required)
      * @return Municipality
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public Municipality getMunicipalityById(String id) throws ApiException {
-        ApiResponse<Municipality> resp = getMunicipalityByIdWithHttpInfo(id);
-        return resp.getData();
+    public Municipality getMunicipalityById(String id) throws ApiException, NoSuchMethodException {
+      Method targetMethod = MunicipalityApi.class.getMethod("getMunicipalityByIdWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { id };
+      ApiResponse<Municipality> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -434,10 +443,14 @@ public class MunicipalityApi {
      * @param fiscalYear Return financials for the given fiscal year (optional)
      * @return ApiResponseMunicipalitiyFinancials
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseMunicipalitiyFinancials getMunicipalityFinancials(String id, BigDecimal fiscalYear) throws ApiException {
-        ApiResponse<ApiResponseMunicipalitiyFinancials> resp = getMunicipalityFinancialsWithHttpInfo(id, fiscalYear);
-        return resp.getData();
+    public ApiResponseMunicipalitiyFinancials getMunicipalityFinancials(String id, BigDecimal fiscalYear) throws ApiException, NoSuchMethodException {
+      Method targetMethod = MunicipalityApi.class.getMethod("getMunicipalityFinancialsWithHttpInfo", String.class, BigDecimal.class);
+      
+      Object[] apiCallArguments = { id, fiscalYear };
+      ApiResponse<ApiResponseMunicipalitiyFinancials> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

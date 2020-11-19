@@ -30,7 +30,7 @@ public class BulkDownloadsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getBulkDownloadLinksTest() throws ApiException {
+    public void getBulkDownloadLinksTest() throws ApiException, NoSuchMethodException {
         ApiResponseBulkDownloadLinks response = api.getBulkDownloadLinks();
 
         // TODO: test validations

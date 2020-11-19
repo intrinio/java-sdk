@@ -87,7 +87,7 @@ public class ApiResponseSecurityIntradayPrices {
 
   public ApiResponseSecurityIntradayPrices addIntradayPricesItem(IntradayStockPrice intradayPricesItem) {
     if (this.intradayPrices == null) {
-      this.intradayPrices = new ArrayList<IntradayStockPrice>();
+      this.intradayPrices = new ArrayList<>();
     }
     this.intradayPrices.add(intradayPricesItem);
     return this;

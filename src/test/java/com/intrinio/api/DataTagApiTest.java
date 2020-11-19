@@ -32,7 +32,7 @@ public class DataTagApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllDataTagsTest() throws ApiException {
+    public void getAllDataTagsTest() throws ApiException, NoSuchMethodException {
         String tag = null;
         String type = null;
         String parent = null;
@@ -54,7 +54,7 @@ public class DataTagApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getDataTagByIdTest() throws ApiException {
+    public void getDataTagByIdTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         DataTag response = api.getDataTagById(identifier);
 
@@ -70,7 +70,7 @@ public class DataTagApiTest {
      *          if the Api call fails
      */
     @Test
-    public void searchDataTagsTest() throws ApiException {
+    public void searchDataTagsTest() throws ApiException, NoSuchMethodException {
         String query = null;
         Integer pageSize = null;
         ApiResponseDataTagsSearch response = api.searchDataTags(query, pageSize);

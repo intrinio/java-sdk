@@ -42,7 +42,7 @@ public class ApiResponseSecurityMovingAverageConvergenceDivergence {
 
   public ApiResponseSecurityMovingAverageConvergenceDivergence addTechnicalsItem(MovingAverageConvergenceDivergenceTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<MovingAverageConvergenceDivergenceTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

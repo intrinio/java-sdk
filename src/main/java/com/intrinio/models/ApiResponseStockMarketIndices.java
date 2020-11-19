@@ -33,7 +33,7 @@ public class ApiResponseStockMarketIndices {
 
   public ApiResponseStockMarketIndices addIndicesItem(StockMarketIndexSummary indicesItem) {
     if (this.indices == null) {
-      this.indices = new ArrayList<StockMarketIndexSummary>();
+      this.indices = new ArrayList<>();
     }
     this.indices.add(indicesItem);
     return this;

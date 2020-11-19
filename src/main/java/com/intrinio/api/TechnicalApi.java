@@ -50,6 +50,7 @@ import com.intrinio.models.ApiResponseSecurityWilliamsR;
 import java.math.BigDecimal;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -160,10 +161,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityAccumulationDistributionIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityAccumulationDistributionIndex getSecurityPriceTechnicalsAdi(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityAccumulationDistributionIndex> resp = getSecurityPriceTechnicalsAdiWithHttpInfo(identifier, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityAccumulationDistributionIndex getSecurityPriceTechnicalsAdi(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsAdiWithHttpInfo", String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityAccumulationDistributionIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -311,10 +316,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityAverageDailyTradingVolume
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityAverageDailyTradingVolume getSecurityPriceTechnicalsAdtv(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityAverageDailyTradingVolume> resp = getSecurityPriceTechnicalsAdtvWithHttpInfo(identifier, period, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityAverageDailyTradingVolume getSecurityPriceTechnicalsAdtv(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsAdtvWithHttpInfo", String.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityAverageDailyTradingVolume> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -464,10 +473,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityAverageDirectionalIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityAverageDirectionalIndex getSecurityPriceTechnicalsAdx(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityAverageDirectionalIndex> resp = getSecurityPriceTechnicalsAdxWithHttpInfo(identifier, period, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityAverageDirectionalIndex getSecurityPriceTechnicalsAdx(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsAdxWithHttpInfo", String.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityAverageDirectionalIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -621,10 +634,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityAwesomeOscillator
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityAwesomeOscillator getSecurityPriceTechnicalsAo(String identifier, Integer shortPeriod, Integer longPeriod, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityAwesomeOscillator> resp = getSecurityPriceTechnicalsAoWithHttpInfo(identifier, shortPeriod, longPeriod, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityAwesomeOscillator getSecurityPriceTechnicalsAo(String identifier, Integer shortPeriod, Integer longPeriod, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsAoWithHttpInfo", String.class, Integer.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, shortPeriod, longPeriod, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityAwesomeOscillator> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -776,10 +793,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityAverageTrueRange
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityAverageTrueRange getSecurityPriceTechnicalsAtr(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityAverageTrueRange> resp = getSecurityPriceTechnicalsAtrWithHttpInfo(identifier, period, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityAverageTrueRange getSecurityPriceTechnicalsAtr(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsAtrWithHttpInfo", String.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityAverageTrueRange> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -937,10 +958,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityBollingerBands
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityBollingerBands getSecurityPriceTechnicalsBb(String identifier, Integer period, Float standardDeviations, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityBollingerBands> resp = getSecurityPriceTechnicalsBbWithHttpInfo(identifier, period, standardDeviations, priceKey, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityBollingerBands getSecurityPriceTechnicalsBb(String identifier, Integer period, Float standardDeviations, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsBbWithHttpInfo", String.class, Integer.class, Float.class, String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, standardDeviations, priceKey, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityBollingerBands> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1098,10 +1123,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityCommodityChannelIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityCommodityChannelIndex getSecurityPriceTechnicalsCci(String identifier, Integer period, Float constant, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityCommodityChannelIndex> resp = getSecurityPriceTechnicalsCciWithHttpInfo(identifier, period, constant, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityCommodityChannelIndex getSecurityPriceTechnicalsCci(String identifier, Integer period, Float constant, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsCciWithHttpInfo", String.class, Integer.class, Float.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, constant, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityCommodityChannelIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1253,10 +1282,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityChaikinMoneyFlow
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityChaikinMoneyFlow getSecurityPriceTechnicalsCmf(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityChaikinMoneyFlow> resp = getSecurityPriceTechnicalsCmfWithHttpInfo(identifier, period, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityChaikinMoneyFlow getSecurityPriceTechnicalsCmf(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsCmfWithHttpInfo", String.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityChaikinMoneyFlow> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1410,10 +1443,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityDonchianChannel
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityDonchianChannel getSecurityPriceTechnicalsDc(String identifier, Integer period, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityDonchianChannel> resp = getSecurityPriceTechnicalsDcWithHttpInfo(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityDonchianChannel getSecurityPriceTechnicalsDc(String identifier, Integer period, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsDcWithHttpInfo", String.class, Integer.class, String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, priceKey, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityDonchianChannel> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1569,10 +1606,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityDetrendedPriceOscillator
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityDetrendedPriceOscillator getSecurityPriceTechnicalsDpo(String identifier, Integer period, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityDetrendedPriceOscillator> resp = getSecurityPriceTechnicalsDpoWithHttpInfo(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityDetrendedPriceOscillator getSecurityPriceTechnicalsDpo(String identifier, Integer period, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsDpoWithHttpInfo", String.class, Integer.class, String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, priceKey, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityDetrendedPriceOscillator> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1724,10 +1765,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityEaseOfMovement
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityEaseOfMovement getSecurityPriceTechnicalsEom(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityEaseOfMovement> resp = getSecurityPriceTechnicalsEomWithHttpInfo(identifier, period, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityEaseOfMovement getSecurityPriceTechnicalsEom(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsEomWithHttpInfo", String.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityEaseOfMovement> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1873,10 +1918,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityForceIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityForceIndex getSecurityPriceTechnicalsFi(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityForceIndex> resp = getSecurityPriceTechnicalsFiWithHttpInfo(identifier, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityForceIndex getSecurityPriceTechnicalsFi(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsFiWithHttpInfo", String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityForceIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -2032,10 +2081,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityIchimokuKinkoHyo
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityIchimokuKinkoHyo getSecurityPriceTechnicalsIchimoku(String identifier, Integer lowPeriod, Integer mediumPeriod, Integer highPeriod, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityIchimokuKinkoHyo> resp = getSecurityPriceTechnicalsIchimokuWithHttpInfo(identifier, lowPeriod, mediumPeriod, highPeriod, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityIchimokuKinkoHyo getSecurityPriceTechnicalsIchimoku(String identifier, Integer lowPeriod, Integer mediumPeriod, Integer highPeriod, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsIchimokuWithHttpInfo", String.class, Integer.class, Integer.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, lowPeriod, mediumPeriod, highPeriod, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityIchimokuKinkoHyo> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -2189,10 +2242,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityKeltnerChannel
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityKeltnerChannel getSecurityPriceTechnicalsKc(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityKeltnerChannel> resp = getSecurityPriceTechnicalsKcWithHttpInfo(identifier, period, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityKeltnerChannel getSecurityPriceTechnicalsKc(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsKcWithHttpInfo", String.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityKeltnerChannel> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -2374,10 +2431,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityKnowSureThing
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityKnowSureThing getSecurityPriceTechnicalsKst(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityKnowSureThing> resp = getSecurityPriceTechnicalsKstWithHttpInfo(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityKnowSureThing getSecurityPriceTechnicalsKst(String identifier, Integer roc1, Integer roc2, Integer roc3, Integer roc4, Integer sma1, Integer sma2, Integer sma3, Integer sma4, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsKstWithHttpInfo", String.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityKnowSureThing> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -2555,10 +2616,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityMovingAverageConvergenceDivergence
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityMovingAverageConvergenceDivergence getSecurityPriceTechnicalsMacd(String identifier, Integer fastPeriod, Integer slowPeriod, Integer signalPeriod, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityMovingAverageConvergenceDivergence> resp = getSecurityPriceTechnicalsMacdWithHttpInfo(identifier, fastPeriod, slowPeriod, signalPeriod, priceKey, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityMovingAverageConvergenceDivergence getSecurityPriceTechnicalsMacd(String identifier, Integer fastPeriod, Integer slowPeriod, Integer signalPeriod, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsMacdWithHttpInfo", String.class, Integer.class, Integer.class, Integer.class, String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, fastPeriod, slowPeriod, signalPeriod, priceKey, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityMovingAverageConvergenceDivergence> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -2714,10 +2779,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityMoneyFlowIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityMoneyFlowIndex getSecurityPriceTechnicalsMfi(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityMoneyFlowIndex> resp = getSecurityPriceTechnicalsMfiWithHttpInfo(identifier, period, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityMoneyFlowIndex getSecurityPriceTechnicalsMfi(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsMfiWithHttpInfo", String.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityMoneyFlowIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -2871,10 +2940,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityMassIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityMassIndex getSecurityPriceTechnicalsMi(String identifier, Integer emaPeriod, Integer sumPeriod, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityMassIndex> resp = getSecurityPriceTechnicalsMiWithHttpInfo(identifier, emaPeriod, sumPeriod, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityMassIndex getSecurityPriceTechnicalsMi(String identifier, Integer emaPeriod, Integer sumPeriod, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsMiWithHttpInfo", String.class, Integer.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, emaPeriod, sumPeriod, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityMassIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -3022,10 +3095,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityNegativeVolumeIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityNegativeVolumeIndex getSecurityPriceTechnicalsNvi(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityNegativeVolumeIndex> resp = getSecurityPriceTechnicalsNviWithHttpInfo(identifier, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityNegativeVolumeIndex getSecurityPriceTechnicalsNvi(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsNviWithHttpInfo", String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityNegativeVolumeIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -3169,10 +3246,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityOnBalanceVolume
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityOnBalanceVolume getSecurityPriceTechnicalsObv(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityOnBalanceVolume> resp = getSecurityPriceTechnicalsObvWithHttpInfo(identifier, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityOnBalanceVolume getSecurityPriceTechnicalsObv(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsObvWithHttpInfo", String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityOnBalanceVolume> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -3320,10 +3401,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityOnBalanceVolumeMean
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityOnBalanceVolumeMean getSecurityPriceTechnicalsObvMean(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityOnBalanceVolumeMean> resp = getSecurityPriceTechnicalsObvMeanWithHttpInfo(identifier, period, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityOnBalanceVolumeMean getSecurityPriceTechnicalsObvMean(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsObvMeanWithHttpInfo", String.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityOnBalanceVolumeMean> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -3477,10 +3562,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityRelativeStrengthIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityRelativeStrengthIndex getSecurityPriceTechnicalsRsi(String identifier, Integer period, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityRelativeStrengthIndex> resp = getSecurityPriceTechnicalsRsiWithHttpInfo(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityRelativeStrengthIndex getSecurityPriceTechnicalsRsi(String identifier, Integer period, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsRsiWithHttpInfo", String.class, Integer.class, String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, priceKey, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityRelativeStrengthIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -3636,10 +3725,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecuritySimpleMovingAverage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecuritySimpleMovingAverage getSecurityPriceTechnicalsSma(String identifier, Integer period, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecuritySimpleMovingAverage> resp = getSecurityPriceTechnicalsSmaWithHttpInfo(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecuritySimpleMovingAverage getSecurityPriceTechnicalsSma(String identifier, Integer period, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsSmaWithHttpInfo", String.class, Integer.class, String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, priceKey, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecuritySimpleMovingAverage> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -3795,10 +3888,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityStochasticOscillator
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityStochasticOscillator getSecurityPriceTechnicalsSr(String identifier, Integer period, Integer signalPeriod, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityStochasticOscillator> resp = getSecurityPriceTechnicalsSrWithHttpInfo(identifier, period, signalPeriod, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityStochasticOscillator getSecurityPriceTechnicalsSr(String identifier, Integer period, Integer signalPeriod, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsSrWithHttpInfo", String.class, Integer.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, signalPeriod, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityStochasticOscillator> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -3950,10 +4047,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityTripleExponentialAverage
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityTripleExponentialAverage getSecurityPriceTechnicalsTrix(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityTripleExponentialAverage> resp = getSecurityPriceTechnicalsTrixWithHttpInfo(identifier, period, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityTripleExponentialAverage getSecurityPriceTechnicalsTrix(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsTrixWithHttpInfo", String.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityTripleExponentialAverage> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -4111,10 +4212,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityTrueStrengthIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityTrueStrengthIndex getSecurityPriceTechnicalsTsi(String identifier, Integer lowPeriod, Integer highPeriod, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityTrueStrengthIndex> resp = getSecurityPriceTechnicalsTsiWithHttpInfo(identifier, lowPeriod, highPeriod, priceKey, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityTrueStrengthIndex getSecurityPriceTechnicalsTsi(String identifier, Integer lowPeriod, Integer highPeriod, String priceKey, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsTsiWithHttpInfo", String.class, Integer.class, Integer.class, String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, lowPeriod, highPeriod, priceKey, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityTrueStrengthIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -4288,10 +4393,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityUltimateOscillator
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityUltimateOscillator getSecurityPriceTechnicalsUo(String identifier, Integer shortPeriod, Integer mediumPeriod, Integer longPeriod, Float shortWeight, Float mediumWeight, Float longWeight, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityUltimateOscillator> resp = getSecurityPriceTechnicalsUoWithHttpInfo(identifier, shortPeriod, mediumPeriod, longPeriod, shortWeight, mediumWeight, longWeight, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityUltimateOscillator getSecurityPriceTechnicalsUo(String identifier, Integer shortPeriod, Integer mediumPeriod, Integer longPeriod, Float shortWeight, Float mediumWeight, Float longWeight, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsUoWithHttpInfo", String.class, Integer.class, Integer.class, Integer.class, Float.class, Float.class, Float.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, shortPeriod, mediumPeriod, longPeriod, shortWeight, mediumWeight, longWeight, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityUltimateOscillator> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -4451,10 +4560,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityVortexIndicator
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityVortexIndicator getSecurityPriceTechnicalsVi(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityVortexIndicator> resp = getSecurityPriceTechnicalsViWithHttpInfo(identifier, period, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityVortexIndicator getSecurityPriceTechnicalsVi(String identifier, Integer period, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsViWithHttpInfo", String.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityVortexIndicator> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -4600,10 +4713,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityVolumePriceTrend
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityVolumePriceTrend getSecurityPriceTechnicalsVpt(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityVolumePriceTrend> resp = getSecurityPriceTechnicalsVptWithHttpInfo(identifier, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityVolumePriceTrend getSecurityPriceTechnicalsVpt(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsVptWithHttpInfo", String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityVolumePriceTrend> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -4747,10 +4864,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityVolumeWeightedAveragePrice
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityVolumeWeightedAveragePrice getSecurityPriceTechnicalsVwap(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityVolumeWeightedAveragePrice> resp = getSecurityPriceTechnicalsVwapWithHttpInfo(identifier, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityVolumeWeightedAveragePrice getSecurityPriceTechnicalsVwap(String identifier, String startDate, String endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsVwapWithHttpInfo", String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityVolumeWeightedAveragePrice> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -4898,10 +5019,14 @@ public class TechnicalApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityWilliamsR
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityWilliamsR getSecurityPriceTechnicalsWr(String identifier, Integer period, String startDate, String endDate, BigDecimal pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseSecurityWilliamsR> resp = getSecurityPriceTechnicalsWrWithHttpInfo(identifier, period, startDate, endDate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseSecurityWilliamsR getSecurityPriceTechnicalsWr(String identifier, Integer period, String startDate, String endDate, BigDecimal pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = TechnicalApi.class.getMethod("getSecurityPriceTechnicalsWrWithHttpInfo", String.class, Integer.class, String.class, String.class, BigDecimal.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, period, startDate, endDate, pageSize, nextPage };
+      ApiResponse<ApiResponseSecurityWilliamsR> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

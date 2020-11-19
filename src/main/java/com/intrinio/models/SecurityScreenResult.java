@@ -53,7 +53,7 @@ public class SecurityScreenResult {
 
   public SecurityScreenResult addDataItem(SecurityScreenResultData dataItem) {
     if (this.data == null) {
-      this.data = new ArrayList<SecurityScreenResultData>();
+      this.data = new ArrayList<>();
     }
     this.data.add(dataItem);
     return this;

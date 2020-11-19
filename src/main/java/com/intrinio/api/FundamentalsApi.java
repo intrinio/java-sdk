@@ -21,6 +21,7 @@ import com.intrinio.models.ApiResponseStandardizedFinancials;
 import com.intrinio.models.Fundamental;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -115,10 +116,14 @@ public class FundamentalsApi {
      * @param id The Intrinio ID for the Fundamental (required)
      * @return Fundamental
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public Fundamental getFundamentalById(String id) throws ApiException {
-        ApiResponse<Fundamental> resp = getFundamentalByIdWithHttpInfo(id);
-        return resp.getData();
+    public Fundamental getFundamentalById(String id) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FundamentalsApi.class.getMethod("getFundamentalByIdWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { id };
+      ApiResponse<Fundamental> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -238,10 +243,14 @@ public class FundamentalsApi {
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
      * @return ApiResponseReportedFinancials
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseReportedFinancials getFundamentalReportedFinancials(String id) throws ApiException {
-        ApiResponse<ApiResponseReportedFinancials> resp = getFundamentalReportedFinancialsWithHttpInfo(id);
-        return resp.getData();
+    public ApiResponseReportedFinancials getFundamentalReportedFinancials(String id) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FundamentalsApi.class.getMethod("getFundamentalReportedFinancialsWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { id };
+      ApiResponse<ApiResponseReportedFinancials> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -361,10 +370,14 @@ public class FundamentalsApi {
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
      * @return ApiResponseStandardizedFinancials
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStandardizedFinancials getFundamentalStandardizedFinancials(String id) throws ApiException {
-        ApiResponse<ApiResponseStandardizedFinancials> resp = getFundamentalStandardizedFinancialsWithHttpInfo(id);
-        return resp.getData();
+    public ApiResponseStandardizedFinancials getFundamentalStandardizedFinancials(String id) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FundamentalsApi.class.getMethod("getFundamentalStandardizedFinancialsWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { id };
+      ApiResponse<ApiResponseStandardizedFinancials> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -508,10 +521,14 @@ public class FundamentalsApi {
      * @param fiscalPeriod The fiscal period (required)
      * @return Fundamental
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public Fundamental lookupFundamental(String identifier, String statementCode, Integer fiscalYear, String fiscalPeriod) throws ApiException {
-        ApiResponse<Fundamental> resp = lookupFundamentalWithHttpInfo(identifier, statementCode, fiscalYear, fiscalPeriod);
-        return resp.getData();
+    public Fundamental lookupFundamental(String identifier, String statementCode, Integer fiscalYear, String fiscalPeriod) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FundamentalsApi.class.getMethod("lookupFundamentalWithHttpInfo", String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, statementCode, fiscalYear, fiscalPeriod };
+      ApiResponse<Fundamental> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

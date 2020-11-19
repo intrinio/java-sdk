@@ -33,7 +33,7 @@ public class ApiResponseDataTags {
 
   public ApiResponseDataTags addTagsItem(DataTag tagsItem) {
     if (this.tags == null) {
-      this.tags = new ArrayList<DataTag>();
+      this.tags = new ArrayList<>();
     }
     this.tags.add(tagsItem);
     return this;

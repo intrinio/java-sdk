@@ -42,7 +42,7 @@ public class ApiResponseSecurityKeltnerChannel {
 
   public ApiResponseSecurityKeltnerChannel addTechnicalsItem(KeltnerChannelTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<KeltnerChannelTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

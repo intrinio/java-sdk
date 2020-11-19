@@ -42,7 +42,7 @@ public class ApiResponseSecurityOnBalanceVolume {
 
   public ApiResponseSecurityOnBalanceVolume addTechnicalsItem(OnBalanceVolumeTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<OnBalanceVolumeTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

@@ -42,7 +42,7 @@ public class ApiResponseSecurityDetrendedPriceOscillator {
 
   public ApiResponseSecurityDetrendedPriceOscillator addTechnicalsItem(DetrendedPriceOscillatorTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<DetrendedPriceOscillatorTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

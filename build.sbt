@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "com.intrinio",
     name := "intrinio-sdk",
-    version := "5.6.3",
+    version := "6.0.0",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),
@@ -16,7 +16,7 @@ lazy val root = (project in file(".")).
       "com.evanlennick" % "retry4j" % "0.15.0",
       "org.threeten" % "threetenbp" % "1.3.5" % "compile",
       "io.gsonfire" % "gson-fire" % "1.8.0" % "compile",
-      "junit" % "junit" % "4.12" % "test",
+      "junit" % "junit" % "4.13.1" % "test",
       "com.novocode" % "junit-interface" % "0.10" % "test"
     )
   )

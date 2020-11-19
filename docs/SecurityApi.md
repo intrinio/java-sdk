@@ -4485,7 +4485,7 @@ Name | Type | Description  | Notes
 #### Screen Securities
 
 
-Screen Securities using complex logic
+Screen Securities using complex logic. Use POST only. See &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions.
 
 [//]: # (END_OVERVIEW)
 
@@ -4550,7 +4550,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **logic** | [**SecurityScreenGroup**](SecurityScreenGroup.md)| The logic to screen with, consisting of operators, clauses, and nested groups.&lt;br/&gt; See &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. | [optional] &nbsp;
+ **logic** | [**SecurityScreenGroup**](SecurityScreenGroup.md)| The logic to screen with, consisting of operators, clauses, and nested groups. &lt;/br&gt; See &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions. | [optional] &nbsp;
  **orderColumn** | String| Results returned sorted by this column | [optional] &nbsp;
  **orderDirection** | String| Sort order to use with the order_column | [optional] [default to asc] [enum: asc, desc] &nbsp;
  **primaryOnly** | Boolean| Return only primary securities | [optional] [default to false] &nbsp;

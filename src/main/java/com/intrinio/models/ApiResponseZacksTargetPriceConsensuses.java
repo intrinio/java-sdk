@@ -33,7 +33,7 @@ public class ApiResponseZacksTargetPriceConsensuses {
 
   public ApiResponseZacksTargetPriceConsensuses addTargetPriceConsensusesItem(ZacksTargetPriceConsensus targetPriceConsensusesItem) {
     if (this.targetPriceConsensuses == null) {
-      this.targetPriceConsensuses = new ArrayList<ZacksTargetPriceConsensus>();
+      this.targetPriceConsensuses = new ArrayList<>();
     }
     this.targetPriceConsensuses.add(targetPriceConsensusesItem);
     return this;

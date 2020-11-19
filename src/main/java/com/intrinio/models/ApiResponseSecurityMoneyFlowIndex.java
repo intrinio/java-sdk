@@ -42,7 +42,7 @@ public class ApiResponseSecurityMoneyFlowIndex {
 
   public ApiResponseSecurityMoneyFlowIndex addTechnicalsItem(MoneyFlowIndexTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<MoneyFlowIndexTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

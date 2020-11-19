@@ -37,7 +37,7 @@ public class ApiResponseCompanyNews {
 
   public ApiResponseCompanyNews addNewsItem(CompanyNewsSummary newsItem) {
     if (this.news == null) {
-      this.news = new ArrayList<CompanyNewsSummary>();
+      this.news = new ArrayList<>();
     }
     this.news.add(newsItem);
     return this;

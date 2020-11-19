@@ -33,7 +33,7 @@ public class ApiResponseFilingNotes {
 
   public ApiResponseFilingNotes addFilingNotesItem(FilingNoteSummary filingNotesItem) {
     if (this.filingNotes == null) {
-      this.filingNotes = new ArrayList<FilingNoteSummary>();
+      this.filingNotes = new ArrayList<>();
     }
     this.filingNotes.add(filingNotesItem);
     return this;

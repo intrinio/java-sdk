@@ -30,7 +30,7 @@ public class ApiResponseForexCurrencies {
 
   public ApiResponseForexCurrencies addCurrenciesItem(ForexCurrency currenciesItem) {
     if (this.currencies == null) {
-      this.currencies = new ArrayList<ForexCurrency>();
+      this.currencies = new ArrayList<>();
     }
     this.currencies.add(currenciesItem);
     return this;

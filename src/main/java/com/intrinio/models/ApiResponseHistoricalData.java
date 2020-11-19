@@ -33,7 +33,7 @@ public class ApiResponseHistoricalData {
 
   public ApiResponseHistoricalData addHistoricalDataItem(HistoricalData historicalDataItem) {
     if (this.historicalData == null) {
-      this.historicalData = new ArrayList<HistoricalData>();
+      this.historicalData = new ArrayList<>();
     }
     this.historicalData.add(historicalDataItem);
     return this;

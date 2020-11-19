@@ -42,7 +42,7 @@ public class ApiResponseSecurityMassIndex {
 
   public ApiResponseSecurityMassIndex addTechnicalsItem(MassIndexTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<MassIndexTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

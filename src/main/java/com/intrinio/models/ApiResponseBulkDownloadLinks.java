@@ -30,7 +30,7 @@ public class ApiResponseBulkDownloadLinks {
 
   public ApiResponseBulkDownloadLinks addBulkDownloadsItem(BulkDownloadSummary bulkDownloadsItem) {
     if (this.bulkDownloads == null) {
-      this.bulkDownloads = new ArrayList<BulkDownloadSummary>();
+      this.bulkDownloads = new ArrayList<>();
     }
     this.bulkDownloads.add(bulkDownloadsItem);
     return this;

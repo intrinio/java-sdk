@@ -42,7 +42,7 @@ public class ApiResponseSecurityTrueStrengthIndex {
 
   public ApiResponseSecurityTrueStrengthIndex addTechnicalsItem(TrueStrengthIndexTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<TrueStrengthIndexTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

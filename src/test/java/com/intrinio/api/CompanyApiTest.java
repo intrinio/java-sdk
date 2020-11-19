@@ -42,7 +42,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllCompaniesTest() throws ApiException {
+    public void getAllCompaniesTest() throws ApiException, NoSuchMethodException {
         LocalDate latestFilingDate = null;
         String sic = null;
         String template = null;
@@ -67,7 +67,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllCompanyNewsTest() throws ApiException {
+    public void getAllCompanyNewsTest() throws ApiException, NoSuchMethodException {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseNews response = api.getAllCompanyNews(pageSize, nextPage);
@@ -84,7 +84,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getCompanyTest() throws ApiException {
+    public void getCompanyTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Company response = api.getCompany(identifier);
 
@@ -100,7 +100,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getCompanyDataPointNumberTest() throws ApiException {
+    public void getCompanyDataPointNumberTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         BigDecimal response = api.getCompanyDataPointNumber(identifier, tag);
@@ -117,7 +117,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getCompanyDataPointTextTest() throws ApiException {
+    public void getCompanyDataPointTextTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String response = api.getCompanyDataPointText(identifier, tag);
@@ -134,7 +134,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getCompanyFilingsTest() throws ApiException {
+    public void getCompanyFilingsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String reportType = null;
         LocalDate startDate = null;
@@ -155,7 +155,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getCompanyFundamentalsTest() throws ApiException {
+    public void getCompanyFundamentalsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         LocalDate filedAfter = null;
         LocalDate filedBefore = null;
@@ -181,7 +181,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getCompanyHistoricalDataTest() throws ApiException {
+    public void getCompanyHistoricalDataTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String frequency = null;
@@ -205,7 +205,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getCompanyIposTest() throws ApiException {
+    public void getCompanyIposTest() throws ApiException, NoSuchMethodException {
         String ticker = null;
         String status = null;
         LocalDate startDate = null;
@@ -228,7 +228,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getCompanyNewsTest() throws ApiException {
+    public void getCompanyNewsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer pageSize = null;
         String nextPage = null;
@@ -246,7 +246,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getCompanySecuritiesTest() throws ApiException {
+    public void getCompanySecuritiesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String nextPage = null;
         ApiResponseCompanySecurities response = api.getCompanySecurities(identifier, nextPage);
@@ -263,7 +263,7 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void lookupCompanyFundamentalTest() throws ApiException {
+    public void lookupCompanyFundamentalTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String statementCode = null;
         String fiscalPeriod = null;
@@ -282,10 +282,11 @@ public class CompanyApiTest {
      *          if the Api call fails
      */
     @Test
-    public void searchCompaniesTest() throws ApiException {
+    public void searchCompaniesTest() throws ApiException, NoSuchMethodException {
         String query = null;
+        Boolean active = null;
         Integer pageSize = null;
-        ApiResponseCompaniesSearch response = api.searchCompanies(query, pageSize);
+        ApiResponseCompaniesSearch response = api.searchCompanies(query, active, pageSize);
 
         // TODO: test validations
     }

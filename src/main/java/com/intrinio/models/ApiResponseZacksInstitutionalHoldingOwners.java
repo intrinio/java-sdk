@@ -33,7 +33,7 @@ public class ApiResponseZacksInstitutionalHoldingOwners {
 
   public ApiResponseZacksInstitutionalHoldingOwners addOwnersItem(ZacksInstitutionalHoldingOwnerDetail ownersItem) {
     if (this.owners == null) {
-      this.owners = new ArrayList<ZacksInstitutionalHoldingOwnerDetail>();
+      this.owners = new ArrayList<>();
     }
     this.owners.add(ownersItem);
     return this;

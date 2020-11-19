@@ -36,7 +36,7 @@ public class StockExchangeApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllStockExchangesTest() throws ApiException {
+    public void getAllStockExchangesTest() throws ApiException, NoSuchMethodException {
         String city = null;
         String country = null;
         String countryCode = null;
@@ -55,7 +55,7 @@ public class StockExchangeApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getStockExchangeByIdTest() throws ApiException {
+    public void getStockExchangeByIdTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         StockExchange response = api.getStockExchangeById(identifier);
 
@@ -71,7 +71,7 @@ public class StockExchangeApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getStockExchangePriceAdjustmentsTest() throws ApiException {
+    public void getStockExchangePriceAdjustmentsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         LocalDate date = null;
         Integer pageSize = null;
@@ -90,7 +90,7 @@ public class StockExchangeApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getStockExchangePricesTest() throws ApiException {
+    public void getStockExchangePricesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         LocalDate date = null;
         Integer pageSize = null;
@@ -109,7 +109,7 @@ public class StockExchangeApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getStockExchangeRealtimePricesTest() throws ApiException {
+    public void getStockExchangeRealtimePricesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String source = null;
         Integer pageSize = null;
@@ -128,7 +128,7 @@ public class StockExchangeApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getStockExchangeSecuritiesTest() throws ApiException {
+    public void getStockExchangeSecuritiesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer pageSize = null;
         String nextPage = null;

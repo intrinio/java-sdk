@@ -37,7 +37,7 @@ public class ApiResponseReportedFinancials {
 
   public ApiResponseReportedFinancials addReportedFinancialsItem(ReportedFinancial reportedFinancialsItem) {
     if (this.reportedFinancials == null) {
-      this.reportedFinancials = new ArrayList<ReportedFinancial>();
+      this.reportedFinancials = new ArrayList<>();
     }
     this.reportedFinancials.add(reportedFinancialsItem);
     return this;

@@ -37,7 +37,7 @@ public class ApiResponseStandardizedFinancials {
 
   public ApiResponseStandardizedFinancials addStandardizedFinancialsItem(StandardizedFinancial standardizedFinancialsItem) {
     if (this.standardizedFinancials == null) {
-      this.standardizedFinancials = new ArrayList<StandardizedFinancial>();
+      this.standardizedFinancials = new ArrayList<>();
     }
     this.standardizedFinancials.add(standardizedFinancialsItem);
     return this;

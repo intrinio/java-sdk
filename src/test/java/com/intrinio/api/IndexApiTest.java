@@ -43,7 +43,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllEconomicIndicesTest() throws ApiException {
+    public void getAllEconomicIndicesTest() throws ApiException, NoSuchMethodException {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseEconomicIndices response = api.getAllEconomicIndices(pageSize, nextPage);
@@ -60,7 +60,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllSicIndicesTest() throws ApiException {
+    public void getAllSicIndicesTest() throws ApiException, NoSuchMethodException {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseSICIndices response = api.getAllSicIndices(pageSize, nextPage);
@@ -77,7 +77,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllStockMarketIndicesTest() throws ApiException {
+    public void getAllStockMarketIndicesTest() throws ApiException, NoSuchMethodException {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseStockMarketIndices response = api.getAllStockMarketIndices(pageSize, nextPage);
@@ -94,7 +94,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getEconomicIndexByIdTest() throws ApiException {
+    public void getEconomicIndexByIdTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         EconomicIndex response = api.getEconomicIndexById(identifier);
 
@@ -110,7 +110,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getEconomicIndexDataPointNumberTest() throws ApiException {
+    public void getEconomicIndexDataPointNumberTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         BigDecimal response = api.getEconomicIndexDataPointNumber(identifier, tag);
@@ -127,7 +127,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getEconomicIndexDataPointTextTest() throws ApiException {
+    public void getEconomicIndexDataPointTextTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String response = api.getEconomicIndexDataPointText(identifier, tag);
@@ -144,7 +144,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getEconomicIndexHistoricalDataTest() throws ApiException {
+    public void getEconomicIndexHistoricalDataTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String type = null;
@@ -167,7 +167,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSicIndexByIdTest() throws ApiException {
+    public void getSicIndexByIdTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         SICIndex response = api.getSicIndexById(identifier);
 
@@ -183,7 +183,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSicIndexDataPointNumberTest() throws ApiException {
+    public void getSicIndexDataPointNumberTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         BigDecimal response = api.getSicIndexDataPointNumber(identifier, tag);
@@ -200,7 +200,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSicIndexDataPointTextTest() throws ApiException {
+    public void getSicIndexDataPointTextTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String response = api.getSicIndexDataPointText(identifier, tag);
@@ -217,7 +217,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSicIndexHistoricalDataTest() throws ApiException {
+    public void getSicIndexHistoricalDataTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String type = null;
@@ -240,7 +240,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getStockMarketIndexByIdTest() throws ApiException {
+    public void getStockMarketIndexByIdTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         StockMarketIndex response = api.getStockMarketIndexById(identifier);
 
@@ -256,7 +256,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getStockMarketIndexDataPointNumberTest() throws ApiException {
+    public void getStockMarketIndexDataPointNumberTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         BigDecimal response = api.getStockMarketIndexDataPointNumber(identifier, tag);
@@ -273,7 +273,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getStockMarketIndexDataPointTextTest() throws ApiException {
+    public void getStockMarketIndexDataPointTextTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String response = api.getStockMarketIndexDataPointText(identifier, tag);
@@ -290,7 +290,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getStockMarketIndexHistoricalDataTest() throws ApiException {
+    public void getStockMarketIndexHistoricalDataTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String type = null;
@@ -313,7 +313,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void searchEconomicIndicesTest() throws ApiException {
+    public void searchEconomicIndicesTest() throws ApiException, NoSuchMethodException {
         String query = null;
         Integer pageSize = null;
         ApiResponseEconomicIndicesSearch response = api.searchEconomicIndices(query, pageSize);
@@ -330,7 +330,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void searchSicIndicesTest() throws ApiException {
+    public void searchSicIndicesTest() throws ApiException, NoSuchMethodException {
         String query = null;
         Integer pageSize = null;
         ApiResponseSICIndicesSearch response = api.searchSicIndices(query, pageSize);
@@ -347,7 +347,7 @@ public class IndexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void searchStockMarketsIndicesTest() throws ApiException {
+    public void searchStockMarketsIndicesTest() throws ApiException, NoSuchMethodException {
         String query = null;
         Integer pageSize = null;
         ApiResponseStockMarketIndicesSearch response = api.searchStockMarketsIndices(query, pageSize);

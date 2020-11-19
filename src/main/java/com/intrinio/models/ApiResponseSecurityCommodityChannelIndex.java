@@ -42,7 +42,7 @@ public class ApiResponseSecurityCommodityChannelIndex {
 
   public ApiResponseSecurityCommodityChannelIndex addTechnicalsItem(CommodityChannelIndexTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<CommodityChannelIndexTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

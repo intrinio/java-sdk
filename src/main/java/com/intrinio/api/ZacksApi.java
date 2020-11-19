@@ -31,6 +31,7 @@ import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -193,10 +194,14 @@ public class ZacksApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseZacksAnalystRatings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseZacksAnalystRatings getZacksAnalystRatings(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseZacksAnalystRatings> resp = getZacksAnalystRatingsWithHttpInfo(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseZacksAnalystRatings getZacksAnalystRatings(String identifier, LocalDate startDate, LocalDate endDate, BigDecimal meanGreater, BigDecimal meanLess, Integer strongBuysGreater, Integer strongBuysLess, Integer buysGreater, Integer buysLess, Integer holdsGreater, Integer holdsLess, Integer sellsGreater, Integer sellsLess, Integer strongSellsGreater, Integer strongSellsLess, Integer totalGreater, Integer totalLess, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksAnalystRatingsWithHttpInfo", String.class, LocalDate.class, LocalDate.class, BigDecimal.class, BigDecimal.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage };
+      ApiResponse<ApiResponseZacksAnalystRatings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -380,10 +385,14 @@ public class ZacksApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseZacksEPSEstimates
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseZacksEPSEstimates getZacksEpsEstimates(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseZacksEPSEstimates> resp = getZacksEpsEstimatesWithHttpInfo(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseZacksEPSEstimates getZacksEpsEstimates(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksEpsEstimatesWithHttpInfo", String.class, LocalDate.class, LocalDate.class, Integer.class, String.class, Integer.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage };
+      ApiResponse<ApiResponseZacksEPSEstimates> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -531,10 +540,14 @@ public class ZacksApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseZacksEPSGrowthRates
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseZacksEPSGrowthRates getZacksEpsGrowthRates(String company, String industryGroupName, String industryGroupNumber, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseZacksEPSGrowthRates> resp = getZacksEpsGrowthRatesWithHttpInfo(company, industryGroupName, industryGroupNumber, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseZacksEPSGrowthRates getZacksEpsGrowthRates(String company, String industryGroupName, String industryGroupNumber, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksEpsGrowthRatesWithHttpInfo", String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { company, industryGroupName, industryGroupNumber, pageSize, nextPage };
+      ApiResponse<ApiResponseZacksEPSGrowthRates> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -718,10 +731,14 @@ public class ZacksApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseZacksEPSSurprises
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseZacksEPSSurprises getZacksEpsSurprises(LocalDate startDate, LocalDate endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseZacksEPSSurprises> resp = getZacksEpsSurprisesWithHttpInfo(startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseZacksEPSSurprises getZacksEpsSurprises(LocalDate startDate, LocalDate endDate, BigDecimal epsActualGreater, BigDecimal epsActualLess, BigDecimal epsMeanEstimateGreater, BigDecimal epsMeanEstimateLess, BigDecimal epsAmountDiffGreater, BigDecimal epsAmountDiffLess, BigDecimal epsPercentDiffGreater, BigDecimal epsPercentDiffLess, BigDecimal epsCountEstimateGreater, BigDecimal epsCountEstimateLess, BigDecimal epsStdDevEstimateGreater, BigDecimal epsStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksEpsSurprisesWithHttpInfo", LocalDate.class, LocalDate.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage };
+      ApiResponse<ApiResponseZacksEPSSurprises> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -887,10 +904,14 @@ public class ZacksApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseZacksETFHoldings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseZacksETFHoldings getZacksEtfHoldings(String etfTicker, String holdingSymbol, BigDecimal weightGreater, BigDecimal weightLess, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseZacksETFHoldings> resp = getZacksEtfHoldingsWithHttpInfo(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseZacksETFHoldings getZacksEtfHoldings(String etfTicker, String holdingSymbol, BigDecimal weightGreater, BigDecimal weightLess, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksEtfHoldingsWithHttpInfo", String.class, String.class, BigDecimal.class, BigDecimal.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage };
+      ApiResponse<ApiResponseZacksETFHoldings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1024,10 +1045,14 @@ public class ZacksApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseZacksInstitutionalHoldingCompanies
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseZacksInstitutionalHoldingCompanies getZacksInstitutionalHoldingCompanies(String ticker, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseZacksInstitutionalHoldingCompanies> resp = getZacksInstitutionalHoldingCompaniesWithHttpInfo(ticker, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseZacksInstitutionalHoldingCompanies getZacksInstitutionalHoldingCompanies(String ticker, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksInstitutionalHoldingCompaniesWithHttpInfo", String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { ticker, pageSize, nextPage };
+      ApiResponse<ApiResponseZacksInstitutionalHoldingCompanies> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1155,10 +1180,14 @@ public class ZacksApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseZacksInstitutionalHoldingOwners
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseZacksInstitutionalHoldingOwners getZacksInstitutionalHoldingOwners(String cik, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseZacksInstitutionalHoldingOwners> resp = getZacksInstitutionalHoldingOwnersWithHttpInfo(cik, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseZacksInstitutionalHoldingOwners getZacksInstitutionalHoldingOwners(String cik, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksInstitutionalHoldingOwnersWithHttpInfo", String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { cik, pageSize, nextPage };
+      ApiResponse<ApiResponseZacksInstitutionalHoldingOwners> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1290,10 +1319,14 @@ public class ZacksApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseZacksInstitutionalHoldings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseZacksInstitutionalHoldings getZacksInstitutionalHoldings(String ticker, String ownerCik, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseZacksInstitutionalHoldings> resp = getZacksInstitutionalHoldingsWithHttpInfo(ticker, ownerCik, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseZacksInstitutionalHoldings getZacksInstitutionalHoldings(String ticker, String ownerCik, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksInstitutionalHoldingsWithHttpInfo", String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { ticker, ownerCik, pageSize, nextPage };
+      ApiResponse<ApiResponseZacksInstitutionalHoldings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1423,10 +1456,14 @@ public class ZacksApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseZacksLongTermGrowthRates
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseZacksLongTermGrowthRates getZacksLongTermGrowthRates(String identifier, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseZacksLongTermGrowthRates> resp = getZacksLongTermGrowthRatesWithHttpInfo(identifier, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseZacksLongTermGrowthRates getZacksLongTermGrowthRates(String identifier, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksLongTermGrowthRatesWithHttpInfo", String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, pageSize, nextPage };
+      ApiResponse<ApiResponseZacksLongTermGrowthRates> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1606,10 +1643,14 @@ public class ZacksApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseZacksSalesSurprises
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseZacksSalesSurprises getZacksSalesSurprises(LocalDate startDate, LocalDate endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseZacksSalesSurprises> resp = getZacksSalesSurprisesWithHttpInfo(startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseZacksSalesSurprises getZacksSalesSurprises(LocalDate startDate, LocalDate endDate, BigDecimal salesActualGreater, BigDecimal salesActualLess, BigDecimal salesMeanEstimateGreater, BigDecimal salesMeanEstimateLess, BigDecimal salesAmountDiffGreater, BigDecimal salesAmountDiffLess, BigDecimal salesPercentDiffGreater, BigDecimal salesPercentDiffLess, BigDecimal salesCountEstimateGreater, BigDecimal salesCountEstimateLess, BigDecimal salesStdDevEstimateGreater, BigDecimal salesStdDevEstimateLess, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksSalesSurprisesWithHttpInfo", LocalDate.class, LocalDate.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage };
+      ApiResponse<ApiResponseZacksSalesSurprises> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -1767,10 +1808,14 @@ public class ZacksApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseZacksTargetPriceConsensuses
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseZacksTargetPriceConsensuses getZacksTargetPriceConsensuses(String identifier, String industryGroupNumber, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseZacksTargetPriceConsensuses> resp = getZacksTargetPriceConsensusesWithHttpInfo(identifier, industryGroupNumber, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseZacksTargetPriceConsensuses getZacksTargetPriceConsensuses(String identifier, String industryGroupNumber, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksTargetPriceConsensusesWithHttpInfo", String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, industryGroupNumber, pageSize, nextPage };
+      ApiResponse<ApiResponseZacksTargetPriceConsensuses> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

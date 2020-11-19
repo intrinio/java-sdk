@@ -78,7 +78,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllSecuritiesTest() throws ApiException {
+    public void getAllSecuritiesTest() throws ApiException, NoSuchMethodException {
         Boolean active = null;
         Boolean delisted = null;
         String code = null;
@@ -111,7 +111,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityByIdTest() throws ApiException {
+    public void getSecurityByIdTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Security response = api.getSecurityById(identifier);
 
@@ -127,7 +127,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityDataPointNumberTest() throws ApiException {
+    public void getSecurityDataPointNumberTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         BigDecimal response = api.getSecurityDataPointNumber(identifier, tag);
@@ -144,7 +144,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityDataPointTextTest() throws ApiException {
+    public void getSecurityDataPointTextTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String response = api.getSecurityDataPointText(identifier, tag);
@@ -161,7 +161,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityHistoricalDataTest() throws ApiException {
+    public void getSecurityHistoricalDataTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String tag = null;
         String frequency = null;
@@ -185,7 +185,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityIntradayPricesTest() throws ApiException {
+    public void getSecurityIntradayPricesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String source = null;
         LocalDate startDate = null;
@@ -208,7 +208,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityLatestDividendRecordTest() throws ApiException {
+    public void getSecurityLatestDividendRecordTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         DividendRecord response = api.getSecurityLatestDividendRecord(identifier);
 
@@ -224,7 +224,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityLatestEarningsRecordTest() throws ApiException {
+    public void getSecurityLatestEarningsRecordTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         EarningsRecord response = api.getSecurityLatestEarningsRecord(identifier);
 
@@ -240,7 +240,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsAdiTest() throws ApiException {
+    public void getSecurityPriceTechnicalsAdiTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String startDate = null;
         String endDate = null;
@@ -260,7 +260,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsAdtvTest() throws ApiException {
+    public void getSecurityPriceTechnicalsAdtvTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String startDate = null;
@@ -281,7 +281,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsAdxTest() throws ApiException {
+    public void getSecurityPriceTechnicalsAdxTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String startDate = null;
@@ -302,7 +302,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsAoTest() throws ApiException {
+    public void getSecurityPriceTechnicalsAoTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer shortPeriod = null;
         Integer longPeriod = null;
@@ -324,7 +324,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsAtrTest() throws ApiException {
+    public void getSecurityPriceTechnicalsAtrTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String startDate = null;
@@ -345,7 +345,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsBbTest() throws ApiException {
+    public void getSecurityPriceTechnicalsBbTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         Float standardDeviations = null;
@@ -368,7 +368,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsCciTest() throws ApiException {
+    public void getSecurityPriceTechnicalsCciTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         Float constant = null;
@@ -390,7 +390,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsCmfTest() throws ApiException {
+    public void getSecurityPriceTechnicalsCmfTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String startDate = null;
@@ -411,7 +411,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsDcTest() throws ApiException {
+    public void getSecurityPriceTechnicalsDcTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String priceKey = null;
@@ -433,7 +433,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsDpoTest() throws ApiException {
+    public void getSecurityPriceTechnicalsDpoTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String priceKey = null;
@@ -455,7 +455,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsEomTest() throws ApiException {
+    public void getSecurityPriceTechnicalsEomTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String startDate = null;
@@ -476,7 +476,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsFiTest() throws ApiException {
+    public void getSecurityPriceTechnicalsFiTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String startDate = null;
         String endDate = null;
@@ -496,7 +496,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsIchimokuTest() throws ApiException {
+    public void getSecurityPriceTechnicalsIchimokuTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer lowPeriod = null;
         Integer mediumPeriod = null;
@@ -519,7 +519,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsKcTest() throws ApiException {
+    public void getSecurityPriceTechnicalsKcTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String startDate = null;
@@ -540,7 +540,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsKstTest() throws ApiException {
+    public void getSecurityPriceTechnicalsKstTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer roc1 = null;
         Integer roc2 = null;
@@ -569,7 +569,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsMacdTest() throws ApiException {
+    public void getSecurityPriceTechnicalsMacdTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer fastPeriod = null;
         Integer slowPeriod = null;
@@ -593,7 +593,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsMfiTest() throws ApiException {
+    public void getSecurityPriceTechnicalsMfiTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String startDate = null;
@@ -614,7 +614,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsMiTest() throws ApiException {
+    public void getSecurityPriceTechnicalsMiTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer emaPeriod = null;
         Integer sumPeriod = null;
@@ -636,7 +636,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsNviTest() throws ApiException {
+    public void getSecurityPriceTechnicalsNviTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String startDate = null;
         String endDate = null;
@@ -656,7 +656,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsObvTest() throws ApiException {
+    public void getSecurityPriceTechnicalsObvTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String startDate = null;
         String endDate = null;
@@ -676,7 +676,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsObvMeanTest() throws ApiException {
+    public void getSecurityPriceTechnicalsObvMeanTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String startDate = null;
@@ -697,7 +697,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsRsiTest() throws ApiException {
+    public void getSecurityPriceTechnicalsRsiTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String priceKey = null;
@@ -719,7 +719,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsSmaTest() throws ApiException {
+    public void getSecurityPriceTechnicalsSmaTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String priceKey = null;
@@ -741,7 +741,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsSrTest() throws ApiException {
+    public void getSecurityPriceTechnicalsSrTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         Integer signalPeriod = null;
@@ -763,7 +763,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsTrixTest() throws ApiException {
+    public void getSecurityPriceTechnicalsTrixTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String startDate = null;
@@ -784,7 +784,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsTsiTest() throws ApiException {
+    public void getSecurityPriceTechnicalsTsiTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer lowPeriod = null;
         Integer highPeriod = null;
@@ -807,7 +807,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsUoTest() throws ApiException {
+    public void getSecurityPriceTechnicalsUoTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer shortPeriod = null;
         Integer mediumPeriod = null;
@@ -833,7 +833,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsViTest() throws ApiException {
+    public void getSecurityPriceTechnicalsViTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String startDate = null;
@@ -854,7 +854,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsVptTest() throws ApiException {
+    public void getSecurityPriceTechnicalsVptTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String startDate = null;
         String endDate = null;
@@ -874,7 +874,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsVwapTest() throws ApiException {
+    public void getSecurityPriceTechnicalsVwapTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String startDate = null;
         String endDate = null;
@@ -894,7 +894,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityPriceTechnicalsWrTest() throws ApiException {
+    public void getSecurityPriceTechnicalsWrTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer period = null;
         String startDate = null;
@@ -915,7 +915,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityRealtimePriceTest() throws ApiException {
+    public void getSecurityRealtimePriceTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String source = null;
         RealtimeStockPrice response = api.getSecurityRealtimePrice(identifier, source);
@@ -932,7 +932,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityStockPriceAdjustmentsTest() throws ApiException {
+    public void getSecurityStockPriceAdjustmentsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
@@ -952,7 +952,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityStockPricesTest() throws ApiException {
+    public void getSecurityStockPricesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
@@ -973,7 +973,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityZacksAnalystRatingsTest() throws ApiException {
+    public void getSecurityZacksAnalystRatingsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String startDate = null;
         String endDate = null;
@@ -1006,7 +1006,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityZacksAnalystRatingsSnapshotTest() throws ApiException {
+    public void getSecurityZacksAnalystRatingsSnapshotTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String date = null;
         ApiResponseSecurityZacksAnalystRatingsSnapshot response = api.getSecurityZacksAnalystRatingsSnapshot(identifier, date);
@@ -1023,7 +1023,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityZacksEpsSurprisesTest() throws ApiException {
+    public void getSecurityZacksEpsSurprisesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer pageSize = null;
         String nextPage = null;
@@ -1041,7 +1041,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getSecurityZacksSalesSurprisesTest() throws ApiException {
+    public void getSecurityZacksSalesSurprisesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer pageSize = null;
         String nextPage = null;
@@ -1053,13 +1053,13 @@ public class SecurityApiTest {
     /**
      * Screen Securities
      *
-     * Screen Securities using complex logic
+     * Screen Securities using complex logic. Use POST only. See &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/screener_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;screener documentation&lt;/a&gt; for details on how to construct conditions.
      *
      * @throws ApiException
      *          if the Api call fails
      */
     @Test
-    public void screenSecuritiesTest() throws ApiException {
+    public void screenSecuritiesTest() throws ApiException, NoSuchMethodException {
         SecurityScreenGroup logic = null;
         String orderColumn = null;
         String orderDirection = null;
@@ -1079,7 +1079,7 @@ public class SecurityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void searchSecuritiesTest() throws ApiException {
+    public void searchSecuritiesTest() throws ApiException, NoSuchMethodException {
         String query = null;
         Integer pageSize = null;
         ApiResponseSecuritiesSearch response = api.searchSecurities(query, pageSize);

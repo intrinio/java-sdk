@@ -33,7 +33,7 @@ public class MunicipalityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllMunicipalitiesTest() throws ApiException {
+    public void getAllMunicipalitiesTest() throws ApiException, NoSuchMethodException {
         Boolean hasFinancials = null;
         String governmentName = null;
         String governmentType = null;
@@ -61,7 +61,7 @@ public class MunicipalityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getMunicipalityByIdTest() throws ApiException {
+    public void getMunicipalityByIdTest() throws ApiException, NoSuchMethodException {
         String id = null;
         Municipality response = api.getMunicipalityById(id);
 
@@ -77,7 +77,7 @@ public class MunicipalityApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getMunicipalityFinancialsTest() throws ApiException {
+    public void getMunicipalityFinancialsTest() throws ApiException, NoSuchMethodException {
         String id = null;
         BigDecimal fiscalYear = null;
         ApiResponseMunicipalitiyFinancials response = api.getMunicipalityFinancials(id, fiscalYear);

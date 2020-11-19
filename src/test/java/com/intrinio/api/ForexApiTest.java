@@ -33,7 +33,7 @@ public class ForexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getForexCurrenciesTest() throws ApiException {
+    public void getForexCurrenciesTest() throws ApiException, NoSuchMethodException {
         ApiResponseForexCurrencies response = api.getForexCurrencies();
 
         // TODO: test validations
@@ -48,7 +48,7 @@ public class ForexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getForexPairsTest() throws ApiException {
+    public void getForexPairsTest() throws ApiException, NoSuchMethodException {
         ApiResponseForexPairs response = api.getForexPairs();
 
         // TODO: test validations
@@ -63,7 +63,7 @@ public class ForexApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getForexPricesTest() throws ApiException {
+    public void getForexPricesTest() throws ApiException, NoSuchMethodException {
         String pair = null;
         String timeframe = null;
         String timezone = null;

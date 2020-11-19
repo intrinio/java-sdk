@@ -33,7 +33,7 @@ public class ApiResponseNews {
 
   public ApiResponseNews addNewsItem(CompanyNews newsItem) {
     if (this.news == null) {
-      this.news = new ArrayList<CompanyNews>();
+      this.news = new ArrayList<>();
     }
     this.news.add(newsItem);
     return this;

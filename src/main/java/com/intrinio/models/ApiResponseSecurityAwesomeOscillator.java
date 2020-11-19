@@ -42,7 +42,7 @@ public class ApiResponseSecurityAwesomeOscillator {
 
   public ApiResponseSecurityAwesomeOscillator addTechnicalsItem(AwesomeOscillatorTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<AwesomeOscillatorTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

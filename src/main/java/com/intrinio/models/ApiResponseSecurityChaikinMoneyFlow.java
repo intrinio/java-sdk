@@ -42,7 +42,7 @@ public class ApiResponseSecurityChaikinMoneyFlow {
 
   public ApiResponseSecurityChaikinMoneyFlow addTechnicalsItem(ChaikinMoneyFlowTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<ChaikinMoneyFlowTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

@@ -32,7 +32,7 @@ public class FundamentalsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getFundamentalByIdTest() throws ApiException {
+    public void getFundamentalByIdTest() throws ApiException, NoSuchMethodException {
         String id = null;
         Fundamental response = api.getFundamentalById(id);
 
@@ -48,7 +48,7 @@ public class FundamentalsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getFundamentalReportedFinancialsTest() throws ApiException {
+    public void getFundamentalReportedFinancialsTest() throws ApiException, NoSuchMethodException {
         String id = null;
         ApiResponseReportedFinancials response = api.getFundamentalReportedFinancials(id);
 
@@ -64,7 +64,7 @@ public class FundamentalsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getFundamentalStandardizedFinancialsTest() throws ApiException {
+    public void getFundamentalStandardizedFinancialsTest() throws ApiException, NoSuchMethodException {
         String id = null;
         ApiResponseStandardizedFinancials response = api.getFundamentalStandardizedFinancials(id);
 
@@ -80,7 +80,7 @@ public class FundamentalsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void lookupFundamentalTest() throws ApiException {
+    public void lookupFundamentalTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String statementCode = null;
         Integer fiscalYear = null;

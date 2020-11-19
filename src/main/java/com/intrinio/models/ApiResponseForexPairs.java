@@ -30,7 +30,7 @@ public class ApiResponseForexPairs {
 
   public ApiResponseForexPairs addPairsItem(ForexPair pairsItem) {
     if (this.pairs == null) {
-      this.pairs = new ArrayList<ForexPair>();
+      this.pairs = new ArrayList<>();
     }
     this.pairs.add(pairsItem);
     return this;

@@ -33,7 +33,7 @@ public class ApiResponseInitialPublicOfferings {
 
   public ApiResponseInitialPublicOfferings addInitialPublicOfferingsItem(CompanyInitialPublicOffering initialPublicOfferingsItem) {
     if (this.initialPublicOfferings == null) {
-      this.initialPublicOfferings = new ArrayList<CompanyInitialPublicOffering>();
+      this.initialPublicOfferings = new ArrayList<>();
     }
     this.initialPublicOfferings.add(initialPublicOfferingsItem);
     return this;

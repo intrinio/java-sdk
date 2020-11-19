@@ -34,7 +34,7 @@ public class EtFsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getAllEtfsTest() throws ApiException {
+    public void getAllEtfsTest() throws ApiException, NoSuchMethodException {
         String exchange = null;
         Integer pageSize = null;
         String nextPage = null;
@@ -52,7 +52,7 @@ public class EtFsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getEtfTest() throws ApiException {
+    public void getEtfTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         ETF response = api.getEtf(identifier);
 
@@ -68,7 +68,7 @@ public class EtFsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getEtfAnalyticsTest() throws ApiException {
+    public void getEtfAnalyticsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         ETFAnalytics response = api.getEtfAnalytics(identifier);
 
@@ -84,7 +84,7 @@ public class EtFsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getEtfHoldingsTest() throws ApiException {
+    public void getEtfHoldingsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer pageSize = null;
         String nextPage = null;
@@ -102,7 +102,7 @@ public class EtFsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void getEtfStatsTest() throws ApiException {
+    public void getEtfStatsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         ETFStats response = api.getEtfStats(identifier);
 
@@ -118,7 +118,7 @@ public class EtFsApiTest {
      *          if the Api call fails
      */
     @Test
-    public void searchEtfsTest() throws ApiException {
+    public void searchEtfsTest() throws ApiException, NoSuchMethodException {
         String query = null;
         ApiResponseETFs response = api.searchEtfs(query);
 

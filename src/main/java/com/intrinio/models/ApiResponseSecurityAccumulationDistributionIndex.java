@@ -42,7 +42,7 @@ public class ApiResponseSecurityAccumulationDistributionIndex {
 
   public ApiResponseSecurityAccumulationDistributionIndex addTechnicalsItem(AccumulationDistributionIndexTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<AccumulationDistributionIndexTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

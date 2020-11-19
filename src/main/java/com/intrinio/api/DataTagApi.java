@@ -21,6 +21,7 @@ import com.intrinio.models.ApiResponseDataTagsSearch;
 import com.intrinio.models.DataTag;
 
 import java.lang.reflect.Type;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -135,10 +136,14 @@ public class DataTagApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseDataTags
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseDataTags getAllDataTags(String tag, String type, String parent, String statementCode, String fsTemplate, Integer pageSize, String nextPage) throws ApiException {
-        ApiResponse<ApiResponseDataTags> resp = getAllDataTagsWithHttpInfo(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
-        return resp.getData();
+    public ApiResponseDataTags getAllDataTags(String tag, String type, String parent, String statementCode, String fsTemplate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = DataTagApi.class.getMethod("getAllDataTagsWithHttpInfo", String.class, String.class, String.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { tag, type, parent, statementCode, fsTemplate, pageSize, nextPage };
+      ApiResponse<ApiResponseDataTags> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -270,10 +275,14 @@ public class DataTagApi {
      * @param identifier The Intrinio ID or the code-name of the Data Tag (required)
      * @return DataTag
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public DataTag getDataTagById(String identifier) throws ApiException {
-        ApiResponse<DataTag> resp = getDataTagByIdWithHttpInfo(identifier);
-        return resp.getData();
+    public DataTag getDataTagById(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = DataTagApi.class.getMethod("getDataTagByIdWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<DataTag> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**
@@ -398,10 +407,14 @@ public class DataTagApi {
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponseDataTagsSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseDataTagsSearch searchDataTags(String query, Integer pageSize) throws ApiException {
-        ApiResponse<ApiResponseDataTagsSearch> resp = searchDataTagsWithHttpInfo(query, pageSize);
-        return resp.getData();
+    public ApiResponseDataTagsSearch searchDataTags(String query, Integer pageSize) throws ApiException, NoSuchMethodException {
+      Method targetMethod = DataTagApi.class.getMethod("searchDataTagsWithHttpInfo", String.class, Integer.class);
+      
+      Object[] apiCallArguments = { query, pageSize };
+      ApiResponse<ApiResponseDataTagsSearch> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
     }
 
     /**

@@ -56,7 +56,7 @@ public class SecurityScreenGroup {
 
   public SecurityScreenGroup addClausesItem(SecurityScreenClause clausesItem) {
     if (this.clauses == null) {
-      this.clauses = new ArrayList<SecurityScreenClause>();
+      this.clauses = new ArrayList<>();
     }
     this.clauses.add(clausesItem);
     return this;
@@ -82,7 +82,7 @@ public class SecurityScreenGroup {
 
   public SecurityScreenGroup addGroupsItem(SecurityScreenGroup groupsItem) {
     if (this.groups == null) {
-      this.groups = new ArrayList<SecurityScreenGroup>();
+      this.groups = new ArrayList<>();
     }
     this.groups.add(groupsItem);
     return this;

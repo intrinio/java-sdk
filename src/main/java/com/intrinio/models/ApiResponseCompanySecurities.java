@@ -37,7 +37,7 @@ public class ApiResponseCompanySecurities {
 
   public ApiResponseCompanySecurities addSecuritiesItem(SecuritySummary securitiesItem) {
     if (this.securities == null) {
-      this.securities = new ArrayList<SecuritySummary>();
+      this.securities = new ArrayList<>();
     }
     this.securities.add(securitiesItem);
     return this;

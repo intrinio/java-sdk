@@ -33,7 +33,7 @@ public class ApiResponseZacksLongTermGrowthRates {
 
   public ApiResponseZacksLongTermGrowthRates addLongTermGrowthEstimatesItem(ZacksLongTermGrowthRate longTermGrowthEstimatesItem) {
     if (this.longTermGrowthEstimates == null) {
-      this.longTermGrowthEstimates = new ArrayList<ZacksLongTermGrowthRate>();
+      this.longTermGrowthEstimates = new ArrayList<>();
     }
     this.longTermGrowthEstimates.add(longTermGrowthEstimatesItem);
     return this;

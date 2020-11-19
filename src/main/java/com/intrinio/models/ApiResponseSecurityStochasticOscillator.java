@@ -42,7 +42,7 @@ public class ApiResponseSecurityStochasticOscillator {
 
   public ApiResponseSecurityStochasticOscillator addTechnicalsItem(StochasticOscillatorTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<StochasticOscillatorTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

@@ -75,7 +75,7 @@ public class ReportedFinancial {
 
   public ReportedFinancial addDimensionsItem(ReportedFinancialDimension dimensionsItem) {
     if (this.dimensions == null) {
-      this.dimensions = new ArrayList<ReportedFinancialDimension>();
+      this.dimensions = new ArrayList<>();
     }
     this.dimensions.add(dimensionsItem);
     return this;

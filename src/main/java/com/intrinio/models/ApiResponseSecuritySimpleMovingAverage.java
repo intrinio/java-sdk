@@ -42,7 +42,7 @@ public class ApiResponseSecuritySimpleMovingAverage {
 
   public ApiResponseSecuritySimpleMovingAverage addTechnicalsItem(SimpleMovingAverageTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<SimpleMovingAverageTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

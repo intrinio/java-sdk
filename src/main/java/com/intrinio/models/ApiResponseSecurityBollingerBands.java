@@ -42,7 +42,7 @@ public class ApiResponseSecurityBollingerBands {
 
   public ApiResponseSecurityBollingerBands addTechnicalsItem(BollingerBandsTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<BollingerBandsTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;

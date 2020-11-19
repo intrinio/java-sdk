@@ -42,7 +42,7 @@ public class ApiResponseSecurityKnowSureThing {
 
   public ApiResponseSecurityKnowSureThing addTechnicalsItem(KnowSureThingTechnicalValue technicalsItem) {
     if (this.technicals == null) {
-      this.technicals = new ArrayList<KnowSureThingTechnicalValue>();
+      this.technicals = new ArrayList<>();
     }
     this.technicals.add(technicalsItem);
     return this;
