@@ -4,11 +4,12 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseOptionPrices;
-import com.intrinio.models.ApiResponseOptionPricesRealtime;
 import com.intrinio.models.ApiResponseOptions;
 import com.intrinio.models.ApiResponseOptionsChain;
 import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
+import com.intrinio.models.ApiResponseOptionsPriceRealtime;
+import com.intrinio.models.ApiResponseOptionsStatsRealtime;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
 import org.junit.Test;
@@ -154,7 +155,24 @@ public class OptionsApiTest {
     public void getOptionsPricesRealtimeTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String source = null;
-        ApiResponseOptionPricesRealtime response = api.getOptionsPricesRealtime(identifier, source);
+        ApiResponseOptionsPriceRealtime response = api.getOptionsPricesRealtime(identifier, source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Option Stats Realtime
+     *
+     * Returns all option stats (greeks and implied volatility) and factors used to calculate them, for a given option contract identifier.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsStatsRealtimeTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String source = null;
+        ApiResponseOptionsStatsRealtime response = api.getOptionsStatsRealtime(identifier, source);
 
         // TODO: test validations
     }

@@ -111,13 +111,14 @@ public class SecurityApi {
      * @param figiUniqueId Return securities with the given FIGI Unique ID (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param includeNonFigi When true, include securities that do not have a FIGI. By default, this is false. If this parameter is not specified, only securities with a FIGI are returned. (optional, default to false)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param primaryListing If true, the Security is the primary issue for the company, otherwise it is a secondary issue on a secondary stock exchange (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllSecuritiesCall(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllSecuritiesCall(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, Boolean primaryListing, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -159,6 +160,8 @@ public class SecurityApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("include_non_figi", includeNonFigi));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (primaryListing != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("primary_listing", primaryListing));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -195,10 +198,10 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllSecuritiesValidateBeforeCall(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllSecuritiesValidateBeforeCall(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, Boolean primaryListing, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllSecuritiesCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllSecuritiesCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -223,15 +226,16 @@ public class SecurityApi {
      * @param figiUniqueId Return securities with the given FIGI Unique ID (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param includeNonFigi When true, include securities that do not have a FIGI. By default, this is false. If this parameter is not specified, only securities with a FIGI are returned. (optional, default to false)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param primaryListing If true, the Security is the primary issue for the company, otherwise it is a secondary issue on a secondary stock exchange (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurities
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurities getAllSecurities(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getAllSecuritiesWithHttpInfo", Boolean.class, Boolean.class, String.class, String.class, String.class, String.class, String.class, String.class, LocalDate.class, LocalDate.class, String.class, String.class, String.class, String.class, String.class, Boolean.class, Integer.class, String.class);
+    public ApiResponseSecurities getAllSecurities(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, Boolean primaryListing, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getAllSecuritiesWithHttpInfo", Boolean.class, Boolean.class, String.class, String.class, String.class, String.class, String.class, String.class, LocalDate.class, LocalDate.class, String.class, String.class, String.class, String.class, String.class, Boolean.class, Integer.class, Boolean.class, String.class);
       
-      Object[] apiCallArguments = { active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage };
+      Object[] apiCallArguments = { active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage };
       ApiResponse<ApiResponseSecurities> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -256,12 +260,13 @@ public class SecurityApi {
      * @param figiUniqueId Return securities with the given FIGI Unique ID (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param includeNonFigi When true, include securities that do not have a FIGI. By default, this is false. If this parameter is not specified, only securities with a FIGI are returned. (optional, default to false)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param primaryListing If true, the Security is the primary issue for the company, otherwise it is a secondary issue on a secondary stock exchange (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurities&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurities> getAllSecuritiesWithHttpInfo(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurities> getAllSecuritiesWithHttpInfo(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, Boolean primaryListing, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -286,12 +291,13 @@ public class SecurityApi {
      * @param figiUniqueId Return securities with the given FIGI Unique ID (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). (optional)
      * @param includeNonFigi When true, include securities that do not have a FIGI. By default, this is false. If this parameter is not specified, only securities with a FIGI are returned. (optional, default to false)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param primaryListing If true, the Security is the primary issue for the company, otherwise it is a secondary issue on a secondary stock exchange (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllSecuritiesAsync(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurities> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllSecuritiesAsync(Boolean active, Boolean delisted, String code, String currency, String ticker, String name, String compositeMic, String exchangeMic, LocalDate stockPricesAfter, LocalDate stockPricesBefore, String cik, String figi, String compositeFigi, String shareClassFigi, String figiUniqueId, Boolean includeNonFigi, Integer pageSize, Boolean primaryListing, String nextPage, final ApiCallback<ApiResponseSecurities> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -312,7 +318,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

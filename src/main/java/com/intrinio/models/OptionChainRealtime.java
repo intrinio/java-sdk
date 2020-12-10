@@ -10,6 +10,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.intrinio.models.OptionPriceRealtime;
 import com.intrinio.models.OptionRealtime;
+import com.intrinio.models.OptionStatsRealtime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -25,6 +26,9 @@ public class OptionChainRealtime {
 
   @SerializedName("price")
   private OptionPriceRealtime price = null;
+
+  @SerializedName("stats")
+  private OptionStatsRealtime stats = null;
 
   public OptionChainRealtime option(OptionRealtime option) {
     this.option = option;
@@ -62,6 +66,24 @@ public class OptionChainRealtime {
     this.price = price;
   }
 
+  public OptionChainRealtime stats(OptionStatsRealtime stats) {
+    this.stats = stats;
+    return this;
+  }
+
+   /**
+   * Get stats
+   * @return stats
+  **/
+  @ApiModelProperty(value = "")
+  public OptionStatsRealtime getStats() {
+    return stats;
+  }
+
+  public void setStats(OptionStatsRealtime stats) {
+    this.stats = stats;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -73,12 +95,13 @@ public class OptionChainRealtime {
     }
     OptionChainRealtime optionChainRealtime = (OptionChainRealtime) o;
     return Objects.equals(this.option, optionChainRealtime.option) &&
-        Objects.equals(this.price, optionChainRealtime.price);
+        Objects.equals(this.price, optionChainRealtime.price) &&
+        Objects.equals(this.stats, optionChainRealtime.stats);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(option, price);
+    return Objects.hash(option, price, stats);
   }
 
 
@@ -89,6 +112,7 @@ public class OptionChainRealtime {
     
     sb.append("    option: ").append(toIndentedString(option)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    stats: ").append(toIndentedString(stats)).append("\n");
     sb.append("}");
     return sb.toString();
   }

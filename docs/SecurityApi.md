@@ -80,7 +80,7 @@ Method | HTTP request | Description
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseSecurities getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage)
+> ApiResponseSecurities getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage)
 
 #### All Securities
 
@@ -128,9 +128,10 @@ public class Main {
     String figiUniqueId = null;
     Boolean includeNonFigi = false;
     Integer pageSize = 100;
+    Boolean primaryListing = null;
     String nextPage = null;
     
-    ApiResponseSecurities result = securityApi.getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage);
+    ApiResponseSecurities result = securityApi.getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage);
     System.out.println(result);
   }
 }
@@ -162,6 +163,7 @@ Name | Type | Description  | Notes
  **figiUniqueId** | String| Return securities with the given FIGI Unique ID (&lt;a href&#x3D;\&quot;https://www.openfigi.com/about\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;). | [optional] &nbsp;
  **includeNonFigi** | Boolean| When true, include securities that do not have a FIGI. By default, this is false. If this parameter is not specified, only securities with a FIGI are returned. | [optional] [default to false] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **primaryListing** | Boolean| If true, the Security is the primary issue for the company, otherwise it is a secondary issue on a secondary stock exchange | [optional] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 
@@ -3853,7 +3855,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
     String identifier = "AAPL";
-    String source = null;
+    String source = "bats";
     
     RealtimeStockPrice result = securityApi.getSecurityRealtimePrice(identifier, source);
     System.out.println(result);
@@ -3871,7 +3873,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
- **source** | String| Return the realtime price from the specified data source. If no source is specified, the best source available is used. | [optional] [enum: iex, bats, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed] &nbsp;
+ **source** | String| Return the realtime price from the specified data source. If no source is specified, the best source available is used. | [optional] [enum: iex, bats, bats_delayed] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

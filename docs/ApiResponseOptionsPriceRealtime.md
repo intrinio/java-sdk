@@ -1,9 +1,9 @@
 
-[//]: # (CLASS:OptionChainRealtime)
+[//]: # (CLASS:ApiResponseOptionsPriceRealtime)
 
 [//]: # (KIND:object)
 
-### OptionChainRealtime
+### ApiResponseOptionsPriceRealtime
 
 #### Properties
 
@@ -11,20 +11,20 @@
 
 Name | Type | Description
 ------------ | ------------- | -------------
-**option** | [**OptionRealtime**](OptionRealtime.md) |  &nbsp;
 **price** | [**OptionPriceRealtime**](OptionPriceRealtime.md) |  &nbsp;
 **stats** | [**OptionStatsRealtime**](OptionStatsRealtime.md) |  &nbsp;
+**option** | [**OptionRealtime**](OptionRealtime.md) |  &nbsp;
 
 [//]: # (END_DEFINITION)
-
-
-[//]: # (CONTAINED_CLASS:OptionRealtime)
 
 
 [//]: # (CONTAINED_CLASS:OptionPriceRealtime)
 
 
 [//]: # (CONTAINED_CLASS:OptionStatsRealtime)
+
+
+[//]: # (CONTAINED_CLASS:OptionRealtime)
 
 
 

@@ -8,23 +8,28 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.intrinio.models.OptionPriceRealtime;
 import com.intrinio.models.OptionRealtime;
+import com.intrinio.models.OptionStatsRealtime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ApiResponseOptionPricesRealtime
+ * ApiResponseOptionsPriceRealtime
  */
 
-public class ApiResponseOptionPricesRealtime {
+public class ApiResponseOptionsPriceRealtime {
   @SerializedName("price")
-  private Object price = null;
+  private OptionPriceRealtime price = null;
+
+  @SerializedName("stats")
+  private OptionStatsRealtime stats = null;
 
   @SerializedName("option")
   private OptionRealtime option = null;
 
-  public ApiResponseOptionPricesRealtime price(Object price) {
+  public ApiResponseOptionsPriceRealtime price(OptionPriceRealtime price) {
     this.price = price;
     return this;
   }
@@ -34,15 +39,33 @@ public class ApiResponseOptionPricesRealtime {
    * @return price
   **/
   @ApiModelProperty(value = "")
-  public Object getPrice() {
+  public OptionPriceRealtime getPrice() {
     return price;
   }
 
-  public void setPrice(Object price) {
+  public void setPrice(OptionPriceRealtime price) {
     this.price = price;
   }
 
-  public ApiResponseOptionPricesRealtime option(OptionRealtime option) {
+  public ApiResponseOptionsPriceRealtime stats(OptionStatsRealtime stats) {
+    this.stats = stats;
+    return this;
+  }
+
+   /**
+   * Get stats
+   * @return stats
+  **/
+  @ApiModelProperty(value = "")
+  public OptionStatsRealtime getStats() {
+    return stats;
+  }
+
+  public void setStats(OptionStatsRealtime stats) {
+    this.stats = stats;
+  }
+
+  public ApiResponseOptionsPriceRealtime option(OptionRealtime option) {
     this.option = option;
     return this;
   }
@@ -69,23 +92,25 @@ public class ApiResponseOptionPricesRealtime {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApiResponseOptionPricesRealtime apiResponseOptionPricesRealtime = (ApiResponseOptionPricesRealtime) o;
-    return Objects.equals(this.price, apiResponseOptionPricesRealtime.price) &&
-        Objects.equals(this.option, apiResponseOptionPricesRealtime.option);
+    ApiResponseOptionsPriceRealtime apiResponseOptionsPriceRealtime = (ApiResponseOptionsPriceRealtime) o;
+    return Objects.equals(this.price, apiResponseOptionsPriceRealtime.price) &&
+        Objects.equals(this.stats, apiResponseOptionsPriceRealtime.stats) &&
+        Objects.equals(this.option, apiResponseOptionsPriceRealtime.option);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(price, option);
+    return Objects.hash(price, stats, option);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApiResponseOptionPricesRealtime {\n");
+    sb.append("class ApiResponseOptionsPriceRealtime {\n");
     
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    stats: ").append(toIndentedString(stats)).append("\n");
     sb.append("    option: ").append(toIndentedString(option)).append("\n");
     sb.append("}");
     return sb.toString();

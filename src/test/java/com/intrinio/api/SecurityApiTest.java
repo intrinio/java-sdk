@@ -96,8 +96,9 @@ public class SecurityApiTest {
         String figiUniqueId = null;
         Boolean includeNonFigi = null;
         Integer pageSize = null;
+        Boolean primaryListing = null;
         String nextPage = null;
-        ApiResponseSecurities response = api.getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, nextPage);
+        ApiResponseSecurities response = api.getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage);
 
         // TODO: test validations
     }

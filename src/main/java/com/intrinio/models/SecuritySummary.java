@@ -48,6 +48,9 @@ public class SecuritySummary {
   @SerializedName("share_class_figi")
   private String shareClassFigi = null;
 
+  @SerializedName("primary_listing")
+  private Boolean primaryListing = null;
+
   public SecuritySummary id(String id) {
     this.id = id;
     return this;
@@ -228,6 +231,24 @@ public class SecuritySummary {
     this.shareClassFigi = shareClassFigi;
   }
 
+  public SecuritySummary primaryListing(Boolean primaryListing) {
+    this.primaryListing = primaryListing;
+    return this;
+  }
+
+   /**
+   * If true, the Security is the primary issue for the company, otherwise it is a secondary issue on a secondary stock exchange
+   * @return primaryListing
+  **/
+  @ApiModelProperty(value = "If true, the Security is the primary issue for the company, otherwise it is a secondary issue on a secondary stock exchange")
+  public Boolean isPrimaryListing() {
+    return primaryListing;
+  }
+
+  public void setPrimaryListing(Boolean primaryListing) {
+    this.primaryListing = primaryListing;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -247,12 +268,13 @@ public class SecuritySummary {
         Objects.equals(this.compositeTicker, securitySummary.compositeTicker) &&
         Objects.equals(this.figi, securitySummary.figi) &&
         Objects.equals(this.compositeFigi, securitySummary.compositeFigi) &&
-        Objects.equals(this.shareClassFigi, securitySummary.shareClassFigi);
+        Objects.equals(this.shareClassFigi, securitySummary.shareClassFigi) &&
+        Objects.equals(this.primaryListing, securitySummary.primaryListing);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, companyId, name, code, currency, ticker, compositeTicker, figi, compositeFigi, shareClassFigi);
+    return Objects.hash(id, companyId, name, code, currency, ticker, compositeTicker, figi, compositeFigi, shareClassFigi, primaryListing);
   }
 
 
@@ -271,6 +293,7 @@ public class SecuritySummary {
     sb.append("    figi: ").append(toIndentedString(figi)).append("\n");
     sb.append("    compositeFigi: ").append(toIndentedString(compositeFigi)).append("\n");
     sb.append("    shareClassFigi: ").append(toIndentedString(shareClassFigi)).append("\n");
+    sb.append("    primaryListing: ").append(toIndentedString(primaryListing)).append("\n");
     sb.append("}");
     return sb.toString();
   }
