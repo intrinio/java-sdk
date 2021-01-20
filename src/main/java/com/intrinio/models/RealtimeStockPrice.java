@@ -45,6 +45,9 @@ public class RealtimeStockPrice {
   @SerializedName("open_price")
   private BigDecimal openPrice = null;
 
+  @SerializedName("close_price")
+  private BigDecimal closePrice = null;
+
   @SerializedName("high_price")
   private BigDecimal highPrice = null;
 
@@ -210,6 +213,24 @@ public class RealtimeStockPrice {
     this.openPrice = openPrice;
   }
 
+  public RealtimeStockPrice closePrice(BigDecimal closePrice) {
+    this.closePrice = closePrice;
+    return this;
+  }
+
+   /**
+   * The price at the close of the trading day.
+   * @return closePrice
+  **/
+  @ApiModelProperty(value = "The price at the close of the trading day.")
+  public BigDecimal getClosePrice() {
+    return closePrice;
+  }
+
+  public void setClosePrice(BigDecimal closePrice) {
+    this.closePrice = closePrice;
+  }
+
   public RealtimeStockPrice highPrice(BigDecimal highPrice) {
     this.highPrice = highPrice;
     return this;
@@ -354,6 +375,7 @@ public class RealtimeStockPrice {
         Objects.equals(this.askPrice, realtimeStockPrice.askPrice) &&
         Objects.equals(this.askSize, realtimeStockPrice.askSize) &&
         Objects.equals(this.openPrice, realtimeStockPrice.openPrice) &&
+        Objects.equals(this.closePrice, realtimeStockPrice.closePrice) &&
         Objects.equals(this.highPrice, realtimeStockPrice.highPrice) &&
         Objects.equals(this.lowPrice, realtimeStockPrice.lowPrice) &&
         Objects.equals(this.exchangeVolume, realtimeStockPrice.exchangeVolume) &&
@@ -365,7 +387,7 @@ public class RealtimeStockPrice {
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastPrice, lastTime, lastSize, bidPrice, bidSize, askPrice, askSize, openPrice, highPrice, lowPrice, exchangeVolume, marketVolume, updatedOn, source, security);
+    return Objects.hash(lastPrice, lastTime, lastSize, bidPrice, bidSize, askPrice, askSize, openPrice, closePrice, highPrice, lowPrice, exchangeVolume, marketVolume, updatedOn, source, security);
   }
 
 
@@ -382,6 +404,7 @@ public class RealtimeStockPrice {
     sb.append("    askPrice: ").append(toIndentedString(askPrice)).append("\n");
     sb.append("    askSize: ").append(toIndentedString(askSize)).append("\n");
     sb.append("    openPrice: ").append(toIndentedString(openPrice)).append("\n");
+    sb.append("    closePrice: ").append(toIndentedString(closePrice)).append("\n");
     sb.append("    highPrice: ").append(toIndentedString(highPrice)).append("\n");
     sb.append("    lowPrice: ").append(toIndentedString(lowPrice)).append("\n");
     sb.append("    exchangeVolume: ").append(toIndentedString(exchangeVolume)).append("\n");

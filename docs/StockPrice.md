@@ -24,12 +24,40 @@ Name | Type | Description
 **adjLow** | [**BigDecimal**](BigDecimal.md) | The lowest price over the span of the period, adjusted for splits and dividends &nbsp;
 **adjClose** | [**BigDecimal**](BigDecimal.md) | The price at the end of the period, adjusted for splits and dividends &nbsp;
 **adjVolume** | [**BigDecimal**](BigDecimal.md) | The number of shares exchanged during the period, adjusted for splits and dividends &nbsp;
+**factor** | [**BigDecimal**](BigDecimal.md) | The factor by which to multiply stock prices before this date, in order to calculate historically-adjusted stock prices. &nbsp;
+**splitRatio** | [**BigDecimal**](BigDecimal.md) | The ratio of the stock split, if a stock split occurred. &nbsp;
+**dividend** | [**BigDecimal**](BigDecimal.md) | The dividend amount, if a dividend was paid. &nbsp;
+**change** | [**BigDecimal**](BigDecimal.md) | The difference in price from the last price for this frequency &nbsp;
+**percentChange** | [**BigDecimal**](BigDecimal.md) | The percent difference in price from the last price for this frequency &nbsp;
+**fiftyTwoWeekHigh** | [**BigDecimal**](BigDecimal.md) | The 52 week high price (daily only) &nbsp;
+**fiftyTwoWeekLow** | [**BigDecimal**](BigDecimal.md) | The 52 week low price (daily only) &nbsp;
 **security** | [**SecuritySummary**](SecuritySummary.md) | The Security of the stock price &nbsp;
 
 [//]: # (END_DEFINITION)
 
 
 [//]: # (CONTAINED_CLASS:LocalDate)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)

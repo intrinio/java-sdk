@@ -19,6 +19,7 @@ Name | Type | Description
 **askPrice** | [**BigDecimal**](BigDecimal.md) | The price of the top ask order. &nbsp;
 **askSize** | [**BigDecimal**](BigDecimal.md) | The size of the top ask order. &nbsp;
 **openPrice** | [**BigDecimal**](BigDecimal.md) | The price at the open of the trading day. &nbsp;
+**closePrice** | [**BigDecimal**](BigDecimal.md) | The price at the close of the trading day. &nbsp;
 **highPrice** | [**BigDecimal**](BigDecimal.md) | The high price for the trading day. &nbsp;
 **lowPrice** | [**BigDecimal**](BigDecimal.md) | The low price for the trading day. &nbsp;
 **exchangeVolume** | [**BigDecimal**](BigDecimal.md) | The number of shares exchanged during the trading day on the exchange. &nbsp;
@@ -34,6 +35,9 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)

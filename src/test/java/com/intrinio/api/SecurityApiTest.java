@@ -19,6 +19,7 @@ import com.intrinio.models.ApiResponseSecurityEaseOfMovement;
 import com.intrinio.models.ApiResponseSecurityForceIndex;
 import com.intrinio.models.ApiResponseSecurityHistoricalData;
 import com.intrinio.models.ApiResponseSecurityIchimokuKinkoHyo;
+import com.intrinio.models.ApiResponseSecurityIntervalPrices;
 import com.intrinio.models.ApiResponseSecurityIntradayPrices;
 import com.intrinio.models.ApiResponseSecurityKeltnerChannel;
 import com.intrinio.models.ApiResponseSecurityKnowSureThing;
@@ -173,6 +174,31 @@ public class SecurityApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseSecurityHistoricalData response = api.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Interval Stock Prices for Security
+     *
+     * Return Open, High, Low, Close, and Volume for a particular interval for the Security with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityIntervalPricesTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String source = null;
+        LocalDate startDate = null;
+        String startTime = null;
+        LocalDate endDate = null;
+        String endTime = null;
+        String timezone = null;
+        String intervalSize = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseSecurityIntervalPrices response = api.getSecurityIntervalPrices(identifier, source, startDate, startTime, endDate, endTime, timezone, intervalSize, pageSize, nextPage);
 
         // TODO: test validations
     }
