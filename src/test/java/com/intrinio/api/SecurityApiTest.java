@@ -19,6 +19,7 @@ import com.intrinio.models.ApiResponseSecurityEaseOfMovement;
 import com.intrinio.models.ApiResponseSecurityForceIndex;
 import com.intrinio.models.ApiResponseSecurityHistoricalData;
 import com.intrinio.models.ApiResponseSecurityIchimokuKinkoHyo;
+import com.intrinio.models.ApiResponseSecurityInstitutionalOwnership;
 import com.intrinio.models.ApiResponseSecurityIntervalPrices;
 import com.intrinio.models.ApiResponseSecurityIntradayPrices;
 import com.intrinio.models.ApiResponseSecurityKeltnerChannel;
@@ -174,6 +175,22 @@ public class SecurityApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseSecurityHistoricalData response = api.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Institutional Ownership by Security
+     *
+     * Returns a list of all institutional owners of a given security.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityInsiderOwnershipTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        ApiResponseSecurityInstitutionalOwnership response = api.getSecurityInsiderOwnership(identifier);
 
         // TODO: test validations
     }

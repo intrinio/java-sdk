@@ -11,10 +11,12 @@ import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
 import com.intrinio.models.ApiResponseCompanySecurities;
 import com.intrinio.models.ApiResponseInitialPublicOfferings;
+import com.intrinio.models.ApiResponseInsiderTransactionFilings;
 import com.intrinio.models.ApiResponseNews;
 import java.math.BigDecimal;
 import com.intrinio.models.Company;
 import com.intrinio.models.Fundamental;
+import com.intrinio.models.InsiderTransactionFiling;
 import org.threeten.bp.LocalDate;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -250,6 +252,48 @@ public class CompanyApiTest {
         String identifier = null;
         String nextPage = null;
         ApiResponseCompanySecurities response = api.getCompanySecurities(identifier, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Insider Transaction Filings by Company
+     *
+     * Returns a list of all insider transaction filings in a company. Criteria for being an insider include being a director, officer, or 10%+ owner in the company. Transactions are detailed for both non-derivative and derivative transactions by the insider.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void insiderTransactionFilingsByCompanyTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        String ownershipType = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseInsiderTransactionFilings response = api.insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Latest Insider Transaction Filing by Company
+     *
+     * Returns the latest insider transaction filing for a company.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void latestInsiderTransactionFilingByCompanyTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        String ownershipType = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        InsiderTransactionFiling response = api.latestInsiderTransactionFilingByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage);
 
         // TODO: test validations
     }

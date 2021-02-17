@@ -15,6 +15,8 @@ Method | HTTP request | Description
 [**getCompanyIpos**](CompanyApi.md#getCompanyIpos) | **GET** /companies/ipos | IPOs
 [**getCompanyNews**](CompanyApi.md#getCompanyNews) | **GET** /companies/{identifier}/news | All News by Company
 [**getCompanySecurities**](CompanyApi.md#getCompanySecurities) | **GET** /companies/{identifier}/securities | All Securities by Company
+[**insiderTransactionFilingsByCompany**](CompanyApi.md#insiderTransactionFilingsByCompany) | **GET** /companies/{identifier}/insider_transaction_filings | Insider Transaction Filings by Company
+[**latestInsiderTransactionFilingByCompany**](CompanyApi.md#latestInsiderTransactionFilingByCompany) | **GET** /companies/{identifier}/insider_transaction_filings/latest | Latest Insider Transaction Filing by Company
 [**lookupCompanyFundamental**](CompanyApi.md#lookupCompanyFundamental) | **GET** /companies/{identifier}/fundamentals/lookup/{statement_code}/{fiscal_year}/{fiscal_period} | Lookup Fundamental by Company
 [**searchCompanies**](CompanyApi.md#searchCompanies) | **GET** /companies/search | Search Companies
 
@@ -1041,6 +1043,196 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseCompanySecurities**](ApiResponseCompanySecurities.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:CompanyApi)
+
+[//]: # (METHOD:insiderTransactionFilingsByCompany)
+
+[//]: # (RETURN_TYPE:ApiResponseInsiderTransactionFilings)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseInsiderTransactionFilings.md)
+
+[//]: # (OPERATION:insiderTransactionFilingsByCompany_v2)
+
+[//]: # (ENDPOINT:/companies/{identifier}/insider_transaction_filings)
+
+[//]: # (DOCUMENT_LINK:CompanyApi.md#insiderTransactionFilingsByCompany)
+
+<a name="insiderTransactionFilingsByCompany"></a>
+## **insiderTransactionFilingsByCompany**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/insiderTransactionFilingsByCompany_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseInsiderTransactionFilings insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage)
+
+#### Insider Transaction Filings by Company
+
+
+Returns a list of all insider transaction filings in a company. Criteria for being an insider include being a director, officer, or 10%+ owner in the company. Transactions are detailed for both non-derivative and derivative transactions by the insider.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    CompanyApi companyApi = new CompanyApi();
+    String identifier = "AAPL";
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = LocalDate.of(2019,1,01);
+    String ownershipType = "D";
+    Integer pageSize = 100;
+    String nextPage = null;
+    
+    ApiResponseInsiderTransactionFilings result = companyApi.insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
+ **startDate** | LocalDate| Return Company&#39;s insider transaction filings on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Return Company&#39;s insider transaction filings on or before this date | [optional] &nbsp;
+ **ownershipType** | String| The type of ownership to return transaction filings for. &#39;D&#39; is for direct transactions. &#39;I&#39; is for indirect transactions. Omit for both types. | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseInsiderTransactionFilings**](ApiResponseInsiderTransactionFilings.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:CompanyApi)
+
+[//]: # (METHOD:latestInsiderTransactionFilingByCompany)
+
+[//]: # (RETURN_TYPE:InsiderTransactionFiling)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:InsiderTransactionFiling.md)
+
+[//]: # (OPERATION:latestInsiderTransactionFilingByCompany_v2)
+
+[//]: # (ENDPOINT:/companies/{identifier}/insider_transaction_filings/latest)
+
+[//]: # (DOCUMENT_LINK:CompanyApi.md#latestInsiderTransactionFilingByCompany)
+
+<a name="latestInsiderTransactionFilingByCompany"></a>
+## **latestInsiderTransactionFilingByCompany**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/latestInsiderTransactionFilingByCompany_v2)
+
+[//]: # (START_OVERVIEW)
+
+> InsiderTransactionFiling latestInsiderTransactionFilingByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage)
+
+#### Latest Insider Transaction Filing by Company
+
+
+Returns the latest insider transaction filing for a company.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    CompanyApi companyApi = new CompanyApi();
+    String identifier = "AAPL";
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = LocalDate.of(2019,1,01);
+    String ownershipType = "D";
+    Integer pageSize = 100;
+    String nextPage = null;
+    
+    InsiderTransactionFiling result = companyApi.latestInsiderTransactionFilingByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
+ **startDate** | LocalDate| Return Company&#39;s insider transaction filings on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Return Company&#39;s insider transaction filings on or before this date | [optional] &nbsp;
+ **ownershipType** | String| The type of ownership to return transaction filings for. &#39;D&#39; is for direct transactions. &#39;I&#39; is for indirect transactions. Omit for both types. | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**InsiderTransactionFiling**](InsiderTransactionFiling.md)
 
 [//]: # (END_OPERATION)
 
