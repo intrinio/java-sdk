@@ -8,10 +8,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.intrinio.models.ETFHolding;
 import com.intrinio.models.ETFSummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ApiResponseETFHoldings
@@ -19,7 +22,7 @@ import java.io.IOException;
 
 public class ApiResponseETFHoldings {
   @SerializedName("holdings")
-  private Object holdings = null;
+  private List<ETFHolding> holdings = null;
 
   @SerializedName("etf")
   private ETFSummary etf = null;
@@ -27,8 +30,16 @@ public class ApiResponseETFHoldings {
   @SerializedName("next_page")
   private String nextPage = null;
 
-  public ApiResponseETFHoldings holdings(Object holdings) {
+  public ApiResponseETFHoldings holdings(List<ETFHolding> holdings) {
     this.holdings = holdings;
+    return this;
+  }
+
+  public ApiResponseETFHoldings addHoldingsItem(ETFHolding holdingsItem) {
+    if (this.holdings == null) {
+      this.holdings = new ArrayList<>();
+    }
+    this.holdings.add(holdingsItem);
     return this;
   }
 
@@ -37,11 +48,11 @@ public class ApiResponseETFHoldings {
    * @return holdings
   **/
   @ApiModelProperty(value = "")
-  public Object getHoldings() {
+  public List<ETFHolding> getHoldings() {
     return holdings;
   }
 
-  public void setHoldings(Object holdings) {
+  public void setHoldings(List<ETFHolding> holdings) {
     this.holdings = holdings;
   }
 

@@ -8,9 +8,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.intrinio.models.ETFSummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * ApiResponseETFs
@@ -18,13 +21,21 @@ import java.io.IOException;
 
 public class ApiResponseETFs {
   @SerializedName("etfs")
-  private Object etfs = null;
+  private List<ETFSummary> etfs = null;
 
   @SerializedName("next_page")
   private String nextPage = null;
 
-  public ApiResponseETFs etfs(Object etfs) {
+  public ApiResponseETFs etfs(List<ETFSummary> etfs) {
     this.etfs = etfs;
+    return this;
+  }
+
+  public ApiResponseETFs addEtfsItem(ETFSummary etfsItem) {
+    if (this.etfs == null) {
+      this.etfs = new ArrayList<>();
+    }
+    this.etfs.add(etfsItem);
     return this;
   }
 
@@ -33,11 +44,11 @@ public class ApiResponseETFs {
    * @return etfs
   **/
   @ApiModelProperty(value = "")
-  public Object getEtfs() {
+  public List<ETFSummary> getEtfs() {
     return etfs;
   }
 
-  public void setEtfs(Object etfs) {
+  public void setEtfs(List<ETFSummary> etfs) {
     this.etfs = etfs;
   }
 
