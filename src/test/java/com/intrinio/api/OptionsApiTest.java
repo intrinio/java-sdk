@@ -9,6 +9,7 @@ import com.intrinio.models.ApiResponseOptionsChain;
 import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import com.intrinio.models.ApiResponseOptionsPriceRealtime;
+import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
@@ -28,6 +29,25 @@ public class OptionsApiTest {
 
     private final OptionsApi api = new OptionsApi();
 
+    
+    /**
+     * Option Expirations Realtime
+     *
+     * Returns all realtime option contract expiration dates for a given symbol.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionExpirationsRealtimeTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        String after = null;
+        String before = null;
+        String source = null;
+        ApiResponseOptionsExpirations response = api.getOptionExpirationsRealtime(symbol, after, before, source);
+
+        // TODO: test validations
+    }
     
     /**
      * Options
@@ -50,6 +70,30 @@ public class OptionsApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseOptions response = api.getOptions(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Options by Symbol Realtime
+     *
+     * Returns the master list of realtime option contracts for a given symbol.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsBySymbolRealtimeTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        String type = null;
+        BigDecimal strike = null;
+        BigDecimal strikeGreaterThan = null;
+        BigDecimal strikeLessThan = null;
+        String expiration = null;
+        String expirationAfter = null;
+        String expirationBefore = null;
+        String source = null;
+        ApiResponseOptionsRealtime response = api.getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source);
 
         // TODO: test validations
     }

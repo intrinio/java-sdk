@@ -1009,7 +1009,7 @@ public class SecurityApiTest {
     }
     
     /**
-     * Zacks Analyst Ratings
+     * Zacks Analyst Ratings for Security
      *
      * Returns buy, sell, and hold recommendations from analysts at brokerages for the Security with the given &#x60;identifier&#x60;. Zack’s storied research team aggregates and validates the ratings from professional analysts.
      *

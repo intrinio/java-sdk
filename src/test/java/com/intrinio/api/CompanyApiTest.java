@@ -288,12 +288,8 @@ public class CompanyApiTest {
     @Test
     public void latestInsiderTransactionFilingByCompanyTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
-        LocalDate startDate = null;
-        LocalDate endDate = null;
-        String ownershipType = null;
-        Integer pageSize = null;
         String nextPage = null;
-        InsiderTransactionFiling response = api.latestInsiderTransactionFilingByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage);
+        InsiderTransactionFiling response = api.latestInsiderTransactionFilingByCompany(identifier, nextPage);
 
         // TODO: test validations
     }

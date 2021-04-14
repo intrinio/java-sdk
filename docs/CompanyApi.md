@@ -1167,7 +1167,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> InsiderTransactionFiling latestInsiderTransactionFilingByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage)
+> InsiderTransactionFiling latestInsiderTransactionFilingByCompany(identifier, nextPage)
 
 #### Latest Insider Transaction Filing by Company
 
@@ -1199,13 +1199,9 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
     String identifier = "AAPL";
-    LocalDate startDate = LocalDate.of(2018,1,01);
-    LocalDate endDate = LocalDate.of(2019,1,01);
-    String ownershipType = "D";
-    Integer pageSize = 100;
     String nextPage = null;
     
-    InsiderTransactionFiling result = companyApi.latestInsiderTransactionFilingByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage);
+    InsiderTransactionFiling result = companyApi.latestInsiderTransactionFilingByCompany(identifier, nextPage);
     System.out.println(result);
   }
 }
@@ -1221,10 +1217,6 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
- **startDate** | LocalDate| Return Company&#39;s insider transaction filings on or after this date | [optional] &nbsp;
- **endDate** | LocalDate| Return Company&#39;s insider transaction filings on or before this date | [optional] &nbsp;
- **ownershipType** | String| The type of ownership to return transaction filings for. &#39;D&#39; is for direct transactions. &#39;I&#39; is for indirect transactions. Omit for both types. | [optional] &nbsp;
- **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 

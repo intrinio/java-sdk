@@ -4,7 +4,9 @@ All URIs are relative to *https://api-v2.intrinio.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getOptionExpirationsRealtime**](OptionsApi.md#getOptionExpirationsRealtime) | **GET** /options/expirations/{symbol}/realtime | Option Expirations Realtime
 [**getOptions**](OptionsApi.md#getOptions) | **GET** /options/{symbol} | Options
+[**getOptionsBySymbolRealtime**](OptionsApi.md#getOptionsBySymbolRealtime) | **GET** /options/{symbol}/realtime | Options by Symbol Realtime
 [**getOptionsChain**](OptionsApi.md#getOptionsChain) | **GET** /options/chain/{symbol}/{expiration} | Options Chain
 [**getOptionsChainRealtime**](OptionsApi.md#getOptionsChainRealtime) | **GET** /options/chain/{symbol}/{expiration}/realtime | Options Chain Realtime
 [**getOptionsExpirations**](OptionsApi.md#getOptionsExpirations) | **GET** /options/expirations/{symbol} | Options Expirations
@@ -12,6 +14,97 @@ Method | HTTP request | Description
 [**getOptionsPricesRealtime**](OptionsApi.md#getOptionsPricesRealtime) | **GET** /options/prices/{identifier}/realtime | Option Prices Realtime
 [**getOptionsStatsRealtime**](OptionsApi.md#getOptionsStatsRealtime) | **GET** /options/prices/{identifier}/realtime/stats | Option Stats Realtime
 
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionExpirationsRealtime)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsExpirations)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsExpirations.md)
+
+[//]: # (OPERATION:getOptionExpirationsRealtime_v2)
+
+[//]: # (ENDPOINT:/options/expirations/{symbol}/realtime)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionExpirationsRealtime)
+
+<a name="getOptionExpirationsRealtime"></a>
+## **getOptionExpirationsRealtime**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionExpirationsRealtime_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsExpirations getOptionExpirationsRealtime(symbol, after, before, source)
+
+#### Option Expirations Realtime
+
+
+Returns all realtime option contract expiration dates for a given symbol.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String symbol = "MSFT";
+    String after = "2022-01-01";
+    String before = "2023-04-01";
+    String source = null;
+    
+    ApiResponseOptionsExpirations result = optionsApi.getOptionExpirationsRealtime(symbol, after, before, source);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | String| The option symbol, corresponding to the underlying security. | &nbsp;
+ **after** | String| Return option contract expiration dates after this date. | [optional] &nbsp;
+ **before** | String| Return option contract expiration dates before this date. | [optional] &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsExpirations**](ApiResponseOptionsExpirations.md)
+
+[//]: # (END_OPERATION)
 
 
 [//]: # (START_OPERATION)
@@ -113,6 +206,107 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseOptions**](ApiResponseOptions.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionsBySymbolRealtime)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsRealtime)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsRealtime.md)
+
+[//]: # (OPERATION:getOptionsBySymbolRealtime_v2)
+
+[//]: # (ENDPOINT:/options/{symbol}/realtime)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionsBySymbolRealtime)
+
+<a name="getOptionsBySymbolRealtime"></a>
+## **getOptionsBySymbolRealtime**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionsBySymbolRealtime_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsRealtime getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source)
+
+#### Options by Symbol Realtime
+
+
+Returns the master list of realtime option contracts for a given symbol.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String symbol = "AAPL";
+    String type = "put";
+    BigDecimal strike = null;
+    BigDecimal strikeGreaterThan = null;
+    BigDecimal strikeLessThan = null;
+    String expiration = "2022-04-16";
+    String expirationAfter = "2022-01-01";
+    String expirationBefore = "2023-12-31";
+    String source = null;
+    
+    ApiResponseOptionsRealtime result = optionsApi.getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | String| The option symbol, corresponding to the underlying security. | &nbsp;
+ **type** | String| The option contract type. | [optional] [enum: call, put] &nbsp;
+ **strike** | BigDecimal| The strike price of the option contract. This will return options contracts with strike price equal to this price. | [optional] &nbsp;
+ **strikeGreaterThan** | BigDecimal| The strike price of the option contract. This will return options contracts with strike prices greater than this price. | [optional] &nbsp;
+ **strikeLessThan** | BigDecimal| The strike price of the option contract. This will return options contracts with strike prices less than this price. | [optional] &nbsp;
+ **expiration** | String| The expiration date of the option contract. This will return options contracts with expiration dates on this date. | [optional] &nbsp;
+ **expirationAfter** | String| The expiration date of the option contract. This will return options contracts with expiration dates after this date. | [optional] &nbsp;
+ **expirationBefore** | String| The expiration date of the option contract. This will return options contracts with expiration dates before this date. | [optional] &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsRealtime**](ApiResponseOptionsRealtime.md)
 
 [//]: # (END_OPERATION)
 

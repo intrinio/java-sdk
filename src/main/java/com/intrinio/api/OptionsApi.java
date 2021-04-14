@@ -22,6 +22,7 @@ import com.intrinio.models.ApiResponseOptionsChain;
 import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import com.intrinio.models.ApiResponseOptionsPriceRealtime;
+import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
@@ -52,6 +53,151 @@ public class OptionsApi {
         this.apiClient = apiClient;
     }
 
+    /**
+     * Build call for getOptionExpirationsRealtime
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param after Return option contract expiration dates after this date. (optional)
+     * @param before Return option contract expiration dates before this date. (optional)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionExpirationsRealtimeCall(String symbol, String after, String before, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/expirations/{symbol}/realtime"
+            .replaceAll("\\{" + "symbol" + "\\}", apiClient.escapeString(symbol.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (after != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("after", after));
+        if (before != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("before", before));
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionExpirationsRealtimeValidateBeforeCall(String symbol, String after, String before, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling getOptionExpirationsRealtime(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionExpirationsRealtimeCall(symbol, after, before, source, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Option Expirations Realtime
+     * Returns all realtime option contract expiration dates for a given symbol.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param after Return option contract expiration dates after this date. (optional)
+     * @param before Return option contract expiration dates before this date. (optional)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @return ApiResponseOptionsExpirations
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsExpirations getOptionExpirationsRealtime(String symbol, String after, String before, String source) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionExpirationsRealtimeWithHttpInfo", String.class, String.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { symbol, after, before, source };
+      ApiResponse<ApiResponseOptionsExpirations> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Option Expirations Realtime
+     * Returns all realtime option contract expiration dates for a given symbol.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param after Return option contract expiration dates after this date. (optional)
+     * @param before Return option contract expiration dates before this date. (optional)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsExpirations&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsExpirations> getOptionExpirationsRealtimeWithHttpInfo(String symbol, String after, String before, String source) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionExpirationsRealtimeValidateBeforeCall(symbol, after, before, source, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsExpirations>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Option Expirations Realtime (asynchronously)
+     * Returns all realtime option contract expiration dates for a given symbol.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param after Return option contract expiration dates after this date. (optional)
+     * @param before Return option contract expiration dates before this date. (optional)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionExpirationsRealtimeAsync(String symbol, String after, String before, String source, final ApiCallback<ApiResponseOptionsExpirations> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionExpirationsRealtimeValidateBeforeCall(symbol, after, before, source, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsExpirations>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
     /**
      * Build call for getOptions
      * @param symbol The option symbol, corresponding to the underlying security. (required)
@@ -230,6 +376,181 @@ public class OptionsApi {
 
         com.squareup.okhttp.Call call = getOptionsValidateBeforeCall(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptions>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionsBySymbolRealtime
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param expiration The expiration date of the option contract. This will return options contracts with expiration dates on this date. (optional)
+     * @param expirationAfter The expiration date of the option contract. This will return options contracts with expiration dates after this date. (optional)
+     * @param expirationBefore The expiration date of the option contract. This will return options contracts with expiration dates before this date. (optional)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsBySymbolRealtimeCall(String symbol, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String expiration, String expirationAfter, String expirationBefore, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/{symbol}/realtime"
+            .replaceAll("\\{" + "symbol" + "\\}", apiClient.escapeString(symbol.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+        if (strike != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strike", strike));
+        if (strikeGreaterThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strike_greater_than", strikeGreaterThan));
+        if (strikeLessThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strike_less_than", strikeLessThan));
+        if (expiration != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("expiration", expiration));
+        if (expirationAfter != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("expiration_after", expirationAfter));
+        if (expirationBefore != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("expiration_before", expirationBefore));
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionsBySymbolRealtimeValidateBeforeCall(String symbol, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String expiration, String expirationAfter, String expirationBefore, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling getOptionsBySymbolRealtime(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionsBySymbolRealtimeCall(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Options by Symbol Realtime
+     * Returns the master list of realtime option contracts for a given symbol.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param expiration The expiration date of the option contract. This will return options contracts with expiration dates on this date. (optional)
+     * @param expirationAfter The expiration date of the option contract. This will return options contracts with expiration dates after this date. (optional)
+     * @param expirationBefore The expiration date of the option contract. This will return options contracts with expiration dates before this date. (optional)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @return ApiResponseOptionsRealtime
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsRealtime getOptionsBySymbolRealtime(String symbol, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String expiration, String expirationAfter, String expirationBefore, String source) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsBySymbolRealtimeWithHttpInfo", String.class, String.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, String.class, String.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source };
+      ApiResponse<ApiResponseOptionsRealtime> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Options by Symbol Realtime
+     * Returns the master list of realtime option contracts for a given symbol.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param expiration The expiration date of the option contract. This will return options contracts with expiration dates on this date. (optional)
+     * @param expirationAfter The expiration date of the option contract. This will return options contracts with expiration dates after this date. (optional)
+     * @param expirationBefore The expiration date of the option contract. This will return options contracts with expiration dates before this date. (optional)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsRealtime&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsRealtime> getOptionsBySymbolRealtimeWithHttpInfo(String symbol, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String expiration, String expirationAfter, String expirationBefore, String source) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsBySymbolRealtimeValidateBeforeCall(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsRealtime>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Options by Symbol Realtime (asynchronously)
+     * Returns the master list of realtime option contracts for a given symbol.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param expiration The expiration date of the option contract. This will return options contracts with expiration dates on this date. (optional)
+     * @param expirationAfter The expiration date of the option contract. This will return options contracts with expiration dates after this date. (optional)
+     * @param expirationBefore The expiration date of the option contract. This will return options contracts with expiration dates before this date. (optional)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsBySymbolRealtimeAsync(String symbol, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, String expiration, String expirationAfter, String expirationBefore, String source, final ApiCallback<ApiResponseOptionsRealtime> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionsBySymbolRealtimeValidateBeforeCall(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsRealtime>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
