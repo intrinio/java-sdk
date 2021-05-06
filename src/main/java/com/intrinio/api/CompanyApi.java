@@ -23,6 +23,7 @@ import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
 import com.intrinio.models.ApiResponseCompanySecurities;
+import com.intrinio.models.ApiResponseCompanySharesOutstanding;
 import com.intrinio.models.ApiResponseInitialPublicOfferings;
 import com.intrinio.models.ApiResponseInsiderTransactionFilings;
 import com.intrinio.models.ApiResponseNews;
@@ -2309,6 +2310,133 @@ public class CompanyApi {
 
         com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, active, pageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompaniesSearch>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for sharesOutstandingByCompany
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call sharesOutstandingByCompanyCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/companies/{identifier}/shares_outstanding"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call sharesOutstandingByCompanyValidateBeforeCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling sharesOutstandingByCompany(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = sharesOutstandingByCompanyCall(identifier, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Shares Outstanding by Company
+     * Returns shares outstanding for the Company with the given &#x60;identifier&#x60;
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @return ApiResponseCompanySharesOutstanding
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseCompanySharesOutstanding sharesOutstandingByCompany(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("sharesOutstandingByCompanyWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<ApiResponseCompanySharesOutstanding> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Shares Outstanding by Company
+     * Returns shares outstanding for the Company with the given &#x60;identifier&#x60;
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @return ApiResponse&lt;ApiResponseCompanySharesOutstanding&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseCompanySharesOutstanding> sharesOutstandingByCompanyWithHttpInfo(String identifier) throws ApiException {
+        com.squareup.okhttp.Call call = sharesOutstandingByCompanyValidateBeforeCall(identifier, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanySharesOutstanding>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Shares Outstanding by Company (asynchronously)
+     * Returns shares outstanding for the Company with the given &#x60;identifier&#x60;
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call sharesOutstandingByCompanyAsync(String identifier, final ApiCallback<ApiResponseCompanySharesOutstanding> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = sharesOutstandingByCompanyValidateBeforeCall(identifier, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanySharesOutstanding>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

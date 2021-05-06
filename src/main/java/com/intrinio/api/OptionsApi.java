@@ -22,10 +22,12 @@ import com.intrinio.models.ApiResponseOptionsChain;
 import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import com.intrinio.models.ApiResponseOptionsPriceRealtime;
+import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
 import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
+import com.intrinio.models.OptionContractsList;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.Method;
@@ -1217,6 +1219,138 @@ public class OptionsApi {
 
         com.squareup.okhttp.Call call = getOptionsPricesValidateBeforeCall(identifier, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionPrices>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionsPricesBatchRealtime
+     * @param body The contract symbols for which to return options prices for. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsPricesBatchRealtimeCall(OptionContractsList body, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+
+        // create path and map variables
+        String localVarPath = "/options/prices/realtime/batch";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionsPricesBatchRealtimeValidateBeforeCall(OptionContractsList body, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling getOptionsPricesBatchRealtime(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionsPricesBatchRealtimeCall(body, source, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Option Prices Batch Realtime
+     * Returns options prices for a supplied list of option symbols.
+     * @param body The contract symbols for which to return options prices for. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @return ApiResponseOptionsPricesBatchRealtime
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsPricesBatchRealtime getOptionsPricesBatchRealtime(OptionContractsList body, String source) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsPricesBatchRealtimeWithHttpInfo", OptionContractsList.class, String.class);
+      
+      Object[] apiCallArguments = { body, source };
+      ApiResponse<ApiResponseOptionsPricesBatchRealtime> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Option Prices Batch Realtime
+     * Returns options prices for a supplied list of option symbols.
+     * @param body The contract symbols for which to return options prices for. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsPricesBatchRealtime&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsPricesBatchRealtime> getOptionsPricesBatchRealtimeWithHttpInfo(OptionContractsList body, String source) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsPricesBatchRealtimeValidateBeforeCall(body, source, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesBatchRealtime>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Option Prices Batch Realtime (asynchronously)
+     * Returns options prices for a supplied list of option symbols.
+     * @param body The contract symbols for which to return options prices for. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsPricesBatchRealtimeAsync(OptionContractsList body, String source, final ApiCallback<ApiResponseOptionsPricesBatchRealtime> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionsPricesBatchRealtimeValidateBeforeCall(body, source, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesBatchRealtime>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

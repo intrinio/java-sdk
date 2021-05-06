@@ -9,10 +9,12 @@ import com.intrinio.models.ApiResponseOptionsChain;
 import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import com.intrinio.models.ApiResponseOptionsPriceRealtime;
+import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
 import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
+import com.intrinio.models.OptionContractsList;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -183,6 +185,23 @@ public class OptionsApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseOptionPrices response = api.getOptionsPrices(identifier, startDate, endDate, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Option Prices Batch Realtime
+     *
+     * Returns options prices for a supplied list of option symbols.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsPricesBatchRealtimeTest() throws ApiException, NoSuchMethodException {
+        OptionContractsList body = null;
+        String source = null;
+        ApiResponseOptionsPricesBatchRealtime response = api.getOptionsPricesBatchRealtime(body, source);
 
         // TODO: test validations
     }

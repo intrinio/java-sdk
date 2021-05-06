@@ -10,6 +10,7 @@ import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
 import com.intrinio.models.ApiResponseCompanySecurities;
+import com.intrinio.models.ApiResponseCompanySharesOutstanding;
 import com.intrinio.models.ApiResponseInitialPublicOfferings;
 import com.intrinio.models.ApiResponseInsiderTransactionFilings;
 import com.intrinio.models.ApiResponseNews;
@@ -327,6 +328,22 @@ public class CompanyApiTest {
         Boolean active = null;
         Integer pageSize = null;
         ApiResponseCompaniesSearch response = api.searchCompanies(query, active, pageSize);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Shares Outstanding by Company
+     *
+     * Returns shares outstanding for the Company with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void sharesOutstandingByCompanyTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        ApiResponseCompanySharesOutstanding response = api.sharesOutstandingByCompany(identifier);
 
         // TODO: test validations
     }

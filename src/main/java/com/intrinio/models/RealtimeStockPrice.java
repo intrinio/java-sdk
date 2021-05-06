@@ -219,10 +219,10 @@ public class RealtimeStockPrice {
   }
 
    /**
-   * The price at the close of the trading day.
+   * The price at the close of the trading day. (IEX only)
    * @return closePrice
   **/
-  @ApiModelProperty(value = "The price at the close of the trading day.")
+  @ApiModelProperty(value = "The price at the close of the trading day. (IEX only)")
   public BigDecimal getClosePrice() {
     return closePrice;
   }
