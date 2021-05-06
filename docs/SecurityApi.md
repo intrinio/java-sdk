@@ -132,7 +132,6 @@ public class Main {
     Integer pageSize = 100;
     Boolean primaryListing = null;
     String nextPage = null;
-    
     ApiResponseSecurities result = securityApi.getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage);
     System.out.println(result);
   }
@@ -235,7 +234,6 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
     String identifier = "AAPL";
-    
     Security result = securityApi.getSecurityById(identifier);
     System.out.println(result);
   }
@@ -321,7 +319,6 @@ public class Main {
     SecurityApi securityApi = new SecurityApi();
     String identifier = "AAPL";
     String tag = "close_price";
-    
     BigDecimal result = securityApi.getSecurityDataPointNumber(identifier, tag);
     System.out.println(result);
   }
@@ -408,7 +405,6 @@ public class Main {
     SecurityApi securityApi = new SecurityApi();
     String identifier = "AAPL";
     String tag = "figi";
-    
     String result = securityApi.getSecurityDataPointText(identifier, tag);
     System.out.println(result);
   }
@@ -502,7 +498,6 @@ public class Main {
     String sortOrder = "desc";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityHistoricalData result = securityApi.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
   }
@@ -595,7 +590,6 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
     String identifier = "AAPL";
-    
     ApiResponseSecurityInstitutionalOwnership result = securityApi.getSecurityInsiderOwnership(identifier);
     System.out.println(result);
   }
@@ -689,7 +683,6 @@ public class Main {
     String intervalSize = "1d";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityIntervalPrices result = securityApi.getSecurityIntervalPrices(identifier, source, startDate, startTime, endDate, endTime, timezone, intervalSize, pageSize, nextPage);
     System.out.println(result);
   }
@@ -790,7 +783,6 @@ public class Main {
     String endTime = null;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityIntradayPrices result = securityApi.getSecurityIntradayPrices(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage);
     System.out.println(result);
   }
@@ -882,7 +874,6 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
     String identifier = "AAPL";
-    
     DividendRecord result = securityApi.getSecurityLatestDividendRecord(identifier);
     System.out.println(result);
   }
@@ -967,7 +958,6 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
     String identifier = "AAPL";
-    
     EarningsRecord result = securityApi.getSecurityLatestEarningsRecord(identifier);
     System.out.println(result);
   }
@@ -1056,7 +1046,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityAccumulationDistributionIndex result = securityApi.getSecurityPriceTechnicalsAdi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1150,7 +1139,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityAverageDailyTradingVolume result = securityApi.getSecurityPriceTechnicalsAdtv(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1245,7 +1233,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityAverageDirectionalIndex result = securityApi.getSecurityPriceTechnicalsAdx(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1341,7 +1328,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityAwesomeOscillator result = securityApi.getSecurityPriceTechnicalsAo(identifier, shortPeriod, longPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1437,7 +1423,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityAverageTrueRange result = securityApi.getSecurityPriceTechnicalsAtr(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1534,7 +1519,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityBollingerBands result = securityApi.getSecurityPriceTechnicalsBb(identifier, period, standardDeviations, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1632,7 +1616,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityCommodityChannelIndex result = securityApi.getSecurityPriceTechnicalsCci(identifier, period, constant, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1728,7 +1711,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityChaikinMoneyFlow result = securityApi.getSecurityPriceTechnicalsCmf(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1824,7 +1806,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityDonchianChannel result = securityApi.getSecurityPriceTechnicalsDc(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1921,7 +1902,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityDetrendedPriceOscillator result = securityApi.getSecurityPriceTechnicalsDpo(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2017,7 +1997,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityEaseOfMovement result = securityApi.getSecurityPriceTechnicalsEom(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2111,7 +2090,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityForceIndex result = securityApi.getSecurityPriceTechnicalsFi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2207,7 +2185,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityIchimokuKinkoHyo result = securityApi.getSecurityPriceTechnicalsIchimoku(identifier, lowPeriod, mediumPeriod, highPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2304,7 +2281,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityKeltnerChannel result = securityApi.getSecurityPriceTechnicalsKc(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2407,7 +2383,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityKnowSureThing result = securityApi.getSecurityPriceTechnicalsKst(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2513,7 +2488,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityMovingAverageConvergenceDivergence result = securityApi.getSecurityPriceTechnicalsMacd(identifier, fastPeriod, slowPeriod, signalPeriod, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2611,7 +2585,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityMoneyFlowIndex result = securityApi.getSecurityPriceTechnicalsMfi(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2707,7 +2680,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityMassIndex result = securityApi.getSecurityPriceTechnicalsMi(identifier, emaPeriod, sumPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2802,7 +2774,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityNegativeVolumeIndex result = securityApi.getSecurityPriceTechnicalsNvi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2895,7 +2866,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityOnBalanceVolume result = securityApi.getSecurityPriceTechnicalsObv(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2989,7 +2959,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityOnBalanceVolumeMean result = securityApi.getSecurityPriceTechnicalsObvMean(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3085,7 +3054,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityRelativeStrengthIndex result = securityApi.getSecurityPriceTechnicalsRsi(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3182,7 +3150,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecuritySimpleMovingAverage result = securityApi.getSecurityPriceTechnicalsSma(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3279,7 +3246,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityStochasticOscillator result = securityApi.getSecurityPriceTechnicalsSr(identifier, period, signalPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3375,7 +3341,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityTripleExponentialAverage result = securityApi.getSecurityPriceTechnicalsTrix(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3472,7 +3437,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityTrueStrengthIndex result = securityApi.getSecurityPriceTechnicalsTsi(identifier, lowPeriod, highPeriod, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3574,7 +3538,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityUltimateOscillator result = securityApi.getSecurityPriceTechnicalsUo(identifier, shortPeriod, mediumPeriod, longPeriod, shortWeight, mediumWeight, longWeight, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3674,7 +3637,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityVortexIndicator result = securityApi.getSecurityPriceTechnicalsVi(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3768,7 +3730,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityVolumePriceTrend result = securityApi.getSecurityPriceTechnicalsVpt(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3861,7 +3822,6 @@ public class Main {
     String endDate = "2019-01-01";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityVolumeWeightedAveragePrice result = securityApi.getSecurityPriceTechnicalsVwap(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3955,7 +3915,6 @@ public class Main {
     String endDate = "2019-01-01";
     BigDecimal pageSize = null;
     String nextPage = null;
-    
     ApiResponseSecurityWilliamsR result = securityApi.getSecurityPriceTechnicalsWr(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4046,7 +4005,6 @@ public class Main {
     SecurityApi securityApi = new SecurityApi();
     String identifier = "AAPL";
     String source = "bats";
-    
     RealtimeStockPrice result = securityApi.getSecurityRealtimePrice(identifier, source);
     System.out.println(result);
   }
@@ -4136,7 +4094,6 @@ public class Main {
     LocalDate endDate = LocalDate.of(2019,1,01);
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityStockPriceAdjustments result = securityApi.getSecurityStockPriceAdjustments(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4230,7 +4187,6 @@ public class Main {
     String frequency = "daily";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityStockPrices result = securityApi.getSecurityStockPrices(identifier, startDate, endDate, frequency, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4337,7 +4293,6 @@ public class Main {
     Integer totalGreater = null;
     Integer totalLess = null;
     Integer pageSize = 100;
-    
     ApiResponseSecurityZacksAnalystRatings result = securityApi.getSecurityZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize);
     System.out.println(result);
   }
@@ -4440,7 +4395,6 @@ public class Main {
     SecurityApi securityApi = new SecurityApi();
     String identifier = "AAPL";
     String date = null;
-    
     ApiResponseSecurityZacksAnalystRatingsSnapshot result = securityApi.getSecurityZacksAnalystRatingsSnapshot(identifier, date);
     System.out.println(result);
   }
@@ -4528,7 +4482,6 @@ public class Main {
     String identifier = "AAPL";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityZacksEPSSurprises result = securityApi.getSecurityZacksEpsSurprises(identifier, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4617,7 +4570,6 @@ public class Main {
     String identifier = "AAPL";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseSecurityZacksSalesSurprises result = securityApi.getSecurityZacksSalesSurprises(identifier, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4726,7 +4678,6 @@ public class Main {
     clauses.add(clauseOne);
     clauses.add(clauseTwo);
     logic.setClauses(clauses);
-    
     List<SecurityScreenResult> result = securityApi.screenSecurities(logic, orderColumn, orderDirection, primaryOnly, pageSize);
     System.out.println(result);
   }
@@ -4816,7 +4767,6 @@ public class Main {
     SecurityApi securityApi = new SecurityApi();
     String query = "Apple";
     Integer pageSize = 100;
-    
     ApiResponseSecuritiesSearch result = securityApi.searchSecurities(query, pageSize);
     System.out.println(result);
   }

@@ -64,7 +64,6 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     BulkDownloadsApi bulkDownloadsApi = new BulkDownloadsApi();
-    
     ApiResponseBulkDownloadLinks result = bulkDownloadsApi.getBulkDownloadLinks();
     System.out.println(result);
   }

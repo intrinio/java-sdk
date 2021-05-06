@@ -66,7 +66,6 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ForexApi forexApi = new ForexApi();
-    
     ApiResponseForexCurrencies result = forexApi.getForexCurrencies();
     System.out.println(result);
   }
@@ -147,7 +146,6 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ForexApi forexApi = new ForexApi();
-    
     ApiResponseForexPairs result = forexApi.getForexPairs();
     System.out.println(result);
   }
@@ -237,7 +235,6 @@ public class Main {
     String endTime = null;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseForexPrices result = forexApi.getForexPrices(pair, timeframe, timezone, startDate, startTime, endDate, endTime, pageSize, nextPage);
     System.out.println(result);
   }

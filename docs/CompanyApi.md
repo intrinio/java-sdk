@@ -89,7 +89,6 @@ public class Main {
     Boolean hasStockPrices = true;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseCompanies result = companyApi.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage);
     System.out.println(result);
   }
@@ -184,7 +183,6 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseNews result = companyApi.getAllCompanyNews(pageSize, nextPage);
     System.out.println(result);
   }
@@ -270,7 +268,6 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
     String identifier = "AAPL";
-    
     Company result = companyApi.getCompany(identifier);
     System.out.println(result);
   }
@@ -356,7 +353,6 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
     String identifier = "AAPL";
     String tag = "marketcap";
-    
     BigDecimal result = companyApi.getCompanyDataPointNumber(identifier, tag);
     System.out.println(result);
   }
@@ -443,7 +439,6 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
     String identifier = "AAPL";
     String tag = "ceo";
-    
     String result = companyApi.getCompanyDataPointText(identifier, tag);
     System.out.println(result);
   }
@@ -534,7 +529,6 @@ public class Main {
     LocalDate endDate = null;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseCompanyFilings result = companyApi.getCompanyFilings(identifier, reportType, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -634,7 +628,6 @@ public class Main {
     LocalDate endDate = null;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -737,7 +730,6 @@ public class Main {
     String sortOrder = "desc";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseCompanyHistoricalData result = companyApi.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
   }
@@ -837,7 +829,6 @@ public class Main {
     Integer offerAmountLessThan = null;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseInitialPublicOfferings result = companyApi.getCompanyIpos(ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage);
     System.out.println(result);
   }
@@ -931,7 +922,6 @@ public class Main {
     String identifier = "AAPL";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseCompanyNews result = companyApi.getCompanyNews(identifier, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1019,7 +1009,6 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
     String identifier = "AAPL";
     String nextPage = null;
-    
     ApiResponseCompanySecurities result = companyApi.getCompanySecurities(identifier, nextPage);
     System.out.println(result);
   }
@@ -1110,7 +1099,6 @@ public class Main {
     String ownershipType = "D";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseInsiderTransactionFilings result = companyApi.insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1201,7 +1189,6 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
     String identifier = "AAPL";
     String nextPage = null;
-    
     InsiderTransactionFiling result = companyApi.latestInsiderTransactionFilingByCompany(identifier, nextPage);
     System.out.println(result);
   }
@@ -1290,7 +1277,6 @@ public class Main {
     String statementCode = "income_statement";
     String fiscalPeriod = "FY";
     Integer fiscalYear = 2017;
-    
     Fundamental result = companyApi.lookupCompanyFundamental(identifier, statementCode, fiscalPeriod, fiscalYear);
     System.out.println(result);
   }
@@ -1380,7 +1366,6 @@ public class Main {
     String query = "Apple";
     Boolean active = true;
     Integer pageSize = 100;
-    
     ApiResponseCompaniesSearch result = companyApi.searchCompanies(query, active, pageSize);
     System.out.println(result);
   }
@@ -1467,7 +1452,6 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
     String identifier = "AAPL";
-    
     ApiResponseCompanySharesOutstanding result = companyApi.sharesOutstandingByCompany(identifier);
     System.out.println(result);
   }

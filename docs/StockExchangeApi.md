@@ -73,7 +73,6 @@ public class Main {
     String country = "UNITED STATES OF AMERICA";
     String countryCode = "US";
     Integer pageSize = 100;
-    
     ApiResponseStockExchanges result = stockExchangeApi.getAllStockExchanges(city, country, countryCode, pageSize);
     System.out.println(result);
   }
@@ -161,7 +160,6 @@ public class Main {
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
     String identifier = "USCOMP";
-    
     StockExchange result = stockExchangeApi.getStockExchangeById(identifier);
     System.out.println(result);
   }
@@ -249,7 +247,6 @@ public class Main {
     LocalDate date = LocalDate.of(2018,8,14);
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustments(identifier, date, pageSize, nextPage);
     System.out.println(result);
   }
@@ -340,7 +337,6 @@ public class Main {
     LocalDate date = LocalDate.of(2018,8,14);
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, pageSize, nextPage);
     System.out.println(result);
   }
@@ -431,7 +427,6 @@ public class Main {
     String source = null;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, pageSize, nextPage);
     System.out.println(result);
   }
@@ -521,7 +516,6 @@ public class Main {
     String identifier = "USCOMP";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, pageSize, nextPage);
     System.out.println(result);
   }

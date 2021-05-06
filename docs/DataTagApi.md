@@ -73,7 +73,6 @@ public class Main {
     String fsTemplate = "industrial";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseDataTags result = dataTagApi.getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -164,7 +163,6 @@ public class Main {
 
     DataTagApi dataTagApi = new DataTagApi();
     String identifier = "marketcap";
-    
     DataTag result = dataTagApi.getDataTagById(identifier);
     System.out.println(result);
   }
@@ -250,7 +248,6 @@ public class Main {
     DataTagApi dataTagApi = new DataTagApi();
     String query = "revenue";
     Integer pageSize = 100;
-    
     ApiResponseDataTagsSearch result = dataTagApi.searchDataTags(query, pageSize);
     System.out.println(result);
   }

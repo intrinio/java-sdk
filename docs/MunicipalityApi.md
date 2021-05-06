@@ -79,7 +79,6 @@ public class Main {
     BigDecimal enrollmentGreaterThan = null;
     BigDecimal enrollmentLessThan = null;
     String nextPage = null;
-    
     ApiResponseMunicipalities result = municipalityApi.getAllMunicipalities(hasFinancials, governmentName, governmentType, areaName, areaType, city, state, zipcode, populationGreaterThan, populationLessThan, enrollmentGreaterThan, enrollmentLessThan, nextPage);
     System.out.println(result);
   }
@@ -176,7 +175,6 @@ public class Main {
 
     MunicipalityApi municipalityApi = new MunicipalityApi();
     String id = "mun_Xn7x4z";
-    
     Municipality result = municipalityApi.getMunicipalityById(id);
     System.out.println(result);
   }
@@ -262,7 +260,6 @@ public class Main {
     MunicipalityApi municipalityApi = new MunicipalityApi();
     String id = "mun_Xn7x4z";
     BigDecimal fiscalYear = null;
-    
     ApiResponseMunicipalitiyFinancials result = municipalityApi.getMunicipalityFinancials(id, fiscalYear);
     System.out.println(result);
   }

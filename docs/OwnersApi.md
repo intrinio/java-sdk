@@ -71,7 +71,6 @@ public class Main {
     Boolean institutional = null;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseOwners result = ownersApi.getAllOwners(institutional, pageSize, nextPage);
     System.out.println(result);
   }
@@ -158,7 +157,6 @@ public class Main {
 
     OwnersApi ownersApi = new OwnersApi();
     String identifier = "0000001800";
-    
     Owner result = ownersApi.getOwnerById(identifier);
     System.out.println(result);
   }
@@ -247,7 +245,6 @@ public class Main {
     LocalDate endDate = LocalDate.of(2019,1,01);
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseOwnerInsiderTransactionFilings result = ownersApi.insiderTransactionFilingsByOwner(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -339,7 +336,6 @@ public class Main {
     Integer pageSize = 100;
     Object asOfDate = "2021-01-05";
     String nextPage = null;
-    
     ApiResponseOwnerInstitutionalHoldings result = ownersApi.institutionalHoldingsByOwner(identifier, pageSize, asOfDate, nextPage);
     System.out.println(result);
   }
@@ -430,7 +426,6 @@ public class Main {
     Boolean institutional = null;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseOwners result = ownersApi.searchOwners(query, institutional, pageSize, nextPage);
     System.out.println(result);
   }

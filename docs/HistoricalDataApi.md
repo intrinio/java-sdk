@@ -73,7 +73,6 @@ public class Main {
     String sortOrder = "desc";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseHistoricalData result = historicalDataApi.getHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
   }

@@ -72,7 +72,6 @@ public class Main {
     String exchange = "XNAS";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseETFs result = etFsApi.getAllEtfs(exchange, pageSize, nextPage);
     System.out.println(result);
   }
@@ -159,7 +158,6 @@ public class Main {
 
     EtFsApi etFsApi = new EtFsApi();
     String identifier = "SPY";
-    
     ETF result = etFsApi.getEtf(identifier);
     System.out.println(result);
   }
@@ -244,7 +242,6 @@ public class Main {
 
     EtFsApi etFsApi = new EtFsApi();
     String identifier = "SPY";
-    
     ETFAnalytics result = etFsApi.getEtfAnalytics(identifier);
     System.out.println(result);
   }
@@ -331,7 +328,6 @@ public class Main {
     String identifier = "SPY";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseETFHoldings result = etFsApi.getEtfHoldings(identifier, pageSize, nextPage);
     System.out.println(result);
   }
@@ -418,7 +414,6 @@ public class Main {
 
     EtFsApi etFsApi = new EtFsApi();
     String identifier = "SPY";
-    
     ETFStats result = etFsApi.getEtfStats(identifier);
     System.out.println(result);
   }
@@ -503,7 +498,6 @@ public class Main {
 
     EtFsApi etFsApi = new EtFsApi();
     String query = "iShares";
-    
     ApiResponseETFs result = etFsApi.searchEtfs(query);
     System.out.println(result);
   }

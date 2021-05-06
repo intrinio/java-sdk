@@ -68,7 +68,6 @@ public class Main {
     LocalDate endDate = null;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseOwnerInsiderTransactionFilings result = insiderTransactionFilingsApi.getAllInsiderTransactionFilings(startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }

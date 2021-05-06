@@ -81,7 +81,6 @@ public class Main {
     String industryGroup = null;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseFilings result = filingApi.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, pageSize, nextPage);
     System.out.println(result);
   }
@@ -180,7 +179,6 @@ public class Main {
     LocalDate periodEndedEndDate = null;
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseFilingNotes result = filingApi.getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -272,7 +270,6 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
     String id = "fil_7Kn2P6";
-    
     Filing result = filingApi.getFilingById(id);
     System.out.println(result);
   }
@@ -364,7 +361,6 @@ public class Main {
     LocalDate startDate = null;
     LocalDate endDate = null;
     String nextPage = null;
-    
     ApiResponseFilingFundamentals result = filingApi.getFilingFundamentals(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage);
     System.out.println(result);
   }
@@ -455,7 +451,6 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
     String identifier = "fil_B73xBG";
-    
     String result = filingApi.getFilingHtml(identifier);
     System.out.println(result);
   }
@@ -539,7 +534,6 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
     String identifier = "fil_B73xBG";
-    
     String result = filingApi.getFilingText(identifier);
     System.out.println(result);
   }
@@ -624,7 +618,6 @@ public class Main {
     FilingApi filingApi = new FilingApi();
     String identifier = "xbn_ydK3QL";
     String contentFormat = "text";
-    
     FilingNote result = filingApi.getNote(identifier, contentFormat);
     System.out.println(result);
   }
@@ -709,7 +702,6 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
     String identifier = "xbn_ydK3QL";
-    
     String result = filingApi.getNoteHtml(identifier);
     System.out.println(result);
   }
@@ -793,7 +785,6 @@ public class Main {
 
     FilingApi filingApi = new FilingApi();
     String identifier = "xbn_ydK3QL";
-    
     String result = filingApi.getNoteText(identifier);
     System.out.println(result);
   }
@@ -881,7 +872,6 @@ public class Main {
     LocalDate filingStartDate = LocalDate.of(2018,7,15);
     LocalDate filingEndDate = LocalDate.of(2018,11,30);
     Integer pageSize = 100;
-    
     ApiResponseFilingNotesSearch result = filingApi.searchNotes(query, filingStartDate, filingEndDate, pageSize);
     System.out.println(result);
   }

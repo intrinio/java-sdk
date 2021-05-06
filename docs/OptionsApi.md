@@ -77,7 +77,6 @@ public class Main {
     String after = "2022-01-01";
     String before = "2023-04-01";
     String source = null;
-    
     ApiResponseOptionsExpirations result = optionsApi.getOptionExpirationsRealtime(symbol, after, before, source);
     System.out.println(result);
   }
@@ -174,7 +173,6 @@ public class Main {
     String expirationBefore = "2019-12-31";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseOptions result = optionsApi.getOptions(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, pageSize, nextPage);
     System.out.println(result);
   }
@@ -276,7 +274,6 @@ public class Main {
     String expirationAfter = "2022-01-01";
     String expirationBefore = "2023-12-31";
     String source = null;
-    
     ApiResponseOptionsRealtime result = optionsApi.getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source);
     System.out.println(result);
   }
@@ -377,7 +374,6 @@ public class Main {
     BigDecimal strikeLessThan = null;
     String moneyness = null;
     Integer pageSize = 100;
-    
     ApiResponseOptionsChain result = optionsApi.getOptionsChain(symbol, expiration, date, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
     System.out.println(result);
   }
@@ -481,7 +477,6 @@ public class Main {
     BigDecimal openInterestGreaterThan = null;
     BigDecimal openInterestLessThan = null;
     String moneyness = null;
-    
     ApiResponseOptionsChainRealtime result = optionsApi.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness);
     System.out.println(result);
   }
@@ -579,7 +574,6 @@ public class Main {
     String symbol = "MSFT";
     String after = "2019-01-01";
     String before = "2019-12-31";
-    
     ApiResponseOptionsExpirations result = optionsApi.getOptionsExpirations(symbol, after, before);
     System.out.println(result);
   }
@@ -670,7 +664,6 @@ public class Main {
     String endDate = "2019-12-31";
     Integer pageSize = 100;
     String nextPage = null;
-    
     ApiResponseOptionPrices result = optionsApi.getOptionsPrices(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -758,9 +751,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    OptionContractsList body = new OptionContractsList();
     String source = null;
-    
+    OptionContractsList body = new OptionContractsList();
+    List<String> contracts = new ArrayList<>();
+
+    contracts.add("A220121P00055000");
+    contracts.add("A220121P00057500");
+    contracts.add("A220121P00060000");
+    body.setContracts(contracts);
     ApiResponseOptionsPricesBatchRealtime result = optionsApi.getOptionsPricesBatchRealtime(body, source);
     System.out.println(result);
   }
@@ -847,7 +845,6 @@ public class Main {
     OptionsApi optionsApi = new OptionsApi();
     String identifier = "AAPL230120C00090000";
     String source = null;
-    
     ApiResponseOptionsPriceRealtime result = optionsApi.getOptionsPricesRealtime(identifier, source);
     System.out.println(result);
   }
@@ -934,7 +931,6 @@ public class Main {
     OptionsApi optionsApi = new OptionsApi();
     String identifier = "AAPL230120C00090000";
     String source = null;
-    
     ApiResponseOptionsStatsRealtime result = optionsApi.getOptionsStatsRealtime(identifier, source);
     System.out.println(result);
   }
