@@ -12,6 +12,7 @@ import com.intrinio.models.ApiResponseOptionsPriceRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
 import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
+import com.intrinio.models.ApiResponseOptionsTickers;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
 import com.intrinio.models.OptionContractsList;
@@ -31,6 +32,21 @@ public class OptionsApiTest {
 
     private final OptionsApi api = new OptionsApi();
 
+    
+    /**
+     * Options Tickers
+     *
+     * Returns all tickers that have existing options contracts.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAllOptionsTickersTest() throws ApiException, NoSuchMethodException {
+        ApiResponseOptionsTickers response = api.getAllOptionsTickers();
+
+        // TODO: test validations
+    }
     
     /**
      * Option Expirations Realtime

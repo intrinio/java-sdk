@@ -112,6 +112,27 @@ public class StockPriceSummary {
   @SerializedName("adj_volume")
   private BigDecimal adjVolume = null;
 
+  @SerializedName("factor")
+  private BigDecimal factor = null;
+
+  @SerializedName("split_ratio")
+  private BigDecimal splitRatio = null;
+
+  @SerializedName("dividend")
+  private BigDecimal dividend = null;
+
+  @SerializedName("change")
+  private BigDecimal change = null;
+
+  @SerializedName("percent_change")
+  private BigDecimal percentChange = null;
+
+  @SerializedName("fifty_two_week_high")
+  private BigDecimal fiftyTwoWeekHigh = null;
+
+  @SerializedName("fifty_two_week_low")
+  private BigDecimal fiftyTwoWeekLow = null;
+
   public StockPriceSummary date(LocalDate date) {
     this.date = date;
     return this;
@@ -346,6 +367,132 @@ public class StockPriceSummary {
     this.adjVolume = adjVolume;
   }
 
+  public StockPriceSummary factor(BigDecimal factor) {
+    this.factor = factor;
+    return this;
+  }
+
+   /**
+   * The factor by which to multiply stock prices before this date, in order to calculate historically-adjusted stock prices.
+   * @return factor
+  **/
+  @ApiModelProperty(value = "The factor by which to multiply stock prices before this date, in order to calculate historically-adjusted stock prices.")
+  public BigDecimal getFactor() {
+    return factor;
+  }
+
+  public void setFactor(BigDecimal factor) {
+    this.factor = factor;
+  }
+
+  public StockPriceSummary splitRatio(BigDecimal splitRatio) {
+    this.splitRatio = splitRatio;
+    return this;
+  }
+
+   /**
+   * The ratio of the stock split, if a stock split occurred.
+   * @return splitRatio
+  **/
+  @ApiModelProperty(value = "The ratio of the stock split, if a stock split occurred.")
+  public BigDecimal getSplitRatio() {
+    return splitRatio;
+  }
+
+  public void setSplitRatio(BigDecimal splitRatio) {
+    this.splitRatio = splitRatio;
+  }
+
+  public StockPriceSummary dividend(BigDecimal dividend) {
+    this.dividend = dividend;
+    return this;
+  }
+
+   /**
+   * The dividend amount, if a dividend was paid.
+   * @return dividend
+  **/
+  @ApiModelProperty(value = "The dividend amount, if a dividend was paid.")
+  public BigDecimal getDividend() {
+    return dividend;
+  }
+
+  public void setDividend(BigDecimal dividend) {
+    this.dividend = dividend;
+  }
+
+  public StockPriceSummary change(BigDecimal change) {
+    this.change = change;
+    return this;
+  }
+
+   /**
+   * The difference in price from the last price for this frequency
+   * @return change
+  **/
+  @ApiModelProperty(value = "The difference in price from the last price for this frequency")
+  public BigDecimal getChange() {
+    return change;
+  }
+
+  public void setChange(BigDecimal change) {
+    this.change = change;
+  }
+
+  public StockPriceSummary percentChange(BigDecimal percentChange) {
+    this.percentChange = percentChange;
+    return this;
+  }
+
+   /**
+   * The percent difference in price from the last price for this frequency
+   * @return percentChange
+  **/
+  @ApiModelProperty(value = "The percent difference in price from the last price for this frequency")
+  public BigDecimal getPercentChange() {
+    return percentChange;
+  }
+
+  public void setPercentChange(BigDecimal percentChange) {
+    this.percentChange = percentChange;
+  }
+
+  public StockPriceSummary fiftyTwoWeekHigh(BigDecimal fiftyTwoWeekHigh) {
+    this.fiftyTwoWeekHigh = fiftyTwoWeekHigh;
+    return this;
+  }
+
+   /**
+   * The 52 week high price (daily only)
+   * @return fiftyTwoWeekHigh
+  **/
+  @ApiModelProperty(value = "The 52 week high price (daily only)")
+  public BigDecimal getFiftyTwoWeekHigh() {
+    return fiftyTwoWeekHigh;
+  }
+
+  public void setFiftyTwoWeekHigh(BigDecimal fiftyTwoWeekHigh) {
+    this.fiftyTwoWeekHigh = fiftyTwoWeekHigh;
+  }
+
+  public StockPriceSummary fiftyTwoWeekLow(BigDecimal fiftyTwoWeekLow) {
+    this.fiftyTwoWeekLow = fiftyTwoWeekLow;
+    return this;
+  }
+
+   /**
+   * The 52 week low price (daily only)
+   * @return fiftyTwoWeekLow
+  **/
+  @ApiModelProperty(value = "The 52 week low price (daily only)")
+  public BigDecimal getFiftyTwoWeekLow() {
+    return fiftyTwoWeekLow;
+  }
+
+  public void setFiftyTwoWeekLow(BigDecimal fiftyTwoWeekLow) {
+    this.fiftyTwoWeekLow = fiftyTwoWeekLow;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -368,12 +515,19 @@ public class StockPriceSummary {
         Objects.equals(this.adjHigh, stockPriceSummary.adjHigh) &&
         Objects.equals(this.adjLow, stockPriceSummary.adjLow) &&
         Objects.equals(this.adjClose, stockPriceSummary.adjClose) &&
-        Objects.equals(this.adjVolume, stockPriceSummary.adjVolume);
+        Objects.equals(this.adjVolume, stockPriceSummary.adjVolume) &&
+        Objects.equals(this.factor, stockPriceSummary.factor) &&
+        Objects.equals(this.splitRatio, stockPriceSummary.splitRatio) &&
+        Objects.equals(this.dividend, stockPriceSummary.dividend) &&
+        Objects.equals(this.change, stockPriceSummary.change) &&
+        Objects.equals(this.percentChange, stockPriceSummary.percentChange) &&
+        Objects.equals(this.fiftyTwoWeekHigh, stockPriceSummary.fiftyTwoWeekHigh) &&
+        Objects.equals(this.fiftyTwoWeekLow, stockPriceSummary.fiftyTwoWeekLow);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, intraperiod, frequency, open, high, low, close, volume, adjOpen, adjHigh, adjLow, adjClose, adjVolume);
+    return Objects.hash(date, intraperiod, frequency, open, high, low, close, volume, adjOpen, adjHigh, adjLow, adjClose, adjVolume, factor, splitRatio, dividend, change, percentChange, fiftyTwoWeekHigh, fiftyTwoWeekLow);
   }
 
 
@@ -395,6 +549,13 @@ public class StockPriceSummary {
     sb.append("    adjLow: ").append(toIndentedString(adjLow)).append("\n");
     sb.append("    adjClose: ").append(toIndentedString(adjClose)).append("\n");
     sb.append("    adjVolume: ").append(toIndentedString(adjVolume)).append("\n");
+    sb.append("    factor: ").append(toIndentedString(factor)).append("\n");
+    sb.append("    splitRatio: ").append(toIndentedString(splitRatio)).append("\n");
+    sb.append("    dividend: ").append(toIndentedString(dividend)).append("\n");
+    sb.append("    change: ").append(toIndentedString(change)).append("\n");
+    sb.append("    percentChange: ").append(toIndentedString(percentChange)).append("\n");
+    sb.append("    fiftyTwoWeekHigh: ").append(toIndentedString(fiftyTwoWeekHigh)).append("\n");
+    sb.append("    fiftyTwoWeekLow: ").append(toIndentedString(fiftyTwoWeekLow)).append("\n");
     sb.append("}");
     return sb.toString();
   }
