@@ -5,6 +5,7 @@ package com.intrinio.api;
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseCompanies;
 import com.intrinio.models.ApiResponseCompaniesSearch;
+import com.intrinio.models.ApiResponseCompanyAnswers;
 import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
@@ -91,6 +92,23 @@ public class CompanyApiTest {
     public void getCompanyTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Company response = api.getCompany(identifier);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Company Answers
+     *
+     * Returns answers for a question about the Company with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCompanyAnswersTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String query = null;
+        ApiResponseCompanyAnswers response = api.getCompanyAnswers(identifier, query);
 
         // TODO: test validations
     }

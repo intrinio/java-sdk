@@ -5,7 +5,7 @@ To get an API key, [sign up here](https://intrinio.com/).
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
 - API version: 2.23.0
-- Package version: 6.7.0
+- Package version: 
 
 
 ## Installation
@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
 *CompanyApi* | [**getAllCompanies**](docs/CompanyApi.md#getAllCompanies) | **GET** /companies | All Companies
 *CompanyApi* | [**getAllCompanyNews**](docs/CompanyApi.md#getAllCompanyNews) | **GET** /companies/news | All News
 *CompanyApi* | [**getCompany**](docs/CompanyApi.md#getCompany) | **GET** /companies/{identifier} | Lookup Company
+*CompanyApi* | [**getCompanyAnswers**](docs/CompanyApi.md#getCompanyAnswers) | **GET** /companies/{identifier}/answers | Company Answers
 *CompanyApi* | [**getCompanyDataPointNumber**](docs/CompanyApi.md#getCompanyDataPointNumber) | **GET** /companies/{identifier}/data_point/{tag}/number | Data Point (Number) for Company
 *CompanyApi* | [**getCompanyDataPointText**](docs/CompanyApi.md#getCompanyDataPointText) | **GET** /companies/{identifier}/data_point/{tag}/text | Data Point (Text) for Company
 *CompanyApi* | [**getCompanyFilings**](docs/CompanyApi.md#getCompanyFilings) | **GET** /companies/{identifier}/filings | All Filings by Company
@@ -268,6 +269,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseBulkDownloadLinks](docs/ApiResponseBulkDownloadLinks.md)
  - [ApiResponseCompanies](docs/ApiResponseCompanies.md)
  - [ApiResponseCompaniesSearch](docs/ApiResponseCompaniesSearch.md)
+ - [ApiResponseCompanyAnswers](docs/ApiResponseCompanyAnswers.md)
  - [ApiResponseCompanyFilings](docs/ApiResponseCompanyFilings.md)
  - [ApiResponseCompanyFundamentals](docs/ApiResponseCompanyFundamentals.md)
  - [ApiResponseCompanyHistoricalData](docs/ApiResponseCompanyHistoricalData.md)
@@ -471,6 +473,9 @@ Class | Method | HTTP request | Description
  - [StockPriceInterval](docs/StockPriceInterval.md)
  - [StockPriceSummary](docs/StockPriceSummary.md)
  - [TechnicalIndicator](docs/TechnicalIndicator.md)
+ - [TheaEntityAnswer](docs/TheaEntityAnswer.md)
+ - [TheaSourceDocument](docs/TheaSourceDocument.md)
+ - [TheaSourceDocumentTags](docs/TheaSourceDocumentTags.md)
  - [TripleExponentialAverageTechnicalValue](docs/TripleExponentialAverageTechnicalValue.md)
  - [TrueStrengthIndexTechnicalValue](docs/TrueStrengthIndexTechnicalValue.md)
  - [UltimateOscillatorTechnicalValue](docs/UltimateOscillatorTechnicalValue.md)
@@ -496,3 +501,4 @@ Class | Method | HTTP request | Description
  - [ZacksSalesSurprise](docs/ZacksSalesSurprise.md)
  - [ZacksSalesSurpriseSummary](docs/ZacksSalesSurpriseSummary.md)
  - [ZacksTargetPriceConsensus](docs/ZacksTargetPriceConsensus.md)
+
