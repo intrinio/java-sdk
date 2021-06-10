@@ -9,6 +9,7 @@ import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
+import com.intrinio.models.ApiResponseCompanyRecognize;
 import com.intrinio.models.ApiResponseCompanySecurities;
 import com.intrinio.models.ApiResponseCompanySharesOutstanding;
 import com.intrinio.models.ApiResponseInitialPublicOfferings;
@@ -310,6 +311,22 @@ public class CompanyApiTest {
         String fiscalPeriod = null;
         Integer fiscalYear = null;
         Fundamental response = api.lookupCompanyFundamental(identifier, statementCode, fiscalPeriod, fiscalYear);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Recognize Company
+     *
+     * Returns a list of companies recognized by the Thea API in the given &#x60;text&#x60; query string parameter.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void recognizeCompanyTest() throws ApiException, NoSuchMethodException {
+        String text = null;
+        ApiResponseCompanyRecognize response = api.recognizeCompany(text);
 
         // TODO: test validations
     }

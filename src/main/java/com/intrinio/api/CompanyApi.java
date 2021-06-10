@@ -22,6 +22,7 @@ import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
+import com.intrinio.models.ApiResponseCompanyRecognize;
 import com.intrinio.models.ApiResponseCompanySecurities;
 import com.intrinio.models.ApiResponseCompanySharesOutstanding;
 import com.intrinio.models.ApiResponseInitialPublicOfferings;
@@ -2170,6 +2171,134 @@ public class CompanyApi {
 
         com.squareup.okhttp.Call call = lookupCompanyFundamentalValidateBeforeCall(identifier, statementCode, fiscalPeriod, fiscalYear, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Fundamental>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for recognizeCompany
+     * @param text The text sent to the Thea API to analyze (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call recognizeCompanyCall(String text, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/companies/recognize";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (text != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("text", text));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call recognizeCompanyValidateBeforeCall(String text, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'text' is set
+        if (text == null) {
+            throw new ApiException("Missing the required parameter 'text' when calling recognizeCompany(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = recognizeCompanyCall(text, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Recognize Company
+     * Returns a list of companies recognized by the Thea API in the given &#x60;text&#x60; query string parameter.
+     * @param text The text sent to the Thea API to analyze (required)
+     * @return ApiResponseCompanyRecognize
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseCompanyRecognize recognizeCompany(String text) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("recognizeCompanyWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { text };
+      ApiResponse<ApiResponseCompanyRecognize> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Recognize Company
+     * Returns a list of companies recognized by the Thea API in the given &#x60;text&#x60; query string parameter.
+     * @param text The text sent to the Thea API to analyze (required)
+     * @return ApiResponse&lt;ApiResponseCompanyRecognize&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseCompanyRecognize> recognizeCompanyWithHttpInfo(String text) throws ApiException {
+        com.squareup.okhttp.Call call = recognizeCompanyValidateBeforeCall(text, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanyRecognize>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Recognize Company (asynchronously)
+     * Returns a list of companies recognized by the Thea API in the given &#x60;text&#x60; query string parameter.
+     * @param text The text sent to the Thea API to analyze (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call recognizeCompanyAsync(String text, final ApiCallback<ApiResponseCompanyRecognize> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = recognizeCompanyValidateBeforeCall(text, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanyRecognize>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
