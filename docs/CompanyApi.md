@@ -1380,7 +1380,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **text** | String| The text sent to the Thea API to analyze | [default to Apple] &nbsp;
+ **text** | String| The text sent to the Thea API to analyze | &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

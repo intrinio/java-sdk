@@ -8,7 +8,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.intrinio.models.DefinitionsCompanySummary;
+import com.intrinio.models.CompanySummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -21,14 +21,14 @@ import java.util.List;
 
 public class ApiResponseCompanyRecognize {
   @SerializedName("companies")
-  private List<DefinitionsCompanySummary> companies = null;
+  private List<CompanySummary> companies = null;
 
-  public ApiResponseCompanyRecognize companies(List<DefinitionsCompanySummary> companies) {
+  public ApiResponseCompanyRecognize companies(List<CompanySummary> companies) {
     this.companies = companies;
     return this;
   }
 
-  public ApiResponseCompanyRecognize addCompaniesItem(DefinitionsCompanySummary companiesItem) {
+  public ApiResponseCompanyRecognize addCompaniesItem(CompanySummary companiesItem) {
     if (this.companies == null) {
       this.companies = new ArrayList<>();
     }
@@ -41,11 +41,11 @@ public class ApiResponseCompanyRecognize {
    * @return companies
   **/
   @ApiModelProperty(value = "")
-  public List<DefinitionsCompanySummary> getCompanies() {
+  public List<CompanySummary> getCompanies() {
     return companies;
   }
 
-  public void setCompanies(List<DefinitionsCompanySummary> companies) {
+  public void setCompanies(List<CompanySummary> companies) {
     this.companies = companies;
   }
 
