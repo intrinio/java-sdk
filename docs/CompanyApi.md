@@ -354,7 +354,7 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
     String identifier = "AAPL";
-    String query = "Where is the company headquartered?";
+    String query = "What do they believe in?";
     ApiResponseCompanyAnswers result = companyApi.getCompanyAnswers(identifier, query);
     System.out.println(result);
   }

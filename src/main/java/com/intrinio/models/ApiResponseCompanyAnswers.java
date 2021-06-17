@@ -8,6 +8,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.intrinio.models.CompanySummary;
 import com.intrinio.models.TheaEntityAnswer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -28,6 +29,9 @@ public class ApiResponseCompanyAnswers {
 
   @SerializedName("answers")
   private List<TheaEntityAnswer> answers = null;
+
+  @SerializedName("companies")
+  private List<CompanySummary> companies = null;
 
   public ApiResponseCompanyAnswers source(String source) {
     this.source = source;
@@ -91,6 +95,32 @@ public class ApiResponseCompanyAnswers {
     this.answers = answers;
   }
 
+  public ApiResponseCompanyAnswers companies(List<CompanySummary> companies) {
+    this.companies = companies;
+    return this;
+  }
+
+  public ApiResponseCompanyAnswers addCompaniesItem(CompanySummary companiesItem) {
+    if (this.companies == null) {
+      this.companies = new ArrayList<>();
+    }
+    this.companies.add(companiesItem);
+    return this;
+  }
+
+   /**
+   * Get companies
+   * @return companies
+  **/
+  @ApiModelProperty(value = "")
+  public List<CompanySummary> getCompanies() {
+    return companies;
+  }
+
+  public void setCompanies(List<CompanySummary> companies) {
+    this.companies = companies;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -103,12 +133,13 @@ public class ApiResponseCompanyAnswers {
     ApiResponseCompanyAnswers apiResponseCompanyAnswers = (ApiResponseCompanyAnswers) o;
     return Objects.equals(this.source, apiResponseCompanyAnswers.source) &&
         Objects.equals(this.query, apiResponseCompanyAnswers.query) &&
-        Objects.equals(this.answers, apiResponseCompanyAnswers.answers);
+        Objects.equals(this.answers, apiResponseCompanyAnswers.answers) &&
+        Objects.equals(this.companies, apiResponseCompanyAnswers.companies);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(source, query, answers);
+    return Objects.hash(source, query, answers, companies);
   }
 
 
@@ -120,6 +151,7 @@ public class ApiResponseCompanyAnswers {
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    query: ").append(toIndentedString(query)).append("\n");
     sb.append("    answers: ").append(toIndentedString(answers)).append("\n");
+    sb.append("    companies: ").append(toIndentedString(companies)).append("\n");
     sb.append("}");
     return sb.toString();
   }
