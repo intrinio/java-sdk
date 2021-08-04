@@ -8,7 +8,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.intrinio.models.TheaSourceDocumentTags;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -25,7 +24,7 @@ public class TheaSourceDocument {
   private String id = null;
 
   @SerializedName("tags")
-  private List<TheaSourceDocumentTags> tags = null;
+  private List<Object> tags = null;
 
   public TheaSourceDocument id(String id) {
     this.id = id;
@@ -45,12 +44,12 @@ public class TheaSourceDocument {
     this.id = id;
   }
 
-  public TheaSourceDocument tags(List<TheaSourceDocumentTags> tags) {
+  public TheaSourceDocument tags(List<Object> tags) {
     this.tags = tags;
     return this;
   }
 
-  public TheaSourceDocument addTagsItem(TheaSourceDocumentTags tagsItem) {
+  public TheaSourceDocument addTagsItem(Object tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<>();
     }
@@ -63,11 +62,11 @@ public class TheaSourceDocument {
    * @return tags
   **/
   @ApiModelProperty(value = "Entity identifying tags associated with the source document")
-  public List<TheaSourceDocumentTags> getTags() {
+  public List<Object> getTags() {
     return tags;
   }
 
-  public void setTags(List<TheaSourceDocumentTags> tags) {
+  public void setTags(List<Object> tags) {
     this.tags = tags;
   }
 

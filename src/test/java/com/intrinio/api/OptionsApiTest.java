@@ -13,6 +13,7 @@ import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
 import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
 import com.intrinio.models.ApiResponseOptionsTickers;
+import com.intrinio.models.ApiResponseOptionsUnusualActivity;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
 import com.intrinio.models.OptionContractsList;
@@ -252,6 +253,23 @@ public class OptionsApiTest {
         String identifier = null;
         String source = null;
         ApiResponseOptionsStatsRealtime response = api.getOptionsStatsRealtime(identifier, source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Options Unusual Activity
+     *
+     * Returns unusual trades for a given identifier.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUnusualActivityTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        String source = null;
+        ApiResponseOptionsUnusualActivity response = api.getUnusualActivity(symbol, source);
 
         // TODO: test validations
     }

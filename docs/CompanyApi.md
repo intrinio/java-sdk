@@ -580,7 +580,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseCompanyFilings getCompanyFilings(identifier, reportType, startDate, endDate, pageSize, nextPage)
+> ApiResponseCompanyFilings getCompanyFilings(identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage)
 
 #### All Filings by Company
 
@@ -615,9 +615,10 @@ public class Main {
     String reportType = null;
     LocalDate startDate = LocalDate.of(2015,1,01);
     LocalDate endDate = null;
+    Boolean theaEnabled = null;
     Integer pageSize = 100;
     String nextPage = null;
-    ApiResponseCompanyFilings result = companyApi.getCompanyFilings(identifier, reportType, startDate, endDate, pageSize, nextPage);
+    ApiResponseCompanyFilings result = companyApi.getCompanyFilings(identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage);
     System.out.println(result);
   }
 }
@@ -636,6 +637,7 @@ Name | Type | Description  | Notes
  **reportType** | String| Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. | [optional] &nbsp;
  **startDate** | LocalDate| Filed on or after the given date | [optional] &nbsp;
  **endDate** | LocalDate| Filed before or after the given date | [optional] &nbsp;
+ **theaEnabled** | Boolean| Return filings that have been read by our Thea NLP and are ready for our answers endpoint | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>

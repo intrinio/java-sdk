@@ -26,6 +26,7 @@ import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
 import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
 import com.intrinio.models.ApiResponseOptionsTickers;
+import com.intrinio.models.ApiResponseOptionsUnusualActivity;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
 import com.intrinio.models.OptionContractsList;
@@ -1735,6 +1736,139 @@ public class OptionsApi {
 
         com.squareup.okhttp.Call call = getOptionsStatsRealtimeValidateBeforeCall(identifier, source, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsStatsRealtime>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getUnusualActivity
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getUnusualActivityCall(String symbol, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/unusual_activity/{symbol}"
+            .replaceAll("\\{" + "symbol" + "\\}", apiClient.escapeString(symbol.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getUnusualActivityValidateBeforeCall(String symbol, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling getUnusualActivity(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getUnusualActivityCall(symbol, source, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Options Unusual Activity
+     * Returns unusual trades for a given identifier.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @return ApiResponseOptionsUnusualActivity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsUnusualActivity getUnusualActivity(String symbol, String source) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getUnusualActivityWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { symbol, source };
+      ApiResponse<ApiResponseOptionsUnusualActivity> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Options Unusual Activity
+     * Returns unusual trades for a given identifier.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsUnusualActivity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsUnusualActivity> getUnusualActivityWithHttpInfo(String symbol, String source) throws ApiException {
+        com.squareup.okhttp.Call call = getUnusualActivityValidateBeforeCall(symbol, source, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsUnusualActivity>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Options Unusual Activity (asynchronously)
+     * Returns unusual trades for a given identifier.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getUnusualActivityAsync(String symbol, String source, final ApiCallback<ApiResponseOptionsUnusualActivity> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getUnusualActivityValidateBeforeCall(symbol, source, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsUnusualActivity>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

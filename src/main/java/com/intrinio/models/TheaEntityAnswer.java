@@ -80,10 +80,10 @@ public class TheaEntityAnswer {
   }
 
    /**
-   * Get sourceDocuments
+   * The documents from which Thea answer data is sourced
    * @return sourceDocuments
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The documents from which Thea answer data is sourced")
   public List<TheaSourceDocument> getSourceDocuments() {
     return sourceDocuments;
   }

@@ -161,9 +161,10 @@ public class CompanyApiTest {
         String reportType = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
+        Boolean theaEnabled = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseCompanyFilings response = api.getCompanyFilings(identifier, reportType, startDate, endDate, pageSize, nextPage);
+        ApiResponseCompanyFilings response = api.getCompanyFilings(identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage);
 
         // TODO: test validations
     }

@@ -912,6 +912,7 @@ public class CompanyApi {
      * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
+     * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -919,7 +920,7 @@ public class CompanyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFilingsCall(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFilingsCall(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Boolean theaEnabled, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -934,6 +935,8 @@ public class CompanyApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
         if (endDate != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (theaEnabled != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("thea_enabled", theaEnabled));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -972,7 +975,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyFilingsValidateBeforeCall(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyFilingsValidateBeforeCall(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Boolean theaEnabled, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -980,7 +983,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCompanyFilingsCall(identifier, reportType, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFilingsCall(identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -992,16 +995,17 @@ public class CompanyApi {
      * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
+     * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyFilings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanyFilings getCompanyFilings(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("getCompanyFilingsWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class, Integer.class, String.class);
+    public ApiResponseCompanyFilings getCompanyFilings(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Boolean theaEnabled, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyFilingsWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class, Boolean.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { identifier, reportType, startDate, endDate, pageSize, nextPage };
+      Object[] apiCallArguments = { identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage };
       ApiResponse<ApiResponseCompanyFilings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -1013,13 +1017,14 @@ public class CompanyApi {
      * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
+     * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanyFilings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanyFilings> getCompanyFilingsWithHttpInfo(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, reportType, startDate, endDate, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanyFilings> getCompanyFilingsWithHttpInfo(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Boolean theaEnabled, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFilings>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1031,13 +1036,14 @@ public class CompanyApi {
      * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
+     * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFilingsAsync(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanyFilings> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFilingsAsync(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Boolean theaEnabled, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanyFilings> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1058,7 +1064,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, reportType, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFilings>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

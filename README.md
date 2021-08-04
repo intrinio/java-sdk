@@ -2,10 +2,10 @@
 
 To get an API key, [sign up here](https://intrinio.com/).
 
-Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
+Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://docs.intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.23.0
-- Package version: 6.7.2
+- API version: 2.25.0
+- Package version: 6.8.0
 
 
 ## Installation
@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
 *EtFsApi* | [**searchEtfs**](docs/EtFsApi.md#searchEtfs) | **GET** /etfs/search | Search ETFs
 *FilingApi* | [**getAllFilings**](docs/FilingApi.md#getAllFilings) | **GET** /filings | All Filings
 *FilingApi* | [**getAllNotes**](docs/FilingApi.md#getAllNotes) | **GET** /filings/notes | All Filing Notes
+*FilingApi* | [**getFilingAnswers**](docs/FilingApi.md#getFilingAnswers) | **GET** /filings/{identifier}/answers | Filing Answers
 *FilingApi* | [**getFilingById**](docs/FilingApi.md#getFilingById) | **GET** /filings/{id} | Lookup Filing
 *FilingApi* | [**getFilingFundamentals**](docs/FilingApi.md#getFilingFundamentals) | **GET** /filings/{identifier}/fundamentals | All Fundamentals by Filing
 *FilingApi* | [**getFilingHtml**](docs/FilingApi.md#getFilingHtml) | **GET** /filings/{identifier}/html | Filing Html
@@ -158,6 +159,7 @@ Class | Method | HTTP request | Description
 *OptionsApi* | [**getOptionsPricesBatchRealtime**](docs/OptionsApi.md#getOptionsPricesBatchRealtime) | **POST** /options/prices/realtime/batch | Option Prices Batch Realtime
 *OptionsApi* | [**getOptionsPricesRealtime**](docs/OptionsApi.md#getOptionsPricesRealtime) | **GET** /options/prices/{identifier}/realtime | Option Prices Realtime
 *OptionsApi* | [**getOptionsStatsRealtime**](docs/OptionsApi.md#getOptionsStatsRealtime) | **GET** /options/prices/{identifier}/realtime/stats | Option Stats Realtime
+*OptionsApi* | [**getUnusualActivity**](docs/OptionsApi.md#getUnusualActivity) | **GET** /options/unusual_activity/{symbol} | Options Unusual Activity
 *OwnersApi* | [**getAllOwners**](docs/OwnersApi.md#getAllOwners) | **GET** /owners | All Owners
 *OwnersApi* | [**getOwnerById**](docs/OwnersApi.md#getOwnerById) | **GET** /owners/{identifier} | Owner by ID
 *OwnersApi* | [**insiderTransactionFilingsByOwner**](docs/OwnersApi.md#insiderTransactionFilingsByOwner) | **GET** /owners/{identifier}/insider_transaction_filings | Insider Transaction Filings by Owner
@@ -285,6 +287,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseEconomicIndexHistoricalData](docs/ApiResponseEconomicIndexHistoricalData.md)
  - [ApiResponseEconomicIndices](docs/ApiResponseEconomicIndices.md)
  - [ApiResponseEconomicIndicesSearch](docs/ApiResponseEconomicIndicesSearch.md)
+ - [ApiResponseFilingAnswers](docs/ApiResponseFilingAnswers.md)
  - [ApiResponseFilingFundamentals](docs/ApiResponseFilingFundamentals.md)
  - [ApiResponseFilingNotes](docs/ApiResponseFilingNotes.md)
  - [ApiResponseFilingNotesSearch](docs/ApiResponseFilingNotesSearch.md)
@@ -308,6 +311,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseOptionsRealtime](docs/ApiResponseOptionsRealtime.md)
  - [ApiResponseOptionsStatsRealtime](docs/ApiResponseOptionsStatsRealtime.md)
  - [ApiResponseOptionsTickers](docs/ApiResponseOptionsTickers.md)
+ - [ApiResponseOptionsUnusualActivity](docs/ApiResponseOptionsUnusualActivity.md)
  - [ApiResponseOwnerInsiderTransactionFilings](docs/ApiResponseOwnerInsiderTransactionFilings.md)
  - [ApiResponseOwnerInstitutionalHoldings](docs/ApiResponseOwnerInstitutionalHoldings.md)
  - [ApiResponseOwners](docs/ApiResponseOwners.md)
@@ -446,6 +450,7 @@ Class | Method | HTTP request | Description
  - [OptionPriceRealtime](docs/OptionPriceRealtime.md)
  - [OptionRealtime](docs/OptionRealtime.md)
  - [OptionStatsRealtime](docs/OptionStatsRealtime.md)
+ - [OptionUnusualTrade](docs/OptionUnusualTrade.md)
  - [Owner](docs/Owner.md)
  - [OwnerSummary](docs/OwnerSummary.md)
  - [RealtimeStockPrice](docs/RealtimeStockPrice.md)
@@ -475,7 +480,6 @@ Class | Method | HTTP request | Description
  - [TechnicalIndicator](docs/TechnicalIndicator.md)
  - [TheaEntityAnswer](docs/TheaEntityAnswer.md)
  - [TheaSourceDocument](docs/TheaSourceDocument.md)
- - [TheaSourceDocumentTags](docs/TheaSourceDocumentTags.md)
  - [TripleExponentialAverageTechnicalValue](docs/TripleExponentialAverageTechnicalValue.md)
  - [TrueStrengthIndexTechnicalValue](docs/TrueStrengthIndexTechnicalValue.md)
  - [UltimateOscillatorTechnicalValue](docs/UltimateOscillatorTechnicalValue.md)
