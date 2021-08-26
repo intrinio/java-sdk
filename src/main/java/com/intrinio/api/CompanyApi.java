@@ -71,6 +71,7 @@ public class CompanyApi {
      * @param industryGroup Return companies in the given industry group (optional)
      * @param hasFundamentals Return only companies that have fundamentals when true (optional)
      * @param hasStockPrices Return only companies that have stock prices when true (optional)
+     * @param theaEnabled Return companies whose have been read by our Thea NLP and are ready for our company answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -78,7 +79,7 @@ public class CompanyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllCompaniesCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompaniesCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Boolean theaEnabled, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -102,6 +103,8 @@ public class CompanyApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("has_fundamentals", hasFundamentals));
         if (hasStockPrices != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("has_stock_prices", hasStockPrices));
+        if (theaEnabled != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("thea_enabled", theaEnabled));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -140,10 +143,10 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllCompaniesValidateBeforeCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllCompaniesValidateBeforeCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Boolean theaEnabled, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllCompaniesCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompaniesCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -159,16 +162,17 @@ public class CompanyApi {
      * @param industryGroup Return companies in the given industry group (optional)
      * @param hasFundamentals Return only companies that have fundamentals when true (optional)
      * @param hasStockPrices Return only companies that have stock prices when true (optional)
+     * @param theaEnabled Return companies whose have been read by our Thea NLP and are ready for our company answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanies
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanies getAllCompanies(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("getAllCompaniesWithHttpInfo", LocalDate.class, String.class, String.class, String.class, String.class, String.class, Boolean.class, Boolean.class, Integer.class, String.class);
+    public ApiResponseCompanies getAllCompanies(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Boolean theaEnabled, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getAllCompaniesWithHttpInfo", LocalDate.class, String.class, String.class, String.class, String.class, String.class, Boolean.class, Boolean.class, Boolean.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage };
+      Object[] apiCallArguments = { latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage };
       ApiResponse<ApiResponseCompanies> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -184,13 +188,14 @@ public class CompanyApi {
      * @param industryGroup Return companies in the given industry group (optional)
      * @param hasFundamentals Return only companies that have fundamentals when true (optional)
      * @param hasStockPrices Return only companies that have stock prices when true (optional)
+     * @param theaEnabled Return companies whose have been read by our Thea NLP and are ready for our company answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanies&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanies> getAllCompaniesWithHttpInfo(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanies> getAllCompaniesWithHttpInfo(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Boolean theaEnabled, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -206,13 +211,14 @@ public class CompanyApi {
      * @param industryGroup Return companies in the given industry group (optional)
      * @param hasFundamentals Return only companies that have fundamentals when true (optional)
      * @param hasStockPrices Return only companies that have stock prices when true (optional)
+     * @param theaEnabled Return companies whose have been read by our Thea NLP and are ready for our company answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllCompaniesAsync(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanies> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompaniesAsync(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Boolean theaEnabled, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanies> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -233,7 +239,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

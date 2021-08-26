@@ -69,6 +69,23 @@ public class OptionsApiTest {
     }
     
     /**
+     * Option Strikes Realtime
+     *
+     * Returns all realtime options contracts and their prices for the given symbol and strike.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionStrikesRealtimeTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        BigDecimal strike = null;
+        ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Options
      *
      * Returns the master list of option contracts for a given symbol.
@@ -270,6 +287,22 @@ public class OptionsApiTest {
         String symbol = null;
         String source = null;
         ApiResponseOptionsUnusualActivity response = api.getUnusualActivity(symbol, source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Options Unusual Activity Universal
+     *
+     * Returns nusual trades for all underlying security symbols.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUnusualActivityUniversalTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        ApiResponseOptionsUnusualActivity response = api.getUnusualActivityUniversal(source);
 
         // TODO: test validations
     }

@@ -56,9 +56,10 @@ public class CompanyApiTest {
         String industryGroup = null;
         Boolean hasFundamentals = null;
         Boolean hasStockPrices = null;
+        Boolean theaEnabled = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseCompanies response = api.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage);
+        ApiResponseCompanies response = api.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage);
 
         // TODO: test validations
     }

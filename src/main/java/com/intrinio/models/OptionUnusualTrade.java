@@ -32,61 +32,14 @@ public class OptionUnusualTrade {
   @SerializedName("total_value")
   private BigDecimal totalValue = null;
 
-  /**
-   * The type of Option (put or call)
-   */
-  @JsonAdapter(ContractTypeEnum.Adapter.class)
-  public enum ContractTypeEnum {
-    PUT("put"),
-    
-    CALL("call");
+  @SerializedName("total_size")
+  private BigDecimal totalSize = null;
 
-    private String value;
+  @SerializedName("average_price")
+  private BigDecimal averagePrice = null;
 
-    ContractTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ContractTypeEnum fromValue(String text) {
-      for (ContractTypeEnum b : ContractTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<ContractTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ContractTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ContractTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return ContractTypeEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
-  @SerializedName("contract_type")
-  private ContractTypeEnum contractType = null;
-
-  @SerializedName("contract_expiration")
-  private LocalDate contractExpiration = null;
-
-  @SerializedName("contract_strike")
-  private BigDecimal contractStrike = null;
+  @SerializedName("contract")
+  private String contract = null;
 
   public OptionUnusualTrade symbol(String symbol) {
     this.symbol = symbol;
@@ -148,10 +101,10 @@ public class OptionUnusualTrade {
   }
 
    /**
-   * The aggregated value of all option contract premiums included in the trade
+   * The aggregated value of all option contract premiums included in the trade\\
    * @return totalValue
   **/
-  @ApiModelProperty(value = "The aggregated value of all option contract premiums included in the trade")
+  @ApiModelProperty(value = "The aggregated value of all option contract premiums included in the trade\\")
   public BigDecimal getTotalValue() {
     return totalValue;
   }
@@ -160,58 +113,58 @@ public class OptionUnusualTrade {
     this.totalValue = totalValue;
   }
 
-  public OptionUnusualTrade contractType(ContractTypeEnum contractType) {
-    this.contractType = contractType;
+  public OptionUnusualTrade totalSize(BigDecimal totalSize) {
+    this.totalSize = totalSize;
     return this;
   }
 
    /**
-   * The type of Option (put or call)
-   * @return contractType
+   * The total number of contracts involved in a single transaction
+   * @return totalSize
   **/
-  @ApiModelProperty(value = "The type of Option (put or call)")
-  public ContractTypeEnum getContractType() {
-    return contractType;
+  @ApiModelProperty(value = "The total number of contracts involved in a single transaction")
+  public BigDecimal getTotalSize() {
+    return totalSize;
   }
 
-  public void setContractType(ContractTypeEnum contractType) {
-    this.contractType = contractType;
+  public void setTotalSize(BigDecimal totalSize) {
+    this.totalSize = totalSize;
   }
 
-  public OptionUnusualTrade contractExpiration(LocalDate contractExpiration) {
-    this.contractExpiration = contractExpiration;
+  public OptionUnusualTrade averagePrice(BigDecimal averagePrice) {
+    this.averagePrice = averagePrice;
     return this;
   }
 
    /**
-   * The expiration date for the options contract
-   * @return contractExpiration
+   * The average premium paid per option contract
+   * @return averagePrice
   **/
-  @ApiModelProperty(value = "The expiration date for the options contract")
-  public LocalDate getContractExpiration() {
-    return contractExpiration;
+  @ApiModelProperty(value = "The average premium paid per option contract")
+  public BigDecimal getAveragePrice() {
+    return averagePrice;
   }
 
-  public void setContractExpiration(LocalDate contractExpiration) {
-    this.contractExpiration = contractExpiration;
+  public void setAveragePrice(BigDecimal averagePrice) {
+    this.averagePrice = averagePrice;
   }
 
-  public OptionUnusualTrade contractStrike(BigDecimal contractStrike) {
-    this.contractStrike = contractStrike;
+  public OptionUnusualTrade contract(String contract) {
+    this.contract = contract;
     return this;
   }
 
    /**
-   * The strike price of the option contract
-   * @return contractStrike
+   * Get contract
+   * @return contract
   **/
-  @ApiModelProperty(value = "The strike price of the option contract")
-  public BigDecimal getContractStrike() {
-    return contractStrike;
+  @ApiModelProperty(value = "")
+  public String getContract() {
+    return contract;
   }
 
-  public void setContractStrike(BigDecimal contractStrike) {
-    this.contractStrike = contractStrike;
+  public void setContract(String contract) {
+    this.contract = contract;
   }
 
 
@@ -228,14 +181,14 @@ public class OptionUnusualTrade {
         Objects.equals(this.timestamp, optionUnusualTrade.timestamp) &&
         Objects.equals(this.type, optionUnusualTrade.type) &&
         Objects.equals(this.totalValue, optionUnusualTrade.totalValue) &&
-        Objects.equals(this.contractType, optionUnusualTrade.contractType) &&
-        Objects.equals(this.contractExpiration, optionUnusualTrade.contractExpiration) &&
-        Objects.equals(this.contractStrike, optionUnusualTrade.contractStrike);
+        Objects.equals(this.totalSize, optionUnusualTrade.totalSize) &&
+        Objects.equals(this.averagePrice, optionUnusualTrade.averagePrice) &&
+        Objects.equals(this.contract, optionUnusualTrade.contract);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(symbol, timestamp, type, totalValue, contractType, contractExpiration, contractStrike);
+    return Objects.hash(symbol, timestamp, type, totalValue, totalSize, averagePrice, contract);
   }
 
 
@@ -248,9 +201,9 @@ public class OptionUnusualTrade {
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    totalValue: ").append(toIndentedString(totalValue)).append("\n");
-    sb.append("    contractType: ").append(toIndentedString(contractType)).append("\n");
-    sb.append("    contractExpiration: ").append(toIndentedString(contractExpiration)).append("\n");
-    sb.append("    contractStrike: ").append(toIndentedString(contractStrike)).append("\n");
+    sb.append("    totalSize: ").append(toIndentedString(totalSize)).append("\n");
+    sb.append("    averagePrice: ").append(toIndentedString(averagePrice)).append("\n");
+    sb.append("    contract: ").append(toIndentedString(contract)).append("\n");
     sb.append("}");
     return sb.toString();
   }

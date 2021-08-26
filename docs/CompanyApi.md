@@ -50,7 +50,7 @@ Method | HTTP request | Description
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseCompanies getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage)
+> ApiResponseCompanies getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage)
 
 #### All Companies
 
@@ -89,9 +89,10 @@ public class Main {
     String industryGroup = null;
     Boolean hasFundamentals = true;
     Boolean hasStockPrices = true;
+    Boolean theaEnabled = null;
     Integer pageSize = 100;
     String nextPage = null;
-    ApiResponseCompanies result = companyApi.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage);
+    ApiResponseCompanies result = companyApi.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage);
     System.out.println(result);
   }
 }
@@ -114,6 +115,7 @@ Name | Type | Description  | Notes
  **industryGroup** | String| Return companies in the given industry group | [optional] &nbsp;
  **hasFundamentals** | Boolean| Return only companies that have fundamentals when true | [optional] &nbsp;
  **hasStockPrices** | Boolean| Return only companies that have stock prices when true | [optional] &nbsp;
+ **theaEnabled** | Boolean| Return companies whose have been read by our Thea NLP and are ready for our company answers endpoint | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>

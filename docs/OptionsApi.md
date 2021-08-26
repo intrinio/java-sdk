@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAllOptionsTickers**](OptionsApi.md#getAllOptionsTickers) | **GET** /options/tickers | Options Tickers
 [**getOptionExpirationsRealtime**](OptionsApi.md#getOptionExpirationsRealtime) | **GET** /options/expirations/{symbol}/realtime | Option Expirations Realtime
+[**getOptionStrikesRealtime**](OptionsApi.md#getOptionStrikesRealtime) | **GET** /options/strikes/{symbol}/{strike}/realtime | Option Strikes Realtime
 [**getOptions**](OptionsApi.md#getOptions) | **GET** /options/{symbol} | Options
 [**getOptionsBySymbolRealtime**](OptionsApi.md#getOptionsBySymbolRealtime) | **GET** /options/{symbol}/realtime | Options by Symbol Realtime
 [**getOptionsChain**](OptionsApi.md#getOptionsChain) | **GET** /options/chain/{symbol}/{expiration} | Options Chain
@@ -16,6 +17,7 @@ Method | HTTP request | Description
 [**getOptionsPricesRealtime**](OptionsApi.md#getOptionsPricesRealtime) | **GET** /options/prices/{identifier}/realtime | Option Prices Realtime
 [**getOptionsStatsRealtime**](OptionsApi.md#getOptionsStatsRealtime) | **GET** /options/prices/{identifier}/realtime/stats | Option Stats Realtime
 [**getUnusualActivity**](OptionsApi.md#getUnusualActivity) | **GET** /options/unusual_activity/{symbol} | Options Unusual Activity
+[**getUnusualActivityUniversal**](OptionsApi.md#getUnusualActivityUniversal) | **GET** /options/unusual_activity | Options Unusual Activity Universal
 
 
 
@@ -185,6 +187,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseOptionsExpirations**](ApiResponseOptionsExpirations.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionStrikesRealtime)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsChainRealtime)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsChainRealtime.md)
+
+[//]: # (OPERATION:getOptionStrikesRealtime_v2)
+
+[//]: # (ENDPOINT:/options/strikes/{symbol}/{strike}/realtime)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionStrikesRealtime)
+
+<a name="getOptionStrikesRealtime"></a>
+## **getOptionStrikesRealtime**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionStrikesRealtime_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsChainRealtime getOptionStrikesRealtime(symbol, strike)
+
+#### Option Strikes Realtime
+
+
+Returns all realtime options contracts and their prices for the given symbol and strike.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String symbol = "MSFT";
+    BigDecimal strike = null;
+    ApiResponseOptionsChainRealtime result = optionsApi.getOptionStrikesRealtime(symbol, strike);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | String| The option symbol, corresponding to the underlying security. | &nbsp;
+ **strike** | BigDecimal| The strike price of the option contract. This will return options contracts with strike price equal to this price. | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsChainRealtime**](ApiResponseOptionsChainRealtime.md)
 
 [//]: # (END_OPERATION)
 
@@ -1115,6 +1203,90 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | String| The option symbol, corresponding to the underlying security. | &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsUnusualActivity**](ApiResponseOptionsUnusualActivity.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getUnusualActivityUniversal)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsUnusualActivity)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsUnusualActivity.md)
+
+[//]: # (OPERATION:getUnusualActivityUniversal_v2)
+
+[//]: # (ENDPOINT:/options/unusual_activity)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getUnusualActivityUniversal)
+
+<a name="getUnusualActivityUniversal"></a>
+## **getUnusualActivityUniversal**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getUnusualActivityUniversal_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsUnusualActivity getUnusualActivityUniversal(source)
+
+#### Options Unusual Activity Universal
+
+
+Returns nusual trades for all underlying security symbols.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String source = null;
+    ApiResponseOptionsUnusualActivity result = optionsApi.getUnusualActivityUniversal(source);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
 <br/>
 

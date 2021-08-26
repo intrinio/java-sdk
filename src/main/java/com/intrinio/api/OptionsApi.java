@@ -320,6 +320,143 @@ public class OptionsApi {
         return call;
     }
     /**
+     * Build call for getOptionStrikesRealtime
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionStrikesRealtimeCall(String symbol, BigDecimal strike, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/strikes/{symbol}/{strike}/realtime"
+            .replaceAll("\\{" + "symbol" + "\\}", apiClient.escapeString(symbol.toString()))
+            .replaceAll("\\{" + "strike" + "\\}", apiClient.escapeString(strike.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionStrikesRealtimeValidateBeforeCall(String symbol, BigDecimal strike, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling getOptionStrikesRealtime(Async)");
+        }
+        
+        // verify the required parameter 'strike' is set
+        if (strike == null) {
+            throw new ApiException("Missing the required parameter 'strike' when calling getOptionStrikesRealtime(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionStrikesRealtimeCall(symbol, strike, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Option Strikes Realtime
+     * Returns all realtime options contracts and their prices for the given symbol and strike.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (required)
+     * @return ApiResponseOptionsChainRealtime
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsChainRealtime getOptionStrikesRealtime(String symbol, BigDecimal strike) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionStrikesRealtimeWithHttpInfo", String.class, BigDecimal.class);
+      
+      Object[] apiCallArguments = { symbol, strike };
+      ApiResponse<ApiResponseOptionsChainRealtime> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Option Strikes Realtime
+     * Returns all realtime options contracts and their prices for the given symbol and strike.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (required)
+     * @return ApiResponse&lt;ApiResponseOptionsChainRealtime&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsChainRealtime> getOptionStrikesRealtimeWithHttpInfo(String symbol, BigDecimal strike) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionStrikesRealtimeValidateBeforeCall(symbol, strike, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsChainRealtime>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Option Strikes Realtime (asynchronously)
+     * Returns all realtime options contracts and their prices for the given symbol and strike.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionStrikesRealtimeAsync(String symbol, BigDecimal strike, final ApiCallback<ApiResponseOptionsChainRealtime> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionStrikesRealtimeValidateBeforeCall(symbol, strike, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsChainRealtime>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getOptions
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param type The option contract type. (optional)
@@ -1868,6 +2005,129 @@ public class OptionsApi {
         }
 
         com.squareup.okhttp.Call call = getUnusualActivityValidateBeforeCall(symbol, source, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsUnusualActivity>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getUnusualActivityUniversal
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getUnusualActivityUniversalCall(String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/unusual_activity";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getUnusualActivityUniversalValidateBeforeCall(String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getUnusualActivityUniversalCall(source, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Options Unusual Activity Universal
+     * Returns nusual trades for all underlying security symbols.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @return ApiResponseOptionsUnusualActivity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsUnusualActivity getUnusualActivityUniversal(String source) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getUnusualActivityUniversalWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { source };
+      ApiResponse<ApiResponseOptionsUnusualActivity> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Options Unusual Activity Universal
+     * Returns nusual trades for all underlying security symbols.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsUnusualActivity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsUnusualActivity> getUnusualActivityUniversalWithHttpInfo(String source) throws ApiException {
+        com.squareup.okhttp.Call call = getUnusualActivityUniversalValidateBeforeCall(source, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsUnusualActivity>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Options Unusual Activity Universal (asynchronously)
+     * Returns nusual trades for all underlying security symbols.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getUnusualActivityUniversalAsync(String source, final ApiCallback<ApiResponseOptionsUnusualActivity> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getUnusualActivityUniversalValidateBeforeCall(source, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsUnusualActivity>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

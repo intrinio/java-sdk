@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://docs.intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.25.0
-- Package version: 6.8.0
+- API version: 2.25.6
+- Package version: 6.9.0
 
 
 ## Installation
@@ -150,6 +150,7 @@ Class | Method | HTTP request | Description
 *MunicipalityApi* | [**getMunicipalityFinancials**](docs/MunicipalityApi.md#getMunicipalityFinancials) | **GET** /municipalities/{id}/financials | Financials for a Municipality
 *OptionsApi* | [**getAllOptionsTickers**](docs/OptionsApi.md#getAllOptionsTickers) | **GET** /options/tickers | Options Tickers
 *OptionsApi* | [**getOptionExpirationsRealtime**](docs/OptionsApi.md#getOptionExpirationsRealtime) | **GET** /options/expirations/{symbol}/realtime | Option Expirations Realtime
+*OptionsApi* | [**getOptionStrikesRealtime**](docs/OptionsApi.md#getOptionStrikesRealtime) | **GET** /options/strikes/{symbol}/{strike}/realtime | Option Strikes Realtime
 *OptionsApi* | [**getOptions**](docs/OptionsApi.md#getOptions) | **GET** /options/{symbol} | Options
 *OptionsApi* | [**getOptionsBySymbolRealtime**](docs/OptionsApi.md#getOptionsBySymbolRealtime) | **GET** /options/{symbol}/realtime | Options by Symbol Realtime
 *OptionsApi* | [**getOptionsChain**](docs/OptionsApi.md#getOptionsChain) | **GET** /options/chain/{symbol}/{expiration} | Options Chain
@@ -160,6 +161,7 @@ Class | Method | HTTP request | Description
 *OptionsApi* | [**getOptionsPricesRealtime**](docs/OptionsApi.md#getOptionsPricesRealtime) | **GET** /options/prices/{identifier}/realtime | Option Prices Realtime
 *OptionsApi* | [**getOptionsStatsRealtime**](docs/OptionsApi.md#getOptionsStatsRealtime) | **GET** /options/prices/{identifier}/realtime/stats | Option Stats Realtime
 *OptionsApi* | [**getUnusualActivity**](docs/OptionsApi.md#getUnusualActivity) | **GET** /options/unusual_activity/{symbol} | Options Unusual Activity
+*OptionsApi* | [**getUnusualActivityUniversal**](docs/OptionsApi.md#getUnusualActivityUniversal) | **GET** /options/unusual_activity | Options Unusual Activity Universal
 *OwnersApi* | [**getAllOwners**](docs/OwnersApi.md#getAllOwners) | **GET** /owners | All Owners
 *OwnersApi* | [**getOwnerById**](docs/OwnersApi.md#getOwnerById) | **GET** /owners/{identifier} | Owner by ID
 *OwnersApi* | [**insiderTransactionFilingsByOwner**](docs/OwnersApi.md#insiderTransactionFilingsByOwner) | **GET** /owners/{identifier}/insider_transaction_filings | Insider Transaction Filings by Owner
