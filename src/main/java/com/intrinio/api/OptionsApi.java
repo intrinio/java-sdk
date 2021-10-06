@@ -19,10 +19,12 @@ import java.io.IOException;
 import com.intrinio.models.ApiResponseOptionPrices;
 import com.intrinio.models.ApiResponseOptions;
 import com.intrinio.models.ApiResponseOptionsChain;
+import com.intrinio.models.ApiResponseOptionsChainEod;
 import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import com.intrinio.models.ApiResponseOptionsPriceRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
+import com.intrinio.models.ApiResponseOptionsPricesEod;
 import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
 import com.intrinio.models.ApiResponseOptionsTickers;
@@ -992,6 +994,167 @@ public class OptionsApi {
         return call;
     }
     /**
+     * Build call for getOptionsChainEod
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param expiration The expiration date of the options contract (required)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsChainEodCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/chain/{symbol}/{expiration}/eod"
+            .replaceAll("\\{" + "symbol" + "\\}", apiClient.escapeString(symbol.toString()))
+            .replaceAll("\\{" + "expiration" + "\\}", apiClient.escapeString(expiration.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+        if (strike != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strike", strike));
+        if (strikeGreaterThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strike_greater_than", strikeGreaterThan));
+        if (strikeLessThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strike_less_than", strikeLessThan));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionsChainEodValidateBeforeCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling getOptionsChainEod(Async)");
+        }
+        
+        // verify the required parameter 'expiration' is set
+        if (expiration == null) {
+            throw new ApiException("Missing the required parameter 'expiration' when calling getOptionsChainEod(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionsChainEodCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Options Chain EOD
+     * Returns all EOD options contracts and their prices for the given symbol and expiration date.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param expiration The expiration date of the options contract (required)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @return ApiResponseOptionsChainEod
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsChainEod getOptionsChainEod(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsChainEodWithHttpInfo", String.class, String.class, String.class, BigDecimal.class, BigDecimal.class, BigDecimal.class);
+      
+      Object[] apiCallArguments = { symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan };
+      ApiResponse<ApiResponseOptionsChainEod> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Options Chain EOD
+     * Returns all EOD options contracts and their prices for the given symbol and expiration date.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param expiration The expiration date of the options contract (required)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsChainEod&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsChainEod> getOptionsChainEodWithHttpInfo(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsChainEodValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsChainEod>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Options Chain EOD (asynchronously)
+     * Returns all EOD options contracts and their prices for the given symbol and expiration date.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param expiration The expiration date of the options contract (required)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsChainEodAsync(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, final ApiCallback<ApiResponseOptionsChainEod> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionsChainEodValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsChainEod>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getOptionsChainRealtime
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
@@ -1607,6 +1770,133 @@ public class OptionsApi {
 
         com.squareup.okhttp.Call call = getOptionsPricesBatchRealtimeValidateBeforeCall(body, source, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesBatchRealtime>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionsPricesEod
+     * @param identifier The Intrinio ID or code of the options contract to request prices for. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsPricesEodCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/prices/{identifier}/eod"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionsPricesEodValidateBeforeCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getOptionsPricesEod(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionsPricesEodCall(identifier, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Option Prices EOD
+     * Returns all option prices for a given option contract identifier.
+     * @param identifier The Intrinio ID or code of the options contract to request prices for. (required)
+     * @return ApiResponseOptionsPricesEod
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsPricesEod getOptionsPricesEod(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsPricesEodWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<ApiResponseOptionsPricesEod> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Option Prices EOD
+     * Returns all option prices for a given option contract identifier.
+     * @param identifier The Intrinio ID or code of the options contract to request prices for. (required)
+     * @return ApiResponse&lt;ApiResponseOptionsPricesEod&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsPricesEod> getOptionsPricesEodWithHttpInfo(String identifier) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsPricesEodValidateBeforeCall(identifier, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesEod>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Option Prices EOD (asynchronously)
+     * Returns all option prices for a given option contract identifier.
+     * @param identifier The Intrinio ID or code of the options contract to request prices for. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsPricesEodAsync(String identifier, final ApiCallback<ApiResponseOptionsPricesEod> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionsPricesEodValidateBeforeCall(identifier, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesEod>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

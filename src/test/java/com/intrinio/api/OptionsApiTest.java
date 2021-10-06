@@ -6,10 +6,12 @@ import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseOptionPrices;
 import com.intrinio.models.ApiResponseOptions;
 import com.intrinio.models.ApiResponseOptionsChain;
+import com.intrinio.models.ApiResponseOptionsChainEod;
 import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import com.intrinio.models.ApiResponseOptionsPriceRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
+import com.intrinio.models.ApiResponseOptionsPricesEod;
 import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
 import com.intrinio.models.ApiResponseOptionsTickers;
@@ -159,6 +161,27 @@ public class OptionsApiTest {
     }
     
     /**
+     * Options Chain EOD
+     *
+     * Returns all EOD options contracts and their prices for the given symbol and expiration date.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsChainEodTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        String expiration = null;
+        String type = null;
+        BigDecimal strike = null;
+        BigDecimal strikeGreaterThan = null;
+        BigDecimal strikeLessThan = null;
+        ApiResponseOptionsChainEod response = api.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Options Chain Realtime
      *
      * Returns all realtime options contracts and their prices for the given symbol and expiration date.
@@ -236,6 +259,22 @@ public class OptionsApiTest {
         OptionContractsList body = null;
         String source = null;
         ApiResponseOptionsPricesBatchRealtime response = api.getOptionsPricesBatchRealtime(body, source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Option Prices EOD
+     *
+     * Returns all option prices for a given option contract identifier.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsPricesEodTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        ApiResponseOptionsPricesEod response = api.getOptionsPricesEod(identifier);
 
         // TODO: test validations
     }

@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://docs.intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.25.6
-- Package version: 6.9.0
+- API version: 2.26.1
+- Package version: 
 
 
 ## Installation
@@ -154,10 +154,12 @@ Class | Method | HTTP request | Description
 *OptionsApi* | [**getOptions**](docs/OptionsApi.md#getOptions) | **GET** /options/{symbol} | Options
 *OptionsApi* | [**getOptionsBySymbolRealtime**](docs/OptionsApi.md#getOptionsBySymbolRealtime) | **GET** /options/{symbol}/realtime | Options by Symbol Realtime
 *OptionsApi* | [**getOptionsChain**](docs/OptionsApi.md#getOptionsChain) | **GET** /options/chain/{symbol}/{expiration} | Options Chain
+*OptionsApi* | [**getOptionsChainEod**](docs/OptionsApi.md#getOptionsChainEod) | **GET** /options/chain/{symbol}/{expiration}/eod | Options Chain EOD
 *OptionsApi* | [**getOptionsChainRealtime**](docs/OptionsApi.md#getOptionsChainRealtime) | **GET** /options/chain/{symbol}/{expiration}/realtime | Options Chain Realtime
 *OptionsApi* | [**getOptionsExpirations**](docs/OptionsApi.md#getOptionsExpirations) | **GET** /options/expirations/{symbol} | Options Expirations
 *OptionsApi* | [**getOptionsPrices**](docs/OptionsApi.md#getOptionsPrices) | **GET** /options/prices/{identifier} | Option Prices
 *OptionsApi* | [**getOptionsPricesBatchRealtime**](docs/OptionsApi.md#getOptionsPricesBatchRealtime) | **POST** /options/prices/realtime/batch | Option Prices Batch Realtime
+*OptionsApi* | [**getOptionsPricesEod**](docs/OptionsApi.md#getOptionsPricesEod) | **GET** /options/prices/{identifier}/eod | Option Prices EOD
 *OptionsApi* | [**getOptionsPricesRealtime**](docs/OptionsApi.md#getOptionsPricesRealtime) | **GET** /options/prices/{identifier}/realtime | Option Prices Realtime
 *OptionsApi* | [**getOptionsStatsRealtime**](docs/OptionsApi.md#getOptionsStatsRealtime) | **GET** /options/prices/{identifier}/realtime/stats | Option Stats Realtime
 *OptionsApi* | [**getUnusualActivity**](docs/OptionsApi.md#getUnusualActivity) | **GET** /options/unusual_activity/{symbol} | Options Unusual Activity
@@ -306,10 +308,12 @@ Class | Method | HTTP request | Description
  - [ApiResponseOptionPrices](docs/ApiResponseOptionPrices.md)
  - [ApiResponseOptions](docs/ApiResponseOptions.md)
  - [ApiResponseOptionsChain](docs/ApiResponseOptionsChain.md)
+ - [ApiResponseOptionsChainEod](docs/ApiResponseOptionsChainEod.md)
  - [ApiResponseOptionsChainRealtime](docs/ApiResponseOptionsChainRealtime.md)
  - [ApiResponseOptionsExpirations](docs/ApiResponseOptionsExpirations.md)
  - [ApiResponseOptionsPriceRealtime](docs/ApiResponseOptionsPriceRealtime.md)
  - [ApiResponseOptionsPricesBatchRealtime](docs/ApiResponseOptionsPricesBatchRealtime.md)
+ - [ApiResponseOptionsPricesEod](docs/ApiResponseOptionsPricesEod.md)
  - [ApiResponseOptionsRealtime](docs/ApiResponseOptionsRealtime.md)
  - [ApiResponseOptionsStatsRealtime](docs/ApiResponseOptionsStatsRealtime.md)
  - [ApiResponseOptionsTickers](docs/ApiResponseOptionsTickers.md)
@@ -444,11 +448,14 @@ Class | Method | HTTP request | Description
  - [OnBalanceVolumeTechnicalValue](docs/OnBalanceVolumeTechnicalValue.md)
  - [Option](docs/Option.md)
  - [OptionChain](docs/OptionChain.md)
+ - [OptionChainEod](docs/OptionChainEod.md)
  - [OptionChainRealtime](docs/OptionChainRealtime.md)
  - [OptionContractsList](docs/OptionContractsList.md)
+ - [OptionEod](docs/OptionEod.md)
  - [OptionFactorsRealtime](docs/OptionFactorsRealtime.md)
  - [OptionPrice](docs/OptionPrice.md)
  - [OptionPriceBatchRealtime](docs/OptionPriceBatchRealtime.md)
+ - [OptionPriceEod](docs/OptionPriceEod.md)
  - [OptionPriceRealtime](docs/OptionPriceRealtime.md)
  - [OptionRealtime](docs/OptionRealtime.md)
  - [OptionStatsRealtime](docs/OptionStatsRealtime.md)
@@ -507,3 +514,4 @@ Class | Method | HTTP request | Description
  - [ZacksSalesSurprise](docs/ZacksSalesSurprise.md)
  - [ZacksSalesSurpriseSummary](docs/ZacksSalesSurpriseSummary.md)
  - [ZacksTargetPriceConsensus](docs/ZacksTargetPriceConsensus.md)
+
