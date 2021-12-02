@@ -4021,7 +4021,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
- **source** | String| Return the realtime price from the specified data source. If no source is specified, the best source available is used. | [optional] [enum: iex, bats, bats_delayed] &nbsp;
+ **source** | String| Return the realtime price from the specified data source. If no source is specified, the best source available is used. | [optional] [enum: iex, bats, bats_delayed, intrinio_mx] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -4367,7 +4367,7 @@ Name | Type | Description  | Notes
 #### Zacks Analyst Ratings Snapshot
 
 
-Returns a snapshot of ratings data compared with previous timeframes for the Security with the given &#x60;identifier&#x60;. Also returns mean percentiles for comparing one security to the universe of securities covered by Zacks analyst ratings, at a specific point in time.
+This database offers current and historical consensus analyst recommendation snapshots for over 5,000 US and Canadian listed companies.
 
 [//]: # (END_OVERVIEW)
 
@@ -4453,7 +4453,7 @@ Name | Type | Description  | Notes
 #### Zacks EPS Surprises for Security
 
 
-Return Zacks EPS surprises for the Security with the given &#x60;identifier&#x60;.
+Returns historical estimated and actual earnings, guidance, and announcement dates for a specified symbol.
 
 [//]: # (END_OVERVIEW)
 
@@ -4541,7 +4541,7 @@ Name | Type | Description  | Notes
 #### Zacks Sales Surprises for Security
 
 
-Return Zacks sales surprises for the Security with the given &#x60;identifier&#x60;.
+This database returns historical estimated and actual sales, guidance, and announcement dates for a specified US or Canadian company.
 
 [//]: # (END_OVERVIEW)
 

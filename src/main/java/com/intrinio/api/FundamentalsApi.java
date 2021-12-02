@@ -18,6 +18,7 @@ import java.io.IOException;
 
 import com.intrinio.models.ApiResponseReportedFinancials;
 import com.intrinio.models.ApiResponseStandardizedFinancials;
+import com.intrinio.models.ApiResponseStandardizedFinancialsDimensions;
 import com.intrinio.models.Fundamental;
 
 import java.lang.reflect.Type;
@@ -424,6 +425,143 @@ public class FundamentalsApi {
 
         com.squareup.okhttp.Call call = getFundamentalStandardizedFinancialsValidateBeforeCall(id, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseStandardizedFinancials>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getFundamentalStandardizedFinancialsDimensions
+     * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getFundamentalStandardizedFinancialsDimensionsCall(String id, String tag, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/fundamentals/{id}/standardized_financials/dimensions/{tag}"
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()))
+            .replaceAll("\\{" + "tag" + "\\}", apiClient.escapeString(tag.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getFundamentalStandardizedFinancialsDimensionsValidateBeforeCall(String id, String tag, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling getFundamentalStandardizedFinancialsDimensions(Async)");
+        }
+        
+        // verify the required parameter 'tag' is set
+        if (tag == null) {
+            throw new ApiException("Missing the required parameter 'tag' when calling getFundamentalStandardizedFinancialsDimensions(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getFundamentalStandardizedFinancialsDimensionsCall(id, tag, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Standardized Financials Dimensions
+     * Returns as reported dimensionality of a data tag
+     * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @return ApiResponseStandardizedFinancialsDimensions
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseStandardizedFinancialsDimensions getFundamentalStandardizedFinancialsDimensions(String id, String tag) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FundamentalsApi.class.getMethod("getFundamentalStandardizedFinancialsDimensionsWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { id, tag };
+      ApiResponse<ApiResponseStandardizedFinancialsDimensions> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Standardized Financials Dimensions
+     * Returns as reported dimensionality of a data tag
+     * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @return ApiResponse&lt;ApiResponseStandardizedFinancialsDimensions&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseStandardizedFinancialsDimensions> getFundamentalStandardizedFinancialsDimensionsWithHttpInfo(String id, String tag) throws ApiException {
+        com.squareup.okhttp.Call call = getFundamentalStandardizedFinancialsDimensionsValidateBeforeCall(id, tag, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseStandardizedFinancialsDimensions>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Standardized Financials Dimensions (asynchronously)
+     * Returns as reported dimensionality of a data tag
+     * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getFundamentalStandardizedFinancialsDimensionsAsync(String id, String tag, final ApiCallback<ApiResponseStandardizedFinancialsDimensions> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getFundamentalStandardizedFinancialsDimensionsValidateBeforeCall(id, tag, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseStandardizedFinancialsDimensions>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

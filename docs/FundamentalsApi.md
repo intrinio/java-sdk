@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**getFundamentalById**](FundamentalsApi.md#getFundamentalById) | **GET** /fundamentals/{id} | Fundamental by ID
 [**getFundamentalReportedFinancials**](FundamentalsApi.md#getFundamentalReportedFinancials) | **GET** /fundamentals/{id}/reported_financials | Reported Financials
 [**getFundamentalStandardizedFinancials**](FundamentalsApi.md#getFundamentalStandardizedFinancials) | **GET** /fundamentals/{id}/standardized_financials | Standardized Financials
+[**getFundamentalStandardizedFinancialsDimensions**](FundamentalsApi.md#getFundamentalStandardizedFinancialsDimensions) | **GET** /fundamentals/{id}/standardized_financials/dimensions/{tag} | Standardized Financials Dimensions
 [**lookupFundamental**](FundamentalsApi.md#lookupFundamental) | **GET** /fundamentals/lookup/{identifier}/{statement_code}/{fiscal_year}/{fiscal_period} | Lookup Fundamental
 
 
@@ -259,6 +260,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseStandardizedFinancials**](ApiResponseStandardizedFinancials.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:FundamentalsApi)
+
+[//]: # (METHOD:getFundamentalStandardizedFinancialsDimensions)
+
+[//]: # (RETURN_TYPE:ApiResponseStandardizedFinancialsDimensions)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStandardizedFinancialsDimensions.md)
+
+[//]: # (OPERATION:getFundamentalStandardizedFinancialsDimensions_v2)
+
+[//]: # (ENDPOINT:/fundamentals/{id}/standardized_financials/dimensions/{tag})
+
+[//]: # (DOCUMENT_LINK:FundamentalsApi.md#getFundamentalStandardizedFinancialsDimensions)
+
+<a name="getFundamentalStandardizedFinancialsDimensions"></a>
+## **getFundamentalStandardizedFinancialsDimensions**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getFundamentalStandardizedFinancialsDimensions_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseStandardizedFinancialsDimensions getFundamentalStandardizedFinancialsDimensions(id, tag)
+
+#### Standardized Financials Dimensions
+
+
+Returns as reported dimensionality of a data tag
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    FundamentalsApi fundamentalsApi = new FundamentalsApi();
+    String id = "AAPL-income_statement-2020-FY";
+    String tag = "ceo";
+    ApiResponseStandardizedFinancialsDimensions result = fundamentalsApi.getFundamentalStandardizedFinancialsDimensions(id, tag);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | String| The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental | &nbsp;
+ **tag** | String| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseStandardizedFinancialsDimensions**](ApiResponseStandardizedFinancialsDimensions.md)
 
 [//]: # (END_OPERATION)
 

@@ -7386,7 +7386,7 @@ public class SecurityApi {
 
     /**
      * Zacks Analyst Ratings Snapshot
-     * Returns a snapshot of ratings data compared with previous timeframes for the Security with the given &#x60;identifier&#x60;. Also returns mean percentiles for comparing one security to the universe of securities covered by Zacks analyst ratings, at a specific point in time.
+     * This database offers current and historical consensus analyst recommendation snapshots for over 5,000 US and Canadian listed companies.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param date Lookup a historical snapshot on the given date (optional)
      * @return ApiResponseSecurityZacksAnalystRatingsSnapshot
@@ -7403,7 +7403,7 @@ public class SecurityApi {
 
     /**
      * Zacks Analyst Ratings Snapshot
-     * Returns a snapshot of ratings data compared with previous timeframes for the Security with the given &#x60;identifier&#x60;. Also returns mean percentiles for comparing one security to the universe of securities covered by Zacks analyst ratings, at a specific point in time.
+     * This database offers current and historical consensus analyst recommendation snapshots for over 5,000 US and Canadian listed companies.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param date Lookup a historical snapshot on the given date (optional)
      * @return ApiResponse&lt;ApiResponseSecurityZacksAnalystRatingsSnapshot&gt;
@@ -7417,7 +7417,7 @@ public class SecurityApi {
 
     /**
      * Zacks Analyst Ratings Snapshot (asynchronously)
-     * Returns a snapshot of ratings data compared with previous timeframes for the Security with the given &#x60;identifier&#x60;. Also returns mean percentiles for comparing one security to the universe of securities covered by Zacks analyst ratings, at a specific point in time.
+     * This database offers current and historical consensus analyst recommendation snapshots for over 5,000 US and Canadian listed companies.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param date Lookup a historical snapshot on the given date (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -7522,7 +7522,7 @@ public class SecurityApi {
 
     /**
      * Zacks EPS Surprises for Security
-     * Return Zacks EPS surprises for the Security with the given &#x60;identifier&#x60;.
+     * Returns historical estimated and actual earnings, guidance, and announcement dates for a specified symbol.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -7540,7 +7540,7 @@ public class SecurityApi {
 
     /**
      * Zacks EPS Surprises for Security
-     * Return Zacks EPS surprises for the Security with the given &#x60;identifier&#x60;.
+     * Returns historical estimated and actual earnings, guidance, and announcement dates for a specified symbol.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -7555,7 +7555,7 @@ public class SecurityApi {
 
     /**
      * Zacks EPS Surprises for Security (asynchronously)
-     * Return Zacks EPS surprises for the Security with the given &#x60;identifier&#x60;.
+     * Returns historical estimated and actual earnings, guidance, and announcement dates for a specified symbol.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -7661,7 +7661,7 @@ public class SecurityApi {
 
     /**
      * Zacks Sales Surprises for Security
-     * Return Zacks sales surprises for the Security with the given &#x60;identifier&#x60;.
+     * This database returns historical estimated and actual sales, guidance, and announcement dates for a specified US or Canadian company.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -7679,7 +7679,7 @@ public class SecurityApi {
 
     /**
      * Zacks Sales Surprises for Security
-     * Return Zacks sales surprises for the Security with the given &#x60;identifier&#x60;.
+     * This database returns historical estimated and actual sales, guidance, and announcement dates for a specified US or Canadian company.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -7694,7 +7694,7 @@ public class SecurityApi {
 
     /**
      * Zacks Sales Surprises for Security (asynchronously)
-     * Return Zacks sales surprises for the Security with the given &#x60;identifier&#x60;.
+     * This database returns historical estimated and actual sales, guidance, and announcement dates for a specified US or Canadian company.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)

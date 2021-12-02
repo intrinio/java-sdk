@@ -5,6 +5,7 @@ package com.intrinio.api;
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseReportedFinancials;
 import com.intrinio.models.ApiResponseStandardizedFinancials;
+import com.intrinio.models.ApiResponseStandardizedFinancialsDimensions;
 import com.intrinio.models.Fundamental;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -67,6 +68,23 @@ public class FundamentalsApiTest {
     public void getFundamentalStandardizedFinancialsTest() throws ApiException, NoSuchMethodException {
         String id = null;
         ApiResponseStandardizedFinancials response = api.getFundamentalStandardizedFinancials(id);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Standardized Financials Dimensions
+     *
+     * Returns as reported dimensionality of a data tag
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getFundamentalStandardizedFinancialsDimensionsTest() throws ApiException, NoSuchMethodException {
+        String id = null;
+        String tag = null;
+        ApiResponseStandardizedFinancialsDimensions response = api.getFundamentalStandardizedFinancialsDimensions(id, tag);
 
         // TODO: test validations
     }

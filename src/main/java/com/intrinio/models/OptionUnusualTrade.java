@@ -41,6 +41,67 @@ public class OptionUnusualTrade {
   @SerializedName("contract")
   private String contract = null;
 
+  @SerializedName("ask_at_execution")
+  private BigDecimal askAtExecution = null;
+
+  @SerializedName("bid_at_execution")
+  private BigDecimal bidAtExecution = null;
+
+  /**
+   * Bullish, Bearish, or Neutral Sentiment is estimated based on whether the trade was executed at the bid, ask, or mark price.
+   */
+  @JsonAdapter(SentimentEnum.Adapter.class)
+  public enum SentimentEnum {
+    BULLISH("bullish"),
+    
+    BEARISH("bearish"),
+    
+    NEUTRAL("neutral");
+
+    private String value;
+
+    SentimentEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static SentimentEnum fromValue(String text) {
+      for (SentimentEnum b : SentimentEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+
+    public static class Adapter extends TypeAdapter<SentimentEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final SentimentEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public SentimentEnum read(final JsonReader jsonReader) throws IOException {
+        String value = jsonReader.nextString();
+        return SentimentEnum.fromValue(String.valueOf(value));
+      }
+    }
+  }
+
+  @SerializedName("sentiment")
+  private SentimentEnum sentiment = null;
+
+  @SerializedName("underlying_price_at_execution")
+  private BigDecimal underlyingPriceAtExecution = null;
+
   public OptionUnusualTrade symbol(String symbol) {
     this.symbol = symbol;
     return this;
@@ -155,16 +216,88 @@ public class OptionUnusualTrade {
   }
 
    /**
-   * Get contract
+   * The option contract symbol
    * @return contract
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The option contract symbol")
   public String getContract() {
     return contract;
   }
 
   public void setContract(String contract) {
     this.contract = contract;
+  }
+
+  public OptionUnusualTrade askAtExecution(BigDecimal askAtExecution) {
+    this.askAtExecution = askAtExecution;
+    return this;
+  }
+
+   /**
+   * Ask price at execution
+   * @return askAtExecution
+  **/
+  @ApiModelProperty(value = "Ask price at execution")
+  public BigDecimal getAskAtExecution() {
+    return askAtExecution;
+  }
+
+  public void setAskAtExecution(BigDecimal askAtExecution) {
+    this.askAtExecution = askAtExecution;
+  }
+
+  public OptionUnusualTrade bidAtExecution(BigDecimal bidAtExecution) {
+    this.bidAtExecution = bidAtExecution;
+    return this;
+  }
+
+   /**
+   * Bid price at execution
+   * @return bidAtExecution
+  **/
+  @ApiModelProperty(value = "Bid price at execution")
+  public BigDecimal getBidAtExecution() {
+    return bidAtExecution;
+  }
+
+  public void setBidAtExecution(BigDecimal bidAtExecution) {
+    this.bidAtExecution = bidAtExecution;
+  }
+
+  public OptionUnusualTrade sentiment(SentimentEnum sentiment) {
+    this.sentiment = sentiment;
+    return this;
+  }
+
+   /**
+   * Bullish, Bearish, or Neutral Sentiment is estimated based on whether the trade was executed at the bid, ask, or mark price.
+   * @return sentiment
+  **/
+  @ApiModelProperty(value = "Bullish, Bearish, or Neutral Sentiment is estimated based on whether the trade was executed at the bid, ask, or mark price.")
+  public SentimentEnum getSentiment() {
+    return sentiment;
+  }
+
+  public void setSentiment(SentimentEnum sentiment) {
+    this.sentiment = sentiment;
+  }
+
+  public OptionUnusualTrade underlyingPriceAtExecution(BigDecimal underlyingPriceAtExecution) {
+    this.underlyingPriceAtExecution = underlyingPriceAtExecution;
+    return this;
+  }
+
+   /**
+   * Price of the underlying security at execution of trade
+   * @return underlyingPriceAtExecution
+  **/
+  @ApiModelProperty(value = "Price of the underlying security at execution of trade")
+  public BigDecimal getUnderlyingPriceAtExecution() {
+    return underlyingPriceAtExecution;
+  }
+
+  public void setUnderlyingPriceAtExecution(BigDecimal underlyingPriceAtExecution) {
+    this.underlyingPriceAtExecution = underlyingPriceAtExecution;
   }
 
 
@@ -183,12 +316,16 @@ public class OptionUnusualTrade {
         Objects.equals(this.totalValue, optionUnusualTrade.totalValue) &&
         Objects.equals(this.totalSize, optionUnusualTrade.totalSize) &&
         Objects.equals(this.averagePrice, optionUnusualTrade.averagePrice) &&
-        Objects.equals(this.contract, optionUnusualTrade.contract);
+        Objects.equals(this.contract, optionUnusualTrade.contract) &&
+        Objects.equals(this.askAtExecution, optionUnusualTrade.askAtExecution) &&
+        Objects.equals(this.bidAtExecution, optionUnusualTrade.bidAtExecution) &&
+        Objects.equals(this.sentiment, optionUnusualTrade.sentiment) &&
+        Objects.equals(this.underlyingPriceAtExecution, optionUnusualTrade.underlyingPriceAtExecution);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(symbol, timestamp, type, totalValue, totalSize, averagePrice, contract);
+    return Objects.hash(symbol, timestamp, type, totalValue, totalSize, averagePrice, contract, askAtExecution, bidAtExecution, sentiment, underlyingPriceAtExecution);
   }
 
 
@@ -204,6 +341,10 @@ public class OptionUnusualTrade {
     sb.append("    totalSize: ").append(toIndentedString(totalSize)).append("\n");
     sb.append("    averagePrice: ").append(toIndentedString(averagePrice)).append("\n");
     sb.append("    contract: ").append(toIndentedString(contract)).append("\n");
+    sb.append("    askAtExecution: ").append(toIndentedString(askAtExecution)).append("\n");
+    sb.append("    bidAtExecution: ").append(toIndentedString(bidAtExecution)).append("\n");
+    sb.append("    sentiment: ").append(toIndentedString(sentiment)).append("\n");
+    sb.append("    underlyingPriceAtExecution: ").append(toIndentedString(underlyingPriceAtExecution)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -443,7 +443,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
- **source** | String| Return realtime prices from the specified data source. If no source is specified, all sources are used. | [optional] [enum: iex, bats, bats_delayed] &nbsp;
+ **source** | String| Return realtime prices from the specified data source. If no source is specified, all sources are used. | [optional] [enum: iex, bats, bats_delayed, intrinio_mx] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
