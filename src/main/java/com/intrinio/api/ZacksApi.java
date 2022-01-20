@@ -172,7 +172,7 @@ public class ZacksApi {
 
     /**
      * Zacks Analyst Ratings
-     * Returns buy, sell, and hold recommendations from analysts at brokerages for all companies in the Zacks universe. Zack’s storied research team aggregates and validates the ratings from professional analysts.
+     * This database offers consensus analyst recommendations for over 5,000 US and Canadian listed companies.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (optional)
      * @param startDate Limit ratings to those on or after this date (optional)
      * @param endDate Limit ratings to those on or before this date (optional)
@@ -206,7 +206,7 @@ public class ZacksApi {
 
     /**
      * Zacks Analyst Ratings
-     * Returns buy, sell, and hold recommendations from analysts at brokerages for all companies in the Zacks universe. Zack’s storied research team aggregates and validates the ratings from professional analysts.
+     * This database offers consensus analyst recommendations for over 5,000 US and Canadian listed companies.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (optional)
      * @param startDate Limit ratings to those on or after this date (optional)
      * @param endDate Limit ratings to those on or before this date (optional)
@@ -237,7 +237,7 @@ public class ZacksApi {
 
     /**
      * Zacks Analyst Ratings (asynchronously)
-     * Returns buy, sell, and hold recommendations from analysts at brokerages for all companies in the Zacks universe. Zack’s storied research team aggregates and validates the ratings from professional analysts.
+     * This database offers consensus analyst recommendations for over 5,000 US and Canadian listed companies.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (optional)
      * @param startDate Limit ratings to those on or after this date (optional)
      * @param endDate Limit ratings to those on or before this date (optional)
@@ -373,7 +373,7 @@ public class ZacksApi {
 
     /**
      * Zacks EPS Estimates
-     * Returns Zacks consensus earnings-per-share (EPS) data for all Companies.
+     * This database offers consensus earnings estimates for over 5,000 US and Canadian listed companies.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
      * @param startDate Limit EPS estimates to those on or after this date (optional)
      * @param endDate Limit EPS estimates to those on or before this date (optional)
@@ -397,7 +397,7 @@ public class ZacksApi {
 
     /**
      * Zacks EPS Estimates
-     * Returns Zacks consensus earnings-per-share (EPS) data for all Companies.
+     * This database offers consensus earnings estimates for over 5,000 US and Canadian listed companies.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
      * @param startDate Limit EPS estimates to those on or after this date (optional)
      * @param endDate Limit EPS estimates to those on or before this date (optional)
@@ -418,7 +418,7 @@ public class ZacksApi {
 
     /**
      * Zacks EPS Estimates (asynchronously)
-     * Returns Zacks consensus earnings-per-share (EPS) data for all Companies.
+     * This database offers consensus earnings estimates for over 5,000 US and Canadian listed companies.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
      * @param startDate Limit EPS estimates to those on or after this date (optional)
      * @param endDate Limit EPS estimates to those on or before this date (optional)
@@ -532,7 +532,7 @@ public class ZacksApi {
 
     /**
      * Zacks EPS Growth Rates
-     * Returns the latest Zacks EPS growth rates
+     * This database offers consensus EPS growth rate estimates, comparing company estimates to historical company estimates, industry estimates, and S&amp;P 500 index estimates.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
      * @param industryGroupName Return only growth rates for companies in the given Zacks industry group name (optional)
      * @param industryGroupNumber Return only growth rates for companies in the given Zacks industry group number (optional)
@@ -552,7 +552,7 @@ public class ZacksApi {
 
     /**
      * Zacks EPS Growth Rates
-     * Returns the latest Zacks EPS growth rates
+     * This database offers consensus EPS growth rate estimates, comparing company estimates to historical company estimates, industry estimates, and S&amp;P 500 index estimates.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
      * @param industryGroupName Return only growth rates for companies in the given Zacks industry group name (optional)
      * @param industryGroupNumber Return only growth rates for companies in the given Zacks industry group number (optional)
@@ -569,7 +569,7 @@ public class ZacksApi {
 
     /**
      * Zacks EPS Growth Rates (asynchronously)
-     * Returns the latest Zacks EPS growth rates
+     * This database offers consensus EPS growth rate estimates, comparing company estimates to historical company estimates, industry estimates, and S&amp;P 500 index estimates.
      * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
      * @param industryGroupName Return only growth rates for companies in the given Zacks industry group name (optional)
      * @param industryGroupNumber Return only growth rates for companies in the given Zacks industry group number (optional)
@@ -712,7 +712,7 @@ public class ZacksApi {
 
     /**
      * Zacks EPS Surprises
-     * Returns Zacks eps surprise data for all Securities.
+     * This database returns historical estimated and actual earnings, guidance, and announcement dates for 17,000+ US and Canadian listed companies.
      * @param startDate Limit EPS surprises to those on or after this date (optional)
      * @param endDate Limit EPS surprises to those on or before this date (optional)
      * @param epsActualGreater Return only records with an actual EPS higher than this value (optional)
@@ -743,7 +743,7 @@ public class ZacksApi {
 
     /**
      * Zacks EPS Surprises
-     * Returns Zacks eps surprise data for all Securities.
+     * This database returns historical estimated and actual earnings, guidance, and announcement dates for 17,000+ US and Canadian listed companies.
      * @param startDate Limit EPS surprises to those on or after this date (optional)
      * @param endDate Limit EPS surprises to those on or before this date (optional)
      * @param epsActualGreater Return only records with an actual EPS higher than this value (optional)
@@ -771,7 +771,7 @@ public class ZacksApi {
 
     /**
      * Zacks EPS Surprises (asynchronously)
-     * Returns Zacks eps surprise data for all Securities.
+     * This database returns historical estimated and actual earnings, guidance, and announcement dates for 17,000+ US and Canadian listed companies.
      * @param startDate Limit EPS surprises to those on or after this date (optional)
      * @param endDate Limit EPS surprises to those on or before this date (optional)
      * @param epsActualGreater Return only records with an actual EPS higher than this value (optional)
@@ -1450,7 +1450,7 @@ public class ZacksApi {
 
     /**
      * Zacks Long Term Growth Rates
-     * Returns the latest Zacks long term growth rates
+     * This database offers consensus long term growth rate estimates, including insight into changes in estimates and revisions over time.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1468,7 +1468,7 @@ public class ZacksApi {
 
     /**
      * Zacks Long Term Growth Rates
-     * Returns the latest Zacks long term growth rates
+     * This database offers consensus long term growth rate estimates, including insight into changes in estimates and revisions over time.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1483,7 +1483,7 @@ public class ZacksApi {
 
     /**
      * Zacks Long Term Growth Rates (asynchronously)
-     * Returns the latest Zacks long term growth rates
+     * This database offers consensus long term growth rate estimates, including insight into changes in estimates and revisions over time.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1624,7 +1624,7 @@ public class ZacksApi {
 
     /**
      * Zacks Sales Surprises
-     * Returns Zacks sales surprise data for all Securities.
+     * This database returns historical estimated and actual sales, guidance, and announcement dates for 17,000+ US and Canadian listed companies.
      * @param startDate Limit sales surprises to those on or after this date (optional)
      * @param endDate Limit sales surprises to those on or before this date (optional)
      * @param salesActualGreater Return only records with an actual sales higher than this value (optional)
@@ -1655,7 +1655,7 @@ public class ZacksApi {
 
     /**
      * Zacks Sales Surprises
-     * Returns Zacks sales surprise data for all Securities.
+     * This database returns historical estimated and actual sales, guidance, and announcement dates for 17,000+ US and Canadian listed companies.
      * @param startDate Limit sales surprises to those on or after this date (optional)
      * @param endDate Limit sales surprises to those on or before this date (optional)
      * @param salesActualGreater Return only records with an actual sales higher than this value (optional)
@@ -1683,7 +1683,7 @@ public class ZacksApi {
 
     /**
      * Zacks Sales Surprises (asynchronously)
-     * Returns Zacks sales surprise data for all Securities.
+     * This database returns historical estimated and actual sales, guidance, and announcement dates for 17,000+ US and Canadian listed companies.
      * @param startDate Limit sales surprises to those on or after this date (optional)
      * @param endDate Limit sales surprises to those on or before this date (optional)
      * @param salesActualGreater Return only records with an actual sales higher than this value (optional)

@@ -7205,7 +7205,7 @@ public class SecurityApi {
 
     /**
      * Zacks Analyst Ratings for Security
-     * Returns buy, sell, and hold recommendations from analysts at brokerages for the Security with the given &#x60;identifier&#x60;. Zack’s storied research team aggregates and validates the ratings from professional analysts.
+     * This database offers consensus analyst recommendations for over 5,000 US and Canadian listed companies.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Limit ratings to those on or after this date (optional)
      * @param endDate Limit ratings to those on or before this date (optional)
@@ -7238,7 +7238,7 @@ public class SecurityApi {
 
     /**
      * Zacks Analyst Ratings for Security
-     * Returns buy, sell, and hold recommendations from analysts at brokerages for the Security with the given &#x60;identifier&#x60;. Zack’s storied research team aggregates and validates the ratings from professional analysts.
+     * This database offers consensus analyst recommendations for over 5,000 US and Canadian listed companies.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Limit ratings to those on or after this date (optional)
      * @param endDate Limit ratings to those on or before this date (optional)
@@ -7268,7 +7268,7 @@ public class SecurityApi {
 
     /**
      * Zacks Analyst Ratings for Security (asynchronously)
-     * Returns buy, sell, and hold recommendations from analysts at brokerages for the Security with the given &#x60;identifier&#x60;. Zack’s storied research team aggregates and validates the ratings from professional analysts.
+     * This database offers consensus analyst recommendations for over 5,000 US and Canadian listed companies.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param startDate Limit ratings to those on or after this date (optional)
      * @param endDate Limit ratings to those on or before this date (optional)

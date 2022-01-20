@@ -67,6 +67,21 @@ public class OptionPriceEod {
   @SerializedName("bid_low")
   private Object bidLow = null;
 
+  @SerializedName("implied_volatility")
+  private BigDecimal impliedVolatility = null;
+
+  @SerializedName("delta")
+  private BigDecimal delta = null;
+
+  @SerializedName("gamma")
+  private BigDecimal gamma = null;
+
+  @SerializedName("theta")
+  private BigDecimal theta = null;
+
+  @SerializedName("vega")
+  private BigDecimal vega = null;
+
   public OptionPriceEod date(String date) {
     this.date = date;
     return this;
@@ -355,6 +370,96 @@ public class OptionPriceEod {
     this.bidLow = bidLow;
   }
 
+  public OptionPriceEod impliedVolatility(BigDecimal impliedVolatility) {
+    this.impliedVolatility = impliedVolatility;
+    return this;
+  }
+
+   /**
+   * The implied volatility of the contract calculated using the Black-Scholes Model.
+   * @return impliedVolatility
+  **/
+  @ApiModelProperty(value = "The implied volatility of the contract calculated using the Black-Scholes Model.")
+  public BigDecimal getImpliedVolatility() {
+    return impliedVolatility;
+  }
+
+  public void setImpliedVolatility(BigDecimal impliedVolatility) {
+    this.impliedVolatility = impliedVolatility;
+  }
+
+  public OptionPriceEod delta(BigDecimal delta) {
+    this.delta = delta;
+    return this;
+  }
+
+   /**
+   * Delta represents the rate of change between the option&#39;s price and a $1 change in the underlying asset&#39;s price.
+   * @return delta
+  **/
+  @ApiModelProperty(value = "Delta represents the rate of change between the option's price and a $1 change in the underlying asset's price.")
+  public BigDecimal getDelta() {
+    return delta;
+  }
+
+  public void setDelta(BigDecimal delta) {
+    this.delta = delta;
+  }
+
+  public OptionPriceEod gamma(BigDecimal gamma) {
+    this.gamma = gamma;
+    return this;
+  }
+
+   /**
+   * Gamma represents the rate of change between an option&#39;s delta and the underlying asset&#39;s price.
+   * @return gamma
+  **/
+  @ApiModelProperty(value = "Gamma represents the rate of change between an option's delta and the underlying asset's price.")
+  public BigDecimal getGamma() {
+    return gamma;
+  }
+
+  public void setGamma(BigDecimal gamma) {
+    this.gamma = gamma;
+  }
+
+  public OptionPriceEod theta(BigDecimal theta) {
+    this.theta = theta;
+    return this;
+  }
+
+   /**
+   * Theta represents the rate of change between the option price and time, or time sensitivity - sometimes known as an option&#39;s time decay.
+   * @return theta
+  **/
+  @ApiModelProperty(value = "Theta represents the rate of change between the option price and time, or time sensitivity - sometimes known as an option's time decay.")
+  public BigDecimal getTheta() {
+    return theta;
+  }
+
+  public void setTheta(BigDecimal theta) {
+    this.theta = theta;
+  }
+
+  public OptionPriceEod vega(BigDecimal vega) {
+    this.vega = vega;
+    return this;
+  }
+
+   /**
+   * Vega represents the rate of change between an option&#39;s value and the underlying asset&#39;s implied volatility.
+   * @return vega
+  **/
+  @ApiModelProperty(value = "Vega represents the rate of change between an option's value and the underlying asset's implied volatility.")
+  public BigDecimal getVega() {
+    return vega;
+  }
+
+  public void setVega(BigDecimal vega) {
+    this.vega = vega;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -380,12 +485,17 @@ public class OptionPriceEod {
         Objects.equals(this.askHigh, optionPriceEod.askHigh) &&
         Objects.equals(this.askLow, optionPriceEod.askLow) &&
         Objects.equals(this.bidHigh, optionPriceEod.bidHigh) &&
-        Objects.equals(this.bidLow, optionPriceEod.bidLow);
+        Objects.equals(this.bidLow, optionPriceEod.bidLow) &&
+        Objects.equals(this.impliedVolatility, optionPriceEod.impliedVolatility) &&
+        Objects.equals(this.delta, optionPriceEod.delta) &&
+        Objects.equals(this.gamma, optionPriceEod.gamma) &&
+        Objects.equals(this.theta, optionPriceEod.theta) &&
+        Objects.equals(this.vega, optionPriceEod.vega);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, close, closeBid, closeAsk, volume, open, openAsk, openBid, openInterest, high, low, mark, askHigh, askLow, bidHigh, bidLow);
+    return Objects.hash(date, close, closeBid, closeAsk, volume, open, openAsk, openBid, openInterest, high, low, mark, askHigh, askLow, bidHigh, bidLow, impliedVolatility, delta, gamma, theta, vega);
   }
 
 
@@ -410,6 +520,11 @@ public class OptionPriceEod {
     sb.append("    askLow: ").append(toIndentedString(askLow)).append("\n");
     sb.append("    bidHigh: ").append(toIndentedString(bidHigh)).append("\n");
     sb.append("    bidLow: ").append(toIndentedString(bidLow)).append("\n");
+    sb.append("    impliedVolatility: ").append(toIndentedString(impliedVolatility)).append("\n");
+    sb.append("    delta: ").append(toIndentedString(delta)).append("\n");
+    sb.append("    gamma: ").append(toIndentedString(gamma)).append("\n");
+    sb.append("    theta: ").append(toIndentedString(theta)).append("\n");
+    sb.append("    vega: ").append(toIndentedString(vega)).append("\n");
     sb.append("}");
     return sb.toString();
   }

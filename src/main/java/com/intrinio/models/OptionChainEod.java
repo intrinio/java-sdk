@@ -23,8 +23,8 @@ public class OptionChainEod {
   @SerializedName("option")
   private OptionEod option = null;
 
-  @SerializedName("price")
-  private OptionPriceEod price = null;
+  @SerializedName("prices")
+  private OptionPriceEod prices = null;
 
   public OptionChainEod option(OptionEod option) {
     this.option = option;
@@ -44,22 +44,22 @@ public class OptionChainEod {
     this.option = option;
   }
 
-  public OptionChainEod price(OptionPriceEod price) {
-    this.price = price;
+  public OptionChainEod prices(OptionPriceEod prices) {
+    this.prices = prices;
     return this;
   }
 
    /**
-   * Get price
-   * @return price
+   * Get prices
+   * @return prices
   **/
   @ApiModelProperty(value = "")
-  public OptionPriceEod getPrice() {
-    return price;
+  public OptionPriceEod getPrices() {
+    return prices;
   }
 
-  public void setPrice(OptionPriceEod price) {
-    this.price = price;
+  public void setPrices(OptionPriceEod prices) {
+    this.prices = prices;
   }
 
 
@@ -73,12 +73,12 @@ public class OptionChainEod {
     }
     OptionChainEod optionChainEod = (OptionChainEod) o;
     return Objects.equals(this.option, optionChainEod.option) &&
-        Objects.equals(this.price, optionChainEod.price);
+        Objects.equals(this.prices, optionChainEod.prices);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(option, price);
+    return Objects.hash(option, prices);
   }
 
 
@@ -88,7 +88,7 @@ public class OptionChainEod {
     sb.append("class OptionChainEod {\n");
     
     sb.append("    option: ").append(toIndentedString(option)).append("\n");
-    sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    prices: ").append(toIndentedString(prices)).append("\n");
     sb.append("}");
     return sb.toString();
   }
