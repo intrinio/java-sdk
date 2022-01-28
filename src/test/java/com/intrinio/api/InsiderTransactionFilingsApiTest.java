@@ -35,8 +35,9 @@ public class InsiderTransactionFilingsApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         Integer pageSize = null;
+        String sortBy = null;
         String nextPage = null;
-        ApiResponseOwnerInsiderTransactionFilings response = api.getAllInsiderTransactionFilings(startDate, endDate, pageSize, nextPage);
+        ApiResponseOwnerInsiderTransactionFilings response = api.getAllInsiderTransactionFilings(startDate, endDate, pageSize, sortBy, nextPage);
 
         // TODO: test validations
     }

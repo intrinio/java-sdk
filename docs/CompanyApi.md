@@ -1154,7 +1154,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseInsiderTransactionFilings insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage)
+> ApiResponseInsiderTransactionFilings insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, pageSize, sortBy, nextPage)
 
 #### Insider Transaction Filings by Company
 
@@ -1190,8 +1190,9 @@ public class Main {
     LocalDate endDate = LocalDate.of(2019,1,01);
     String ownershipType = "D";
     Integer pageSize = 100;
+    String sortBy = "updated_on";
     String nextPage = null;
-    ApiResponseInsiderTransactionFilings result = companyApi.insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, pageSize, nextPage);
+    ApiResponseInsiderTransactionFilings result = companyApi.insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, pageSize, sortBy, nextPage);
     System.out.println(result);
   }
 }
@@ -1211,6 +1212,7 @@ Name | Type | Description  | Notes
  **endDate** | LocalDate| Return Company&#39;s insider transaction filings on or before this date | [optional] &nbsp;
  **ownershipType** | String| The type of ownership to return transaction filings for. &#39;D&#39; is for direct transactions. &#39;I&#39; is for indirect transactions. Omit for both types. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **sortBy** | String| The field to sort by.  Default is &#39;filing_date&#39;.  Valid values are - &#39;filing_date&#39;, &#39;updated_on&#39;. | [optional] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 

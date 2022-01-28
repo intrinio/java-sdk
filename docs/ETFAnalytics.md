@@ -11,6 +11,7 @@
 
 Name | Type | Description
 ------------ | ------------- | -------------
+**date** | [**LocalDate**](LocalDate.md) | The calendar date these analytics represent. &nbsp;
 **fiftyTwoWeekHigh** | [**BigDecimal**](BigDecimal.md) | Highest trading price for the security in the preceding 52 weeks &nbsp;
 **fiftyTwoWeekLow** | [**BigDecimal**](BigDecimal.md) | Lowest trading price for the security in the preceding 52 weeks &nbsp;
 **volumeTraded** | [**BigDecimal**](BigDecimal.md) | The total quantity of shares traded on the latest trading day &nbsp;
@@ -22,6 +23,9 @@ Name | Type | Description
 **etf** | [**ETFSummary**](ETFSummary.md) |  &nbsp;
 
 [//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)

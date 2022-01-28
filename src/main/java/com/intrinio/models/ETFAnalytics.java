@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.threeten.bp.LocalDate;
 
 /**
  * Provides analytics for the Exchange Traded Fund (ETF) including volume, market cap, 52 week high, and 52 week low
@@ -20,6 +21,9 @@ import java.math.BigDecimal;
 @ApiModel(description = "Provides analytics for the Exchange Traded Fund (ETF) including volume, market cap, 52 week high, and 52 week low")
 
 public class ETFAnalytics {
+  @SerializedName("date")
+  private LocalDate date = null;
+
   @SerializedName("fifty_two_week_high")
   private BigDecimal fiftyTwoWeekHigh = null;
 
@@ -46,6 +50,24 @@ public class ETFAnalytics {
 
   @SerializedName("etf")
   private ETFSummary etf = null;
+
+  public ETFAnalytics date(LocalDate date) {
+    this.date = date;
+    return this;
+  }
+
+   /**
+   * The calendar date these analytics represent.
+   * @return date
+  **/
+  @ApiModelProperty(value = "The calendar date these analytics represent.")
+  public LocalDate getDate() {
+    return date;
+  }
+
+  public void setDate(LocalDate date) {
+    this.date = date;
+  }
 
   public ETFAnalytics fiftyTwoWeekHigh(BigDecimal fiftyTwoWeekHigh) {
     this.fiftyTwoWeekHigh = fiftyTwoWeekHigh;
@@ -219,7 +241,8 @@ public class ETFAnalytics {
       return false;
     }
     ETFAnalytics etFAnalytics = (ETFAnalytics) o;
-    return Objects.equals(this.fiftyTwoWeekHigh, etFAnalytics.fiftyTwoWeekHigh) &&
+    return Objects.equals(this.date, etFAnalytics.date) &&
+        Objects.equals(this.fiftyTwoWeekHigh, etFAnalytics.fiftyTwoWeekHigh) &&
         Objects.equals(this.fiftyTwoWeekLow, etFAnalytics.fiftyTwoWeekLow) &&
         Objects.equals(this.volumeTraded, etFAnalytics.volumeTraded) &&
         Objects.equals(this.averageDailyVolumeOneMonth, etFAnalytics.averageDailyVolumeOneMonth) &&
@@ -232,7 +255,7 @@ public class ETFAnalytics {
 
   @Override
   public int hashCode() {
-    return Objects.hash(fiftyTwoWeekHigh, fiftyTwoWeekLow, volumeTraded, averageDailyVolumeOneMonth, averageDailyVolumeThreeMonth, averageDailyVolumeSixMonth, marketCap, sharesOutstanding, etf);
+    return Objects.hash(date, fiftyTwoWeekHigh, fiftyTwoWeekLow, volumeTraded, averageDailyVolumeOneMonth, averageDailyVolumeThreeMonth, averageDailyVolumeSixMonth, marketCap, sharesOutstanding, etf);
   }
 
 
@@ -241,6 +264,7 @@ public class ETFAnalytics {
     StringBuilder sb = new StringBuilder();
     sb.append("class ETFAnalytics {\n");
     
+    sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    fiftyTwoWeekHigh: ").append(toIndentedString(fiftyTwoWeekHigh)).append("\n");
     sb.append("    fiftyTwoWeekLow: ").append(toIndentedString(fiftyTwoWeekLow)).append("\n");
     sb.append("    volumeTraded: ").append(toIndentedString(volumeTraded)).append("\n");

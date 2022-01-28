@@ -33,7 +33,7 @@ Method | HTTP request | Description
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOwnerInsiderTransactionFilings getAllInsiderTransactionFilings(startDate, endDate, pageSize, nextPage)
+> ApiResponseOwnerInsiderTransactionFilings getAllInsiderTransactionFilings(startDate, endDate, pageSize, sortBy, nextPage)
 
 #### All Insider Transactions Filings
 
@@ -67,8 +67,9 @@ public class Main {
     LocalDate startDate = LocalDate.of(2015,1,01);
     LocalDate endDate = null;
     Integer pageSize = 100;
+    String sortBy = "updated_on";
     String nextPage = null;
-    ApiResponseOwnerInsiderTransactionFilings result = insiderTransactionFilingsApi.getAllInsiderTransactionFilings(startDate, endDate, pageSize, nextPage);
+    ApiResponseOwnerInsiderTransactionFilings result = insiderTransactionFilingsApi.getAllInsiderTransactionFilings(startDate, endDate, pageSize, sortBy, nextPage);
     System.out.println(result);
   }
 }
@@ -86,6 +87,7 @@ Name | Type | Description  | Notes
  **startDate** | LocalDate| Filed on or after the given date | [optional] &nbsp;
  **endDate** | LocalDate| Filed before or after the given date | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **sortBy** | String| The field to sort by.  Default is &#39;filing_date&#39;.  Valid values are - &#39;filing_date&#39;, &#39;updated_on&#39;. | [optional] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 

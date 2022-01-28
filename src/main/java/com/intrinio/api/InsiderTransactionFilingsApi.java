@@ -50,13 +50,14 @@ public class InsiderTransactionFilingsApi {
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;.  Valid values are - &#39;filing_date&#39;, &#39;updated_on&#39;. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllInsiderTransactionFilingsCall(LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllInsiderTransactionFilingsCall(LocalDate startDate, LocalDate endDate, Integer pageSize, String sortBy, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -70,6 +71,8 @@ public class InsiderTransactionFilingsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (sortBy != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("sort_by", sortBy));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -106,10 +109,10 @@ public class InsiderTransactionFilingsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllInsiderTransactionFilingsValidateBeforeCall(LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllInsiderTransactionFilingsValidateBeforeCall(LocalDate startDate, LocalDate endDate, Integer pageSize, String sortBy, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllInsiderTransactionFilingsCall(startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllInsiderTransactionFilingsCall(startDate, endDate, pageSize, sortBy, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -120,15 +123,16 @@ public class InsiderTransactionFilingsApi {
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;.  Valid values are - &#39;filing_date&#39;, &#39;updated_on&#39;. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseOwnerInsiderTransactionFilings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseOwnerInsiderTransactionFilings getAllInsiderTransactionFilings(LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = InsiderTransactionFilingsApi.class.getMethod("getAllInsiderTransactionFilingsWithHttpInfo", LocalDate.class, LocalDate.class, Integer.class, String.class);
+    public ApiResponseOwnerInsiderTransactionFilings getAllInsiderTransactionFilings(LocalDate startDate, LocalDate endDate, Integer pageSize, String sortBy, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = InsiderTransactionFilingsApi.class.getMethod("getAllInsiderTransactionFilingsWithHttpInfo", LocalDate.class, LocalDate.class, Integer.class, String.class, String.class);
       
-      Object[] apiCallArguments = { startDate, endDate, pageSize, nextPage };
+      Object[] apiCallArguments = { startDate, endDate, pageSize, sortBy, nextPage };
       ApiResponse<ApiResponseOwnerInsiderTransactionFilings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -139,12 +143,13 @@ public class InsiderTransactionFilingsApi {
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;.  Valid values are - &#39;filing_date&#39;, &#39;updated_on&#39;. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseOwnerInsiderTransactionFilings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseOwnerInsiderTransactionFilings> getAllInsiderTransactionFilingsWithHttpInfo(LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllInsiderTransactionFilingsValidateBeforeCall(startDate, endDate, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseOwnerInsiderTransactionFilings> getAllInsiderTransactionFilingsWithHttpInfo(LocalDate startDate, LocalDate endDate, Integer pageSize, String sortBy, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllInsiderTransactionFilingsValidateBeforeCall(startDate, endDate, pageSize, sortBy, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseOwnerInsiderTransactionFilings>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -155,12 +160,13 @@ public class InsiderTransactionFilingsApi {
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;.  Valid values are - &#39;filing_date&#39;, &#39;updated_on&#39;. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllInsiderTransactionFilingsAsync(LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ApiCallback<ApiResponseOwnerInsiderTransactionFilings> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllInsiderTransactionFilingsAsync(LocalDate startDate, LocalDate endDate, Integer pageSize, String sortBy, String nextPage, final ApiCallback<ApiResponseOwnerInsiderTransactionFilings> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -181,7 +187,7 @@ public class InsiderTransactionFilingsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllInsiderTransactionFilingsValidateBeforeCall(startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllInsiderTransactionFilingsValidateBeforeCall(startDate, endDate, pageSize, sortBy, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOwnerInsiderTransactionFilings>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
