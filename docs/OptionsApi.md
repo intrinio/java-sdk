@@ -19,7 +19,9 @@ Method | HTTP request | Description
 [**getOptionsPricesRealtime**](OptionsApi.md#getOptionsPricesRealtime) | **GET** /options/prices/{identifier}/realtime | Option Prices Realtime
 [**getOptionsStatsRealtime**](OptionsApi.md#getOptionsStatsRealtime) | **GET** /options/prices/{identifier}/realtime/stats | Option Stats Realtime
 [**getUnusualActivity**](OptionsApi.md#getUnusualActivity) | **GET** /options/unusual_activity/{symbol} | Options Unusual Activity
+[**getUnusualActivityIntraday**](OptionsApi.md#getUnusualActivityIntraday) | **GET** /options/unusual_activity/{symbol}/intraday | Options Unusual Activity Intraday
 [**getUnusualActivityUniversal**](OptionsApi.md#getUnusualActivityUniversal) | **GET** /options/unusual_activity | Options Unusual Activity Universal
+[**getUnusualActivityUniversalIntraday**](OptionsApi.md#getUnusualActivityUniversalIntraday) | **GET** /options/unusual_activity/intraday | Options Unusual Activity Universal Intraday
 
 
 
@@ -1399,6 +1401,106 @@ Name | Type | Description  | Notes
 
 [//]: # (CLASS:OptionsApi)
 
+[//]: # (METHOD:getUnusualActivityIntraday)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsUnusualActivity)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsUnusualActivity.md)
+
+[//]: # (OPERATION:getUnusualActivityIntraday_v2)
+
+[//]: # (ENDPOINT:/options/unusual_activity/{symbol}/intraday)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getUnusualActivityIntraday)
+
+<a name="getUnusualActivityIntraday"></a>
+## **getUnusualActivityIntraday**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getUnusualActivityIntraday_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsUnusualActivity getUnusualActivityIntraday(symbol, nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue)
+
+#### Options Unusual Activity Intraday
+
+
+Returns unusual trades for a given identifier within the query parameters.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String symbol = "AAPL";
+    String nextPage = null;
+    Integer pageSize = 1000;
+    String activityType = null;
+    String sentiment = null;
+    LocalDate startDate = LocalDate.of(2022,2,01);
+    LocalDate endDate = LocalDate.of(2022,2,03);
+    Object minimumTotalValue = 100000.0;
+    Object maximumTotalValue = 200000.0;
+    ApiResponseOptionsUnusualActivity result = optionsApi.getUnusualActivityIntraday(symbol, nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | String| The option symbol, corresponding to the underlying security. | &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 1000] &nbsp;
+ **activityType** | String| The unusual activity type to query for. | [optional] [enum: block, sweep, large] &nbsp;
+ **sentiment** | String| The sentiment type to query for. | [optional] [enum: bullish, bearish, neutral] &nbsp;
+ **startDate** | LocalDate| Return unusual activity on or after this date. | [optional] &nbsp;
+ **endDate** | LocalDate| Return unusual activity on or before this date. | [optional] &nbsp;
+ **minimumTotalValue** | [**Object**](.md)| The inclusive minimum total value for the unusual activity. | [optional] &nbsp;
+ **maximumTotalValue** | [**Object**](.md)| The inclusive maximum total value for the unusual activity. | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsUnusualActivity**](ApiResponseOptionsUnusualActivity.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
 [//]: # (METHOD:getUnusualActivityUniversal)
 
 [//]: # (RETURN_TYPE:ApiResponseOptionsUnusualActivity)
@@ -1468,6 +1570,104 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsUnusualActivity**](ApiResponseOptionsUnusualActivity.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getUnusualActivityUniversalIntraday)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsUnusualActivity)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsUnusualActivity.md)
+
+[//]: # (OPERATION:getUnusualActivityUniversalIntraday_v2)
+
+[//]: # (ENDPOINT:/options/unusual_activity/intraday)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getUnusualActivityUniversalIntraday)
+
+<a name="getUnusualActivityUniversalIntraday"></a>
+## **getUnusualActivityUniversalIntraday**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getUnusualActivityUniversalIntraday_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsUnusualActivity getUnusualActivityUniversalIntraday(nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue)
+
+#### Options Unusual Activity Universal Intraday
+
+
+Returns unusual trades for all underlying security symbols within the query parameters.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String nextPage = null;
+    Integer pageSize = 1000;
+    String activityType = null;
+    String sentiment = null;
+    LocalDate startDate = LocalDate.of(2022,2,01);
+    LocalDate endDate = LocalDate.of(2022,2,03);
+    Object minimumTotalValue = 100000.0;
+    Object maximumTotalValue = 200000.0;
+    ApiResponseOptionsUnusualActivity result = optionsApi.getUnusualActivityUniversalIntraday(nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 1000] &nbsp;
+ **activityType** | String| The unusual activity type to query for. | [optional] [enum: block, sweep, large] &nbsp;
+ **sentiment** | String| The sentiment type to query for. | [optional] [enum: bullish, bearish, neutral] &nbsp;
+ **startDate** | LocalDate| Return unusual activity on or after this date. | [optional] &nbsp;
+ **endDate** | LocalDate| Return unusual activity on or before this date. | [optional] &nbsp;
+ **minimumTotalValue** | [**Object**](.md)| The inclusive minimum total value for the unusual activity. | [optional] &nbsp;
+ **maximumTotalValue** | [**Object**](.md)| The inclusive maximum total value for the unusual activity. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

@@ -2300,6 +2300,181 @@ public class OptionsApi {
         return call;
     }
     /**
+     * Build call for getUnusualActivityIntraday
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param activityType The unusual activity type to query for. (optional)
+     * @param sentiment The sentiment type to query for. (optional)
+     * @param startDate Return unusual activity on or after this date. (optional)
+     * @param endDate Return unusual activity on or before this date. (optional)
+     * @param minimumTotalValue The inclusive minimum total value for the unusual activity. (optional)
+     * @param maximumTotalValue The inclusive maximum total value for the unusual activity. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getUnusualActivityIntradayCall(String symbol, String nextPage, Integer pageSize, String activityType, String sentiment, LocalDate startDate, LocalDate endDate, Object minimumTotalValue, Object maximumTotalValue, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/unusual_activity/{symbol}/intraday"
+            .replaceAll("\\{" + "symbol" + "\\}", apiClient.escapeString(symbol.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (activityType != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("activity_type", activityType));
+        if (sentiment != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("sentiment", sentiment));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (minimumTotalValue != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("minimum_total_value", minimumTotalValue));
+        if (maximumTotalValue != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("maximum_total_value", maximumTotalValue));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getUnusualActivityIntradayValidateBeforeCall(String symbol, String nextPage, Integer pageSize, String activityType, String sentiment, LocalDate startDate, LocalDate endDate, Object minimumTotalValue, Object maximumTotalValue, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling getUnusualActivityIntraday(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getUnusualActivityIntradayCall(symbol, nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Options Unusual Activity Intraday
+     * Returns unusual trades for a given identifier within the query parameters.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param activityType The unusual activity type to query for. (optional)
+     * @param sentiment The sentiment type to query for. (optional)
+     * @param startDate Return unusual activity on or after this date. (optional)
+     * @param endDate Return unusual activity on or before this date. (optional)
+     * @param minimumTotalValue The inclusive minimum total value for the unusual activity. (optional)
+     * @param maximumTotalValue The inclusive maximum total value for the unusual activity. (optional)
+     * @return ApiResponseOptionsUnusualActivity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsUnusualActivity getUnusualActivityIntraday(String symbol, String nextPage, Integer pageSize, String activityType, String sentiment, LocalDate startDate, LocalDate endDate, Object minimumTotalValue, Object maximumTotalValue) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getUnusualActivityIntradayWithHttpInfo", String.class, String.class, Integer.class, String.class, String.class, LocalDate.class, LocalDate.class, Object.class, Object.class);
+      
+      Object[] apiCallArguments = { symbol, nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue };
+      ApiResponse<ApiResponseOptionsUnusualActivity> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Options Unusual Activity Intraday
+     * Returns unusual trades for a given identifier within the query parameters.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param activityType The unusual activity type to query for. (optional)
+     * @param sentiment The sentiment type to query for. (optional)
+     * @param startDate Return unusual activity on or after this date. (optional)
+     * @param endDate Return unusual activity on or before this date. (optional)
+     * @param minimumTotalValue The inclusive minimum total value for the unusual activity. (optional)
+     * @param maximumTotalValue The inclusive maximum total value for the unusual activity. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsUnusualActivity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsUnusualActivity> getUnusualActivityIntradayWithHttpInfo(String symbol, String nextPage, Integer pageSize, String activityType, String sentiment, LocalDate startDate, LocalDate endDate, Object minimumTotalValue, Object maximumTotalValue) throws ApiException {
+        com.squareup.okhttp.Call call = getUnusualActivityIntradayValidateBeforeCall(symbol, nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsUnusualActivity>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Options Unusual Activity Intraday (asynchronously)
+     * Returns unusual trades for a given identifier within the query parameters.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param activityType The unusual activity type to query for. (optional)
+     * @param sentiment The sentiment type to query for. (optional)
+     * @param startDate Return unusual activity on or after this date. (optional)
+     * @param endDate Return unusual activity on or before this date. (optional)
+     * @param minimumTotalValue The inclusive minimum total value for the unusual activity. (optional)
+     * @param maximumTotalValue The inclusive maximum total value for the unusual activity. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getUnusualActivityIntradayAsync(String symbol, String nextPage, Integer pageSize, String activityType, String sentiment, LocalDate startDate, LocalDate endDate, Object minimumTotalValue, Object maximumTotalValue, final ApiCallback<ApiResponseOptionsUnusualActivity> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getUnusualActivityIntradayValidateBeforeCall(symbol, nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsUnusualActivity>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getUnusualActivityUniversal
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @param progressListener Progress listener
@@ -2418,6 +2593,171 @@ public class OptionsApi {
         }
 
         com.squareup.okhttp.Call call = getUnusualActivityUniversalValidateBeforeCall(source, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsUnusualActivity>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getUnusualActivityUniversalIntraday
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param activityType The unusual activity type to query for. (optional)
+     * @param sentiment The sentiment type to query for. (optional)
+     * @param startDate Return unusual activity on or after this date. (optional)
+     * @param endDate Return unusual activity on or before this date. (optional)
+     * @param minimumTotalValue The inclusive minimum total value for the unusual activity. (optional)
+     * @param maximumTotalValue The inclusive maximum total value for the unusual activity. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getUnusualActivityUniversalIntradayCall(String nextPage, Integer pageSize, String activityType, String sentiment, LocalDate startDate, LocalDate endDate, Object minimumTotalValue, Object maximumTotalValue, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/unusual_activity/intraday";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (activityType != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("activity_type", activityType));
+        if (sentiment != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("sentiment", sentiment));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (minimumTotalValue != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("minimum_total_value", minimumTotalValue));
+        if (maximumTotalValue != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("maximum_total_value", maximumTotalValue));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getUnusualActivityUniversalIntradayValidateBeforeCall(String nextPage, Integer pageSize, String activityType, String sentiment, LocalDate startDate, LocalDate endDate, Object minimumTotalValue, Object maximumTotalValue, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getUnusualActivityUniversalIntradayCall(nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Options Unusual Activity Universal Intraday
+     * Returns unusual trades for all underlying security symbols within the query parameters.
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param activityType The unusual activity type to query for. (optional)
+     * @param sentiment The sentiment type to query for. (optional)
+     * @param startDate Return unusual activity on or after this date. (optional)
+     * @param endDate Return unusual activity on or before this date. (optional)
+     * @param minimumTotalValue The inclusive minimum total value for the unusual activity. (optional)
+     * @param maximumTotalValue The inclusive maximum total value for the unusual activity. (optional)
+     * @return ApiResponseOptionsUnusualActivity
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsUnusualActivity getUnusualActivityUniversalIntraday(String nextPage, Integer pageSize, String activityType, String sentiment, LocalDate startDate, LocalDate endDate, Object minimumTotalValue, Object maximumTotalValue) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getUnusualActivityUniversalIntradayWithHttpInfo", String.class, Integer.class, String.class, String.class, LocalDate.class, LocalDate.class, Object.class, Object.class);
+      
+      Object[] apiCallArguments = { nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue };
+      ApiResponse<ApiResponseOptionsUnusualActivity> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Options Unusual Activity Universal Intraday
+     * Returns unusual trades for all underlying security symbols within the query parameters.
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param activityType The unusual activity type to query for. (optional)
+     * @param sentiment The sentiment type to query for. (optional)
+     * @param startDate Return unusual activity on or after this date. (optional)
+     * @param endDate Return unusual activity on or before this date. (optional)
+     * @param minimumTotalValue The inclusive minimum total value for the unusual activity. (optional)
+     * @param maximumTotalValue The inclusive maximum total value for the unusual activity. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsUnusualActivity&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsUnusualActivity> getUnusualActivityUniversalIntradayWithHttpInfo(String nextPage, Integer pageSize, String activityType, String sentiment, LocalDate startDate, LocalDate endDate, Object minimumTotalValue, Object maximumTotalValue) throws ApiException {
+        com.squareup.okhttp.Call call = getUnusualActivityUniversalIntradayValidateBeforeCall(nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsUnusualActivity>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Options Unusual Activity Universal Intraday (asynchronously)
+     * Returns unusual trades for all underlying security symbols within the query parameters.
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param activityType The unusual activity type to query for. (optional)
+     * @param sentiment The sentiment type to query for. (optional)
+     * @param startDate Return unusual activity on or after this date. (optional)
+     * @param endDate Return unusual activity on or before this date. (optional)
+     * @param minimumTotalValue The inclusive minimum total value for the unusual activity. (optional)
+     * @param maximumTotalValue The inclusive maximum total value for the unusual activity. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getUnusualActivityUniversalIntradayAsync(String nextPage, Integer pageSize, String activityType, String sentiment, LocalDate startDate, LocalDate endDate, Object minimumTotalValue, Object maximumTotalValue, final ApiCallback<ApiResponseOptionsUnusualActivity> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getUnusualActivityUniversalIntradayValidateBeforeCall(nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsUnusualActivity>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

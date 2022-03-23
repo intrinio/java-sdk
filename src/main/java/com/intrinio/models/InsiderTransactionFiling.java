@@ -26,6 +26,15 @@ public class InsiderTransactionFiling {
   @SerializedName("filing_url")
   private String filingUrl = null;
 
+  @SerializedName("issuer_ticker")
+  private String issuerTicker = null;
+
+  @SerializedName("issuer_cik")
+  private String issuerCik = null;
+
+  @SerializedName("issuer_company")
+  private String issuerCompany = null;
+
   @SerializedName("transactions")
   private List<InsiderTransaction> transactions = null;
 
@@ -51,6 +60,60 @@ public class InsiderTransactionFiling {
 
   public void setFilingUrl(String filingUrl) {
     this.filingUrl = filingUrl;
+  }
+
+  public InsiderTransactionFiling issuerTicker(String issuerTicker) {
+    this.issuerTicker = issuerTicker;
+    return this;
+  }
+
+   /**
+   * The ticker of the issuing company.
+   * @return issuerTicker
+  **/
+  @ApiModelProperty(value = "The ticker of the issuing company.")
+  public String getIssuerTicker() {
+    return issuerTicker;
+  }
+
+  public void setIssuerTicker(String issuerTicker) {
+    this.issuerTicker = issuerTicker;
+  }
+
+  public InsiderTransactionFiling issuerCik(String issuerCik) {
+    this.issuerCik = issuerCik;
+    return this;
+  }
+
+   /**
+   * The Central Index Key (CIK) of the issuing company.
+   * @return issuerCik
+  **/
+  @ApiModelProperty(value = "The Central Index Key (CIK) of the issuing company.")
+  public String getIssuerCik() {
+    return issuerCik;
+  }
+
+  public void setIssuerCik(String issuerCik) {
+    this.issuerCik = issuerCik;
+  }
+
+  public InsiderTransactionFiling issuerCompany(String issuerCompany) {
+    this.issuerCompany = issuerCompany;
+    return this;
+  }
+
+   /**
+   * The name of the issuing company.
+   * @return issuerCompany
+  **/
+  @ApiModelProperty(value = "The name of the issuing company.")
+  public String getIssuerCompany() {
+    return issuerCompany;
+  }
+
+  public void setIssuerCompany(String issuerCompany) {
+    this.issuerCompany = issuerCompany;
   }
 
   public InsiderTransactionFiling transactions(List<InsiderTransaction> transactions) {
@@ -126,6 +189,9 @@ public class InsiderTransactionFiling {
     }
     InsiderTransactionFiling insiderTransactionFiling = (InsiderTransactionFiling) o;
     return Objects.equals(this.filingUrl, insiderTransactionFiling.filingUrl) &&
+        Objects.equals(this.issuerTicker, insiderTransactionFiling.issuerTicker) &&
+        Objects.equals(this.issuerCik, insiderTransactionFiling.issuerCik) &&
+        Objects.equals(this.issuerCompany, insiderTransactionFiling.issuerCompany) &&
         Objects.equals(this.transactions, insiderTransactionFiling.transactions) &&
         Objects.equals(this.company, insiderTransactionFiling.company) &&
         Objects.equals(this.owner, insiderTransactionFiling.owner);
@@ -133,7 +199,7 @@ public class InsiderTransactionFiling {
 
   @Override
   public int hashCode() {
-    return Objects.hash(filingUrl, transactions, company, owner);
+    return Objects.hash(filingUrl, issuerTicker, issuerCik, issuerCompany, transactions, company, owner);
   }
 
 
@@ -143,6 +209,9 @@ public class InsiderTransactionFiling {
     sb.append("class InsiderTransactionFiling {\n");
     
     sb.append("    filingUrl: ").append(toIndentedString(filingUrl)).append("\n");
+    sb.append("    issuerTicker: ").append(toIndentedString(issuerTicker)).append("\n");
+    sb.append("    issuerCik: ").append(toIndentedString(issuerCik)).append("\n");
+    sb.append("    issuerCompany: ").append(toIndentedString(issuerCompany)).append("\n");
     sb.append("    transactions: ").append(toIndentedString(transactions)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");

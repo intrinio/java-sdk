@@ -331,6 +331,30 @@ public class OptionsApiTest {
     }
     
     /**
+     * Options Unusual Activity Intraday
+     *
+     * Returns unusual trades for a given identifier within the query parameters.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUnusualActivityIntradayTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        String nextPage = null;
+        Integer pageSize = null;
+        String activityType = null;
+        String sentiment = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        Object minimumTotalValue = null;
+        Object maximumTotalValue = null;
+        ApiResponseOptionsUnusualActivity response = api.getUnusualActivityIntraday(symbol, nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Options Unusual Activity Universal
      *
      * Returns nusual trades for all underlying security symbols.
@@ -342,6 +366,29 @@ public class OptionsApiTest {
     public void getUnusualActivityUniversalTest() throws ApiException, NoSuchMethodException {
         String source = null;
         ApiResponseOptionsUnusualActivity response = api.getUnusualActivityUniversal(source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Options Unusual Activity Universal Intraday
+     *
+     * Returns unusual trades for all underlying security symbols within the query parameters.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getUnusualActivityUniversalIntradayTest() throws ApiException, NoSuchMethodException {
+        String nextPage = null;
+        Integer pageSize = null;
+        String activityType = null;
+        String sentiment = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        Object minimumTotalValue = null;
+        Object maximumTotalValue = null;
+        ApiResponseOptionsUnusualActivity response = api.getUnusualActivityUniversalIntraday(nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue);
 
         // TODO: test validations
     }

@@ -1154,7 +1154,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseInsiderTransactionFilings insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, pageSize, sortBy, nextPage)
+> ApiResponseInsiderTransactionFilings insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, nextPage, pageSize, sortBy, nextPage2)
 
 #### Insider Transaction Filings by Company
 
@@ -1189,10 +1189,11 @@ public class Main {
     LocalDate startDate = LocalDate.of(2018,1,01);
     LocalDate endDate = LocalDate.of(2019,1,01);
     String ownershipType = "D";
-    Integer pageSize = 100;
-    String sortBy = "updated_on";
     String nextPage = null;
-    ApiResponseInsiderTransactionFilings result = companyApi.insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, pageSize, sortBy, nextPage);
+    Integer pageSize = 1000;
+    String sortBy = "updated_on";
+    String nextPage2 = null;
+    ApiResponseInsiderTransactionFilings result = companyApi.insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, nextPage, pageSize, sortBy, nextPage2);
     System.out.println(result);
   }
 }
@@ -1211,9 +1212,10 @@ Name | Type | Description  | Notes
  **startDate** | LocalDate| Return Company&#39;s insider transaction filings on or after this date | [optional] &nbsp;
  **endDate** | LocalDate| Return Company&#39;s insider transaction filings on or before this date | [optional] &nbsp;
  **ownershipType** | String| The type of ownership to return transaction filings for. &#39;D&#39; is for direct transactions. &#39;I&#39; is for indirect transactions. Omit for both types. | [optional] &nbsp;
- **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
- **sortBy** | String| The field to sort by.  Default is &#39;filing_date&#39;.  Valid values are - &#39;filing_date&#39;, &#39;updated_on&#39;. | [optional] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 1000] &nbsp;
+ **sortBy** | String| The field to sort by.  Default is &#39;filing_date&#39;. | [optional] [enum: filing_date, updated_on] &nbsp;
+ **nextPage2** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

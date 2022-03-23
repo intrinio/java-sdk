@@ -292,10 +292,11 @@ public class CompanyApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         String ownershipType = null;
+        String nextPage = null;
         Integer pageSize = null;
         String sortBy = null;
-        String nextPage = null;
-        ApiResponseInsiderTransactionFilings response = api.insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, pageSize, sortBy, nextPage);
+        String nextPage2 = null;
+        ApiResponseInsiderTransactionFilings response = api.insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, nextPage, pageSize, sortBy, nextPage2);
 
         // TODO: test validations
     }

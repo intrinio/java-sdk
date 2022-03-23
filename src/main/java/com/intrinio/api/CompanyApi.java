@@ -1884,15 +1884,16 @@ public class CompanyApi {
      * @param startDate Return Company&#39;s insider transaction filings on or after this date (optional)
      * @param endDate Return Company&#39;s insider transaction filings on or before this date (optional)
      * @param ownershipType The type of ownership to return transaction filings for. &#39;D&#39; is for direct transactions. &#39;I&#39; is for indirect transactions. Omit for both types. (optional)
-     * @param pageSize The number of results to return (optional, default to 100)
-     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;.  Valid values are - &#39;filing_date&#39;, &#39;updated_on&#39;. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;. (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call insiderTransactionFilingsByCompanyCall(String identifier, LocalDate startDate, LocalDate endDate, String ownershipType, Integer pageSize, String sortBy, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call insiderTransactionFilingsByCompanyCall(String identifier, LocalDate startDate, LocalDate endDate, String ownershipType, String nextPage, Integer pageSize, String sortBy, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1907,12 +1908,14 @@ public class CompanyApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (ownershipType != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("ownership_type", ownershipType));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (sortBy != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("sort_by", sortBy));
-        if (nextPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+        if (nextPage2 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage2));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1947,7 +1950,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call insiderTransactionFilingsByCompanyValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, String ownershipType, Integer pageSize, String sortBy, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call insiderTransactionFilingsByCompanyValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, String ownershipType, String nextPage, Integer pageSize, String sortBy, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1955,7 +1958,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = insiderTransactionFilingsByCompanyCall(identifier, startDate, endDate, ownershipType, pageSize, sortBy, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = insiderTransactionFilingsByCompanyCall(identifier, startDate, endDate, ownershipType, nextPage, pageSize, sortBy, nextPage2, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1967,17 +1970,18 @@ public class CompanyApi {
      * @param startDate Return Company&#39;s insider transaction filings on or after this date (optional)
      * @param endDate Return Company&#39;s insider transaction filings on or before this date (optional)
      * @param ownershipType The type of ownership to return transaction filings for. &#39;D&#39; is for direct transactions. &#39;I&#39; is for indirect transactions. Omit for both types. (optional)
-     * @param pageSize The number of results to return (optional, default to 100)
-     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;.  Valid values are - &#39;filing_date&#39;, &#39;updated_on&#39;. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;. (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @return ApiResponseInsiderTransactionFilings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseInsiderTransactionFilings insiderTransactionFilingsByCompany(String identifier, LocalDate startDate, LocalDate endDate, String ownershipType, Integer pageSize, String sortBy, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("insiderTransactionFilingsByCompanyWithHttpInfo", String.class, LocalDate.class, LocalDate.class, String.class, Integer.class, String.class, String.class);
+    public ApiResponseInsiderTransactionFilings insiderTransactionFilingsByCompany(String identifier, LocalDate startDate, LocalDate endDate, String ownershipType, String nextPage, Integer pageSize, String sortBy, String nextPage2) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("insiderTransactionFilingsByCompanyWithHttpInfo", String.class, LocalDate.class, LocalDate.class, String.class, String.class, Integer.class, String.class, String.class);
       
-      Object[] apiCallArguments = { identifier, startDate, endDate, ownershipType, pageSize, sortBy, nextPage };
+      Object[] apiCallArguments = { identifier, startDate, endDate, ownershipType, nextPage, pageSize, sortBy, nextPage2 };
       ApiResponse<ApiResponseInsiderTransactionFilings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -1989,14 +1993,15 @@ public class CompanyApi {
      * @param startDate Return Company&#39;s insider transaction filings on or after this date (optional)
      * @param endDate Return Company&#39;s insider transaction filings on or before this date (optional)
      * @param ownershipType The type of ownership to return transaction filings for. &#39;D&#39; is for direct transactions. &#39;I&#39; is for indirect transactions. Omit for both types. (optional)
-     * @param pageSize The number of results to return (optional, default to 100)
-     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;.  Valid values are - &#39;filing_date&#39;, &#39;updated_on&#39;. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;. (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseInsiderTransactionFilings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseInsiderTransactionFilings> insiderTransactionFilingsByCompanyWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, String ownershipType, Integer pageSize, String sortBy, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = insiderTransactionFilingsByCompanyValidateBeforeCall(identifier, startDate, endDate, ownershipType, pageSize, sortBy, nextPage, null, null);
+    public ApiResponse<ApiResponseInsiderTransactionFilings> insiderTransactionFilingsByCompanyWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, String ownershipType, String nextPage, Integer pageSize, String sortBy, String nextPage2) throws ApiException {
+        com.squareup.okhttp.Call call = insiderTransactionFilingsByCompanyValidateBeforeCall(identifier, startDate, endDate, ownershipType, nextPage, pageSize, sortBy, nextPage2, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseInsiderTransactionFilings>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2008,14 +2013,15 @@ public class CompanyApi {
      * @param startDate Return Company&#39;s insider transaction filings on or after this date (optional)
      * @param endDate Return Company&#39;s insider transaction filings on or before this date (optional)
      * @param ownershipType The type of ownership to return transaction filings for. &#39;D&#39; is for direct transactions. &#39;I&#39; is for indirect transactions. Omit for both types. (optional)
-     * @param pageSize The number of results to return (optional, default to 100)
-     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;.  Valid values are - &#39;filing_date&#39;, &#39;updated_on&#39;. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 1000)
+     * @param sortBy The field to sort by.  Default is &#39;filing_date&#39;. (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call insiderTransactionFilingsByCompanyAsync(String identifier, LocalDate startDate, LocalDate endDate, String ownershipType, Integer pageSize, String sortBy, String nextPage, final ApiCallback<ApiResponseInsiderTransactionFilings> callback) throws ApiException {
+    public com.squareup.okhttp.Call insiderTransactionFilingsByCompanyAsync(String identifier, LocalDate startDate, LocalDate endDate, String ownershipType, String nextPage, Integer pageSize, String sortBy, String nextPage2, final ApiCallback<ApiResponseInsiderTransactionFilings> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2036,7 +2042,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = insiderTransactionFilingsByCompanyValidateBeforeCall(identifier, startDate, endDate, ownershipType, pageSize, sortBy, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = insiderTransactionFilingsByCompanyValidateBeforeCall(identifier, startDate, endDate, ownershipType, nextPage, pageSize, sortBy, nextPage2, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseInsiderTransactionFilings>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
