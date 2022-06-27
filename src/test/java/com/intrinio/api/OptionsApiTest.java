@@ -54,7 +54,7 @@ public class OptionsApiTest {
     /**
      * Option Expirations Realtime
      *
-     * Returns all realtime option contract expiration dates for a given symbol.
+     * Returns a list of all current and upcoming expiration dates for a particular symbol.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -73,7 +73,7 @@ public class OptionsApiTest {
     /**
      * Option Strikes Realtime
      *
-     * Returns all realtime options contracts and their prices for the given symbol and strike.
+     * Returns a list of the latest top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all call/put contracts that match the strike and symbol specified.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -90,7 +90,7 @@ public class OptionsApiTest {
     /**
      * Options
      *
-     * Returns the master list of option contracts for a given symbol.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -115,7 +115,7 @@ public class OptionsApiTest {
     /**
      * Options by Symbol Realtime
      *
-     * Returns the master list of realtime option contracts for a given symbol.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -139,7 +139,7 @@ public class OptionsApiTest {
     /**
      * Options Chain
      *
-     * Returns all options contracts and their prices for the given symbol and expiration date.
+     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -176,7 +176,8 @@ public class OptionsApiTest {
         BigDecimal strike = null;
         BigDecimal strikeGreaterThan = null;
         BigDecimal strikeLessThan = null;
-        ApiResponseOptionsChainEod response = api.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan);
+        LocalDate date = null;
+        ApiResponseOptionsChainEod response = api.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date);
 
         // TODO: test validations
     }
@@ -184,7 +185,7 @@ public class OptionsApiTest {
     /**
      * Options Chain Realtime
      *
-     * Returns all realtime options contracts and their prices for the given symbol and expiration date.
+     * Returns a list of the latest National Best Bid &amp; Offer (NBBO) top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -211,7 +212,7 @@ public class OptionsApiTest {
     /**
      * Options Expirations
      *
-     * Returns all option contract expiration dates for a given symbol.
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -229,7 +230,7 @@ public class OptionsApiTest {
     /**
      * Option Prices
      *
-     * Returns all option prices for a given option contract identifier.
+     * Returns all price data from inception to expiration for a particular contract.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -249,7 +250,7 @@ public class OptionsApiTest {
     /**
      * Option Prices Batch Realtime
      *
-     * Returns options prices for a supplied list of option symbols.
+     * Returns a list of latest price data for up to 250 option contracts per request.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -299,7 +300,7 @@ public class OptionsApiTest {
     /**
      * Option Stats Realtime
      *
-     * Returns all option stats (greeks and implied volatility) and factors used to calculate them, for a given option contract identifier.
+     * Returns all option stats (greeks and implied volatility) as well as the underlying factors used to calculate them, for a particular option contract.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -316,7 +317,7 @@ public class OptionsApiTest {
     /**
      * Options Unusual Activity
      *
-     * Returns unusual trades for a given identifier.
+     * Returns unusual options activity for a particular company across all option chains. Unusual options activity includes large trades, sweeps, and block trades.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -357,7 +358,7 @@ public class OptionsApiTest {
     /**
      * Options Unusual Activity Universal
      *
-     * Returns nusual trades for all underlying security symbols.
+     * Returns the latest unusual options activity across all US companies with across all option chains. Unusual options activity includes large trades, sweeps, and block trades.
      *
      * @throws ApiException
      *          if the Api call fails

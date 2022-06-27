@@ -116,7 +116,7 @@ public class EtFsApi {
 
     /**
      * All ETFs
-     * Returns a list of Exchange Traded Funds (ETFs) sourced from FirstBridge
+     * Returns a list of all currently listed ETFs, with relevant identification information including the ETF Name, Ticker, FIGI Ticker, and Exchange MIC for further usage with our ETF Metadata, Holdings, Stats, and Analytics offerings.
      * @param exchange  (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -134,7 +134,7 @@ public class EtFsApi {
 
     /**
      * All ETFs
-     * Returns a list of Exchange Traded Funds (ETFs) sourced from FirstBridge
+     * Returns a list of all currently listed ETFs, with relevant identification information including the ETF Name, Ticker, FIGI Ticker, and Exchange MIC for further usage with our ETF Metadata, Holdings, Stats, and Analytics offerings.
      * @param exchange  (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -149,7 +149,7 @@ public class EtFsApi {
 
     /**
      * All ETFs (asynchronously)
-     * Returns a list of Exchange Traded Funds (ETFs) sourced from FirstBridge
+     * Returns a list of all currently listed ETFs, with relevant identification information including the ETF Name, Ticker, FIGI Ticker, and Exchange MIC for further usage with our ETF Metadata, Holdings, Stats, and Analytics offerings.
      * @param exchange  (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -249,7 +249,7 @@ public class EtFsApi {
 
     /**
      * Lookup ETF
-     * Returns the Exchange Traded Fund (ETF) with the given identifier
+     * Returns classifications and reference data which consists of ~90 columns that give detailed information about an ETF. These granular details include asset class, expense ratio, index name, index weighting scheme, smart beta type and specific investment objectives.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ETF
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -265,7 +265,7 @@ public class EtFsApi {
 
     /**
      * Lookup ETF
-     * Returns the Exchange Traded Fund (ETF) with the given identifier
+     * Returns classifications and reference data which consists of ~90 columns that give detailed information about an ETF. These granular details include asset class, expense ratio, index name, index weighting scheme, smart beta type and specific investment objectives.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ApiResponse&lt;ETF&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -278,7 +278,7 @@ public class EtFsApi {
 
     /**
      * Lookup ETF (asynchronously)
-     * Returns the Exchange Traded Fund (ETF) with the given identifier
+     * Returns classifications and reference data which consists of ~90 columns that give detailed information about an ETF. These granular details include asset class, expense ratio, index name, index weighting scheme, smart beta type and specific investment objectives.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -376,7 +376,7 @@ public class EtFsApi {
 
     /**
      * ETF Analytics
-     * Returns analytics for the Exchange Traded Fund (ETF) including volume, market cap, 52 week high, and 52 week low
+     * Returns latest market analytics for a specified US ETF, including volume, trailing volumen, market cap, 52 week high, and 52 week low.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ETFAnalytics
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -392,7 +392,7 @@ public class EtFsApi {
 
     /**
      * ETF Analytics
-     * Returns analytics for the Exchange Traded Fund (ETF) including volume, market cap, 52 week high, and 52 week low
+     * Returns latest market analytics for a specified US ETF, including volume, trailing volumen, market cap, 52 week high, and 52 week low.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ApiResponse&lt;ETFAnalytics&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -405,7 +405,7 @@ public class EtFsApi {
 
     /**
      * ETF Analytics (asynchronously)
-     * Returns analytics for the Exchange Traded Fund (ETF) including volume, market cap, 52 week high, and 52 week low
+     * Returns latest market analytics for a specified US ETF, including volume, trailing volumen, market cap, 52 week high, and 52 week low.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -509,7 +509,7 @@ public class EtFsApi {
 
     /**
      * ETF Holdings
-     * Returns the holdings sorted by weight descending and the Exchange Traded Fund (ETF) summary
+     * Returns holdings data that details all the constituent securities in each ETF with names, identifiers, and the weights for each security providing granular level transparency.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -527,7 +527,7 @@ public class EtFsApi {
 
     /**
      * ETF Holdings
-     * Returns the holdings sorted by weight descending and the Exchange Traded Fund (ETF) summary
+     * Returns holdings data that details all the constituent securities in each ETF with names, identifiers, and the weights for each security providing granular level transparency.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -542,7 +542,7 @@ public class EtFsApi {
 
     /**
      * ETF Holdings (asynchronously)
-     * Returns the holdings sorted by weight descending and the Exchange Traded Fund (ETF) summary
+     * Returns holdings data that details all the constituent securities in each ETF with names, identifiers, and the weights for each security providing granular level transparency.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -642,7 +642,7 @@ public class EtFsApi {
 
     /**
      * Exchange Traded Fund (ETF) stats
-     * Returns daily stats for the Exchange Traded Fund (ETF) including net asset value, beta vs spy, returns, and volatility
+     * Returns comprehensive key US ETF performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ETFStats
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -658,7 +658,7 @@ public class EtFsApi {
 
     /**
      * Exchange Traded Fund (ETF) stats
-     * Returns daily stats for the Exchange Traded Fund (ETF) including net asset value, beta vs spy, returns, and volatility
+     * Returns comprehensive key US ETF performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ApiResponse&lt;ETFStats&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -671,7 +671,7 @@ public class EtFsApi {
 
     /**
      * Exchange Traded Fund (ETF) stats (asynchronously)
-     * Returns daily stats for the Exchange Traded Fund (ETF) including net asset value, beta vs spy, returns, and volatility
+     * Returns comprehensive key US ETF performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -770,7 +770,7 @@ public class EtFsApi {
 
     /**
      * Search ETFs
-     * Searches for Exchange Traded Funds (ETFs) matching the text &#x60;query&#x60;
+     * Accepts a string of keyword combinations, and searches across the ETF name and ticker and returns a list of ETFs with related keywords.
      * @param query  (required)
      * @return ApiResponseETFs
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -786,7 +786,7 @@ public class EtFsApi {
 
     /**
      * Search ETFs
-     * Searches for Exchange Traded Funds (ETFs) matching the text &#x60;query&#x60;
+     * Accepts a string of keyword combinations, and searches across the ETF name and ticker and returns a list of ETFs with related keywords.
      * @param query  (required)
      * @return ApiResponse&lt;ApiResponseETFs&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -799,7 +799,7 @@ public class EtFsApi {
 
     /**
      * Search ETFs (asynchronously)
-     * Searches for Exchange Traded Funds (ETFs) matching the text &#x60;query&#x60;
+     * Accepts a string of keyword combinations, and searches across the ETF name and ticker and returns a list of ETFs with related keywords.
      * @param query  (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call

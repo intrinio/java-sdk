@@ -251,7 +251,7 @@ public class OptionsApi {
 
     /**
      * Option Expirations Realtime
-     * Returns all realtime option contract expiration dates for a given symbol.
+     * Returns a list of all current and upcoming expiration dates for a particular symbol.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -270,7 +270,7 @@ public class OptionsApi {
 
     /**
      * Option Expirations Realtime
-     * Returns all realtime option contract expiration dates for a given symbol.
+     * Returns a list of all current and upcoming expiration dates for a particular symbol.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -286,7 +286,7 @@ public class OptionsApi {
 
     /**
      * Option Expirations Realtime (asynchronously)
-     * Returns all realtime option contract expiration dates for a given symbol.
+     * Returns a list of all current and upcoming expiration dates for a particular symbol.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -394,7 +394,7 @@ public class OptionsApi {
 
     /**
      * Option Strikes Realtime
-     * Returns all realtime options contracts and their prices for the given symbol and strike.
+     * Returns a list of the latest top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all call/put contracts that match the strike and symbol specified.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (required)
      * @return ApiResponseOptionsChainRealtime
@@ -411,7 +411,7 @@ public class OptionsApi {
 
     /**
      * Option Strikes Realtime
-     * Returns all realtime options contracts and their prices for the given symbol and strike.
+     * Returns a list of the latest top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all call/put contracts that match the strike and symbol specified.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (required)
      * @return ApiResponse&lt;ApiResponseOptionsChainRealtime&gt;
@@ -425,7 +425,7 @@ public class OptionsApi {
 
     /**
      * Option Strikes Realtime (asynchronously)
-     * Returns all realtime options contracts and their prices for the given symbol and strike.
+     * Returns a list of the latest top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all call/put contracts that match the strike and symbol specified.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (required)
      * @param callback The callback to be executed when the API call finishes
@@ -551,7 +551,7 @@ public class OptionsApi {
 
     /**
      * Options
-     * Returns the master list of option contracts for a given symbol.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
@@ -576,7 +576,7 @@ public class OptionsApi {
 
     /**
      * Options
-     * Returns the master list of option contracts for a given symbol.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
@@ -598,7 +598,7 @@ public class OptionsApi {
 
     /**
      * Options (asynchronously)
-     * Returns the master list of option contracts for a given symbol.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
@@ -729,7 +729,7 @@ public class OptionsApi {
 
     /**
      * Options by Symbol Realtime
-     * Returns the master list of realtime option contracts for a given symbol.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
@@ -753,7 +753,7 @@ public class OptionsApi {
 
     /**
      * Options by Symbol Realtime
-     * Returns the master list of realtime option contracts for a given symbol.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
@@ -774,7 +774,7 @@ public class OptionsApi {
 
     /**
      * Options by Symbol Realtime (asynchronously)
-     * Returns the master list of realtime option contracts for a given symbol.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
@@ -908,7 +908,7 @@ public class OptionsApi {
 
     /**
      * Options Chain
-     * Returns all options contracts and their prices for the given symbol and expiration date.
+     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
      * @param date The date of the option price. Returns option prices on this date. (optional)
@@ -932,7 +932,7 @@ public class OptionsApi {
 
     /**
      * Options Chain
-     * Returns all options contracts and their prices for the given symbol and expiration date.
+     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
      * @param date The date of the option price. Returns option prices on this date. (optional)
@@ -953,7 +953,7 @@ public class OptionsApi {
 
     /**
      * Options Chain (asynchronously)
-     * Returns all options contracts and their prices for the given symbol and expiration date.
+     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
      * @param date The date of the option price. Returns option prices on this date. (optional)
@@ -1001,12 +1001,13 @@ public class OptionsApi {
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param date The the date to retrieve prices for (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOptionsChainEodCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsChainEodCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1024,6 +1025,8 @@ public class OptionsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("strike_greater_than", strikeGreaterThan));
         if (strikeLessThan != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("strike_less_than", strikeLessThan));
+        if (date != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1058,7 +1061,7 @@ public class OptionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOptionsChainEodValidateBeforeCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getOptionsChainEodValidateBeforeCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'symbol' is set
         if (symbol == null) {
@@ -1071,7 +1074,7 @@ public class OptionsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getOptionsChainEodCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsChainEodCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1085,14 +1088,15 @@ public class OptionsApi {
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param date The the date to retrieve prices for (optional)
      * @return ApiResponseOptionsChainEod
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseOptionsChainEod getOptionsChainEod(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan) throws ApiException, NoSuchMethodException {
-      Method targetMethod = OptionsApi.class.getMethod("getOptionsChainEodWithHttpInfo", String.class, String.class, String.class, BigDecimal.class, BigDecimal.class, BigDecimal.class);
+    public ApiResponseOptionsChainEod getOptionsChainEod(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsChainEodWithHttpInfo", String.class, String.class, String.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, LocalDate.class);
       
-      Object[] apiCallArguments = { symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan };
+      Object[] apiCallArguments = { symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date };
       ApiResponse<ApiResponseOptionsChainEod> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -1106,11 +1110,12 @@ public class OptionsApi {
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param date The the date to retrieve prices for (optional)
      * @return ApiResponse&lt;ApiResponseOptionsChainEod&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseOptionsChainEod> getOptionsChainEodWithHttpInfo(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan) throws ApiException {
-        com.squareup.okhttp.Call call = getOptionsChainEodValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, null, null);
+    public ApiResponse<ApiResponseOptionsChainEod> getOptionsChainEodWithHttpInfo(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsChainEodValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsChainEod>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1124,11 +1129,12 @@ public class OptionsApi {
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param date The the date to retrieve prices for (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getOptionsChainEodAsync(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, final ApiCallback<ApiResponseOptionsChainEod> callback) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsChainEodAsync(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, final ApiCallback<ApiResponseOptionsChainEod> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1149,7 +1155,7 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getOptionsChainEodValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsChainEodValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsChainEod>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1257,7 +1263,7 @@ public class OptionsApi {
 
     /**
      * Options Chain Realtime
-     * Returns all realtime options contracts and their prices for the given symbol and expiration date.
+     * Returns a list of the latest National Best Bid &amp; Offer (NBBO) top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
@@ -1284,7 +1290,7 @@ public class OptionsApi {
 
     /**
      * Options Chain Realtime
-     * Returns all realtime options contracts and their prices for the given symbol and expiration date.
+     * Returns a list of the latest National Best Bid &amp; Offer (NBBO) top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
@@ -1308,7 +1314,7 @@ public class OptionsApi {
 
     /**
      * Options Chain Realtime (asynchronously)
-     * Returns all realtime options contracts and their prices for the given symbol and expiration date.
+     * Returns a list of the latest National Best Bid &amp; Offer (NBBO) top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
@@ -1423,7 +1429,7 @@ public class OptionsApi {
 
     /**
      * Options Expirations
-     * Returns all option contract expiration dates for a given symbol.
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -1441,7 +1447,7 @@ public class OptionsApi {
 
     /**
      * Options Expirations
-     * Returns all option contract expiration dates for a given symbol.
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -1456,7 +1462,7 @@ public class OptionsApi {
 
     /**
      * Options Expirations (asynchronously)
-     * Returns all option contract expiration dates for a given symbol.
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -1568,7 +1574,7 @@ public class OptionsApi {
 
     /**
      * Option Prices
-     * Returns all option prices for a given option contract identifier.
+     * Returns all price data from inception to expiration for a particular contract.
      * @param identifier The Intrinio ID or code of the options contract to request prices for. (required)
      * @param startDate Return option contract prices on or after this date. (optional)
      * @param endDate Return option contract prices on or before this date. (optional)
@@ -1588,7 +1594,7 @@ public class OptionsApi {
 
     /**
      * Option Prices
-     * Returns all option prices for a given option contract identifier.
+     * Returns all price data from inception to expiration for a particular contract.
      * @param identifier The Intrinio ID or code of the options contract to request prices for. (required)
      * @param startDate Return option contract prices on or after this date. (optional)
      * @param endDate Return option contract prices on or before this date. (optional)
@@ -1605,7 +1611,7 @@ public class OptionsApi {
 
     /**
      * Option Prices (asynchronously)
-     * Returns all option prices for a given option contract identifier.
+     * Returns all price data from inception to expiration for a particular contract.
      * @param identifier The Intrinio ID or code of the options contract to request prices for. (required)
      * @param startDate Return option contract prices on or after this date. (optional)
      * @param endDate Return option contract prices on or before this date. (optional)
@@ -1709,7 +1715,7 @@ public class OptionsApi {
 
     /**
      * Option Prices Batch Realtime
-     * Returns options prices for a supplied list of option symbols.
+     * Returns a list of latest price data for up to 250 option contracts per request.
      * @param body The contract symbols for which to return options prices for. (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @return ApiResponseOptionsPricesBatchRealtime
@@ -1726,7 +1732,7 @@ public class OptionsApi {
 
     /**
      * Option Prices Batch Realtime
-     * Returns options prices for a supplied list of option symbols.
+     * Returns a list of latest price data for up to 250 option contracts per request.
      * @param body The contract symbols for which to return options prices for. (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @return ApiResponse&lt;ApiResponseOptionsPricesBatchRealtime&gt;
@@ -1740,7 +1746,7 @@ public class OptionsApi {
 
     /**
      * Option Prices Batch Realtime (asynchronously)
-     * Returns options prices for a supplied list of option symbols.
+     * Returns a list of latest price data for up to 250 option contracts per request.
      * @param body The contract symbols for which to return options prices for. (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -2102,7 +2108,7 @@ public class OptionsApi {
 
     /**
      * Option Stats Realtime
-     * Returns all option stats (greeks and implied volatility) and factors used to calculate them, for a given option contract identifier.
+     * Returns all option stats (greeks and implied volatility) as well as the underlying factors used to calculate them, for a particular option contract.
      * @param identifier The Intrinio ID or code of the options contract to request prices for. (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @return ApiResponseOptionsStatsRealtime
@@ -2119,7 +2125,7 @@ public class OptionsApi {
 
     /**
      * Option Stats Realtime
-     * Returns all option stats (greeks and implied volatility) and factors used to calculate them, for a given option contract identifier.
+     * Returns all option stats (greeks and implied volatility) as well as the underlying factors used to calculate them, for a particular option contract.
      * @param identifier The Intrinio ID or code of the options contract to request prices for. (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @return ApiResponse&lt;ApiResponseOptionsStatsRealtime&gt;
@@ -2133,7 +2139,7 @@ public class OptionsApi {
 
     /**
      * Option Stats Realtime (asynchronously)
-     * Returns all option stats (greeks and implied volatility) and factors used to calculate them, for a given option contract identifier.
+     * Returns all option stats (greeks and implied volatility) as well as the underlying factors used to calculate them, for a particular option contract.
      * @param identifier The Intrinio ID or code of the options contract to request prices for. (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -2235,7 +2241,7 @@ public class OptionsApi {
 
     /**
      * Options Unusual Activity
-     * Returns unusual trades for a given identifier.
+     * Returns unusual options activity for a particular company across all option chains. Unusual options activity includes large trades, sweeps, and block trades.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @return ApiResponseOptionsUnusualActivity
@@ -2252,7 +2258,7 @@ public class OptionsApi {
 
     /**
      * Options Unusual Activity
-     * Returns unusual trades for a given identifier.
+     * Returns unusual options activity for a particular company across all option chains. Unusual options activity includes large trades, sweeps, and block trades.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @return ApiResponse&lt;ApiResponseOptionsUnusualActivity&gt;
@@ -2266,7 +2272,7 @@ public class OptionsApi {
 
     /**
      * Options Unusual Activity (asynchronously)
-     * Returns unusual trades for a given identifier.
+     * Returns unusual options activity for a particular company across all option chains. Unusual options activity includes large trades, sweeps, and block trades.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -2536,7 +2542,7 @@ public class OptionsApi {
 
     /**
      * Options Unusual Activity Universal
-     * Returns nusual trades for all underlying security symbols.
+     * Returns the latest unusual options activity across all US companies with across all option chains. Unusual options activity includes large trades, sweeps, and block trades.
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @return ApiResponseOptionsUnusualActivity
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2552,7 +2558,7 @@ public class OptionsApi {
 
     /**
      * Options Unusual Activity Universal
-     * Returns nusual trades for all underlying security symbols.
+     * Returns the latest unusual options activity across all US companies with across all option chains. Unusual options activity includes large trades, sweeps, and block trades.
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @return ApiResponse&lt;ApiResponseOptionsUnusualActivity&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2565,7 +2571,7 @@ public class OptionsApi {
 
     /**
      * Options Unusual Activity Universal (asynchronously)
-     * Returns nusual trades for all underlying security symbols.
+     * Returns the latest unusual options activity across all US companies with across all option chains. Unusual options activity includes large trades, sweeps, and block trades.
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call

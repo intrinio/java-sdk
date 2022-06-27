@@ -31,7 +31,7 @@ public class FilingApiTest {
     /**
      * All Filings
      *
-     * Returns all Filings. Returns Filings matching parameters when supplied.
+     * Returns pertinent filing reference data for a specific company filing or latest filings for all companies. Useful for tracking the latest filings submitted and updating your database accordingly with the new information.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -55,7 +55,7 @@ public class FilingApiTest {
     /**
      * All Filing Notes
      *
-     * Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
+     * Returns a list of the latest XBRL filing note sections from the SEC 10-K and 10-Q statements. The returned Intrinio XBRL filing note ID can then be utilized with the “Filing Note by ID” endpoint to retrieve the contents of the note in HTML or text format.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -111,7 +111,7 @@ public class FilingApiTest {
     /**
      * All Fundamentals by Filing
      *
-     * Returns all Fundamentals for the SEC Filing with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     * Returns a list of fundamentals with unique fundamental IDs associated with a particular &#x60;Intrinio Filing ID&#x60; (if applicable) that have been updated or created as a result of a company&#x60;s latest SEC filing. Useful to ensure your database is up to date with the latest fundamentals.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -134,7 +134,7 @@ public class FilingApiTest {
     /**
      * Filing Html
      *
-     * 
+     * Returns a SEC filing in HTML Format for a specified filing ID.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -166,7 +166,7 @@ public class FilingApiTest {
     /**
      * Filing Note by ID
      *
-     * 
+     * Returns the XBRL filing note contents in HTML or text format for a specified Intrinio XBRL filing note ID.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -215,7 +215,7 @@ public class FilingApiTest {
     /**
      * Search Filing Notes
      *
-     * Searches for Filing Notes using the &#x60;query&#x60;
+     * Search the XBRL note database and return a list of XBRL note sections containing text from the text query parameter passed through.
      *
      * @throws ApiException
      *          if the Api call fails

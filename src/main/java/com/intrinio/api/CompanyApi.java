@@ -309,7 +309,7 @@ public class CompanyApi {
 
     /**
      * All News
-     * Returns all News for all Companies
+     * Returns the latest news article links, headlines and summaries for all US traded companies allowing you to keep a pulse on companies and their business operations.
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseNews
@@ -326,7 +326,7 @@ public class CompanyApi {
 
     /**
      * All News
-     * Returns all News for all Companies
+     * Returns the latest news article links, headlines and summaries for all US traded companies allowing you to keep a pulse on companies and their business operations.
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseNews&gt;
@@ -340,7 +340,7 @@ public class CompanyApi {
 
     /**
      * All News (asynchronously)
-     * Returns all News for all Companies
+     * Returns the latest news article links, headlines and summaries for all US traded companies allowing you to keep a pulse on companies and their business operations.
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -439,7 +439,7 @@ public class CompanyApi {
 
     /**
      * Lookup Company
-     * Returns the Company with the given &#x60;identifier&#x60;
+     * Returns company reference and metadata such as tickers, CIK, and a unique company identifier, as well as company metadata such as business description, employee count, and company URL.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @return Company
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -455,7 +455,7 @@ public class CompanyApi {
 
     /**
      * Lookup Company
-     * Returns the Company with the given &#x60;identifier&#x60;
+     * Returns company reference and metadata such as tickers, CIK, and a unique company identifier, as well as company metadata such as business description, employee count, and company URL.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @return ApiResponse&lt;Company&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -468,7 +468,7 @@ public class CompanyApi {
 
     /**
      * Lookup Company (asynchronously)
-     * Returns the Company with the given &#x60;identifier&#x60;
+     * Returns company reference and metadata such as tickers, CIK, and a unique company identifier, as well as company metadata such as business description, employee count, and company URL.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -711,7 +711,7 @@ public class CompanyApi {
 
     /**
      * Data Point (Number) for Company
-     * Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+     * Returns latest value for calculations, metrics, and financial data points for a company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return BigDecimal
@@ -728,7 +728,7 @@ public class CompanyApi {
 
     /**
      * Data Point (Number) for Company
-     * Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+     * Returns latest value for calculations, metrics, and financial data points for a company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return ApiResponse&lt;BigDecimal&gt;
@@ -742,7 +742,7 @@ public class CompanyApi {
 
     /**
      * Data Point (Number) for Company (asynchronously)
-     * Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+     * Returns latest value for calculations, metrics, and financial data points for a company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param callback The callback to be executed when the API call finishes
@@ -848,7 +848,7 @@ public class CompanyApi {
 
     /**
      * Data Point (Text) for Company
-     * Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+     * Returns latest value for metadata items for a company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return String
@@ -865,7 +865,7 @@ public class CompanyApi {
 
     /**
      * Data Point (Text) for Company
-     * Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+     * Returns latest value for metadata items for a company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return ApiResponse&lt;String&gt;
@@ -879,7 +879,7 @@ public class CompanyApi {
 
     /**
      * Data Point (Text) for Company (asynchronously)
-     * Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+     * Returns latest value for metadata items for a company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param callback The callback to be executed when the API call finishes
@@ -1171,7 +1171,7 @@ public class CompanyApi {
 
     /**
      * All Fundamentals by Company
-     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     * Returns a list of fundamentals with unique fundamental IDs associated with a particular company. Useful to obtain all historical and/or latest fundamental IDs for a given company to then use to loop through and pull all fundamental data available.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param filedAfter Filed on or after this date (optional)
      * @param filedBefore Filed on or before this date (optional)
@@ -1197,7 +1197,7 @@ public class CompanyApi {
 
     /**
      * All Fundamentals by Company
-     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     * Returns a list of fundamentals with unique fundamental IDs associated with a particular company. Useful to obtain all historical and/or latest fundamental IDs for a given company to then use to loop through and pull all fundamental data available.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param filedAfter Filed on or after this date (optional)
      * @param filedBefore Filed on or before this date (optional)
@@ -1220,7 +1220,7 @@ public class CompanyApi {
 
     /**
      * All Fundamentals by Company (asynchronously)
-     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     * Returns a list of fundamentals with unique fundamental IDs associated with a particular company. Useful to obtain all historical and/or latest fundamental IDs for a given company to then use to loop through and pull all fundamental data available.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param filedAfter Filed on or after this date (optional)
      * @param filedBefore Filed on or before this date (optional)
@@ -1444,7 +1444,7 @@ public class CompanyApi {
     /**
      * Build call for getCompanyIpos
      * @param ticker Return IPOs with the given ticker (typically the IPO for the company) (optional)
-     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occured and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
+     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occurred and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
      * @param startDate Return IPOs on or after the given date (optional)
      * @param endDate Return IPOs on or before the given date (optional)
      * @param offerAmountGreaterThan Return IPOs with an offer dollar amount greater than the given amount (optional)
@@ -1524,9 +1524,9 @@ public class CompanyApi {
 
     /**
      * IPOs
-     * Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+     * Returns a list of historical, current, and upcoming initial public offerings (IPOs) across the major US Exchanges. Includes relevant information such as the IPO status, the offer amount, the total share count and target share price.
      * @param ticker Return IPOs with the given ticker (typically the IPO for the company) (optional)
-     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occured and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
+     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occurred and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
      * @param startDate Return IPOs on or after the given date (optional)
      * @param endDate Return IPOs on or before the given date (optional)
      * @param offerAmountGreaterThan Return IPOs with an offer dollar amount greater than the given amount (optional)
@@ -1547,9 +1547,9 @@ public class CompanyApi {
 
     /**
      * IPOs
-     * Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+     * Returns a list of historical, current, and upcoming initial public offerings (IPOs) across the major US Exchanges. Includes relevant information such as the IPO status, the offer amount, the total share count and target share price.
      * @param ticker Return IPOs with the given ticker (typically the IPO for the company) (optional)
-     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occured and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
+     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occurred and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
      * @param startDate Return IPOs on or after the given date (optional)
      * @param endDate Return IPOs on or before the given date (optional)
      * @param offerAmountGreaterThan Return IPOs with an offer dollar amount greater than the given amount (optional)
@@ -1567,9 +1567,9 @@ public class CompanyApi {
 
     /**
      * IPOs (asynchronously)
-     * Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+     * Returns a list of historical, current, and upcoming initial public offerings (IPOs) across the major US Exchanges. Includes relevant information such as the IPO status, the offer amount, the total share count and target share price.
      * @param ticker Return IPOs with the given ticker (typically the IPO for the company) (optional)
-     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occured and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
+     * @param status Return IPOs with the given status. Upcoming IPOs are scheduled to occur in the future. Priced IPOs have occurred and the company should be trading publicly. Withdrawn IPOs were planned to occurr but were withdrawn beforehand (optional)
      * @param startDate Return IPOs on or after the given date (optional)
      * @param endDate Return IPOs on or before the given date (optional)
      * @param offerAmountGreaterThan Return IPOs with an offer dollar amount greater than the given amount (optional)
@@ -1678,7 +1678,7 @@ public class CompanyApi {
 
     /**
      * All News by Company
-     * Returns news for the Company with the given &#x60;identifier&#x60;
+     * Returns the latest and historical news article links, headlines and summaries for a specified US traded company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1696,7 +1696,7 @@ public class CompanyApi {
 
     /**
      * All News by Company
-     * Returns news for the Company with the given &#x60;identifier&#x60;
+     * Returns the latest and historical news article links, headlines and summaries for a specified US traded company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1711,7 +1711,7 @@ public class CompanyApi {
 
     /**
      * All News by Company (asynchronously)
-     * Returns news for the Company with the given &#x60;identifier&#x60;
+     * Returns the latest and historical news article links, headlines and summaries for a specified US traded company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1814,7 +1814,7 @@ public class CompanyApi {
 
     /**
      * All Securities by Company
-     * Returns Securities for the Company with the given &#x60;identifier&#x60;
+     * Returns a list of underlying securities with associated reference data tied to a given company identifier.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanySecurities
@@ -1831,7 +1831,7 @@ public class CompanyApi {
 
     /**
      * All Securities by Company
-     * Returns Securities for the Company with the given &#x60;identifier&#x60;
+     * Returns a list of underlying securities with associated reference data tied to a given company identifier.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanySecurities&gt;
@@ -1845,7 +1845,7 @@ public class CompanyApi {
 
     /**
      * All Securities by Company (asynchronously)
-     * Returns Securities for the Company with the given &#x60;identifier&#x60;
+     * Returns a list of underlying securities with associated reference data tied to a given company identifier.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -2538,7 +2538,7 @@ public class CompanyApi {
 
     /**
      * Search Companies
-     * Searches for Companies matching the text &#x60;query&#x60;
+     * Search the companies database and return a list of companies matching the text query parameter passed through. Query parameter searches across the company ticker and name.
      * @param query Search parameters (required)
      * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2556,7 +2556,7 @@ public class CompanyApi {
 
     /**
      * Search Companies
-     * Searches for Companies matching the text &#x60;query&#x60;
+     * Search the companies database and return a list of companies matching the text query parameter passed through. Query parameter searches across the company ticker and name.
      * @param query Search parameters (required)
      * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2571,7 +2571,7 @@ public class CompanyApi {
 
     /**
      * Search Companies (asynchronously)
-     * Searches for Companies matching the text &#x60;query&#x60;
+     * Search the companies database and return a list of companies matching the text query parameter passed through. Query parameter searches across the company ticker and name.
      * @param query Search parameters (required)
      * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2671,7 +2671,7 @@ public class CompanyApi {
 
     /**
      * Shares Outstanding by Company
-     * Returns shares outstanding for the Company with the given &#x60;identifier&#x60;
+     * Returns the shares outstanding reported on the front cover of the SEC 10-K and 10-Q filings.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @return ApiResponseCompanySharesOutstanding
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2687,7 +2687,7 @@ public class CompanyApi {
 
     /**
      * Shares Outstanding by Company
-     * Returns shares outstanding for the Company with the given &#x60;identifier&#x60;
+     * Returns the shares outstanding reported on the front cover of the SEC 10-K and 10-Q filings.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @return ApiResponse&lt;ApiResponseCompanySharesOutstanding&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -2700,7 +2700,7 @@ public class CompanyApi {
 
     /**
      * Shares Outstanding by Company (asynchronously)
-     * Returns shares outstanding for the Company with the given &#x60;identifier&#x60;
+     * Returns the shares outstanding reported on the front cover of the SEC 10-K and 10-Q filings.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call

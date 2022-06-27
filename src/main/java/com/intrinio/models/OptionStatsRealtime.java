@@ -34,6 +34,9 @@ public class OptionStatsRealtime {
   @SerializedName("vega")
   private BigDecimal vega = null;
 
+  @SerializedName("underlying_price")
+  private BigDecimal underlyingPrice = null;
+
   public OptionStatsRealtime impliedVolatility(BigDecimal impliedVolatility) {
     this.impliedVolatility = impliedVolatility;
     return this;
@@ -124,6 +127,24 @@ public class OptionStatsRealtime {
     this.vega = vega;
   }
 
+  public OptionStatsRealtime underlyingPrice(BigDecimal underlyingPrice) {
+    this.underlyingPrice = underlyingPrice;
+    return this;
+  }
+
+   /**
+   * The most recent trade price of the underlying asset.
+   * @return underlyingPrice
+  **/
+  @ApiModelProperty(value = "The most recent trade price of the underlying asset.")
+  public BigDecimal getUnderlyingPrice() {
+    return underlyingPrice;
+  }
+
+  public void setUnderlyingPrice(BigDecimal underlyingPrice) {
+    this.underlyingPrice = underlyingPrice;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -138,12 +159,13 @@ public class OptionStatsRealtime {
         Objects.equals(this.delta, optionStatsRealtime.delta) &&
         Objects.equals(this.gamma, optionStatsRealtime.gamma) &&
         Objects.equals(this.theta, optionStatsRealtime.theta) &&
-        Objects.equals(this.vega, optionStatsRealtime.vega);
+        Objects.equals(this.vega, optionStatsRealtime.vega) &&
+        Objects.equals(this.underlyingPrice, optionStatsRealtime.underlyingPrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(impliedVolatility, delta, gamma, theta, vega);
+    return Objects.hash(impliedVolatility, delta, gamma, theta, vega, underlyingPrice);
   }
 
 
@@ -157,6 +179,7 @@ public class OptionStatsRealtime {
     sb.append("    gamma: ").append(toIndentedString(gamma)).append("\n");
     sb.append("    theta: ").append(toIndentedString(theta)).append("\n");
     sb.append("    vega: ").append(toIndentedString(vega)).append("\n");
+    sb.append("    underlyingPrice: ").append(toIndentedString(underlyingPrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }

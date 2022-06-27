@@ -122,7 +122,7 @@ public class IndexApi {
 
     /**
      * All Economic Indices
-     * 
+     * Returns a list of reference data on more than 200,000 economic indices from the Federal Reserve Economic Data (FRED) database.
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseEconomicIndices
@@ -139,7 +139,7 @@ public class IndexApi {
 
     /**
      * All Economic Indices
-     * 
+     * Returns a list of reference data on more than 200,000 economic indices from the Federal Reserve Economic Data (FRED) database.
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseEconomicIndices&gt;
@@ -153,7 +153,7 @@ public class IndexApi {
 
     /**
      * All Economic Indices (asynchronously)
-     * 
+     * Returns a list of reference data on more than 200,000 economic indices from the Federal Reserve Economic Data (FRED) database.
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
@@ -510,7 +510,7 @@ public class IndexApi {
 
     /**
      * Lookup Economic Index
-     * 
+     * Returns reference data for a specified Federal Reserve Economic Data (FRED) series ID.
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @return EconomicIndex
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -526,7 +526,7 @@ public class IndexApi {
 
     /**
      * Lookup Economic Index
-     * 
+     * Returns reference data for a specified Federal Reserve Economic Data (FRED) series ID.
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @return ApiResponse&lt;EconomicIndex&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -539,7 +539,7 @@ public class IndexApi {
 
     /**
      * Lookup Economic Index (asynchronously)
-     * 
+     * Returns reference data for a specified Federal Reserve Economic Data (FRED) series ID.
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -644,7 +644,7 @@ public class IndexApi {
 
     /**
      * Data Point (Number) for an Economic Index
-     * Returns a numeric value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
+     * Returns latest data for a specified Federal Reserve Economic Data (FRED) ID.
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag &lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags/economic&#39;&gt;reference&lt;/a&gt; (required)
      * @return BigDecimal
@@ -661,7 +661,7 @@ public class IndexApi {
 
     /**
      * Data Point (Number) for an Economic Index
-     * Returns a numeric value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
+     * Returns latest data for a specified Federal Reserve Economic Data (FRED) ID.
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag &lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags/economic&#39;&gt;reference&lt;/a&gt; (required)
      * @return ApiResponse&lt;BigDecimal&gt;
@@ -675,7 +675,7 @@ public class IndexApi {
 
     /**
      * Data Point (Number) for an Economic Index (asynchronously)
-     * Returns a numeric value for the given &#x60;tag&#x60; for the Economic Index with the given &#x60;identifier&#x60;
+     * Returns latest data for a specified Federal Reserve Economic Data (FRED) ID.
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag &lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags/economic&#39;&gt;reference&lt;/a&gt; (required)
      * @param callback The callback to be executed when the API call finishes
@@ -936,7 +936,7 @@ public class IndexApi {
 
     /**
      * Historical Data for an Economic Index
-     * Returns historical values for the given &#x60;tag&#x60; and the Economic Index with the given &#x60;identifier&#x60;
+     * Returns historical data for a specified Federal Reserve Economic Data (FRED) ID over a period of time.
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag &lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags/economic&#39;&gt;reference&lt;/a&gt; (required)
      * @param type Filter by type, when applicable (optional)
@@ -959,7 +959,7 @@ public class IndexApi {
 
     /**
      * Historical Data for an Economic Index
-     * Returns historical values for the given &#x60;tag&#x60; and the Economic Index with the given &#x60;identifier&#x60;
+     * Returns historical data for a specified Federal Reserve Economic Data (FRED) ID over a period of time.
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag &lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags/economic&#39;&gt;reference&lt;/a&gt; (required)
      * @param type Filter by type, when applicable (optional)
@@ -979,7 +979,7 @@ public class IndexApi {
 
     /**
      * Historical Data for an Economic Index (asynchronously)
-     * Returns historical values for the given &#x60;tag&#x60; and the Economic Index with the given &#x60;identifier&#x60;
+     * Returns historical data for a specified Federal Reserve Economic Data (FRED) ID over a period of time.
      * @param identifier An Index Identifier (symbol, Intrinio ID) (required)
      * @param tag An Intrinio data tag &lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags/economic&#39;&gt;reference&lt;/a&gt; (required)
      * @param type Filter by type, when applicable (optional)
@@ -2236,7 +2236,7 @@ public class IndexApi {
 
     /**
      * Search Economic Indices
-     * Searches for indices using the text in &#x60;query&#x60;
+     * Search the Federal Reserve Economic Data (FRED) database and return a list of economic indices matching the text query parameter passed through.
      * @param query Search query (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponseEconomicIndicesSearch
@@ -2253,7 +2253,7 @@ public class IndexApi {
 
     /**
      * Search Economic Indices
-     * Searches for indices using the text in &#x60;query&#x60;
+     * Search the Federal Reserve Economic Data (FRED) database and return a list of economic indices matching the text query parameter passed through.
      * @param query Search query (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponse&lt;ApiResponseEconomicIndicesSearch&gt;
@@ -2267,7 +2267,7 @@ public class IndexApi {
 
     /**
      * Search Economic Indices (asynchronously)
-     * Searches for indices using the text in &#x60;query&#x60;
+     * Search the Federal Reserve Economic Data (FRED) database and return a list of economic indices matching the text query parameter passed through.
      * @param query Search query (required)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param callback The callback to be executed when the API call finishes

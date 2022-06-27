@@ -20,6 +20,7 @@ import com.intrinio.models.ApiResponseReportedFinancials;
 import com.intrinio.models.ApiResponseStandardizedFinancials;
 import com.intrinio.models.ApiResponseStandardizedFinancialsDimensions;
 import com.intrinio.models.Fundamental;
+import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.Method;
@@ -47,6 +48,183 @@ public class FundamentalsApi {
         this.apiClient = apiClient;
     }
 
+    /**
+     * Build call for filterFundamental
+     * @param filedAfter Only include fundamentals that were filed on or after this date. (optional)
+     * @param filedBefore Only include fundamentals that were filed on or before this date. (optional)
+     * @param reportedOnly Only as-reported fundamentals (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param statementCode Only of the given statement code (optional)
+     * @param type Only of the given type (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param startDate Only include fundamentals where covered period is on or after this date. (optional)
+     * @param endDate Only include fundamentals where covered period is on or before this date. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call filterFundamentalCall(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/fundamentals";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (filedAfter != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("filed_after", filedAfter));
+        if (filedBefore != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("filed_before", filedBefore));
+        if (reportedOnly != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("reported_only", reportedOnly));
+        if (fiscalYear != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_year", fiscalYear));
+        if (statementCode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("statement_code", statementCode));
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+        if (fiscalPeriod != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_period", fiscalPeriod));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call filterFundamentalValidateBeforeCall(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = filterFundamentalCall(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Filter Fundamental
+     * Returns fundamentals that meet the set of filters specified in parameters.
+     * @param filedAfter Only include fundamentals that were filed on or after this date. (optional)
+     * @param filedBefore Only include fundamentals that were filed on or before this date. (optional)
+     * @param reportedOnly Only as-reported fundamentals (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param statementCode Only of the given statement code (optional)
+     * @param type Only of the given type (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param startDate Only include fundamentals where covered period is on or after this date. (optional)
+     * @param endDate Only include fundamentals where covered period is on or before this date. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return Fundamental
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public Fundamental filterFundamental(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FundamentalsApi.class.getMethod("filterFundamentalWithHttpInfo", LocalDate.class, LocalDate.class, Boolean.class, Integer.class, String.class, String.class, String.class, LocalDate.class, LocalDate.class, String.class);
+      
+      Object[] apiCallArguments = { filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage };
+      ApiResponse<Fundamental> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Filter Fundamental
+     * Returns fundamentals that meet the set of filters specified in parameters.
+     * @param filedAfter Only include fundamentals that were filed on or after this date. (optional)
+     * @param filedBefore Only include fundamentals that were filed on or before this date. (optional)
+     * @param reportedOnly Only as-reported fundamentals (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param statementCode Only of the given statement code (optional)
+     * @param type Only of the given type (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param startDate Only include fundamentals where covered period is on or after this date. (optional)
+     * @param endDate Only include fundamentals where covered period is on or before this date. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;Fundamental&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Fundamental> filterFundamentalWithHttpInfo(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = filterFundamentalValidateBeforeCall(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<Fundamental>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Filter Fundamental (asynchronously)
+     * Returns fundamentals that meet the set of filters specified in parameters.
+     * @param filedAfter Only include fundamentals that were filed on or after this date. (optional)
+     * @param filedBefore Only include fundamentals that were filed on or before this date. (optional)
+     * @param reportedOnly Only as-reported fundamentals (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param statementCode Only of the given statement code (optional)
+     * @param type Only of the given type (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param startDate Only include fundamentals where covered period is on or after this date. (optional)
+     * @param endDate Only include fundamentals where covered period is on or before this date. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call filterFundamentalAsync(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage, final ApiCallback<Fundamental> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = filterFundamentalValidateBeforeCall(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<Fundamental>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
     /**
      * Build call for getFundamentalById
      * @param id The Intrinio ID for the Fundamental (required)
@@ -113,7 +291,7 @@ public class FundamentalsApi {
 
     /**
      * Fundamental by ID
-     * Returns detailed fundamental data for the given &#x60;id&#x60;.
+     * Returns a specific fundamental associated with a particular unique fundamental ID. Useful for pulling reference data for a specific fundamental.
      * @param id The Intrinio ID for the Fundamental (required)
      * @return Fundamental
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -129,7 +307,7 @@ public class FundamentalsApi {
 
     /**
      * Fundamental by ID
-     * Returns detailed fundamental data for the given &#x60;id&#x60;.
+     * Returns a specific fundamental associated with a particular unique fundamental ID. Useful for pulling reference data for a specific fundamental.
      * @param id The Intrinio ID for the Fundamental (required)
      * @return ApiResponse&lt;Fundamental&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -142,7 +320,7 @@ public class FundamentalsApi {
 
     /**
      * Fundamental by ID (asynchronously)
-     * Returns detailed fundamental data for the given &#x60;id&#x60;.
+     * Returns a specific fundamental associated with a particular unique fundamental ID. Useful for pulling reference data for a specific fundamental.
      * @param id The Intrinio ID for the Fundamental (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -240,7 +418,7 @@ public class FundamentalsApi {
 
     /**
      * Reported Financials
-     * Returns the As-Reported Financials directly from the financial statements of the XBRL filings from the company
+     * Returns as-reported financial statement data for income statement, balance sheet, and cash flow statement. Data for income statement and cash flow statement is available on a FY, QTR (Q1, Q2, Q3, Q4), TTM (Q1TTM, Q2TTM, Q3TTM), and YTD (Q2YTD, Q3YTD) basis. Data for the balance sheet is available on a FY or QTR (Q1, Q2, Q3, Q4) basis only due its point-in-time nature.
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
      * @return ApiResponseReportedFinancials
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -256,7 +434,7 @@ public class FundamentalsApi {
 
     /**
      * Reported Financials
-     * Returns the As-Reported Financials directly from the financial statements of the XBRL filings from the company
+     * Returns as-reported financial statement data for income statement, balance sheet, and cash flow statement. Data for income statement and cash flow statement is available on a FY, QTR (Q1, Q2, Q3, Q4), TTM (Q1TTM, Q2TTM, Q3TTM), and YTD (Q2YTD, Q3YTD) basis. Data for the balance sheet is available on a FY or QTR (Q1, Q2, Q3, Q4) basis only due its point-in-time nature.
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
      * @return ApiResponse&lt;ApiResponseReportedFinancials&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -269,7 +447,7 @@ public class FundamentalsApi {
 
     /**
      * Reported Financials (asynchronously)
-     * Returns the As-Reported Financials directly from the financial statements of the XBRL filings from the company
+     * Returns as-reported financial statement data for income statement, balance sheet, and cash flow statement. Data for income statement and cash flow statement is available on a FY, QTR (Q1, Q2, Q3, Q4), TTM (Q1TTM, Q2TTM, Q3TTM), and YTD (Q2YTD, Q3YTD) basis. Data for the balance sheet is available on a FY or QTR (Q1, Q2, Q3, Q4) basis only due its point-in-time nature.
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -367,7 +545,7 @@ public class FundamentalsApi {
 
     /**
      * Standardized Financials
-     * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies&#39; fundamentals.
+     * Returns standardized financial statement data for income statement, balance sheet, cash flow statement and over 100 associated calculations for a given company. Data for income statement, cash flow statement, and calculations is available on a FY, QTR (Q1, Q2, Q3, Q4), TTM (Q1TTM, Q2TTM, Q3TTM), and YTD (Q2YTD, Q3YTD) basis. Data for the balance sheet is available on a FY or QTR (Q1, Q2, Q3, Q4) basis only due its point-in-time nature.
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
      * @return ApiResponseStandardizedFinancials
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -383,7 +561,7 @@ public class FundamentalsApi {
 
     /**
      * Standardized Financials
-     * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies&#39; fundamentals.
+     * Returns standardized financial statement data for income statement, balance sheet, cash flow statement and over 100 associated calculations for a given company. Data for income statement, cash flow statement, and calculations is available on a FY, QTR (Q1, Q2, Q3, Q4), TTM (Q1TTM, Q2TTM, Q3TTM), and YTD (Q2YTD, Q3YTD) basis. Data for the balance sheet is available on a FY or QTR (Q1, Q2, Q3, Q4) basis only due its point-in-time nature.
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
      * @return ApiResponse&lt;ApiResponseStandardizedFinancials&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -396,7 +574,7 @@ public class FundamentalsApi {
 
     /**
      * Standardized Financials (asynchronously)
-     * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies&#39; fundamentals.
+     * Returns standardized financial statement data for income statement, balance sheet, cash flow statement and over 100 associated calculations for a given company. Data for income statement, cash flow statement, and calculations is available on a FY, QTR (Q1, Q2, Q3, Q4), TTM (Q1TTM, Q2TTM, Q3TTM), and YTD (Q2YTD, Q3YTD) basis. Data for the balance sheet is available on a FY or QTR (Q1, Q2, Q3, Q4) basis only due its point-in-time nature.
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -652,7 +830,7 @@ public class FundamentalsApi {
 
     /**
      * Lookup Fundamental
-     * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
+     * Returns a specific fundamental with unique fundamental ID associated with a particular company, year, period and statement. Useful for pulling the unique fundamental ID and reference data for a specific fundamental.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)
      * @param fiscalYear The fiscal year (required)
@@ -671,7 +849,7 @@ public class FundamentalsApi {
 
     /**
      * Lookup Fundamental
-     * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
+     * Returns a specific fundamental with unique fundamental ID associated with a particular company, year, period and statement. Useful for pulling the unique fundamental ID and reference data for a specific fundamental.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)
      * @param fiscalYear The fiscal year (required)
@@ -687,7 +865,7 @@ public class FundamentalsApi {
 
     /**
      * Lookup Fundamental (asynchronously)
-     * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
+     * Returns a specific fundamental with unique fundamental ID associated with a particular company, year, period and statement. Useful for pulling the unique fundamental ID and reference data for a specific fundamental.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param statementCode The statement code (required)
      * @param fiscalYear The fiscal year (required)

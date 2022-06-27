@@ -53,7 +53,7 @@ public class FilingApi {
 
     /**
      * Build call for getAllFilings
-     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
+     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
      * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
@@ -129,11 +129,6 @@ public class FilingApi {
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getAllFilingsValidateBeforeCall(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Boolean theaEnabled, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'company' is set
-        if (company == null) {
-            throw new ApiException("Missing the required parameter 'company' when calling getAllFilings(Async)");
-        }
-        
 
         com.squareup.okhttp.Call call = getAllFilingsCall(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
@@ -142,8 +137,8 @@ public class FilingApi {
 
     /**
      * All Filings
-     * Returns all Filings. Returns Filings matching parameters when supplied.
-     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
+     * Returns pertinent filing reference data for a specific company filing or latest filings for all companies. Useful for tracking the latest filings submitted and updating your database accordingly with the new information.
+     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
      * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
@@ -166,8 +161,8 @@ public class FilingApi {
 
     /**
      * All Filings
-     * Returns all Filings. Returns Filings matching parameters when supplied.
-     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
+     * Returns pertinent filing reference data for a specific company filing or latest filings for all companies. Useful for tracking the latest filings submitted and updating your database accordingly with the new information.
+     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
      * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
@@ -187,8 +182,8 @@ public class FilingApi {
 
     /**
      * All Filings (asynchronously)
-     * Returns all Filings. Returns Filings matching parameters when supplied.
-     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (required)
+     * Returns pertinent filing reference data for a specific company filing or latest filings for all companies. Useful for tracking the latest filings submitted and updating your database accordingly with the new information.
+     * @param company Filings for the given &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
      * @param reportType Filter by report type. Separate values with commas to return multiple The filing &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report types&lt;/a&gt;. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
@@ -310,7 +305,7 @@ public class FilingApi {
 
     /**
      * All Filing Notes
-     * Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
+     * Returns a list of the latest XBRL filing note sections from the SEC 10-K and 10-Q statements. The returned Intrinio XBRL filing note ID can then be utilized with the “Filing Note by ID” endpoint to retrieve the contents of the note in HTML or text format.
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
      * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
@@ -333,7 +328,7 @@ public class FilingApi {
 
     /**
      * All Filing Notes
-     * Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
+     * Returns a list of the latest XBRL filing note sections from the SEC 10-K and 10-Q statements. The returned Intrinio XBRL filing note ID can then be utilized with the “Filing Note by ID” endpoint to retrieve the contents of the note in HTML or text format.
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
      * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
@@ -353,7 +348,7 @@ public class FilingApi {
 
     /**
      * All Filing Notes (asynchronously)
-     * Return all Notes from all Filings, most-recent first. Returns notes matching parameters when supplied.
+     * Returns a list of the latest XBRL filing note sections from the SEC 10-K and 10-Q statements. The returned Intrinio XBRL filing note ID can then be utilized with the “Filing Note by ID” endpoint to retrieve the contents of the note in HTML or text format.
      * @param company A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
      * @param reportType Notes contained in filings that match the given &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt; (optional)
      * @param filingStartDate Limit search to filings on or after this date (optional)
@@ -744,7 +739,7 @@ public class FilingApi {
 
     /**
      * All Fundamentals by Filing
-     * Returns all Fundamentals for the SEC Filing with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     * Returns a list of fundamentals with unique fundamental IDs associated with a particular &#x60;Intrinio Filing ID&#x60; (if applicable) that have been updated or created as a result of a company&#x60;s latest SEC filing. Useful to ensure your database is up to date with the latest fundamentals.
      * @param identifier A Filing identifier (required)
      * @param statementCode Filters fundamentals by statement code (optional)
      * @param type Filters fundamentals by type (optional)
@@ -767,7 +762,7 @@ public class FilingApi {
 
     /**
      * All Fundamentals by Filing
-     * Returns all Fundamentals for the SEC Filing with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     * Returns a list of fundamentals with unique fundamental IDs associated with a particular &#x60;Intrinio Filing ID&#x60; (if applicable) that have been updated or created as a result of a company&#x60;s latest SEC filing. Useful to ensure your database is up to date with the latest fundamentals.
      * @param identifier A Filing identifier (required)
      * @param statementCode Filters fundamentals by statement code (optional)
      * @param type Filters fundamentals by type (optional)
@@ -787,7 +782,7 @@ public class FilingApi {
 
     /**
      * All Fundamentals by Filing (asynchronously)
-     * Returns all Fundamentals for the SEC Filing with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     * Returns a list of fundamentals with unique fundamental IDs associated with a particular &#x60;Intrinio Filing ID&#x60; (if applicable) that have been updated or created as a result of a company&#x60;s latest SEC filing. Useful to ensure your database is up to date with the latest fundamentals.
      * @param identifier A Filing identifier (required)
      * @param statementCode Filters fundamentals by statement code (optional)
      * @param type Filters fundamentals by type (optional)
@@ -892,7 +887,7 @@ public class FilingApi {
 
     /**
      * Filing Html
-     * 
+     * Returns a SEC filing in HTML Format for a specified filing ID.
      * @param identifier A Filing identifier (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -908,7 +903,7 @@ public class FilingApi {
 
     /**
      * Filing Html
-     * 
+     * Returns a SEC filing in HTML Format for a specified filing ID.
      * @param identifier A Filing identifier (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -921,7 +916,7 @@ public class FilingApi {
 
     /**
      * Filing Html (asynchronously)
-     * 
+     * Returns a SEC filing in HTML Format for a specified filing ID.
      * @param identifier A Filing identifier (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1149,7 +1144,7 @@ public class FilingApi {
 
     /**
      * Filing Note by ID
-     * 
+     * Returns the XBRL filing note contents in HTML or text format for a specified Intrinio XBRL filing note ID.
      * @param identifier The Intrinio ID of the filing note (required)
      * @param contentFormat Returns content in html (as filed) or plain text (optional, default to text)
      * @return FilingNote
@@ -1166,7 +1161,7 @@ public class FilingApi {
 
     /**
      * Filing Note by ID
-     * 
+     * Returns the XBRL filing note contents in HTML or text format for a specified Intrinio XBRL filing note ID.
      * @param identifier The Intrinio ID of the filing note (required)
      * @param contentFormat Returns content in html (as filed) or plain text (optional, default to text)
      * @return ApiResponse&lt;FilingNote&gt;
@@ -1180,7 +1175,7 @@ public class FilingApi {
 
     /**
      * Filing Note by ID (asynchronously)
-     * 
+     * Returns the XBRL filing note contents in HTML or text format for a specified Intrinio XBRL filing note ID.
      * @param identifier The Intrinio ID of the filing note (required)
      * @param contentFormat Returns content in html (as filed) or plain text (optional, default to text)
      * @param callback The callback to be executed when the API call finishes
@@ -1543,7 +1538,7 @@ public class FilingApi {
 
     /**
      * Search Filing Notes
-     * Searches for Filing Notes using the &#x60;query&#x60;
+     * Search the XBRL note database and return a list of XBRL note sections containing text from the text query parameter passed through.
      * @param query Search for notes that contain all or parts of this text (required)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
@@ -1562,7 +1557,7 @@ public class FilingApi {
 
     /**
      * Search Filing Notes
-     * Searches for Filing Notes using the &#x60;query&#x60;
+     * Search the XBRL note database and return a list of XBRL note sections containing text from the text query parameter passed through.
      * @param query Search for notes that contain all or parts of this text (required)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)
@@ -1578,7 +1573,7 @@ public class FilingApi {
 
     /**
      * Search Filing Notes (asynchronously)
-     * Searches for Filing Notes using the &#x60;query&#x60;
+     * Search the XBRL note database and return a list of XBRL note sections containing text from the text query parameter passed through.
      * @param query Search for notes that contain all or parts of this text (required)
      * @param filingStartDate Limit search to filings on or after this date (optional)
      * @param filingEndDate Limit search to filings on or before this date (optional)

@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://docs.intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.27.5
-- Package version: 6.14.0
+- API version: 2.28.0
+- Package version: 6.15.0
 
 
 ## Installation
@@ -101,6 +101,9 @@ Class | Method | HTTP request | Description
 *DataTagApi* | [**getAllDataTags**](docs/DataTagApi.md#getAllDataTags) | **GET** /data_tags | All Data Tags
 *DataTagApi* | [**getDataTagById**](docs/DataTagApi.md#getDataTagById) | **GET** /data_tags/{identifier} | Lookup Data Tag
 *DataTagApi* | [**searchDataTags**](docs/DataTagApi.md#searchDataTags) | **GET** /data_tags/search | Search Data Tags
+*EsgApi* | [**getEsgCompanies**](docs/EsgApi.md#getEsgCompanies) | **GET** /esg/companies | ESG Companies
+*EsgApi* | [**getEsgCompanyRatings**](docs/EsgApi.md#getEsgCompanyRatings) | **GET** /esg/{identifier} | ESG Company Ratings History
+*EsgApi* | [**getEsgLatest**](docs/EsgApi.md#getEsgLatest) | **GET** /esg | ESG Latest
 *EtFsApi* | [**getAllEtfs**](docs/EtFsApi.md#getAllEtfs) | **GET** /etfs | All ETFs
 *EtFsApi* | [**getEtf**](docs/EtFsApi.md#getEtf) | **GET** /etfs/{identifier} | Lookup ETF
 *EtFsApi* | [**getEtfAnalytics**](docs/EtFsApi.md#getEtfAnalytics) | **GET** /etfs/{identifier}/analytics | ETF Analytics
@@ -121,6 +124,7 @@ Class | Method | HTTP request | Description
 *ForexApi* | [**getForexCurrencies**](docs/ForexApi.md#getForexCurrencies) | **GET** /forex/currencies | Forex Currencies
 *ForexApi* | [**getForexPairs**](docs/ForexApi.md#getForexPairs) | **GET** /forex/pairs | Forex Currency Pairs
 *ForexApi* | [**getForexPrices**](docs/ForexApi.md#getForexPrices) | **GET** /forex/prices/{pair}/{timeframe} | Forex Currency Prices
+*FundamentalsApi* | [**filterFundamental**](docs/FundamentalsApi.md#filterFundamental) | **GET** /fundamentals | Filter Fundamental
 *FundamentalsApi* | [**getFundamentalById**](docs/FundamentalsApi.md#getFundamentalById) | **GET** /fundamentals/{id} | Fundamental by ID
 *FundamentalsApi* | [**getFundamentalReportedFinancials**](docs/FundamentalsApi.md#getFundamentalReportedFinancials) | **GET** /fundamentals/{id}/reported_financials | Reported Financials
 *FundamentalsApi* | [**getFundamentalStandardizedFinancials**](docs/FundamentalsApi.md#getFundamentalStandardizedFinancials) | **GET** /fundamentals/{id}/standardized_financials | Standardized Financials
@@ -289,6 +293,9 @@ Class | Method | HTTP request | Description
  - [ApiResponseCompanySharesOutstanding](docs/ApiResponseCompanySharesOutstanding.md)
  - [ApiResponseDataTags](docs/ApiResponseDataTags.md)
  - [ApiResponseDataTagsSearch](docs/ApiResponseDataTagsSearch.md)
+ - [ApiResponseESGCompanies](docs/ApiResponseESGCompanies.md)
+ - [ApiResponseESGCompanyRatingHistory](docs/ApiResponseESGCompanyRatingHistory.md)
+ - [ApiResponseESGLatest](docs/ApiResponseESGLatest.md)
  - [ApiResponseETFHoldings](docs/ApiResponseETFHoldings.md)
  - [ApiResponseETFs](docs/ApiResponseETFs.md)
  - [ApiResponseEconomicIndexHistoricalData](docs/ApiResponseEconomicIndexHistoricalData.md)
@@ -413,6 +420,9 @@ Class | Method | HTTP request | Description
  - [DetrendedPriceOscillatorTechnicalValue](docs/DetrendedPriceOscillatorTechnicalValue.md)
  - [DividendRecord](docs/DividendRecord.md)
  - [DonchianChannelTechnicalValue](docs/DonchianChannelTechnicalValue.md)
+ - [ESGCompanySummary](docs/ESGCompanySummary.md)
+ - [ESGRating](docs/ESGRating.md)
+ - [ESGRatingWithCompany](docs/ESGRatingWithCompany.md)
  - [ETF](docs/ETF.md)
  - [ETFAnalytics](docs/ETFAnalytics.md)
  - [ETFHolding](docs/ETFHolding.md)
@@ -519,3 +529,4 @@ Class | Method | HTTP request | Description
  - [ZacksSalesSurprise](docs/ZacksSalesSurprise.md)
  - [ZacksSalesSurpriseSummary](docs/ZacksSalesSurpriseSummary.md)
  - [ZacksTargetPriceConsensus](docs/ZacksTargetPriceConsensus.md)
+

@@ -472,7 +472,7 @@ public class OwnersApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call institutionalHoldingsByOwnerCall(String identifier, Integer pageSize, Object asOfDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call institutionalHoldingsByOwnerCall(String identifier, Integer pageSize, LocalDate asOfDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -521,7 +521,7 @@ public class OwnersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call institutionalHoldingsByOwnerValidateBeforeCall(String identifier, Integer pageSize, Object asOfDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call institutionalHoldingsByOwnerValidateBeforeCall(String identifier, Integer pageSize, LocalDate asOfDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -545,8 +545,8 @@ public class OwnersApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseOwnerInstitutionalHoldings institutionalHoldingsByOwner(String identifier, Integer pageSize, Object asOfDate, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = OwnersApi.class.getMethod("institutionalHoldingsByOwnerWithHttpInfo", String.class, Integer.class, Object.class, String.class);
+    public ApiResponseOwnerInstitutionalHoldings institutionalHoldingsByOwner(String identifier, Integer pageSize, LocalDate asOfDate, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OwnersApi.class.getMethod("institutionalHoldingsByOwnerWithHttpInfo", String.class, Integer.class, LocalDate.class, String.class);
       
       Object[] apiCallArguments = { identifier, pageSize, asOfDate, nextPage };
       ApiResponse<ApiResponseOwnerInstitutionalHoldings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
@@ -563,7 +563,7 @@ public class OwnersApi {
      * @return ApiResponse&lt;ApiResponseOwnerInstitutionalHoldings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseOwnerInstitutionalHoldings> institutionalHoldingsByOwnerWithHttpInfo(String identifier, Integer pageSize, Object asOfDate, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseOwnerInstitutionalHoldings> institutionalHoldingsByOwnerWithHttpInfo(String identifier, Integer pageSize, LocalDate asOfDate, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = institutionalHoldingsByOwnerValidateBeforeCall(identifier, pageSize, asOfDate, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseOwnerInstitutionalHoldings>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -580,7 +580,7 @@ public class OwnersApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call institutionalHoldingsByOwnerAsync(String identifier, Integer pageSize, Object asOfDate, String nextPage, final ApiCallback<ApiResponseOwnerInstitutionalHoldings> callback) throws ApiException {
+    public com.squareup.okhttp.Call institutionalHoldingsByOwnerAsync(String identifier, Integer pageSize, LocalDate asOfDate, String nextPage, final ApiCallback<ApiResponseOwnerInstitutionalHoldings> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

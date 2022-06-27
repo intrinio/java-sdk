@@ -334,7 +334,7 @@ public class Main {
     OwnersApi ownersApi = new OwnersApi();
     String identifier = "430692";
     Integer pageSize = 100;
-    Object asOfDate = "2021-01-05";
+    LocalDate asOfDate = LocalDate.of(2021,1,05);
     String nextPage = null;
     ApiResponseOwnerInstitutionalHoldings result = ownersApi.institutionalHoldingsByOwner(identifier, pageSize, asOfDate, nextPage);
     System.out.println(result);
@@ -353,7 +353,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| The Central Index Key issued by the SEC, which is the unique identifier all owner filings are issued under. | &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
- **asOfDate** | [**Object**](.md)| Return only holdings filed before this date. | [optional] &nbsp;
+ **asOfDate** | LocalDate| Return only holdings filed before this date. | [optional] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 

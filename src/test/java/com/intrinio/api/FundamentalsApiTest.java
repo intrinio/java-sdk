@@ -7,6 +7,7 @@ import com.intrinio.models.ApiResponseReportedFinancials;
 import com.intrinio.models.ApiResponseStandardizedFinancials;
 import com.intrinio.models.ApiResponseStandardizedFinancialsDimensions;
 import com.intrinio.models.Fundamental;
+import org.threeten.bp.LocalDate;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -25,9 +26,34 @@ public class FundamentalsApiTest {
 
     
     /**
+     * Filter Fundamental
+     *
+     * Returns fundamentals that meet the set of filters specified in parameters.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void filterFundamentalTest() throws ApiException, NoSuchMethodException {
+        LocalDate filedAfter = null;
+        LocalDate filedBefore = null;
+        Boolean reportedOnly = null;
+        Integer fiscalYear = null;
+        String statementCode = null;
+        String type = null;
+        String fiscalPeriod = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        String nextPage = null;
+        Fundamental response = api.filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Fundamental by ID
      *
-     * Returns detailed fundamental data for the given &#x60;id&#x60;.
+     * Returns a specific fundamental associated with a particular unique fundamental ID. Useful for pulling reference data for a specific fundamental.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -43,7 +69,7 @@ public class FundamentalsApiTest {
     /**
      * Reported Financials
      *
-     * Returns the As-Reported Financials directly from the financial statements of the XBRL filings from the company
+     * Returns as-reported financial statement data for income statement, balance sheet, and cash flow statement. Data for income statement and cash flow statement is available on a FY, QTR (Q1, Q2, Q3, Q4), TTM (Q1TTM, Q2TTM, Q3TTM), and YTD (Q2YTD, Q3YTD) basis. Data for the balance sheet is available on a FY or QTR (Q1, Q2, Q3, Q4) basis only due its point-in-time nature.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -59,7 +85,7 @@ public class FundamentalsApiTest {
     /**
      * Standardized Financials
      *
-     * Returns professional-grade historical financial data. This data is standardized, cleansed and verified to ensure the highest quality data sourced directly from the XBRL financial statements. The primary purpose of standardized financials are to facilitate comparability across a single company’s fundamentals and across all companies&#39; fundamentals.
+     * Returns standardized financial statement data for income statement, balance sheet, cash flow statement and over 100 associated calculations for a given company. Data for income statement, cash flow statement, and calculations is available on a FY, QTR (Q1, Q2, Q3, Q4), TTM (Q1TTM, Q2TTM, Q3TTM), and YTD (Q2YTD, Q3YTD) basis. Data for the balance sheet is available on a FY or QTR (Q1, Q2, Q3, Q4) basis only due its point-in-time nature.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -92,7 +118,7 @@ public class FundamentalsApiTest {
     /**
      * Lookup Fundamental
      *
-     * Returns the Fundamental for the Company with the given &#x60;identifier&#x60; and with the given parameters
+     * Returns a specific fundamental with unique fundamental ID associated with a particular company, year, period and statement. Useful for pulling the unique fundamental ID and reference data for a specific fundamental.
      *
      * @throws ApiException
      *          if the Api call fails

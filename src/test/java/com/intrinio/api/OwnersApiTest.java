@@ -91,7 +91,7 @@ public class OwnersApiTest {
     public void institutionalHoldingsByOwnerTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Integer pageSize = null;
-        Object asOfDate = null;
+        LocalDate asOfDate = null;
         String nextPage = null;
         ApiResponseOwnerInstitutionalHoldings response = api.institutionalHoldingsByOwner(identifier, pageSize, asOfDate, nextPage);
 

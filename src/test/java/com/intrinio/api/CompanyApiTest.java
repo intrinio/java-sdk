@@ -67,7 +67,7 @@ public class CompanyApiTest {
     /**
      * All News
      *
-     * Returns all News for all Companies
+     * Returns the latest news article links, headlines and summaries for all US traded companies allowing you to keep a pulse on companies and their business operations.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -84,7 +84,7 @@ public class CompanyApiTest {
     /**
      * Lookup Company
      *
-     * Returns the Company with the given &#x60;identifier&#x60;
+     * Returns company reference and metadata such as tickers, CIK, and a unique company identifier, as well as company metadata such as business description, employee count, and company URL.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -117,7 +117,7 @@ public class CompanyApiTest {
     /**
      * Data Point (Number) for Company
      *
-     * Returns a numeric value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+     * Returns latest value for calculations, metrics, and financial data points for a company.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -134,7 +134,7 @@ public class CompanyApiTest {
     /**
      * Data Point (Text) for Company
      *
-     * Returns a text value for the given &#x60;tag&#x60; for the Company with the given &#x60;identifier&#x60;
+     * Returns latest value for metadata items for a company.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -173,7 +173,7 @@ public class CompanyApiTest {
     /**
      * All Fundamentals by Company
      *
-     * Returns all Fundamentals for the Company with the given &#x60;identifier&#x60;. Returns Fundamentals matching parameters when supplied.
+     * Returns a list of fundamentals with unique fundamental IDs associated with a particular company. Useful to obtain all historical and/or latest fundamental IDs for a given company to then use to loop through and pull all fundamental data available.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -223,7 +223,7 @@ public class CompanyApiTest {
     /**
      * IPOs
      *
-     * Returns initial public offerings (IPOs). An IPO is a public offering of private company stock. The act of \&quot;going public\&quot; is initiated by an IPO, at which point the company&#39;s stock trades on a major stock exchange (such as NYSE or NASDAQ). Intrinio covers all upcoming and recent IPOs for US exchanges.
+     * Returns a list of historical, current, and upcoming initial public offerings (IPOs) across the major US Exchanges. Includes relevant information such as the IPO status, the offer amount, the total share count and target share price.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -246,7 +246,7 @@ public class CompanyApiTest {
     /**
      * All News by Company
      *
-     * Returns news for the Company with the given &#x60;identifier&#x60;
+     * Returns the latest and historical news article links, headlines and summaries for a specified US traded company.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -264,7 +264,7 @@ public class CompanyApiTest {
     /**
      * All Securities by Company
      *
-     * Returns Securities for the Company with the given &#x60;identifier&#x60;
+     * Returns a list of underlying securities with associated reference data tied to a given company identifier.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -356,7 +356,7 @@ public class CompanyApiTest {
     /**
      * Search Companies
      *
-     * Searches for Companies matching the text &#x60;query&#x60;
+     * Search the companies database and return a list of companies matching the text query parameter passed through. Query parameter searches across the company ticker and name.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -374,7 +374,7 @@ public class CompanyApiTest {
     /**
      * Shares Outstanding by Company
      *
-     * Returns shares outstanding for the Company with the given &#x60;identifier&#x60;
+     * Returns the shares outstanding reported on the front cover of the SEC 10-K and 10-Q filings.
      *
      * @throws ApiException
      *          if the Api call fails
