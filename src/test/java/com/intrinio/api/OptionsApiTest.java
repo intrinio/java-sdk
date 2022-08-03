@@ -18,7 +18,9 @@ import com.intrinio.models.ApiResponseOptionsTickers;
 import com.intrinio.models.ApiResponseOptionsUnusualActivity;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import com.intrinio.models.OptionContractsList;
+import com.intrinio.models.OptionSnapshotsResult;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -310,6 +312,23 @@ public class OptionsApiTest {
         String identifier = null;
         String source = null;
         ApiResponseOptionsStatsRealtime response = api.getOptionsStatsRealtime(identifier, source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Option Prices Realtime Snapshot
+     *
+     * Returns all options snapshots for the queried interval with links to download.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecuritySnapshotsTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        OffsetDateTime atDatetime = null;
+        OptionSnapshotsResult response = api.getSecuritySnapshots(source, atDatetime);
 
         // TODO: test validations
     }

@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://docs.intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.28.0
-- Package version: 6.15.0
+- API version: 2.28.4
+- Package version: 6.15.1
 
 
 ## Installation
@@ -102,8 +102,10 @@ Class | Method | HTTP request | Description
 *DataTagApi* | [**getDataTagById**](docs/DataTagApi.md#getDataTagById) | **GET** /data_tags/{identifier} | Lookup Data Tag
 *DataTagApi* | [**searchDataTags**](docs/DataTagApi.md#searchDataTags) | **GET** /data_tags/search | Search Data Tags
 *EsgApi* | [**getEsgCompanies**](docs/EsgApi.md#getEsgCompanies) | **GET** /esg/companies | ESG Companies
+*EsgApi* | [**getEsgCompanyComprehensiveRatings**](docs/EsgApi.md#getEsgCompanyComprehensiveRatings) | **GET** /esg/{identifier}/comprehensive | ESG Company Comprehensive Ratings History
 *EsgApi* | [**getEsgCompanyRatings**](docs/EsgApi.md#getEsgCompanyRatings) | **GET** /esg/{identifier} | ESG Company Ratings History
 *EsgApi* | [**getEsgLatest**](docs/EsgApi.md#getEsgLatest) | **GET** /esg | ESG Latest
+*EsgApi* | [**getEsgLatestComprehensive**](docs/EsgApi.md#getEsgLatestComprehensive) | **GET** /esg/comprehensive | ESG Latest Comprehensive
 *EtFsApi* | [**getAllEtfs**](docs/EtFsApi.md#getAllEtfs) | **GET** /etfs | All ETFs
 *EtFsApi* | [**getEtf**](docs/EtFsApi.md#getEtf) | **GET** /etfs/{identifier} | Lookup ETF
 *EtFsApi* | [**getEtfAnalytics**](docs/EtFsApi.md#getEtfAnalytics) | **GET** /etfs/{identifier}/analytics | ETF Analytics
@@ -167,6 +169,7 @@ Class | Method | HTTP request | Description
 *OptionsApi* | [**getOptionsPricesEod**](docs/OptionsApi.md#getOptionsPricesEod) | **GET** /options/prices/{identifier}/eod | Option Prices EOD
 *OptionsApi* | [**getOptionsPricesRealtime**](docs/OptionsApi.md#getOptionsPricesRealtime) | **GET** /options/prices/{identifier}/realtime | Option Prices Realtime
 *OptionsApi* | [**getOptionsStatsRealtime**](docs/OptionsApi.md#getOptionsStatsRealtime) | **GET** /options/prices/{identifier}/realtime/stats | Option Stats Realtime
+*OptionsApi* | [**getSecuritySnapshots**](docs/OptionsApi.md#getSecuritySnapshots) | **GET** /options/snapshots | Option Prices Realtime Snapshot
 *OptionsApi* | [**getUnusualActivity**](docs/OptionsApi.md#getUnusualActivity) | **GET** /options/unusual_activity/{symbol} | Options Unusual Activity
 *OptionsApi* | [**getUnusualActivityIntraday**](docs/OptionsApi.md#getUnusualActivityIntraday) | **GET** /options/unusual_activity/{symbol}/intraday | Options Unusual Activity Intraday
 *OptionsApi* | [**getUnusualActivityUniversal**](docs/OptionsApi.md#getUnusualActivityUniversal) | **GET** /options/unusual_activity | Options Unusual Activity Universal
@@ -218,6 +221,7 @@ Class | Method | HTTP request | Description
 *SecurityApi* | [**getSecurityPriceTechnicalsVwap**](docs/SecurityApi.md#getSecurityPriceTechnicalsVwap) | **GET** /securities/{identifier}/prices/technicals/vwap | Volume Weighted Average Price
 *SecurityApi* | [**getSecurityPriceTechnicalsWr**](docs/SecurityApi.md#getSecurityPriceTechnicalsWr) | **GET** /securities/{identifier}/prices/technicals/wr | Williams %R
 *SecurityApi* | [**getSecurityRealtimePrice**](docs/SecurityApi.md#getSecurityRealtimePrice) | **GET** /securities/{identifier}/prices/realtime | Realtime Stock Price for Security
+*SecurityApi* | [**getSecuritySnapshots**](docs/SecurityApi.md#getSecuritySnapshots) | **GET** /securities/snapshots | Realtime Stock Prices Snapshot
 *SecurityApi* | [**getSecurityStockPriceAdjustments**](docs/SecurityApi.md#getSecurityStockPriceAdjustments) | **GET** /securities/{identifier}/prices/adjustments | Stock Price Adjustments by Security
 *SecurityApi* | [**getSecurityStockPrices**](docs/SecurityApi.md#getSecurityStockPrices) | **GET** /securities/{identifier}/prices | Stock Prices by Security
 *SecurityApi* | [**getSecurityZacksAnalystRatings**](docs/SecurityApi.md#getSecurityZacksAnalystRatings) | **GET** /securities/{identifier}/zacks/analyst_ratings | Zacks Analyst Ratings for Security
@@ -294,8 +298,10 @@ Class | Method | HTTP request | Description
  - [ApiResponseDataTags](docs/ApiResponseDataTags.md)
  - [ApiResponseDataTagsSearch](docs/ApiResponseDataTagsSearch.md)
  - [ApiResponseESGCompanies](docs/ApiResponseESGCompanies.md)
+ - [ApiResponseESGCompanyComprehensiveRatingHistory](docs/ApiResponseESGCompanyComprehensiveRatingHistory.md)
  - [ApiResponseESGCompanyRatingHistory](docs/ApiResponseESGCompanyRatingHistory.md)
  - [ApiResponseESGLatest](docs/ApiResponseESGLatest.md)
+ - [ApiResponseESGLatestComprehensive](docs/ApiResponseESGLatestComprehensive.md)
  - [ApiResponseETFHoldings](docs/ApiResponseETFHoldings.md)
  - [ApiResponseETFs](docs/ApiResponseETFs.md)
  - [ApiResponseEconomicIndexHistoricalData](docs/ApiResponseEconomicIndexHistoricalData.md)
@@ -421,6 +427,8 @@ Class | Method | HTTP request | Description
  - [DividendRecord](docs/DividendRecord.md)
  - [DonchianChannelTechnicalValue](docs/DonchianChannelTechnicalValue.md)
  - [ESGCompanySummary](docs/ESGCompanySummary.md)
+ - [ESGComprehensiveRating](docs/ESGComprehensiveRating.md)
+ - [ESGComprehensiveRatingWithCompany](docs/ESGComprehensiveRatingWithCompany.md)
  - [ESGRating](docs/ESGRating.md)
  - [ESGRatingWithCompany](docs/ESGRatingWithCompany.md)
  - [ETF](docs/ETF.md)
@@ -472,6 +480,8 @@ Class | Method | HTTP request | Description
  - [OptionPriceEod](docs/OptionPriceEod.md)
  - [OptionPriceRealtime](docs/OptionPriceRealtime.md)
  - [OptionRealtime](docs/OptionRealtime.md)
+ - [OptionSnapshotGroup](docs/OptionSnapshotGroup.md)
+ - [OptionSnapshotsResult](docs/OptionSnapshotsResult.md)
  - [OptionStatsRealtime](docs/OptionStatsRealtime.md)
  - [OptionUnusualTrade](docs/OptionUnusualTrade.md)
  - [Owner](docs/Owner.md)
@@ -488,6 +498,8 @@ Class | Method | HTTP request | Description
  - [SecurityScreenGroup](docs/SecurityScreenGroup.md)
  - [SecurityScreenResult](docs/SecurityScreenResult.md)
  - [SecurityScreenResultData](docs/SecurityScreenResultData.md)
+ - [SecuritySnapshotGroup](docs/SecuritySnapshotGroup.md)
+ - [SecuritySnapshotsResult](docs/SecuritySnapshotsResult.md)
  - [SecuritySummary](docs/SecuritySummary.md)
  - [SimpleMovingAverageTechnicalValue](docs/SimpleMovingAverageTechnicalValue.md)
  - [StandardizedFinancial](docs/StandardizedFinancial.md)

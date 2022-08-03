@@ -50,10 +50,12 @@ import java.math.BigDecimal;
 import com.intrinio.models.DividendRecord;
 import com.intrinio.models.EarningsRecord;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import com.intrinio.models.RealtimeStockPrice;
 import com.intrinio.models.Security;
 import com.intrinio.models.SecurityScreenGroup;
 import com.intrinio.models.SecurityScreenResult;
+import com.intrinio.models.SecuritySnapshotsResult;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -963,6 +965,22 @@ public class SecurityApiTest {
         String identifier = null;
         String source = null;
         RealtimeStockPrice response = api.getSecurityRealtimePrice(identifier, source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Realtime Stock Prices Snapshot
+     *
+     * Returns all security snapshots for the queried interval with links to download.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecuritySnapshotsTest() throws ApiException, NoSuchMethodException {
+        OffsetDateTime atDatetime = null;
+        SecuritySnapshotsResult response = api.getSecuritySnapshots(atDatetime);
 
         // TODO: test validations
     }

@@ -4,8 +4,10 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseESGCompanies;
+import com.intrinio.models.ApiResponseESGCompanyComprehensiveRatingHistory;
 import com.intrinio.models.ApiResponseESGCompanyRatingHistory;
 import com.intrinio.models.ApiResponseESGLatest;
+import com.intrinio.models.ApiResponseESGLatestComprehensive;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -34,9 +36,29 @@ public class EsgApiTest {
     @Test
     public void getEsgCompaniesTest() throws ApiException, NoSuchMethodException {
         String country = null;
+        String industry = null;
+        String ticker = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseESGCompanies response = api.getEsgCompanies(country, pageSize, nextPage);
+        ApiResponseESGCompanies response = api.getEsgCompanies(country, industry, ticker, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * ESG Company Comprehensive Ratings History
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getEsgCompanyComprehensiveRatingsTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseESGCompanyComprehensiveRatingHistory response = api.getEsgCompanyComprehensiveRatings(identifier, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -70,10 +92,27 @@ public class EsgApiTest {
     @Test
     public void getEsgLatestTest() throws ApiException, NoSuchMethodException {
         String country = null;
-        String country2 = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseESGLatest response = api.getEsgLatest(country, country2, pageSize, nextPage);
+        ApiResponseESGLatest response = api.getEsgLatest(country, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * ESG Latest Comprehensive
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getEsgLatestComprehensiveTest() throws ApiException, NoSuchMethodException {
+        String country = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseESGLatestComprehensive response = api.getEsgLatestComprehensive(country, pageSize, nextPage);
 
         // TODO: test validations
     }

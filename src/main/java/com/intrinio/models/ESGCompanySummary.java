@@ -41,10 +41,10 @@ public class ESGCompanySummary {
   }
 
    /**
-   * Get id
+   * The Intrinio ID of the company.
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The Intrinio ID of the company.")
   public String getId() {
     return id;
   }
@@ -59,10 +59,10 @@ public class ESGCompanySummary {
   }
 
    /**
-   * Get name
+   * The company’s common name.
    * @return name
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The company’s common name.")
   public String getName() {
     return name;
   }
@@ -77,10 +77,10 @@ public class ESGCompanySummary {
   }
 
    /**
-   * Get ticker
+   * The stock market ticker symbol associated with the company’s common stock security.
    * @return ticker
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The stock market ticker symbol associated with the company’s common stock security.")
   public String getTicker() {
     return ticker;
   }
@@ -95,10 +95,10 @@ public class ESGCompanySummary {
   }
 
    /**
-   * Get isin
+   * The company&#39;s common securities identification 12-digit alphanumeric code.
    * @return isin
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The company's common securities identification 12-digit alphanumeric code.")
   public String getIsin() {
     return isin;
   }
@@ -113,10 +113,10 @@ public class ESGCompanySummary {
   }
 
    /**
-   * Get primaryIndustry
+   * The primary industry associated with the company based on their main revenue generating operations.
    * @return primaryIndustry
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The primary industry associated with the company based on their main revenue generating operations.")
   public String getPrimaryIndustry() {
     return primaryIndustry;
   }
@@ -131,10 +131,10 @@ public class ESGCompanySummary {
   }
 
    /**
-   * Get country
+   * The country in which the company&#39;s headquarters or primary place of business is located.
    * @return country
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The country in which the company's headquarters or primary place of business is located.")
   public String getCountry() {
     return country;
   }
