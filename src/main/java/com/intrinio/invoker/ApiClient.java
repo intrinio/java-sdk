@@ -35,6 +35,8 @@ import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.lang.ReflectiveOperationException;
+import java.lang.reflect.Method;
 
 import com.intrinio.invoker.auth.Authentication;
 import com.intrinio.invoker.auth.HttpBasicAuth;
@@ -1223,7 +1225,7 @@ public class ApiClient {
 
                     ApiResponse<T> result = (ApiResponse<T>) finalApiFunction.invoke(apiCallObject, finalApiCallArguments);
                     return result;
-                } catch (InvocationTargetException e) {
+                } catch (java.lang.reflect.InvocationTargetException e) {
                   ApiException targetException = (ApiException) e.getTargetException();
                   throw targetException;
                 } catch (InstantiationException | NoSuchMethodException | IllegalAccessException e) {
