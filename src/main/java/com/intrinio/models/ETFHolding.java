@@ -35,6 +35,9 @@ public class ETFHolding {
   @SerializedName("composite_figi")
   private String compositeFigi = null;
 
+  @SerializedName("share_class_figi")
+  private String shareClassFigi = null;
+
   @SerializedName("isin")
   private String isin = null;
 
@@ -152,16 +155,34 @@ public class ETFHolding {
   }
 
    /**
-   * The OpenFIGI ticker for the holding
+   * DEPRECATED
    * @return compositeFigi
   **/
-  @ApiModelProperty(value = "The OpenFIGI ticker for the holding")
+  @ApiModelProperty(value = "DEPRECATED")
   public String getCompositeFigi() {
     return compositeFigi;
   }
 
   public void setCompositeFigi(String compositeFigi) {
     this.compositeFigi = compositeFigi;
+  }
+
+  public ETFHolding shareClassFigi(String shareClassFigi) {
+    this.shareClassFigi = shareClassFigi;
+    return this;
+  }
+
+   /**
+   * The OpenFIGI symbol for the holding
+   * @return shareClassFigi
+  **/
+  @ApiModelProperty(value = "The OpenFIGI symbol for the holding")
+  public String getShareClassFigi() {
+    return shareClassFigi;
+  }
+
+  public void setShareClassFigi(String shareClassFigi) {
+    this.shareClassFigi = shareClassFigi;
   }
 
   public ETFHolding isin(String isin) {
@@ -413,6 +434,7 @@ public class ETFHolding {
         Objects.equals(this.ticker, etFHolding.ticker) &&
         Objects.equals(this.type, etFHolding.type) &&
         Objects.equals(this.compositeFigi, etFHolding.compositeFigi) &&
+        Objects.equals(this.shareClassFigi, etFHolding.shareClassFigi) &&
         Objects.equals(this.isin, etFHolding.isin) &&
         Objects.equals(this.ric, etFHolding.ric) &&
         Objects.equals(this.sedol, etFHolding.sedol) &&
@@ -430,7 +452,7 @@ public class ETFHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asOfDate, name, ticker, type, compositeFigi, isin, ric, sedol, face, coupon, marketValueHeld, notionalValue, maturity, quantityHeld, weighting, quantityUnits, quantityPerShare, contractExpiryDate);
+    return Objects.hash(asOfDate, name, ticker, type, compositeFigi, shareClassFigi, isin, ric, sedol, face, coupon, marketValueHeld, notionalValue, maturity, quantityHeld, weighting, quantityUnits, quantityPerShare, contractExpiryDate);
   }
 
 
@@ -444,6 +466,7 @@ public class ETFHolding {
     sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    compositeFigi: ").append(toIndentedString(compositeFigi)).append("\n");
+    sb.append("    shareClassFigi: ").append(toIndentedString(shareClassFigi)).append("\n");
     sb.append("    isin: ").append(toIndentedString(isin)).append("\n");
     sb.append("    ric: ").append(toIndentedString(ric)).append("\n");
     sb.append("    sedol: ").append(toIndentedString(sedol)).append("\n");

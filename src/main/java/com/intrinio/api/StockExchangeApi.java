@@ -612,6 +612,7 @@ public class StockExchangeApi {
      * Build call for getStockExchangeRealtimePrices
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
+     * @param activeOnly Returns prices only from the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -619,7 +620,7 @@ public class StockExchangeApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getStockExchangeRealtimePricesCall(String identifier, String source, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getStockExchangeRealtimePricesCall(String identifier, String source, Boolean activeOnly, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -630,6 +631,8 @@ public class StockExchangeApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (source != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (activeOnly != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("active_only", activeOnly));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -668,7 +671,7 @@ public class StockExchangeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getStockExchangeRealtimePricesValidateBeforeCall(String identifier, String source, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getStockExchangeRealtimePricesValidateBeforeCall(String identifier, String source, Boolean activeOnly, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -676,7 +679,7 @@ public class StockExchangeApi {
         }
         
 
-        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesCall(identifier, source, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesCall(identifier, source, activeOnly, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -686,16 +689,17 @@ public class StockExchangeApi {
      * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
+     * @param activeOnly Returns prices only from the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockExchangeRealtimeStockPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(String identifier, String source, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeRealtimePricesWithHttpInfo", String.class, String.class, Integer.class, String.class);
+    public ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(String identifier, String source, Boolean activeOnly, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeRealtimePricesWithHttpInfo", String.class, String.class, Boolean.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { identifier, source, pageSize, nextPage };
+      Object[] apiCallArguments = { identifier, source, activeOnly, pageSize, nextPage };
       ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -705,13 +709,14 @@ public class StockExchangeApi {
      * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
+     * @param activeOnly Returns prices only from the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseStockExchangeRealtimeStockPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> getStockExchangeRealtimePricesWithHttpInfo(String identifier, String source, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesValidateBeforeCall(identifier, source, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> getStockExchangeRealtimePricesWithHttpInfo(String identifier, String source, Boolean activeOnly, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesValidateBeforeCall(identifier, source, activeOnly, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseStockExchangeRealtimeStockPrices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -721,13 +726,14 @@ public class StockExchangeApi {
      * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
+     * @param activeOnly Returns prices only from the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getStockExchangeRealtimePricesAsync(String identifier, String source, Integer pageSize, String nextPage, final ApiCallback<ApiResponseStockExchangeRealtimeStockPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getStockExchangeRealtimePricesAsync(String identifier, String source, Boolean activeOnly, Integer pageSize, String nextPage, final ApiCallback<ApiResponseStockExchangeRealtimeStockPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -748,7 +754,7 @@ public class StockExchangeApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesValidateBeforeCall(identifier, source, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesValidateBeforeCall(identifier, source, activeOnly, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseStockExchangeRealtimeStockPrices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

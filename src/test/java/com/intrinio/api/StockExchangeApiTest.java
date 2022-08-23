@@ -112,9 +112,10 @@ public class StockExchangeApiTest {
     public void getStockExchangeRealtimePricesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String source = null;
+        Boolean activeOnly = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseStockExchangeRealtimeStockPrices response = api.getStockExchangeRealtimePrices(identifier, source, pageSize, nextPage);
+        ApiResponseStockExchangeRealtimeStockPrices response = api.getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, nextPage);
 
         // TODO: test validations
     }

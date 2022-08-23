@@ -2042,6 +2042,135 @@ public class OptionsApi {
         return call;
     }
     /**
+     * Build call for getOptionsSnapshots
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsSnapshotsCall(String source, OffsetDateTime atDatetime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/snapshots";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (atDatetime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("at_datetime", atDatetime));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionsSnapshotsValidateBeforeCall(String source, OffsetDateTime atDatetime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getOptionsSnapshotsCall(source, atDatetime, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Option Prices Realtime Snapshot
+     * Returns all options snapshots for the queried interval with links to download.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @return OptionSnapshotsResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public OptionSnapshotsResult getOptionsSnapshots(String source, OffsetDateTime atDatetime) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsSnapshotsWithHttpInfo", String.class, OffsetDateTime.class);
+      
+      Object[] apiCallArguments = { source, atDatetime };
+      ApiResponse<OptionSnapshotsResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Option Prices Realtime Snapshot
+     * Returns all options snapshots for the queried interval with links to download.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @return ApiResponse&lt;OptionSnapshotsResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<OptionSnapshotsResult> getOptionsSnapshotsWithHttpInfo(String source, OffsetDateTime atDatetime) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsSnapshotsValidateBeforeCall(source, atDatetime, null, null);
+        Type localVarReturnType = new TypeToken<OptionSnapshotsResult>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Option Prices Realtime Snapshot (asynchronously)
+     * Returns all options snapshots for the queried interval with links to download.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsSnapshotsAsync(String source, OffsetDateTime atDatetime, final ApiCallback<OptionSnapshotsResult> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionsSnapshotsValidateBeforeCall(source, atDatetime, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<OptionSnapshotsResult>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getOptionsStatsRealtime
      * @param identifier The Intrinio ID or code of the options contract to request prices for. (required)
      * @param source Realtime or 15-minute delayed contracts. (optional)
@@ -2171,135 +2300,6 @@ public class OptionsApi {
 
         com.squareup.okhttp.Call call = getOptionsStatsRealtimeValidateBeforeCall(identifier, source, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsStatsRealtime>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for getSecuritySnapshots
-     * @param source Realtime or 15-minute delayed contracts. (optional)
-     * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getSecuritySnapshotsCall(String source, OffsetDateTime atDatetime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/options/snapshots";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (source != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
-        if (atDatetime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("at_datetime", atDatetime));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecuritySnapshotsValidateBeforeCall(String source, OffsetDateTime atDatetime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-
-        com.squareup.okhttp.Call call = getSecuritySnapshotsCall(source, atDatetime, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Option Prices Realtime Snapshot
-     * Returns all options snapshots for the queried interval with links to download.
-     * @param source Realtime or 15-minute delayed contracts. (optional)
-     * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
-     * @return OptionSnapshotsResult
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @throws NoSuchMethodException If fail to get specified method off of the main class
-     */
-    public OptionSnapshotsResult getSecuritySnapshots(String source, OffsetDateTime atDatetime) throws ApiException, NoSuchMethodException {
-      Method targetMethod = OptionsApi.class.getMethod("getSecuritySnapshotsWithHttpInfo", String.class, OffsetDateTime.class);
-      
-      Object[] apiCallArguments = { source, atDatetime };
-      ApiResponse<OptionSnapshotsResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
-      return resp.getData();
-    }
-
-    /**
-     * Option Prices Realtime Snapshot
-     * Returns all options snapshots for the queried interval with links to download.
-     * @param source Realtime or 15-minute delayed contracts. (optional)
-     * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
-     * @return ApiResponse&lt;OptionSnapshotsResult&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<OptionSnapshotsResult> getSecuritySnapshotsWithHttpInfo(String source, OffsetDateTime atDatetime) throws ApiException {
-        com.squareup.okhttp.Call call = getSecuritySnapshotsValidateBeforeCall(source, atDatetime, null, null);
-        Type localVarReturnType = new TypeToken<OptionSnapshotsResult>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Option Prices Realtime Snapshot (asynchronously)
-     * Returns all options snapshots for the queried interval with links to download.
-     * @param source Realtime or 15-minute delayed contracts. (optional)
-     * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getSecuritySnapshotsAsync(String source, OffsetDateTime atDatetime, final ApiCallback<OptionSnapshotsResult> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getSecuritySnapshotsValidateBeforeCall(source, atDatetime, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<OptionSnapshotsResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -300,6 +300,23 @@ public class OptionsApiTest {
     }
     
     /**
+     * Option Prices Realtime Snapshot
+     *
+     * Returns all options snapshots for the queried interval with links to download.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsSnapshotsTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        OffsetDateTime atDatetime = null;
+        OptionSnapshotsResult response = api.getOptionsSnapshots(source, atDatetime);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Option Stats Realtime
      *
      * Returns all option stats (greeks and implied volatility) as well as the underlying factors used to calculate them, for a particular option contract.
@@ -312,23 +329,6 @@ public class OptionsApiTest {
         String identifier = null;
         String source = null;
         ApiResponseOptionsStatsRealtime response = api.getOptionsStatsRealtime(identifier, source);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Option Prices Realtime Snapshot
-     *
-     * Returns all options snapshots for the queried interval with links to download.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getSecuritySnapshotsTest() throws ApiException, NoSuchMethodException {
-        String source = null;
-        OffsetDateTime atDatetime = null;
-        OptionSnapshotsResult response = api.getSecuritySnapshots(source, atDatetime);
 
         // TODO: test validations
     }

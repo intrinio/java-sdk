@@ -392,7 +392,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(identifier, source, pageSize, nextPage)
+> ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, nextPage)
 
 #### Realtime Stock Prices by Exchange
 
@@ -425,9 +425,10 @@ public class Main {
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
     String identifier = "USCOMP";
     String source = null;
+    Boolean activeOnly = null;
     Integer pageSize = 100;
     String nextPage = null;
-    ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, pageSize, nextPage);
+    ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, nextPage);
     System.out.println(result);
   }
 }
@@ -444,6 +445,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
  **source** | String| Return realtime prices from the specified data source. If no source is specified, all sources are used. | [optional] [enum: iex, bats, bats_delayed, intrinio_mx] &nbsp;
+ **activeOnly** | Boolean| Returns prices only from the most recent trading day. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
