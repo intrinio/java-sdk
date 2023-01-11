@@ -13,6 +13,10 @@ Method | HTTP request | Description
 [**getOptionsChainEod**](OptionsApi.md#getOptionsChainEod) | **GET** /options/chain/{symbol}/{expiration}/eod | Options Chain EOD
 [**getOptionsChainRealtime**](OptionsApi.md#getOptionsChainRealtime) | **GET** /options/chain/{symbol}/{expiration}/realtime | Options Chain Realtime
 [**getOptionsExpirations**](OptionsApi.md#getOptionsExpirations) | **GET** /options/expirations/{symbol} | Options Expirations
+[**getOptionsIntervalByContract**](OptionsApi.md#getOptionsIntervalByContract) | **GET** /options/interval/{identifier} | Options intervals by contract
+[**getOptionsIntervalMovers**](OptionsApi.md#getOptionsIntervalMovers) | **GET** /options/interval/movers | Options Intervals Movers
+[**getOptionsIntervalMoversChange**](OptionsApi.md#getOptionsIntervalMoversChange) | **GET** /options/interval/movers/change | Options Intervals Movers By Change
+[**getOptionsIntervalMoversVolume**](OptionsApi.md#getOptionsIntervalMoversVolume) | **GET** /options/interval/movers/volume | Options Intervals Movers By Volume
 [**getOptionsPrices**](OptionsApi.md#getOptionsPrices) | **GET** /options/prices/{identifier} | Option Prices
 [**getOptionsPricesBatchRealtime**](OptionsApi.md#getOptionsPricesBatchRealtime) | **POST** /options/prices/realtime/batch | Option Prices Batch Realtime
 [**getOptionsPricesEod**](OptionsApi.md#getOptionsPricesEod) | **GET** /options/prices/{identifier}/eod | Option Prices EOD
@@ -870,6 +874,356 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseOptionsExpirations**](ApiResponseOptionsExpirations.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionsIntervalByContract)
+
+[//]: # (RETURN_TYPE:OptionIntervalsResult)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:OptionIntervalsResult.md)
+
+[//]: # (OPERATION:getOptionsIntervalByContract_v2)
+
+[//]: # (ENDPOINT:/options/interval/{identifier})
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionsIntervalByContract)
+
+<a name="getOptionsIntervalByContract"></a>
+## **getOptionsIntervalByContract**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionsIntervalByContract_v2)
+
+[//]: # (START_OVERVIEW)
+
+> OptionIntervalsResult getOptionsIntervalByContract(identifier, intervalSize, source, pageSize, endTime)
+
+#### Options intervals by contract
+
+
+Returns a list of interval data points for a contract.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String identifier = "SPY___230103P00380000";
+    String intervalSize = "5m";
+    String source = null;
+    Integer pageSize = 100;
+    OffsetDateTime endTime = OffsetDateTime.now();
+    OptionIntervalsResult result = optionsApi.getOptionsIntervalByContract(identifier, intervalSize, source, pageSize, endTime);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| The Intrinio ID or code of the options contract to request intervals for. | &nbsp;
+ **intervalSize** | String| The time length of the interval. | [enum: SixtyMinute, 60m, 1h, ThirtyMinute, 30m, FifteenMinute, 15m, TenMinute, 10m, FiveMinute, 5m, OneMinute, 1m] &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **endTime** | OffsetDateTime| The inclusive UTC date and time the intervals end at. | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**OptionIntervalsResult**](OptionIntervalsResult.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionsIntervalMovers)
+
+[//]: # (RETURN_TYPE:OptionIntervalsMoversResult)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:OptionIntervalsMoversResult.md)
+
+[//]: # (OPERATION:getOptionsIntervalMovers_v2)
+
+[//]: # (ENDPOINT:/options/interval/movers)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionsIntervalMovers)
+
+<a name="getOptionsIntervalMovers"></a>
+## **getOptionsIntervalMovers**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionsIntervalMovers_v2)
+
+[//]: # (START_OVERVIEW)
+
+> OptionIntervalsMoversResult getOptionsIntervalMovers(source, openTime)
+
+#### Options Intervals Movers
+
+
+Returns a list of intervals for the biggest movers over the last hour interval.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String source = null;
+    OffsetDateTime openTime = OffsetDateTime.now();
+    OptionIntervalsMoversResult result = optionsApi.getOptionsIntervalMovers(source, openTime);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+ **openTime** | OffsetDateTime| The inclusive UTC date and time the interval opens at. | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**OptionIntervalsMoversResult**](OptionIntervalsMoversResult.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionsIntervalMoversChange)
+
+[//]: # (RETURN_TYPE:OptionIntervalsMoversResult)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:OptionIntervalsMoversResult.md)
+
+[//]: # (OPERATION:getOptionsIntervalMoversChange_v2)
+
+[//]: # (ENDPOINT:/options/interval/movers/change)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionsIntervalMoversChange)
+
+<a name="getOptionsIntervalMoversChange"></a>
+## **getOptionsIntervalMoversChange**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionsIntervalMoversChange_v2)
+
+[//]: # (START_OVERVIEW)
+
+> OptionIntervalsMoversResult getOptionsIntervalMoversChange(source, openTime)
+
+#### Options Intervals Movers By Change
+
+
+Returns a list of intervals for the biggest movers by change over the last hour interval.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String source = null;
+    OffsetDateTime openTime = OffsetDateTime.now();
+    OptionIntervalsMoversResult result = optionsApi.getOptionsIntervalMoversChange(source, openTime);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+ **openTime** | OffsetDateTime| The inclusive UTC date and time the interval opens at. | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**OptionIntervalsMoversResult**](OptionIntervalsMoversResult.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionsIntervalMoversVolume)
+
+[//]: # (RETURN_TYPE:OptionIntervalsMoversResult)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:OptionIntervalsMoversResult.md)
+
+[//]: # (OPERATION:getOptionsIntervalMoversVolume_v2)
+
+[//]: # (ENDPOINT:/options/interval/movers/volume)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionsIntervalMoversVolume)
+
+<a name="getOptionsIntervalMoversVolume"></a>
+## **getOptionsIntervalMoversVolume**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionsIntervalMoversVolume_v2)
+
+[//]: # (START_OVERVIEW)
+
+> OptionIntervalsMoversResult getOptionsIntervalMoversVolume(source, openTime)
+
+#### Options Intervals Movers By Volume
+
+
+Returns a list of intervals for the biggest movers by volume over the last hour interval.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String source = null;
+    OffsetDateTime openTime = OffsetDateTime.now();
+    OptionIntervalsMoversResult result = optionsApi.getOptionsIntervalMoversVolume(source, openTime);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+ **openTime** | OffsetDateTime| The inclusive UTC date and time the interval opens at. | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**OptionIntervalsMoversResult**](OptionIntervalsMoversResult.md)
 
 [//]: # (END_OPERATION)
 

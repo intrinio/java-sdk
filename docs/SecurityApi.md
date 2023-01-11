@@ -4022,7 +4022,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
- **source** | String| Return the realtime price from the specified data source. If no source is specified, the best source available is used. | [optional] [enum: iex, bats, bats_delayed, intrinio_mx] &nbsp;
+ **source** | String| Return the realtime price from the specified data source. If no source is specified, the best source available is used. | [optional] [enum: iex, bats, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

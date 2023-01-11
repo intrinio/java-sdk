@@ -20,6 +20,8 @@ import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import com.intrinio.models.OptionContractsList;
+import com.intrinio.models.OptionIntervalsMoversResult;
+import com.intrinio.models.OptionIntervalsResult;
 import com.intrinio.models.OptionSnapshotsResult;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -225,6 +227,77 @@ public class OptionsApiTest {
         String after = null;
         String before = null;
         ApiResponseOptionsExpirations response = api.getOptionsExpirations(symbol, after, before);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Options intervals by contract
+     *
+     * Returns a list of interval data points for a contract.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsIntervalByContractTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String intervalSize = null;
+        String source = null;
+        Integer pageSize = null;
+        OffsetDateTime endTime = null;
+        OptionIntervalsResult response = api.getOptionsIntervalByContract(identifier, intervalSize, source, pageSize, endTime);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Options Intervals Movers
+     *
+     * Returns a list of intervals for the biggest movers over the last hour interval.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsIntervalMoversTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        OffsetDateTime openTime = null;
+        OptionIntervalsMoversResult response = api.getOptionsIntervalMovers(source, openTime);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Options Intervals Movers By Change
+     *
+     * Returns a list of intervals for the biggest movers by change over the last hour interval.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsIntervalMoversChangeTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        OffsetDateTime openTime = null;
+        OptionIntervalsMoversResult response = api.getOptionsIntervalMoversChange(source, openTime);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Options Intervals Movers By Volume
+     *
+     * Returns a list of intervals for the biggest movers by volume over the last hour interval.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsIntervalMoversVolumeTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        OffsetDateTime openTime = null;
+        OptionIntervalsMoversResult response = api.getOptionsIntervalMoversVolume(source, openTime);
 
         // TODO: test validations
     }

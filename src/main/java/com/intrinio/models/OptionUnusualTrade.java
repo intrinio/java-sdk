@@ -162,10 +162,10 @@ public class OptionUnusualTrade {
   }
 
    /**
-   * The aggregated value of all option contract premiums included in the trade\\
+   * The aggregated value of all option contract premiums included in the trade
    * @return totalValue
   **/
-  @ApiModelProperty(value = "The aggregated value of all option contract premiums included in the trade\\")
+  @ApiModelProperty(value = "The aggregated value of all option contract premiums included in the trade")
   public BigDecimal getTotalValue() {
     return totalValue;
   }
