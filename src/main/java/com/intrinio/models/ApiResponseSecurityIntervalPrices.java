@@ -32,9 +32,9 @@ public class ApiResponseSecurityIntervalPrices {
    */
   @JsonAdapter(SourceEnum.Adapter.class)
   public enum SourceEnum {
-    IEX("iex"),
+    REALTIME("realtime"),
     
-    BATS("bats");
+    DELAYED("delayed");
 
     private String value;
 
@@ -94,10 +94,10 @@ public class ApiResponseSecurityIntervalPrices {
   }
 
    /**
-   * Open, High, Low, Close, and Volume for a particular interval
+   * Open, close, high, low, volume, average price, and change ratio for a particular interval
    * @return intervals
   **/
-  @ApiModelProperty(value = "Open, High, Low, Close, and Volume for a particular interval")
+  @ApiModelProperty(value = "Open, close, high, low, volume, average price, and change ratio for a particular interval")
   public List<StockPriceInterval> getIntervals() {
     return intervals;
   }

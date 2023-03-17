@@ -66,6 +66,21 @@ public class RealtimeStockPrice {
   @SerializedName("source")
   private String source = null;
 
+  @SerializedName("listing_venue")
+  private String listingVenue = null;
+
+  @SerializedName("sales_conditions")
+  private String salesConditions = null;
+
+  @SerializedName("quote_conditions")
+  private String quoteConditions = null;
+
+  @SerializedName("market_center_code")
+  private String marketCenterCode = null;
+
+  @SerializedName("is_darkpool")
+  private Boolean isDarkpool = null;
+
   @SerializedName("security")
   private RealtimeStockPriceSecurity security = null;
 
@@ -339,6 +354,96 @@ public class RealtimeStockPrice {
     this.source = source;
   }
 
+  public RealtimeStockPrice listingVenue(String listingVenue) {
+    this.listingVenue = listingVenue;
+    return this;
+  }
+
+   /**
+   * The venue the price came from.
+   * @return listingVenue
+  **/
+  @ApiModelProperty(value = "The venue the price came from.")
+  public String getListingVenue() {
+    return listingVenue;
+  }
+
+  public void setListingVenue(String listingVenue) {
+    this.listingVenue = listingVenue;
+  }
+
+  public RealtimeStockPrice salesConditions(String salesConditions) {
+    this.salesConditions = salesConditions;
+    return this;
+  }
+
+   /**
+   * The condition for the sale.
+   * @return salesConditions
+  **/
+  @ApiModelProperty(value = "The condition for the sale.")
+  public String getSalesConditions() {
+    return salesConditions;
+  }
+
+  public void setSalesConditions(String salesConditions) {
+    this.salesConditions = salesConditions;
+  }
+
+  public RealtimeStockPrice quoteConditions(String quoteConditions) {
+    this.quoteConditions = quoteConditions;
+    return this;
+  }
+
+   /**
+   * The condition for the quote.
+   * @return quoteConditions
+  **/
+  @ApiModelProperty(value = "The condition for the quote.")
+  public String getQuoteConditions() {
+    return quoteConditions;
+  }
+
+  public void setQuoteConditions(String quoteConditions) {
+    this.quoteConditions = quoteConditions;
+  }
+
+  public RealtimeStockPrice marketCenterCode(String marketCenterCode) {
+    this.marketCenterCode = marketCenterCode;
+    return this;
+  }
+
+   /**
+   * The market center character code.
+   * @return marketCenterCode
+  **/
+  @ApiModelProperty(value = "The market center character code.")
+  public String getMarketCenterCode() {
+    return marketCenterCode;
+  }
+
+  public void setMarketCenterCode(String marketCenterCode) {
+    this.marketCenterCode = marketCenterCode;
+  }
+
+  public RealtimeStockPrice isDarkpool(Boolean isDarkpool) {
+    this.isDarkpool = isDarkpool;
+    return this;
+  }
+
+   /**
+   * Whether or not the current trade is from a darkpool or not.
+   * @return isDarkpool
+  **/
+  @ApiModelProperty(value = "Whether or not the current trade is from a darkpool or not.")
+  public Boolean isIsDarkpool() {
+    return isDarkpool;
+  }
+
+  public void setIsDarkpool(Boolean isDarkpool) {
+    this.isDarkpool = isDarkpool;
+  }
+
   public RealtimeStockPrice security(RealtimeStockPriceSecurity security) {
     this.security = security;
     return this;
@@ -382,12 +487,17 @@ public class RealtimeStockPrice {
         Objects.equals(this.marketVolume, realtimeStockPrice.marketVolume) &&
         Objects.equals(this.updatedOn, realtimeStockPrice.updatedOn) &&
         Objects.equals(this.source, realtimeStockPrice.source) &&
+        Objects.equals(this.listingVenue, realtimeStockPrice.listingVenue) &&
+        Objects.equals(this.salesConditions, realtimeStockPrice.salesConditions) &&
+        Objects.equals(this.quoteConditions, realtimeStockPrice.quoteConditions) &&
+        Objects.equals(this.marketCenterCode, realtimeStockPrice.marketCenterCode) &&
+        Objects.equals(this.isDarkpool, realtimeStockPrice.isDarkpool) &&
         Objects.equals(this.security, realtimeStockPrice.security);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastPrice, lastTime, lastSize, bidPrice, bidSize, askPrice, askSize, openPrice, closePrice, highPrice, lowPrice, exchangeVolume, marketVolume, updatedOn, source, security);
+    return Objects.hash(lastPrice, lastTime, lastSize, bidPrice, bidSize, askPrice, askSize, openPrice, closePrice, highPrice, lowPrice, exchangeVolume, marketVolume, updatedOn, source, listingVenue, salesConditions, quoteConditions, marketCenterCode, isDarkpool, security);
   }
 
 
@@ -411,6 +521,11 @@ public class RealtimeStockPrice {
     sb.append("    marketVolume: ").append(toIndentedString(marketVolume)).append("\n");
     sb.append("    updatedOn: ").append(toIndentedString(updatedOn)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
+    sb.append("    listingVenue: ").append(toIndentedString(listingVenue)).append("\n");
+    sb.append("    salesConditions: ").append(toIndentedString(salesConditions)).append("\n");
+    sb.append("    quoteConditions: ").append(toIndentedString(quoteConditions)).append("\n");
+    sb.append("    marketCenterCode: ").append(toIndentedString(marketCenterCode)).append("\n");
+    sb.append("    isDarkpool: ").append(toIndentedString(isDarkpool)).append("\n");
     sb.append("    security: ").append(toIndentedString(security)).append("\n");
     sb.append("}");
     return sb.toString();

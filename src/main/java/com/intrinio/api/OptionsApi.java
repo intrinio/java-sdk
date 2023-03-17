@@ -1582,7 +1582,7 @@ public class OptionsApi {
     }
 
     /**
-     * Options intervals by contract
+     * Options Intervals By Contract
      * Returns a list of interval data points for a contract.
      * @param identifier The Intrinio ID or code of the options contract to request intervals for. (required)
      * @param intervalSize The time length of the interval. (required)
@@ -1602,7 +1602,7 @@ public class OptionsApi {
     }
 
     /**
-     * Options intervals by contract
+     * Options Intervals By Contract
      * Returns a list of interval data points for a contract.
      * @param identifier The Intrinio ID or code of the options contract to request intervals for. (required)
      * @param intervalSize The time length of the interval. (required)
@@ -1619,7 +1619,7 @@ public class OptionsApi {
     }
 
     /**
-     * Options intervals by contract (asynchronously)
+     * Options Intervals By Contract (asynchronously)
      * Returns a list of interval data points for a contract.
      * @param identifier The Intrinio ID or code of the options contract to request intervals for. (required)
      * @param intervalSize The time length of the interval. (required)

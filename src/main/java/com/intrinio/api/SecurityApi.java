@@ -66,6 +66,7 @@ import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import com.intrinio.models.RealtimeStockPrice;
 import com.intrinio.models.Security;
+import com.intrinio.models.SecurityIntervalsMoversResult;
 import com.intrinio.models.SecurityScreenGroup;
 import com.intrinio.models.SecurityScreenResult;
 import com.intrinio.models.SecuritySnapshotsResult;
@@ -1035,15 +1036,402 @@ public class SecurityApi {
         return call;
     }
     /**
+     * Build call for getSecurityIntervalMovers
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityIntervalMoversCall(String source, OffsetDateTime openTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/market_movers";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (openTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("open_time", openTime));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityIntervalMoversValidateBeforeCall(String source, OffsetDateTime openTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getSecurityIntervalMoversCall(source, openTime, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Security Intervals Movers
+     * Returns a list of intervals for the biggest movers over the last hour interval.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @return SecurityIntervalsMoversResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public SecurityIntervalsMoversResult getSecurityIntervalMovers(String source, OffsetDateTime openTime) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityIntervalMoversWithHttpInfo", String.class, OffsetDateTime.class);
+      
+      Object[] apiCallArguments = { source, openTime };
+      ApiResponse<SecurityIntervalsMoversResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Security Intervals Movers
+     * Returns a list of intervals for the biggest movers over the last hour interval.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @return ApiResponse&lt;SecurityIntervalsMoversResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SecurityIntervalsMoversResult> getSecurityIntervalMoversWithHttpInfo(String source, OffsetDateTime openTime) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityIntervalMoversValidateBeforeCall(source, openTime, null, null);
+        Type localVarReturnType = new TypeToken<SecurityIntervalsMoversResult>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Security Intervals Movers (asynchronously)
+     * Returns a list of intervals for the biggest movers over the last hour interval.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityIntervalMoversAsync(String source, OffsetDateTime openTime, final ApiCallback<SecurityIntervalsMoversResult> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityIntervalMoversValidateBeforeCall(source, openTime, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SecurityIntervalsMoversResult>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityIntervalMoversChange
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityIntervalMoversChangeCall(String source, OffsetDateTime openTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/market_movers/change";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (openTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("open_time", openTime));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityIntervalMoversChangeValidateBeforeCall(String source, OffsetDateTime openTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getSecurityIntervalMoversChangeCall(source, openTime, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Security Intervals Movers By Change
+     * Returns a list of intervals for the biggest movers by change over the last hour interval.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @return SecurityIntervalsMoversResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public SecurityIntervalsMoversResult getSecurityIntervalMoversChange(String source, OffsetDateTime openTime) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityIntervalMoversChangeWithHttpInfo", String.class, OffsetDateTime.class);
+      
+      Object[] apiCallArguments = { source, openTime };
+      ApiResponse<SecurityIntervalsMoversResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Security Intervals Movers By Change
+     * Returns a list of intervals for the biggest movers by change over the last hour interval.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @return ApiResponse&lt;SecurityIntervalsMoversResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SecurityIntervalsMoversResult> getSecurityIntervalMoversChangeWithHttpInfo(String source, OffsetDateTime openTime) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityIntervalMoversChangeValidateBeforeCall(source, openTime, null, null);
+        Type localVarReturnType = new TypeToken<SecurityIntervalsMoversResult>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Security Intervals Movers By Change (asynchronously)
+     * Returns a list of intervals for the biggest movers by change over the last hour interval.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityIntervalMoversChangeAsync(String source, OffsetDateTime openTime, final ApiCallback<SecurityIntervalsMoversResult> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityIntervalMoversChangeValidateBeforeCall(source, openTime, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SecurityIntervalsMoversResult>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityIntervalMoversVolume
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityIntervalMoversVolumeCall(String source, OffsetDateTime openTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/market_movers/volume";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (openTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("open_time", openTime));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityIntervalMoversVolumeValidateBeforeCall(String source, OffsetDateTime openTime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getSecurityIntervalMoversVolumeCall(source, openTime, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Security Intervals Movers By Volume
+     * Returns a list of intervals for the biggest movers by volume over the last hour interval.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @return SecurityIntervalsMoversResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public SecurityIntervalsMoversResult getSecurityIntervalMoversVolume(String source, OffsetDateTime openTime) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityIntervalMoversVolumeWithHttpInfo", String.class, OffsetDateTime.class);
+      
+      Object[] apiCallArguments = { source, openTime };
+      ApiResponse<SecurityIntervalsMoversResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Security Intervals Movers By Volume
+     * Returns a list of intervals for the biggest movers by volume over the last hour interval.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @return ApiResponse&lt;SecurityIntervalsMoversResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SecurityIntervalsMoversResult> getSecurityIntervalMoversVolumeWithHttpInfo(String source, OffsetDateTime openTime) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityIntervalMoversVolumeValidateBeforeCall(source, openTime, null, null);
+        Type localVarReturnType = new TypeToken<SecurityIntervalsMoversResult>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Security Intervals Movers By Volume (asynchronously)
+     * Returns a list of intervals for the biggest movers by volume over the last hour interval.
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param openTime The inclusive UTC date and time the interval opens at. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityIntervalMoversVolumeAsync(String source, OffsetDateTime openTime, final ApiCallback<SecurityIntervalsMoversResult> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityIntervalMoversVolumeValidateBeforeCall(source, openTime, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SecurityIntervalsMoversResult>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getSecurityIntervalPrices
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param intervalSize The interval for which to return stock prices (required)
      * @param source Return intervals from the specified data source (optional)
      * @param startDate Return intervals starting at the specified date (optional)
-     * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
+     * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param endDate Return intervals stopping at the specified date (optional)
-     * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
+     * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
-     * @param intervalSize The interval for which to return stock prices (optional, default to 1d)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -1051,7 +1439,7 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityIntervalPricesCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, String intervalSize, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityIntervalPricesCall(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1112,84 +1500,89 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityIntervalPricesValidateBeforeCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, String intervalSize, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityIntervalPricesValidateBeforeCall(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
             throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityIntervalPrices(Async)");
         }
         
+        // verify the required parameter 'intervalSize' is set
+        if (intervalSize == null) {
+            throw new ApiException("Missing the required parameter 'intervalSize' when calling getSecurityIntervalPrices(Async)");
+        }
+        
 
-        com.squareup.okhttp.Call call = getSecurityIntervalPricesCall(identifier, source, startDate, startTime, endDate, endTime, timezone, intervalSize, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityIntervalPricesCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
 
     /**
      * Interval Stock Prices for Security
-     * Return Open, High, Low, Close, and Volume for a particular interval for the Security with the given &#x60;identifier&#x60;
+     * Return open, close, high, low, volume, average price, and change ratio for a particular interval for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param intervalSize The interval for which to return stock prices (required)
      * @param source Return intervals from the specified data source (optional)
      * @param startDate Return intervals starting at the specified date (optional)
-     * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
+     * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param endDate Return intervals stopping at the specified date (optional)
-     * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
+     * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
-     * @param intervalSize The interval for which to return stock prices (optional, default to 1d)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityIntervalPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityIntervalPrices getSecurityIntervalPrices(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, String intervalSize, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecurityIntervalPricesWithHttpInfo", String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, String.class, Integer.class, String.class);
+    public ApiResponseSecurityIntervalPrices getSecurityIntervalPrices(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityIntervalPricesWithHttpInfo", String.class, String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { identifier, source, startDate, startTime, endDate, endTime, timezone, intervalSize, pageSize, nextPage };
+      Object[] apiCallArguments = { identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage };
       ApiResponse<ApiResponseSecurityIntervalPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
 
     /**
      * Interval Stock Prices for Security
-     * Return Open, High, Low, Close, and Volume for a particular interval for the Security with the given &#x60;identifier&#x60;
+     * Return open, close, high, low, volume, average price, and change ratio for a particular interval for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param intervalSize The interval for which to return stock prices (required)
      * @param source Return intervals from the specified data source (optional)
      * @param startDate Return intervals starting at the specified date (optional)
-     * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
+     * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param endDate Return intervals stopping at the specified date (optional)
-     * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
+     * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
-     * @param intervalSize The interval for which to return stock prices (optional, default to 1d)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurityIntervalPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityIntervalPrices> getSecurityIntervalPricesWithHttpInfo(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, String intervalSize, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, timezone, intervalSize, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurityIntervalPrices> getSecurityIntervalPricesWithHttpInfo(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityIntervalPrices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      * Interval Stock Prices for Security (asynchronously)
-     * Return Open, High, Low, Close, and Volume for a particular interval for the Security with the given &#x60;identifier&#x60;
+     * Return open, close, high, low, volume, average price, and change ratio for a particular interval for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param intervalSize The interval for which to return stock prices (required)
      * @param source Return intervals from the specified data source (optional)
      * @param startDate Return intervals starting at the specified date (optional)
-     * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
+     * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param endDate Return intervals stopping at the specified date (optional)
-     * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
+     * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
-     * @param intervalSize The interval for which to return stock prices (optional, default to 1d)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityIntervalPricesAsync(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, String intervalSize, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityIntervalPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityIntervalPricesAsync(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityIntervalPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1210,7 +1603,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, timezone, intervalSize, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityIntervalPrices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
