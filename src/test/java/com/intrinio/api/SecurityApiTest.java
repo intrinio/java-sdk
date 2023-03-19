@@ -217,7 +217,7 @@ public class SecurityApiTest {
         String intervalSize = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseSecurityIntervalPrices response = api.getSecurityIntervalPrices(identifier, source, startDate, startTime, endDate, endTime, timezone, intervalSize, pageSize, nextPage);
+        ApiResponseSecurityIntervalPrices response = api.getSecurityIntervalPrices(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
 
         // TODO: test validations
     }
