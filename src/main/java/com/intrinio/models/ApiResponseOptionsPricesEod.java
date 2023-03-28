@@ -27,6 +27,9 @@ public class ApiResponseOptionsPricesEod {
   @SerializedName("option")
   private OptionEod option = null;
 
+  @SerializedName("next_page")
+  private String nextPage = null;
+
   public ApiResponseOptionsPricesEod prices(List<OptionPriceEod> prices) {
     this.prices = prices;
     return this;
@@ -71,6 +74,24 @@ public class ApiResponseOptionsPricesEod {
     this.option = option;
   }
 
+  public ApiResponseOptionsPricesEod nextPage(String nextPage) {
+    this.nextPage = nextPage;
+    return this;
+  }
+
+   /**
+   * The token required to request the next page of the data. If null, no further results are available.
+   * @return nextPage
+  **/
+  @ApiModelProperty(value = "The token required to request the next page of the data. If null, no further results are available.")
+  public String getNextPage() {
+    return nextPage;
+  }
+
+  public void setNextPage(String nextPage) {
+    this.nextPage = nextPage;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -82,12 +103,13 @@ public class ApiResponseOptionsPricesEod {
     }
     ApiResponseOptionsPricesEod apiResponseOptionsPricesEod = (ApiResponseOptionsPricesEod) o;
     return Objects.equals(this.prices, apiResponseOptionsPricesEod.prices) &&
-        Objects.equals(this.option, apiResponseOptionsPricesEod.option);
+        Objects.equals(this.option, apiResponseOptionsPricesEod.option) &&
+        Objects.equals(this.nextPage, apiResponseOptionsPricesEod.nextPage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(prices, option);
+    return Objects.hash(prices, option, nextPage);
   }
 
 
@@ -98,6 +120,7 @@ public class ApiResponseOptionsPricesEod {
     
     sb.append("    prices: ").append(toIndentedString(prices)).append("\n");
     sb.append("    option: ").append(toIndentedString(option)).append("\n");
+    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
     sb.append("}");
     return sb.toString();
   }
