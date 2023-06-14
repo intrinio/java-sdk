@@ -254,8 +254,8 @@ public class OptionsApi {
     }
 
     /**
-     * Option Expirations Realtime
-     * Returns a list of all current and upcoming expiration dates for a particular symbol.
+     * Options Expirations
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -273,8 +273,8 @@ public class OptionsApi {
     }
 
     /**
-     * Option Expirations Realtime
-     * Returns a list of all current and upcoming expiration dates for a particular symbol.
+     * Options Expirations
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -289,8 +289,8 @@ public class OptionsApi {
     }
 
     /**
-     * Option Expirations Realtime (asynchronously)
-     * Returns a list of all current and upcoming expiration dates for a particular symbol.
+     * Options Expirations (asynchronously)
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -555,7 +555,7 @@ public class OptionsApi {
 
     /**
      * Options
-     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.  Available via a 3rd party, contact sales for a trial.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
@@ -580,7 +580,7 @@ public class OptionsApi {
 
     /**
      * Options
-     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.  Available via a 3rd party, contact sales for a trial.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
@@ -602,7 +602,7 @@ public class OptionsApi {
 
     /**
      * Options (asynchronously)
-     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.  Available via a 3rd party, contact sales for a trial.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param type The option contract type. (optional)
      * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
@@ -912,7 +912,7 @@ public class OptionsApi {
 
     /**
      * Options Chain
-     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
+     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.  Available via a 3rd party, contact sales for a trial.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
      * @param date The date of the option price. Returns option prices on this date. (optional)
@@ -936,7 +936,7 @@ public class OptionsApi {
 
     /**
      * Options Chain
-     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
+     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.  Available via a 3rd party, contact sales for a trial.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
      * @param date The date of the option price. Returns option prices on this date. (optional)
@@ -957,7 +957,7 @@ public class OptionsApi {
 
     /**
      * Options Chain (asynchronously)
-     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
+     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.  Available via a 3rd party, contact sales for a trial.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param expiration The expiration date of the options contract (required)
      * @param date The date of the option price. Returns option prices on this date. (optional)
@@ -1433,7 +1433,7 @@ public class OptionsApi {
 
     /**
      * Options Expirations
-     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.  Available via a 3rd party, contact sales for a trial.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -1451,7 +1451,7 @@ public class OptionsApi {
 
     /**
      * Options Expirations
-     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.  Available via a 3rd party, contact sales for a trial.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -1466,7 +1466,7 @@ public class OptionsApi {
 
     /**
      * Options Expirations (asynchronously)
-     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.  Available via a 3rd party, contact sales for a trial.
      * @param symbol The option symbol, corresponding to the underlying security. (required)
      * @param after Return option contract expiration dates after this date. (optional)
      * @param before Return option contract expiration dates before this date. (optional)
@@ -1496,6 +1496,145 @@ public class OptionsApi {
         }
 
         com.squareup.okhttp.Call call = getOptionsExpirationsValidateBeforeCall(symbol, after, before, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsExpirations>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionsExpirationsEod
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param after Return option contract expiration dates after this date. (optional)
+     * @param before Return option contract expiration dates before this date. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsExpirationsEodCall(String symbol, String after, String before, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/expirations/{symbol}/eod"
+            .replaceAll("\\{" + "symbol" + "\\}", apiClient.escapeString(symbol.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (after != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("after", after));
+        if (before != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("before", before));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionsExpirationsEodValidateBeforeCall(String symbol, String after, String before, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling getOptionsExpirationsEod(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionsExpirationsEodCall(symbol, after, before, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Options Expirations
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param after Return option contract expiration dates after this date. (optional)
+     * @param before Return option contract expiration dates before this date. (optional)
+     * @return ApiResponseOptionsExpirations
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsExpirations getOptionsExpirationsEod(String symbol, String after, String before) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsExpirationsEodWithHttpInfo", String.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { symbol, after, before };
+      ApiResponse<ApiResponseOptionsExpirations> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Options Expirations
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param after Return option contract expiration dates after this date. (optional)
+     * @param before Return option contract expiration dates before this date. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsExpirations&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsExpirations> getOptionsExpirationsEodWithHttpInfo(String symbol, String after, String before) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsExpirationsEodValidateBeforeCall(symbol, after, before, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsExpirations>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Options Expirations (asynchronously)
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
+     * @param symbol The option symbol, corresponding to the underlying security. (required)
+     * @param after Return option contract expiration dates after this date. (optional)
+     * @param before Return option contract expiration dates before this date. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsExpirationsEodAsync(String symbol, String after, String before, final ApiCallback<ApiResponseOptionsExpirations> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionsExpirationsEodValidateBeforeCall(symbol, after, before, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsExpirations>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

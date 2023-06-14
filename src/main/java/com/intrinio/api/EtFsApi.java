@@ -376,7 +376,7 @@ public class EtFsApi {
 
     /**
      * ETF Analytics
-     * Returns latest market analytics for a specified US ETF, including volume, trailing volumen, market cap, 52 week high, and 52 week low.
+     * Returns latest market analytics for a specified US ETF, including volume, trailing volume, market cap, 52 week high, and 52 week low.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ETFAnalytics
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -392,7 +392,7 @@ public class EtFsApi {
 
     /**
      * ETF Analytics
-     * Returns latest market analytics for a specified US ETF, including volume, trailing volumen, market cap, 52 week high, and 52 week low.
+     * Returns latest market analytics for a specified US ETF, including volume, trailing volume, market cap, 52 week high, and 52 week low.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ApiResponse&lt;ETFAnalytics&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -405,7 +405,7 @@ public class EtFsApi {
 
     /**
      * ETF Analytics (asynchronously)
-     * Returns latest market analytics for a specified US ETF, including volume, trailing volumen, market cap, 52 week high, and 52 week low.
+     * Returns latest market analytics for a specified US ETF, including volume, trailing volume, market cap, 52 week high, and 52 week low.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
