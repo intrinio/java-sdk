@@ -67,9 +67,11 @@ import org.threeten.bp.OffsetDateTime;
 import com.intrinio.models.RealtimeStockPrice;
 import com.intrinio.models.Security;
 import com.intrinio.models.SecurityIntervalsMoversResult;
+import com.intrinio.models.SecurityReplayFileResult;
 import com.intrinio.models.SecurityScreenGroup;
 import com.intrinio.models.SecurityScreenResult;
 import com.intrinio.models.SecuritySnapshotsResult;
+import com.intrinio.models.SecurityTradesResult;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.Method;
@@ -7176,6 +7178,145 @@ public class SecurityApi {
         return call;
     }
     /**
+     * Build call for getSecurityReplayFile
+     * @param subsource The specific source of the data being requested. (required)
+     * @param date The date for the data being requested. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityReplayFileCall(String subsource, LocalDate date, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/replay";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (subsource != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("subsource", subsource));
+        if (date != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityReplayFileValidateBeforeCall(String subsource, LocalDate date, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'subsource' is set
+        if (subsource == null) {
+            throw new ApiException("Missing the required parameter 'subsource' when calling getSecurityReplayFile(Async)");
+        }
+        
+        // verify the required parameter 'date' is set
+        if (date == null) {
+            throw new ApiException("Missing the required parameter 'date' when calling getSecurityReplayFile(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityReplayFileCall(subsource, date, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Security Replay File
+     * Returns a url where the requested replay file may be downloaded from.
+     * @param subsource The specific source of the data being requested. (required)
+     * @param date The date for the data being requested. (required)
+     * @return SecurityReplayFileResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public SecurityReplayFileResult getSecurityReplayFile(String subsource, LocalDate date) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityReplayFileWithHttpInfo", String.class, LocalDate.class);
+      
+      Object[] apiCallArguments = { subsource, date };
+      ApiResponse<SecurityReplayFileResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Security Replay File
+     * Returns a url where the requested replay file may be downloaded from.
+     * @param subsource The specific source of the data being requested. (required)
+     * @param date The date for the data being requested. (required)
+     * @return ApiResponse&lt;SecurityReplayFileResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SecurityReplayFileResult> getSecurityReplayFileWithHttpInfo(String subsource, LocalDate date) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityReplayFileValidateBeforeCall(subsource, date, null, null);
+        Type localVarReturnType = new TypeToken<SecurityReplayFileResult>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Security Replay File (asynchronously)
+     * Returns a url where the requested replay file may be downloaded from.
+     * @param subsource The specific source of the data being requested. (required)
+     * @param date The date for the data being requested. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityReplayFileAsync(String subsource, LocalDate date, final ApiCallback<SecurityReplayFileResult> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityReplayFileValidateBeforeCall(subsource, date, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SecurityReplayFileResult>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getSecuritySnapshots
      * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
      * @param progressListener Progress listener
@@ -7603,6 +7744,346 @@ public class SecurityApi {
 
         com.squareup.okhttp.Call call = getSecurityStockPricesValidateBeforeCall(identifier, startDate, endDate, frequency, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityStockPrices>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityTrades
+     * @param source The specific source of the data being requested. (required)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityTradesCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/trades";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (startTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_time", startTime));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (endTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_time", endTime));
+        if (timezone != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("timezone", timezone));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityTradesValidateBeforeCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'source' is set
+        if (source == null) {
+            throw new ApiException("Missing the required parameter 'source' when calling getSecurityTrades(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityTradesCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Security Trades
+     * Returns all trades between start time and end time, up to seven days ago for the specified source.
+     * @param source The specific source of the data being requested. (required)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return SecurityTradesResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public SecurityTradesResult getSecurityTrades(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityTradesWithHttpInfo", String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage };
+      ApiResponse<SecurityTradesResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Security Trades
+     * Returns all trades between start time and end time, up to seven days ago for the specified source.
+     * @param source The specific source of the data being requested. (required)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;SecurityTradesResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SecurityTradesResult> getSecurityTradesWithHttpInfo(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityTradesValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<SecurityTradesResult>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Security Trades (asynchronously)
+     * Returns all trades between start time and end time, up to seven days ago for the specified source.
+     * @param source The specific source of the data being requested. (required)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityTradesAsync(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ApiCallback<SecurityTradesResult> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityTradesValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SecurityTradesResult>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityTradesBySymbol
+     * @param source The specific source of the data being requested. (required)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityTradesBySymbolCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/{identifier}/trades";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (startTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_time", startTime));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (endTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_time", endTime));
+        if (timezone != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("timezone", timezone));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityTradesBySymbolValidateBeforeCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'source' is set
+        if (source == null) {
+            throw new ApiException("Missing the required parameter 'source' when calling getSecurityTradesBySymbol(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityTradesBySymbolCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Security Trades By Symbol
+     * Returns all trades for a symbol between start time and end time, up to seven days ago for the specified source.
+     * @param source The specific source of the data being requested. (required)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return SecurityTradesResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public SecurityTradesResult getSecurityTradesBySymbol(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityTradesBySymbolWithHttpInfo", String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage };
+      ApiResponse<SecurityTradesResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Security Trades By Symbol
+     * Returns all trades for a symbol between start time and end time, up to seven days ago for the specified source.
+     * @param source The specific source of the data being requested. (required)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;SecurityTradesResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<SecurityTradesResult> getSecurityTradesBySymbolWithHttpInfo(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityTradesBySymbolValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<SecurityTradesResult>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Security Trades By Symbol (asynchronously)
+     * Returns all trades for a symbol between start time and end time, up to seven days ago for the specified source.
+     * @param source The specific source of the data being requested. (required)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityTradesBySymbolAsync(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ApiCallback<SecurityTradesResult> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityTradesBySymbolValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SecurityTradesResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

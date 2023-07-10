@@ -34,7 +34,9 @@ public class ApiResponseSecurityIntervalPrices {
   public enum SourceEnum {
     REALTIME("realtime"),
     
-    DELAYED("delayed");
+    DELAYED("delayed"),
+    
+    NASDAQ_BASIC("nasdaq_basic");
 
     private String value;
 

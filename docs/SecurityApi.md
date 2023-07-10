@@ -49,9 +49,12 @@ Method | HTTP request | Description
 [**getSecurityPriceTechnicalsVwap**](SecurityApi.md#getSecurityPriceTechnicalsVwap) | **GET** /securities/{identifier}/prices/technicals/vwap | Volume Weighted Average Price
 [**getSecurityPriceTechnicalsWr**](SecurityApi.md#getSecurityPriceTechnicalsWr) | **GET** /securities/{identifier}/prices/technicals/wr | Williams %R
 [**getSecurityRealtimePrice**](SecurityApi.md#getSecurityRealtimePrice) | **GET** /securities/{identifier}/prices/realtime | Realtime Stock Price for Security
+[**getSecurityReplayFile**](SecurityApi.md#getSecurityReplayFile) | **GET** /securities/replay | Security Replay File
 [**getSecuritySnapshots**](SecurityApi.md#getSecuritySnapshots) | **GET** /securities/snapshots | Realtime Stock Prices Snapshot
 [**getSecurityStockPriceAdjustments**](SecurityApi.md#getSecurityStockPriceAdjustments) | **GET** /securities/{identifier}/prices/adjustments | Stock Price Adjustments by Security
 [**getSecurityStockPrices**](SecurityApi.md#getSecurityStockPrices) | **GET** /securities/{identifier}/prices | Stock Prices by Security
+[**getSecurityTrades**](SecurityApi.md#getSecurityTrades) | **GET** /securities/trades | Security Trades
+[**getSecurityTradesBySymbol**](SecurityApi.md#getSecurityTradesBySymbol) | **GET** /securities/{identifier}/trades | Security Trades By Symbol
 [**getSecurityZacksAnalystRatings**](SecurityApi.md#getSecurityZacksAnalystRatings) | **GET** /securities/{identifier}/zacks/analyst_ratings | Zacks Analyst Ratings for Security
 [**getSecurityZacksAnalystRatingsSnapshot**](SecurityApi.md#getSecurityZacksAnalystRatingsSnapshot) | **GET** /securities/{identifier}/zacks/analyst_ratings/snapshot | Zacks Analyst Ratings Snapshot
 [**getSecurityZacksEpsSurprises**](SecurityApi.md#getSecurityZacksEpsSurprises) | **GET** /securities/{identifier}/zacks/eps_surprises | Zacks EPS Surprises for Security
@@ -962,7 +965,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
  **intervalSize** | String| The interval for which to return stock prices | [default to 15m] [enum: 1m, 5m, 10m, 15m, 30m, 60m, 1h] &nbsp;
- **source** | String| Return intervals from the specified data source | [optional] [enum: realtime, delayed] &nbsp;
+ **source** | String| Return intervals from the specified data source | [optional] [enum: realtime, delayed, nasdaq_basic] &nbsp;
  **startDate** | LocalDate| Return intervals starting at the specified date | [optional] &nbsp;
  **startTime** | String| Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) | [optional] &nbsp;
  **endDate** | LocalDate| Return intervals stopping at the specified date | [optional] &nbsp;
@@ -4299,6 +4302,92 @@ Name | Type | Description  | Notes
 
 [//]: # (CLASS:SecurityApi)
 
+[//]: # (METHOD:getSecurityReplayFile)
+
+[//]: # (RETURN_TYPE:SecurityReplayFileResult)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:SecurityReplayFileResult.md)
+
+[//]: # (OPERATION:getSecurityReplayFile_v2)
+
+[//]: # (ENDPOINT:/securities/replay)
+
+[//]: # (DOCUMENT_LINK:SecurityApi.md#getSecurityReplayFile)
+
+<a name="getSecurityReplayFile"></a>
+## **getSecurityReplayFile**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSecurityReplayFile_v2)
+
+[//]: # (START_OVERVIEW)
+
+> SecurityReplayFileResult getSecurityReplayFile(subsource, date)
+
+#### Security Replay File
+
+
+Returns a url where the requested replay file may be downloaded from.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    SecurityApi securityApi = new SecurityApi();
+    String subsource = null;
+    LocalDate date = null;
+    SecurityReplayFileResult result = securityApi.getSecurityReplayFile(subsource, date);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subsource** | String| The specific source of the data being requested. | [enum: iex, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, nasdaq_basic] &nbsp;
+ **date** | LocalDate| The date for the data being requested. | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**SecurityReplayFileResult**](SecurityReplayFileResult.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:SecurityApi)
+
 [//]: # (METHOD:getSecuritySnapshots)
 
 [//]: # (RETURN_TYPE:SecuritySnapshotsResult)
@@ -4561,6 +4650,202 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseSecurityStockPrices**](ApiResponseSecurityStockPrices.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:SecurityApi)
+
+[//]: # (METHOD:getSecurityTrades)
+
+[//]: # (RETURN_TYPE:SecurityTradesResult)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:SecurityTradesResult.md)
+
+[//]: # (OPERATION:getSecurityTrades_v2)
+
+[//]: # (ENDPOINT:/securities/trades)
+
+[//]: # (DOCUMENT_LINK:SecurityApi.md#getSecurityTrades)
+
+<a name="getSecurityTrades"></a>
+## **getSecurityTrades**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSecurityTrades_v2)
+
+[//]: # (START_OVERVIEW)
+
+> SecurityTradesResult getSecurityTrades(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage)
+
+#### Security Trades
+
+
+Returns all trades between start time and end time, up to seven days ago for the specified source.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    SecurityApi securityApi = new SecurityApi();
+    String source = null;
+    LocalDate startDate = null;
+    String startTime = null;
+    LocalDate endDate = null;
+    String endTime = null;
+    String timezone = "UTC";
+    Integer pageSize = 100;
+    String nextPage = null;
+    SecurityTradesResult result = securityApi.getSecurityTrades(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source** | String| The specific source of the data being requested. | [enum: nasdaq_basic] &nbsp;
+ **startDate** | LocalDate| The start date for the data being requested. | [optional] &nbsp;
+ **startTime** | String| The start time for the data being requested. | [optional] &nbsp;
+ **endDate** | LocalDate| The end date for the data being requested. | [optional] &nbsp;
+ **endTime** | String| The end time for the data being requested. | [optional] &nbsp;
+ **timezone** | String| The timezone the start and end date/times use. | [optional] [default to UTC] [enum: Africa/Algiers, Africa/Cairo, Africa/Casablanca, Africa/Harare, Africa/Johannesburg, Africa/Monrovia, Africa/Nairobi, America/Argentina/Buenos_Aires, America/Bogota, America/Caracas, America/Chicago, America/Chihuahua, America/Denver, America/Godthab, America/Guatemala, America/Guyana, America/Halifax, America/Indiana/Indianapolis, America/Juneau, America/La_Paz, America/Lima, America/Lima, America/Los_Angeles, America/Mazatlan, America/Mexico_City, America/Mexico_City, America/Monterrey, America/Montevideo, America/New_York, America/Phoenix, America/Regina, America/Santiago, America/Sao_Paulo, America/St_Johns, America/Tijuana, Asia/Almaty, Asia/Baghdad, Asia/Baku, Asia/Bangkok, Asia/Bangkok, Asia/Chongqing, Asia/Colombo, Asia/Dhaka, Asia/Dhaka, Asia/Hong_Kong, Asia/Irkutsk, Asia/Jakarta, Asia/Jerusalem, Asia/Kabul, Asia/Kamchatka, Asia/Karachi, Asia/Karachi, Asia/Kathmandu, Asia/Kolkata, Asia/Kolkata, Asia/Kolkata, Asia/Kolkata, Asia/Krasnoyarsk, Asia/Kuala_Lumpur, Asia/Kuwait, Asia/Magadan, Asia/Muscat, Asia/Muscat, Asia/Novosibirsk, Asia/Rangoon, Asia/Riyadh, Asia/Seoul, Asia/Shanghai, Asia/Singapore, Asia/Srednekolymsk, Asia/Taipei, Asia/Tashkent, Asia/Tbilisi, Asia/Tehran, Asia/Tokyo, Asia/Tokyo, Asia/Tokyo, Asia/Ulaanbaatar, Asia/Urumqi, Asia/Vladivostok, Asia/Yakutsk, Asia/Yekaterinburg, Asia/Yerevan, Atlantic/Azores, Atlantic/Cape_Verde, Atlantic/South_Georgia, Australia/Adelaide, Australia/Brisbane, Australia/Darwin, Australia/Hobart, Australia/Melbourne, Australia/Melbourne, Australia/Perth, Australia/Sydney, Etc/UTC, UTC, Europe/Amsterdam, Europe/Athens, Europe/Belgrade, Europe/Berlin, Europe/Berlin, Europe/Bratislava, Europe/Brussels, Europe/Bucharest, Europe/Budapest, Europe/Copenhagen, Europe/Dublin, Europe/Helsinki, Europe/Istanbul, Europe/Kaliningrad, Europe/Kiev, Europe/Lisbon, Europe/Ljubljana, Europe/London, Europe/London, Europe/Madrid, Europe/Minsk, Europe/Moscow, Europe/Moscow, Europe/Paris, Europe/Prague, Europe/Riga, Europe/Rome, Europe/Samara, Europe/Sarajevo, Europe/Skopje, Europe/Sofia, Europe/Stockholm, Europe/Tallinn, Europe/Vienna, Europe/Vilnius, Europe/Volgograd, Europe/Warsaw, Europe/Zagreb, Pacific/Apia, Pacific/Auckland, Pacific/Auckland, Pacific/Chatham, Pacific/Fakaofo, Pacific/Fiji, Pacific/Guadalcanal, Pacific/Guam, Pacific/Honolulu, Pacific/Majuro, Pacific/Midway, Pacific/Midway, Pacific/Noumea, Pacific/Pago_Pago, Pacific/Port_Moresby, Pacific/Tongatapu] &nbsp;
+ **pageSize** | Integer| The maximum number of results to return per page. | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**SecurityTradesResult**](SecurityTradesResult.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:SecurityApi)
+
+[//]: # (METHOD:getSecurityTradesBySymbol)
+
+[//]: # (RETURN_TYPE:SecurityTradesResult)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:SecurityTradesResult.md)
+
+[//]: # (OPERATION:getSecurityTradesBySymbol_v2)
+
+[//]: # (ENDPOINT:/securities/{identifier}/trades)
+
+[//]: # (DOCUMENT_LINK:SecurityApi.md#getSecurityTradesBySymbol)
+
+<a name="getSecurityTradesBySymbol"></a>
+## **getSecurityTradesBySymbol**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSecurityTradesBySymbol_v2)
+
+[//]: # (START_OVERVIEW)
+
+> SecurityTradesResult getSecurityTradesBySymbol(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage)
+
+#### Security Trades By Symbol
+
+
+Returns all trades for a symbol between start time and end time, up to seven days ago for the specified source.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    SecurityApi securityApi = new SecurityApi();
+    String source = null;
+    LocalDate startDate = null;
+    String startTime = null;
+    LocalDate endDate = null;
+    String endTime = null;
+    String timezone = "UTC";
+    Integer pageSize = 100;
+    String nextPage = null;
+    SecurityTradesResult result = securityApi.getSecurityTradesBySymbol(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **source** | String| The specific source of the data being requested. | [enum: nasdaq_basic] &nbsp;
+ **startDate** | LocalDate| The start date for the data being requested. | [optional] &nbsp;
+ **startTime** | String| The start time for the data being requested. | [optional] &nbsp;
+ **endDate** | LocalDate| The end date for the data being requested. | [optional] &nbsp;
+ **endTime** | String| The end time for the data being requested. | [optional] &nbsp;
+ **timezone** | String| The timezone the start and end date/times use. | [optional] [default to UTC] [enum: Africa/Algiers, Africa/Cairo, Africa/Casablanca, Africa/Harare, Africa/Johannesburg, Africa/Monrovia, Africa/Nairobi, America/Argentina/Buenos_Aires, America/Bogota, America/Caracas, America/Chicago, America/Chihuahua, America/Denver, America/Godthab, America/Guatemala, America/Guyana, America/Halifax, America/Indiana/Indianapolis, America/Juneau, America/La_Paz, America/Lima, America/Lima, America/Los_Angeles, America/Mazatlan, America/Mexico_City, America/Mexico_City, America/Monterrey, America/Montevideo, America/New_York, America/Phoenix, America/Regina, America/Santiago, America/Sao_Paulo, America/St_Johns, America/Tijuana, Asia/Almaty, Asia/Baghdad, Asia/Baku, Asia/Bangkok, Asia/Bangkok, Asia/Chongqing, Asia/Colombo, Asia/Dhaka, Asia/Dhaka, Asia/Hong_Kong, Asia/Irkutsk, Asia/Jakarta, Asia/Jerusalem, Asia/Kabul, Asia/Kamchatka, Asia/Karachi, Asia/Karachi, Asia/Kathmandu, Asia/Kolkata, Asia/Kolkata, Asia/Kolkata, Asia/Kolkata, Asia/Krasnoyarsk, Asia/Kuala_Lumpur, Asia/Kuwait, Asia/Magadan, Asia/Muscat, Asia/Muscat, Asia/Novosibirsk, Asia/Rangoon, Asia/Riyadh, Asia/Seoul, Asia/Shanghai, Asia/Singapore, Asia/Srednekolymsk, Asia/Taipei, Asia/Tashkent, Asia/Tbilisi, Asia/Tehran, Asia/Tokyo, Asia/Tokyo, Asia/Tokyo, Asia/Ulaanbaatar, Asia/Urumqi, Asia/Vladivostok, Asia/Yakutsk, Asia/Yekaterinburg, Asia/Yerevan, Atlantic/Azores, Atlantic/Cape_Verde, Atlantic/South_Georgia, Australia/Adelaide, Australia/Brisbane, Australia/Darwin, Australia/Hobart, Australia/Melbourne, Australia/Melbourne, Australia/Perth, Australia/Sydney, Etc/UTC, UTC, Europe/Amsterdam, Europe/Athens, Europe/Belgrade, Europe/Berlin, Europe/Berlin, Europe/Bratislava, Europe/Brussels, Europe/Bucharest, Europe/Budapest, Europe/Copenhagen, Europe/Dublin, Europe/Helsinki, Europe/Istanbul, Europe/Kaliningrad, Europe/Kiev, Europe/Lisbon, Europe/Ljubljana, Europe/London, Europe/London, Europe/Madrid, Europe/Minsk, Europe/Moscow, Europe/Moscow, Europe/Paris, Europe/Prague, Europe/Riga, Europe/Rome, Europe/Samara, Europe/Sarajevo, Europe/Skopje, Europe/Sofia, Europe/Stockholm, Europe/Tallinn, Europe/Vienna, Europe/Vilnius, Europe/Volgograd, Europe/Warsaw, Europe/Zagreb, Pacific/Apia, Pacific/Auckland, Pacific/Auckland, Pacific/Chatham, Pacific/Fakaofo, Pacific/Fiji, Pacific/Guadalcanal, Pacific/Guam, Pacific/Honolulu, Pacific/Majuro, Pacific/Midway, Pacific/Midway, Pacific/Noumea, Pacific/Pago_Pago, Pacific/Port_Moresby, Pacific/Tongatapu] &nbsp;
+ **pageSize** | Integer| The maximum number of results to return per page. | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**SecurityTradesResult**](SecurityTradesResult.md)
 
 [//]: # (END_OPERATION)
 
