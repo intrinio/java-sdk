@@ -50,6 +50,8 @@ import com.evanlennick.retry4j.Status;
 import java.util.concurrent.Callable;
 import com.evanlennick.retry4j.exception.RetriesExhaustedException;
 import com.evanlennick.retry4j.exception.UnexpectedException;
+import java.lang.ReflectiveOperationException;
+import java.lang.reflect.Method;
 
 public class ApiClient {
 
@@ -1223,7 +1225,7 @@ public class ApiClient {
 
                     ApiResponse<T> result = (ApiResponse<T>) finalApiFunction.invoke(apiCallObject, finalApiCallArguments);
                     return result;
-                } catch (InvocationTargetException e) {
+                } catch (java.lang.reflect.InvocationTargetException e) {
                   ApiException targetException = (ApiException) e.getTargetException();
                   throw targetException;
                 } catch (InstantiationException | NoSuchMethodException | IllegalAccessException e) {
