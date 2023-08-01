@@ -1064,7 +1064,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
- **source** | String| Return intraday prices from the specified data source | [optional] [enum: iex, bats] &nbsp;
+ **source** | String| Return intraday prices from the specified data source | [optional] [enum: realtime, delayed, nasdaq_basic] &nbsp;
  **startDate** | LocalDate| Return intraday prices starting at the specified date | [optional] &nbsp;
  **startTime** | String| Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) | [optional] &nbsp;
  **endDate** | LocalDate| Return intraday prices stopping at the specified date | [optional] &nbsp;
