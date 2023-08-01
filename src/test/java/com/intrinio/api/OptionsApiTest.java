@@ -86,7 +86,7 @@ public class OptionsApiTest {
     public void getOptionStrikesRealtimeTest() throws ApiException, NoSuchMethodException {
         String symbol = null;
         BigDecimal strike = null;
-        ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike);
+        ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike, null, null);
 
         // TODO: test validations
     }
@@ -208,7 +208,7 @@ public class OptionsApiTest {
         BigDecimal openInterestGreaterThan = null;
         BigDecimal openInterestLessThan = null;
         String moneyness = null;
-        ApiResponseOptionsChainRealtime response = api.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness);
+        ApiResponseOptionsChainRealtime response = api.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, null, null);
 
         // TODO: test validations
     }
@@ -334,7 +334,7 @@ public class OptionsApiTest {
     public void getOptionsPricesBatchRealtimeTest() throws ApiException, NoSuchMethodException {
         OptionContractsList body = null;
         String source = null;
-        ApiResponseOptionsPricesBatchRealtime response = api.getOptionsPricesBatchRealtime(body, source);
+        ApiResponseOptionsPricesBatchRealtime response = api.getOptionsPricesBatchRealtime(body, source, null, null);
 
         // TODO: test validations
     }
@@ -367,7 +367,7 @@ public class OptionsApiTest {
     public void getOptionsPricesRealtimeTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String source = null;
-        ApiResponseOptionsPriceRealtime response = api.getOptionsPricesRealtime(identifier, source);
+        ApiResponseOptionsPriceRealtime response = api.getOptionsPricesRealtime(identifier, source, null, null);
 
         // TODO: test validations
     }
