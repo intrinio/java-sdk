@@ -2608,12 +2608,14 @@ public class CompanyApi {
     /**
      * Build call for sharesOutstandingByCompany
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param endDateGreaterThan Returns shares outstanding after this date. (optional)
+     * @param endDateLessThan Returns shares outstanding before this date. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call sharesOutstandingByCompanyCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call sharesOutstandingByCompanyCall(String identifier, LocalDate endDateGreaterThan, LocalDate endDateLessThan, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -2622,6 +2624,10 @@ public class CompanyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (endDateGreaterThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date_greater_than", endDateGreaterThan));
+        if (endDateLessThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date_less_than", endDateLessThan));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -2656,7 +2662,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call sharesOutstandingByCompanyValidateBeforeCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call sharesOutstandingByCompanyValidateBeforeCall(String identifier, LocalDate endDateGreaterThan, LocalDate endDateLessThan, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -2664,7 +2670,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = sharesOutstandingByCompanyCall(identifier, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = sharesOutstandingByCompanyCall(identifier, endDateGreaterThan, endDateLessThan, progressListener, progressRequestListener);
         return call;
 
     }
@@ -2673,14 +2679,16 @@ public class CompanyApi {
      * Shares Outstanding by Company
      * Returns the shares outstanding reported on the front cover of the SEC 10-K and 10-Q filings.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param endDateGreaterThan Returns shares outstanding after this date. (optional)
+     * @param endDateLessThan Returns shares outstanding before this date. (optional)
      * @return ApiResponseCompanySharesOutstanding
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanySharesOutstanding sharesOutstandingByCompany(String identifier) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("sharesOutstandingByCompanyWithHttpInfo", String.class);
+    public ApiResponseCompanySharesOutstanding sharesOutstandingByCompany(String identifier, LocalDate endDateGreaterThan, LocalDate endDateLessThan) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("sharesOutstandingByCompanyWithHttpInfo", String.class, LocalDate.class, LocalDate.class);
       
-      Object[] apiCallArguments = { identifier };
+      Object[] apiCallArguments = { identifier, endDateGreaterThan, endDateLessThan };
       ApiResponse<ApiResponseCompanySharesOutstanding> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -2689,11 +2697,13 @@ public class CompanyApi {
      * Shares Outstanding by Company
      * Returns the shares outstanding reported on the front cover of the SEC 10-K and 10-Q filings.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param endDateGreaterThan Returns shares outstanding after this date. (optional)
+     * @param endDateLessThan Returns shares outstanding before this date. (optional)
      * @return ApiResponse&lt;ApiResponseCompanySharesOutstanding&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanySharesOutstanding> sharesOutstandingByCompanyWithHttpInfo(String identifier) throws ApiException {
-        com.squareup.okhttp.Call call = sharesOutstandingByCompanyValidateBeforeCall(identifier, null, null);
+    public ApiResponse<ApiResponseCompanySharesOutstanding> sharesOutstandingByCompanyWithHttpInfo(String identifier, LocalDate endDateGreaterThan, LocalDate endDateLessThan) throws ApiException {
+        com.squareup.okhttp.Call call = sharesOutstandingByCompanyValidateBeforeCall(identifier, endDateGreaterThan, endDateLessThan, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanySharesOutstanding>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2702,11 +2712,13 @@ public class CompanyApi {
      * Shares Outstanding by Company (asynchronously)
      * Returns the shares outstanding reported on the front cover of the SEC 10-K and 10-Q filings.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param endDateGreaterThan Returns shares outstanding after this date. (optional)
+     * @param endDateLessThan Returns shares outstanding before this date. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call sharesOutstandingByCompanyAsync(String identifier, final ApiCallback<ApiResponseCompanySharesOutstanding> callback) throws ApiException {
+    public com.squareup.okhttp.Call sharesOutstandingByCompanyAsync(String identifier, LocalDate endDateGreaterThan, LocalDate endDateLessThan, final ApiCallback<ApiResponseCompanySharesOutstanding> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2727,7 +2739,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = sharesOutstandingByCompanyValidateBeforeCall(identifier, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = sharesOutstandingByCompanyValidateBeforeCall(identifier, endDateGreaterThan, endDateLessThan, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanySharesOutstanding>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

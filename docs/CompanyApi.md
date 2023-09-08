@@ -1600,7 +1600,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseCompanySharesOutstanding sharesOutstandingByCompany(identifier)
+> ApiResponseCompanySharesOutstanding sharesOutstandingByCompany(identifier, endDateGreaterThan, endDateLessThan)
 
 #### Shares Outstanding by Company
 
@@ -1632,7 +1632,9 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
     String identifier = "AAPL";
-    ApiResponseCompanySharesOutstanding result = companyApi.sharesOutstandingByCompany(identifier);
+    LocalDate endDateGreaterThan = null;
+    LocalDate endDateLessThan = null;
+    ApiResponseCompanySharesOutstanding result = companyApi.sharesOutstandingByCompany(identifier, endDateGreaterThan, endDateLessThan);
     System.out.println(result);
   }
 }
@@ -1648,6 +1650,8 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
+ **endDateGreaterThan** | LocalDate| Returns shares outstanding after this date. | [optional] &nbsp;
+ **endDateLessThan** | LocalDate| Returns shares outstanding before this date. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

@@ -50,8 +50,6 @@ import com.evanlennick.retry4j.Status;
 import java.util.concurrent.Callable;
 import com.evanlennick.retry4j.exception.RetriesExhaustedException;
 import com.evanlennick.retry4j.exception.UnexpectedException;
-import java.lang.ReflectiveOperationException;
-import java.lang.reflect.Method;
 
 public class ApiClient {
 
@@ -89,7 +87,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/6.18.0/java");
+        setUserAgent("Swagger-Codegen/6.19.0/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
@@ -1225,7 +1223,7 @@ public class ApiClient {
 
                     ApiResponse<T> result = (ApiResponse<T>) finalApiFunction.invoke(apiCallObject, finalApiCallArguments);
                     return result;
-                } catch (java.lang.reflect.InvocationTargetException e) {
+                } catch (InvocationTargetException e) {
                   ApiException targetException = (ApiException) e.getTargetException();
                   throw targetException;
                 } catch (InstantiationException | NoSuchMethodException | IllegalAccessException e) {

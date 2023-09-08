@@ -565,7 +565,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseSecurityInstitutionalOwnership getSecurityInsiderOwnership(identifier)
+> ApiResponseSecurityInstitutionalOwnership getSecurityInsiderOwnership(identifier, nextPage)
 
 #### Institutional Ownership by Security
 
@@ -597,7 +597,8 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
     String identifier = "AAPL";
-    ApiResponseSecurityInstitutionalOwnership result = securityApi.getSecurityInsiderOwnership(identifier);
+    String nextPage = null;
+    ApiResponseSecurityInstitutionalOwnership result = securityApi.getSecurityInsiderOwnership(identifier, nextPage);
     System.out.println(result);
   }
 }
@@ -613,6 +614,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -1064,7 +1066,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
- **source** | String| Return intraday prices from the specified data source | [optional] [enum: realtime, delayed, nasdaq_basic] &nbsp;
+ **source** | String| Return intraday prices from the specified data source | [optional] [enum: iex, bats] &nbsp;
  **startDate** | LocalDate| Return intraday prices starting at the specified date | [optional] &nbsp;
  **startTime** | String| Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) | [optional] &nbsp;
  **endDate** | LocalDate| Return intraday prices stopping at the specified date | [optional] &nbsp;

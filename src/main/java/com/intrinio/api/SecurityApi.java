@@ -913,12 +913,13 @@ public class SecurityApi {
     /**
      * Build call for getSecurityInsiderOwnership
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityInsiderOwnershipCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityInsiderOwnershipCall(String identifier, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -927,6 +928,8 @@ public class SecurityApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -961,7 +964,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityInsiderOwnershipValidateBeforeCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityInsiderOwnershipValidateBeforeCall(String identifier, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -969,7 +972,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityInsiderOwnershipCall(identifier, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityInsiderOwnershipCall(identifier, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -978,14 +981,15 @@ public class SecurityApi {
      * Institutional Ownership by Security
      * Returns a list of all institutional owners of a given security.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityInstitutionalOwnership
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityInstitutionalOwnership getSecurityInsiderOwnership(String identifier) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecurityInsiderOwnershipWithHttpInfo", String.class);
+    public ApiResponseSecurityInstitutionalOwnership getSecurityInsiderOwnership(String identifier, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityInsiderOwnershipWithHttpInfo", String.class, String.class);
       
-      Object[] apiCallArguments = { identifier };
+      Object[] apiCallArguments = { identifier, nextPage };
       ApiResponse<ApiResponseSecurityInstitutionalOwnership> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -994,11 +998,12 @@ public class SecurityApi {
      * Institutional Ownership by Security
      * Returns a list of all institutional owners of a given security.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurityInstitutionalOwnership&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityInstitutionalOwnership> getSecurityInsiderOwnershipWithHttpInfo(String identifier) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityInsiderOwnershipValidateBeforeCall(identifier, null, null);
+    public ApiResponse<ApiResponseSecurityInstitutionalOwnership> getSecurityInsiderOwnershipWithHttpInfo(String identifier, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityInsiderOwnershipValidateBeforeCall(identifier, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityInstitutionalOwnership>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1007,11 +1012,12 @@ public class SecurityApi {
      * Institutional Ownership by Security (asynchronously)
      * Returns a list of all institutional owners of a given security.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityInsiderOwnershipAsync(String identifier, final ApiCallback<ApiResponseSecurityInstitutionalOwnership> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityInsiderOwnershipAsync(String identifier, String nextPage, final ApiCallback<ApiResponseSecurityInstitutionalOwnership> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1032,7 +1038,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityInsiderOwnershipValidateBeforeCall(identifier, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityInsiderOwnershipValidateBeforeCall(identifier, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityInstitutionalOwnership>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
