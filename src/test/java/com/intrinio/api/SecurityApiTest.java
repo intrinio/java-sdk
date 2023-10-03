@@ -53,9 +53,12 @@ import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import com.intrinio.models.RealtimeStockPrice;
 import com.intrinio.models.Security;
+import com.intrinio.models.SecurityIntervalsMoversResult;
+import com.intrinio.models.SecurityReplayFileResult;
 import com.intrinio.models.SecurityScreenGroup;
 import com.intrinio.models.SecurityScreenResult;
 import com.intrinio.models.SecuritySnapshotsResult;
+import com.intrinio.models.SecurityTradesResult;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -192,7 +195,59 @@ public class SecurityApiTest {
     @Test
     public void getSecurityInsiderOwnershipTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
-        ApiResponseSecurityInstitutionalOwnership response = api.getSecurityInsiderOwnership(identifier);
+        String nextPage = null;
+        ApiResponseSecurityInstitutionalOwnership response = api.getSecurityInsiderOwnership(identifier, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security Intervals Movers
+     *
+     * Returns a list of intervals for the biggest movers over the last hour interval.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityIntervalMoversTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        OffsetDateTime openTime = null;
+        SecurityIntervalsMoversResult response = api.getSecurityIntervalMovers(source, openTime);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security Intervals Movers By Change
+     *
+     * Returns a list of intervals for the biggest movers by change over the last hour interval.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityIntervalMoversChangeTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        OffsetDateTime openTime = null;
+        SecurityIntervalsMoversResult response = api.getSecurityIntervalMoversChange(source, openTime);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security Intervals Movers By Volume
+     *
+     * Returns a list of intervals for the biggest movers by volume over the last hour interval.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityIntervalMoversVolumeTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        OffsetDateTime openTime = null;
+        SecurityIntervalsMoversResult response = api.getSecurityIntervalMoversVolume(source, openTime);
 
         // TODO: test validations
     }
@@ -200,7 +255,7 @@ public class SecurityApiTest {
     /**
      * Interval Stock Prices for Security
      *
-     * Return Open, High, Low, Close, and Volume for a particular interval for the Security with the given &#x60;identifier&#x60;
+     * Return open, close, high, low, volume, average price, and change ratio for a particular interval for the Security with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -208,13 +263,13 @@ public class SecurityApiTest {
     @Test
     public void getSecurityIntervalPricesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
+        String intervalSize = null;
         String source = null;
         LocalDate startDate = null;
         String startTime = null;
         LocalDate endDate = null;
         String endTime = null;
         String timezone = null;
-        String intervalSize = null;
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseSecurityIntervalPrices response = api.getSecurityIntervalPrices(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
@@ -970,6 +1025,23 @@ public class SecurityApiTest {
     }
     
     /**
+     * Security Replay File
+     *
+     * Returns a url where the requested replay file may be downloaded from.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityReplayFileTest() throws ApiException, NoSuchMethodException {
+        String subsource = null;
+        LocalDate date = null;
+        SecurityReplayFileResult response = api.getSecurityReplayFile(subsource, date);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Realtime Stock Prices Snapshot
      *
      * Returns all security snapshots for the queried interval with links to download.
@@ -1022,6 +1094,52 @@ public class SecurityApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseSecurityStockPrices response = api.getSecurityStockPrices(identifier, startDate, endDate, frequency, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security Trades
+     *
+     * Returns all trades between start time and end time, up to seven days ago for the specified source.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityTradesTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        LocalDate startDate = null;
+        String startTime = null;
+        LocalDate endDate = null;
+        String endTime = null;
+        String timezone = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        SecurityTradesResult response = api.getSecurityTrades(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security Trades By Symbol
+     *
+     * Returns all trades for a symbol between start time and end time, up to seven days ago for the specified source.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityTradesBySymbolTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        LocalDate startDate = null;
+        String startTime = null;
+        LocalDate endDate = null;
+        String endTime = null;
+        String timezone = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        SecurityTradesResult response = api.getSecurityTradesBySymbol(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
 
         // TODO: test validations
     }

@@ -10,6 +10,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.intrinio.models.OptionPriceRealtime;
 import com.intrinio.models.OptionRealtime;
+import com.intrinio.models.OptionStatsRealtime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -20,29 +21,14 @@ import java.io.IOException;
 @ApiModel(description = "An realtime option chain contains an options contract and corresponding price data for that contract on a given date.")
 
 public class OptionPriceBatchRealtime {
-  @SerializedName("option")
-  private OptionRealtime option = null;
-
   @SerializedName("price")
   private OptionPriceRealtime price = null;
 
-  public OptionPriceBatchRealtime option(OptionRealtime option) {
-    this.option = option;
-    return this;
-  }
+  @SerializedName("stats")
+  private OptionStatsRealtime stats = null;
 
-   /**
-   * Get option
-   * @return option
-  **/
-  @ApiModelProperty(value = "")
-  public OptionRealtime getOption() {
-    return option;
-  }
-
-  public void setOption(OptionRealtime option) {
-    this.option = option;
-  }
+  @SerializedName("option")
+  private OptionRealtime option = null;
 
   public OptionPriceBatchRealtime price(OptionPriceRealtime price) {
     this.price = price;
@@ -62,6 +48,42 @@ public class OptionPriceBatchRealtime {
     this.price = price;
   }
 
+  public OptionPriceBatchRealtime stats(OptionStatsRealtime stats) {
+    this.stats = stats;
+    return this;
+  }
+
+   /**
+   * Get stats
+   * @return stats
+  **/
+  @ApiModelProperty(value = "")
+  public OptionStatsRealtime getStats() {
+    return stats;
+  }
+
+  public void setStats(OptionStatsRealtime stats) {
+    this.stats = stats;
+  }
+
+  public OptionPriceBatchRealtime option(OptionRealtime option) {
+    this.option = option;
+    return this;
+  }
+
+   /**
+   * Get option
+   * @return option
+  **/
+  @ApiModelProperty(value = "")
+  public OptionRealtime getOption() {
+    return option;
+  }
+
+  public void setOption(OptionRealtime option) {
+    this.option = option;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -72,13 +94,14 @@ public class OptionPriceBatchRealtime {
       return false;
     }
     OptionPriceBatchRealtime optionPriceBatchRealtime = (OptionPriceBatchRealtime) o;
-    return Objects.equals(this.option, optionPriceBatchRealtime.option) &&
-        Objects.equals(this.price, optionPriceBatchRealtime.price);
+    return Objects.equals(this.price, optionPriceBatchRealtime.price) &&
+        Objects.equals(this.stats, optionPriceBatchRealtime.stats) &&
+        Objects.equals(this.option, optionPriceBatchRealtime.option);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(option, price);
+    return Objects.hash(price, stats, option);
   }
 
 
@@ -87,8 +110,9 @@ public class OptionPriceBatchRealtime {
     StringBuilder sb = new StringBuilder();
     sb.append("class OptionPriceBatchRealtime {\n");
     
-    sb.append("    option: ").append(toIndentedString(option)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
+    sb.append("    stats: ").append(toIndentedString(stats)).append("\n");
+    sb.append("    option: ").append(toIndentedString(option)).append("\n");
     sb.append("}");
     return sb.toString();
   }

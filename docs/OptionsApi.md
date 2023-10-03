@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsChainRealtime getOptionStrikesRealtime(symbol, strike, stockPriceSource, model)
+> ApiResponseOptionsChainRealtime getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model)
 
 #### Option Strikes Realtime
 
@@ -259,9 +259,10 @@ public class Main {
     OptionsApi optionsApi = new OptionsApi();
     String symbol = "MSFT";
     BigDecimal strike = null;
+    String source = null;
     String stockPriceSource = null;
     String model = null;
-    ApiResponseOptionsChainRealtime result = optionsApi.getOptionStrikesRealtime(symbol, strike, stockPriceSource, model);
+    ApiResponseOptionsChainRealtime result = optionsApi.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model);
     System.out.println(result);
   }
 }
@@ -278,6 +279,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **symbol** | String| The option symbol, corresponding to the underlying security. | &nbsp;
  **strike** | BigDecimal| The strike price of the option contract. This will return options contracts with strike price equal to this price. | &nbsp;
+ **source** | String| Realtime or delayed. | [optional] [enum: realtime, delayed] &nbsp;
  **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
 <br/>
@@ -677,7 +679,7 @@ Name | Type | Description  | Notes
  **strike** | BigDecimal| The strike price of the option contract. This will return options contracts with strike price equal to this price. | [optional] &nbsp;
  **strikeGreaterThan** | BigDecimal| The strike price of the option contract. This will return options contracts with strike prices greater than this price. | [optional] &nbsp;
  **strikeLessThan** | BigDecimal| The strike price of the option contract. This will return options contracts with strike prices less than this price. | [optional] &nbsp;
- **date** | LocalDate| The the date to retrieve prices for | [optional] &nbsp;
+ **date** | LocalDate| The date to retrieve prices for | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -1442,7 +1444,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsPricesBatchRealtime getOptionsPricesBatchRealtime(body, source, stockPriceSource, model)
+> ApiResponseOptionsPricesBatchRealtime getOptionsPricesBatchRealtime(body, source, showStats, stockPriceSource, model)
 
 #### Option Prices Batch Realtime
 
@@ -1474,6 +1476,7 @@ public class Main {
 
     OptionsApi optionsApi = new OptionsApi();
     String source = null;
+    Boolean showStats = null;
     String stockPriceSource = null;
     String model = null;
     OptionContractsList body = new OptionContractsList();
@@ -1483,7 +1486,7 @@ public class Main {
     contracts.add("A220121P00057500");
     contracts.add("A220121P00060000");
     body.setContracts(contracts);
-    ApiResponseOptionsPricesBatchRealtime result = optionsApi.getOptionsPricesBatchRealtime(body, source, stockPriceSource, model);
+    ApiResponseOptionsPricesBatchRealtime result = optionsApi.getOptionsPricesBatchRealtime(body, source, showStats, stockPriceSource, model);
     System.out.println(result);
   }
 }
@@ -1500,6 +1503,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**OptionContractsList**](OptionContractsList.md)| The contract symbols for which to return options prices for. | &nbsp;
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+ **showStats** | Boolean| Whether to include Greek calculations or not. | [optional] &nbsp;
  **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
 <br/>
@@ -1538,7 +1542,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsPricesEod getOptionsPricesEod(identifier)
+> ApiResponseOptionsPricesEod getOptionsPricesEod(identifier, nextPage, startDate, endDate)
 
 #### Option Prices EOD
 
@@ -1570,7 +1574,10 @@ public class Main {
 
     OptionsApi optionsApi = new OptionsApi();
     String identifier = "AAPL230616P00190000";
-    ApiResponseOptionsPricesEod result = optionsApi.getOptionsPricesEod(identifier);
+    String nextPage = null;
+    LocalDate startDate = null;
+    LocalDate endDate = null;
+    ApiResponseOptionsPricesEod result = optionsApi.getOptionsPricesEod(identifier, nextPage, startDate, endDate);
     System.out.println(result);
   }
 }
@@ -1586,6 +1593,9 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| The Intrinio ID or code of the options contract to request prices for. | &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+ **startDate** | LocalDate| The start date to retrieve prices for | [optional] &nbsp;
+ **endDate** | LocalDate| The end date to retrieve prices for | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

@@ -62,7 +62,7 @@ public class EtFsApiTest {
     /**
      * ETF Analytics
      *
-     * Returns latest market analytics for a specified US ETF, including volume, trailing volumen, market cap, 52 week high, and 52 week low.
+     * Returns latest market analytics for a specified US ETF, including volume, trailing volume, market cap, 52 week high, and 52 week low.
      *
      * @throws ApiException
      *          if the Api call fails

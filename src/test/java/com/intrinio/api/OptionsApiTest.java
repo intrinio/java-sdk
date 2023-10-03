@@ -56,9 +56,9 @@ public class OptionsApiTest {
     }
     
     /**
-     * Option Expirations Realtime
+     * Options Expirations
      *
-     * Returns a list of all current and upcoming expiration dates for a particular symbol.
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -86,7 +86,10 @@ public class OptionsApiTest {
     public void getOptionStrikesRealtimeTest() throws ApiException, NoSuchMethodException {
         String symbol = null;
         BigDecimal strike = null;
-        ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike, null, null);
+        String source = null;
+        String stockPriceSource = null;
+        String model = null;
+        ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model);
 
         // TODO: test validations
     }
@@ -94,7 +97,7 @@ public class OptionsApiTest {
     /**
      * Options
      *
-     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.
+     * Returns a list of all securities that have options listed and are tradable on a US market exchange. Useful to retrieve the entire universe.  Available via a 3rd party, contact sales for a trial.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -143,7 +146,7 @@ public class OptionsApiTest {
     /**
      * Options Chain
      *
-     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.
+     * Returns a list of the historical end-of-day top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the option chain.  Available via a 3rd party, contact sales for a trial.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -208,7 +211,9 @@ public class OptionsApiTest {
         BigDecimal openInterestGreaterThan = null;
         BigDecimal openInterestLessThan = null;
         String moneyness = null;
-        ApiResponseOptionsChainRealtime response = api.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, null, null);
+        String stockPriceSource = null;
+        String model = null;
+        ApiResponseOptionsChainRealtime response = api.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model);
 
         // TODO: test validations
     }
@@ -216,7 +221,7 @@ public class OptionsApiTest {
     /**
      * Options Expirations
      *
-     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.  Available via a 3rd party, contact sales for a trial.
      *
      * @throws ApiException
      *          if the Api call fails
@@ -232,7 +237,25 @@ public class OptionsApiTest {
     }
     
     /**
-     * Options intervals by contract
+     * Options Expirations
+     *
+     * Returns a list of all current and upcoming option contract expiration dates for a particular symbol.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsExpirationsEodTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        String after = null;
+        String before = null;
+        ApiResponseOptionsExpirations response = api.getOptionsExpirationsEod(symbol, after, before);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Options Intervals By Contract
      *
      * Returns a list of interval data points for a contract.
      *
@@ -334,7 +357,10 @@ public class OptionsApiTest {
     public void getOptionsPricesBatchRealtimeTest() throws ApiException, NoSuchMethodException {
         OptionContractsList body = null;
         String source = null;
-        ApiResponseOptionsPricesBatchRealtime response = api.getOptionsPricesBatchRealtime(body, source, null, null);
+        Boolean showStats = null;
+        String stockPriceSource = null;
+        String model = null;
+        ApiResponseOptionsPricesBatchRealtime response = api.getOptionsPricesBatchRealtime(body, source, showStats, stockPriceSource, model);
 
         // TODO: test validations
     }
@@ -350,7 +376,10 @@ public class OptionsApiTest {
     @Test
     public void getOptionsPricesEodTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
-        ApiResponseOptionsPricesEod response = api.getOptionsPricesEod(identifier);
+        String nextPage = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        ApiResponseOptionsPricesEod response = api.getOptionsPricesEod(identifier, nextPage, startDate, endDate);
 
         // TODO: test validations
     }
@@ -367,7 +396,9 @@ public class OptionsApiTest {
     public void getOptionsPricesRealtimeTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String source = null;
-        ApiResponseOptionsPriceRealtime response = api.getOptionsPricesRealtime(identifier, source, null, null);
+        String stockPriceSource = null;
+        String model = null;
+        ApiResponseOptionsPriceRealtime response = api.getOptionsPricesRealtime(identifier, source, stockPriceSource, model);
 
         // TODO: test validations
     }

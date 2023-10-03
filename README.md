@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://docs.intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.45.0
-- Package version: 6.19.0
+- API version: 2.47.3
+- Package version: 6.19.1
 
 
 ## Installation
@@ -152,11 +152,12 @@ Class | Method | HTTP request | Description
 *IndexApi* | [**searchSicIndices**](docs/IndexApi.md#searchSicIndices) | **GET** /indices/sic/search | Search SIC Indices
 *IndexApi* | [**searchStockMarketsIndices**](docs/IndexApi.md#searchStockMarketsIndices) | **GET** /indices/stock_market/search | Search Stock Market Indices
 *InsiderTransactionFilingsApi* | [**getAllInsiderTransactionFilings**](docs/InsiderTransactionFilingsApi.md#getAllInsiderTransactionFilings) | **GET** /insider_transaction_filings | All Insider Transactions Filings
+*MarketApi* | [**getMarketStatus**](docs/MarketApi.md#getMarketStatus) | **GET** /market/status | Market Status
 *MunicipalityApi* | [**getAllMunicipalities**](docs/MunicipalityApi.md#getAllMunicipalities) | **GET** /municipalities | All Municipalities
 *MunicipalityApi* | [**getMunicipalityById**](docs/MunicipalityApi.md#getMunicipalityById) | **GET** /municipalities/{id} | Municipality by ID
 *MunicipalityApi* | [**getMunicipalityFinancials**](docs/MunicipalityApi.md#getMunicipalityFinancials) | **GET** /municipalities/{id}/financials | Financials for a Municipality
 *OptionsApi* | [**getAllOptionsTickers**](docs/OptionsApi.md#getAllOptionsTickers) | **GET** /options/tickers | Options Tickers
-*OptionsApi* | [**getOptionExpirationsRealtime**](docs/OptionsApi.md#getOptionExpirationsRealtime) | **GET** /options/expirations/{symbol}/realtime | Option Expirations Realtime
+*OptionsApi* | [**getOptionExpirationsRealtime**](docs/OptionsApi.md#getOptionExpirationsRealtime) | **GET** /options/expirations/{symbol}/realtime | Options Expirations
 *OptionsApi* | [**getOptionStrikesRealtime**](docs/OptionsApi.md#getOptionStrikesRealtime) | **GET** /options/strikes/{symbol}/{strike}/realtime | Option Strikes Realtime
 *OptionsApi* | [**getOptions**](docs/OptionsApi.md#getOptions) | **GET** /options/{symbol} | Options
 *OptionsApi* | [**getOptionsBySymbolRealtime**](docs/OptionsApi.md#getOptionsBySymbolRealtime) | **GET** /options/{symbol}/realtime | Options by Symbol Realtime
@@ -164,7 +165,8 @@ Class | Method | HTTP request | Description
 *OptionsApi* | [**getOptionsChainEod**](docs/OptionsApi.md#getOptionsChainEod) | **GET** /options/chain/{symbol}/{expiration}/eod | Options Chain EOD
 *OptionsApi* | [**getOptionsChainRealtime**](docs/OptionsApi.md#getOptionsChainRealtime) | **GET** /options/chain/{symbol}/{expiration}/realtime | Options Chain Realtime
 *OptionsApi* | [**getOptionsExpirations**](docs/OptionsApi.md#getOptionsExpirations) | **GET** /options/expirations/{symbol} | Options Expirations
-*OptionsApi* | [**getOptionsIntervalByContract**](docs/OptionsApi.md#getOptionsIntervalByContract) | **GET** /options/interval/{identifier} | Options intervals by contract
+*OptionsApi* | [**getOptionsExpirationsEod**](docs/OptionsApi.md#getOptionsExpirationsEod) | **GET** /options/expirations/{symbol}/eod | Options Expirations
+*OptionsApi* | [**getOptionsIntervalByContract**](docs/OptionsApi.md#getOptionsIntervalByContract) | **GET** /options/interval/{identifier} | Options Intervals By Contract
 *OptionsApi* | [**getOptionsIntervalMovers**](docs/OptionsApi.md#getOptionsIntervalMovers) | **GET** /options/interval/movers | Options Intervals Movers
 *OptionsApi* | [**getOptionsIntervalMoversChange**](docs/OptionsApi.md#getOptionsIntervalMoversChange) | **GET** /options/interval/movers/change | Options Intervals Movers By Change
 *OptionsApi* | [**getOptionsIntervalMoversVolume**](docs/OptionsApi.md#getOptionsIntervalMoversVolume) | **GET** /options/interval/movers/volume | Options Intervals Movers By Volume
@@ -189,6 +191,9 @@ Class | Method | HTTP request | Description
 *SecurityApi* | [**getSecurityDataPointText**](docs/SecurityApi.md#getSecurityDataPointText) | **GET** /securities/{identifier}/data_point/{tag}/text | Data Point (Text) for Security
 *SecurityApi* | [**getSecurityHistoricalData**](docs/SecurityApi.md#getSecurityHistoricalData) | **GET** /securities/{identifier}/historical_data/{tag} | Historical Data for Security
 *SecurityApi* | [**getSecurityInsiderOwnership**](docs/SecurityApi.md#getSecurityInsiderOwnership) | **GET** /securities/{identifier}/institutional_ownership | Institutional Ownership by Security
+*SecurityApi* | [**getSecurityIntervalMovers**](docs/SecurityApi.md#getSecurityIntervalMovers) | **GET** /securities/market_movers | Security Intervals Movers
+*SecurityApi* | [**getSecurityIntervalMoversChange**](docs/SecurityApi.md#getSecurityIntervalMoversChange) | **GET** /securities/market_movers/change | Security Intervals Movers By Change
+*SecurityApi* | [**getSecurityIntervalMoversVolume**](docs/SecurityApi.md#getSecurityIntervalMoversVolume) | **GET** /securities/market_movers/volume | Security Intervals Movers By Volume
 *SecurityApi* | [**getSecurityIntervalPrices**](docs/SecurityApi.md#getSecurityIntervalPrices) | **GET** /securities/{identifier}/prices/intervals | Interval Stock Prices for Security
 *SecurityApi* | [**getSecurityIntradayPrices**](docs/SecurityApi.md#getSecurityIntradayPrices) | **GET** /securities/{identifier}/prices/intraday | Intraday Stock Prices for Security
 *SecurityApi* | [**getSecurityLatestDividendRecord**](docs/SecurityApi.md#getSecurityLatestDividendRecord) | **GET** /securities/{identifier}/dividends/latest | Latest Dividend Record for Security
@@ -225,9 +230,12 @@ Class | Method | HTTP request | Description
 *SecurityApi* | [**getSecurityPriceTechnicalsVwap**](docs/SecurityApi.md#getSecurityPriceTechnicalsVwap) | **GET** /securities/{identifier}/prices/technicals/vwap | Volume Weighted Average Price
 *SecurityApi* | [**getSecurityPriceTechnicalsWr**](docs/SecurityApi.md#getSecurityPriceTechnicalsWr) | **GET** /securities/{identifier}/prices/technicals/wr | Williams %R
 *SecurityApi* | [**getSecurityRealtimePrice**](docs/SecurityApi.md#getSecurityRealtimePrice) | **GET** /securities/{identifier}/prices/realtime | Realtime Stock Price for Security
+*SecurityApi* | [**getSecurityReplayFile**](docs/SecurityApi.md#getSecurityReplayFile) | **GET** /securities/replay | Security Replay File
 *SecurityApi* | [**getSecuritySnapshots**](docs/SecurityApi.md#getSecuritySnapshots) | **GET** /securities/snapshots | Realtime Stock Prices Snapshot
 *SecurityApi* | [**getSecurityStockPriceAdjustments**](docs/SecurityApi.md#getSecurityStockPriceAdjustments) | **GET** /securities/{identifier}/prices/adjustments | Stock Price Adjustments by Security
 *SecurityApi* | [**getSecurityStockPrices**](docs/SecurityApi.md#getSecurityStockPrices) | **GET** /securities/{identifier}/prices | Stock Prices by Security
+*SecurityApi* | [**getSecurityTrades**](docs/SecurityApi.md#getSecurityTrades) | **GET** /securities/trades | Security Trades
+*SecurityApi* | [**getSecurityTradesBySymbol**](docs/SecurityApi.md#getSecurityTradesBySymbol) | **GET** /securities/{identifier}/trades | Security Trades By Symbol
 *SecurityApi* | [**getSecurityZacksAnalystRatings**](docs/SecurityApi.md#getSecurityZacksAnalystRatings) | **GET** /securities/{identifier}/zacks/analyst_ratings | Zacks Analyst Ratings for Security
 *SecurityApi* | [**getSecurityZacksAnalystRatingsSnapshot**](docs/SecurityApi.md#getSecurityZacksAnalystRatingsSnapshot) | **GET** /securities/{identifier}/zacks/analyst_ratings/snapshot | Zacks Analyst Ratings Snapshot
 *SecurityApi* | [**getSecurityZacksEpsSurprises**](docs/SecurityApi.md#getSecurityZacksEpsSurprises) | **GET** /securities/{identifier}/zacks/eps_surprises | Zacks EPS Surprises for Security
@@ -464,6 +472,7 @@ Class | Method | HTTP request | Description
  - [IntradayStockPrice](docs/IntradayStockPrice.md)
  - [KeltnerChannelTechnicalValue](docs/KeltnerChannelTechnicalValue.md)
  - [KnowSureThingTechnicalValue](docs/KnowSureThingTechnicalValue.md)
+ - [MarketStatusResult](docs/MarketStatusResult.md)
  - [MassIndexTechnicalValue](docs/MassIndexTechnicalValue.md)
  - [MoneyFlowIndexTechnicalValue](docs/MoneyFlowIndexTechnicalValue.md)
  - [MovingAverageConvergenceDivergenceTechnicalValue](docs/MovingAverageConvergenceDivergenceTechnicalValue.md)
@@ -502,6 +511,9 @@ Class | Method | HTTP request | Description
  - [ReportedTag](docs/ReportedTag.md)
  - [SICIndex](docs/SICIndex.md)
  - [Security](docs/Security.md)
+ - [SecurityIntervalMover](docs/SecurityIntervalMover.md)
+ - [SecurityIntervalsMoversResult](docs/SecurityIntervalsMoversResult.md)
+ - [SecurityReplayFileResult](docs/SecurityReplayFileResult.md)
  - [SecurityScreenClause](docs/SecurityScreenClause.md)
  - [SecurityScreenGroup](docs/SecurityScreenGroup.md)
  - [SecurityScreenResult](docs/SecurityScreenResult.md)
@@ -509,6 +521,8 @@ Class | Method | HTTP request | Description
  - [SecuritySnapshotGroup](docs/SecuritySnapshotGroup.md)
  - [SecuritySnapshotsResult](docs/SecuritySnapshotsResult.md)
  - [SecuritySummary](docs/SecuritySummary.md)
+ - [SecurityTrades](docs/SecurityTrades.md)
+ - [SecurityTradesResult](docs/SecurityTradesResult.md)
  - [SimpleMovingAverageTechnicalValue](docs/SimpleMovingAverageTechnicalValue.md)
  - [StandardizedFinancial](docs/StandardizedFinancial.md)
  - [StandardizedFinancialsDimension](docs/StandardizedFinancialsDimension.md)

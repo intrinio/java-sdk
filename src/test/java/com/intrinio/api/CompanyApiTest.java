@@ -382,7 +382,9 @@ public class CompanyApiTest {
     @Test
     public void sharesOutstandingByCompanyTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
-        ApiResponseCompanySharesOutstanding response = api.sharesOutstandingByCompany(identifier);
+        LocalDate endDateGreaterThan = null;
+        LocalDate endDateLessThan = null;
+        ApiResponseCompanySharesOutstanding response = api.sharesOutstandingByCompany(identifier, endDateGreaterThan, endDateLessThan);
 
         // TODO: test validations
     }
