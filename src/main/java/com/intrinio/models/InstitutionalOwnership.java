@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.threeten.bp.LocalDate;
 
 /**
  * The amount of a company&#39;s available stock owned by mutual or pension funds, insurance companies, investment firms, private foundations, endowments or other large entities that manage funds on behalf of others.
@@ -24,6 +25,9 @@ public class InstitutionalOwnership {
 
   @SerializedName("owner_name")
   private String ownerName = null;
+
+  @SerializedName("period_ended")
+  private LocalDate periodEnded = null;
 
   @SerializedName("value")
   private BigDecimal value = null;
@@ -83,6 +87,24 @@ public class InstitutionalOwnership {
 
   public void setOwnerName(String ownerName) {
     this.ownerName = ownerName;
+  }
+
+  public InstitutionalOwnership periodEnded(LocalDate periodEnded) {
+    this.periodEnded = periodEnded;
+    return this;
+  }
+
+   /**
+   * The date of the latest 13-F filing on record with the SEC.
+   * @return periodEnded
+  **/
+  @ApiModelProperty(value = "The date of the latest 13-F filing on record with the SEC.")
+  public LocalDate getPeriodEnded() {
+    return periodEnded;
+  }
+
+  public void setPeriodEnded(LocalDate periodEnded) {
+    this.periodEnded = periodEnded;
   }
 
   public InstitutionalOwnership value(BigDecimal value) {
@@ -241,6 +263,7 @@ public class InstitutionalOwnership {
     InstitutionalOwnership institutionalOwnership = (InstitutionalOwnership) o;
     return Objects.equals(this.ownerCik, institutionalOwnership.ownerCik) &&
         Objects.equals(this.ownerName, institutionalOwnership.ownerName) &&
+        Objects.equals(this.periodEnded, institutionalOwnership.periodEnded) &&
         Objects.equals(this.value, institutionalOwnership.value) &&
         Objects.equals(this.amount, institutionalOwnership.amount) &&
         Objects.equals(this.soleVotingAuthority, institutionalOwnership.soleVotingAuthority) &&
@@ -253,7 +276,7 @@ public class InstitutionalOwnership {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ownerCik, ownerName, value, amount, soleVotingAuthority, sharedVotingAuthority, noVotingAuthority, previousAmount, amountChange, amountPercentChange);
+    return Objects.hash(ownerCik, ownerName, periodEnded, value, amount, soleVotingAuthority, sharedVotingAuthority, noVotingAuthority, previousAmount, amountChange, amountPercentChange);
   }
 
 
@@ -264,6 +287,7 @@ public class InstitutionalOwnership {
     
     sb.append("    ownerCik: ").append(toIndentedString(ownerCik)).append("\n");
     sb.append("    ownerName: ").append(toIndentedString(ownerName)).append("\n");
+    sb.append("    periodEnded: ").append(toIndentedString(periodEnded)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    soleVotingAuthority: ").append(toIndentedString(soleVotingAuthority)).append("\n");

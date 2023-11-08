@@ -10,6 +10,7 @@ import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
+import com.intrinio.models.ApiResponseCompanyPublicFloatResult;
 import com.intrinio.models.ApiResponseCompanyRecognize;
 import com.intrinio.models.ApiResponseCompanySecurities;
 import com.intrinio.models.ApiResponseCompanySharesOutstanding;
@@ -257,6 +258,26 @@ public class CompanyApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseCompanyNews response = api.getCompanyNews(identifier, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get Company&#39;s public float
+     *
+     * Returns a list of public float data tied to a given company identifier.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCompanyPublicFloatTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        LocalDate floatDateGreaterThan = null;
+        LocalDate floatDateLessThan = null;
+        String nextPage = null;
+        String nextPage2 = null;
+        ApiResponseCompanyPublicFloatResult response = api.getCompanyPublicFloat(identifier, floatDateGreaterThan, floatDateLessThan, nextPage, nextPage2);
 
         // TODO: test validations
     }

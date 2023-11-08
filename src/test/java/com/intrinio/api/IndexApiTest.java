@@ -15,6 +15,7 @@ import com.intrinio.models.ApiResponseStockMarketIndicesSearch;
 import java.math.BigDecimal;
 import com.intrinio.models.EconomicIndex;
 import org.threeten.bp.LocalDate;
+import com.intrinio.models.RealtimeIndexPrice;
 import com.intrinio.models.SICIndex;
 import com.intrinio.models.StockMarketIndex;
 import org.junit.Test;
@@ -154,6 +155,22 @@ public class IndexApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseEconomicIndexHistoricalData response = api.getEconomicIndexHistoricalData(identifier, tag, type, startDate, endDate, sortOrder, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Realtime Index Price
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getRealtimeIndexPriceByIdTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        RealtimeIndexPrice response = api.getRealtimeIndexPriceById(identifier);
 
         // TODO: test validations
     }

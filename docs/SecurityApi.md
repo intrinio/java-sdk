@@ -943,9 +943,9 @@ public class Main {
     String identifier = "AAPL";
     String intervalSize = "15m";
     String source = null;
-    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate startDate = LocalDate.of(2023,1,01);
     String startTime = null;
-    LocalDate endDate = LocalDate.of(2019,1,01);
+    LocalDate endDate = LocalDate.of(2023,2,01);
     String endTime = null;
     String timezone = "UTC";
     Integer pageSize = 100;
@@ -4779,7 +4779,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> SecurityTradesResult getSecurityTradesBySymbol(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage)
+> SecurityTradesResult getSecurityTradesBySymbol(identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage)
 
 #### Security Trades By Symbol
 
@@ -4810,6 +4810,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
+    String identifier = "AAPL";
     String source = null;
     LocalDate startDate = null;
     String startTime = null;
@@ -4818,7 +4819,7 @@ public class Main {
     String timezone = "UTC";
     Integer pageSize = 100;
     String nextPage = null;
-    SecurityTradesResult result = securityApi.getSecurityTradesBySymbol(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
+    SecurityTradesResult result = securityApi.getSecurityTradesBySymbol(identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
     System.out.println(result);
   }
 }
@@ -4833,6 +4834,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **identifier** | String| The ticker symbol for which trades are being requested. | &nbsp;
  **source** | String| The specific source of the data being requested. | [enum: nasdaq_basic] &nbsp;
  **startDate** | LocalDate| The start date for the data being requested. | [optional] &nbsp;
  **startTime** | String| The start time for the data being requested. | [optional] &nbsp;

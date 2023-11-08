@@ -23,6 +23,7 @@ import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
+import com.intrinio.models.ApiResponseCompanyPublicFloatResult;
 import com.intrinio.models.ApiResponseCompanyRecognize;
 import com.intrinio.models.ApiResponseCompanySecurities;
 import com.intrinio.models.ApiResponseCompanySharesOutstanding;
@@ -1742,6 +1743,157 @@ public class CompanyApi {
 
         com.squareup.okhttp.Call call = getCompanyNewsValidateBeforeCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyNews>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getCompanyPublicFloat
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param floatDateGreaterThan The lower-bound date for the data being requested. (optional)
+     * @param floatDateLessThan The upper-bound date for the data being requested. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getCompanyPublicFloatCall(String identifier, LocalDate floatDateGreaterThan, LocalDate floatDateLessThan, String nextPage, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/companies/{identifier}/public_float"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (floatDateGreaterThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("float_date_greater_than", floatDateGreaterThan));
+        if (floatDateLessThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("float_date_less_than", floatDateLessThan));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+        if (nextPage2 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage2));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getCompanyPublicFloatValidateBeforeCall(String identifier, LocalDate floatDateGreaterThan, LocalDate floatDateLessThan, String nextPage, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getCompanyPublicFloat(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getCompanyPublicFloatCall(identifier, floatDateGreaterThan, floatDateLessThan, nextPage, nextPage2, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Get Company&#39;s public float
+     * Returns a list of public float data tied to a given company identifier.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param floatDateGreaterThan The lower-bound date for the data being requested. (optional)
+     * @param floatDateLessThan The upper-bound date for the data being requested. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseCompanyPublicFloatResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseCompanyPublicFloatResult getCompanyPublicFloat(String identifier, LocalDate floatDateGreaterThan, LocalDate floatDateLessThan, String nextPage, String nextPage2) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyPublicFloatWithHttpInfo", String.class, LocalDate.class, LocalDate.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, floatDateGreaterThan, floatDateLessThan, nextPage, nextPage2 };
+      ApiResponse<ApiResponseCompanyPublicFloatResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Get Company&#39;s public float
+     * Returns a list of public float data tied to a given company identifier.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param floatDateGreaterThan The lower-bound date for the data being requested. (optional)
+     * @param floatDateLessThan The upper-bound date for the data being requested. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseCompanyPublicFloatResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseCompanyPublicFloatResult> getCompanyPublicFloatWithHttpInfo(String identifier, LocalDate floatDateGreaterThan, LocalDate floatDateLessThan, String nextPage, String nextPage2) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyPublicFloatValidateBeforeCall(identifier, floatDateGreaterThan, floatDateLessThan, nextPage, nextPage2, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanyPublicFloatResult>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get Company&#39;s public float (asynchronously)
+     * Returns a list of public float data tied to a given company identifier.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param floatDateGreaterThan The lower-bound date for the data being requested. (optional)
+     * @param floatDateLessThan The upper-bound date for the data being requested. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getCompanyPublicFloatAsync(String identifier, LocalDate floatDateGreaterThan, LocalDate floatDateLessThan, String nextPage, String nextPage2, final ApiCallback<ApiResponseCompanyPublicFloatResult> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getCompanyPublicFloatValidateBeforeCall(identifier, floatDateGreaterThan, floatDateLessThan, nextPage, nextPage2, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanyPublicFloatResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

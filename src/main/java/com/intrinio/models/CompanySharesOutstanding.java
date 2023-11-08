@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.threeten.bp.LocalDate;
 
 /**
  * The summary of a company that submits filings to the SEC and has a security traded primarily on a US exchange
@@ -24,6 +25,9 @@ public class CompanySharesOutstanding {
 
   @SerializedName("xbrl_member")
   private String xbrlMember = null;
+
+  @SerializedName("end_date")
+  private LocalDate endDate = null;
 
   @SerializedName("title_of_security")
   private String titleOfSecurity = null;
@@ -71,6 +75,24 @@ public class CompanySharesOutstanding {
 
   public void setXbrlMember(String xbrlMember) {
     this.xbrlMember = xbrlMember;
+  }
+
+  public CompanySharesOutstanding endDate(LocalDate endDate) {
+    this.endDate = endDate;
+    return this;
+  }
+
+   /**
+   * End date of the filing period
+   * @return endDate
+  **/
+  @ApiModelProperty(value = "End date of the filing period")
+  public LocalDate getEndDate() {
+    return endDate;
+  }
+
+  public void setEndDate(LocalDate endDate) {
+    this.endDate = endDate;
   }
 
   public CompanySharesOutstanding titleOfSecurity(String titleOfSecurity) {
@@ -157,6 +179,7 @@ public class CompanySharesOutstanding {
     CompanySharesOutstanding companySharesOutstanding = (CompanySharesOutstanding) o;
     return Objects.equals(this.xbrlAxis, companySharesOutstanding.xbrlAxis) &&
         Objects.equals(this.xbrlMember, companySharesOutstanding.xbrlMember) &&
+        Objects.equals(this.endDate, companySharesOutstanding.endDate) &&
         Objects.equals(this.titleOfSecurity, companySharesOutstanding.titleOfSecurity) &&
         Objects.equals(this.tradingSymbol, companySharesOutstanding.tradingSymbol) &&
         Objects.equals(this.securityExchangeName, companySharesOutstanding.securityExchangeName) &&
@@ -165,7 +188,7 @@ public class CompanySharesOutstanding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(xbrlAxis, xbrlMember, titleOfSecurity, tradingSymbol, securityExchangeName, sharesOutstanding);
+    return Objects.hash(xbrlAxis, xbrlMember, endDate, titleOfSecurity, tradingSymbol, securityExchangeName, sharesOutstanding);
   }
 
 
@@ -176,6 +199,7 @@ public class CompanySharesOutstanding {
     
     sb.append("    xbrlAxis: ").append(toIndentedString(xbrlAxis)).append("\n");
     sb.append("    xbrlMember: ").append(toIndentedString(xbrlMember)).append("\n");
+    sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    titleOfSecurity: ").append(toIndentedString(titleOfSecurity)).append("\n");
     sb.append("    tradingSymbol: ").append(toIndentedString(tradingSymbol)).append("\n");
     sb.append("    securityExchangeName: ").append(toIndentedString(securityExchangeName)).append("\n");

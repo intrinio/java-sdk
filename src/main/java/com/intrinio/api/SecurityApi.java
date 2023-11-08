@@ -7925,6 +7925,7 @@ public class SecurityApi {
     }
     /**
      * Build call for getSecurityTradesBySymbol
+     * @param identifier The ticker symbol for which trades are being requested. (required)
      * @param source The specific source of the data being requested. (required)
      * @param startDate The start date for the data being requested. (optional)
      * @param startTime The start time for the data being requested. (optional)
@@ -7938,11 +7939,12 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityTradesBySymbolCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityTradesBySymbolCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/securities/{identifier}/trades";
+        String localVarPath = "/securities/{identifier}/trades"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -7996,7 +7998,12 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityTradesBySymbolValidateBeforeCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityTradesBySymbolValidateBeforeCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityTradesBySymbol(Async)");
+        }
         
         // verify the required parameter 'source' is set
         if (source == null) {
@@ -8004,7 +8011,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityTradesBySymbolCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityTradesBySymbolCall(identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -8012,6 +8019,7 @@ public class SecurityApi {
     /**
      * Security Trades By Symbol
      * Returns all trades for a symbol between start time and end time, up to seven days ago for the specified source.
+     * @param identifier The ticker symbol for which trades are being requested. (required)
      * @param source The specific source of the data being requested. (required)
      * @param startDate The start date for the data being requested. (optional)
      * @param startTime The start time for the data being requested. (optional)
@@ -8024,10 +8032,10 @@ public class SecurityApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public SecurityTradesResult getSecurityTradesBySymbol(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecurityTradesBySymbolWithHttpInfo", String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, String.class);
+    public SecurityTradesResult getSecurityTradesBySymbol(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityTradesBySymbolWithHttpInfo", String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage };
+      Object[] apiCallArguments = { identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage };
       ApiResponse<SecurityTradesResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -8035,6 +8043,7 @@ public class SecurityApi {
     /**
      * Security Trades By Symbol
      * Returns all trades for a symbol between start time and end time, up to seven days ago for the specified source.
+     * @param identifier The ticker symbol for which trades are being requested. (required)
      * @param source The specific source of the data being requested. (required)
      * @param startDate The start date for the data being requested. (optional)
      * @param startTime The start time for the data being requested. (optional)
@@ -8046,8 +8055,8 @@ public class SecurityApi {
      * @return ApiResponse&lt;SecurityTradesResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SecurityTradesResult> getSecurityTradesBySymbolWithHttpInfo(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityTradesBySymbolValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, null, null);
+    public ApiResponse<SecurityTradesResult> getSecurityTradesBySymbolWithHttpInfo(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityTradesBySymbolValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<SecurityTradesResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -8055,6 +8064,7 @@ public class SecurityApi {
     /**
      * Security Trades By Symbol (asynchronously)
      * Returns all trades for a symbol between start time and end time, up to seven days ago for the specified source.
+     * @param identifier The ticker symbol for which trades are being requested. (required)
      * @param source The specific source of the data being requested. (required)
      * @param startDate The start date for the data being requested. (optional)
      * @param startTime The start time for the data being requested. (optional)
@@ -8067,7 +8077,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityTradesBySymbolAsync(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ApiCallback<SecurityTradesResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityTradesBySymbolAsync(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ApiCallback<SecurityTradesResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8088,7 +8098,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityTradesBySymbolValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityTradesBySymbolValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SecurityTradesResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

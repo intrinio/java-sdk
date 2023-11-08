@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.threeten.bp.LocalDate;
 
 /**
  * A transaction where the owner is considered an insider of that company. Criteria for being an insider include being a director, officer, or 10%+ owner in the company. Transactions are detailed for both non-derivative and derivative transactions by the insider.
@@ -48,6 +49,12 @@ public class InsiderTransaction {
   @SerializedName("conversion_exercise_price")
   private BigDecimal conversionExercisePrice = null;
 
+  @SerializedName("transaction_date")
+  private LocalDate transactionDate = null;
+
+  @SerializedName("deemed_execution_date")
+  private LocalDate deemedExecutionDate = null;
+
   @SerializedName("transaction_type_code")
   private String transactionTypeCode = null;
 
@@ -56,6 +63,12 @@ public class InsiderTransaction {
 
   @SerializedName("amount_of_shares")
   private BigDecimal amountOfShares = null;
+
+  @SerializedName("exercise_date")
+  private LocalDate exerciseDate = null;
+
+  @SerializedName("expiration_date")
+  private LocalDate expirationDate = null;
 
   @SerializedName("underlying_security_title")
   private String underlyingSecurityTitle = null;
@@ -240,6 +253,42 @@ public class InsiderTransaction {
     this.conversionExercisePrice = conversionExercisePrice;
   }
 
+  public InsiderTransaction transactionDate(LocalDate transactionDate) {
+    this.transactionDate = transactionDate;
+    return this;
+  }
+
+   /**
+   * The date of the transaction
+   * @return transactionDate
+  **/
+  @ApiModelProperty(value = "The date of the transaction")
+  public LocalDate getTransactionDate() {
+    return transactionDate;
+  }
+
+  public void setTransactionDate(LocalDate transactionDate) {
+    this.transactionDate = transactionDate;
+  }
+
+  public InsiderTransaction deemedExecutionDate(LocalDate deemedExecutionDate) {
+    this.deemedExecutionDate = deemedExecutionDate;
+    return this;
+  }
+
+   /**
+   * The date of the transaction had it not a directly identifiable date
+   * @return deemedExecutionDate
+  **/
+  @ApiModelProperty(value = "The date of the transaction had it not a directly identifiable date")
+  public LocalDate getDeemedExecutionDate() {
+    return deemedExecutionDate;
+  }
+
+  public void setDeemedExecutionDate(LocalDate deemedExecutionDate) {
+    this.deemedExecutionDate = deemedExecutionDate;
+  }
+
   public InsiderTransaction transactionTypeCode(String transactionTypeCode) {
     this.transactionTypeCode = transactionTypeCode;
     return this;
@@ -292,6 +341,42 @@ public class InsiderTransaction {
 
   public void setAmountOfShares(BigDecimal amountOfShares) {
     this.amountOfShares = amountOfShares;
+  }
+
+  public InsiderTransaction exerciseDate(LocalDate exerciseDate) {
+    this.exerciseDate = exerciseDate;
+    return this;
+  }
+
+   /**
+   * The exercise date of the derivative securities
+   * @return exerciseDate
+  **/
+  @ApiModelProperty(value = "The exercise date of the derivative securities")
+  public LocalDate getExerciseDate() {
+    return exerciseDate;
+  }
+
+  public void setExerciseDate(LocalDate exerciseDate) {
+    this.exerciseDate = exerciseDate;
+  }
+
+  public InsiderTransaction expirationDate(LocalDate expirationDate) {
+    this.expirationDate = expirationDate;
+    return this;
+  }
+
+   /**
+   * The expiration date of the derivative securities
+   * @return expirationDate
+  **/
+  @ApiModelProperty(value = "The expiration date of the derivative securities")
+  public LocalDate getExpirationDate() {
+    return expirationDate;
+  }
+
+  public void setExpirationDate(LocalDate expirationDate) {
+    this.expirationDate = expirationDate;
   }
 
   public InsiderTransaction underlyingSecurityTitle(String underlyingSecurityTitle) {
@@ -439,9 +524,13 @@ public class InsiderTransaction {
         Objects.equals(this.ticker, insiderTransaction.ticker) &&
         Objects.equals(this.securityTitle, insiderTransaction.securityTitle) &&
         Objects.equals(this.conversionExercisePrice, insiderTransaction.conversionExercisePrice) &&
+        Objects.equals(this.transactionDate, insiderTransaction.transactionDate) &&
+        Objects.equals(this.deemedExecutionDate, insiderTransaction.deemedExecutionDate) &&
         Objects.equals(this.transactionTypeCode, insiderTransaction.transactionTypeCode) &&
         Objects.equals(this.acquisitionDispositionCode, insiderTransaction.acquisitionDispositionCode) &&
         Objects.equals(this.amountOfShares, insiderTransaction.amountOfShares) &&
+        Objects.equals(this.exerciseDate, insiderTransaction.exerciseDate) &&
+        Objects.equals(this.expirationDate, insiderTransaction.expirationDate) &&
         Objects.equals(this.underlyingSecurityTitle, insiderTransaction.underlyingSecurityTitle) &&
         Objects.equals(this.underlyingShares, insiderTransaction.underlyingShares) &&
         Objects.equals(this.transactionPrice, insiderTransaction.transactionPrice) &&
@@ -453,7 +542,7 @@ public class InsiderTransaction {
 
   @Override
   public int hashCode() {
-    return Objects.hash(director, officer, tenPercentOwner, otherRelation, officerTitle, derivativeTransaction, ticker, securityTitle, conversionExercisePrice, transactionTypeCode, acquisitionDispositionCode, amountOfShares, underlyingSecurityTitle, underlyingShares, transactionPrice, totalSharesOwned, ownershipTypeCode, company, owner);
+    return Objects.hash(director, officer, tenPercentOwner, otherRelation, officerTitle, derivativeTransaction, ticker, securityTitle, conversionExercisePrice, transactionDate, deemedExecutionDate, transactionTypeCode, acquisitionDispositionCode, amountOfShares, exerciseDate, expirationDate, underlyingSecurityTitle, underlyingShares, transactionPrice, totalSharesOwned, ownershipTypeCode, company, owner);
   }
 
 
@@ -471,9 +560,13 @@ public class InsiderTransaction {
     sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
     sb.append("    securityTitle: ").append(toIndentedString(securityTitle)).append("\n");
     sb.append("    conversionExercisePrice: ").append(toIndentedString(conversionExercisePrice)).append("\n");
+    sb.append("    transactionDate: ").append(toIndentedString(transactionDate)).append("\n");
+    sb.append("    deemedExecutionDate: ").append(toIndentedString(deemedExecutionDate)).append("\n");
     sb.append("    transactionTypeCode: ").append(toIndentedString(transactionTypeCode)).append("\n");
     sb.append("    acquisitionDispositionCode: ").append(toIndentedString(acquisitionDispositionCode)).append("\n");
     sb.append("    amountOfShares: ").append(toIndentedString(amountOfShares)).append("\n");
+    sb.append("    exerciseDate: ").append(toIndentedString(exerciseDate)).append("\n");
+    sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    underlyingSecurityTitle: ").append(toIndentedString(underlyingSecurityTitle)).append("\n");
     sb.append("    underlyingShares: ").append(toIndentedString(underlyingShares)).append("\n");
     sb.append("    transactionPrice: ").append(toIndentedString(transactionPrice)).append("\n");

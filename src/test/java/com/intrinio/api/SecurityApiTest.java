@@ -1131,6 +1131,7 @@ public class SecurityApiTest {
      */
     @Test
     public void getSecurityTradesBySymbolTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
         String source = null;
         LocalDate startDate = null;
         String startTime = null;
@@ -1139,7 +1140,7 @@ public class SecurityApiTest {
         String timezone = null;
         Integer pageSize = null;
         String nextPage = null;
-        SecurityTradesResult response = api.getSecurityTradesBySymbol(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
+        SecurityTradesResult response = api.getSecurityTradesBySymbol(identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
 
         // TODO: test validations
     }

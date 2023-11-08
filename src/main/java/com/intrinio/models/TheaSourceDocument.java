@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.LocalDate;
 
 /**
  * Document from which Thea answer data is sourced
@@ -22,6 +23,9 @@ import java.util.List;
 public class TheaSourceDocument {
   @SerializedName("id")
   private String id = null;
+
+  @SerializedName("date_time")
+  private LocalDate dateTime = null;
 
   @SerializedName("tags")
   private List<Object> tags = null;
@@ -42,6 +46,24 @@ public class TheaSourceDocument {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public TheaSourceDocument dateTime(LocalDate dateTime) {
+    this.dateTime = dateTime;
+    return this;
+  }
+
+   /**
+   * The date at which the document was created
+   * @return dateTime
+  **/
+  @ApiModelProperty(value = "The date at which the document was created")
+  public LocalDate getDateTime() {
+    return dateTime;
+  }
+
+  public void setDateTime(LocalDate dateTime) {
+    this.dateTime = dateTime;
   }
 
   public TheaSourceDocument tags(List<Object> tags) {
@@ -81,12 +103,13 @@ public class TheaSourceDocument {
     }
     TheaSourceDocument theaSourceDocument = (TheaSourceDocument) o;
     return Objects.equals(this.id, theaSourceDocument.id) &&
+        Objects.equals(this.dateTime, theaSourceDocument.dateTime) &&
         Objects.equals(this.tags, theaSourceDocument.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, tags);
+    return Objects.hash(id, dateTime, tags);
   }
 
 
@@ -96,6 +119,7 @@ public class TheaSourceDocument {
     sb.append("class TheaSourceDocument {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    dateTime: ").append(toIndentedString(dateTime)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();

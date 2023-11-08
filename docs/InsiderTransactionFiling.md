@@ -11,6 +11,7 @@
 
 Name | Type | Description
 ------------ | ------------- | -------------
+**filingDate** | [**LocalDate**](LocalDate.md) | The date of the filing with the SEC made by the owner &nbsp;
 **filingUrl** | String | The URL of the filing with the SEC &nbsp;
 **issuerTicker** | String | The ticker of the issuing company. &nbsp;
 **issuerCik** | String | The Central Index Key (CIK) of the issuing company. &nbsp;
@@ -20,6 +21,9 @@ Name | Type | Description
 **owner** | [**OwnerSummary**](OwnerSummary.md) | The owner associated with the filing &nbsp;
 
 [//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
 
 
 [//]: # (CONTAINED_CLASS:InsiderTransaction)

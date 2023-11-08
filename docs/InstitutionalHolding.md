@@ -17,6 +17,7 @@ Name | Type | Description
 **securityType** | String | The type of the security &nbsp;
 **titleOfClass** | String | The class of stock held &nbsp;
 **stockExchange** | String | The stock exchange where the security is traded &nbsp;
+**periodEnded** | [**LocalDate**](LocalDate.md) | The date of the latest 13-F filing on record with the SEC. &nbsp;
 **filingDate** | [**LocalDate**](LocalDate.md) | The date when the filing was submitted to the SEC by the company &nbsp;
 **value** | [**BigDecimal**](BigDecimal.md) | The market value in amount of dollars of the holding in the listed security &nbsp;
 **amount** | [**BigDecimal**](BigDecimal.md) | The number of shares held in the listed security &nbsp;
@@ -28,6 +29,9 @@ Name | Type | Description
 **noVotingAuthority** | [**BigDecimal**](BigDecimal.md) | The number of shares where the insitutional holder has no voting authority &nbsp;
 
 [//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
 
 
 [//]: # (CONTAINED_CLASS:LocalDate)

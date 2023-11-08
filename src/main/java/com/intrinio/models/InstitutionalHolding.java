@@ -38,6 +38,9 @@ public class InstitutionalHolding {
   @SerializedName("stock_exchange")
   private String stockExchange = null;
 
+  @SerializedName("period_ended")
+  private LocalDate periodEnded = null;
+
   @SerializedName("filing_date")
   private LocalDate filingDate = null;
 
@@ -171,6 +174,24 @@ public class InstitutionalHolding {
 
   public void setStockExchange(String stockExchange) {
     this.stockExchange = stockExchange;
+  }
+
+  public InstitutionalHolding periodEnded(LocalDate periodEnded) {
+    this.periodEnded = periodEnded;
+    return this;
+  }
+
+   /**
+   * The date of the latest 13-F filing on record with the SEC.
+   * @return periodEnded
+  **/
+  @ApiModelProperty(value = "The date of the latest 13-F filing on record with the SEC.")
+  public LocalDate getPeriodEnded() {
+    return periodEnded;
+  }
+
+  public void setPeriodEnded(LocalDate periodEnded) {
+    this.periodEnded = periodEnded;
   }
 
   public InstitutionalHolding filingDate(LocalDate filingDate) {
@@ -351,6 +372,7 @@ public class InstitutionalHolding {
         Objects.equals(this.securityType, institutionalHolding.securityType) &&
         Objects.equals(this.titleOfClass, institutionalHolding.titleOfClass) &&
         Objects.equals(this.stockExchange, institutionalHolding.stockExchange) &&
+        Objects.equals(this.periodEnded, institutionalHolding.periodEnded) &&
         Objects.equals(this.filingDate, institutionalHolding.filingDate) &&
         Objects.equals(this.value, institutionalHolding.value) &&
         Objects.equals(this.amount, institutionalHolding.amount) &&
@@ -364,7 +386,7 @@ public class InstitutionalHolding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(cusip, ticker, securityName, securityType, titleOfClass, stockExchange, filingDate, value, amount, type, investmentDiscretion, otherManager, soleVotingAuthority, sharedVotingAuthority, noVotingAuthority);
+    return Objects.hash(cusip, ticker, securityName, securityType, titleOfClass, stockExchange, periodEnded, filingDate, value, amount, type, investmentDiscretion, otherManager, soleVotingAuthority, sharedVotingAuthority, noVotingAuthority);
   }
 
 
@@ -379,6 +401,7 @@ public class InstitutionalHolding {
     sb.append("    securityType: ").append(toIndentedString(securityType)).append("\n");
     sb.append("    titleOfClass: ").append(toIndentedString(titleOfClass)).append("\n");
     sb.append("    stockExchange: ").append(toIndentedString(stockExchange)).append("\n");
+    sb.append("    periodEnded: ").append(toIndentedString(periodEnded)).append("\n");
     sb.append("    filingDate: ").append(toIndentedString(filingDate)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");

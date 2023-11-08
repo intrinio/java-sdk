@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**getCompanyHistoricalData**](CompanyApi.md#getCompanyHistoricalData) | **GET** /companies/{identifier}/historical_data/{tag} | Historical Data for Company
 [**getCompanyIpos**](CompanyApi.md#getCompanyIpos) | **GET** /companies/ipos | IPOs
 [**getCompanyNews**](CompanyApi.md#getCompanyNews) | **GET** /companies/{identifier}/news | All News by Company
+[**getCompanyPublicFloat**](CompanyApi.md#getCompanyPublicFloat) | **GET** /companies/{identifier}/public_float | Get Company&#39;s public float
 [**getCompanySecurities**](CompanyApi.md#getCompanySecurities) | **GET** /companies/{identifier}/securities | All Securities by Company
 [**insiderTransactionFilingsByCompany**](CompanyApi.md#insiderTransactionFilingsByCompany) | **GET** /companies/{identifier}/insider_transaction_filings | Insider Transaction Filings by Company
 [**latestInsiderTransactionFilingByCompany**](CompanyApi.md#latestInsiderTransactionFilingByCompany) | **GET** /companies/{identifier}/insider_transaction_filings/latest | Latest Insider Transaction Filing by Company
@@ -1039,6 +1040,98 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseCompanyNews**](ApiResponseCompanyNews.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:CompanyApi)
+
+[//]: # (METHOD:getCompanyPublicFloat)
+
+[//]: # (RETURN_TYPE:ApiResponseCompanyPublicFloatResult)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseCompanyPublicFloatResult.md)
+
+[//]: # (OPERATION:getCompanyPublicFloat_v2)
+
+[//]: # (ENDPOINT:/companies/{identifier}/public_float)
+
+[//]: # (DOCUMENT_LINK:CompanyApi.md#getCompanyPublicFloat)
+
+<a name="getCompanyPublicFloat"></a>
+## **getCompanyPublicFloat**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getCompanyPublicFloat_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseCompanyPublicFloatResult getCompanyPublicFloat(identifier, floatDateGreaterThan, floatDateLessThan, nextPage, nextPage2)
+
+#### Get Company&#39;s public float
+
+
+Returns a list of public float data tied to a given company identifier.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    CompanyApi companyApi = new CompanyApi();
+    String identifier = "AAPL";
+    LocalDate floatDateGreaterThan = null;
+    LocalDate floatDateLessThan = null;
+    String nextPage = null;
+    String nextPage2 = null;
+    ApiResponseCompanyPublicFloatResult result = companyApi.getCompanyPublicFloat(identifier, floatDateGreaterThan, floatDateLessThan, nextPage, nextPage2);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
+ **floatDateGreaterThan** | LocalDate| The lower-bound date for the data being requested. | [optional] &nbsp;
+ **floatDateLessThan** | LocalDate| The upper-bound date for the data being requested. | [optional] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+ **nextPage2** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseCompanyPublicFloatResult**](ApiResponseCompanyPublicFloatResult.md)
 
 [//]: # (END_OPERATION)
 

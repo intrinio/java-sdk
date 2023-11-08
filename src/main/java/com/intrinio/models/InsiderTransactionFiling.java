@@ -16,6 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.LocalDate;
 
 /**
  * An insider transaction SEC filing and its associated transactions
@@ -23,6 +24,9 @@ import java.util.List;
 @ApiModel(description = "An insider transaction SEC filing and its associated transactions")
 
 public class InsiderTransactionFiling {
+  @SerializedName("filing_date")
+  private LocalDate filingDate = null;
+
   @SerializedName("filing_url")
   private String filingUrl = null;
 
@@ -43,6 +47,24 @@ public class InsiderTransactionFiling {
 
   @SerializedName("owner")
   private OwnerSummary owner = null;
+
+  public InsiderTransactionFiling filingDate(LocalDate filingDate) {
+    this.filingDate = filingDate;
+    return this;
+  }
+
+   /**
+   * The date of the filing with the SEC made by the owner
+   * @return filingDate
+  **/
+  @ApiModelProperty(value = "The date of the filing with the SEC made by the owner")
+  public LocalDate getFilingDate() {
+    return filingDate;
+  }
+
+  public void setFilingDate(LocalDate filingDate) {
+    this.filingDate = filingDate;
+  }
 
   public InsiderTransactionFiling filingUrl(String filingUrl) {
     this.filingUrl = filingUrl;
@@ -188,7 +210,8 @@ public class InsiderTransactionFiling {
       return false;
     }
     InsiderTransactionFiling insiderTransactionFiling = (InsiderTransactionFiling) o;
-    return Objects.equals(this.filingUrl, insiderTransactionFiling.filingUrl) &&
+    return Objects.equals(this.filingDate, insiderTransactionFiling.filingDate) &&
+        Objects.equals(this.filingUrl, insiderTransactionFiling.filingUrl) &&
         Objects.equals(this.issuerTicker, insiderTransactionFiling.issuerTicker) &&
         Objects.equals(this.issuerCik, insiderTransactionFiling.issuerCik) &&
         Objects.equals(this.issuerCompany, insiderTransactionFiling.issuerCompany) &&
@@ -199,7 +222,7 @@ public class InsiderTransactionFiling {
 
   @Override
   public int hashCode() {
-    return Objects.hash(filingUrl, issuerTicker, issuerCik, issuerCompany, transactions, company, owner);
+    return Objects.hash(filingDate, filingUrl, issuerTicker, issuerCik, issuerCompany, transactions, company, owner);
   }
 
 
@@ -208,6 +231,7 @@ public class InsiderTransactionFiling {
     StringBuilder sb = new StringBuilder();
     sb.append("class InsiderTransactionFiling {\n");
     
+    sb.append("    filingDate: ").append(toIndentedString(filingDate)).append("\n");
     sb.append("    filingUrl: ").append(toIndentedString(filingUrl)).append("\n");
     sb.append("    issuerTicker: ").append(toIndentedString(issuerTicker)).append("\n");
     sb.append("    issuerCik: ").append(toIndentedString(issuerCik)).append("\n");
