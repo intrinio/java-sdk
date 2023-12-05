@@ -53,6 +53,7 @@ import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 import com.intrinio.models.RealtimeStockPrice;
 import com.intrinio.models.Security;
+import com.intrinio.models.SecurityHistoryListResult;
 import com.intrinio.models.SecurityIntervalsMoversResult;
 import com.intrinio.models.SecurityReplayFileResult;
 import com.intrinio.models.SecurityScreenGroup;
@@ -180,6 +181,38 @@ public class SecurityApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseSecurityHistoricalData response = api.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security History By Identifier
+     *
+     * Lists the tickers a company has used over time.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityHistoryByIdentifierTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        SecurityHistoryListResult response = api.getSecurityHistoryByIdentifier(identifier);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security History By Ticker
+     *
+     * Lists the tickers a company has used over time.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityHistoryByTickerTest() throws ApiException, NoSuchMethodException {
+        String ticker = null;
+        SecurityHistoryListResult response = api.getSecurityHistoryByTicker(ticker);
 
         // TODO: test validations
     }

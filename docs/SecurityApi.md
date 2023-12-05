@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**getSecurityDataPointNumber**](SecurityApi.md#getSecurityDataPointNumber) | **GET** /securities/{identifier}/data_point/{tag}/number | Data Point (Number) for Security
 [**getSecurityDataPointText**](SecurityApi.md#getSecurityDataPointText) | **GET** /securities/{identifier}/data_point/{tag}/text | Data Point (Text) for Security
 [**getSecurityHistoricalData**](SecurityApi.md#getSecurityHistoricalData) | **GET** /securities/{identifier}/historical_data/{tag} | Historical Data for Security
+[**getSecurityHistoryByIdentifier**](SecurityApi.md#getSecurityHistoryByIdentifier) | **GET** /securities/history-by-identifier/{identifier} | Security History By Identifier
+[**getSecurityHistoryByTicker**](SecurityApi.md#getSecurityHistoryByTicker) | **GET** /securities/history-by-ticker/{ticker} | Security History By Ticker
 [**getSecurityInsiderOwnership**](SecurityApi.md#getSecurityInsiderOwnership) | **GET** /securities/{identifier}/institutional_ownership | Institutional Ownership by Security
 [**getSecurityIntervalMovers**](SecurityApi.md#getSecurityIntervalMovers) | **GET** /securities/market_movers | Security Intervals Movers
 [**getSecurityIntervalMoversChange**](SecurityApi.md#getSecurityIntervalMoversChange) | **GET** /securities/market_movers/change | Security Intervals Movers By Change
@@ -536,6 +538,174 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseSecurityHistoricalData**](ApiResponseSecurityHistoricalData.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:SecurityApi)
+
+[//]: # (METHOD:getSecurityHistoryByIdentifier)
+
+[//]: # (RETURN_TYPE:SecurityHistoryListResult)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:SecurityHistoryListResult.md)
+
+[//]: # (OPERATION:getSecurityHistoryByIdentifier_v2)
+
+[//]: # (ENDPOINT:/securities/history-by-identifier/{identifier})
+
+[//]: # (DOCUMENT_LINK:SecurityApi.md#getSecurityHistoryByIdentifier)
+
+<a name="getSecurityHistoryByIdentifier"></a>
+## **getSecurityHistoryByIdentifier**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSecurityHistoryByIdentifier_v2)
+
+[//]: # (START_OVERVIEW)
+
+> SecurityHistoryListResult getSecurityHistoryByIdentifier(identifier)
+
+#### Security History By Identifier
+
+
+Lists the tickers a company has used over time.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    SecurityApi securityApi = new SecurityApi();
+    String identifier = "037833100";
+    SecurityHistoryListResult result = securityApi.getSecurityHistoryByIdentifier(identifier);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Security identifier (FIGI, COMPOSITE FIGI, SHARE CLASS FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**SecurityHistoryListResult**](SecurityHistoryListResult.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:SecurityApi)
+
+[//]: # (METHOD:getSecurityHistoryByTicker)
+
+[//]: # (RETURN_TYPE:SecurityHistoryListResult)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:SecurityHistoryListResult.md)
+
+[//]: # (OPERATION:getSecurityHistoryByTicker_v2)
+
+[//]: # (ENDPOINT:/securities/history-by-ticker/{ticker})
+
+[//]: # (DOCUMENT_LINK:SecurityApi.md#getSecurityHistoryByTicker)
+
+<a name="getSecurityHistoryByTicker"></a>
+## **getSecurityHistoryByTicker**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSecurityHistoryByTicker_v2)
+
+[//]: # (START_OVERVIEW)
+
+> SecurityHistoryListResult getSecurityHistoryByTicker(ticker)
+
+#### Security History By Ticker
+
+
+Lists the tickers a company has used over time.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    SecurityApi securityApi = new SecurityApi();
+    String ticker = "AAPL";
+    SecurityHistoryListResult result = securityApi.getSecurityHistoryByTicker(ticker);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ticker** | String| A Security ticker symbol | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**SecurityHistoryListResult**](SecurityHistoryListResult.md)
 
 [//]: # (END_OPERATION)
 

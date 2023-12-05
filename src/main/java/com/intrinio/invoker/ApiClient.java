@@ -35,6 +35,8 @@ import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.lang.ReflectiveOperationException;
+import java.lang.reflect.Method;
 
 import com.intrinio.invoker.auth.Authentication;
 import com.intrinio.invoker.auth.HttpBasicAuth;
@@ -50,8 +52,6 @@ import com.evanlennick.retry4j.Status;
 import java.util.concurrent.Callable;
 import com.evanlennick.retry4j.exception.RetriesExhaustedException;
 import com.evanlennick.retry4j.exception.UnexpectedException;
-import java.lang.ReflectiveOperationException;
-import java.lang.reflect.Method;
 
 public class ApiClient {
 
@@ -89,7 +89,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/6.19.2/java");
+        setUserAgent("Swagger-Codegen/6.19.3/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
