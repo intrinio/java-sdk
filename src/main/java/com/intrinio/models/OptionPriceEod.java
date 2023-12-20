@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * An option price contains price information for a specific options contract.
@@ -65,7 +66,7 @@ public class OptionPriceEod {
   private BigDecimal bidHigh = null;
 
   @SerializedName("bid_low")
-  private Object bidLow = null;
+  private BigDecimal bidLow = null;
 
   @SerializedName("implied_volatility")
   private BigDecimal impliedVolatility = null;
@@ -81,6 +82,27 @@ public class OptionPriceEod {
 
   @SerializedName("vega")
   private BigDecimal vega = null;
+
+  @SerializedName("close_time")
+  private OffsetDateTime closeTime = null;
+
+  @SerializedName("close_size")
+  private Integer closeSize = null;
+
+  @SerializedName("close_bid_time")
+  private OffsetDateTime closeBidTime = null;
+
+  @SerializedName("close_bid_size")
+  private Integer closeBidSize = null;
+
+  @SerializedName("close_ask_time")
+  private OffsetDateTime closeAskTime = null;
+
+  @SerializedName("close_ask_size")
+  private Integer closeAskSize = null;
+
+  @SerializedName("exercise_style")
+  private String exerciseStyle = null;
 
   public OptionPriceEod date(String date) {
     this.date = date;
@@ -352,7 +374,7 @@ public class OptionPriceEod {
     this.bidHigh = bidHigh;
   }
 
-  public OptionPriceEod bidLow(Object bidLow) {
+  public OptionPriceEod bidLow(BigDecimal bidLow) {
     this.bidLow = bidLow;
     return this;
   }
@@ -362,11 +384,11 @@ public class OptionPriceEod {
    * @return bidLow
   **/
   @ApiModelProperty(value = "The lowest bid over the span of the period")
-  public Object getBidLow() {
+  public BigDecimal getBidLow() {
     return bidLow;
   }
 
-  public void setBidLow(Object bidLow) {
+  public void setBidLow(BigDecimal bidLow) {
     this.bidLow = bidLow;
   }
 
@@ -460,6 +482,132 @@ public class OptionPriceEod {
     this.vega = vega;
   }
 
+  public OptionPriceEod closeTime(OffsetDateTime closeTime) {
+    this.closeTime = closeTime;
+    return this;
+  }
+
+   /**
+   * The time of the last trade before close.
+   * @return closeTime
+  **/
+  @ApiModelProperty(value = "The time of the last trade before close.")
+  public OffsetDateTime getCloseTime() {
+    return closeTime;
+  }
+
+  public void setCloseTime(OffsetDateTime closeTime) {
+    this.closeTime = closeTime;
+  }
+
+  public OptionPriceEod closeSize(Integer closeSize) {
+    this.closeSize = closeSize;
+    return this;
+  }
+
+   /**
+   * The size of the last trade before close.
+   * @return closeSize
+  **/
+  @ApiModelProperty(value = "The size of the last trade before close.")
+  public Integer getCloseSize() {
+    return closeSize;
+  }
+
+  public void setCloseSize(Integer closeSize) {
+    this.closeSize = closeSize;
+  }
+
+  public OptionPriceEod closeBidTime(OffsetDateTime closeBidTime) {
+    this.closeBidTime = closeBidTime;
+    return this;
+  }
+
+   /**
+   * The time of the last bid before close.
+   * @return closeBidTime
+  **/
+  @ApiModelProperty(value = "The time of the last bid before close.")
+  public OffsetDateTime getCloseBidTime() {
+    return closeBidTime;
+  }
+
+  public void setCloseBidTime(OffsetDateTime closeBidTime) {
+    this.closeBidTime = closeBidTime;
+  }
+
+  public OptionPriceEod closeBidSize(Integer closeBidSize) {
+    this.closeBidSize = closeBidSize;
+    return this;
+  }
+
+   /**
+   * The size of the last bid before close.
+   * @return closeBidSize
+  **/
+  @ApiModelProperty(value = "The size of the last bid before close.")
+  public Integer getCloseBidSize() {
+    return closeBidSize;
+  }
+
+  public void setCloseBidSize(Integer closeBidSize) {
+    this.closeBidSize = closeBidSize;
+  }
+
+  public OptionPriceEod closeAskTime(OffsetDateTime closeAskTime) {
+    this.closeAskTime = closeAskTime;
+    return this;
+  }
+
+   /**
+   * The time of the last ask before close.
+   * @return closeAskTime
+  **/
+  @ApiModelProperty(value = "The time of the last ask before close.")
+  public OffsetDateTime getCloseAskTime() {
+    return closeAskTime;
+  }
+
+  public void setCloseAskTime(OffsetDateTime closeAskTime) {
+    this.closeAskTime = closeAskTime;
+  }
+
+  public OptionPriceEod closeAskSize(Integer closeAskSize) {
+    this.closeAskSize = closeAskSize;
+    return this;
+  }
+
+   /**
+   * The size of the last ask before close.
+   * @return closeAskSize
+  **/
+  @ApiModelProperty(value = "The size of the last ask before close.")
+  public Integer getCloseAskSize() {
+    return closeAskSize;
+  }
+
+  public void setCloseAskSize(Integer closeAskSize) {
+    this.closeAskSize = closeAskSize;
+  }
+
+  public OptionPriceEod exerciseStyle(String exerciseStyle) {
+    this.exerciseStyle = exerciseStyle;
+    return this;
+  }
+
+   /**
+   * The exercise style.
+   * @return exerciseStyle
+  **/
+  @ApiModelProperty(value = "The exercise style.")
+  public String getExerciseStyle() {
+    return exerciseStyle;
+  }
+
+  public void setExerciseStyle(String exerciseStyle) {
+    this.exerciseStyle = exerciseStyle;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -490,12 +638,19 @@ public class OptionPriceEod {
         Objects.equals(this.delta, optionPriceEod.delta) &&
         Objects.equals(this.gamma, optionPriceEod.gamma) &&
         Objects.equals(this.theta, optionPriceEod.theta) &&
-        Objects.equals(this.vega, optionPriceEod.vega);
+        Objects.equals(this.vega, optionPriceEod.vega) &&
+        Objects.equals(this.closeTime, optionPriceEod.closeTime) &&
+        Objects.equals(this.closeSize, optionPriceEod.closeSize) &&
+        Objects.equals(this.closeBidTime, optionPriceEod.closeBidTime) &&
+        Objects.equals(this.closeBidSize, optionPriceEod.closeBidSize) &&
+        Objects.equals(this.closeAskTime, optionPriceEod.closeAskTime) &&
+        Objects.equals(this.closeAskSize, optionPriceEod.closeAskSize) &&
+        Objects.equals(this.exerciseStyle, optionPriceEod.exerciseStyle);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, close, closeBid, closeAsk, volume, open, openAsk, openBid, openInterest, high, low, mark, askHigh, askLow, bidHigh, bidLow, impliedVolatility, delta, gamma, theta, vega);
+    return Objects.hash(date, close, closeBid, closeAsk, volume, open, openAsk, openBid, openInterest, high, low, mark, askHigh, askLow, bidHigh, bidLow, impliedVolatility, delta, gamma, theta, vega, closeTime, closeSize, closeBidTime, closeBidSize, closeAskTime, closeAskSize, exerciseStyle);
   }
 
 
@@ -525,6 +680,13 @@ public class OptionPriceEod {
     sb.append("    gamma: ").append(toIndentedString(gamma)).append("\n");
     sb.append("    theta: ").append(toIndentedString(theta)).append("\n");
     sb.append("    vega: ").append(toIndentedString(vega)).append("\n");
+    sb.append("    closeTime: ").append(toIndentedString(closeTime)).append("\n");
+    sb.append("    closeSize: ").append(toIndentedString(closeSize)).append("\n");
+    sb.append("    closeBidTime: ").append(toIndentedString(closeBidTime)).append("\n");
+    sb.append("    closeBidSize: ").append(toIndentedString(closeBidSize)).append("\n");
+    sb.append("    closeAskTime: ").append(toIndentedString(closeAskTime)).append("\n");
+    sb.append("    closeAskSize: ").append(toIndentedString(closeAskSize)).append("\n");
+    sb.append("    exerciseStyle: ").append(toIndentedString(exerciseStyle)).append("\n");
     sb.append("}");
     return sb.toString();
   }

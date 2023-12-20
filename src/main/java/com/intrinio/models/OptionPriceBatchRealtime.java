@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.intrinio.models.OptionPriceRealtime;
+import com.intrinio.models.OptionPriceRealtimeExtended;
 import com.intrinio.models.OptionRealtime;
 import com.intrinio.models.OptionStatsRealtime;
 import io.swagger.annotations.ApiModel;
@@ -29,6 +30,9 @@ public class OptionPriceBatchRealtime {
 
   @SerializedName("option")
   private OptionRealtime option = null;
+
+  @SerializedName("extended_price")
+  private OptionPriceRealtimeExtended extendedPrice = null;
 
   public OptionPriceBatchRealtime price(OptionPriceRealtime price) {
     this.price = price;
@@ -84,6 +88,24 @@ public class OptionPriceBatchRealtime {
     this.option = option;
   }
 
+  public OptionPriceBatchRealtime extendedPrice(OptionPriceRealtimeExtended extendedPrice) {
+    this.extendedPrice = extendedPrice;
+    return this;
+  }
+
+   /**
+   * Get extendedPrice
+   * @return extendedPrice
+  **/
+  @ApiModelProperty(value = "")
+  public OptionPriceRealtimeExtended getExtendedPrice() {
+    return extendedPrice;
+  }
+
+  public void setExtendedPrice(OptionPriceRealtimeExtended extendedPrice) {
+    this.extendedPrice = extendedPrice;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -96,12 +118,13 @@ public class OptionPriceBatchRealtime {
     OptionPriceBatchRealtime optionPriceBatchRealtime = (OptionPriceBatchRealtime) o;
     return Objects.equals(this.price, optionPriceBatchRealtime.price) &&
         Objects.equals(this.stats, optionPriceBatchRealtime.stats) &&
-        Objects.equals(this.option, optionPriceBatchRealtime.option);
+        Objects.equals(this.option, optionPriceBatchRealtime.option) &&
+        Objects.equals(this.extendedPrice, optionPriceBatchRealtime.extendedPrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(price, stats, option);
+    return Objects.hash(price, stats, option, extendedPrice);
   }
 
 
@@ -113,6 +136,7 @@ public class OptionPriceBatchRealtime {
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    stats: ").append(toIndentedString(stats)).append("\n");
     sb.append("    option: ").append(toIndentedString(option)).append("\n");
+    sb.append("    extendedPrice: ").append(toIndentedString(extendedPrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.intrinio.models.OptionPriceRealtime;
+import com.intrinio.models.OptionPriceRealtimeExtended;
 import com.intrinio.models.OptionRealtime;
 import com.intrinio.models.OptionStatsRealtime;
 import io.swagger.annotations.ApiModel;
@@ -28,6 +29,9 @@ public class ApiResponseOptionsPriceRealtime {
 
   @SerializedName("option")
   private OptionRealtime option = null;
+
+  @SerializedName("extended_price")
+  private OptionPriceRealtimeExtended extendedPrice = null;
 
   public ApiResponseOptionsPriceRealtime price(OptionPriceRealtime price) {
     this.price = price;
@@ -83,6 +87,24 @@ public class ApiResponseOptionsPriceRealtime {
     this.option = option;
   }
 
+  public ApiResponseOptionsPriceRealtime extendedPrice(OptionPriceRealtimeExtended extendedPrice) {
+    this.extendedPrice = extendedPrice;
+    return this;
+  }
+
+   /**
+   * Get extendedPrice
+   * @return extendedPrice
+  **/
+  @ApiModelProperty(value = "")
+  public OptionPriceRealtimeExtended getExtendedPrice() {
+    return extendedPrice;
+  }
+
+  public void setExtendedPrice(OptionPriceRealtimeExtended extendedPrice) {
+    this.extendedPrice = extendedPrice;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -95,12 +117,13 @@ public class ApiResponseOptionsPriceRealtime {
     ApiResponseOptionsPriceRealtime apiResponseOptionsPriceRealtime = (ApiResponseOptionsPriceRealtime) o;
     return Objects.equals(this.price, apiResponseOptionsPriceRealtime.price) &&
         Objects.equals(this.stats, apiResponseOptionsPriceRealtime.stats) &&
-        Objects.equals(this.option, apiResponseOptionsPriceRealtime.option);
+        Objects.equals(this.option, apiResponseOptionsPriceRealtime.option) &&
+        Objects.equals(this.extendedPrice, apiResponseOptionsPriceRealtime.extendedPrice);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(price, stats, option);
+    return Objects.hash(price, stats, option, extendedPrice);
   }
 
 
@@ -112,6 +135,7 @@ public class ApiResponseOptionsPriceRealtime {
     sb.append("    price: ").append(toIndentedString(price)).append("\n");
     sb.append("    stats: ").append(toIndentedString(stats)).append("\n");
     sb.append("    option: ").append(toIndentedString(option)).append("\n");
+    sb.append("    extendedPrice: ").append(toIndentedString(extendedPrice)).append("\n");
     sb.append("}");
     return sb.toString();
   }
