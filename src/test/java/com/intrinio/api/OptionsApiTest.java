@@ -89,7 +89,8 @@ public class OptionsApiTest {
         String source = null;
         String stockPriceSource = null;
         String model = null;
-        ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model);
+        Boolean showExtendedPrice = false;
+        ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice);
 
         // TODO: test validations
     }

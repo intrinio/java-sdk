@@ -1448,7 +1448,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsPricesBatchRealtime getOptionsPricesBatchRealtime(body, source, showExtendedPrice, stockPriceSource, model, showExtendedPrice2)
+> ApiResponseOptionsPricesBatchRealtime getOptionsPricesBatchRealtime(body, source, showStats, stockPriceSource, model, showExtendedPrice)
 
 #### Option Prices Batch Realtime
 
@@ -1480,10 +1480,10 @@ public class Main {
 
     OptionsApi optionsApi = new OptionsApi();
     String source = null;
-    Boolean showExtendedPrice = null;
+    Boolean showStats = null;
     String stockPriceSource = null;
     String model = null;
-    Boolean showExtendedPrice2 = null;
+    Boolean showExtendedPrice = null;
     OptionContractsList body = new OptionContractsList();
     List<String> contracts = new ArrayList<>();
 
@@ -1491,7 +1491,7 @@ public class Main {
     contracts.add("A220121P00057500");
     contracts.add("A220121P00060000");
     body.setContracts(contracts);
-    ApiResponseOptionsPricesBatchRealtime result = optionsApi.getOptionsPricesBatchRealtime(body, source, showExtendedPrice, stockPriceSource, model, showExtendedPrice2);
+    ApiResponseOptionsPricesBatchRealtime result = optionsApi.getOptionsPricesBatchRealtime(body, source, showStats, stockPriceSource, model, showExtendedPrice);
     System.out.println(result);
   }
 }
@@ -1508,10 +1508,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**OptionContractsList**](OptionContractsList.md)| The contract symbols for which to return options prices for. | &nbsp;
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
- **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
+ **showStats** | Boolean| Whether to include Greek calculations or not. | [optional] &nbsp;
  **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
- **showExtendedPrice2** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
+ **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
