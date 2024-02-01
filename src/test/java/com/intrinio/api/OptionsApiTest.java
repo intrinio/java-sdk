@@ -89,7 +89,7 @@ public class OptionsApiTest {
         String source = null;
         String stockPriceSource = null;
         String model = null;
-        Boolean showExtendedPrice = false;
+        Boolean showExtendedPrice = null;
         ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice);
 
         // TODO: test validations
@@ -214,7 +214,7 @@ public class OptionsApiTest {
         String moneyness = null;
         String stockPriceSource = null;
         String model = null;
-        Boolean showExtendedPrice = false;
+        Boolean showExtendedPrice = null;
         ApiResponseOptionsChainRealtime response = api.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice);
 
         // TODO: test validations
@@ -362,7 +362,7 @@ public class OptionsApiTest {
         Boolean showStats = null;
         String stockPriceSource = null;
         String model = null;
-        Boolean showExtendedPrice = false;
+        Boolean showExtendedPrice = null;
         ApiResponseOptionsPricesBatchRealtime response = api.getOptionsPricesBatchRealtime(body, source, showStats, stockPriceSource, model, showExtendedPrice);
 
         // TODO: test validations
@@ -401,7 +401,7 @@ public class OptionsApiTest {
         String source = null;
         String stockPriceSource = null;
         String model = null;
-        Boolean showExtendedPrice = false;
+        Boolean showExtendedPrice = null;
         ApiResponseOptionsPriceRealtime response = api.getOptionsPricesRealtime(identifier, source, stockPriceSource, model, showExtendedPrice);
 
         // TODO: test validations
@@ -436,7 +436,7 @@ public class OptionsApiTest {
     public void getOptionsStatsRealtimeTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         String source = null;
-        Boolean showExtendedPrice = false;
+        Boolean showExtendedPrice = null;
         ApiResponseOptionsStatsRealtime response = api.getOptionsStatsRealtime(identifier, source, showExtendedPrice);
 
         // TODO: test validations

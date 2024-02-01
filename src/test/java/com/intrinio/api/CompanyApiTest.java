@@ -6,6 +6,7 @@ import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseCompanies;
 import com.intrinio.models.ApiResponseCompaniesSearch;
 import com.intrinio.models.ApiResponseCompanyAnswers;
+import com.intrinio.models.ApiResponseCompanyDailyMetrics;
 import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
@@ -111,6 +112,25 @@ public class CompanyApiTest {
         String identifier = null;
         String query = null;
         ApiResponseCompanyAnswers response = api.getCompanyAnswers(identifier, query);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Company metrics by Company
+     *
+     * Returns the latest company metrics.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCompanyDailyMetricsTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        String nextPage2 = null;
+        ApiResponseCompanyDailyMetrics response = api.getCompanyDailyMetrics(identifier, pageSize, nextPage, nextPage2);
 
         // TODO: test validations
     }

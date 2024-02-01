@@ -41,6 +41,9 @@ public class SecurityTrades {
   @SerializedName("condition")
   private String condition = null;
 
+  @SerializedName("is_darkpool")
+  private Boolean isDarkpool = null;
+
   public SecurityTrades symbol(String symbol) {
     this.symbol = symbol;
     return this;
@@ -167,6 +170,24 @@ public class SecurityTrades {
     this.condition = condition;
   }
 
+  public SecurityTrades isDarkpool(Boolean isDarkpool) {
+    this.isDarkpool = isDarkpool;
+    return this;
+  }
+
+   /**
+   * If the trade was darkpool or not.
+   * @return isDarkpool
+  **/
+  @ApiModelProperty(value = "If the trade was darkpool or not.")
+  public Boolean isIsDarkpool() {
+    return isDarkpool;
+  }
+
+  public void setIsDarkpool(Boolean isDarkpool) {
+    this.isDarkpool = isDarkpool;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -183,12 +204,13 @@ public class SecurityTrades {
         Objects.equals(this.size, securityTrades.size) &&
         Objects.equals(this.totalVolume, securityTrades.totalVolume) &&
         Objects.equals(this.marketCenter, securityTrades.marketCenter) &&
-        Objects.equals(this.condition, securityTrades.condition);
+        Objects.equals(this.condition, securityTrades.condition) &&
+        Objects.equals(this.isDarkpool, securityTrades.isDarkpool);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(symbol, timestamp, price, size, totalVolume, marketCenter, condition);
+    return Objects.hash(symbol, timestamp, price, size, totalVolume, marketCenter, condition, isDarkpool);
   }
 
 
@@ -204,6 +226,7 @@ public class SecurityTrades {
     sb.append("    totalVolume: ").append(toIndentedString(totalVolume)).append("\n");
     sb.append("    marketCenter: ").append(toIndentedString(marketCenter)).append("\n");
     sb.append("    condition: ").append(toIndentedString(condition)).append("\n");
+    sb.append("    isDarkpool: ").append(toIndentedString(isDarkpool)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -32,9 +32,8 @@ Name | Type | Description
 
 Name | Value
 ---- | -----
-REALTIME | &quot;realtime&quot;
-DELAYED | &quot;delayed&quot;
-NASDAQ_BASIC | &quot;nasdaq_basic&quot;
+IEX | &quot;iex&quot;
+BATS | &quot;bats&quot;
 
 
 

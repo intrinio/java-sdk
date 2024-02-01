@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://docs.intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.48.1
-- Package version: 6.19.5
+- API version: 2.52.0
+- Package version: 6.19.6
 
 
 ## Installation
@@ -82,6 +82,7 @@ Class | Method | HTTP request | Description
 *CompanyApi* | [**getAllCompanyNews**](docs/CompanyApi.md#getAllCompanyNews) | **GET** /companies/news | All News
 *CompanyApi* | [**getCompany**](docs/CompanyApi.md#getCompany) | **GET** /companies/{identifier} | Lookup Company
 *CompanyApi* | [**getCompanyAnswers**](docs/CompanyApi.md#getCompanyAnswers) | **GET** /companies/{identifier}/answers | Company Answers
+*CompanyApi* | [**getCompanyDailyMetrics**](docs/CompanyApi.md#getCompanyDailyMetrics) | **GET** /companies/{identifier}/daily_metrics | Company metrics by Company
 *CompanyApi* | [**getCompanyDataPointNumber**](docs/CompanyApi.md#getCompanyDataPointNumber) | **GET** /companies/{identifier}/data_point/{tag}/number | Data Point (Number) for Company
 *CompanyApi* | [**getCompanyDataPointText**](docs/CompanyApi.md#getCompanyDataPointText) | **GET** /companies/{identifier}/data_point/{tag}/text | Data Point (Text) for Company
 *CompanyApi* | [**getCompanyFilings**](docs/CompanyApi.md#getCompanyFilings) | **GET** /companies/{identifier}/filings | All Filings by Company
@@ -192,6 +193,8 @@ Class | Method | HTTP request | Description
 *SecurityApi* | [**getSecurityDataPointNumber**](docs/SecurityApi.md#getSecurityDataPointNumber) | **GET** /securities/{identifier}/data_point/{tag}/number | Data Point (Number) for Security
 *SecurityApi* | [**getSecurityDataPointText**](docs/SecurityApi.md#getSecurityDataPointText) | **GET** /securities/{identifier}/data_point/{tag}/text | Data Point (Text) for Security
 *SecurityApi* | [**getSecurityHistoricalData**](docs/SecurityApi.md#getSecurityHistoricalData) | **GET** /securities/{identifier}/historical_data/{tag} | Historical Data for Security
+*SecurityApi* | [**getSecurityHistoryByIdentifier**](docs/SecurityApi.md#getSecurityHistoryByIdentifier) | **GET** /securities/history-by-identifier/{identifier} | Security History By Identifier
+*SecurityApi* | [**getSecurityHistoryByTicker**](docs/SecurityApi.md#getSecurityHistoryByTicker) | **GET** /securities/history-by-ticker/{ticker} | Security History By Ticker
 *SecurityApi* | [**getSecurityInsiderOwnership**](docs/SecurityApi.md#getSecurityInsiderOwnership) | **GET** /securities/{identifier}/institutional_ownership | Institutional Ownership by Security
 *SecurityApi* | [**getSecurityIntervalMovers**](docs/SecurityApi.md#getSecurityIntervalMovers) | **GET** /securities/market_movers | Security Intervals Movers
 *SecurityApi* | [**getSecurityIntervalMoversChange**](docs/SecurityApi.md#getSecurityIntervalMoversChange) | **GET** /securities/market_movers/change | Security Intervals Movers By Change
@@ -301,6 +304,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseCompanies](docs/ApiResponseCompanies.md)
  - [ApiResponseCompaniesSearch](docs/ApiResponseCompaniesSearch.md)
  - [ApiResponseCompanyAnswers](docs/ApiResponseCompanyAnswers.md)
+ - [ApiResponseCompanyDailyMetrics](docs/ApiResponseCompanyDailyMetrics.md)
  - [ApiResponseCompanyFilings](docs/ApiResponseCompanyFilings.md)
  - [ApiResponseCompanyFundamentals](docs/ApiResponseCompanyFundamentals.md)
  - [ApiResponseCompanyHistoricalData](docs/ApiResponseCompanyHistoricalData.md)
@@ -430,6 +434,7 @@ Class | Method | HTTP request | Description
  - [ChaikinMoneyFlowTechnicalValue](docs/ChaikinMoneyFlowTechnicalValue.md)
  - [CommodityChannelIndexTechnicalValue](docs/CommodityChannelIndexTechnicalValue.md)
  - [Company](docs/Company.md)
+ - [CompanyDailyMetric](docs/CompanyDailyMetric.md)
  - [CompanyFiling](docs/CompanyFiling.md)
  - [CompanyInitialPublicOffering](docs/CompanyInitialPublicOffering.md)
  - [CompanyNews](docs/CompanyNews.md)
@@ -500,6 +505,7 @@ Class | Method | HTTP request | Description
  - [OptionPriceBatchRealtime](docs/OptionPriceBatchRealtime.md)
  - [OptionPriceEod](docs/OptionPriceEod.md)
  - [OptionPriceRealtime](docs/OptionPriceRealtime.md)
+ - [OptionPriceRealtimeExtended](docs/OptionPriceRealtimeExtended.md)
  - [OptionRealtime](docs/OptionRealtime.md)
  - [OptionSnapshotGroup](docs/OptionSnapshotGroup.md)
  - [OptionSnapshotsResult](docs/OptionSnapshotsResult.md)
@@ -517,6 +523,8 @@ Class | Method | HTTP request | Description
  - [ReportedTag](docs/ReportedTag.md)
  - [SICIndex](docs/SICIndex.md)
  - [Security](docs/Security.md)
+ - [SecurityHistory](docs/SecurityHistory.md)
+ - [SecurityHistoryListResult](docs/SecurityHistoryListResult.md)
  - [SecurityIntervalMover](docs/SecurityIntervalMover.md)
  - [SecurityIntervalsMoversResult](docs/SecurityIntervalsMoversResult.md)
  - [SecurityReplayFileResult](docs/SecurityReplayFileResult.md)

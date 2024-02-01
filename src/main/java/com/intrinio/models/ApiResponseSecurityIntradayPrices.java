@@ -32,11 +32,9 @@ public class ApiResponseSecurityIntradayPrices {
    */
   @JsonAdapter(SourceEnum.Adapter.class)
   public enum SourceEnum {
-    REALTIME("realtime"),
+    IEX("iex"),
     
-    DELAYED("delayed"),
-    
-    NASDAQ_BASIC("nasdaq_basic");
+    BATS("bats");
 
     private String value;
 

@@ -29,6 +29,7 @@ Name | Type | Description
 Name | Value
 ---- | -----
 IEX | &quot;iex&quot;
+DELAYED_SIP | &quot;delayed_sip&quot;
 UTP_DELAYED | &quot;utp_delayed&quot;
 CTA_A_DELAYED | &quot;cta_a_delayed&quot;
 CTA_B_DELAYED | &quot;cta_b_delayed&quot;

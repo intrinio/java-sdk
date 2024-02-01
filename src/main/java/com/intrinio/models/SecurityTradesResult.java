@@ -31,6 +31,8 @@ public class SecurityTradesResult {
   public enum SourceEnum {
     IEX("iex"),
     
+    DELAYED_SIP("delayed_sip"),
+    
     UTP_DELAYED("utp_delayed"),
     
     CTA_A_DELAYED("cta_a_delayed"),

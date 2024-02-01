@@ -1171,9 +1171,10 @@ public class SecurityApiTest {
         LocalDate endDate = null;
         String endTime = null;
         String timezone = null;
+        Boolean darkpoolOnly = null;
         Integer pageSize = null;
         String nextPage = null;
-        SecurityTradesResult response = api.getSecurityTradesBySymbol(identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
+        SecurityTradesResult response = api.getSecurityTradesBySymbol(identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, nextPage);
 
         // TODO: test validations
     }
