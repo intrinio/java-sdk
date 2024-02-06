@@ -27,6 +27,7 @@ Name | Type | Description
 **evToNopat** | [**BigDecimal**](BigDecimal.md) | The enterprise value to normalized operating profit after tax ratio. &nbsp;
 **evToOcf** | [**BigDecimal**](BigDecimal.md) | The enterprise value to operating cash flow ratio. &nbsp;
 **evToFcff** | [**BigDecimal**](BigDecimal.md) | The enterprise value to free cash flow to the firm ratio. &nbsp;
+**company** | [**CompanySummary**](CompanySummary.md) |  &nbsp;
 
 [//]: # (END_DEFINITION)
 
@@ -77,6 +78,9 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:CompanySummary)
 
 
 

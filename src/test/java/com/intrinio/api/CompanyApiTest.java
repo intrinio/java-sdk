@@ -67,6 +67,25 @@ public class CompanyApiTest {
     }
     
     /**
+     * All Companies daily metrics
+     *
+     * Returns the company metrics for a date.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAllCompaniesDailyMetricsTest() throws ApiException, NoSuchMethodException {
+        LocalDate onDate = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        String nextPage2 = null;
+        ApiResponseCompanyDailyMetrics response = api.getAllCompaniesDailyMetrics(onDate, pageSize, nextPage, nextPage2);
+
+        // TODO: test validations
+    }
+    
+    /**
      * All News
      *
      * Returns the latest news article links, headlines and summaries for all US traded companies allowing you to keep a pulse on companies and their business operations.
@@ -127,10 +146,11 @@ public class CompanyApiTest {
     @Test
     public void getCompanyDailyMetricsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
+        LocalDate onDate = null;
         Integer pageSize = null;
         String nextPage = null;
         String nextPage2 = null;
-        ApiResponseCompanyDailyMetrics response = api.getCompanyDailyMetrics(identifier, pageSize, nextPage, nextPage2);
+        ApiResponseCompanyDailyMetrics response = api.getCompanyDailyMetrics(identifier, onDate, pageSize, nextPage, nextPage2);
 
         // TODO: test validations
     }

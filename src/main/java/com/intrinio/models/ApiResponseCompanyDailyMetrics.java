@@ -9,7 +9,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.intrinio.models.CompanyDailyMetric;
-import com.intrinio.models.CompanySummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -23,9 +22,6 @@ import java.util.List;
 public class ApiResponseCompanyDailyMetrics {
   @SerializedName("daily_metrics")
   private List<CompanyDailyMetric> dailyMetrics = null;
-
-  @SerializedName("company")
-  private CompanySummary company = null;
 
   @SerializedName("next_page")
   private String nextPage = null;
@@ -54,24 +50,6 @@ public class ApiResponseCompanyDailyMetrics {
 
   public void setDailyMetrics(List<CompanyDailyMetric> dailyMetrics) {
     this.dailyMetrics = dailyMetrics;
-  }
-
-  public ApiResponseCompanyDailyMetrics company(CompanySummary company) {
-    this.company = company;
-    return this;
-  }
-
-   /**
-   * Get company
-   * @return company
-  **/
-  @ApiModelProperty(value = "")
-  public CompanySummary getCompany() {
-    return company;
-  }
-
-  public void setCompany(CompanySummary company) {
-    this.company = company;
   }
 
   public ApiResponseCompanyDailyMetrics nextPage(String nextPage) {
@@ -103,13 +81,12 @@ public class ApiResponseCompanyDailyMetrics {
     }
     ApiResponseCompanyDailyMetrics apiResponseCompanyDailyMetrics = (ApiResponseCompanyDailyMetrics) o;
     return Objects.equals(this.dailyMetrics, apiResponseCompanyDailyMetrics.dailyMetrics) &&
-        Objects.equals(this.company, apiResponseCompanyDailyMetrics.company) &&
         Objects.equals(this.nextPage, apiResponseCompanyDailyMetrics.nextPage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dailyMetrics, company, nextPage);
+    return Objects.hash(dailyMetrics, nextPage);
   }
 
 
@@ -119,7 +96,6 @@ public class ApiResponseCompanyDailyMetrics {
     sb.append("class ApiResponseCompanyDailyMetrics {\n");
     
     sb.append("    dailyMetrics: ").append(toIndentedString(dailyMetrics)).append("\n");
-    sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
     sb.append("}");
     return sb.toString();

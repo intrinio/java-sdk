@@ -8,6 +8,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.intrinio.models.CompanySummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -67,6 +68,9 @@ public class CompanyDailyMetric {
 
   @SerializedName("ev_to_fcff")
   private BigDecimal evToFcff = null;
+
+  @SerializedName("company")
+  private CompanySummary company = null;
 
   public CompanyDailyMetric date(OffsetDateTime date) {
     this.date = date;
@@ -356,6 +360,24 @@ public class CompanyDailyMetric {
     this.evToFcff = evToFcff;
   }
 
+  public CompanyDailyMetric company(CompanySummary company) {
+    this.company = company;
+    return this;
+  }
+
+   /**
+   * Get company
+   * @return company
+  **/
+  @ApiModelProperty(value = "")
+  public CompanySummary getCompany() {
+    return company;
+  }
+
+  public void setCompany(CompanySummary company) {
+    this.company = company;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -381,12 +403,13 @@ public class CompanyDailyMetric {
         Objects.equals(this.evToRevenue, companyDailyMetric.evToRevenue) &&
         Objects.equals(this.evToNopat, companyDailyMetric.evToNopat) &&
         Objects.equals(this.evToOcf, companyDailyMetric.evToOcf) &&
-        Objects.equals(this.evToFcff, companyDailyMetric.evToFcff);
+        Objects.equals(this.evToFcff, companyDailyMetric.evToFcff) &&
+        Objects.equals(this.company, companyDailyMetric.company);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(date, enterpriseValue, evToEbit, evToEbitda, marketCap, priceToBook, priceToEarnings, priceToRevenue, priceToTangibleBook, dividendYield, earningsYield, evToInvestedCapital, evToRevenue, evToNopat, evToOcf, evToFcff);
+    return Objects.hash(date, enterpriseValue, evToEbit, evToEbitda, marketCap, priceToBook, priceToEarnings, priceToRevenue, priceToTangibleBook, dividendYield, earningsYield, evToInvestedCapital, evToRevenue, evToNopat, evToOcf, evToFcff, company);
   }
 
 
@@ -411,6 +434,7 @@ public class CompanyDailyMetric {
     sb.append("    evToNopat: ").append(toIndentedString(evToNopat)).append("\n");
     sb.append("    evToOcf: ").append(toIndentedString(evToOcf)).append("\n");
     sb.append("    evToFcff: ").append(toIndentedString(evToFcff)).append("\n");
+    sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("}");
     return sb.toString();
   }

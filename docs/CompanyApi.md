@@ -5,6 +5,7 @@ All URIs are relative to *https://api-v2.intrinio.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAllCompanies**](CompanyApi.md#getAllCompanies) | **GET** /companies | All Companies
+[**getAllCompaniesDailyMetrics**](CompanyApi.md#getAllCompaniesDailyMetrics) | **GET** /companies/daily_metrics | All Companies daily metrics
 [**getAllCompanyNews**](CompanyApi.md#getAllCompanyNews) | **GET** /companies/news | All News
 [**getCompany**](CompanyApi.md#getCompany) | **GET** /companies/{identifier} | Lookup Company
 [**getCompanyAnswers**](CompanyApi.md#getCompanyAnswers) | **GET** /companies/{identifier}/answers | Company Answers
@@ -127,6 +128,96 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseCompanies**](ApiResponseCompanies.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:CompanyApi)
+
+[//]: # (METHOD:getAllCompaniesDailyMetrics)
+
+[//]: # (RETURN_TYPE:ApiResponseCompanyDailyMetrics)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseCompanyDailyMetrics.md)
+
+[//]: # (OPERATION:getAllCompaniesDailyMetrics_v2)
+
+[//]: # (ENDPOINT:/companies/daily_metrics)
+
+[//]: # (DOCUMENT_LINK:CompanyApi.md#getAllCompaniesDailyMetrics)
+
+<a name="getAllCompaniesDailyMetrics"></a>
+## **getAllCompaniesDailyMetrics**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllCompaniesDailyMetrics_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseCompanyDailyMetrics getAllCompaniesDailyMetrics(onDate, pageSize, nextPage, nextPage2)
+
+#### All Companies daily metrics
+
+
+Returns the company metrics for a date.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    CompanyApi companyApi = new CompanyApi();
+    LocalDate onDate = LocalDate.of();
+    Integer pageSize = 100;
+    String nextPage = null;
+    String nextPage2 = null;
+    ApiResponseCompanyDailyMetrics result = companyApi.getAllCompaniesDailyMetrics(onDate, pageSize, nextPage, nextPage2);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **onDate** | LocalDate| Date of the metric | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+ **nextPage2** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseCompanyDailyMetrics**](ApiResponseCompanyDailyMetrics.md)
 
 [//]: # (END_OPERATION)
 
@@ -412,7 +503,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseCompanyDailyMetrics getCompanyDailyMetrics(identifier, pageSize, nextPage, nextPage2)
+> ApiResponseCompanyDailyMetrics getCompanyDailyMetrics(identifier, onDate, pageSize, nextPage, nextPage2)
 
 #### Company metrics by Company
 
@@ -444,10 +535,11 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
     String identifier = "AAPL";
+    LocalDate onDate = LocalDate.of();
     Integer pageSize = 100;
     String nextPage = null;
     String nextPage2 = null;
-    ApiResponseCompanyDailyMetrics result = companyApi.getCompanyDailyMetrics(identifier, pageSize, nextPage, nextPage2);
+    ApiResponseCompanyDailyMetrics result = companyApi.getCompanyDailyMetrics(identifier, onDate, pageSize, nextPage, nextPage2);
     System.out.println(result);
   }
 }
@@ -463,6 +555,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
+ **onDate** | LocalDate| Date of the metric | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
  **nextPage2** | String| Gets the next page of data from a previous API call | [optional] &nbsp;

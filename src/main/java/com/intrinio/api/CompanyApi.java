@@ -247,6 +247,147 @@ public class CompanyApi {
         return call;
     }
     /**
+     * Build call for getAllCompaniesDailyMetrics
+     * @param onDate Date of the metric (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getAllCompaniesDailyMetricsCall(LocalDate onDate, Integer pageSize, String nextPage, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/companies/daily_metrics";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (onDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("on_date", onDate));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+        if (nextPage2 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage2));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getAllCompaniesDailyMetricsValidateBeforeCall(LocalDate onDate, Integer pageSize, String nextPage, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getAllCompaniesDailyMetricsCall(onDate, pageSize, nextPage, nextPage2, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * All Companies daily metrics
+     * Returns the company metrics for a date.
+     * @param onDate Date of the metric (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseCompanyDailyMetrics
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseCompanyDailyMetrics getAllCompaniesDailyMetrics(LocalDate onDate, Integer pageSize, String nextPage, String nextPage2) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getAllCompaniesDailyMetricsWithHttpInfo", LocalDate.class, Integer.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { onDate, pageSize, nextPage, nextPage2 };
+      ApiResponse<ApiResponseCompanyDailyMetrics> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * All Companies daily metrics
+     * Returns the company metrics for a date.
+     * @param onDate Date of the metric (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseCompanyDailyMetrics&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseCompanyDailyMetrics> getAllCompaniesDailyMetricsWithHttpInfo(LocalDate onDate, Integer pageSize, String nextPage, String nextPage2) throws ApiException {
+        com.squareup.okhttp.Call call = getAllCompaniesDailyMetricsValidateBeforeCall(onDate, pageSize, nextPage, nextPage2, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanyDailyMetrics>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * All Companies daily metrics (asynchronously)
+     * Returns the company metrics for a date.
+     * @param onDate Date of the metric (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getAllCompaniesDailyMetricsAsync(LocalDate onDate, Integer pageSize, String nextPage, String nextPage2, final ApiCallback<ApiResponseCompanyDailyMetrics> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getAllCompaniesDailyMetricsValidateBeforeCall(onDate, pageSize, nextPage, nextPage2, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanyDailyMetrics>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getAllCompanyNews
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -643,6 +784,7 @@ public class CompanyApi {
     /**
      * Build call for getCompanyDailyMetrics
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param onDate Date of the metric (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param nextPage2 Gets the next page of data from a previous API call (optional)
@@ -651,7 +793,7 @@ public class CompanyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyDailyMetricsCall(String identifier, Integer pageSize, String nextPage, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyDailyMetricsCall(String identifier, LocalDate onDate, Integer pageSize, String nextPage, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -660,6 +802,8 @@ public class CompanyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (onDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("on_date", onDate));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -700,7 +844,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyDailyMetricsValidateBeforeCall(String identifier, Integer pageSize, String nextPage, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyDailyMetricsValidateBeforeCall(String identifier, LocalDate onDate, Integer pageSize, String nextPage, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -708,7 +852,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCompanyDailyMetricsCall(identifier, pageSize, nextPage, nextPage2, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyDailyMetricsCall(identifier, onDate, pageSize, nextPage, nextPage2, progressListener, progressRequestListener);
         return call;
 
     }
@@ -717,6 +861,7 @@ public class CompanyApi {
      * Company metrics by Company
      * Returns the latest company metrics.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param onDate Date of the metric (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param nextPage2 Gets the next page of data from a previous API call (optional)
@@ -724,10 +869,10 @@ public class CompanyApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanyDailyMetrics getCompanyDailyMetrics(String identifier, Integer pageSize, String nextPage, String nextPage2) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("getCompanyDailyMetricsWithHttpInfo", String.class, Integer.class, String.class, String.class);
+    public ApiResponseCompanyDailyMetrics getCompanyDailyMetrics(String identifier, LocalDate onDate, Integer pageSize, String nextPage, String nextPage2) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyDailyMetricsWithHttpInfo", String.class, LocalDate.class, Integer.class, String.class, String.class);
       
-      Object[] apiCallArguments = { identifier, pageSize, nextPage, nextPage2 };
+      Object[] apiCallArguments = { identifier, onDate, pageSize, nextPage, nextPage2 };
       ApiResponse<ApiResponseCompanyDailyMetrics> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -736,14 +881,15 @@ public class CompanyApi {
      * Company metrics by Company
      * Returns the latest company metrics.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param onDate Date of the metric (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanyDailyMetrics&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanyDailyMetrics> getCompanyDailyMetricsWithHttpInfo(String identifier, Integer pageSize, String nextPage, String nextPage2) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyDailyMetricsValidateBeforeCall(identifier, pageSize, nextPage, nextPage2, null, null);
+    public ApiResponse<ApiResponseCompanyDailyMetrics> getCompanyDailyMetricsWithHttpInfo(String identifier, LocalDate onDate, Integer pageSize, String nextPage, String nextPage2) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyDailyMetricsValidateBeforeCall(identifier, onDate, pageSize, nextPage, nextPage2, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyDailyMetrics>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -752,6 +898,7 @@ public class CompanyApi {
      * Company metrics by Company (asynchronously)
      * Returns the latest company metrics.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param onDate Date of the metric (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param nextPage2 Gets the next page of data from a previous API call (optional)
@@ -759,7 +906,7 @@ public class CompanyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyDailyMetricsAsync(String identifier, Integer pageSize, String nextPage, String nextPage2, final ApiCallback<ApiResponseCompanyDailyMetrics> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyDailyMetricsAsync(String identifier, LocalDate onDate, Integer pageSize, String nextPage, String nextPage2, final ApiCallback<ApiResponseCompanyDailyMetrics> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -780,7 +927,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyDailyMetricsValidateBeforeCall(identifier, pageSize, nextPage, nextPage2, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyDailyMetricsValidateBeforeCall(identifier, onDate, pageSize, nextPage, nextPage2, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyDailyMetrics>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
