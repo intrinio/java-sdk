@@ -12,6 +12,7 @@ import com.intrinio.models.ApiResponseZacksInstitutionalHoldingCompanies;
 import com.intrinio.models.ApiResponseZacksInstitutionalHoldingOwners;
 import com.intrinio.models.ApiResponseZacksInstitutionalHoldings;
 import com.intrinio.models.ApiResponseZacksLongTermGrowthRates;
+import com.intrinio.models.ApiResponseZacksSalesEstimates;
 import com.intrinio.models.ApiResponseZacksSalesSurprises;
 import com.intrinio.models.ApiResponseZacksTargetPriceConsensuses;
 import java.math.BigDecimal;
@@ -232,6 +233,31 @@ public class ZacksApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseZacksLongTermGrowthRates response = api.getZacksLongTermGrowthRates(identifier, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks Sales Estimates
+     *
+     * This database offers consensus sales estimates for over 5,000 US and Canadian listed companies.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksSalesEstimatesTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        Integer fiscalYear = null;
+        String fiscalPeriod = null;
+        Integer calendarYear = null;
+        String calendarPeriod = null;
+        String nextPage = null;
+        Integer pageSize = null;
+        String nextPage2 = null;
+        ApiResponseZacksSalesEstimates response = api.getZacksSalesEstimates(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, nextPage, pageSize, nextPage2);
 
         // TODO: test validations
     }

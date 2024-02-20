@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**getZacksInstitutionalHoldingOwners**](ZacksApi.md#getZacksInstitutionalHoldingOwners) | **GET** /zacks/institutional_holdings/owners | Zacks Institutional Holding Owners
 [**getZacksInstitutionalHoldings**](ZacksApi.md#getZacksInstitutionalHoldings) | **GET** /zacks/institutional_holdings | Zacks Institutional Holdings
 [**getZacksLongTermGrowthRates**](ZacksApi.md#getZacksLongTermGrowthRates) | **GET** /zacks/long_term_growth_rates | Zacks Long Term Growth Rates
+[**getZacksSalesEstimates**](ZacksApi.md#getZacksSalesEstimates) | **GET** /zacks/sales_estimates | Zacks Sales Estimates
 [**getZacksSalesSurprises**](ZacksApi.md#getZacksSalesSurprises) | **GET** /zacks/sales_surprises | Zacks Sales Surprises
 [**getZacksTargetPriceConsensuses**](ZacksApi.md#getZacksTargetPriceConsensuses) | **GET** /zacks/target_price_consensuses | Zacks Target Price Consensuses
 
@@ -888,6 +889,108 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseZacksLongTermGrowthRates**](ApiResponseZacksLongTermGrowthRates.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:ZacksApi)
+
+[//]: # (METHOD:getZacksSalesEstimates)
+
+[//]: # (RETURN_TYPE:ApiResponseZacksSalesEstimates)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseZacksSalesEstimates.md)
+
+[//]: # (OPERATION:getZacksSalesEstimates_v2)
+
+[//]: # (ENDPOINT:/zacks/sales_estimates)
+
+[//]: # (DOCUMENT_LINK:ZacksApi.md#getZacksSalesEstimates)
+
+<a name="getZacksSalesEstimates"></a>
+## **getZacksSalesEstimates**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getZacksSalesEstimates_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseZacksSalesEstimates getZacksSalesEstimates(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, nextPage, pageSize, nextPage2)
+
+#### Zacks Sales Estimates
+
+
+This database offers consensus sales estimates for over 5,000 US and Canadian listed companies.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    ZacksApi zacksApi = new ZacksApi();
+    String identifier = "AAPL";
+    LocalDate startDate = null;
+    LocalDate endDate = null;
+    Integer fiscalYear = null;
+    String fiscalPeriod = null;
+    Integer calendarYear = null;
+    String calendarPeriod = null;
+    String nextPage = null;
+    Integer pageSize = 100;
+    String nextPage2 = null;
+    ApiResponseZacksSalesEstimates result = zacksApi.getZacksSalesEstimates(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, nextPage, pageSize, nextPage2);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | [optional] &nbsp;
+ **startDate** | LocalDate| Limit Sales estimates to those on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Limit Sales estimates to those on or before this date | [optional] &nbsp;
+ **fiscalYear** | Integer| Only for the given fiscal year | [optional] &nbsp;
+ **fiscalPeriod** | String| The fiscal period | [optional] [enum: Q1TTM, Q2TTM, Q3TTM, FY, Q1, Q2, Q3, Q4, Q2YTD, Q3YTD] &nbsp;
+ **calendarYear** | Integer| Only for the given calendar year | [optional] &nbsp;
+ **calendarPeriod** | String| The calendar period | [optional] [enum: Q1TTM, Q2TTM, Q3TTM, FY, Q1, Q2, Q3, Q4, Q2YTD, Q3YTD] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage2** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseZacksSalesEstimates**](ApiResponseZacksSalesEstimates.md)
 
 [//]: # (END_OPERATION)
 

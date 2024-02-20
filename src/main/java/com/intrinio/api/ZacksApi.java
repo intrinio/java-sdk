@@ -25,6 +25,7 @@ import com.intrinio.models.ApiResponseZacksInstitutionalHoldingCompanies;
 import com.intrinio.models.ApiResponseZacksInstitutionalHoldingOwners;
 import com.intrinio.models.ApiResponseZacksInstitutionalHoldings;
 import com.intrinio.models.ApiResponseZacksLongTermGrowthRates;
+import com.intrinio.models.ApiResponseZacksSalesEstimates;
 import com.intrinio.models.ApiResponseZacksSalesSurprises;
 import com.intrinio.models.ApiResponseZacksTargetPriceConsensuses;
 import java.math.BigDecimal;
@@ -1514,6 +1515,183 @@ public class ZacksApi {
 
         com.squareup.okhttp.Call call = getZacksLongTermGrowthRatesValidateBeforeCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseZacksLongTermGrowthRates>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getZacksSalesEstimates
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param startDate Limit Sales estimates to those on or after this date (optional)
+     * @param endDate Limit Sales estimates to those on or before this date (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param calendarYear Only for the given calendar year (optional)
+     * @param calendarPeriod The calendar period (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksSalesEstimatesCall(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, String nextPage, Integer pageSize, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/sales_estimates";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (identifier != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("identifier", identifier));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (fiscalYear != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_year", fiscalYear));
+        if (fiscalPeriod != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_period", fiscalPeriod));
+        if (calendarYear != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("calendar_year", calendarYear));
+        if (calendarPeriod != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("calendar_period", calendarPeriod));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage2 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage2));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksSalesEstimatesValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, String nextPage, Integer pageSize, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getZacksSalesEstimatesCall(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, nextPage, pageSize, nextPage2, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks Sales Estimates
+     * This database offers consensus sales estimates for over 5,000 US and Canadian listed companies.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param startDate Limit Sales estimates to those on or after this date (optional)
+     * @param endDate Limit Sales estimates to those on or before this date (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param calendarYear Only for the given calendar year (optional)
+     * @param calendarPeriod The calendar period (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseZacksSalesEstimates
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseZacksSalesEstimates getZacksSalesEstimates(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, String nextPage, Integer pageSize, String nextPage2) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksSalesEstimatesWithHttpInfo", String.class, LocalDate.class, LocalDate.class, Integer.class, String.class, Integer.class, String.class, String.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, nextPage, pageSize, nextPage2 };
+      ApiResponse<ApiResponseZacksSalesEstimates> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Zacks Sales Estimates
+     * This database offers consensus sales estimates for over 5,000 US and Canadian listed companies.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param startDate Limit Sales estimates to those on or after this date (optional)
+     * @param endDate Limit Sales estimates to those on or before this date (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param calendarYear Only for the given calendar year (optional)
+     * @param calendarPeriod The calendar period (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseZacksSalesEstimates&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseZacksSalesEstimates> getZacksSalesEstimatesWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, String nextPage, Integer pageSize, String nextPage2) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksSalesEstimatesValidateBeforeCall(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, nextPage, pageSize, nextPage2, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksSalesEstimates>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks Sales Estimates (asynchronously)
+     * This database offers consensus sales estimates for over 5,000 US and Canadian listed companies.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param startDate Limit Sales estimates to those on or after this date (optional)
+     * @param endDate Limit Sales estimates to those on or before this date (optional)
+     * @param fiscalYear Only for the given fiscal year (optional)
+     * @param fiscalPeriod The fiscal period (optional)
+     * @param calendarYear Only for the given calendar year (optional)
+     * @param calendarPeriod The calendar period (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksSalesEstimatesAsync(String identifier, LocalDate startDate, LocalDate endDate, Integer fiscalYear, String fiscalPeriod, Integer calendarYear, String calendarPeriod, String nextPage, Integer pageSize, String nextPage2, final ApiCallback<ApiResponseZacksSalesEstimates> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksSalesEstimatesValidateBeforeCall(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, nextPage, pageSize, nextPage2, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksSalesEstimates>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
