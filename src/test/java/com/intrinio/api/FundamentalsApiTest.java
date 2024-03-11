@@ -44,8 +44,10 @@ public class FundamentalsApiTest {
         String fiscalPeriod = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
+        LocalDate updatedAfter = null;
+        LocalDate updatedBefore = null;
         String nextPage = null;
-        Fundamental response = api.filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage);
+        Fundamental response = api.filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, nextPage);
 
         // TODO: test validations
     }

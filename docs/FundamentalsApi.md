@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 [//]: # (START_OVERVIEW)
 
-> Fundamental filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage)
+> Fundamental filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, nextPage)
 
 #### Filter Fundamental
 
@@ -78,8 +78,10 @@ public class Main {
     String fiscalPeriod = "FY";
     LocalDate startDate = LocalDate.of(2022,1,01);
     LocalDate endDate = LocalDate.of(2022,12,01);
+    LocalDate updatedAfter = LocalDate.of(2022,12,01);
+    LocalDate updatedBefore = LocalDate.of(2022,12,01);
     String nextPage = null;
-    Fundamental result = fundamentalsApi.filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage);
+    Fundamental result = fundamentalsApi.filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, nextPage);
     System.out.println(result);
   }
 }
@@ -103,6 +105,8 @@ Name | Type | Description  | Notes
  **fiscalPeriod** | String| The fiscal period | [optional] [enum: Q1TTM, Q2TTM, Q3TTM, FY, Q1, Q2, Q3, Q4, Q2YTD, Q3YTD] &nbsp;
  **startDate** | LocalDate| Only include fundamentals where covered period is on or after this date. | [optional] &nbsp;
  **endDate** | LocalDate| Only include fundamentals where covered period is on or before this date. | [optional] &nbsp;
+ **updatedAfter** | LocalDate| Only include fundamentals where it was updated after this date. | [optional] &nbsp;
+ **updatedBefore** | LocalDate| Only include fundamentals where it was updated before this date. | [optional] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 

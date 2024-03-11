@@ -59,13 +59,15 @@ public class FundamentalsApi {
      * @param fiscalPeriod The fiscal period (optional)
      * @param startDate Only include fundamentals where covered period is on or after this date. (optional)
      * @param endDate Only include fundamentals where covered period is on or before this date. (optional)
+     * @param updatedAfter Only include fundamentals where it was updated after this date. (optional)
+     * @param updatedBefore Only include fundamentals where it was updated before this date. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call filterFundamentalCall(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call filterFundamentalCall(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, LocalDate updatedBefore, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -91,6 +93,10 @@ public class FundamentalsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
         if (endDate != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (updatedAfter != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("updated_after", updatedAfter));
+        if (updatedBefore != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("updated_before", updatedBefore));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -127,10 +133,10 @@ public class FundamentalsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call filterFundamentalValidateBeforeCall(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call filterFundamentalValidateBeforeCall(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, LocalDate updatedBefore, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = filterFundamentalCall(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = filterFundamentalCall(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -147,15 +153,17 @@ public class FundamentalsApi {
      * @param fiscalPeriod The fiscal period (optional)
      * @param startDate Only include fundamentals where covered period is on or after this date. (optional)
      * @param endDate Only include fundamentals where covered period is on or before this date. (optional)
+     * @param updatedAfter Only include fundamentals where it was updated after this date. (optional)
+     * @param updatedBefore Only include fundamentals where it was updated before this date. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return Fundamental
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public Fundamental filterFundamental(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = FundamentalsApi.class.getMethod("filterFundamentalWithHttpInfo", LocalDate.class, LocalDate.class, Boolean.class, Integer.class, String.class, String.class, String.class, LocalDate.class, LocalDate.class, String.class);
+    public Fundamental filterFundamental(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, LocalDate updatedBefore, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FundamentalsApi.class.getMethod("filterFundamentalWithHttpInfo", LocalDate.class, LocalDate.class, Boolean.class, Integer.class, String.class, String.class, String.class, LocalDate.class, LocalDate.class, LocalDate.class, LocalDate.class, String.class);
       
-      Object[] apiCallArguments = { filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage };
+      Object[] apiCallArguments = { filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, nextPage };
       ApiResponse<Fundamental> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -172,12 +180,14 @@ public class FundamentalsApi {
      * @param fiscalPeriod The fiscal period (optional)
      * @param startDate Only include fundamentals where covered period is on or after this date. (optional)
      * @param endDate Only include fundamentals where covered period is on or before this date. (optional)
+     * @param updatedAfter Only include fundamentals where it was updated after this date. (optional)
+     * @param updatedBefore Only include fundamentals where it was updated before this date. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;Fundamental&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Fundamental> filterFundamentalWithHttpInfo(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = filterFundamentalValidateBeforeCall(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage, null, null);
+    public ApiResponse<Fundamental> filterFundamentalWithHttpInfo(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, LocalDate updatedBefore, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = filterFundamentalValidateBeforeCall(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, nextPage, null, null);
         Type localVarReturnType = new TypeToken<Fundamental>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -194,12 +204,14 @@ public class FundamentalsApi {
      * @param fiscalPeriod The fiscal period (optional)
      * @param startDate Only include fundamentals where covered period is on or after this date. (optional)
      * @param endDate Only include fundamentals where covered period is on or before this date. (optional)
+     * @param updatedAfter Only include fundamentals where it was updated after this date. (optional)
+     * @param updatedBefore Only include fundamentals where it was updated before this date. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call filterFundamentalAsync(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, String nextPage, final ApiCallback<Fundamental> callback) throws ApiException {
+    public com.squareup.okhttp.Call filterFundamentalAsync(LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fiscalPeriod, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, LocalDate updatedBefore, String nextPage, final ApiCallback<Fundamental> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -220,7 +232,7 @@ public class FundamentalsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = filterFundamentalValidateBeforeCall(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = filterFundamentalValidateBeforeCall(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Fundamental>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

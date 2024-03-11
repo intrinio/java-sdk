@@ -36,7 +36,9 @@ public class ApiResponseSecurityIntervalPrices {
     
     DELAYED("delayed"),
     
-    NASDAQ_BASIC("nasdaq_basic");
+    NASDAQ_BASIC("nasdaq_basic"),
+    
+    NASDAQ_BASIC_FILTERED("nasdaq_basic_filtered");
 
     private String value;
 

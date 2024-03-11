@@ -869,7 +869,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered] &nbsp;
  **openTime** | OffsetDateTime| The inclusive UTC date and time the interval opens at. | [optional] &nbsp;
 <br/>
 
@@ -955,7 +955,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered] &nbsp;
  **openTime** | OffsetDateTime| The inclusive UTC date and time the interval opens at. | [optional] &nbsp;
 <br/>
 
@@ -1041,7 +1041,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered] &nbsp;
  **openTime** | OffsetDateTime| The inclusive UTC date and time the interval opens at. | [optional] &nbsp;
 <br/>
 
@@ -1137,7 +1137,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
  **intervalSize** | String| The interval for which to return stock prices | [default to 15m] [enum: 1m, 5m, 10m, 15m, 30m, 60m, 1h] &nbsp;
- **source** | String| Return intervals from the specified data source | [optional] [enum: realtime, delayed, nasdaq_basic] &nbsp;
+ **source** | String| Return intervals from the specified data source | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered] &nbsp;
  **startDate** | LocalDate| Return intervals starting at the specified date | [optional] &nbsp;
  **startTime** | String| Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) | [optional] &nbsp;
  **endDate** | LocalDate| Return intervals stopping at the specified date | [optional] &nbsp;

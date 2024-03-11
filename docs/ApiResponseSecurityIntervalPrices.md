@@ -35,6 +35,7 @@ Name | Value
 REALTIME | &quot;realtime&quot;
 DELAYED | &quot;delayed&quot;
 NASDAQ_BASIC | &quot;nasdaq_basic&quot;
+NASDAQ_BASIC_FILTERED | &quot;nasdaq_basic_filtered&quot;
 
 
 

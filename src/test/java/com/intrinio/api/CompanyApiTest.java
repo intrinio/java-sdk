@@ -230,9 +230,11 @@ public class CompanyApiTest {
         String type = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
+        LocalDate updatedAfter = null;
+        LocalDate updatedBefore = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseCompanyFundamentals response = api.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage);
+        ApiResponseCompanyFundamentals response = api.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, updatedAfter, updatedBefore, pageSize, nextPage);
 
         // TODO: test validations
     }

@@ -863,7 +863,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseCompanyFundamentals getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage)
+> ApiResponseCompanyFundamentals getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, updatedAfter, updatedBefore, pageSize, nextPage)
 
 #### All Fundamentals by Company
 
@@ -903,9 +903,11 @@ public class Main {
     String type = null;
     LocalDate startDate = null;
     LocalDate endDate = null;
+    LocalDate updatedAfter = LocalDate.of(2022,12,01);
+    LocalDate updatedBefore = LocalDate.of(2022,12,01);
     Integer pageSize = 100;
     String nextPage = null;
-    ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, pageSize, nextPage);
+    ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, updatedAfter, updatedBefore, pageSize, nextPage);
     System.out.println(result);
   }
 }
@@ -929,6 +931,8 @@ Name | Type | Description  | Notes
  **type** | String| Only of the given type | [optional] [enum: QTR, YTD, FY, TTM] &nbsp;
  **startDate** | LocalDate| Only on or after the given date | [optional] &nbsp;
  **endDate** | LocalDate| Only on or before the given date | [optional] &nbsp;
+ **updatedAfter** | LocalDate| Only include fundamentals where it was updated after this date. | [optional] &nbsp;
+ **updatedBefore** | LocalDate| Only include fundamentals where it was updated before this date. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
