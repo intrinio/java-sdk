@@ -1148,8 +1148,10 @@ public class SecurityApiTest {
         String endTime = null;
         String timezone = null;
         Integer pageSize = null;
+        Boolean darkpoolOnly = null;
+        Integer minSize = null;
         String nextPage = null;
-        SecurityTradesResult response = api.getSecurityTrades(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
+        SecurityTradesResult response = api.getSecurityTrades(source, startDate, startTime, endDate, endTime, timezone, pageSize, darkpoolOnly, minSize, nextPage);
 
         // TODO: test validations
     }
@@ -1173,8 +1175,9 @@ public class SecurityApiTest {
         String timezone = null;
         Boolean darkpoolOnly = null;
         Integer pageSize = null;
+        Integer minSize = null;
         String nextPage = null;
-        SecurityTradesResult response = api.getSecurityTradesBySymbol(identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, nextPage);
+        SecurityTradesResult response = api.getSecurityTradesBySymbol(identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, minSize, nextPage);
 
         // TODO: test validations
     }

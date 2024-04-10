@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseNews getAllCompanyNews(pageSize, nextPage)
+> ApiResponseNews getAllCompanyNews(specificSource, pageSize, sentiment, topic, company, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage)
 
 #### All News
 
@@ -278,9 +278,22 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
+    String specificSource = null;
     Integer pageSize = 100;
+    String sentiment = null;
+    String topic = null;
+    String company = "AAPL";
+    String security = "AAPL";
+    LocalDate startDate = null;
+    LocalDate endDate = null;
+    String language = null;
+    Integer wordCountGreaterThan = null;
+    Integer wordCountLessThan = null;
+    Boolean isSpam = null;
+    BigDecimal businessRelevanceGreaterThan = null;
+    BigDecimal businessRelevanceLessThan = null;
     String nextPage = null;
-    ApiResponseNews result = companyApi.getAllCompanyNews(pageSize, nextPage);
+    ApiResponseNews result = companyApi.getAllCompanyNews(specificSource, pageSize, sentiment, topic, company, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage);
     System.out.println(result);
   }
 }
@@ -295,7 +308,20 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **specificSource** | String| Only news from this source. | [optional] [enum: yahoo, moody, moody_us_news, moody_us_press_releases] &nbsp;
+ **pageSize** | Integer| The maximum number of results to return. | [optional] [default to 100] &nbsp;
+ **sentiment** | String| Filter by sentiment.  Unsupported for yahoo source. | [optional] [enum: positive, neutral, negative] &nbsp;
+ **topic** | String| Filter by topic.  Unsupported for yahoo source. | [optional] &nbsp;
+ **company** | String| Filter by &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) | [optional] &nbsp;
+ **security** | String| Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. | [optional] &nbsp;
+ **startDate** | LocalDate| Limit news stories to those on or after this date. | [optional] &nbsp;
+ **endDate** | LocalDate| Limit news stories to those on or before this date. | [optional] &nbsp;
+ **language** | String| Filter by language.  Unsupported for yahoo source.  Unsupported for yahoo source. | [optional] &nbsp;
+ **wordCountGreaterThan** | Integer| News stories will have a word count greater than this value.  Unsupported for yahoo source. | [optional] &nbsp;
+ **wordCountLessThan** | Integer| News stories will have a word count less than this value.  Unsupported for yahoo source. | [optional] &nbsp;
+ **isSpam** | Boolean| Filter whether it is marked as spam or not.  Unsupported for yahoo source. | [optional] &nbsp;
+ **businessRelevanceGreaterThan** | BigDecimal| News stories will have a business relevance score more than this value.  Unsupported for yahoo source. | [optional] &nbsp;
+ **businessRelevanceLessThan** | BigDecimal| News stories will have a business relevance score less than this value.  Unsupported for yahoo source. | [optional] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 
@@ -1169,7 +1195,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseCompanyNews getCompanyNews(identifier, pageSize, nextPage)
+> ApiResponseCompanyNews getCompanyNews(identifier, specificSource, pageSize, sentiment, topic, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage)
 
 #### All News by Company
 
@@ -1201,9 +1227,21 @@ public class Main {
 
     CompanyApi companyApi = new CompanyApi();
     String identifier = "AAPL";
+    String specificSource = null;
     Integer pageSize = 100;
+    String sentiment = null;
+    String topic = null;
+    String security = "AAPL";
+    LocalDate startDate = null;
+    LocalDate endDate = null;
+    String language = null;
+    Integer wordCountGreaterThan = null;
+    Integer wordCountLessThan = null;
+    Boolean isSpam = null;
+    BigDecimal businessRelevanceGreaterThan = null;
+    BigDecimal businessRelevanceLessThan = null;
     String nextPage = null;
-    ApiResponseCompanyNews result = companyApi.getCompanyNews(identifier, pageSize, nextPage);
+    ApiResponseCompanyNews result = companyApi.getCompanyNews(identifier, specificSource, pageSize, sentiment, topic, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage);
     System.out.println(result);
   }
 }
@@ -1219,7 +1257,19 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
- **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **specificSource** | String| Only news from this source | [optional] [enum: yahoo, moody, moody_us_news, moody_us_press_releases] &nbsp;
+ **pageSize** | Integer| The maximum number of results to return | [optional] [default to 100] &nbsp;
+ **sentiment** | String| Filter by sentiment.  Unsupported for yahoo source. | [optional] [enum: positive, neutral, negative] &nbsp;
+ **topic** | String| Filter by topic.  Unsupported for yahoo source. | [optional] &nbsp;
+ **security** | String| Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. | [optional] &nbsp;
+ **startDate** | LocalDate| Limit news stories to those on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Limit news stories to those on or before this date | [optional] &nbsp;
+ **language** | String| Filter by language.  Unsupported for yahoo source. | [optional] &nbsp;
+ **wordCountGreaterThan** | Integer| News stories will have a word count greater than this value.  Unsupported for yahoo source. | [optional] &nbsp;
+ **wordCountLessThan** | Integer| News stories will have a word count less than this value.  Unsupported for yahoo source. | [optional] &nbsp;
+ **isSpam** | Boolean| Filter whether it is marked as spam or not.  Unsupported for yahoo source. | [optional] &nbsp;
+ **businessRelevanceGreaterThan** | BigDecimal| News stories will have a business relevance score more than this value.  Unsupported for yahoo source. | [optional] &nbsp;
+ **businessRelevanceLessThan** | BigDecimal| News stories will have a business relevance score less than this value.  Unsupported for yahoo source. | [optional] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 

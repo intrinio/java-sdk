@@ -16,7 +16,16 @@ Name | Type | Description
 **publicationDate** | [**OffsetDateTime**](OffsetDateTime.md) | The publication date of the news article &nbsp;
 **url** | String | The url of the news article &nbsp;
 **summary** | String | A summary of the news article &nbsp;
+**source** | SourceEnum | The news source. &nbsp;
 **company** | [**CompanySummary**](CompanySummary.md) | The Company to which the new article pertains &nbsp;
+**topics** | [**List&lt;NewsTopic&gt;**](NewsTopic.md) |  &nbsp;
+**copyright** | String | The copyright of the news article &nbsp;
+**language** | String | The language code of the news article &nbsp;
+**wordCount** | Integer | The word count of the news article &nbsp;
+**spam** | Boolean | Whether the news article is marked as spam or not &nbsp;
+**businessRelevance** | [**BigDecimal**](BigDecimal.md) | How strongly correlated the news article is to the business &nbsp;
+**articleSentiment** | ArticleSentimentEnum | The news sentiment. &nbsp;
+**articleSentimentConfidence** | [**BigDecimal**](BigDecimal.md) | The confidence score of the sentiment rating &nbsp;
 
 [//]: # (END_DEFINITION)
 
@@ -27,6 +36,36 @@ Name | Type | Description
 [//]: # (CONTAINED_CLASS:CompanySummary)
 
 
+[//]: # (CONTAINED_CLASS:NewsTopic)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+
+<br/>
+
+#### Enum: SourceEnum
+
+Name | Value
+---- | -----
+YAHOO | &quot;yahoo&quot;
+MOODY | &quot;moody&quot;
+MOODY_US_NEWS | &quot;moody_us_news&quot;
+MOODY_US_PRESS_RELEASES | &quot;moody_us_press_releases&quot;
+
+<br/>
+
+#### Enum: ArticleSentimentEnum
+
+Name | Value
+---- | -----
+POSITIVE | &quot;positive&quot;
+NEUTRAL | &quot;neutral&quot;
+NEGATIVE | &quot;negative&quot;
 
 
 

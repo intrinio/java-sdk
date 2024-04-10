@@ -136,7 +136,7 @@ This endpoint does not need any parameter.
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsExpirations getOptionExpirationsRealtime(symbol, after, before, source)
+> ApiResponseOptionsExpirations getOptionExpirationsRealtime(symbol, after, before, source, includeRelatedSymbols)
 
 #### Options Expirations
 
@@ -171,7 +171,8 @@ public class Main {
     String after = "2022-01-01";
     String before = "2023-04-01";
     String source = null;
-    ApiResponseOptionsExpirations result = optionsApi.getOptionExpirationsRealtime(symbol, after, before, source);
+    Boolean includeRelatedSymbols = false;
+    ApiResponseOptionsExpirations result = optionsApi.getOptionExpirationsRealtime(symbol, after, before, source, includeRelatedSymbols);
     System.out.println(result);
   }
 }
@@ -190,6 +191,7 @@ Name | Type | Description  | Notes
  **after** | String| Return option contract expiration dates after this date. | [optional] &nbsp;
  **before** | String| Return option contract expiration dates before this date. | [optional] &nbsp;
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+ **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -226,7 +228,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsChainRealtime getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice)
+> ApiResponseOptionsChainRealtime getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols)
 
 #### Option Strikes Realtime
 
@@ -263,7 +265,8 @@ public class Main {
     String stockPriceSource = null;
     String model = null;
     Boolean showExtendedPrice = null;
-    ApiResponseOptionsChainRealtime result = optionsApi.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice);
+    Boolean includeRelatedSymbols = false;
+    ApiResponseOptionsChainRealtime result = optionsApi.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
     System.out.println(result);
   }
 }
@@ -284,6 +287,7 @@ Name | Type | Description  | Notes
  **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
+ **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -422,7 +426,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsRealtime getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source)
+> ApiResponseOptionsRealtime getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source, includeRelatedSymbols)
 
 #### Options by Symbol Realtime
 
@@ -462,7 +466,8 @@ public class Main {
     String expirationAfter = "2022-01-01";
     String expirationBefore = "2023-12-31";
     String source = null;
-    ApiResponseOptionsRealtime result = optionsApi.getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source);
+    Boolean includeRelatedSymbols = false;
+    ApiResponseOptionsRealtime result = optionsApi.getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source, includeRelatedSymbols);
     System.out.println(result);
   }
 }
@@ -486,6 +491,7 @@ Name | Type | Description  | Notes
  **expirationAfter** | String| The expiration date of the option contract. This will return options contracts with expiration dates after this date. | [optional] &nbsp;
  **expirationBefore** | String| The expiration date of the option contract. This will return options contracts with expiration dates before this date. | [optional] &nbsp;
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+ **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -622,7 +628,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsChainEod getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date)
+> ApiResponseOptionsChainEod getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols)
 
 #### Options Chain EOD
 
@@ -660,7 +666,8 @@ public class Main {
     BigDecimal strikeGreaterThan = null;
     BigDecimal strikeLessThan = null;
     LocalDate date = null;
-    ApiResponseOptionsChainEod result = optionsApi.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date);
+    Boolean includeRelatedSymbols = false;
+    ApiResponseOptionsChainEod result = optionsApi.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols);
     System.out.println(result);
   }
 }
@@ -682,6 +689,7 @@ Name | Type | Description  | Notes
  **strikeGreaterThan** | BigDecimal| The strike price of the option contract. This will return options contracts with strike prices greater than this price. | [optional] &nbsp;
  **strikeLessThan** | BigDecimal| The strike price of the option contract. This will return options contracts with strike prices less than this price. | [optional] &nbsp;
  **date** | LocalDate| The date to retrieve prices for | [optional] &nbsp;
+ **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -718,7 +726,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsChainRealtime getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice)
+> ApiResponseOptionsChainRealtime getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols)
 
 #### Options Chain Realtime
 
@@ -764,7 +772,8 @@ public class Main {
     String stockPriceSource = null;
     String model = null;
     Boolean showExtendedPrice = null;
-    ApiResponseOptionsChainRealtime result = optionsApi.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice);
+    Boolean includeRelatedSymbols = false;
+    ApiResponseOptionsChainRealtime result = optionsApi.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
     System.out.println(result);
   }
 }
@@ -794,6 +803,7 @@ Name | Type | Description  | Notes
  **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
+ **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -918,7 +928,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsExpirations getOptionsExpirationsEod(symbol, after, before)
+> ApiResponseOptionsExpirations getOptionsExpirationsEod(symbol, after, before, includeRelatedSymbols)
 
 #### Options Expirations
 
@@ -952,7 +962,8 @@ public class Main {
     String symbol = "MSFT";
     String after = "2019-01-01";
     String before = "2019-12-31";
-    ApiResponseOptionsExpirations result = optionsApi.getOptionsExpirationsEod(symbol, after, before);
+    Boolean includeRelatedSymbols = false;
+    ApiResponseOptionsExpirations result = optionsApi.getOptionsExpirationsEod(symbol, after, before, includeRelatedSymbols);
     System.out.println(result);
   }
 }
@@ -970,6 +981,7 @@ Name | Type | Description  | Notes
  **symbol** | String| The option symbol, corresponding to the underlying security. | &nbsp;
  **after** | String| Return option contract expiration dates after this date. | [optional] &nbsp;
  **before** | String| Return option contract expiration dates before this date. | [optional] &nbsp;
+ **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

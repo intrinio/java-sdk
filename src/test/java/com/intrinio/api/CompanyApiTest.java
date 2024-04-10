@@ -95,9 +95,22 @@ public class CompanyApiTest {
      */
     @Test
     public void getAllCompanyNewsTest() throws ApiException, NoSuchMethodException {
+        String specificSource = null;
         Integer pageSize = null;
+        String sentiment = null;
+        String topic = null;
+        String company = null;
+        String security = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        String language = null;
+        Integer wordCountGreaterThan = null;
+        Integer wordCountLessThan = null;
+        Boolean isSpam = null;
+        BigDecimal businessRelevanceGreaterThan = null;
+        BigDecimal businessRelevanceLessThan = null;
         String nextPage = null;
-        ApiResponseNews response = api.getAllCompanyNews(pageSize, nextPage);
+        ApiResponseNews response = api.getAllCompanyNews(specificSource, pageSize, sentiment, topic, company, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage);
 
         // TODO: test validations
     }
@@ -297,9 +310,21 @@ public class CompanyApiTest {
     @Test
     public void getCompanyNewsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
+        String specificSource = null;
         Integer pageSize = null;
+        String sentiment = null;
+        String topic = null;
+        String security = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        String language = null;
+        Integer wordCountGreaterThan = null;
+        Integer wordCountLessThan = null;
+        Boolean isSpam = null;
+        BigDecimal businessRelevanceGreaterThan = null;
+        BigDecimal businessRelevanceLessThan = null;
         String nextPage = null;
-        ApiResponseCompanyNews response = api.getCompanyNews(identifier, pageSize, nextPage);
+        ApiResponseCompanyNews response = api.getCompanyNews(identifier, specificSource, pageSize, sentiment, topic, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage);
 
         // TODO: test validations
     }

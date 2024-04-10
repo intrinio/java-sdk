@@ -69,7 +69,8 @@ public class OptionsApiTest {
         String after = null;
         String before = null;
         String source = null;
-        ApiResponseOptionsExpirations response = api.getOptionExpirationsRealtime(symbol, after, before, source);
+        Boolean includeRelatedSymbols = null;
+        ApiResponseOptionsExpirations response = api.getOptionExpirationsRealtime(symbol, after, before, source, includeRelatedSymbols);
 
         // TODO: test validations
     }
@@ -90,7 +91,8 @@ public class OptionsApiTest {
         String stockPriceSource = null;
         String model = null;
         Boolean showExtendedPrice = null;
-        ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice);
+        Boolean includeRelatedSymbols = null;
+        ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
 
         // TODO: test validations
     }
@@ -139,7 +141,8 @@ public class OptionsApiTest {
         String expirationAfter = null;
         String expirationBefore = null;
         String source = null;
-        ApiResponseOptionsRealtime response = api.getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source);
+        Boolean includeRelatedSymbols = null;
+        ApiResponseOptionsRealtime response = api.getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source, includeRelatedSymbols);
 
         // TODO: test validations
     }
@@ -185,7 +188,8 @@ public class OptionsApiTest {
         BigDecimal strikeGreaterThan = null;
         BigDecimal strikeLessThan = null;
         LocalDate date = null;
-        ApiResponseOptionsChainEod response = api.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date);
+        Boolean includeRelatedSymbols = null;
+        ApiResponseOptionsChainEod response = api.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols);
 
         // TODO: test validations
     }
@@ -215,7 +219,8 @@ public class OptionsApiTest {
         String stockPriceSource = null;
         String model = null;
         Boolean showExtendedPrice = null;
-        ApiResponseOptionsChainRealtime response = api.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice);
+        Boolean includeRelatedSymbols = null;
+        ApiResponseOptionsChainRealtime response = api.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
 
         // TODO: test validations
     }
@@ -251,7 +256,8 @@ public class OptionsApiTest {
         String symbol = null;
         String after = null;
         String before = null;
-        ApiResponseOptionsExpirations response = api.getOptionsExpirationsEod(symbol, after, before);
+        Boolean includeRelatedSymbols = null;
+        ApiResponseOptionsExpirations response = api.getOptionsExpirationsEod(symbol, after, before, includeRelatedSymbols);
 
         // TODO: test validations
     }

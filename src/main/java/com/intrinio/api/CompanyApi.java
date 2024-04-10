@@ -389,14 +389,27 @@ public class CompanyApi {
     }
     /**
      * Build call for getAllCompanyNews
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param specificSource Only news from this source. (optional)
+     * @param pageSize The maximum number of results to return. (optional, default to 100)
+     * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
+     * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
+     * @param company Filter by &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param security Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. (optional)
+     * @param startDate Limit news stories to those on or after this date. (optional)
+     * @param endDate Limit news stories to those on or before this date. (optional)
+     * @param language Filter by language.  Unsupported for yahoo source.  Unsupported for yahoo source. (optional)
+     * @param wordCountGreaterThan News stories will have a word count greater than this value.  Unsupported for yahoo source. (optional)
+     * @param wordCountLessThan News stories will have a word count less than this value.  Unsupported for yahoo source. (optional)
+     * @param isSpam Filter whether it is marked as spam or not.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceGreaterThan News stories will have a business relevance score more than this value.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceLessThan News stories will have a business relevance score less than this value.  Unsupported for yahoo source. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllCompanyNewsCall(Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompanyNewsCall(String specificSource, Integer pageSize, String sentiment, String topic, String company, String security, LocalDate startDate, LocalDate endDate, String language, Integer wordCountGreaterThan, Integer wordCountLessThan, Boolean isSpam, BigDecimal businessRelevanceGreaterThan, BigDecimal businessRelevanceLessThan, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -404,8 +417,34 @@ public class CompanyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (specificSource != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("specific_source", specificSource));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (sentiment != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("sentiment", sentiment));
+        if (topic != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("topic", topic));
+        if (company != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("company", company));
+        if (security != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("security", security));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (language != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+        if (wordCountGreaterThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("word_count_greater_than", wordCountGreaterThan));
+        if (wordCountLessThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("word_count_less_than", wordCountLessThan));
+        if (isSpam != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("is_spam", isSpam));
+        if (businessRelevanceGreaterThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("business_relevance_greater_than", businessRelevanceGreaterThan));
+        if (businessRelevanceLessThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("business_relevance_less_than", businessRelevanceLessThan));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -442,10 +481,10 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllCompanyNewsValidateBeforeCall(Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllCompanyNewsValidateBeforeCall(String specificSource, Integer pageSize, String sentiment, String topic, String company, String security, LocalDate startDate, LocalDate endDate, String language, Integer wordCountGreaterThan, Integer wordCountLessThan, Boolean isSpam, BigDecimal businessRelevanceGreaterThan, BigDecimal businessRelevanceLessThan, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllCompanyNewsCall(pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompanyNewsCall(specificSource, pageSize, sentiment, topic, company, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -453,16 +492,29 @@ public class CompanyApi {
     /**
      * All News
      * Returns the latest news article links, headlines and summaries for all US traded companies allowing you to keep a pulse on companies and their business operations.
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param specificSource Only news from this source. (optional)
+     * @param pageSize The maximum number of results to return. (optional, default to 100)
+     * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
+     * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
+     * @param company Filter by &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param security Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. (optional)
+     * @param startDate Limit news stories to those on or after this date. (optional)
+     * @param endDate Limit news stories to those on or before this date. (optional)
+     * @param language Filter by language.  Unsupported for yahoo source.  Unsupported for yahoo source. (optional)
+     * @param wordCountGreaterThan News stories will have a word count greater than this value.  Unsupported for yahoo source. (optional)
+     * @param wordCountLessThan News stories will have a word count less than this value.  Unsupported for yahoo source. (optional)
+     * @param isSpam Filter whether it is marked as spam or not.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceGreaterThan News stories will have a business relevance score more than this value.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceLessThan News stories will have a business relevance score less than this value.  Unsupported for yahoo source. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseNews
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseNews getAllCompanyNews(Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("getAllCompanyNewsWithHttpInfo", Integer.class, String.class);
+    public ApiResponseNews getAllCompanyNews(String specificSource, Integer pageSize, String sentiment, String topic, String company, String security, LocalDate startDate, LocalDate endDate, String language, Integer wordCountGreaterThan, Integer wordCountLessThan, Boolean isSpam, BigDecimal businessRelevanceGreaterThan, BigDecimal businessRelevanceLessThan, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getAllCompanyNewsWithHttpInfo", String.class, Integer.class, String.class, String.class, String.class, String.class, LocalDate.class, LocalDate.class, String.class, Integer.class, Integer.class, Boolean.class, BigDecimal.class, BigDecimal.class, String.class);
       
-      Object[] apiCallArguments = { pageSize, nextPage };
+      Object[] apiCallArguments = { specificSource, pageSize, sentiment, topic, company, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage };
       ApiResponse<ApiResponseNews> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -470,13 +522,26 @@ public class CompanyApi {
     /**
      * All News
      * Returns the latest news article links, headlines and summaries for all US traded companies allowing you to keep a pulse on companies and their business operations.
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param specificSource Only news from this source. (optional)
+     * @param pageSize The maximum number of results to return. (optional, default to 100)
+     * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
+     * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
+     * @param company Filter by &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param security Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. (optional)
+     * @param startDate Limit news stories to those on or after this date. (optional)
+     * @param endDate Limit news stories to those on or before this date. (optional)
+     * @param language Filter by language.  Unsupported for yahoo source.  Unsupported for yahoo source. (optional)
+     * @param wordCountGreaterThan News stories will have a word count greater than this value.  Unsupported for yahoo source. (optional)
+     * @param wordCountLessThan News stories will have a word count less than this value.  Unsupported for yahoo source. (optional)
+     * @param isSpam Filter whether it is marked as spam or not.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceGreaterThan News stories will have a business relevance score more than this value.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceLessThan News stories will have a business relevance score less than this value.  Unsupported for yahoo source. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseNews&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseNews> getAllCompanyNewsWithHttpInfo(Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllCompanyNewsValidateBeforeCall(pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseNews> getAllCompanyNewsWithHttpInfo(String specificSource, Integer pageSize, String sentiment, String topic, String company, String security, LocalDate startDate, LocalDate endDate, String language, Integer wordCountGreaterThan, Integer wordCountLessThan, Boolean isSpam, BigDecimal businessRelevanceGreaterThan, BigDecimal businessRelevanceLessThan, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllCompanyNewsValidateBeforeCall(specificSource, pageSize, sentiment, topic, company, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseNews>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -484,13 +549,26 @@ public class CompanyApi {
     /**
      * All News (asynchronously)
      * Returns the latest news article links, headlines and summaries for all US traded companies allowing you to keep a pulse on companies and their business operations.
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param specificSource Only news from this source. (optional)
+     * @param pageSize The maximum number of results to return. (optional, default to 100)
+     * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
+     * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
+     * @param company Filter by &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param security Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. (optional)
+     * @param startDate Limit news stories to those on or after this date. (optional)
+     * @param endDate Limit news stories to those on or before this date. (optional)
+     * @param language Filter by language.  Unsupported for yahoo source.  Unsupported for yahoo source. (optional)
+     * @param wordCountGreaterThan News stories will have a word count greater than this value.  Unsupported for yahoo source. (optional)
+     * @param wordCountLessThan News stories will have a word count less than this value.  Unsupported for yahoo source. (optional)
+     * @param isSpam Filter whether it is marked as spam or not.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceGreaterThan News stories will have a business relevance score more than this value.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceLessThan News stories will have a business relevance score less than this value.  Unsupported for yahoo source. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllCompanyNewsAsync(Integer pageSize, String nextPage, final ApiCallback<ApiResponseNews> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompanyNewsAsync(String specificSource, Integer pageSize, String sentiment, String topic, String company, String security, LocalDate startDate, LocalDate endDate, String language, Integer wordCountGreaterThan, Integer wordCountLessThan, Boolean isSpam, BigDecimal businessRelevanceGreaterThan, BigDecimal businessRelevanceLessThan, String nextPage, final ApiCallback<ApiResponseNews> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -511,7 +589,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllCompanyNewsValidateBeforeCall(pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompanyNewsValidateBeforeCall(specificSource, pageSize, sentiment, topic, company, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseNews>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1915,14 +1993,26 @@ public class CompanyApi {
     /**
      * Build call for getCompanyNews
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param specificSource Only news from this source (optional)
+     * @param pageSize The maximum number of results to return (optional, default to 100)
+     * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
+     * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
+     * @param security Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. (optional)
+     * @param startDate Limit news stories to those on or after this date (optional)
+     * @param endDate Limit news stories to those on or before this date (optional)
+     * @param language Filter by language.  Unsupported for yahoo source. (optional)
+     * @param wordCountGreaterThan News stories will have a word count greater than this value.  Unsupported for yahoo source. (optional)
+     * @param wordCountLessThan News stories will have a word count less than this value.  Unsupported for yahoo source. (optional)
+     * @param isSpam Filter whether it is marked as spam or not.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceGreaterThan News stories will have a business relevance score more than this value.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceLessThan News stories will have a business relevance score less than this value.  Unsupported for yahoo source. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyNewsCall(String identifier, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyNewsCall(String identifier, String specificSource, Integer pageSize, String sentiment, String topic, String security, LocalDate startDate, LocalDate endDate, String language, Integer wordCountGreaterThan, Integer wordCountLessThan, Boolean isSpam, BigDecimal businessRelevanceGreaterThan, BigDecimal businessRelevanceLessThan, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1931,8 +2021,32 @@ public class CompanyApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (specificSource != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("specific_source", specificSource));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (sentiment != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("sentiment", sentiment));
+        if (topic != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("topic", topic));
+        if (security != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("security", security));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (language != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("language", language));
+        if (wordCountGreaterThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("word_count_greater_than", wordCountGreaterThan));
+        if (wordCountLessThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("word_count_less_than", wordCountLessThan));
+        if (isSpam != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("is_spam", isSpam));
+        if (businessRelevanceGreaterThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("business_relevance_greater_than", businessRelevanceGreaterThan));
+        if (businessRelevanceLessThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("business_relevance_less_than", businessRelevanceLessThan));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -1969,7 +2083,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyNewsValidateBeforeCall(String identifier, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyNewsValidateBeforeCall(String identifier, String specificSource, Integer pageSize, String sentiment, String topic, String security, LocalDate startDate, LocalDate endDate, String language, Integer wordCountGreaterThan, Integer wordCountLessThan, Boolean isSpam, BigDecimal businessRelevanceGreaterThan, BigDecimal businessRelevanceLessThan, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1977,7 +2091,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCompanyNewsCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyNewsCall(identifier, specificSource, pageSize, sentiment, topic, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1986,16 +2100,28 @@ public class CompanyApi {
      * All News by Company
      * Returns the latest and historical news article links, headlines and summaries for a specified US traded company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param specificSource Only news from this source (optional)
+     * @param pageSize The maximum number of results to return (optional, default to 100)
+     * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
+     * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
+     * @param security Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. (optional)
+     * @param startDate Limit news stories to those on or after this date (optional)
+     * @param endDate Limit news stories to those on or before this date (optional)
+     * @param language Filter by language.  Unsupported for yahoo source. (optional)
+     * @param wordCountGreaterThan News stories will have a word count greater than this value.  Unsupported for yahoo source. (optional)
+     * @param wordCountLessThan News stories will have a word count less than this value.  Unsupported for yahoo source. (optional)
+     * @param isSpam Filter whether it is marked as spam or not.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceGreaterThan News stories will have a business relevance score more than this value.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceLessThan News stories will have a business relevance score less than this value.  Unsupported for yahoo source. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyNews
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanyNews getCompanyNews(String identifier, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("getCompanyNewsWithHttpInfo", String.class, Integer.class, String.class);
+    public ApiResponseCompanyNews getCompanyNews(String identifier, String specificSource, Integer pageSize, String sentiment, String topic, String security, LocalDate startDate, LocalDate endDate, String language, Integer wordCountGreaterThan, Integer wordCountLessThan, Boolean isSpam, BigDecimal businessRelevanceGreaterThan, BigDecimal businessRelevanceLessThan, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyNewsWithHttpInfo", String.class, String.class, Integer.class, String.class, String.class, String.class, LocalDate.class, LocalDate.class, String.class, Integer.class, Integer.class, Boolean.class, BigDecimal.class, BigDecimal.class, String.class);
       
-      Object[] apiCallArguments = { identifier, pageSize, nextPage };
+      Object[] apiCallArguments = { identifier, specificSource, pageSize, sentiment, topic, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage };
       ApiResponse<ApiResponseCompanyNews> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -2004,13 +2130,25 @@ public class CompanyApi {
      * All News by Company
      * Returns the latest and historical news article links, headlines and summaries for a specified US traded company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param specificSource Only news from this source (optional)
+     * @param pageSize The maximum number of results to return (optional, default to 100)
+     * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
+     * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
+     * @param security Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. (optional)
+     * @param startDate Limit news stories to those on or after this date (optional)
+     * @param endDate Limit news stories to those on or before this date (optional)
+     * @param language Filter by language.  Unsupported for yahoo source. (optional)
+     * @param wordCountGreaterThan News stories will have a word count greater than this value.  Unsupported for yahoo source. (optional)
+     * @param wordCountLessThan News stories will have a word count less than this value.  Unsupported for yahoo source. (optional)
+     * @param isSpam Filter whether it is marked as spam or not.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceGreaterThan News stories will have a business relevance score more than this value.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceLessThan News stories will have a business relevance score less than this value.  Unsupported for yahoo source. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanyNews&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanyNews> getCompanyNewsWithHttpInfo(String identifier, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyNewsValidateBeforeCall(identifier, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanyNews> getCompanyNewsWithHttpInfo(String identifier, String specificSource, Integer pageSize, String sentiment, String topic, String security, LocalDate startDate, LocalDate endDate, String language, Integer wordCountGreaterThan, Integer wordCountLessThan, Boolean isSpam, BigDecimal businessRelevanceGreaterThan, BigDecimal businessRelevanceLessThan, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyNewsValidateBeforeCall(identifier, specificSource, pageSize, sentiment, topic, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyNews>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -2019,13 +2157,25 @@ public class CompanyApi {
      * All News by Company (asynchronously)
      * Returns the latest and historical news article links, headlines and summaries for a specified US traded company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param pageSize The number of results to return (optional, default to 100)
+     * @param specificSource Only news from this source (optional)
+     * @param pageSize The maximum number of results to return (optional, default to 100)
+     * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
+     * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
+     * @param security Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. (optional)
+     * @param startDate Limit news stories to those on or after this date (optional)
+     * @param endDate Limit news stories to those on or before this date (optional)
+     * @param language Filter by language.  Unsupported for yahoo source. (optional)
+     * @param wordCountGreaterThan News stories will have a word count greater than this value.  Unsupported for yahoo source. (optional)
+     * @param wordCountLessThan News stories will have a word count less than this value.  Unsupported for yahoo source. (optional)
+     * @param isSpam Filter whether it is marked as spam or not.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceGreaterThan News stories will have a business relevance score more than this value.  Unsupported for yahoo source. (optional)
+     * @param businessRelevanceLessThan News stories will have a business relevance score less than this value.  Unsupported for yahoo source. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyNewsAsync(String identifier, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanyNews> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyNewsAsync(String identifier, String specificSource, Integer pageSize, String sentiment, String topic, String security, LocalDate startDate, LocalDate endDate, String language, Integer wordCountGreaterThan, Integer wordCountLessThan, Boolean isSpam, BigDecimal businessRelevanceGreaterThan, BigDecimal businessRelevanceLessThan, String nextPage, final ApiCallback<ApiResponseCompanyNews> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -2046,7 +2196,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyNewsValidateBeforeCall(identifier, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyNewsValidateBeforeCall(identifier, specificSource, pageSize, sentiment, topic, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyNews>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

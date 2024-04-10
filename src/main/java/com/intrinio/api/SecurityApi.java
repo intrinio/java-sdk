@@ -8017,13 +8017,15 @@ public class SecurityApi {
      * @param endTime The end time for the data being requested. (optional)
      * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
      * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param darkpoolOnly Set to true to show only darkpool trades (optional, default to false)
+     * @param minSize Trades must be larger or equal to this size. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityTradesCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityTradesCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean darkpoolOnly, Integer minSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -8045,6 +8047,10 @@ public class SecurityApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("timezone", timezone));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (darkpoolOnly != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("darkpool_only", darkpoolOnly));
+        if (minSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("min_size", minSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -8081,7 +8087,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityTradesValidateBeforeCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityTradesValidateBeforeCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean darkpoolOnly, Integer minSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'source' is set
         if (source == null) {
@@ -8089,7 +8095,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityTradesCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityTradesCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, darkpoolOnly, minSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -8104,15 +8110,17 @@ public class SecurityApi {
      * @param endTime The end time for the data being requested. (optional)
      * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
      * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param darkpoolOnly Set to true to show only darkpool trades (optional, default to false)
+     * @param minSize Trades must be larger or equal to this size. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return SecurityTradesResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public SecurityTradesResult getSecurityTrades(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecurityTradesWithHttpInfo", String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, String.class);
+    public SecurityTradesResult getSecurityTrades(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean darkpoolOnly, Integer minSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityTradesWithHttpInfo", String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, Boolean.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage };
+      Object[] apiCallArguments = { source, startDate, startTime, endDate, endTime, timezone, pageSize, darkpoolOnly, minSize, nextPage };
       ApiResponse<SecurityTradesResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -8127,12 +8135,14 @@ public class SecurityApi {
      * @param endTime The end time for the data being requested. (optional)
      * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
      * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param darkpoolOnly Set to true to show only darkpool trades (optional, default to false)
+     * @param minSize Trades must be larger or equal to this size. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;SecurityTradesResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SecurityTradesResult> getSecurityTradesWithHttpInfo(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityTradesValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, null, null);
+    public ApiResponse<SecurityTradesResult> getSecurityTradesWithHttpInfo(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean darkpoolOnly, Integer minSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityTradesValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, darkpoolOnly, minSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<SecurityTradesResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -8147,12 +8157,14 @@ public class SecurityApi {
      * @param endTime The end time for the data being requested. (optional)
      * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
      * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param darkpoolOnly Set to true to show only darkpool trades (optional, default to false)
+     * @param minSize Trades must be larger or equal to this size. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityTradesAsync(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ApiCallback<SecurityTradesResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityTradesAsync(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean darkpoolOnly, Integer minSize, String nextPage, final ApiCallback<SecurityTradesResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8173,7 +8185,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityTradesValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityTradesValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, darkpoolOnly, minSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SecurityTradesResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -8189,13 +8201,14 @@ public class SecurityApi {
      * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
      * @param darkpoolOnly Set to true to show only darkpool trades (optional, default to false)
      * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityTradesBySymbolCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Boolean darkpoolOnly, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityTradesBySymbolCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Boolean darkpoolOnly, Integer pageSize, Integer minSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -8220,6 +8233,8 @@ public class SecurityApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("darkpool_only", darkpoolOnly));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (minSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("min_size", minSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -8256,7 +8271,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityTradesBySymbolValidateBeforeCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Boolean darkpoolOnly, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityTradesBySymbolValidateBeforeCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Boolean darkpoolOnly, Integer pageSize, Integer minSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -8269,7 +8284,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityTradesBySymbolCall(identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityTradesBySymbolCall(identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, minSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -8286,15 +8301,16 @@ public class SecurityApi {
      * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
      * @param darkpoolOnly Set to true to show only darkpool trades (optional, default to false)
      * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return SecurityTradesResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public SecurityTradesResult getSecurityTradesBySymbol(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Boolean darkpoolOnly, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecurityTradesBySymbolWithHttpInfo", String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Boolean.class, Integer.class, String.class);
+    public SecurityTradesResult getSecurityTradesBySymbol(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Boolean darkpoolOnly, Integer pageSize, Integer minSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityTradesBySymbolWithHttpInfo", String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Boolean.class, Integer.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, nextPage };
+      Object[] apiCallArguments = { identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, minSize, nextPage };
       ApiResponse<SecurityTradesResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -8311,12 +8327,13 @@ public class SecurityApi {
      * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
      * @param darkpoolOnly Set to true to show only darkpool trades (optional, default to false)
      * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;SecurityTradesResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SecurityTradesResult> getSecurityTradesBySymbolWithHttpInfo(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Boolean darkpoolOnly, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityTradesBySymbolValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, nextPage, null, null);
+    public ApiResponse<SecurityTradesResult> getSecurityTradesBySymbolWithHttpInfo(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Boolean darkpoolOnly, Integer pageSize, Integer minSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityTradesBySymbolValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, minSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<SecurityTradesResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -8333,12 +8350,13 @@ public class SecurityApi {
      * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
      * @param darkpoolOnly Set to true to show only darkpool trades (optional, default to false)
      * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityTradesBySymbolAsync(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Boolean darkpoolOnly, Integer pageSize, String nextPage, final ApiCallback<SecurityTradesResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityTradesBySymbolAsync(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Boolean darkpoolOnly, Integer pageSize, Integer minSize, String nextPage, final ApiCallback<SecurityTradesResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8359,7 +8377,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityTradesBySymbolValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityTradesBySymbolValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, minSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SecurityTradesResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
