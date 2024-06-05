@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://docs.intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.56.6
-- Package version: 6.20.2
+- API version: 2.61.1
+- Package version: 6.20.3
 
 
 ## Installation
@@ -137,13 +137,18 @@ Class | Method | HTTP request | Description
 *FundamentalsApi* | [**lookupFundamental**](docs/FundamentalsApi.md#lookupFundamental) | **GET** /fundamentals/lookup/{identifier}/{statement_code}/{fiscal_year}/{fiscal_period} | Lookup Fundamental
 *HistoricalDataApi* | [**getHistoricalData**](docs/HistoricalDataApi.md#getHistoricalData) | **GET** /historical_data/{identifier}/{tag} | Historical Data
 *IndexApi* | [**getAllEconomicIndices**](docs/IndexApi.md#getAllEconomicIndices) | **GET** /indices/economic | All Economic Indices
+*IndexApi* | [**getAllEodIndexPrices**](docs/IndexApi.md#getAllEodIndexPrices) | **GET** /indices/prices/eod | All End of Day Index Prices
+*IndexApi* | [**getAllIndexSummaries**](docs/IndexApi.md#getAllIndexSummaries) | **GET** /indices | All Index Summaries
+*IndexApi* | [**getAllRealtimeIndexPrices**](docs/IndexApi.md#getAllRealtimeIndexPrices) | **GET** /indices/prices/realtime | All Realtime Index Prices
 *IndexApi* | [**getAllSicIndices**](docs/IndexApi.md#getAllSicIndices) | **GET** /indices/sic | All SIC Indices
 *IndexApi* | [**getAllStockMarketIndices**](docs/IndexApi.md#getAllStockMarketIndices) | **GET** /indices/stock_market | All Stock Market Indices
 *IndexApi* | [**getEconomicIndexById**](docs/IndexApi.md#getEconomicIndexById) | **GET** /indices/economic/{identifier} | Lookup Economic Index
 *IndexApi* | [**getEconomicIndexDataPointNumber**](docs/IndexApi.md#getEconomicIndexDataPointNumber) | **GET** /indices/economic/{identifier}/data_point/{tag}/number | Data Point (Number) for an Economic Index
 *IndexApi* | [**getEconomicIndexDataPointText**](docs/IndexApi.md#getEconomicIndexDataPointText) | **GET** /indices/economic/{identifier}/data_point/{tag}/text | Data Point (Text) for an Economic Index
 *IndexApi* | [**getEconomicIndexHistoricalData**](docs/IndexApi.md#getEconomicIndexHistoricalData) | **GET** /indices/economic/{identifier}/historical_data/{tag} | Historical Data for an Economic Index
-*IndexApi* | [**getRealtimeIndexPriceById**](docs/IndexApi.md#getRealtimeIndexPriceById) | **GET** /indices/{identifier}/realtime | Realtime Index Price
+*IndexApi* | [**getEodIndexPriceById**](docs/IndexApi.md#getEodIndexPriceById) | **GET** /indices/{identifier}/eod | End of Day Index Prices By Identifier
+*IndexApi* | [**getIndexSummaryById**](docs/IndexApi.md#getIndexSummaryById) | **GET** /indices/{identifier} | Index Summary By Identifier
+*IndexApi* | [**getRealtimeIndexPriceById**](docs/IndexApi.md#getRealtimeIndexPriceById) | **GET** /indices/{identifier}/realtime | Realtime Index Price By Identifier
 *IndexApi* | [**getSicIndexById**](docs/IndexApi.md#getSicIndexById) | **GET** /indices/sic/{identifier} | Lookup SIC Index
 *IndexApi* | [**getSicIndexDataPointNumber**](docs/IndexApi.md#getSicIndexDataPointNumber) | **GET** /indices/sic/{identifier}/data_point/{tag}/number | Data Point (Number) for an SIC Index
 *IndexApi* | [**getSicIndexDataPointText**](docs/IndexApi.md#getSicIndexDataPointText) | **GET** /indices/sic/{identifier}/data_point/{tag}/text | Data Point (Text) for an SIC Index
@@ -161,6 +166,7 @@ Class | Method | HTTP request | Description
 *MunicipalityApi* | [**getMunicipalityById**](docs/MunicipalityApi.md#getMunicipalityById) | **GET** /municipalities/{id} | Municipality by ID
 *MunicipalityApi* | [**getMunicipalityFinancials**](docs/MunicipalityApi.md#getMunicipalityFinancials) | **GET** /municipalities/{id}/financials | Financials for a Municipality
 *OptionsApi* | [**getAllOptionsTickers**](docs/OptionsApi.md#getAllOptionsTickers) | **GET** /options/tickers | Options Tickers
+*OptionsApi* | [**getOptionAggregates**](docs/OptionsApi.md#getOptionAggregates) | **GET** /options/aggregates | Total open interest and volume aggregated by ticker
 *OptionsApi* | [**getOptionExpirationsRealtime**](docs/OptionsApi.md#getOptionExpirationsRealtime) | **GET** /options/expirations/{symbol}/realtime | Options Expirations
 *OptionsApi* | [**getOptionStrikesRealtime**](docs/OptionsApi.md#getOptionStrikesRealtime) | **GET** /options/strikes/{symbol}/{strike}/realtime | Option Strikes Realtime
 *OptionsApi* | [**getOptions**](docs/OptionsApi.md#getOptions) | **GET** /options/{symbol} | Options
@@ -286,10 +292,13 @@ Class | Method | HTTP request | Description
 *TechnicalApi* | [**getSecurityPriceTechnicalsVwap**](docs/TechnicalApi.md#getSecurityPriceTechnicalsVwap) | **GET** /securities/{identifier}/prices/technicals/vwap | Volume Weighted Average Price
 *TechnicalApi* | [**getSecurityPriceTechnicalsWr**](docs/TechnicalApi.md#getSecurityPriceTechnicalsWr) | **GET** /securities/{identifier}/prices/technicals/wr | Williams %R
 *ZacksApi* | [**getZacksAnalystRatings**](docs/ZacksApi.md#getZacksAnalystRatings) | **GET** /zacks/analyst_ratings | Zacks Analyst Ratings
+*ZacksApi* | [**getZacksEbitdaConsensus**](docs/ZacksApi.md#getZacksEbitdaConsensus) | **GET** /zacks/ebitda_consensus | Zacks EBITDA Consensus
 *ZacksApi* | [**getZacksEpsEstimates**](docs/ZacksApi.md#getZacksEpsEstimates) | **GET** /zacks/eps_estimates | Zacks EPS Estimates
 *ZacksApi* | [**getZacksEpsGrowthRates**](docs/ZacksApi.md#getZacksEpsGrowthRates) | **GET** /zacks/eps_growth_rates | Zacks EPS Growth Rates
 *ZacksApi* | [**getZacksEpsSurprises**](docs/ZacksApi.md#getZacksEpsSurprises) | **GET** /zacks/eps_surprises | Zacks EPS Surprises
 *ZacksApi* | [**getZacksEtfHoldings**](docs/ZacksApi.md#getZacksEtfHoldings) | **GET** /zacks/etf_holdings | Zacks ETF Holdings
+*ZacksApi* | [**getZacksForwardPe**](docs/ZacksApi.md#getZacksForwardPe) | **GET** /zacks/forward_pe | Zacks Forward PE Estimates
+*ZacksApi* | [**getZacksForwardPeByIdentifier**](docs/ZacksApi.md#getZacksForwardPeByIdentifier) | **GET** /zacks/forward_pe/{identifier} | Zacks Forward PE by identifer
 *ZacksApi* | [**getZacksInstitutionalHoldingCompanies**](docs/ZacksApi.md#getZacksInstitutionalHoldingCompanies) | **GET** /zacks/institutional_holdings/companies | Zacks Institutional Holding Companies
 *ZacksApi* | [**getZacksInstitutionalHoldingOwners**](docs/ZacksApi.md#getZacksInstitutionalHoldingOwners) | **GET** /zacks/institutional_holdings/owners | Zacks Institutional Holding Owners
 *ZacksApi* | [**getZacksInstitutionalHoldings**](docs/ZacksApi.md#getZacksInstitutionalHoldings) | **GET** /zacks/institutional_holdings | Zacks Institutional Holdings
@@ -328,6 +337,8 @@ Class | Method | HTTP request | Description
  - [ApiResponseEconomicIndexHistoricalData](docs/ApiResponseEconomicIndexHistoricalData.md)
  - [ApiResponseEconomicIndices](docs/ApiResponseEconomicIndices.md)
  - [ApiResponseEconomicIndicesSearch](docs/ApiResponseEconomicIndicesSearch.md)
+ - [ApiResponseEodIndexPrices](docs/ApiResponseEodIndexPrices.md)
+ - [ApiResponseEodIndexPricesAll](docs/ApiResponseEodIndexPricesAll.md)
  - [ApiResponseFilingAnswers](docs/ApiResponseFilingAnswers.md)
  - [ApiResponseFilingFundamentals](docs/ApiResponseFilingFundamentals.md)
  - [ApiResponseFilingNotes](docs/ApiResponseFilingNotes.md)
@@ -337,6 +348,8 @@ Class | Method | HTTP request | Description
  - [ApiResponseForexPairs](docs/ApiResponseForexPairs.md)
  - [ApiResponseForexPrices](docs/ApiResponseForexPrices.md)
  - [ApiResponseHistoricalData](docs/ApiResponseHistoricalData.md)
+ - [ApiResponseIndex](docs/ApiResponseIndex.md)
+ - [ApiResponseIndices](docs/ApiResponseIndices.md)
  - [ApiResponseInitialPublicOfferings](docs/ApiResponseInitialPublicOfferings.md)
  - [ApiResponseInsiderTransactionFilings](docs/ApiResponseInsiderTransactionFilings.md)
  - [ApiResponseMunicipalities](docs/ApiResponseMunicipalities.md)
@@ -344,6 +357,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseNews](docs/ApiResponseNews.md)
  - [ApiResponseOptionPrices](docs/ApiResponseOptionPrices.md)
  - [ApiResponseOptions](docs/ApiResponseOptions.md)
+ - [ApiResponseOptionsAggregates](docs/ApiResponseOptionsAggregates.md)
  - [ApiResponseOptionsChain](docs/ApiResponseOptionsChain.md)
  - [ApiResponseOptionsChainEod](docs/ApiResponseOptionsChainEod.md)
  - [ApiResponseOptionsChainRealtime](docs/ApiResponseOptionsChainRealtime.md)
@@ -358,6 +372,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseOwnerInsiderTransactionFilings](docs/ApiResponseOwnerInsiderTransactionFilings.md)
  - [ApiResponseOwnerInstitutionalHoldings](docs/ApiResponseOwnerInstitutionalHoldings.md)
  - [ApiResponseOwners](docs/ApiResponseOwners.md)
+ - [ApiResponseRealtimeIndexPrices](docs/ApiResponseRealtimeIndexPrices.md)
  - [ApiResponseReportedFinancials](docs/ApiResponseReportedFinancials.md)
  - [ApiResponseSICIndexHistoricalData](docs/ApiResponseSICIndexHistoricalData.md)
  - [ApiResponseSICIndices](docs/ApiResponseSICIndices.md)
@@ -416,10 +431,12 @@ Class | Method | HTTP request | Description
  - [ApiResponseStockMarketIndices](docs/ApiResponseStockMarketIndices.md)
  - [ApiResponseStockMarketIndicesSearch](docs/ApiResponseStockMarketIndicesSearch.md)
  - [ApiResponseZacksAnalystRatings](docs/ApiResponseZacksAnalystRatings.md)
+ - [ApiResponseZacksEBITDAConsensus](docs/ApiResponseZacksEBITDAConsensus.md)
  - [ApiResponseZacksEPSEstimates](docs/ApiResponseZacksEPSEstimates.md)
  - [ApiResponseZacksEPSGrowthRates](docs/ApiResponseZacksEPSGrowthRates.md)
  - [ApiResponseZacksEPSSurprises](docs/ApiResponseZacksEPSSurprises.md)
  - [ApiResponseZacksETFHoldings](docs/ApiResponseZacksETFHoldings.md)
+ - [ApiResponseZacksForwardPEs](docs/ApiResponseZacksForwardPEs.md)
  - [ApiResponseZacksInstitutionalHoldingCompanies](docs/ApiResponseZacksInstitutionalHoldingCompanies.md)
  - [ApiResponseZacksInstitutionalHoldingOwners](docs/ApiResponseZacksInstitutionalHoldingOwners.md)
  - [ApiResponseZacksInstitutionalHoldings](docs/ApiResponseZacksInstitutionalHoldings.md)
@@ -464,6 +481,8 @@ Class | Method | HTTP request | Description
  - [EaseOfMovementTechnicalValue](docs/EaseOfMovementTechnicalValue.md)
  - [EconomicIndex](docs/EconomicIndex.md)
  - [EconomicIndexSummary](docs/EconomicIndexSummary.md)
+ - [EodIndexPrice](docs/EodIndexPrice.md)
+ - [EodIndexPriceSummary](docs/EodIndexPriceSummary.md)
  - [Filing](docs/Filing.md)
  - [FilingNote](docs/FilingNote.md)
  - [FilingNoteFiling](docs/FilingNoteFiling.md)
@@ -515,6 +534,7 @@ Class | Method | HTTP request | Description
  - [OptionSnapshotsResult](docs/OptionSnapshotsResult.md)
  - [OptionStatsRealtime](docs/OptionStatsRealtime.md)
  - [OptionUnusualTrade](docs/OptionUnusualTrade.md)
+ - [OptionsAggregate](docs/OptionsAggregate.md)
  - [Owner](docs/Owner.md)
  - [OwnerSummary](docs/OwnerSummary.md)
  - [RealtimeIndexPrice](docs/RealtimeIndexPrice.md)
@@ -566,11 +586,13 @@ Class | Method | HTTP request | Description
  - [ZacksAnalystRating](docs/ZacksAnalystRating.md)
  - [ZacksAnalystRatingSnapshot](docs/ZacksAnalystRatingSnapshot.md)
  - [ZacksAnalystRatingSummary](docs/ZacksAnalystRatingSummary.md)
+ - [ZacksEBITDAConsensus](docs/ZacksEBITDAConsensus.md)
  - [ZacksEPSEstimate](docs/ZacksEPSEstimate.md)
  - [ZacksEPSGrowthRate](docs/ZacksEPSGrowthRate.md)
  - [ZacksEPSSurprise](docs/ZacksEPSSurprise.md)
  - [ZacksEPSSurpriseSummary](docs/ZacksEPSSurpriseSummary.md)
  - [ZacksETFHolding](docs/ZacksETFHolding.md)
+ - [ZacksForwardPE](docs/ZacksForwardPE.md)
  - [ZacksInstitutionalHolding](docs/ZacksInstitutionalHolding.md)
  - [ZacksInstitutionalHoldingCompanyDetail](docs/ZacksInstitutionalHoldingCompanyDetail.md)
  - [ZacksInstitutionalHoldingCompanySummary](docs/ZacksInstitutionalHoldingCompanySummary.md)

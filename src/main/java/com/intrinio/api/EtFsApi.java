@@ -706,12 +706,13 @@ public class EtFsApi {
     /**
      * Build call for searchEtfs
      * @param query  (required)
+     * @param mode When set, changes search mode to the specified mode. Paging is not available in rank_order. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call searchEtfsCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call searchEtfsCall(String query, String mode, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -721,6 +722,8 @@ public class EtFsApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (query != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
+        if (mode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("mode", mode));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -755,7 +758,7 @@ public class EtFsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call searchEtfsValidateBeforeCall(String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call searchEtfsValidateBeforeCall(String query, String mode, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'query' is set
         if (query == null) {
@@ -763,7 +766,7 @@ public class EtFsApi {
         }
         
 
-        com.squareup.okhttp.Call call = searchEtfsCall(query, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchEtfsCall(query, mode, progressListener, progressRequestListener);
         return call;
 
     }
@@ -772,14 +775,15 @@ public class EtFsApi {
      * Search ETFs
      * Accepts a string of keyword combinations, and searches across the ETF name and ticker and returns a list of ETFs with related keywords.
      * @param query  (required)
+     * @param mode When set, changes search mode to the specified mode. Paging is not available in rank_order. (optional)
      * @return ApiResponseETFs
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseETFs searchEtfs(String query) throws ApiException, NoSuchMethodException {
-      Method targetMethod = EtFsApi.class.getMethod("searchEtfsWithHttpInfo", String.class);
+    public ApiResponseETFs searchEtfs(String query, String mode) throws ApiException, NoSuchMethodException {
+      Method targetMethod = EtFsApi.class.getMethod("searchEtfsWithHttpInfo", String.class, String.class);
       
-      Object[] apiCallArguments = { query };
+      Object[] apiCallArguments = { query, mode };
       ApiResponse<ApiResponseETFs> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -788,11 +792,12 @@ public class EtFsApi {
      * Search ETFs
      * Accepts a string of keyword combinations, and searches across the ETF name and ticker and returns a list of ETFs with related keywords.
      * @param query  (required)
+     * @param mode When set, changes search mode to the specified mode. Paging is not available in rank_order. (optional)
      * @return ApiResponse&lt;ApiResponseETFs&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseETFs> searchEtfsWithHttpInfo(String query) throws ApiException {
-        com.squareup.okhttp.Call call = searchEtfsValidateBeforeCall(query, null, null);
+    public ApiResponse<ApiResponseETFs> searchEtfsWithHttpInfo(String query, String mode) throws ApiException {
+        com.squareup.okhttp.Call call = searchEtfsValidateBeforeCall(query, mode, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseETFs>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -801,11 +806,12 @@ public class EtFsApi {
      * Search ETFs (asynchronously)
      * Accepts a string of keyword combinations, and searches across the ETF name and ticker and returns a list of ETFs with related keywords.
      * @param query  (required)
+     * @param mode When set, changes search mode to the specified mode. Paging is not available in rank_order. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchEtfsAsync(String query, final ApiCallback<ApiResponseETFs> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchEtfsAsync(String query, String mode, final ApiCallback<ApiResponseETFs> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -826,7 +832,7 @@ public class EtFsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = searchEtfsValidateBeforeCall(query, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchEtfsValidateBeforeCall(query, mode, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseETFs>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

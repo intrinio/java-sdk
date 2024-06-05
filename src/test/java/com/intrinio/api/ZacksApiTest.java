@@ -4,10 +4,12 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseZacksAnalystRatings;
+import com.intrinio.models.ApiResponseZacksEBITDAConsensus;
 import com.intrinio.models.ApiResponseZacksEPSEstimates;
 import com.intrinio.models.ApiResponseZacksEPSGrowthRates;
 import com.intrinio.models.ApiResponseZacksEPSSurprises;
 import com.intrinio.models.ApiResponseZacksETFHoldings;
+import com.intrinio.models.ApiResponseZacksForwardPEs;
 import com.intrinio.models.ApiResponseZacksInstitutionalHoldingCompanies;
 import com.intrinio.models.ApiResponseZacksInstitutionalHoldingOwners;
 import com.intrinio.models.ApiResponseZacksInstitutionalHoldings;
@@ -17,6 +19,7 @@ import com.intrinio.models.ApiResponseZacksSalesSurprises;
 import com.intrinio.models.ApiResponseZacksTargetPriceConsensuses;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
+import com.intrinio.models.ZacksForwardPE;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -64,6 +67,24 @@ public class ZacksApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseZacksAnalystRatings response = api.getZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks EBITDA Consensus
+     *
+     * This database offers consensus EBITDA-related estimates for over 4,000 US and Canadian listed companies.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksEbitdaConsensusTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String type = null;
+        String nextPage = null;
+        ApiResponseZacksEBITDAConsensus response = api.getZacksEbitdaConsensus(identifier, type, nextPage);
 
         // TODO: test validations
     }
@@ -160,6 +181,38 @@ public class ZacksApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseZacksETFHoldings response = api.getZacksEtfHoldings(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks Forward PE Estimates
+     *
+     * This database offers price-to-earning ratio estimates for over 4,000 US and Canadian listed companies.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksForwardPeTest() throws ApiException, NoSuchMethodException {
+        String nextPage = null;
+        ApiResponseZacksForwardPEs response = api.getZacksForwardPe(nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Zacks Forward PE by identifer
+     *
+     * Returns the forward PE estimates for the identifier
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getZacksForwardPeByIdentifierTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        ZacksForwardPE response = api.getZacksForwardPeByIdentifier(identifier);
 
         // TODO: test validations
     }

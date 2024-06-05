@@ -5,13 +5,18 @@ All URIs are relative to *https://api-v2.intrinio.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAllEconomicIndices**](IndexApi.md#getAllEconomicIndices) | **GET** /indices/economic | All Economic Indices
+[**getAllEodIndexPrices**](IndexApi.md#getAllEodIndexPrices) | **GET** /indices/prices/eod | All End of Day Index Prices
+[**getAllIndexSummaries**](IndexApi.md#getAllIndexSummaries) | **GET** /indices | All Index Summaries
+[**getAllRealtimeIndexPrices**](IndexApi.md#getAllRealtimeIndexPrices) | **GET** /indices/prices/realtime | All Realtime Index Prices
 [**getAllSicIndices**](IndexApi.md#getAllSicIndices) | **GET** /indices/sic | All SIC Indices
 [**getAllStockMarketIndices**](IndexApi.md#getAllStockMarketIndices) | **GET** /indices/stock_market | All Stock Market Indices
 [**getEconomicIndexById**](IndexApi.md#getEconomicIndexById) | **GET** /indices/economic/{identifier} | Lookup Economic Index
 [**getEconomicIndexDataPointNumber**](IndexApi.md#getEconomicIndexDataPointNumber) | **GET** /indices/economic/{identifier}/data_point/{tag}/number | Data Point (Number) for an Economic Index
 [**getEconomicIndexDataPointText**](IndexApi.md#getEconomicIndexDataPointText) | **GET** /indices/economic/{identifier}/data_point/{tag}/text | Data Point (Text) for an Economic Index
 [**getEconomicIndexHistoricalData**](IndexApi.md#getEconomicIndexHistoricalData) | **GET** /indices/economic/{identifier}/historical_data/{tag} | Historical Data for an Economic Index
-[**getRealtimeIndexPriceById**](IndexApi.md#getRealtimeIndexPriceById) | **GET** /indices/{identifier}/realtime | Realtime Index Price
+[**getEodIndexPriceById**](IndexApi.md#getEodIndexPriceById) | **GET** /indices/{identifier}/eod | End of Day Index Prices By Identifier
+[**getIndexSummaryById**](IndexApi.md#getIndexSummaryById) | **GET** /indices/{identifier} | Index Summary By Identifier
+[**getRealtimeIndexPriceById**](IndexApi.md#getRealtimeIndexPriceById) | **GET** /indices/{identifier}/realtime | Realtime Index Price By Identifier
 [**getSicIndexById**](IndexApi.md#getSicIndexById) | **GET** /indices/sic/{identifier} | Lookup SIC Index
 [**getSicIndexDataPointNumber**](IndexApi.md#getSicIndexDataPointNumber) | **GET** /indices/sic/{identifier}/data_point/{tag}/number | Data Point (Number) for an SIC Index
 [**getSicIndexDataPointText**](IndexApi.md#getSicIndexDataPointText) | **GET** /indices/sic/{identifier}/data_point/{tag}/text | Data Point (Text) for an SIC Index
@@ -108,6 +113,259 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseEconomicIndices**](ApiResponseEconomicIndices.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getAllEodIndexPrices)
+
+[//]: # (RETURN_TYPE:ApiResponseEodIndexPricesAll)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseEodIndexPricesAll.md)
+
+[//]: # (OPERATION:getAllEodIndexPrices_v2)
+
+[//]: # (ENDPOINT:/indices/prices/eod)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getAllEodIndexPrices)
+
+<a name="getAllEodIndexPrices"></a>
+## **getAllEodIndexPrices**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllEodIndexPrices_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseEodIndexPricesAll getAllEodIndexPrices(pageSize, startDate, endDate)
+
+#### All End of Day Index Prices
+
+
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    IndexApi indexApi = new IndexApi();
+    Integer pageSize = 100;
+    LocalDate startDate = null;
+    LocalDate endDate = null;
+    ApiResponseEodIndexPricesAll result = indexApi.getAllEodIndexPrices(pageSize, startDate, endDate);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **startDate** | LocalDate| Limit prices to those on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Limit prices to those on or before this date | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseEodIndexPricesAll**](ApiResponseEodIndexPricesAll.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getAllIndexSummaries)
+
+[//]: # (RETURN_TYPE:ApiResponseIndices)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseIndices.md)
+
+[//]: # (OPERATION:getAllIndexSummaries_v2)
+
+[//]: # (ENDPOINT:/indices)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getAllIndexSummaries)
+
+<a name="getAllIndexSummaries"></a>
+## **getAllIndexSummaries**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllIndexSummaries_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseIndices getAllIndexSummaries(pageSize)
+
+#### All Index Summaries
+
+
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    IndexApi indexApi = new IndexApi();
+    Integer pageSize = 100;
+    ApiResponseIndices result = indexApi.getAllIndexSummaries(pageSize);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseIndices**](ApiResponseIndices.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getAllRealtimeIndexPrices)
+
+[//]: # (RETURN_TYPE:ApiResponseRealtimeIndexPrices)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseRealtimeIndexPrices.md)
+
+[//]: # (OPERATION:getAllRealtimeIndexPrices_v2)
+
+[//]: # (ENDPOINT:/indices/prices/realtime)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getAllRealtimeIndexPrices)
+
+<a name="getAllRealtimeIndexPrices"></a>
+## **getAllRealtimeIndexPrices**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getAllRealtimeIndexPrices_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseRealtimeIndexPrices getAllRealtimeIndexPrices(pageSize)
+
+#### All Realtime Index Prices
+
+
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    IndexApi indexApi = new IndexApi();
+    Integer pageSize = 100;
+    ApiResponseRealtimeIndexPrices result = indexApi.getAllRealtimeIndexPrices(pageSize);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseRealtimeIndexPrices**](ApiResponseRealtimeIndexPrices.md)
 
 [//]: # (END_OPERATION)
 
@@ -640,6 +898,178 @@ Name | Type | Description  | Notes
 
 [//]: # (CLASS:IndexApi)
 
+[//]: # (METHOD:getEodIndexPriceById)
+
+[//]: # (RETURN_TYPE:ApiResponseEodIndexPrices)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseEodIndexPrices.md)
+
+[//]: # (OPERATION:getEodIndexPriceById_v2)
+
+[//]: # (ENDPOINT:/indices/{identifier}/eod)
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getEodIndexPriceById)
+
+<a name="getEodIndexPriceById"></a>
+## **getEodIndexPriceById**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getEodIndexPriceById_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseEodIndexPrices getEodIndexPriceById(identifier, pageSize, startDate, endDate)
+
+#### End of Day Index Prices By Identifier
+
+
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    IndexApi indexApi = new IndexApi();
+    String identifier = "SPX";
+    Integer pageSize = 100;
+    LocalDate startDate = null;
+    LocalDate endDate = null;
+    ApiResponseEodIndexPrices result = indexApi.getEodIndexPriceById(identifier, pageSize, startDate, endDate);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| The index symbol | &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **startDate** | LocalDate| Limit prices to those on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Limit prices to those on or before this date | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseEodIndexPrices**](ApiResponseEodIndexPrices.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
+[//]: # (METHOD:getIndexSummaryById)
+
+[//]: # (RETURN_TYPE:ApiResponseIndex)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseIndex.md)
+
+[//]: # (OPERATION:getIndexSummaryById_v2)
+
+[//]: # (ENDPOINT:/indices/{identifier})
+
+[//]: # (DOCUMENT_LINK:IndexApi.md#getIndexSummaryById)
+
+<a name="getIndexSummaryById"></a>
+## **getIndexSummaryById**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getIndexSummaryById_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseIndex getIndexSummaryById(identifier)
+
+#### Index Summary By Identifier
+
+
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    IndexApi indexApi = new IndexApi();
+    String identifier = "SPX";
+    ApiResponseIndex result = indexApi.getIndexSummaryById(identifier);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| The index symbol | &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseIndex**](ApiResponseIndex.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:IndexApi)
+
 [//]: # (METHOD:getRealtimeIndexPriceById)
 
 [//]: # (RETURN_TYPE:RealtimeIndexPrice)
@@ -663,7 +1093,7 @@ Name | Type | Description  | Notes
 
 > RealtimeIndexPrice getRealtimeIndexPriceById(identifier)
 
-#### Realtime Index Price
+#### Realtime Index Price By Identifier
 
 
 
@@ -707,7 +1137,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | String| The ticker symbol of the currently trading index | &nbsp;
+ **identifier** | String| The index symbol | &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

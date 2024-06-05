@@ -120,7 +120,8 @@ public class EtFsApiTest {
     @Test
     public void searchEtfsTest() throws ApiException, NoSuchMethodException {
         String query = null;
-        ApiResponseETFs response = api.searchEtfs(query);
+        String mode = null;
+        ApiResponseETFs response = api.searchEtfs(query, mode);
 
         // TODO: test validations
     }

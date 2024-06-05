@@ -308,7 +308,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **specificSource** | String| Only news from this source. | [optional] [enum: yahoo, moody, moody_us_news, moody_us_press_releases] &nbsp;
+ **specificSource** | String| Only news from this source. Defaults to highest available if not present. | [optional] [enum: yahoo, moody, moody_us_news, moody_us_press_releases] &nbsp;
  **pageSize** | Integer| The maximum number of results to return. | [optional] [default to 100] &nbsp;
  **sentiment** | String| Filter by sentiment.  Unsupported for yahoo source. | [optional] [enum: positive, neutral, negative] &nbsp;
  **topic** | String| Filter by topic.  Unsupported for yahoo source. | [optional] &nbsp;
@@ -1257,7 +1257,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
- **specificSource** | String| Only news from this source | [optional] [enum: yahoo, moody, moody_us_news, moody_us_press_releases] &nbsp;
+ **specificSource** | String| Only news from this source. Defaults to highest available if not present. | [optional] [enum: yahoo, moody, moody_us_news, moody_us_press_releases] &nbsp;
  **pageSize** | Integer| The maximum number of results to return | [optional] [default to 100] &nbsp;
  **sentiment** | String| Filter by sentiment.  Unsupported for yahoo source. | [optional] [enum: positive, neutral, negative] &nbsp;
  **topic** | String| Filter by topic.  Unsupported for yahoo source. | [optional] &nbsp;
@@ -1843,7 +1843,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseCompaniesSearch searchCompanies(query, active, pageSize)
+> ApiResponseCompaniesSearch searchCompanies(query, active, mode, pageSize)
 
 #### Search Companies
 
@@ -1876,8 +1876,9 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
     String query = "Apple";
     Boolean active = true;
+    String mode = null;
     Integer pageSize = 100;
-    ApiResponseCompaniesSearch result = companyApi.searchCompanies(query, active, pageSize);
+    ApiResponseCompaniesSearch result = companyApi.searchCompanies(query, active, mode, pageSize);
     System.out.println(result);
   }
 }
@@ -1893,7 +1894,8 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | String| Search parameters | &nbsp;
- **active** | Boolean| When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. | [optional] &nbsp;
+ **active** | Boolean| When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. Not setting this value returns all. Not used when mode is set. | [optional] &nbsp;
+ **mode** | String| When set, changes search mode to the specified mode. | [optional] [enum: starts_with] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
 <br/>
 

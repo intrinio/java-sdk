@@ -389,7 +389,7 @@ public class CompanyApi {
     }
     /**
      * Build call for getAllCompanyNews
-     * @param specificSource Only news from this source. (optional)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
      * @param pageSize The maximum number of results to return. (optional, default to 100)
      * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
      * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
@@ -492,7 +492,7 @@ public class CompanyApi {
     /**
      * All News
      * Returns the latest news article links, headlines and summaries for all US traded companies allowing you to keep a pulse on companies and their business operations.
-     * @param specificSource Only news from this source. (optional)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
      * @param pageSize The maximum number of results to return. (optional, default to 100)
      * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
      * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
@@ -522,7 +522,7 @@ public class CompanyApi {
     /**
      * All News
      * Returns the latest news article links, headlines and summaries for all US traded companies allowing you to keep a pulse on companies and their business operations.
-     * @param specificSource Only news from this source. (optional)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
      * @param pageSize The maximum number of results to return. (optional, default to 100)
      * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
      * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
@@ -549,7 +549,7 @@ public class CompanyApi {
     /**
      * All News (asynchronously)
      * Returns the latest news article links, headlines and summaries for all US traded companies allowing you to keep a pulse on companies and their business operations.
-     * @param specificSource Only news from this source. (optional)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
      * @param pageSize The maximum number of results to return. (optional, default to 100)
      * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
      * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
@@ -1993,7 +1993,7 @@ public class CompanyApi {
     /**
      * Build call for getCompanyNews
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param specificSource Only news from this source (optional)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
      * @param pageSize The maximum number of results to return (optional, default to 100)
      * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
      * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
@@ -2100,7 +2100,7 @@ public class CompanyApi {
      * All News by Company
      * Returns the latest and historical news article links, headlines and summaries for a specified US traded company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param specificSource Only news from this source (optional)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
      * @param pageSize The maximum number of results to return (optional, default to 100)
      * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
      * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
@@ -2130,7 +2130,7 @@ public class CompanyApi {
      * All News by Company
      * Returns the latest and historical news article links, headlines and summaries for a specified US traded company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param specificSource Only news from this source (optional)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
      * @param pageSize The maximum number of results to return (optional, default to 100)
      * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
      * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
@@ -2157,7 +2157,7 @@ public class CompanyApi {
      * All News by Company (asynchronously)
      * Returns the latest and historical news article links, headlines and summaries for a specified US traded company.
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param specificSource Only news from this source (optional)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
      * @param pageSize The maximum number of results to return (optional, default to 100)
      * @param sentiment Filter by sentiment.  Unsupported for yahoo source. (optional)
      * @param topic Filter by topic.  Unsupported for yahoo source. (optional)
@@ -3075,14 +3075,15 @@ public class CompanyApi {
     /**
      * Build call for searchCompanies
      * @param query Search parameters (required)
-     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. (optional)
+     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. Not setting this value returns all. Not used when mode is set. (optional)
+     * @param mode When set, changes search mode to the specified mode. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call searchCompaniesCall(String query, Boolean active, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call searchCompaniesCall(String query, Boolean active, String mode, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -3094,6 +3095,8 @@ public class CompanyApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
         if (active != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("active", active));
+        if (mode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("mode", mode));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
 
@@ -3130,7 +3133,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call searchCompaniesValidateBeforeCall(String query, Boolean active, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call searchCompaniesValidateBeforeCall(String query, Boolean active, String mode, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'query' is set
         if (query == null) {
@@ -3138,7 +3141,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = searchCompaniesCall(query, active, pageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchCompaniesCall(query, active, mode, pageSize, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3147,16 +3150,17 @@ public class CompanyApi {
      * Search Companies
      * Search the companies database and return a list of companies matching the text query parameter passed through. Query parameter searches across the company ticker and name.
      * @param query Search parameters (required)
-     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. (optional)
+     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. Not setting this value returns all. Not used when mode is set. (optional)
+     * @param mode When set, changes search mode to the specified mode. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponseCompaniesSearch
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompaniesSearch searchCompanies(String query, Boolean active, Integer pageSize) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("searchCompaniesWithHttpInfo", String.class, Boolean.class, Integer.class);
+    public ApiResponseCompaniesSearch searchCompanies(String query, Boolean active, String mode, Integer pageSize) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("searchCompaniesWithHttpInfo", String.class, Boolean.class, String.class, Integer.class);
       
-      Object[] apiCallArguments = { query, active, pageSize };
+      Object[] apiCallArguments = { query, active, mode, pageSize };
       ApiResponse<ApiResponseCompaniesSearch> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -3165,13 +3169,14 @@ public class CompanyApi {
      * Search Companies
      * Search the companies database and return a list of companies matching the text query parameter passed through. Query parameter searches across the company ticker and name.
      * @param query Search parameters (required)
-     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. (optional)
+     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. Not setting this value returns all. Not used when mode is set. (optional)
+     * @param mode When set, changes search mode to the specified mode. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @return ApiResponse&lt;ApiResponseCompaniesSearch&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompaniesSearch> searchCompaniesWithHttpInfo(String query, Boolean active, Integer pageSize) throws ApiException {
-        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, active, pageSize, null, null);
+    public ApiResponse<ApiResponseCompaniesSearch> searchCompaniesWithHttpInfo(String query, Boolean active, String mode, Integer pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, active, mode, pageSize, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompaniesSearch>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3180,13 +3185,14 @@ public class CompanyApi {
      * Search Companies (asynchronously)
      * Search the companies database and return a list of companies matching the text query parameter passed through. Query parameter searches across the company ticker and name.
      * @param query Search parameters (required)
-     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. (optional)
+     * @param active When true, return companies that are actively traded (having stock prices within the past 14 days). When false, return companies that are not actively traded or never have been traded. Not setting this value returns all. Not used when mode is set. (optional)
+     * @param mode When set, changes search mode to the specified mode. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call searchCompaniesAsync(String query, Boolean active, Integer pageSize, final ApiCallback<ApiResponseCompaniesSearch> callback) throws ApiException {
+    public com.squareup.okhttp.Call searchCompaniesAsync(String query, Boolean active, String mode, Integer pageSize, final ApiCallback<ApiResponseCompaniesSearch> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3207,7 +3213,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, active, pageSize, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = searchCompaniesValidateBeforeCall(query, active, mode, pageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompaniesSearch>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

@@ -5,6 +5,7 @@ package com.intrinio.api;
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseOptionPrices;
 import com.intrinio.models.ApiResponseOptions;
+import com.intrinio.models.ApiResponseOptionsAggregates;
 import com.intrinio.models.ApiResponseOptionsChain;
 import com.intrinio.models.ApiResponseOptionsChainEod;
 import com.intrinio.models.ApiResponseOptionsChainRealtime;
@@ -51,6 +52,22 @@ public class OptionsApiTest {
     @Test
     public void getAllOptionsTickersTest() throws ApiException, NoSuchMethodException {
         ApiResponseOptionsTickers response = api.getAllOptionsTickers();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Total open interest and volume aggregated by ticker
+     *
+     * Returns total open interest and volume by ticker
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionAggregatesTest() throws ApiException, NoSuchMethodException {
+        Object date = null;
+        ApiResponseOptionsAggregates response = api.getOptionAggregates(date);
 
         // TODO: test validations
     }

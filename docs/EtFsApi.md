@@ -466,7 +466,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseETFs searchEtfs(query)
+> ApiResponseETFs searchEtfs(query, mode)
 
 #### Search ETFs
 
@@ -498,7 +498,8 @@ public class Main {
 
     EtFsApi etFsApi = new EtFsApi();
     String query = "iShares";
-    ApiResponseETFs result = etFsApi.searchEtfs(query);
+    String mode = null;
+    ApiResponseETFs result = etFsApi.searchEtfs(query, mode);
     System.out.println(result);
   }
 }
@@ -514,6 +515,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **query** | String|  | &nbsp;
+ **mode** | String| When set, changes search mode to the specified mode. Paging is not available in rank_order. | [optional] [enum: rank_order, starts_with] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

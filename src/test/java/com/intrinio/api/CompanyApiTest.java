@@ -453,8 +453,9 @@ public class CompanyApiTest {
     public void searchCompaniesTest() throws ApiException, NoSuchMethodException {
         String query = null;
         Boolean active = null;
+        String mode = null;
         Integer pageSize = null;
-        ApiResponseCompaniesSearch response = api.searchCompanies(query, active, pageSize);
+        ApiResponseCompaniesSearch response = api.searchCompanies(query, active, mode, pageSize);
 
         // TODO: test validations
     }

@@ -17,10 +17,12 @@ import java.io.IOException;
 
 
 import com.intrinio.models.ApiResponseZacksAnalystRatings;
+import com.intrinio.models.ApiResponseZacksEBITDAConsensus;
 import com.intrinio.models.ApiResponseZacksEPSEstimates;
 import com.intrinio.models.ApiResponseZacksEPSGrowthRates;
 import com.intrinio.models.ApiResponseZacksEPSSurprises;
 import com.intrinio.models.ApiResponseZacksETFHoldings;
+import com.intrinio.models.ApiResponseZacksForwardPEs;
 import com.intrinio.models.ApiResponseZacksInstitutionalHoldingCompanies;
 import com.intrinio.models.ApiResponseZacksInstitutionalHoldingOwners;
 import com.intrinio.models.ApiResponseZacksInstitutionalHoldings;
@@ -30,6 +32,7 @@ import com.intrinio.models.ApiResponseZacksSalesSurprises;
 import com.intrinio.models.ApiResponseZacksTargetPriceConsensuses;
 import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
+import com.intrinio.models.ZacksForwardPE;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.Method;
@@ -285,6 +288,141 @@ public class ZacksApi {
 
         com.squareup.okhttp.Call call = getZacksAnalystRatingsValidateBeforeCall(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseZacksAnalystRatings>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getZacksEbitdaConsensus
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param type Limit EBITDA estimates to this type (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksEbitdaConsensusCall(String identifier, String type, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/ebitda_consensus";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (identifier != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("identifier", identifier));
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksEbitdaConsensusValidateBeforeCall(String identifier, String type, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getZacksEbitdaConsensusCall(identifier, type, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks EBITDA Consensus
+     * This database offers consensus EBITDA-related estimates for over 4,000 US and Canadian listed companies.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param type Limit EBITDA estimates to this type (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseZacksEBITDAConsensus
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseZacksEBITDAConsensus getZacksEbitdaConsensus(String identifier, String type, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksEbitdaConsensusWithHttpInfo", String.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, type, nextPage };
+      ApiResponse<ApiResponseZacksEBITDAConsensus> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Zacks EBITDA Consensus
+     * This database offers consensus EBITDA-related estimates for over 4,000 US and Canadian listed companies.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param type Limit EBITDA estimates to this type (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseZacksEBITDAConsensus&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseZacksEBITDAConsensus> getZacksEbitdaConsensusWithHttpInfo(String identifier, String type, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksEbitdaConsensusValidateBeforeCall(identifier, type, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksEBITDAConsensus>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks EBITDA Consensus (asynchronously)
+     * This database offers consensus EBITDA-related estimates for over 4,000 US and Canadian listed companies.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (optional)
+     * @param type Limit EBITDA estimates to this type (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksEbitdaConsensusAsync(String identifier, String type, String nextPage, final ApiCallback<ApiResponseZacksEBITDAConsensus> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksEbitdaConsensusValidateBeforeCall(identifier, type, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksEBITDAConsensus>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -969,6 +1107,256 @@ public class ZacksApi {
 
         com.squareup.okhttp.Call call = getZacksEtfHoldingsValidateBeforeCall(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseZacksETFHoldings>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getZacksForwardPe
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksForwardPeCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/forward_pe";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksForwardPeValidateBeforeCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getZacksForwardPeCall(nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks Forward PE Estimates
+     * This database offers price-to-earning ratio estimates for over 4,000 US and Canadian listed companies.
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseZacksForwardPEs
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseZacksForwardPEs getZacksForwardPe(String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksForwardPeWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { nextPage };
+      ApiResponse<ApiResponseZacksForwardPEs> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Zacks Forward PE Estimates
+     * This database offers price-to-earning ratio estimates for over 4,000 US and Canadian listed companies.
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseZacksForwardPEs&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseZacksForwardPEs> getZacksForwardPeWithHttpInfo(String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksForwardPeValidateBeforeCall(nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksForwardPEs>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks Forward PE Estimates (asynchronously)
+     * This database offers price-to-earning ratio estimates for over 4,000 US and Canadian listed companies.
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksForwardPeAsync(String nextPage, final ApiCallback<ApiResponseZacksForwardPEs> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksForwardPeValidateBeforeCall(nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseZacksForwardPEs>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getZacksForwardPeByIdentifier
+     * @param identifier An Intrinio ID or ticker for a Security (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getZacksForwardPeByIdentifierCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/zacks/forward_pe/{identifier}"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getZacksForwardPeByIdentifierValidateBeforeCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getZacksForwardPeByIdentifier(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getZacksForwardPeByIdentifierCall(identifier, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Zacks Forward PE by identifer
+     * Returns the forward PE estimates for the identifier
+     * @param identifier An Intrinio ID or ticker for a Security (required)
+     * @return ZacksForwardPE
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ZacksForwardPE getZacksForwardPeByIdentifier(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = ZacksApi.class.getMethod("getZacksForwardPeByIdentifierWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<ZacksForwardPE> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Zacks Forward PE by identifer
+     * Returns the forward PE estimates for the identifier
+     * @param identifier An Intrinio ID or ticker for a Security (required)
+     * @return ApiResponse&lt;ZacksForwardPE&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ZacksForwardPE> getZacksForwardPeByIdentifierWithHttpInfo(String identifier) throws ApiException {
+        com.squareup.okhttp.Call call = getZacksForwardPeByIdentifierValidateBeforeCall(identifier, null, null);
+        Type localVarReturnType = new TypeToken<ZacksForwardPE>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Zacks Forward PE by identifer (asynchronously)
+     * Returns the forward PE estimates for the identifier
+     * @param identifier An Intrinio ID or ticker for a Security (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getZacksForwardPeByIdentifierAsync(String identifier, final ApiCallback<ZacksForwardPE> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getZacksForwardPeByIdentifierValidateBeforeCall(identifier, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ZacksForwardPE>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

@@ -38,7 +38,7 @@ Method | HTTP request | Description
 
 [//]: # (START_OVERVIEW)
 
-> Fundamental filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, nextPage)
+> Fundamental filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, template, nextPage)
 
 #### Filter Fundamental
 
@@ -80,8 +80,9 @@ public class Main {
     LocalDate endDate = LocalDate.of(2022,12,01);
     LocalDate updatedAfter = LocalDate.of(2022,12,01);
     LocalDate updatedBefore = LocalDate.of(2022,12,01);
+    String template = "indu";
     String nextPage = null;
-    Fundamental result = fundamentalsApi.filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, nextPage);
+    Fundamental result = fundamentalsApi.filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, template, nextPage);
     System.out.println(result);
   }
 }
@@ -107,6 +108,7 @@ Name | Type | Description  | Notes
  **endDate** | LocalDate| Only include fundamentals where covered period is on or before this date. | [optional] &nbsp;
  **updatedAfter** | LocalDate| Only include fundamentals where it was updated after this date. | [optional] &nbsp;
  **updatedBefore** | LocalDate| Only include fundamentals where it was updated before this date. | [optional] &nbsp;
+ **template** | String| The financial statement template used by Intrinio to standardize the as reported data | [optional] [enum: fin, indu] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 

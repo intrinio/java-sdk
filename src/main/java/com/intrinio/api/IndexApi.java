@@ -19,6 +19,11 @@ import java.io.IOException;
 import com.intrinio.models.ApiResponseEconomicIndexHistoricalData;
 import com.intrinio.models.ApiResponseEconomicIndices;
 import com.intrinio.models.ApiResponseEconomicIndicesSearch;
+import com.intrinio.models.ApiResponseEodIndexPrices;
+import com.intrinio.models.ApiResponseEodIndexPricesAll;
+import com.intrinio.models.ApiResponseIndex;
+import com.intrinio.models.ApiResponseIndices;
+import com.intrinio.models.ApiResponseRealtimeIndexPrices;
 import com.intrinio.models.ApiResponseSICIndexHistoricalData;
 import com.intrinio.models.ApiResponseSICIndices;
 import com.intrinio.models.ApiResponseSICIndicesSearch;
@@ -184,6 +189,387 @@ public class IndexApi {
 
         com.squareup.okhttp.Call call = getAllEconomicIndicesValidateBeforeCall(pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseEconomicIndices>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getAllEodIndexPrices
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param startDate Limit prices to those on or after this date (optional)
+     * @param endDate Limit prices to those on or before this date (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getAllEodIndexPricesCall(Integer pageSize, LocalDate startDate, LocalDate endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/indices/prices/eod";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getAllEodIndexPricesValidateBeforeCall(Integer pageSize, LocalDate startDate, LocalDate endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getAllEodIndexPricesCall(pageSize, startDate, endDate, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * All End of Day Index Prices
+     * 
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param startDate Limit prices to those on or after this date (optional)
+     * @param endDate Limit prices to those on or before this date (optional)
+     * @return ApiResponseEodIndexPricesAll
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseEodIndexPricesAll getAllEodIndexPrices(Integer pageSize, LocalDate startDate, LocalDate endDate) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getAllEodIndexPricesWithHttpInfo", Integer.class, LocalDate.class, LocalDate.class);
+      
+      Object[] apiCallArguments = { pageSize, startDate, endDate };
+      ApiResponse<ApiResponseEodIndexPricesAll> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * All End of Day Index Prices
+     * 
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param startDate Limit prices to those on or after this date (optional)
+     * @param endDate Limit prices to those on or before this date (optional)
+     * @return ApiResponse&lt;ApiResponseEodIndexPricesAll&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseEodIndexPricesAll> getAllEodIndexPricesWithHttpInfo(Integer pageSize, LocalDate startDate, LocalDate endDate) throws ApiException {
+        com.squareup.okhttp.Call call = getAllEodIndexPricesValidateBeforeCall(pageSize, startDate, endDate, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseEodIndexPricesAll>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * All End of Day Index Prices (asynchronously)
+     * 
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param startDate Limit prices to those on or after this date (optional)
+     * @param endDate Limit prices to those on or before this date (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getAllEodIndexPricesAsync(Integer pageSize, LocalDate startDate, LocalDate endDate, final ApiCallback<ApiResponseEodIndexPricesAll> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getAllEodIndexPricesValidateBeforeCall(pageSize, startDate, endDate, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseEodIndexPricesAll>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getAllIndexSummaries
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getAllIndexSummariesCall(Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/indices";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getAllIndexSummariesValidateBeforeCall(Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getAllIndexSummariesCall(pageSize, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * All Index Summaries
+     * 
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponseIndices
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseIndices getAllIndexSummaries(Integer pageSize) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getAllIndexSummariesWithHttpInfo", Integer.class);
+      
+      Object[] apiCallArguments = { pageSize };
+      ApiResponse<ApiResponseIndices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * All Index Summaries
+     * 
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponse&lt;ApiResponseIndices&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseIndices> getAllIndexSummariesWithHttpInfo(Integer pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = getAllIndexSummariesValidateBeforeCall(pageSize, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseIndices>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * All Index Summaries (asynchronously)
+     * 
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getAllIndexSummariesAsync(Integer pageSize, final ApiCallback<ApiResponseIndices> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getAllIndexSummariesValidateBeforeCall(pageSize, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseIndices>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getAllRealtimeIndexPrices
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getAllRealtimeIndexPricesCall(Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/indices/prices/realtime";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getAllRealtimeIndexPricesValidateBeforeCall(Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getAllRealtimeIndexPricesCall(pageSize, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * All Realtime Index Prices
+     * 
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponseRealtimeIndexPrices
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseRealtimeIndexPrices getAllRealtimeIndexPrices(Integer pageSize) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getAllRealtimeIndexPricesWithHttpInfo", Integer.class);
+      
+      Object[] apiCallArguments = { pageSize };
+      ApiResponse<ApiResponseRealtimeIndexPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * All Realtime Index Prices
+     * 
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @return ApiResponse&lt;ApiResponseRealtimeIndexPrices&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseRealtimeIndexPrices> getAllRealtimeIndexPricesWithHttpInfo(Integer pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = getAllRealtimeIndexPricesValidateBeforeCall(pageSize, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseRealtimeIndexPrices>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * All Realtime Index Prices (asynchronously)
+     * 
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getAllRealtimeIndexPricesAsync(Integer pageSize, final ApiCallback<ApiResponseRealtimeIndexPrices> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getAllRealtimeIndexPricesValidateBeforeCall(pageSize, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseRealtimeIndexPrices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1020,8 +1406,280 @@ public class IndexApi {
         return call;
     }
     /**
+     * Build call for getEodIndexPriceById
+     * @param identifier The index symbol (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param startDate Limit prices to those on or after this date (optional)
+     * @param endDate Limit prices to those on or before this date (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getEodIndexPriceByIdCall(String identifier, Integer pageSize, LocalDate startDate, LocalDate endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/indices/{identifier}/eod"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getEodIndexPriceByIdValidateBeforeCall(String identifier, Integer pageSize, LocalDate startDate, LocalDate endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getEodIndexPriceById(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getEodIndexPriceByIdCall(identifier, pageSize, startDate, endDate, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * End of Day Index Prices By Identifier
+     * 
+     * @param identifier The index symbol (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param startDate Limit prices to those on or after this date (optional)
+     * @param endDate Limit prices to those on or before this date (optional)
+     * @return ApiResponseEodIndexPrices
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseEodIndexPrices getEodIndexPriceById(String identifier, Integer pageSize, LocalDate startDate, LocalDate endDate) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getEodIndexPriceByIdWithHttpInfo", String.class, Integer.class, LocalDate.class, LocalDate.class);
+      
+      Object[] apiCallArguments = { identifier, pageSize, startDate, endDate };
+      ApiResponse<ApiResponseEodIndexPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * End of Day Index Prices By Identifier
+     * 
+     * @param identifier The index symbol (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param startDate Limit prices to those on or after this date (optional)
+     * @param endDate Limit prices to those on or before this date (optional)
+     * @return ApiResponse&lt;ApiResponseEodIndexPrices&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseEodIndexPrices> getEodIndexPriceByIdWithHttpInfo(String identifier, Integer pageSize, LocalDate startDate, LocalDate endDate) throws ApiException {
+        com.squareup.okhttp.Call call = getEodIndexPriceByIdValidateBeforeCall(identifier, pageSize, startDate, endDate, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseEodIndexPrices>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * End of Day Index Prices By Identifier (asynchronously)
+     * 
+     * @param identifier The index symbol (required)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param startDate Limit prices to those on or after this date (optional)
+     * @param endDate Limit prices to those on or before this date (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getEodIndexPriceByIdAsync(String identifier, Integer pageSize, LocalDate startDate, LocalDate endDate, final ApiCallback<ApiResponseEodIndexPrices> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getEodIndexPriceByIdValidateBeforeCall(identifier, pageSize, startDate, endDate, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseEodIndexPrices>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getIndexSummaryById
+     * @param identifier The index symbol (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getIndexSummaryByIdCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/indices/{identifier}"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getIndexSummaryByIdValidateBeforeCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getIndexSummaryById(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getIndexSummaryByIdCall(identifier, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Index Summary By Identifier
+     * 
+     * @param identifier The index symbol (required)
+     * @return ApiResponseIndex
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseIndex getIndexSummaryById(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getIndexSummaryByIdWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<ApiResponseIndex> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Index Summary By Identifier
+     * 
+     * @param identifier The index symbol (required)
+     * @return ApiResponse&lt;ApiResponseIndex&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseIndex> getIndexSummaryByIdWithHttpInfo(String identifier) throws ApiException {
+        com.squareup.okhttp.Call call = getIndexSummaryByIdValidateBeforeCall(identifier, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseIndex>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Index Summary By Identifier (asynchronously)
+     * 
+     * @param identifier The index symbol (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getIndexSummaryByIdAsync(String identifier, final ApiCallback<ApiResponseIndex> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getIndexSummaryByIdValidateBeforeCall(identifier, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseIndex>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getRealtimeIndexPriceById
-     * @param identifier The ticker symbol of the currently trading index (required)
+     * @param identifier The index symbol (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1084,9 +1742,9 @@ public class IndexApi {
     }
 
     /**
-     * Realtime Index Price
+     * Realtime Index Price By Identifier
      * 
-     * @param identifier The ticker symbol of the currently trading index (required)
+     * @param identifier The index symbol (required)
      * @return RealtimeIndexPrice
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
@@ -1100,9 +1758,9 @@ public class IndexApi {
     }
 
     /**
-     * Realtime Index Price
+     * Realtime Index Price By Identifier
      * 
-     * @param identifier The ticker symbol of the currently trading index (required)
+     * @param identifier The index symbol (required)
      * @return ApiResponse&lt;RealtimeIndexPrice&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1113,9 +1771,9 @@ public class IndexApi {
     }
 
     /**
-     * Realtime Index Price (asynchronously)
+     * Realtime Index Price By Identifier (asynchronously)
      * 
-     * @param identifier The ticker symbol of the currently trading index (required)
+     * @param identifier The index symbol (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

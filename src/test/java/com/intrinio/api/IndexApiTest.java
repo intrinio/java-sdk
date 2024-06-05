@@ -6,6 +6,11 @@ import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseEconomicIndexHistoricalData;
 import com.intrinio.models.ApiResponseEconomicIndices;
 import com.intrinio.models.ApiResponseEconomicIndicesSearch;
+import com.intrinio.models.ApiResponseEodIndexPrices;
+import com.intrinio.models.ApiResponseEodIndexPricesAll;
+import com.intrinio.models.ApiResponseIndex;
+import com.intrinio.models.ApiResponseIndices;
+import com.intrinio.models.ApiResponseRealtimeIndexPrices;
 import com.intrinio.models.ApiResponseSICIndexHistoricalData;
 import com.intrinio.models.ApiResponseSICIndices;
 import com.intrinio.models.ApiResponseSICIndicesSearch;
@@ -48,6 +53,56 @@ public class IndexApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseEconomicIndices response = api.getAllEconomicIndices(pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * All End of Day Index Prices
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAllEodIndexPricesTest() throws ApiException, NoSuchMethodException {
+        Integer pageSize = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        ApiResponseEodIndexPricesAll response = api.getAllEodIndexPrices(pageSize, startDate, endDate);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * All Index Summaries
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAllIndexSummariesTest() throws ApiException, NoSuchMethodException {
+        Integer pageSize = null;
+        ApiResponseIndices response = api.getAllIndexSummaries(pageSize);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * All Realtime Index Prices
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAllRealtimeIndexPricesTest() throws ApiException, NoSuchMethodException {
+        Integer pageSize = null;
+        ApiResponseRealtimeIndexPrices response = api.getAllRealtimeIndexPrices(pageSize);
 
         // TODO: test validations
     }
@@ -160,7 +215,42 @@ public class IndexApiTest {
     }
     
     /**
-     * Realtime Index Price
+     * End of Day Index Prices By Identifier
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getEodIndexPriceByIdTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        Integer pageSize = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        ApiResponseEodIndexPrices response = api.getEodIndexPriceById(identifier, pageSize, startDate, endDate);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Index Summary By Identifier
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getIndexSummaryByIdTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        ApiResponseIndex response = api.getIndexSummaryById(identifier);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Realtime Index Price By Identifier
      *
      * 
      *

@@ -18,6 +18,7 @@ import java.io.IOException;
 
 import com.intrinio.models.ApiResponseOptionPrices;
 import com.intrinio.models.ApiResponseOptions;
+import com.intrinio.models.ApiResponseOptionsAggregates;
 import com.intrinio.models.ApiResponseOptionsChain;
 import com.intrinio.models.ApiResponseOptionsChainEod;
 import com.intrinio.models.ApiResponseOptionsChainRealtime;
@@ -177,6 +178,129 @@ public class OptionsApi {
 
         com.squareup.okhttp.Call call = getAllOptionsTickersValidateBeforeCall(progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsTickers>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionAggregates
+     * @param date Return aggregated data for this date (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionAggregatesCall(Object date, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/aggregates";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (date != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionAggregatesValidateBeforeCall(Object date, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getOptionAggregatesCall(date, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Total open interest and volume aggregated by ticker
+     * Returns total open interest and volume by ticker
+     * @param date Return aggregated data for this date (optional)
+     * @return ApiResponseOptionsAggregates
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsAggregates getOptionAggregates(Object date) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionAggregatesWithHttpInfo", Object.class);
+      
+      Object[] apiCallArguments = { date };
+      ApiResponse<ApiResponseOptionsAggregates> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Total open interest and volume aggregated by ticker
+     * Returns total open interest and volume by ticker
+     * @param date Return aggregated data for this date (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsAggregates&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsAggregates> getOptionAggregatesWithHttpInfo(Object date) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionAggregatesValidateBeforeCall(date, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsAggregates>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Total open interest and volume aggregated by ticker (asynchronously)
+     * Returns total open interest and volume by ticker
+     * @param date Return aggregated data for this date (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionAggregatesAsync(Object date, final ApiCallback<ApiResponseOptionsAggregates> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionAggregatesValidateBeforeCall(date, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsAggregates>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
