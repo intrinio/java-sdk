@@ -392,7 +392,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, nextPage)
+> ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, tickers, nextPage)
 
 #### Realtime Stock Prices by Exchange
 
@@ -427,8 +427,9 @@ public class Main {
     String source = null;
     Boolean activeOnly = null;
     Integer pageSize = 100;
+    List<String> tickers = Arrays.asList(null);
     String nextPage = null;
-    ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, nextPage);
+    ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, tickers, nextPage);
     System.out.println(result);
   }
 }
@@ -447,6 +448,7 @@ Name | Type | Description  | Notes
  **source** | String| Return realtime prices from the specified data source. If no source is specified, all sources are used. | [optional] [enum: iex, bats, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip] &nbsp;
  **activeOnly** | Boolean| Returns prices only from the most recent trading day. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **tickers** | [**List&lt;String&gt;**](String.md)| The list of ticker symbols to filter to. | [optional] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 

@@ -114,8 +114,9 @@ public class StockExchangeApiTest {
         String source = null;
         Boolean activeOnly = null;
         Integer pageSize = null;
+        List<String> tickers = null;
         String nextPage = null;
-        ApiResponseStockExchangeRealtimeStockPrices response = api.getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, nextPage);
+        ApiResponseStockExchangeRealtimeStockPrices response = api.getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, tickers, nextPage);
 
         // TODO: test validations
     }

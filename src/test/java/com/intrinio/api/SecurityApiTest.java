@@ -304,8 +304,9 @@ public class SecurityApiTest {
         String endTime = null;
         String timezone = null;
         Integer pageSize = null;
+        Boolean splitAdjusted = null;
         String nextPage = null;
-        ApiResponseSecurityIntervalPrices response = api.getSecurityIntervalPrices(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage);
+        ApiResponseSecurityIntervalPrices response = api.getSecurityIntervalPrices(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, nextPage);
 
         // TODO: test validations
     }

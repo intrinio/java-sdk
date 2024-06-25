@@ -1696,13 +1696,14 @@ public class SecurityApi {
      * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityIntervalPricesCall(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityIntervalPricesCall(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1727,6 +1728,8 @@ public class SecurityApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("interval_size", intervalSize));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (splitAdjusted != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("split_adjusted", splitAdjusted));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -1763,7 +1766,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityIntervalPricesValidateBeforeCall(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityIntervalPricesValidateBeforeCall(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1776,7 +1779,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityIntervalPricesCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityIntervalPricesCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1793,15 +1796,16 @@ public class SecurityApi {
      * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityIntervalPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityIntervalPrices getSecurityIntervalPrices(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecurityIntervalPricesWithHttpInfo", String.class, String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, String.class);
+    public ApiResponseSecurityIntervalPrices getSecurityIntervalPrices(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityIntervalPricesWithHttpInfo", String.class, String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, Boolean.class, String.class);
       
-      Object[] apiCallArguments = { identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage };
+      Object[] apiCallArguments = { identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, nextPage };
       ApiResponse<ApiResponseSecurityIntervalPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -1818,12 +1822,13 @@ public class SecurityApi {
      * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurityIntervalPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityIntervalPrices> getSecurityIntervalPricesWithHttpInfo(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurityIntervalPrices> getSecurityIntervalPricesWithHttpInfo(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityIntervalPrices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1840,12 +1845,13 @@ public class SecurityApi {
      * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
+     * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityIntervalPricesAsync(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityIntervalPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityIntervalPricesAsync(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, String nextPage, final ApiCallback<ApiResponseSecurityIntervalPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1866,7 +1872,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityIntervalPrices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
