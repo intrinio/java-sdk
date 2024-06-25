@@ -16,7 +16,7 @@ Name | Type | Description
 **strikePrice** | [**BigDecimal**](BigDecimal.md) | The strike price of the options contract &nbsp;
 **daysToExpiration** | [**BigDecimal**](BigDecimal.md) | The number of days to expiration &nbsp;
 **riskFreeInterestRate** | [**BigDecimal**](BigDecimal.md) | The current risk-free interest rate, as measured by the 3-month Treasury Bill rate &nbsp;
-**dividendYield** | [**BigDecimal**](BigDecimal.md) | The divident yield of the underlying asset (if applicable) &nbsp;
+**dividendYield** | [**BigDecimal**](BigDecimal.md) | The dividend yield of the underlying asset (if applicable) &nbsp;
 
 [//]: # (END_DEFINITION)
 

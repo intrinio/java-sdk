@@ -11,6 +11,7 @@ import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
+import com.intrinio.models.ApiResponseCompanyNewsBody;
 import com.intrinio.models.ApiResponseCompanyPublicFloatResult;
 import com.intrinio.models.ApiResponseCompanyRecognize;
 import com.intrinio.models.ApiResponseCompanySecurities;
@@ -23,6 +24,7 @@ import com.intrinio.models.Company;
 import com.intrinio.models.Fundamental;
 import com.intrinio.models.InsiderTransactionFiling;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -325,6 +327,25 @@ public class CompanyApiTest {
         BigDecimal businessRelevanceLessThan = null;
         String nextPage = null;
         ApiResponseCompanyNews response = api.getCompanyNews(identifier, specificSource, pageSize, sentiment, topic, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * The body of a news article
+     *
+     * Returns the news article body.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getCompanyNewsBodyTest() throws ApiException, NoSuchMethodException {
+        String newsStoryId = null;
+        OffsetDateTime publicationDate = null;
+        String specificSource = null;
+        String nextPage = null;
+        ApiResponseCompanyNewsBody response = api.getCompanyNewsBody(newsStoryId, publicationDate, specificSource, nextPage);
 
         // TODO: test validations
     }

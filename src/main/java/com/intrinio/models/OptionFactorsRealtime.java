@@ -133,10 +133,10 @@ public class OptionFactorsRealtime {
   }
 
    /**
-   * The divident yield of the underlying asset (if applicable)
+   * The dividend yield of the underlying asset (if applicable)
    * @return dividendYield
   **/
-  @ApiModelProperty(value = "The divident yield of the underlying asset (if applicable)")
+  @ApiModelProperty(value = "The dividend yield of the underlying asset (if applicable)")
   public BigDecimal getDividendYield() {
     return dividendYield;
   }

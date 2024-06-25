@@ -169,9 +169,6 @@ public class CompanyNews {
   @SerializedName("article_sentiment_confidence")
   private BigDecimal articleSentimentConfidence = null;
 
-  @SerializedName("body")
-  private String body = null;
-
   public CompanyNews id(String id) {
     this.id = id;
     return this;
@@ -450,24 +447,6 @@ public class CompanyNews {
     this.articleSentimentConfidence = articleSentimentConfidence;
   }
 
-  public CompanyNews body(String body) {
-    this.body = body;
-    return this;
-  }
-
-   /**
-   * The article body. Requires additional access.
-   * @return body
-  **/
-  @ApiModelProperty(value = "The article body. Requires additional access.")
-  public String getBody() {
-    return body;
-  }
-
-  public void setBody(String body) {
-    this.body = body;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -492,13 +471,12 @@ public class CompanyNews {
         Objects.equals(this.spam, companyNews.spam) &&
         Objects.equals(this.businessRelevance, companyNews.businessRelevance) &&
         Objects.equals(this.articleSentiment, companyNews.articleSentiment) &&
-        Objects.equals(this.articleSentimentConfidence, companyNews.articleSentimentConfidence) &&
-        Objects.equals(this.body, companyNews.body);
+        Objects.equals(this.articleSentimentConfidence, companyNews.articleSentimentConfidence);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, publicationDate, url, summary, source, company, topics, copyright, language, wordCount, spam, businessRelevance, articleSentiment, articleSentimentConfidence, body);
+    return Objects.hash(id, title, publicationDate, url, summary, source, company, topics, copyright, language, wordCount, spam, businessRelevance, articleSentiment, articleSentimentConfidence);
   }
 
 
@@ -522,7 +500,6 @@ public class CompanyNews {
     sb.append("    businessRelevance: ").append(toIndentedString(businessRelevance)).append("\n");
     sb.append("    articleSentiment: ").append(toIndentedString(articleSentiment)).append("\n");
     sb.append("    articleSentimentConfidence: ").append(toIndentedString(articleSentimentConfidence)).append("\n");
-    sb.append("    body: ").append(toIndentedString(body)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**getCompanyHistoricalData**](CompanyApi.md#getCompanyHistoricalData) | **GET** /companies/{identifier}/historical_data/{tag} | Historical Data for Company
 [**getCompanyIpos**](CompanyApi.md#getCompanyIpos) | **GET** /companies/ipos | IPOs
 [**getCompanyNews**](CompanyApi.md#getCompanyNews) | **GET** /companies/{identifier}/news | All News by Company
+[**getCompanyNewsBody**](CompanyApi.md#getCompanyNewsBody) | **GET** /companies/news/body | The body of a news article
 [**getCompanyPublicFloat**](CompanyApi.md#getCompanyPublicFloat) | **GET** /companies/{identifier}/public_float | Get Company&#39;s public float
 [**getCompanySecurities**](CompanyApi.md#getCompanySecurities) | **GET** /companies/{identifier}/securities | All Securities by Company
 [**insiderTransactionFilingsByCompany**](CompanyApi.md#insiderTransactionFilingsByCompany) | **GET** /companies/{identifier}/insider_transaction_filings | Insider Transaction Filings by Company
@@ -1278,6 +1279,96 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseCompanyNews**](ApiResponseCompanyNews.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:CompanyApi)
+
+[//]: # (METHOD:getCompanyNewsBody)
+
+[//]: # (RETURN_TYPE:ApiResponseCompanyNewsBody)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseCompanyNewsBody.md)
+
+[//]: # (OPERATION:getCompanyNewsBody_v2)
+
+[//]: # (ENDPOINT:/companies/news/body)
+
+[//]: # (DOCUMENT_LINK:CompanyApi.md#getCompanyNewsBody)
+
+<a name="getCompanyNewsBody"></a>
+## **getCompanyNewsBody**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getCompanyNewsBody_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseCompanyNewsBody getCompanyNewsBody(newsStoryId, publicationDate, specificSource, nextPage)
+
+#### The body of a news article
+
+
+Returns the news article body.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    CompanyApi companyApi = new CompanyApi();
+    String newsStoryId = "new_aBcDef";
+    OffsetDateTime publicationDate = OffsetDateTime.now();
+    String specificSource = null;
+    String nextPage = null;
+    ApiResponseCompanyNewsBody result = companyApi.getCompanyNewsBody(newsStoryId, publicationDate, specificSource, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **newsStoryId** | String| The identifier of the news story. | &nbsp;
+ **publicationDate** | OffsetDateTime| The DateTime of the story. | &nbsp;
+ **specificSource** | String| Only news from this source. Defaults to highest available if not present. | [optional] [enum: yahoo, moody, moody_us_news, moody_us_press_releases] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseCompanyNewsBody**](ApiResponseCompanyNewsBody.md)
 
 [//]: # (END_OPERATION)
 

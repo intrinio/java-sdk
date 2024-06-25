@@ -24,6 +24,7 @@ import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
+import com.intrinio.models.ApiResponseCompanyNewsBody;
 import com.intrinio.models.ApiResponseCompanyPublicFloatResult;
 import com.intrinio.models.ApiResponseCompanyRecognize;
 import com.intrinio.models.ApiResponseCompanySecurities;
@@ -36,6 +37,7 @@ import com.intrinio.models.Company;
 import com.intrinio.models.Fundamental;
 import com.intrinio.models.InsiderTransactionFiling;
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.Method;
@@ -2198,6 +2200,157 @@ public class CompanyApi {
 
         com.squareup.okhttp.Call call = getCompanyNewsValidateBeforeCall(identifier, specificSource, pageSize, sentiment, topic, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyNews>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getCompanyNewsBody
+     * @param newsStoryId The identifier of the news story. (required)
+     * @param publicationDate The DateTime of the story. (required)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getCompanyNewsBodyCall(String newsStoryId, OffsetDateTime publicationDate, String specificSource, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/companies/news/body";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (specificSource != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("specific_source", specificSource));
+        if (newsStoryId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("news_story_id", newsStoryId));
+        if (publicationDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("publication_date", publicationDate));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getCompanyNewsBodyValidateBeforeCall(String newsStoryId, OffsetDateTime publicationDate, String specificSource, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'newsStoryId' is set
+        if (newsStoryId == null) {
+            throw new ApiException("Missing the required parameter 'newsStoryId' when calling getCompanyNewsBody(Async)");
+        }
+        
+        // verify the required parameter 'publicationDate' is set
+        if (publicationDate == null) {
+            throw new ApiException("Missing the required parameter 'publicationDate' when calling getCompanyNewsBody(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getCompanyNewsBodyCall(newsStoryId, publicationDate, specificSource, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * The body of a news article
+     * Returns the news article body.
+     * @param newsStoryId The identifier of the news story. (required)
+     * @param publicationDate The DateTime of the story. (required)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseCompanyNewsBody
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseCompanyNewsBody getCompanyNewsBody(String newsStoryId, OffsetDateTime publicationDate, String specificSource, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyNewsBodyWithHttpInfo", String.class, OffsetDateTime.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { newsStoryId, publicationDate, specificSource, nextPage };
+      ApiResponse<ApiResponseCompanyNewsBody> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * The body of a news article
+     * Returns the news article body.
+     * @param newsStoryId The identifier of the news story. (required)
+     * @param publicationDate The DateTime of the story. (required)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseCompanyNewsBody&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseCompanyNewsBody> getCompanyNewsBodyWithHttpInfo(String newsStoryId, OffsetDateTime publicationDate, String specificSource, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyNewsBodyValidateBeforeCall(newsStoryId, publicationDate, specificSource, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanyNewsBody>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * The body of a news article (asynchronously)
+     * Returns the news article body.
+     * @param newsStoryId The identifier of the news story. (required)
+     * @param publicationDate The DateTime of the story. (required)
+     * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getCompanyNewsBodyAsync(String newsStoryId, OffsetDateTime publicationDate, String specificSource, String nextPage, final ApiCallback<ApiResponseCompanyNewsBody> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getCompanyNewsBodyValidateBeforeCall(newsStoryId, publicationDate, specificSource, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanyNewsBody>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

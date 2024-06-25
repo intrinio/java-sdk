@@ -26,7 +26,6 @@ Name | Type | Description
 **businessRelevance** | [**BigDecimal**](BigDecimal.md) | How strongly correlated the news article is to the business &nbsp;
 **articleSentiment** | ArticleSentimentEnum | The news sentiment. &nbsp;
 **articleSentimentConfidence** | [**BigDecimal**](BigDecimal.md) | The confidence score of the sentiment rating &nbsp;
-**body** | String | The article body. Requires additional access. &nbsp;
 
 [//]: # (END_DEFINITION)
 
