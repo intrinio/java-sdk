@@ -701,7 +701,7 @@ public class StockExchangeApi {
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
     public ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(String identifier, String source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeRealtimePricesWithHttpInfo", String.class, String.class, Boolean.class, Integer.class, List.class, String.class);
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeRealtimePricesWithHttpInfo", String.class, String.class, Boolean.class, Integer.class, List&lt;String&gt;.class, String.class);
       
       Object[] apiCallArguments = { identifier, source, activeOnly, pageSize, tickers, nextPage };
       ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
