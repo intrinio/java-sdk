@@ -65,8 +65,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     DataPointApi dataPointApi = new DataPointApi();
-    String identifier = "\"AAPL\"";
-    String tag = "\"marketcap\"";
+    String identifier = "AAPL";
+    String tag = "marketcap";
     BigDecimal result = dataPointApi.getDataPointNumber(identifier, tag);
     System.out.println(result);
   }
@@ -151,8 +151,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     DataPointApi dataPointApi = new DataPointApi();
-    String identifier = "\"AAPL\"";
-    String tag = "\"ceo\"";
+    String identifier = "AAPL";
+    String tag = "ceo";
     String result = dataPointApi.getDataPointText(identifier, tag);
     System.out.println(result);
   }

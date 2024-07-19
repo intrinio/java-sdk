@@ -69,19 +69,19 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FundamentalsApi fundamentalsApi = new FundamentalsApi();
-    LocalDate filedAfter = LocalDate.of(2022-01-01);
-    LocalDate filedBefore = LocalDate.of(2022-12-01);
+    LocalDate filedAfter = LocalDate.of(2022,1,01);
+    LocalDate filedBefore = LocalDate.of(2022,12,01);
     Boolean reportedOnly = false;
     Integer fiscalYear = 2017;
-    String statementCode = "\"~null\"";
+    String statementCode = null;
     String type = "false";
-    String fiscalPeriod = "\"FY\"";
-    LocalDate startDate = LocalDate.of(2022-01-01);
-    LocalDate endDate = LocalDate.of(2022-12-01);
-    LocalDate updatedAfter = LocalDate.of(2022-12-01);
-    LocalDate updatedBefore = LocalDate.of(2022-12-01);
-    String template = "\"indu\"";
-    String nextPage = "\"~null\"";
+    String fiscalPeriod = "FY";
+    LocalDate startDate = LocalDate.of(2022,1,01);
+    LocalDate endDate = LocalDate.of(2022,12,01);
+    LocalDate updatedAfter = LocalDate.of(2022,12,01);
+    LocalDate updatedBefore = LocalDate.of(2022,12,01);
+    String template = "indu";
+    String nextPage = null;
     Fundamental result = fundamentalsApi.filterFundamental(filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fiscalPeriod, startDate, endDate, updatedAfter, updatedBefore, template, nextPage);
     System.out.println(result);
   }
@@ -177,7 +177,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FundamentalsApi fundamentalsApi = new FundamentalsApi();
-    String id = "\"fun_ge9LlE\"";
+    String id = "fun_ge9LlE";
     Fundamental result = fundamentalsApi.getFundamentalById(id);
     System.out.println(result);
   }
@@ -261,7 +261,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FundamentalsApi fundamentalsApi = new FundamentalsApi();
-    String id = "\"AAPL-income_statement-2018-Q1\"";
+    String id = "AAPL-income_statement-2018-Q1";
     ApiResponseReportedFinancials result = fundamentalsApi.getFundamentalReportedFinancials(id);
     System.out.println(result);
   }
@@ -345,7 +345,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FundamentalsApi fundamentalsApi = new FundamentalsApi();
-    String id = "\"AAPL-income_statement-2018-Q1\"";
+    String id = "AAPL-income_statement-2018-Q1";
     ApiResponseStandardizedFinancials result = fundamentalsApi.getFundamentalStandardizedFinancials(id);
     System.out.println(result);
   }
@@ -429,8 +429,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FundamentalsApi fundamentalsApi = new FundamentalsApi();
-    String id = "\"AAPL-income_statement-2020-FY\"";
-    String tag = "\"ceo\"";
+    String id = "AAPL-income_statement-2020-FY";
+    String tag = "ceo";
     ApiResponseStandardizedFinancialsDimensions result = fundamentalsApi.getFundamentalStandardizedFinancialsDimensions(id, tag);
     System.out.println(result);
   }
@@ -515,10 +515,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FundamentalsApi fundamentalsApi = new FundamentalsApi();
-    String identifier = "\"AAPL\"";
-    String statementCode = "\"income_statement\"";
+    String identifier = "AAPL";
+    String statementCode = "income_statement";
     Integer fiscalYear = 2017;
-    String fiscalPeriod = "\"FY\"";
+    String fiscalPeriod = "FY";
     Fundamental result = fundamentalsApi.lookupFundamental(identifier, statementCode, fiscalYear, fiscalPeriod);
     System.out.println(result);
   }

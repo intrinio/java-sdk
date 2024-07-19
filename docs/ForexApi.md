@@ -226,15 +226,15 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ForexApi forexApi = new ForexApi();
-    String pair = "\"EURUSD\"";
-    String timeframe = "\"D1\"";
+    String pair = "EURUSD";
+    String timeframe = "D1";
     String timezone = "UTC";
-    LocalDate startDate = LocalDate.of(2018-01-01);
-    String startTime = "\"~null\"";
-    LocalDate endDate = LocalDate.of(2019-01-01);
-    String endTime = "\"~null\"";
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    String startTime = null;
+    LocalDate endDate = LocalDate.of(2019,1,01);
+    String endTime = null;
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseForexPrices result = forexApi.getForexPrices(pair, timeframe, timezone, startDate, startTime, endDate, endTime, pageSize, nextPage);
     System.out.println(result);
   }

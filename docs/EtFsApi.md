@@ -69,9 +69,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-    String exchange = "\"XNAS\"";
+    String exchange = "XNAS";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseETFs result = etFsApi.getAllEtfs(exchange, pageSize, nextPage);
     System.out.println(result);
   }
@@ -157,7 +157,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-    String identifier = "\"SPY\"";
+    String identifier = "SPY";
     ETF result = etFsApi.getEtf(identifier);
     System.out.println(result);
   }
@@ -241,7 +241,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-    String identifier = "\"SPY\"";
+    String identifier = "SPY";
     ETFAnalytics result = etFsApi.getEtfAnalytics(identifier);
     System.out.println(result);
   }
@@ -325,9 +325,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-    String identifier = "\"SPY\"";
+    String identifier = "SPY";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseETFHoldings result = etFsApi.getEtfHoldings(identifier, pageSize, nextPage);
     System.out.println(result);
   }
@@ -413,7 +413,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-    String identifier = "\"SPY\"";
+    String identifier = "SPY";
     ETFStats result = etFsApi.getEtfStats(identifier);
     System.out.println(result);
   }
@@ -497,8 +497,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     EtFsApi etFsApi = new EtFsApi();
-    String query = "\"iShares\"";
-    String mode = "\"~null\"";
+    String query = "iShares";
+    String mode = null;
     ApiResponseETFs result = etFsApi.searchEtfs(query, mode);
     System.out.println(result);
   }

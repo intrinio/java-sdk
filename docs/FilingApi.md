@@ -74,15 +74,15 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FilingApi filingApi = new FilingApi();
-    String company = "\"AAPL\"";
-    String reportType = "\"10-Q\"";
-    LocalDate startDate = LocalDate.of(2015-01-01);
-    LocalDate endDate = LocalDate.of(~null);
-    String industryCategory = "\"~null\"";
-    String industryGroup = "\"~null\"";
-    Boolean theaEnabled = "~null";
+    String company = "AAPL";
+    String reportType = "10-Q";
+    LocalDate startDate = LocalDate.of(2015,1,01);
+    LocalDate endDate = null;
+    String industryCategory = null;
+    String industryGroup = null;
+    Boolean theaEnabled = null;
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseFilings result = filingApi.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, pageSize, nextPage);
     System.out.println(result);
   }
@@ -174,14 +174,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FilingApi filingApi = new FilingApi();
-    String company = "\"AAPL\"";
-    String reportType = "\"10-Q\"";
-    LocalDate filingStartDate = LocalDate.of(~null);
-    LocalDate filingEndDate = LocalDate.of(~null);
-    LocalDate periodEndedStartDate = LocalDate.of(~null);
-    LocalDate periodEndedEndDate = LocalDate.of(~null);
+    String company = "AAPL";
+    String reportType = "10-Q";
+    LocalDate filingStartDate = null;
+    LocalDate filingEndDate = null;
+    LocalDate periodEndedStartDate = null;
+    LocalDate periodEndedEndDate = null;
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseFilingNotes result = filingApi.getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -271,8 +271,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FilingApi filingApi = new FilingApi();
-    String identifier = "\"fil_B73xBG\"";
-    String query = "\"What do they believe in?\"";
+    String identifier = "fil_B73xBG";
+    String query = "What do they believe in?";
     ApiResponseFilingAnswers result = filingApi.getFilingAnswers(identifier, query);
     System.out.println(result);
   }
@@ -357,7 +357,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FilingApi filingApi = new FilingApi();
-    String id = "\"fil_7Kn2P6\"";
+    String id = "fil_7Kn2P6";
     Filing result = filingApi.getFilingById(id);
     System.out.println(result);
   }
@@ -441,14 +441,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FilingApi filingApi = new FilingApi();
-    String identifier = "\"fil_B73xBG\"";
-    String statementCode = "\"~null\"";
-    String type = "\"~null\"";
-    Integer fiscalYear = "~null";
-    String fiscalPeriod = "\"~null\"";
-    LocalDate startDate = LocalDate.of(~null);
-    LocalDate endDate = LocalDate.of(~null);
-    String nextPage = "\"~null\"";
+    String identifier = "fil_B73xBG";
+    String statementCode = null;
+    String type = null;
+    Integer fiscalYear = null;
+    String fiscalPeriod = null;
+    LocalDate startDate = null;
+    LocalDate endDate = null;
+    String nextPage = null;
     ApiResponseFilingFundamentals result = filingApi.getFilingFundamentals(identifier, statementCode, type, fiscalYear, fiscalPeriod, startDate, endDate, nextPage);
     System.out.println(result);
   }
@@ -539,7 +539,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FilingApi filingApi = new FilingApi();
-    String identifier = "\"fil_B73xBG\"";
+    String identifier = "fil_B73xBG";
     String result = filingApi.getFilingHtml(identifier);
     System.out.println(result);
   }
@@ -622,7 +622,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FilingApi filingApi = new FilingApi();
-    String identifier = "\"fil_B73xBG\"";
+    String identifier = "fil_B73xBG";
     String result = filingApi.getFilingText(identifier);
     System.out.println(result);
   }
@@ -706,7 +706,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FilingApi filingApi = new FilingApi();
-    String identifier = "\"xbn_ydK3QL\"";
+    String identifier = "xbn_ydK3QL";
     String contentFormat = "text";
     FilingNote result = filingApi.getNote(identifier, contentFormat);
     System.out.println(result);
@@ -791,7 +791,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FilingApi filingApi = new FilingApi();
-    String identifier = "\"xbn_ydK3QL\"";
+    String identifier = "xbn_ydK3QL";
     String result = filingApi.getNoteHtml(identifier);
     System.out.println(result);
   }
@@ -874,7 +874,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FilingApi filingApi = new FilingApi();
-    String identifier = "\"xbn_ydK3QL\"";
+    String identifier = "xbn_ydK3QL";
     String result = filingApi.getNoteText(identifier);
     System.out.println(result);
   }
@@ -958,9 +958,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     FilingApi filingApi = new FilingApi();
-    String query = "\"inflation\"";
-    LocalDate filingStartDate = LocalDate.of(2018-07-15);
-    LocalDate filingEndDate = LocalDate.of(2018-11-30);
+    String query = "inflation";
+    LocalDate filingStartDate = LocalDate.of(2018,7,15);
+    LocalDate filingEndDate = LocalDate.of(2018,11,30);
     Integer pageSize = 100;
     ApiResponseFilingNotesSearch result = filingApi.searchNotes(query, filingStartDate, filingEndDate, pageSize);
     System.out.println(result);

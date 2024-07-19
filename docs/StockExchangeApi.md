@@ -69,9 +69,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String city = "\"New York\"";
-    String country = "\"UNITED STATES OF AMERICA\"";
-    String countryCode = "\"US\"";
+    String city = "New York";
+    String country = "UNITED STATES OF AMERICA";
+    String countryCode = "US";
     Integer pageSize = 100;
     ApiResponseStockExchanges result = stockExchangeApi.getAllStockExchanges(city, country, countryCode, pageSize);
     System.out.println(result);
@@ -159,7 +159,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "\"USCOMP\"";
+    String identifier = "USCOMP";
     StockExchange result = stockExchangeApi.getStockExchangeById(identifier);
     System.out.println(result);
   }
@@ -243,10 +243,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "\"USCOMP\"";
-    LocalDate date = LocalDate.of(2018-08-14);
+    String identifier = "USCOMP";
+    LocalDate date = LocalDate.of(2018,8,14);
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustments(identifier, date, pageSize, nextPage);
     System.out.println(result);
   }
@@ -333,10 +333,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "\"USCOMP\"";
-    LocalDate date = LocalDate.of(2018-08-14);
+    String identifier = "USCOMP";
+    LocalDate date = LocalDate.of(2018,8,14);
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, pageSize, nextPage);
     System.out.println(result);
   }
@@ -423,12 +423,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "\"USCOMP\"";
-    List<String> source = Arrays.asList("\"~null\"");
-    Boolean activeOnly = "~null";
+    String identifier = "USCOMP";
+    List<String> source = Arrays.asList(null);
+    Boolean activeOnly = null;
     Integer pageSize = 100;
-    List<String> tickers = Arrays.asList("\"~null\"");
-    String nextPage = "\"~null\"";
+    List<String> tickers = Arrays.asList(null);
+    String nextPage = null;
     ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, tickers, nextPage);
     System.out.println(result);
   }
@@ -517,9 +517,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "\"USCOMP\"";
+    String identifier = "USCOMP";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, pageSize, nextPage);
     System.out.println(result);
   }

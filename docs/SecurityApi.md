@@ -124,23 +124,23 @@ public class Main {
     SecurityApi securityApi = new SecurityApi();
     Boolean active = true;
     Boolean delisted = false;
-    String code = "\"~null\"";
-    String currency = "\"~null\"";
-    String ticker = "\"~null\"";
-    String name = "\"~null\"";
-    String compositeMic = "\"~null\"";
-    String exchangeMic = "\"~null\"";
-    LocalDate stockPricesAfter = LocalDate.of(~null);
-    LocalDate stockPricesBefore = LocalDate.of(~null);
-    String cik = "\"~null\"";
-    String figi = "\"~null\"";
-    String compositeFigi = "\"~null\"";
-    String shareClassFigi = "\"~null\"";
-    String figiUniqueId = "\"~null\"";
+    String code = null;
+    String currency = null;
+    String ticker = null;
+    String name = null;
+    String compositeMic = null;
+    String exchangeMic = null;
+    LocalDate stockPricesAfter = null;
+    LocalDate stockPricesBefore = null;
+    String cik = null;
+    String figi = null;
+    String compositeFigi = null;
+    String shareClassFigi = null;
+    String figiUniqueId = null;
     Boolean includeNonFigi = false;
     Integer pageSize = 100;
-    Boolean primaryListing = "~null";
-    String nextPage = "\"~null\"";
+    Boolean primaryListing = null;
+    String nextPage = null;
     ApiResponseSecurities result = securityApi.getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage);
     System.out.println(result);
   }
@@ -242,7 +242,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Security result = securityApi.getSecurityById(identifier);
     System.out.println(result);
   }
@@ -326,8 +326,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String tag = "\"close_price\"";
+    String identifier = "AAPL";
+    String tag = "close_price";
     BigDecimal result = securityApi.getSecurityDataPointNumber(identifier, tag);
     System.out.println(result);
   }
@@ -412,8 +412,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String tag = "\"figi\"";
+    String identifier = "AAPL";
+    String tag = "figi";
     String result = securityApi.getSecurityDataPointText(identifier, tag);
     System.out.println(result);
   }
@@ -498,15 +498,15 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String tag = "\"adj_close_price\"";
+    String identifier = "AAPL";
+    String tag = "adj_close_price";
     String frequency = "daily";
-    String type = "\"~null\"";
-    LocalDate startDate = LocalDate.of(2018-01-01);
-    LocalDate endDate = LocalDate.of(~null);
+    String type = null;
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = null;
     String sortOrder = "desc";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityHistoricalData result = securityApi.getSecurityHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
   }
@@ -598,7 +598,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"037833100\"";
+    String identifier = "037833100";
     SecurityHistoryListResult result = securityApi.getSecurityHistoryByIdentifier(identifier);
     System.out.println(result);
   }
@@ -682,7 +682,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String ticker = "\"AAPL\"";
+    String ticker = "AAPL";
     SecurityHistoryListResult result = securityApi.getSecurityHistoryByTicker(ticker);
     System.out.println(result);
   }
@@ -766,8 +766,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String nextPage = "\"~null\"";
+    String identifier = "AAPL";
+    String nextPage = null;
     ApiResponseSecurityInstitutionalOwnership result = securityApi.getSecurityInsiderOwnership(identifier, nextPage);
     System.out.println(result);
   }
@@ -852,7 +852,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String source = "\"~null\"";
+    String source = null;
     OffsetDateTime openTime = OffsetDateTime.now();
     SecurityIntervalsMoversResult result = securityApi.getSecurityIntervalMovers(source, openTime);
     System.out.println(result);
@@ -938,7 +938,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String source = "\"~null\"";
+    String source = null;
     OffsetDateTime openTime = OffsetDateTime.now();
     SecurityIntervalsMoversResult result = securityApi.getSecurityIntervalMoversChange(source, openTime);
     System.out.println(result);
@@ -1024,7 +1024,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String source = "\"~null\"";
+    String source = null;
     OffsetDateTime openTime = OffsetDateTime.now();
     SecurityIntervalsMoversResult result = securityApi.getSecurityIntervalMoversVolume(source, openTime);
     System.out.println(result);
@@ -1110,17 +1110,17 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     String intervalSize = "15m";
-    String source = "\"~null\"";
-    LocalDate startDate = LocalDate.of(2023-01-01);
-    String startTime = "\"~null\"";
-    LocalDate endDate = LocalDate.of(2023-02-01);
-    String endTime = "\"~null\"";
+    String source = null;
+    LocalDate startDate = LocalDate.of(2023,1,01);
+    String startTime = null;
+    LocalDate endDate = LocalDate.of(2023,2,01);
+    String endTime = null;
     String timezone = "UTC";
     Integer pageSize = 100;
     Boolean splitAdjusted = false;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityIntervalPrices result = securityApi.getSecurityIntervalPrices(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, nextPage);
     System.out.println(result);
   }
@@ -1214,14 +1214,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String source = "\"~null\"";
-    LocalDate startDate = LocalDate.of(2018-01-01);
-    String startTime = "\"~null\"";
-    LocalDate endDate = LocalDate.of(2019-01-01);
-    String endTime = "\"~null\"";
+    String identifier = "AAPL";
+    String source = null;
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    String startTime = null;
+    LocalDate endDate = LocalDate.of(2019,1,01);
+    String endTime = null;
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityIntradayPrices result = securityApi.getSecurityIntradayPrices(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1312,7 +1312,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     DividendRecord result = securityApi.getSecurityLatestDividendRecord(identifier);
     System.out.println(result);
   }
@@ -1396,7 +1396,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     EarningsRecord result = securityApi.getSecurityLatestEarningsRecord(identifier);
     System.out.println(result);
   }
@@ -1480,11 +1480,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityAccumulationDistributionIndex result = securityApi.getSecurityPriceTechnicalsAdi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1572,12 +1572,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 22;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityAverageDailyTradingVolume result = securityApi.getSecurityPriceTechnicalsAdtv(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1666,12 +1666,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityAverageDirectionalIndex result = securityApi.getSecurityPriceTechnicalsAdx(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1760,13 +1760,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer shortPeriod = 5;
     Integer longPeriod = 34;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityAwesomeOscillator result = securityApi.getSecurityPriceTechnicalsAo(identifier, shortPeriod, longPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1856,12 +1856,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityAverageTrueRange result = securityApi.getSecurityPriceTechnicalsAtr(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1950,14 +1950,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
     Float standardDeviations = 2.0F;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityBollingerBands result = securityApi.getSecurityPriceTechnicalsBb(identifier, period, standardDeviations, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2048,13 +2048,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
     Float constant = 0.015F;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityCommodityChannelIndex result = securityApi.getSecurityPriceTechnicalsCci(identifier, period, constant, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2144,12 +2144,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityChaikinMoneyFlow result = securityApi.getSecurityPriceTechnicalsCmf(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2238,13 +2238,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityDonchianChannel result = securityApi.getSecurityPriceTechnicalsDc(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2334,13 +2334,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityDetrendedPriceOscillator result = securityApi.getSecurityPriceTechnicalsDpo(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2430,12 +2430,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityEaseOfMovement result = securityApi.getSecurityPriceTechnicalsEom(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2524,11 +2524,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityForceIndex result = securityApi.getSecurityPriceTechnicalsFi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2616,14 +2616,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer lowPeriod = 9;
     Integer mediumPeriod = 26;
     Integer highPeriod = 52;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityIchimokuKinkoHyo result = securityApi.getSecurityPriceTechnicalsIchimoku(identifier, lowPeriod, mediumPeriod, highPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2714,12 +2714,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 10;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityKeltnerChannel result = securityApi.getSecurityPriceTechnicalsKc(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2808,7 +2808,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer roc1 = 10;
     Integer roc2 = 15;
     Integer roc3 = 20;
@@ -2818,10 +2818,10 @@ public class Main {
     Integer sma3 = 10;
     Integer sma4 = 15;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityKnowSureThing result = securityApi.getSecurityPriceTechnicalsKst(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2918,15 +2918,15 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer fastPeriod = 12;
     Integer slowPeriod = 26;
     Integer signalPeriod = 9;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityMovingAverageConvergenceDivergence result = securityApi.getSecurityPriceTechnicalsMacd(identifier, fastPeriod, slowPeriod, signalPeriod, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3018,12 +3018,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityMoneyFlowIndex result = securityApi.getSecurityPriceTechnicalsMfi(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3112,13 +3112,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer emaPeriod = 9;
     Integer sumPeriod = 25;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityMassIndex result = securityApi.getSecurityPriceTechnicalsMi(identifier, emaPeriod, sumPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3208,11 +3208,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityNegativeVolumeIndex result = securityApi.getSecurityPriceTechnicalsNvi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3300,11 +3300,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityOnBalanceVolume result = securityApi.getSecurityPriceTechnicalsObv(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3392,12 +3392,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 10;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityOnBalanceVolumeMean result = securityApi.getSecurityPriceTechnicalsObvMean(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3486,13 +3486,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityRelativeStrengthIndex result = securityApi.getSecurityPriceTechnicalsRsi(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3582,13 +3582,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecuritySimpleMovingAverage result = securityApi.getSecurityPriceTechnicalsSma(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3678,13 +3678,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
     Integer signalPeriod = 3;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityStochasticOscillator result = securityApi.getSecurityPriceTechnicalsSr(identifier, period, signalPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3774,12 +3774,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 15;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityTripleExponentialAverage result = securityApi.getSecurityPriceTechnicalsTrix(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3868,14 +3868,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer lowPeriod = 13;
     Integer highPeriod = 25;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityTrueStrengthIndex result = securityApi.getSecurityPriceTechnicalsTsi(identifier, lowPeriod, highPeriod, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -3966,17 +3966,17 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer shortPeriod = 7;
     Integer mediumPeriod = 14;
     Integer longPeriod = 28;
     Float shortWeight = 4.0F;
     Float mediumWeight = 2.0F;
     Float longWeight = 1.0F;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityUltimateOscillator result = securityApi.getSecurityPriceTechnicalsUo(identifier, shortPeriod, mediumPeriod, longPeriod, shortWeight, mediumWeight, longWeight, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4070,12 +4070,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityVortexIndicator result = securityApi.getSecurityPriceTechnicalsVi(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4164,11 +4164,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityVolumePriceTrend result = securityApi.getSecurityPriceTechnicalsVpt(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4256,11 +4256,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityVolumeWeightedAveragePrice result = securityApi.getSecurityPriceTechnicalsVwap(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4348,12 +4348,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
-    BigDecimal pageSize = new BigDecimal();
-    String nextPage = "\"~null\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    BigDecimal pageSize = null;
+    String nextPage = null;
     ApiResponseSecurityWilliamsR result = securityApi.getSecurityPriceTechnicalsWr(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4442,8 +4442,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    List<String> source = Arrays.asList("\"iex\"");
+    String identifier = "AAPL";
+    List<String> source = Arrays.asList("iex");
     RealtimeStockPrice result = securityApi.getSecurityRealtimePrice(identifier, source);
     System.out.println(result);
   }
@@ -4528,8 +4528,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String subsource = "\"~null\"";
-    LocalDate date = LocalDate.of(~null);
+    String subsource = null;
+    LocalDate date = null;
     SecurityReplayFileResult result = securityApi.getSecurityReplayFile(subsource, date);
     System.out.println(result);
   }
@@ -4698,11 +4698,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    LocalDate startDate = LocalDate.of(2018-01-01);
-    LocalDate endDate = LocalDate.of(2019-01-01);
+    String identifier = "AAPL";
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = LocalDate.of(2019,1,01);
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityStockPriceAdjustments result = securityApi.getSecurityStockPriceAdjustments(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4790,12 +4790,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    LocalDate startDate = LocalDate.of(2018-01-01);
-    LocalDate endDate = LocalDate.of(2019-01-01);
+    String identifier = "AAPL";
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = LocalDate.of(2019,1,01);
     String frequency = "daily";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityStockPrices result = securityApi.getSecurityStockPrices(identifier, startDate, endDate, frequency, pageSize, nextPage);
     System.out.println(result);
   }
@@ -4884,16 +4884,16 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String source = "\"~null\"";
-    LocalDate startDate = LocalDate.of(~null);
-    String startTime = "\"~null\"";
-    LocalDate endDate = LocalDate.of(~null);
-    String endTime = "\"~null\"";
+    String source = null;
+    LocalDate startDate = null;
+    String startTime = null;
+    LocalDate endDate = null;
+    String endTime = null;
     String timezone = "UTC";
     Integer pageSize = 100;
     Boolean darkpoolOnly = false;
     Integer minSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     SecurityTradesResult result = securityApi.getSecurityTrades(source, startDate, startTime, endDate, endTime, timezone, pageSize, darkpoolOnly, minSize, nextPage);
     System.out.println(result);
   }
@@ -4986,17 +4986,17 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String source = "\"~null\"";
-    LocalDate startDate = LocalDate.of(~null);
-    String startTime = "\"~null\"";
-    LocalDate endDate = LocalDate.of(~null);
-    String endTime = "\"~null\"";
+    String identifier = "AAPL";
+    String source = null;
+    LocalDate startDate = null;
+    String startTime = null;
+    LocalDate endDate = null;
+    String endTime = null;
     String timezone = "UTC";
     Boolean darkpoolOnly = false;
     Integer pageSize = 100;
     Integer minSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     SecurityTradesResult result = securityApi.getSecurityTradesBySymbol(identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, minSize, nextPage);
     System.out.println(result);
   }
@@ -5090,23 +5090,23 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"~null\"";
-    String endDate = "\"~null\"";
-    BigDecimal meanGreater = new BigDecimal();
-    BigDecimal meanLess = new BigDecimal();
-    Integer strongBuysGreater = "~null";
-    Integer strongBuysLess = "~null";
-    Integer buysGreater = "~null";
-    Integer buysLess = "~null";
-    Integer holdsGreater = "~null";
-    Integer holdsLess = "~null";
-    Integer sellsGreater = "~null";
-    Integer sellsLess = "~null";
-    Integer strongSellsGreater = "~null";
-    Integer strongSellsLess = "~null";
-    Integer totalGreater = "~null";
-    Integer totalLess = "~null";
+    String identifier = "AAPL";
+    String startDate = null;
+    String endDate = null;
+    BigDecimal meanGreater = null;
+    BigDecimal meanLess = null;
+    Integer strongBuysGreater = null;
+    Integer strongBuysLess = null;
+    Integer buysGreater = null;
+    Integer buysLess = null;
+    Integer holdsGreater = null;
+    Integer holdsLess = null;
+    Integer sellsGreater = null;
+    Integer sellsLess = null;
+    Integer strongSellsGreater = null;
+    Integer strongSellsLess = null;
+    Integer totalGreater = null;
+    Integer totalLess = null;
     Integer pageSize = 100;
     ApiResponseSecurityZacksAnalystRatings result = securityApi.getSecurityZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize);
     System.out.println(result);
@@ -5208,8 +5208,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
-    String date = "\"~null\"";
+    String identifier = "AAPL";
+    String date = null;
     ApiResponseSecurityZacksAnalystRatingsSnapshot result = securityApi.getSecurityZacksAnalystRatingsSnapshot(identifier, date);
     System.out.println(result);
   }
@@ -5294,9 +5294,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityZacksEPSSurprises result = securityApi.getSecurityZacksEpsSurprises(identifier, pageSize, nextPage);
     System.out.println(result);
   }
@@ -5382,9 +5382,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityZacksSalesSurprises result = securityApi.getSecurityZacksSalesSurprises(identifier, pageSize, nextPage);
     System.out.println(result);
   }
@@ -5471,7 +5471,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
     SecurityScreenGroup logic = new SecurityScreenGroup();
-    String orderColumn = "\"marketcap\"";
+    String orderColumn = "marketcap";
     String orderDirection = "asc";
     Boolean primaryOnly = false;
     Integer pageSize = 100;
@@ -5580,7 +5580,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String query = "\"Apple\"";
+    String query = "Apple";
     Integer pageSize = 100;
     ApiResponseSecuritiesSearch result = securityApi.searchSecurities(query, pageSize);
     System.out.println(result);

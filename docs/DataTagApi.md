@@ -66,13 +66,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     DataTagApi dataTagApi = new DataTagApi();
-    String tag = "\"~null\"";
-    String type = "\"~null\"";
-    String parent = "\"~null\"";
-    String statementCode = "\"income_statement\"";
+    String tag = null;
+    String type = null;
+    String parent = null;
+    String statementCode = "income_statement";
     String fsTemplate = "industrial";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseDataTags result = dataTagApi.getAllDataTags(tag, type, parent, statementCode, fsTemplate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -162,7 +162,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     DataTagApi dataTagApi = new DataTagApi();
-    String identifier = "\"marketcap\"";
+    String identifier = "marketcap";
     DataTag result = dataTagApi.getDataTagById(identifier);
     System.out.println(result);
   }
@@ -246,7 +246,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     DataTagApi dataTagApi = new DataTagApi();
-    String query = "\"revenue\"";
+    String query = "revenue";
     Integer pageSize = 100;
     ApiResponseDataTagsSearch result = dataTagApi.searchDataTags(query, pageSize);
     System.out.println(result);

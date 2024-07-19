@@ -253,10 +253,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"MSFT\"";
-    String after = "\"2022-01-01\"";
-    String before = "\"2023-04-01\"";
-    String source = "\"~null\"";
+    String symbol = "MSFT";
+    String after = "2022-01-01";
+    String before = "2023-04-01";
+    String source = null;
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsExpirations result = optionsApi.getOptionExpirationsRealtime(symbol, after, before, source, includeRelatedSymbols);
     System.out.println(result);
@@ -345,12 +345,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"MSFT\"";
-    BigDecimal strike = new BigDecimal();
-    String source = "\"~null\"";
-    String stockPriceSource = "\"~null\"";
-    String model = "\"~null\"";
-    Boolean showExtendedPrice = "~null";
+    String symbol = "MSFT";
+    BigDecimal strike = null;
+    String source = null;
+    String stockPriceSource = null;
+    String model = null;
+    Boolean showExtendedPrice = null;
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsChainRealtime result = optionsApi.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
     System.out.println(result);
@@ -441,16 +441,16 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"AAPL\"";
-    String type = "\"put\"";
-    BigDecimal strike = new BigDecimal();
-    BigDecimal strikeGreaterThan = new BigDecimal();
-    BigDecimal strikeLessThan = new BigDecimal();
-    String expiration = "\"2019-03-01\"";
-    String expirationAfter = "\"2019-01-01\"";
-    String expirationBefore = "\"2019-12-31\"";
+    String symbol = "AAPL";
+    String type = "put";
+    BigDecimal strike = null;
+    BigDecimal strikeGreaterThan = null;
+    BigDecimal strikeLessThan = null;
+    String expiration = "2019-03-01";
+    String expirationAfter = "2019-01-01";
+    String expirationBefore = "2019-12-31";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseOptions result = optionsApi.getOptions(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, pageSize, nextPage);
     System.out.println(result);
   }
@@ -543,15 +543,15 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"AAPL\"";
-    String type = "\"put\"";
-    BigDecimal strike = new BigDecimal();
-    BigDecimal strikeGreaterThan = new BigDecimal();
-    BigDecimal strikeLessThan = new BigDecimal();
-    String expiration = "\"2022-04-16\"";
-    String expirationAfter = "\"2022-01-01\"";
-    String expirationBefore = "\"2023-12-31\"";
-    String source = "\"~null\"";
+    String symbol = "AAPL";
+    String type = "put";
+    BigDecimal strike = null;
+    BigDecimal strikeGreaterThan = null;
+    BigDecimal strikeLessThan = null;
+    String expiration = "2022-04-16";
+    String expirationAfter = "2022-01-01";
+    String expirationBefore = "2023-12-31";
+    String source = null;
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsRealtime result = optionsApi.getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source, includeRelatedSymbols);
     System.out.println(result);
@@ -645,14 +645,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"MSFT\"";
-    String expiration = "\"2019-04-05\"";
-    LocalDate date = LocalDate.of(~null);
-    String type = "\"~null\"";
-    BigDecimal strike = new BigDecimal();
-    BigDecimal strikeGreaterThan = new BigDecimal();
-    BigDecimal strikeLessThan = new BigDecimal();
-    String moneyness = "\"~null\"";
+    String symbol = "MSFT";
+    String expiration = "2019-04-05";
+    LocalDate date = null;
+    String type = null;
+    BigDecimal strike = null;
+    BigDecimal strikeGreaterThan = null;
+    BigDecimal strikeLessThan = null;
+    String moneyness = null;
     Integer pageSize = 100;
     ApiResponseOptionsChain result = optionsApi.getOptionsChain(symbol, expiration, date, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
     System.out.println(result);
@@ -745,13 +745,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"AAPL\"";
-    String expiration = "\"2023-01-20\"";
-    String type = "\"~null\"";
-    BigDecimal strike = new BigDecimal();
-    BigDecimal strikeGreaterThan = new BigDecimal();
-    BigDecimal strikeLessThan = new BigDecimal();
-    LocalDate date = LocalDate.of(~null);
+    String symbol = "AAPL";
+    String expiration = "2023-01-20";
+    String type = null;
+    BigDecimal strike = null;
+    BigDecimal strikeGreaterThan = null;
+    BigDecimal strikeLessThan = null;
+    LocalDate date = null;
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsChainEod result = optionsApi.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols);
     System.out.println(result);
@@ -843,21 +843,21 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"MSFT\"";
-    String expiration = "\"2023-01-20\"";
-    String source = "\"~null\"";
-    String type = "\"~null\"";
-    BigDecimal strike = new BigDecimal();
-    BigDecimal strikeGreaterThan = new BigDecimal();
-    BigDecimal strikeLessThan = new BigDecimal();
-    BigDecimal volumeGreaterThan = new BigDecimal();
-    BigDecimal volumeLessThan = new BigDecimal();
-    BigDecimal openInterestGreaterThan = new BigDecimal();
-    BigDecimal openInterestLessThan = new BigDecimal();
-    String moneyness = "\"~null\"";
-    String stockPriceSource = "\"~null\"";
-    String model = "\"~null\"";
-    Boolean showExtendedPrice = "~null";
+    String symbol = "MSFT";
+    String expiration = "2023-01-20";
+    String source = null;
+    String type = null;
+    BigDecimal strike = null;
+    BigDecimal strikeGreaterThan = null;
+    BigDecimal strikeLessThan = null;
+    BigDecimal volumeGreaterThan = null;
+    BigDecimal volumeLessThan = null;
+    BigDecimal openInterestGreaterThan = null;
+    BigDecimal openInterestLessThan = null;
+    String moneyness = null;
+    String stockPriceSource = null;
+    String model = null;
+    Boolean showExtendedPrice = null;
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsChainRealtime result = optionsApi.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
     System.out.println(result);
@@ -957,9 +957,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"MSFT\"";
-    String after = "\"2019-01-01\"";
-    String before = "\"2019-12-31\"";
+    String symbol = "MSFT";
+    String after = "2019-01-01";
+    String before = "2019-12-31";
     ApiResponseOptionsExpirations result = optionsApi.getOptionsExpirations(symbol, after, before);
     System.out.println(result);
   }
@@ -1045,9 +1045,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"MSFT\"";
-    String after = "\"2019-01-01\"";
-    String before = "\"2019-12-31\"";
+    String symbol = "MSFT";
+    String after = "2019-01-01";
+    String before = "2019-12-31";
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsExpirations result = optionsApi.getOptionsExpirationsEod(symbol, after, before, includeRelatedSymbols);
     System.out.println(result);
@@ -1135,9 +1135,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String identifier = "\"SPY___230103P00380000\"";
-    String intervalSize = "\"5m\"";
-    String source = "\"~null\"";
+    String identifier = "SPY___230103P00380000";
+    String intervalSize = "5m";
+    String source = null;
     Integer pageSize = 100;
     OffsetDateTime endTime = OffsetDateTime.now();
     OptionIntervalsResult result = optionsApi.getOptionsIntervalByContract(identifier, intervalSize, source, pageSize, endTime);
@@ -1227,7 +1227,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = "\"~null\"";
+    String source = null;
     OffsetDateTime openTime = OffsetDateTime.now();
     OptionIntervalsMoversResult result = optionsApi.getOptionsIntervalMovers(source, openTime);
     System.out.println(result);
@@ -1313,7 +1313,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = "\"~null\"";
+    String source = null;
     OffsetDateTime openTime = OffsetDateTime.now();
     OptionIntervalsMoversResult result = optionsApi.getOptionsIntervalMoversChange(source, openTime);
     System.out.println(result);
@@ -1399,7 +1399,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = "\"~null\"";
+    String source = null;
     OffsetDateTime openTime = OffsetDateTime.now();
     OptionIntervalsMoversResult result = optionsApi.getOptionsIntervalMoversVolume(source, openTime);
     System.out.println(result);
@@ -1485,11 +1485,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String identifier = "\"MSFT190405C00118000\"";
-    String startDate = "\"2019-01-01\"";
-    String endDate = "\"2019-12-31\"";
+    String identifier = "MSFT190405C00118000";
+    String startDate = "2019-01-01";
+    String endDate = "2019-12-31";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseOptionPrices result = optionsApi.getOptionsPrices(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1577,11 +1577,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = "\"~null\"";
-    Boolean showStats = "~null";
-    String stockPriceSource = "\"~null\"";
-    String model = "\"~null\"";
-    Boolean showExtendedPrice = "~null";
+    String source = null;
+    Boolean showStats = null;
+    String stockPriceSource = null;
+    String model = null;
+    Boolean showExtendedPrice = null;
     OptionContractsList body = new OptionContractsList();
     List<String> contracts = new ArrayList<>();
 
@@ -1677,10 +1677,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String identifier = "\"AAPL230616P00190000\"";
-    String nextPage = "\"~null\"";
-    LocalDate startDate = LocalDate.of(~null);
-    LocalDate endDate = LocalDate.of(~null);
+    String identifier = "AAPL230616P00190000";
+    String nextPage = null;
+    LocalDate startDate = null;
+    LocalDate endDate = null;
     ApiResponseOptionsPricesEod result = optionsApi.getOptionsPricesEod(identifier, nextPage, startDate, endDate);
     System.out.println(result);
   }
@@ -1767,11 +1767,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String identifier = "\"AAPL230120C00090000\"";
-    String source = "\"~null\"";
-    String stockPriceSource = "\"~null\"";
-    String model = "\"~null\"";
-    Boolean showExtendedPrice = "~null";
+    String identifier = "AAPL230120C00090000";
+    String source = null;
+    String stockPriceSource = null;
+    String model = null;
+    Boolean showExtendedPrice = null;
     ApiResponseOptionsPriceRealtime result = optionsApi.getOptionsPricesRealtime(identifier, source, stockPriceSource, model, showExtendedPrice);
     System.out.println(result);
   }
@@ -1859,14 +1859,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"MSFT\"";
-    String source = "\"~null\"";
-    String ivMode = "\"~null\"";
-    String nextPage = "\"~null\"";
+    String symbol = "MSFT";
+    String source = null;
+    String ivMode = null;
+    String nextPage = null;
     Integer pageSize = 250;
-    String stockPriceSource = "\"~null\"";
-    String model = "\"~null\"";
-    Boolean showExtendedPrice = "~null";
+    String stockPriceSource = null;
+    String model = null;
+    Boolean showExtendedPrice = null;
     ApiResponseOptionsPricesByTickerRealtime result = optionsApi.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice);
     System.out.println(result);
   }
@@ -1957,7 +1957,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = "\"~null\"";
+    String source = null;
     OffsetDateTime atDatetime = OffsetDateTime.now();
     OptionSnapshotsResult result = optionsApi.getOptionsSnapshots(source, atDatetime);
     System.out.println(result);
@@ -2043,9 +2043,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String identifier = "\"AAPL230120C00090000\"";
-    String source = "\"~null\"";
-    Boolean showExtendedPrice = "~null";
+    String identifier = "AAPL230120C00090000";
+    String source = null;
+    Boolean showExtendedPrice = null;
     ApiResponseOptionsStatsRealtime result = optionsApi.getOptionsStatsRealtime(identifier, source, showExtendedPrice);
     System.out.println(result);
   }
@@ -2131,8 +2131,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"AAPL\"";
-    String source = "\"~null\"";
+    String symbol = "AAPL";
+    String source = null;
     ApiResponseOptionsUnusualActivity result = optionsApi.getUnusualActivity(symbol, source);
     System.out.println(result);
   }
@@ -2217,13 +2217,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "\"AAPL\"";
-    String nextPage = "\"~null\"";
+    String symbol = "AAPL";
+    String nextPage = null;
     Integer pageSize = 1000;
-    String activityType = "\"~null\"";
-    String sentiment = "\"~null\"";
-    LocalDate startDate = LocalDate.of(2022-02-01);
-    LocalDate endDate = LocalDate.of(2022-02-03);
+    String activityType = null;
+    String sentiment = null;
+    LocalDate startDate = LocalDate.of(2022,2,01);
+    LocalDate endDate = LocalDate.of(2022,2,03);
     Object minimumTotalValue = 100000.0;
     Object maximumTotalValue = 200000.0;
     ApiResponseOptionsUnusualActivity result = optionsApi.getUnusualActivityIntraday(symbol, nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue);
@@ -2317,7 +2317,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = "\"~null\"";
+    String source = null;
     ApiResponseOptionsUnusualActivity result = optionsApi.getUnusualActivityUniversal(source);
     System.out.println(result);
   }
@@ -2401,12 +2401,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     Integer pageSize = 1000;
-    String activityType = "\"~null\"";
-    String sentiment = "\"~null\"";
-    LocalDate startDate = LocalDate.of(2022-02-01);
-    LocalDate endDate = LocalDate.of(2022-02-03);
+    String activityType = null;
+    String sentiment = null;
+    LocalDate startDate = LocalDate.of(2022,2,01);
+    LocalDate endDate = LocalDate.of(2022,2,03);
     Object minimumTotalValue = 100000.0;
     Object maximumTotalValue = 200000.0;
     ApiResponseOptionsUnusualActivity result = optionsApi.getUnusualActivityUniversalIntraday(nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue);

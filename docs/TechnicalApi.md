@@ -94,11 +94,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityAccumulationDistributionIndex result = technicalApi.getSecurityPriceTechnicalsAdi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -186,12 +186,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 22;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityAverageDailyTradingVolume result = technicalApi.getSecurityPriceTechnicalsAdtv(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -280,12 +280,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityAverageDirectionalIndex result = technicalApi.getSecurityPriceTechnicalsAdx(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -374,13 +374,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer shortPeriod = 5;
     Integer longPeriod = 34;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityAwesomeOscillator result = technicalApi.getSecurityPriceTechnicalsAo(identifier, shortPeriod, longPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -470,12 +470,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityAverageTrueRange result = technicalApi.getSecurityPriceTechnicalsAtr(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -564,14 +564,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
     Float standardDeviations = 2.0F;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityBollingerBands result = technicalApi.getSecurityPriceTechnicalsBb(identifier, period, standardDeviations, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -662,13 +662,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
     Float constant = 0.015F;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityCommodityChannelIndex result = technicalApi.getSecurityPriceTechnicalsCci(identifier, period, constant, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -758,12 +758,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityChaikinMoneyFlow result = technicalApi.getSecurityPriceTechnicalsCmf(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -852,13 +852,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityDonchianChannel result = technicalApi.getSecurityPriceTechnicalsDc(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -948,13 +948,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityDetrendedPriceOscillator result = technicalApi.getSecurityPriceTechnicalsDpo(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1044,12 +1044,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityEaseOfMovement result = technicalApi.getSecurityPriceTechnicalsEom(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1138,11 +1138,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityForceIndex result = technicalApi.getSecurityPriceTechnicalsFi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1230,14 +1230,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer lowPeriod = 9;
     Integer mediumPeriod = 26;
     Integer highPeriod = 52;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityIchimokuKinkoHyo result = technicalApi.getSecurityPriceTechnicalsIchimoku(identifier, lowPeriod, mediumPeriod, highPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1328,12 +1328,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 10;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityKeltnerChannel result = technicalApi.getSecurityPriceTechnicalsKc(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1422,7 +1422,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer roc1 = 10;
     Integer roc2 = 15;
     Integer roc3 = 20;
@@ -1432,10 +1432,10 @@ public class Main {
     Integer sma3 = 10;
     Integer sma4 = 15;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityKnowSureThing result = technicalApi.getSecurityPriceTechnicalsKst(identifier, roc1, roc2, roc3, roc4, sma1, sma2, sma3, sma4, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1532,15 +1532,15 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer fastPeriod = 12;
     Integer slowPeriod = 26;
     Integer signalPeriod = 9;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityMovingAverageConvergenceDivergence result = technicalApi.getSecurityPriceTechnicalsMacd(identifier, fastPeriod, slowPeriod, signalPeriod, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1632,12 +1632,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityMoneyFlowIndex result = technicalApi.getSecurityPriceTechnicalsMfi(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1726,13 +1726,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer emaPeriod = 9;
     Integer sumPeriod = 25;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityMassIndex result = technicalApi.getSecurityPriceTechnicalsMi(identifier, emaPeriod, sumPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1822,11 +1822,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityNegativeVolumeIndex result = technicalApi.getSecurityPriceTechnicalsNvi(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1914,11 +1914,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityOnBalanceVolume result = technicalApi.getSecurityPriceTechnicalsObv(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2006,12 +2006,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 10;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityOnBalanceVolumeMean result = technicalApi.getSecurityPriceTechnicalsObvMean(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2100,13 +2100,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityRelativeStrengthIndex result = technicalApi.getSecurityPriceTechnicalsRsi(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2196,13 +2196,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 20;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecuritySimpleMovingAverage result = technicalApi.getSecurityPriceTechnicalsSma(identifier, period, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2292,13 +2292,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
     Integer signalPeriod = 3;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityStochasticOscillator result = technicalApi.getSecurityPriceTechnicalsSr(identifier, period, signalPeriod, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2388,12 +2388,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 15;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityTripleExponentialAverage result = technicalApi.getSecurityPriceTechnicalsTrix(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2482,14 +2482,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer lowPeriod = 13;
     Integer highPeriod = 25;
     String priceKey = "close";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityTrueStrengthIndex result = technicalApi.getSecurityPriceTechnicalsTsi(identifier, lowPeriod, highPeriod, priceKey, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2580,17 +2580,17 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer shortPeriod = 7;
     Integer mediumPeriod = 14;
     Integer longPeriod = 28;
     Float shortWeight = 4.0F;
     Float mediumWeight = 2.0F;
     Float longWeight = 1.0F;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityUltimateOscillator result = technicalApi.getSecurityPriceTechnicalsUo(identifier, shortPeriod, mediumPeriod, longPeriod, shortWeight, mediumWeight, longWeight, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2684,12 +2684,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityVortexIndicator result = technicalApi.getSecurityPriceTechnicalsVi(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2778,11 +2778,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityVolumePriceTrend result = technicalApi.getSecurityPriceTechnicalsVpt(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2870,11 +2870,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
+    String identifier = "AAPL";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
     Integer pageSize = 100;
-    String nextPage = "\"~null\"";
+    String nextPage = null;
     ApiResponseSecurityVolumeWeightedAveragePrice result = technicalApi.getSecurityPriceTechnicalsVwap(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -2962,12 +2962,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "\"AAPL\"";
+    String identifier = "AAPL";
     Integer period = 14;
-    String startDate = "\"2018-01-01\"";
-    String endDate = "\"2019-01-01\"";
-    BigDecimal pageSize = new BigDecimal();
-    String nextPage = "\"~null\"";
+    String startDate = "2018-01-01";
+    String endDate = "2019-01-01";
+    BigDecimal pageSize = null;
+    String nextPage = null;
     ApiResponseSecurityWilliamsR result = technicalApi.getSecurityPriceTechnicalsWr(identifier, period, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }

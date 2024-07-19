@@ -1223,7 +1223,7 @@ public class ApiClient {
 
                     ApiResponse<T> result = (ApiResponse<T>) finalApiFunction.invoke(apiCallObject, finalApiCallArguments);
                     return result;
-                } catch (InvocationTargetException e) {
+                } catch (java.lang.reflect.InvocationTargetException e) {
                   ApiException targetException = (ApiException) e.getTargetException();
                   throw targetException;
                 } catch (InstantiationException | NoSuchMethodException | IllegalAccessException e) {
