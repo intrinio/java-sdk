@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'com.intrinio'
-version = '6.20.4'
+version = '6.21.0'
 
 buildscript {
     repositories {

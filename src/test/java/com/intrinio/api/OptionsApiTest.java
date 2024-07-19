@@ -12,6 +12,7 @@ import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import com.intrinio.models.ApiResponseOptionsPriceRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
+import com.intrinio.models.ApiResponseOptionsPricesByTickerRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesEod;
 import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
@@ -426,6 +427,29 @@ public class OptionsApiTest {
         String model = null;
         Boolean showExtendedPrice = null;
         ApiResponseOptionsPriceRealtime response = api.getOptionsPricesRealtime(identifier, source, stockPriceSource, model, showExtendedPrice);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Option Prices Realtime By Ticker
+     *
+     * Returns a list of the latest National Best Bid &amp; Offer (NBBO) top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the ticker.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsPricesRealtimeByTickerTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        String source = null;
+        String ivMode = null;
+        String nextPage = null;
+        Integer pageSize = null;
+        String stockPriceSource = null;
+        String model = null;
+        Boolean showExtendedPrice = null;
+        ApiResponseOptionsPricesByTickerRealtime response = api.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice);
 
         // TODO: test validations
     }

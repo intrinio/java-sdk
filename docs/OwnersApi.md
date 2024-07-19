@@ -68,9 +68,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OwnersApi ownersApi = new OwnersApi();
-    Boolean institutional = null;
+    Boolean institutional = "~null";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseOwners result = ownersApi.getAllOwners(institutional, pageSize, nextPage);
     System.out.println(result);
   }
@@ -156,7 +156,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OwnersApi ownersApi = new OwnersApi();
-    String identifier = "0000001800";
+    String identifier = "\"0000001800\"";
     Owner result = ownersApi.getOwnerById(identifier);
     System.out.println(result);
   }
@@ -240,11 +240,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OwnersApi ownersApi = new OwnersApi();
-    String identifier = "0001494730";
-    LocalDate startDate = LocalDate.of(2018,1,01);
-    LocalDate endDate = LocalDate.of(2019,1,01);
+    String identifier = "\"0001494730\"";
+    LocalDate startDate = LocalDate.of(2018-01-01);
+    LocalDate endDate = LocalDate.of(2019-01-01);
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseOwnerInsiderTransactionFilings result = ownersApi.insiderTransactionFilingsByOwner(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -334,8 +334,8 @@ public class Main {
     OwnersApi ownersApi = new OwnersApi();
     String identifier = "430692";
     Integer pageSize = 100;
-    LocalDate asOfDate = LocalDate.of(2021,1,05);
-    String nextPage = null;
+    LocalDate asOfDate = LocalDate.of(2021-01-05);
+    String nextPage = "\"~null\"";
     ApiResponseOwnerInstitutionalHoldings result = ownersApi.institutionalHoldingsByOwner(identifier, pageSize, asOfDate, nextPage);
     System.out.println(result);
   }
@@ -422,10 +422,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OwnersApi ownersApi = new OwnersApi();
-    String query = "Cook";
-    Boolean institutional = null;
+    String query = "\"Cook\"";
+    Boolean institutional = "~null";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseOwners result = ownersApi.searchOwners(query, institutional, pageSize, nextPage);
     System.out.println(result);
   }

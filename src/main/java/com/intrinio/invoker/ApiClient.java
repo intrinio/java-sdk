@@ -31,8 +31,6 @@ import java.text.DateFormat;
 import java.time.temporal.ChronoUnit;
 import java.time.Duration;
 import java.util.*;
-import java.lang.reflect.Method;
-import java.lang.ReflectiveOperationException;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
@@ -89,7 +87,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/6.20.4/java");
+        setUserAgent("Swagger-Codegen/6.21.0/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();
@@ -1225,7 +1223,7 @@ public class ApiClient {
 
                     ApiResponse<T> result = (ApiResponse<T>) finalApiFunction.invoke(apiCallObject, finalApiCallArguments);
                     return result;
-                } catch (java.lang.reflect.InvocationTargetException e) {
+                } catch (InvocationTargetException e) {
                   ApiException targetException = (ApiException) e.getTargetException();
                   throw targetException;
                 } catch (InstantiationException | NoSuchMethodException | IllegalAccessException e) {

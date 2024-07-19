@@ -85,17 +85,17 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    LocalDate latestFilingDate = null;
-    String sic = null;
-    String template = null;
-    String sector = null;
-    String industryCategory = null;
-    String industryGroup = null;
+    LocalDate latestFilingDate = LocalDate.of(~null);
+    String sic = "\"~null\"";
+    String template = "\"~null\"";
+    String sector = "\"~null\"";
+    String industryCategory = "\"~null\"";
+    String industryGroup = "\"~null\"";
     Boolean hasFundamentals = true;
     Boolean hasStockPrices = true;
-    Boolean theaEnabled = null;
+    Boolean theaEnabled = "~null";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseCompanies result = companyApi.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage);
     System.out.println(result);
   }
@@ -191,8 +191,8 @@ public class Main {
     CompanyApi companyApi = new CompanyApi();
     LocalDate onDate = LocalDate.of();
     Integer pageSize = 100;
-    String nextPage = null;
-    String nextPage2 = null;
+    String nextPage = "\"~null\"";
+    String nextPage2 = "\"~null\"";
     ApiResponseCompanyDailyMetrics result = companyApi.getAllCompaniesDailyMetrics(onDate, pageSize, nextPage, nextPage2);
     System.out.println(result);
   }
@@ -279,21 +279,21 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String specificSource = null;
+    String specificSource = "\"~null\"";
     Integer pageSize = 100;
-    String sentiment = null;
-    String topic = null;
-    String company = "AAPL";
-    String security = "AAPL";
-    LocalDate startDate = null;
-    LocalDate endDate = null;
-    String language = null;
-    Integer wordCountGreaterThan = null;
-    Integer wordCountLessThan = null;
-    Boolean isSpam = null;
-    BigDecimal businessRelevanceGreaterThan = null;
-    BigDecimal businessRelevanceLessThan = null;
-    String nextPage = null;
+    String sentiment = "\"~null\"";
+    String topic = "\"~null\"";
+    String company = "\"AAPL\"";
+    String security = "\"AAPL\"";
+    LocalDate startDate = LocalDate.of(~null);
+    LocalDate endDate = LocalDate.of(~null);
+    String language = "\"~null\"";
+    Integer wordCountGreaterThan = "~null";
+    Integer wordCountLessThan = "~null";
+    Boolean isSpam = "~null";
+    BigDecimal businessRelevanceGreaterThan = new BigDecimal();
+    BigDecimal businessRelevanceLessThan = new BigDecimal();
+    String nextPage = "\"~null\"";
     ApiResponseNews result = companyApi.getAllCompanyNews(specificSource, pageSize, sentiment, topic, company, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage);
     System.out.println(result);
   }
@@ -315,9 +315,9 @@ Name | Type | Description  | Notes
  **topic** | String| Filter by topic.  Unsupported for yahoo source. | [optional] &nbsp;
  **company** | String| Filter by &#x60;company&#x60; identifier (ticker, CIK, LEI, Intrinio ID) | [optional] &nbsp;
  **security** | String| Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. | [optional] &nbsp;
- **startDate** | LocalDate| Limit news stories to those on or after this date. | [optional] &nbsp;
+ **startDate** | LocalDate| Limit news stories to those on or after this date. Defaults to yesterday if unspecified. | [optional] &nbsp;
  **endDate** | LocalDate| Limit news stories to those on or before this date. | [optional] &nbsp;
- **language** | String| Filter by language.  Unsupported for yahoo source.  Unsupported for yahoo source. | [optional] &nbsp;
+ **language** | String| Filter by language.  Unsupported for yahoo source. | [optional] &nbsp;
  **wordCountGreaterThan** | Integer| News stories will have a word count greater than this value.  Unsupported for yahoo source. | [optional] &nbsp;
  **wordCountLessThan** | Integer| News stories will have a word count less than this value.  Unsupported for yahoo source. | [optional] &nbsp;
  **isSpam** | Boolean| Filter whether it is marked as spam or not.  Unsupported for yahoo source. | [optional] &nbsp;
@@ -391,7 +391,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
+    String identifier = "\"AAPL\"";
     Company result = companyApi.getCompany(identifier);
     System.out.println(result);
   }
@@ -475,8 +475,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String query = "What do they believe in?";
+    String identifier = "\"AAPL\"";
+    String query = "\"What do they believe in?\"";
     ApiResponseCompanyAnswers result = companyApi.getCompanyAnswers(identifier, query);
     System.out.println(result);
   }
@@ -561,11 +561,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
+    String identifier = "\"AAPL\"";
     LocalDate onDate = LocalDate.of();
     Integer pageSize = 100;
-    String nextPage = null;
-    String nextPage2 = null;
+    String nextPage = "\"~null\"";
+    String nextPage2 = "\"~null\"";
     ApiResponseCompanyDailyMetrics result = companyApi.getCompanyDailyMetrics(identifier, onDate, pageSize, nextPage, nextPage2);
     System.out.println(result);
   }
@@ -653,8 +653,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String tag = "marketcap";
+    String identifier = "\"AAPL\"";
+    String tag = "\"marketcap\"";
     BigDecimal result = companyApi.getCompanyDataPointNumber(identifier, tag);
     System.out.println(result);
   }
@@ -739,8 +739,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String tag = "ceo";
+    String identifier = "\"AAPL\"";
+    String tag = "\"ceo\"";
     String result = companyApi.getCompanyDataPointText(identifier, tag);
     System.out.println(result);
   }
@@ -825,13 +825,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String reportType = null;
-    LocalDate startDate = LocalDate.of(2015,1,01);
-    LocalDate endDate = null;
-    Boolean theaEnabled = null;
+    String identifier = "\"AAPL\"";
+    String reportType = "\"~null\"";
+    LocalDate startDate = LocalDate.of(2015-01-01);
+    LocalDate endDate = LocalDate.of(~null);
+    Boolean theaEnabled = "~null";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseCompanyFilings result = companyApi.getCompanyFilings(identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage);
     System.out.println(result);
   }
@@ -921,19 +921,19 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    LocalDate filedAfter = null;
-    LocalDate filedBefore = null;
+    String identifier = "\"AAPL\"";
+    LocalDate filedAfter = LocalDate.of(~null);
+    LocalDate filedBefore = LocalDate.of(~null);
     Boolean reportedOnly = false;
-    Integer fiscalYear = null;
-    String statementCode = null;
-    String type = null;
-    LocalDate startDate = null;
-    LocalDate endDate = null;
-    LocalDate updatedAfter = LocalDate.of(2022,12,01);
-    LocalDate updatedBefore = LocalDate.of(2022,12,01);
+    Integer fiscalYear = "~null";
+    String statementCode = "\"~null\"";
+    String type = "\"~null\"";
+    LocalDate startDate = LocalDate.of(~null);
+    LocalDate endDate = LocalDate.of(~null);
+    LocalDate updatedAfter = LocalDate.of(2022-12-01);
+    LocalDate updatedBefore = LocalDate.of(2022-12-01);
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, updatedAfter, updatedBefore, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1029,15 +1029,15 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String tag = "marketcap";
+    String identifier = "\"AAPL\"";
+    String tag = "\"marketcap\"";
     String frequency = "daily";
-    String type = null;
-    LocalDate startDate = LocalDate.of(2018,1,01);
-    LocalDate endDate = null;
+    String type = "\"~null\"";
+    LocalDate startDate = LocalDate.of(2018-01-01);
+    LocalDate endDate = LocalDate.of(~null);
     String sortOrder = "desc";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseCompanyHistoricalData result = companyApi.getCompanyHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1129,14 +1129,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String ticker = "UBER";
-    String status = null;
-    LocalDate startDate = null;
-    LocalDate endDate = null;
-    Integer offerAmountGreaterThan = null;
-    Integer offerAmountLessThan = null;
+    String ticker = "\"UBER\"";
+    String status = "\"~null\"";
+    LocalDate startDate = LocalDate.of(~null);
+    LocalDate endDate = LocalDate.of(~null);
+    Integer offerAmountGreaterThan = "~null";
+    Integer offerAmountLessThan = "~null";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseInitialPublicOfferings result = companyApi.getCompanyIpos(ticker, status, startDate, endDate, offerAmountGreaterThan, offerAmountLessThan, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1227,21 +1227,21 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String specificSource = null;
+    String identifier = "\"AAPL\"";
+    String specificSource = "\"~null\"";
     Integer pageSize = 100;
-    String sentiment = null;
-    String topic = null;
-    String security = "AAPL";
-    LocalDate startDate = null;
-    LocalDate endDate = null;
-    String language = null;
-    Integer wordCountGreaterThan = null;
-    Integer wordCountLessThan = null;
-    Boolean isSpam = null;
-    BigDecimal businessRelevanceGreaterThan = null;
-    BigDecimal businessRelevanceLessThan = null;
-    String nextPage = null;
+    String sentiment = "\"~null\"";
+    String topic = "\"~null\"";
+    String security = "\"AAPL\"";
+    LocalDate startDate = LocalDate.of(~null);
+    LocalDate endDate = LocalDate.of(~null);
+    String language = "\"~null\"";
+    Integer wordCountGreaterThan = "~null";
+    Integer wordCountLessThan = "~null";
+    Boolean isSpam = "~null";
+    BigDecimal businessRelevanceGreaterThan = new BigDecimal();
+    BigDecimal businessRelevanceLessThan = new BigDecimal();
+    String nextPage = "\"~null\"";
     ApiResponseCompanyNews result = companyApi.getCompanyNews(identifier, specificSource, pageSize, sentiment, topic, security, startDate, endDate, language, wordCountGreaterThan, wordCountLessThan, isSpam, businessRelevanceGreaterThan, businessRelevanceLessThan, nextPage);
     System.out.println(result);
   }
@@ -1263,7 +1263,7 @@ Name | Type | Description  | Notes
  **sentiment** | String| Filter by sentiment.  Unsupported for yahoo source. | [optional] [enum: positive, neutral, negative] &nbsp;
  **topic** | String| Filter by topic.  Unsupported for yahoo source. | [optional] &nbsp;
  **security** | String| Filter by &#x60;security&#x60; identifier (ticker, figi, isin, cusip, Intrinio ID).  Unsupported for yahoo source. | [optional] &nbsp;
- **startDate** | LocalDate| Limit news stories to those on or after this date | [optional] &nbsp;
+ **startDate** | LocalDate| Limit news stories to those on or after this date. Defaults to yesterday if unspecified. | [optional] &nbsp;
  **endDate** | LocalDate| Limit news stories to those on or before this date | [optional] &nbsp;
  **language** | String| Filter by language.  Unsupported for yahoo source. | [optional] &nbsp;
  **wordCountGreaterThan** | Integer| News stories will have a word count greater than this value.  Unsupported for yahoo source. | [optional] &nbsp;
@@ -1339,10 +1339,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String newsStoryId = "new_aBcDef";
+    String newsStoryId = "\"new_aBcDef\"";
     OffsetDateTime publicationDate = OffsetDateTime.now();
-    String specificSource = null;
-    String nextPage = null;
+    String specificSource = "\"~null\"";
+    String nextPage = "\"~null\"";
     ApiResponseCompanyNewsBody result = companyApi.getCompanyNewsBody(newsStoryId, publicationDate, specificSource, nextPage);
     System.out.println(result);
   }
@@ -1429,11 +1429,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    LocalDate floatDateGreaterThan = null;
-    LocalDate floatDateLessThan = null;
-    String nextPage = null;
-    String nextPage2 = null;
+    String identifier = "\"AAPL\"";
+    LocalDate floatDateGreaterThan = LocalDate.of(~null);
+    LocalDate floatDateLessThan = LocalDate.of(~null);
+    String nextPage = "\"~null\"";
+    String nextPage2 = "\"~null\"";
     ApiResponseCompanyPublicFloatResult result = companyApi.getCompanyPublicFloat(identifier, floatDateGreaterThan, floatDateLessThan, nextPage, nextPage2);
     System.out.println(result);
   }
@@ -1521,8 +1521,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String nextPage = null;
+    String identifier = "\"AAPL\"";
+    String nextPage = "\"~null\"";
     ApiResponseCompanySecurities result = companyApi.getCompanySecurities(identifier, nextPage);
     System.out.println(result);
   }
@@ -1607,14 +1607,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    LocalDate startDate = LocalDate.of(2018,1,01);
-    LocalDate endDate = LocalDate.of(2019,1,01);
-    String ownershipType = "D";
-    String nextPage = null;
+    String identifier = "\"AAPL\"";
+    LocalDate startDate = LocalDate.of(2018-01-01);
+    LocalDate endDate = LocalDate.of(2019-01-01);
+    String ownershipType = "\"D\"";
+    String nextPage = "\"~null\"";
     Integer pageSize = 1000;
-    String sortBy = "updated_on";
-    String nextPage2 = null;
+    String sortBy = "\"updated_on\"";
+    String nextPage2 = "\"~null\"";
     ApiResponseInsiderTransactionFilings result = companyApi.insiderTransactionFilingsByCompany(identifier, startDate, endDate, ownershipType, nextPage, pageSize, sortBy, nextPage2);
     System.out.println(result);
   }
@@ -1705,8 +1705,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String nextPage = null;
+    String identifier = "\"AAPL\"";
+    String nextPage = "\"~null\"";
     InsiderTransactionFiling result = companyApi.latestInsiderTransactionFilingByCompany(identifier, nextPage);
     System.out.println(result);
   }
@@ -1791,9 +1791,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String statementCode = "income_statement";
-    String fiscalPeriod = "FY";
+    String identifier = "\"AAPL\"";
+    String statementCode = "\"income_statement\"";
+    String fiscalPeriod = "\"FY\"";
     Integer fiscalYear = 2017;
     Fundamental result = companyApi.lookupCompanyFundamental(identifier, statementCode, fiscalPeriod, fiscalYear);
     System.out.println(result);
@@ -1881,7 +1881,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String text = "Apple";
+    String text = "\"Apple\"";
     ApiResponseCompanyRecognize result = companyApi.recognizeCompany(text);
     System.out.println(result);
   }
@@ -1965,9 +1965,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String query = "Apple";
+    String query = "\"Apple\"";
     Boolean active = true;
-    String mode = null;
+    String mode = "\"~null\"";
     Integer pageSize = 100;
     ApiResponseCompaniesSearch result = companyApi.searchCompanies(query, active, mode, pageSize);
     System.out.println(result);
@@ -2055,9 +2055,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    LocalDate endDateGreaterThan = null;
-    LocalDate endDateLessThan = null;
+    String identifier = "\"AAPL\"";
+    LocalDate endDateGreaterThan = LocalDate.of(~null);
+    LocalDate endDateLessThan = LocalDate.of(~null);
     ApiResponseCompanySharesOutstanding result = companyApi.sharesOutstandingByCompany(identifier, endDateGreaterThan, endDateLessThan);
     System.out.println(result);
   }

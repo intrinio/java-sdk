@@ -621,7 +621,7 @@ public class StockExchangeApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getStockExchangeRealtimePricesCall(String identifier, String source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getStockExchangeRealtimePricesCall(String identifier, List<String> source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -631,7 +631,7 @@ public class StockExchangeApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (source != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "source", source));
         if (activeOnly != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("active_only", activeOnly));
         if (pageSize != null)
@@ -674,7 +674,7 @@ public class StockExchangeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getStockExchangeRealtimePricesValidateBeforeCall(String identifier, String source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getStockExchangeRealtimePricesValidateBeforeCall(String identifier, List<String> source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -700,8 +700,8 @@ public class StockExchangeApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(String identifier, String source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeRealtimePricesWithHttpInfo", String.class, String.class, Boolean.class, Integer.class, List.class, String.class);
+    public ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(String identifier, List<String> source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeRealtimePricesWithHttpInfo", String.class, List&lt;String&gt;.class, Boolean.class, Integer.class, List&lt;String&gt;.class, String.class);
       
       Object[] apiCallArguments = { identifier, source, activeOnly, pageSize, tickers, nextPage };
       ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
@@ -720,7 +720,7 @@ public class StockExchangeApi {
      * @return ApiResponse&lt;ApiResponseStockExchangeRealtimeStockPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> getStockExchangeRealtimePricesWithHttpInfo(String identifier, String source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage) throws ApiException {
+    public ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> getStockExchangeRealtimePricesWithHttpInfo(String identifier, List<String> source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getStockExchangeRealtimePricesValidateBeforeCall(identifier, source, activeOnly, pageSize, tickers, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseStockExchangeRealtimeStockPrices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -739,7 +739,7 @@ public class StockExchangeApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getStockExchangeRealtimePricesAsync(String identifier, String source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage, final ApiCallback<ApiResponseStockExchangeRealtimeStockPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getStockExchangeRealtimePricesAsync(String identifier, List<String> source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage, final ApiCallback<ApiResponseStockExchangeRealtimeStockPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://docs.intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.62.3
-- Package version: 6.20.4
+- API version: 2.63.1
+- Package version: 6.21.0
 
 
 ## Installation
@@ -185,6 +185,7 @@ Class | Method | HTTP request | Description
 *OptionsApi* | [**getOptionsPricesBatchRealtime**](docs/OptionsApi.md#getOptionsPricesBatchRealtime) | **POST** /options/prices/realtime/batch | Option Prices Batch Realtime
 *OptionsApi* | [**getOptionsPricesEod**](docs/OptionsApi.md#getOptionsPricesEod) | **GET** /options/prices/{identifier}/eod | Option Prices EOD
 *OptionsApi* | [**getOptionsPricesRealtime**](docs/OptionsApi.md#getOptionsPricesRealtime) | **GET** /options/prices/{identifier}/realtime | Option Prices Realtime
+*OptionsApi* | [**getOptionsPricesRealtimeByTicker**](docs/OptionsApi.md#getOptionsPricesRealtimeByTicker) | **GET** /options/prices/by_ticker/{symbol}/realtime | Option Prices Realtime By Ticker
 *OptionsApi* | [**getOptionsSnapshots**](docs/OptionsApi.md#getOptionsSnapshots) | **GET** /options/snapshots | Option Prices Realtime Snapshot
 *OptionsApi* | [**getOptionsStatsRealtime**](docs/OptionsApi.md#getOptionsStatsRealtime) | **GET** /options/prices/{identifier}/realtime/stats | Option Stats Realtime
 *OptionsApi* | [**getUnusualActivity**](docs/OptionsApi.md#getUnusualActivity) | **GET** /options/unusual_activity/{symbol} | Options Unusual Activity
@@ -366,6 +367,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseOptionsExpirations](docs/ApiResponseOptionsExpirations.md)
  - [ApiResponseOptionsPriceRealtime](docs/ApiResponseOptionsPriceRealtime.md)
  - [ApiResponseOptionsPricesBatchRealtime](docs/ApiResponseOptionsPricesBatchRealtime.md)
+ - [ApiResponseOptionsPricesByTickerRealtime](docs/ApiResponseOptionsPricesByTickerRealtime.md)
  - [ApiResponseOptionsPricesEod](docs/ApiResponseOptionsPricesEod.md)
  - [ApiResponseOptionsRealtime](docs/ApiResponseOptionsRealtime.md)
  - [ApiResponseOptionsStatsRealtime](docs/ApiResponseOptionsStatsRealtime.md)

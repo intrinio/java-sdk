@@ -66,19 +66,19 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     MunicipalityApi municipalityApi = new MunicipalityApi();
-    Boolean hasFinancials = null;
-    String governmentName = null;
-    String governmentType = null;
-    String areaName = null;
-    String areaType = null;
-    String city = null;
-    String state = null;
-    BigDecimal zipcode = null;
-    BigDecimal populationGreaterThan = null;
-    BigDecimal populationLessThan = null;
-    BigDecimal enrollmentGreaterThan = null;
-    BigDecimal enrollmentLessThan = null;
-    String nextPage = null;
+    Boolean hasFinancials = "~null";
+    String governmentName = "\"~null\"";
+    String governmentType = "\"~null\"";
+    String areaName = "\"~null\"";
+    String areaType = "\"~null\"";
+    String city = "\"~null\"";
+    String state = "\"~null\"";
+    BigDecimal zipcode = new BigDecimal();
+    BigDecimal populationGreaterThan = new BigDecimal();
+    BigDecimal populationLessThan = new BigDecimal();
+    BigDecimal enrollmentGreaterThan = new BigDecimal();
+    BigDecimal enrollmentLessThan = new BigDecimal();
+    String nextPage = "\"~null\"";
     ApiResponseMunicipalities result = municipalityApi.getAllMunicipalities(hasFinancials, governmentName, governmentType, areaName, areaType, city, state, zipcode, populationGreaterThan, populationLessThan, enrollmentGreaterThan, enrollmentLessThan, nextPage);
     System.out.println(result);
   }
@@ -174,7 +174,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     MunicipalityApi municipalityApi = new MunicipalityApi();
-    String id = "mun_Xn7x4z";
+    String id = "\"mun_Xn7x4z\"";
     Municipality result = municipalityApi.getMunicipalityById(id);
     System.out.println(result);
   }
@@ -258,8 +258,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     MunicipalityApi municipalityApi = new MunicipalityApi();
-    String id = "mun_Xn7x4z";
-    BigDecimal fiscalYear = null;
+    String id = "\"mun_Xn7x4z\"";
+    BigDecimal fiscalYear = new BigDecimal();
     ApiResponseMunicipalitiyFinancials result = municipalityApi.getMunicipalityFinancials(id, fiscalYear);
     System.out.println(result);
   }

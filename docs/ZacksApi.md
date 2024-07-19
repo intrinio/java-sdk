@@ -78,25 +78,25 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String identifier = "AAPL";
-    LocalDate startDate = null;
-    LocalDate endDate = null;
-    BigDecimal meanGreater = null;
-    BigDecimal meanLess = null;
-    Integer strongBuysGreater = null;
-    Integer strongBuysLess = null;
-    Integer buysGreater = null;
-    Integer buysLess = null;
-    Integer holdsGreater = null;
-    Integer holdsLess = null;
-    Integer sellsGreater = null;
-    Integer sellsLess = null;
-    Integer strongSellsGreater = null;
-    Integer strongSellsLess = null;
-    Integer totalGreater = null;
-    Integer totalLess = null;
+    String identifier = "\"AAPL\"";
+    LocalDate startDate = LocalDate.of(~null);
+    LocalDate endDate = LocalDate.of(~null);
+    BigDecimal meanGreater = new BigDecimal();
+    BigDecimal meanLess = new BigDecimal();
+    Integer strongBuysGreater = "~null";
+    Integer strongBuysLess = "~null";
+    Integer buysGreater = "~null";
+    Integer buysLess = "~null";
+    Integer holdsGreater = "~null";
+    Integer holdsLess = "~null";
+    Integer sellsGreater = "~null";
+    Integer sellsLess = "~null";
+    Integer strongSellsGreater = "~null";
+    Integer strongSellsLess = "~null";
+    Integer totalGreater = "~null";
+    Integer totalLess = "~null";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksAnalystRatings result = zacksApi.getZacksAnalystRatings(identifier, startDate, endDate, meanGreater, meanLess, strongBuysGreater, strongBuysLess, buysGreater, buysLess, holdsGreater, holdsLess, sellsGreater, sellsLess, strongSellsGreater, strongSellsLess, totalGreater, totalLess, pageSize, nextPage);
     System.out.println(result);
   }
@@ -198,9 +198,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String identifier = "AAPL";
-    String type = null;
-    String nextPage = null;
+    String identifier = "\"AAPL\"";
+    String type = "\"~null\"";
+    String nextPage = "\"~null\"";
     ApiResponseZacksEBITDAConsensus result = zacksApi.getZacksEbitdaConsensus(identifier, type, nextPage);
     System.out.println(result);
   }
@@ -286,15 +286,15 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String identifier = "AAPL";
-    LocalDate startDate = null;
-    LocalDate endDate = null;
-    Integer fiscalYear = null;
-    String fiscalPeriod = null;
-    Integer calendarYear = null;
-    String calendarPeriod = null;
+    String identifier = "\"AAPL\"";
+    LocalDate startDate = LocalDate.of(~null);
+    LocalDate endDate = LocalDate.of(~null);
+    Integer fiscalYear = "~null";
+    String fiscalPeriod = "\"~null\"";
+    Integer calendarYear = "~null";
+    String calendarPeriod = "\"~null\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksEPSEstimates result = zacksApi.getZacksEpsEstimates(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, pageSize, nextPage);
     System.out.println(result);
   }
@@ -386,11 +386,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String company = "AAPL";
-    String industryGroupName = null;
-    String industryGroupNumber = null;
+    String company = "\"AAPL\"";
+    String industryGroupName = "\"~null\"";
+    String industryGroupNumber = "\"~null\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksEPSGrowthRates result = zacksApi.getZacksEpsGrowthRates(company, industryGroupName, industryGroupNumber, pageSize, nextPage);
     System.out.println(result);
   }
@@ -478,22 +478,22 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    LocalDate startDate = null;
-    LocalDate endDate = null;
-    BigDecimal epsActualGreater = null;
-    BigDecimal epsActualLess = null;
-    BigDecimal epsMeanEstimateGreater = null;
-    BigDecimal epsMeanEstimateLess = null;
-    BigDecimal epsAmountDiffGreater = null;
-    BigDecimal epsAmountDiffLess = null;
-    BigDecimal epsPercentDiffGreater = null;
-    BigDecimal epsPercentDiffLess = null;
-    BigDecimal epsCountEstimateGreater = null;
-    BigDecimal epsCountEstimateLess = null;
-    BigDecimal epsStdDevEstimateGreater = null;
-    BigDecimal epsStdDevEstimateLess = null;
+    LocalDate startDate = LocalDate.of(~null);
+    LocalDate endDate = LocalDate.of(~null);
+    BigDecimal epsActualGreater = new BigDecimal();
+    BigDecimal epsActualLess = new BigDecimal();
+    BigDecimal epsMeanEstimateGreater = new BigDecimal();
+    BigDecimal epsMeanEstimateLess = new BigDecimal();
+    BigDecimal epsAmountDiffGreater = new BigDecimal();
+    BigDecimal epsAmountDiffLess = new BigDecimal();
+    BigDecimal epsPercentDiffGreater = new BigDecimal();
+    BigDecimal epsPercentDiffLess = new BigDecimal();
+    BigDecimal epsCountEstimateGreater = new BigDecimal();
+    BigDecimal epsCountEstimateLess = new BigDecimal();
+    BigDecimal epsStdDevEstimateGreater = new BigDecimal();
+    BigDecimal epsStdDevEstimateLess = new BigDecimal();
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksEPSSurprises result = zacksApi.getZacksEpsSurprises(startDate, endDate, epsActualGreater, epsActualLess, epsMeanEstimateGreater, epsMeanEstimateLess, epsAmountDiffGreater, epsAmountDiffLess, epsPercentDiffGreater, epsPercentDiffLess, epsCountEstimateGreater, epsCountEstimateLess, epsStdDevEstimateGreater, epsStdDevEstimateLess, pageSize, nextPage);
     System.out.println(result);
   }
@@ -592,12 +592,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String etfTicker = "SPY";
-    String holdingSymbol = "AAPL";
-    BigDecimal weightGreater = null;
-    BigDecimal weightLess = null;
+    String etfTicker = "\"SPY\"";
+    String holdingSymbol = "\"AAPL\"";
+    BigDecimal weightGreater = new BigDecimal();
+    BigDecimal weightLess = new BigDecimal();
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksETFHoldings result = zacksApi.getZacksEtfHoldings(etfTicker, holdingSymbol, weightGreater, weightLess, pageSize, nextPage);
     System.out.println(result);
   }
@@ -686,7 +686,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksForwardPEs result = zacksApi.getZacksForwardPe(nextPage);
     System.out.println(result);
   }
@@ -770,7 +770,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String identifier = "MSFT";
+    String identifier = "\"MSFT\"";
     ZacksForwardPE result = zacksApi.getZacksForwardPeByIdentifier(identifier);
     System.out.println(result);
   }
@@ -854,9 +854,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String ticker = null;
+    String ticker = "\"~null\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksInstitutionalHoldingCompanies result = zacksApi.getZacksInstitutionalHoldingCompanies(ticker, pageSize, nextPage);
     System.out.println(result);
   }
@@ -942,9 +942,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String cik = null;
+    String cik = "\"~null\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksInstitutionalHoldingOwners result = zacksApi.getZacksInstitutionalHoldingOwners(cik, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1030,10 +1030,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String ticker = null;
-    String ownerCik = null;
+    String ticker = "\"~null\"";
+    String ownerCik = "\"~null\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksInstitutionalHoldings result = zacksApi.getZacksInstitutionalHoldings(ticker, ownerCik, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1120,9 +1120,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String identifier = "AAPL";
+    String identifier = "\"AAPL\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksLongTermGrowthRates result = zacksApi.getZacksLongTermGrowthRates(identifier, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1208,16 +1208,16 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String identifier = "AAPL";
-    LocalDate startDate = null;
-    LocalDate endDate = null;
-    Integer fiscalYear = null;
-    String fiscalPeriod = null;
-    Integer calendarYear = null;
-    String calendarPeriod = null;
-    String nextPage = null;
+    String identifier = "\"AAPL\"";
+    LocalDate startDate = LocalDate.of(~null);
+    LocalDate endDate = LocalDate.of(~null);
+    Integer fiscalYear = "~null";
+    String fiscalPeriod = "\"~null\"";
+    Integer calendarYear = "~null";
+    String calendarPeriod = "\"~null\"";
+    String nextPage = "\"~null\"";
     Integer pageSize = 100;
-    String nextPage2 = null;
+    String nextPage2 = "\"~null\"";
     ApiResponseZacksSalesEstimates result = zacksApi.getZacksSalesEstimates(identifier, startDate, endDate, fiscalYear, fiscalPeriod, calendarYear, calendarPeriod, nextPage, pageSize, nextPage2);
     System.out.println(result);
   }
@@ -1310,22 +1310,22 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    LocalDate startDate = null;
-    LocalDate endDate = null;
-    BigDecimal salesActualGreater = null;
-    BigDecimal salesActualLess = null;
-    BigDecimal salesMeanEstimateGreater = null;
-    BigDecimal salesMeanEstimateLess = null;
-    BigDecimal salesAmountDiffGreater = null;
-    BigDecimal salesAmountDiffLess = null;
-    BigDecimal salesPercentDiffGreater = null;
-    BigDecimal salesPercentDiffLess = null;
-    BigDecimal salesCountEstimateGreater = null;
-    BigDecimal salesCountEstimateLess = null;
-    BigDecimal salesStdDevEstimateGreater = null;
-    BigDecimal salesStdDevEstimateLess = null;
+    LocalDate startDate = LocalDate.of(~null);
+    LocalDate endDate = LocalDate.of(~null);
+    BigDecimal salesActualGreater = new BigDecimal();
+    BigDecimal salesActualLess = new BigDecimal();
+    BigDecimal salesMeanEstimateGreater = new BigDecimal();
+    BigDecimal salesMeanEstimateLess = new BigDecimal();
+    BigDecimal salesAmountDiffGreater = new BigDecimal();
+    BigDecimal salesAmountDiffLess = new BigDecimal();
+    BigDecimal salesPercentDiffGreater = new BigDecimal();
+    BigDecimal salesPercentDiffLess = new BigDecimal();
+    BigDecimal salesCountEstimateGreater = new BigDecimal();
+    BigDecimal salesCountEstimateLess = new BigDecimal();
+    BigDecimal salesStdDevEstimateGreater = new BigDecimal();
+    BigDecimal salesStdDevEstimateLess = new BigDecimal();
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksSalesSurprises result = zacksApi.getZacksSalesSurprises(startDate, endDate, salesActualGreater, salesActualLess, salesMeanEstimateGreater, salesMeanEstimateLess, salesAmountDiffGreater, salesAmountDiffLess, salesPercentDiffGreater, salesPercentDiffLess, salesCountEstimateGreater, salesCountEstimateLess, salesStdDevEstimateGreater, salesStdDevEstimateLess, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1424,10 +1424,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String identifier = "AAPL";
-    String industryGroupNumber = null;
+    String identifier = "\"AAPL\"";
+    String industryGroupNumber = "\"~null\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseZacksTargetPriceConsensuses result = zacksApi.getZacksTargetPriceConsensuses(identifier, industryGroupNumber, pageSize, nextPage);
     System.out.println(result);
   }

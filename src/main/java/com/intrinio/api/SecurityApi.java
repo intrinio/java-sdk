@@ -7320,7 +7320,7 @@ public class SecurityApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityRealtimePriceCall(String identifier, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityRealtimePriceCall(String identifier, List<String> source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -7330,7 +7330,7 @@ public class SecurityApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (source != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "source", source));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -7365,7 +7365,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityRealtimePriceValidateBeforeCall(String identifier, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityRealtimePriceValidateBeforeCall(String identifier, List<String> source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -7387,8 +7387,8 @@ public class SecurityApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public RealtimeStockPrice getSecurityRealtimePrice(String identifier, String source) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecurityRealtimePriceWithHttpInfo", String.class, String.class);
+    public RealtimeStockPrice getSecurityRealtimePrice(String identifier, List<String> source) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityRealtimePriceWithHttpInfo", String.class, List&lt;String&gt;.class);
       
       Object[] apiCallArguments = { identifier, source };
       ApiResponse<RealtimeStockPrice> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
@@ -7403,7 +7403,7 @@ public class SecurityApi {
      * @return ApiResponse&lt;RealtimeStockPrice&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<RealtimeStockPrice> getSecurityRealtimePriceWithHttpInfo(String identifier, String source) throws ApiException {
+    public ApiResponse<RealtimeStockPrice> getSecurityRealtimePriceWithHttpInfo(String identifier, List<String> source) throws ApiException {
         com.squareup.okhttp.Call call = getSecurityRealtimePriceValidateBeforeCall(identifier, source, null, null);
         Type localVarReturnType = new TypeToken<RealtimeStockPrice>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -7418,7 +7418,7 @@ public class SecurityApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityRealtimePriceAsync(String identifier, String source, final ApiCallback<RealtimeStockPrice> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityRealtimePriceAsync(String identifier, List<String> source, final ApiCallback<RealtimeStockPrice> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8199,7 +8199,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityTradesBySymbol
      * @param identifier The ticker symbol for which trades are being requested. (required)
-     * @param source The specific source of the data being requested.  Specifying delayed sip will result in the system automatically determining which delayed sip source (cta_delayed, cta_b_delayed, utp_delayed) to use. (required)
+     * @param source The specific source of the data being requested.  Specifying delayed sip will result in the system automatically determining which delayed sip source (cta_delayed, cta_b_delayed, utp_delayed, otc_delayed) to use. (required)
      * @param startDate The start date for the data being requested. (optional)
      * @param startTime The start time for the data being requested. (optional)
      * @param endDate The end date for the data being requested. (optional)
@@ -8299,7 +8299,7 @@ public class SecurityApi {
      * Security Trades By Symbol
      * Returns all trades for a symbol between start time and end time, up to seven days ago for the specified source.
      * @param identifier The ticker symbol for which trades are being requested. (required)
-     * @param source The specific source of the data being requested.  Specifying delayed sip will result in the system automatically determining which delayed sip source (cta_delayed, cta_b_delayed, utp_delayed) to use. (required)
+     * @param source The specific source of the data being requested.  Specifying delayed sip will result in the system automatically determining which delayed sip source (cta_delayed, cta_b_delayed, utp_delayed, otc_delayed) to use. (required)
      * @param startDate The start date for the data being requested. (optional)
      * @param startTime The start time for the data being requested. (optional)
      * @param endDate The end date for the data being requested. (optional)
@@ -8325,7 +8325,7 @@ public class SecurityApi {
      * Security Trades By Symbol
      * Returns all trades for a symbol between start time and end time, up to seven days ago for the specified source.
      * @param identifier The ticker symbol for which trades are being requested. (required)
-     * @param source The specific source of the data being requested.  Specifying delayed sip will result in the system automatically determining which delayed sip source (cta_delayed, cta_b_delayed, utp_delayed) to use. (required)
+     * @param source The specific source of the data being requested.  Specifying delayed sip will result in the system automatically determining which delayed sip source (cta_delayed, cta_b_delayed, utp_delayed, otc_delayed) to use. (required)
      * @param startDate The start date for the data being requested. (optional)
      * @param startTime The start time for the data being requested. (optional)
      * @param endDate The end date for the data being requested. (optional)
@@ -8348,7 +8348,7 @@ public class SecurityApi {
      * Security Trades By Symbol (asynchronously)
      * Returns all trades for a symbol between start time and end time, up to seven days ago for the specified source.
      * @param identifier The ticker symbol for which trades are being requested. (required)
-     * @param source The specific source of the data being requested.  Specifying delayed sip will result in the system automatically determining which delayed sip source (cta_delayed, cta_b_delayed, utp_delayed) to use. (required)
+     * @param source The specific source of the data being requested.  Specifying delayed sip will result in the system automatically determining which delayed sip source (cta_delayed, cta_b_delayed, utp_delayed, otc_delayed) to use. (required)
      * @param startDate The start date for the data being requested. (optional)
      * @param startTime The start time for the data being requested. (optional)
      * @param endDate The end date for the data being requested. (optional)

@@ -64,15 +64,15 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     HistoricalDataApi historicalDataApi = new HistoricalDataApi();
-    String identifier = "AAPL";
-    String tag = "marketcap";
+    String identifier = "\"AAPL\"";
+    String tag = "\"marketcap\"";
     String frequency = "daily";
-    String type = null;
-    LocalDate startDate = LocalDate.of(2015,1,01);
-    LocalDate endDate = null;
+    String type = "\"~null\"";
+    LocalDate startDate = LocalDate.of(2015-01-01);
+    LocalDate endDate = LocalDate.of(~null);
     String sortOrder = "desc";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseHistoricalData result = historicalDataApi.getHistoricalData(identifier, tag, frequency, type, startDate, endDate, sortOrder, pageSize, nextPage);
     System.out.println(result);
   }

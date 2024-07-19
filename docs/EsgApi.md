@@ -67,11 +67,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     EsgApi esgApi = new EsgApi();
-    String country = "Canada";
-    String industry = "Retail";
-    String ticker = "SHOP";
+    String country = "\"Canada\"";
+    String industry = "\"Retail\"";
+    String ticker = "\"SHOP\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseESGCompanies result = esgApi.getEsgCompanies(country, industry, ticker, pageSize, nextPage);
     System.out.println(result);
   }
@@ -158,9 +158,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     EsgApi esgApi = new EsgApi();
-    String identifier = "AAPL";
+    String identifier = "\"AAPL\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseESGCompanyComprehensiveRatingHistory result = esgApi.getEsgCompanyComprehensiveRatings(identifier, pageSize, nextPage);
     System.out.println(result);
   }
@@ -245,9 +245,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     EsgApi esgApi = new EsgApi();
-    String identifier = "AAPL";
+    String identifier = "\"AAPL\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseESGCompanyRatingHistory result = esgApi.getEsgCompanyRatings(identifier, pageSize, nextPage);
     System.out.println(result);
   }
@@ -332,9 +332,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     EsgApi esgApi = new EsgApi();
-    String country = "USA";
+    String country = "\"USA\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseESGLatest result = esgApi.getEsgLatest(country, pageSize, nextPage);
     System.out.println(result);
   }
@@ -419,9 +419,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     EsgApi esgApi = new EsgApi();
-    String country = "USA";
+    String country = "\"USA\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseESGLatestComprehensive result = esgApi.getEsgLatestComprehensive(country, pageSize, nextPage);
     System.out.println(result);
   }

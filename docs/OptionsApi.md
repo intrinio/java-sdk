@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**getOptionsPricesBatchRealtime**](OptionsApi.md#getOptionsPricesBatchRealtime) | **POST** /options/prices/realtime/batch | Option Prices Batch Realtime
 [**getOptionsPricesEod**](OptionsApi.md#getOptionsPricesEod) | **GET** /options/prices/{identifier}/eod | Option Prices EOD
 [**getOptionsPricesRealtime**](OptionsApi.md#getOptionsPricesRealtime) | **GET** /options/prices/{identifier}/realtime | Option Prices Realtime
+[**getOptionsPricesRealtimeByTicker**](OptionsApi.md#getOptionsPricesRealtimeByTicker) | **GET** /options/prices/by_ticker/{symbol}/realtime | Option Prices Realtime By Ticker
 [**getOptionsSnapshots**](OptionsApi.md#getOptionsSnapshots) | **GET** /options/snapshots | Option Prices Realtime Snapshot
 [**getOptionsStatsRealtime**](OptionsApi.md#getOptionsStatsRealtime) | **GET** /options/prices/{identifier}/realtime/stats | Option Stats Realtime
 [**getUnusualActivity**](OptionsApi.md#getUnusualActivity) | **GET** /options/unusual_activity/{symbol} | Options Unusual Activity
@@ -252,10 +253,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "MSFT";
-    String after = "2022-01-01";
-    String before = "2023-04-01";
-    String source = null;
+    String symbol = "\"MSFT\"";
+    String after = "\"2022-01-01\"";
+    String before = "\"2023-04-01\"";
+    String source = "\"~null\"";
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsExpirations result = optionsApi.getOptionExpirationsRealtime(symbol, after, before, source, includeRelatedSymbols);
     System.out.println(result);
@@ -344,12 +345,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "MSFT";
-    BigDecimal strike = null;
-    String source = null;
-    String stockPriceSource = null;
-    String model = null;
-    Boolean showExtendedPrice = null;
+    String symbol = "\"MSFT\"";
+    BigDecimal strike = new BigDecimal();
+    String source = "\"~null\"";
+    String stockPriceSource = "\"~null\"";
+    String model = "\"~null\"";
+    Boolean showExtendedPrice = "~null";
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsChainRealtime result = optionsApi.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
     System.out.println(result);
@@ -369,7 +370,7 @@ Name | Type | Description  | Notes
  **symbol** | String| The option symbol, corresponding to the underlying security. | &nbsp;
  **strike** | BigDecimal| The strike price of the option contract. This will return options contracts with strike price equal to this price. | &nbsp;
  **source** | String| Realtime or delayed. | [optional] [enum: realtime, delayed] &nbsp;
- **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
+ **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
  **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
@@ -440,16 +441,16 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "AAPL";
-    String type = "put";
-    BigDecimal strike = null;
-    BigDecimal strikeGreaterThan = null;
-    BigDecimal strikeLessThan = null;
-    String expiration = "2019-03-01";
-    String expirationAfter = "2019-01-01";
-    String expirationBefore = "2019-12-31";
+    String symbol = "\"AAPL\"";
+    String type = "\"put\"";
+    BigDecimal strike = new BigDecimal();
+    BigDecimal strikeGreaterThan = new BigDecimal();
+    BigDecimal strikeLessThan = new BigDecimal();
+    String expiration = "\"2019-03-01\"";
+    String expirationAfter = "\"2019-01-01\"";
+    String expirationBefore = "\"2019-12-31\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseOptions result = optionsApi.getOptions(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, pageSize, nextPage);
     System.out.println(result);
   }
@@ -542,15 +543,15 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "AAPL";
-    String type = "put";
-    BigDecimal strike = null;
-    BigDecimal strikeGreaterThan = null;
-    BigDecimal strikeLessThan = null;
-    String expiration = "2022-04-16";
-    String expirationAfter = "2022-01-01";
-    String expirationBefore = "2023-12-31";
-    String source = null;
+    String symbol = "\"AAPL\"";
+    String type = "\"put\"";
+    BigDecimal strike = new BigDecimal();
+    BigDecimal strikeGreaterThan = new BigDecimal();
+    BigDecimal strikeLessThan = new BigDecimal();
+    String expiration = "\"2022-04-16\"";
+    String expirationAfter = "\"2022-01-01\"";
+    String expirationBefore = "\"2023-12-31\"";
+    String source = "\"~null\"";
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsRealtime result = optionsApi.getOptionsBySymbolRealtime(symbol, type, strike, strikeGreaterThan, strikeLessThan, expiration, expirationAfter, expirationBefore, source, includeRelatedSymbols);
     System.out.println(result);
@@ -644,14 +645,14 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "MSFT";
-    String expiration = "2019-04-05";
-    LocalDate date = null;
-    String type = null;
-    BigDecimal strike = null;
-    BigDecimal strikeGreaterThan = null;
-    BigDecimal strikeLessThan = null;
-    String moneyness = null;
+    String symbol = "\"MSFT\"";
+    String expiration = "\"2019-04-05\"";
+    LocalDate date = LocalDate.of(~null);
+    String type = "\"~null\"";
+    BigDecimal strike = new BigDecimal();
+    BigDecimal strikeGreaterThan = new BigDecimal();
+    BigDecimal strikeLessThan = new BigDecimal();
+    String moneyness = "\"~null\"";
     Integer pageSize = 100;
     ApiResponseOptionsChain result = optionsApi.getOptionsChain(symbol, expiration, date, type, strike, strikeGreaterThan, strikeLessThan, moneyness, pageSize);
     System.out.println(result);
@@ -744,13 +745,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "AAPL";
-    String expiration = "2023-01-20";
-    String type = null;
-    BigDecimal strike = null;
-    BigDecimal strikeGreaterThan = null;
-    BigDecimal strikeLessThan = null;
-    LocalDate date = null;
+    String symbol = "\"AAPL\"";
+    String expiration = "\"2023-01-20\"";
+    String type = "\"~null\"";
+    BigDecimal strike = new BigDecimal();
+    BigDecimal strikeGreaterThan = new BigDecimal();
+    BigDecimal strikeLessThan = new BigDecimal();
+    LocalDate date = LocalDate.of(~null);
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsChainEod result = optionsApi.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols);
     System.out.println(result);
@@ -842,21 +843,21 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "MSFT";
-    String expiration = "2023-01-20";
-    String source = null;
-    String type = null;
-    BigDecimal strike = null;
-    BigDecimal strikeGreaterThan = null;
-    BigDecimal strikeLessThan = null;
-    BigDecimal volumeGreaterThan = null;
-    BigDecimal volumeLessThan = null;
-    BigDecimal openInterestGreaterThan = null;
-    BigDecimal openInterestLessThan = null;
-    String moneyness = null;
-    String stockPriceSource = null;
-    String model = null;
-    Boolean showExtendedPrice = null;
+    String symbol = "\"MSFT\"";
+    String expiration = "\"2023-01-20\"";
+    String source = "\"~null\"";
+    String type = "\"~null\"";
+    BigDecimal strike = new BigDecimal();
+    BigDecimal strikeGreaterThan = new BigDecimal();
+    BigDecimal strikeLessThan = new BigDecimal();
+    BigDecimal volumeGreaterThan = new BigDecimal();
+    BigDecimal volumeLessThan = new BigDecimal();
+    BigDecimal openInterestGreaterThan = new BigDecimal();
+    BigDecimal openInterestLessThan = new BigDecimal();
+    String moneyness = "\"~null\"";
+    String stockPriceSource = "\"~null\"";
+    String model = "\"~null\"";
+    Boolean showExtendedPrice = "~null";
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsChainRealtime result = optionsApi.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
     System.out.println(result);
@@ -885,7 +886,7 @@ Name | Type | Description  | Notes
  **openInterestGreaterThan** | BigDecimal| The open interest of the option contract. This will return options contracts with open interest greater than this amount. | [optional] &nbsp;
  **openInterestLessThan** | BigDecimal| The open interest of the option contract. This will return options contracts with open interest less than this amount. | [optional] &nbsp;
  **moneyness** | String| The moneyness of the options contracts to return. &#39;all&#39; will return all options contracts. &#39;in_the_money&#39; will return options contracts that are in the money (call options with strike prices below the current price, put options with strike prices above the current price). &#39;out_of_they_money&#39; will return options contracts that are out of the money (call options with strike prices above the current price, put options with strike prices below the current price). &#39;near_the_money&#39; will return options contracts that are $0.50 or less away from being in the money.  Requires subscription to realtime stock price data. | [optional] [enum: all, in_the_money, out_of_the_money, near_the_money] &nbsp;
- **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
+ **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
  **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
@@ -956,9 +957,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "MSFT";
-    String after = "2019-01-01";
-    String before = "2019-12-31";
+    String symbol = "\"MSFT\"";
+    String after = "\"2019-01-01\"";
+    String before = "\"2019-12-31\"";
     ApiResponseOptionsExpirations result = optionsApi.getOptionsExpirations(symbol, after, before);
     System.out.println(result);
   }
@@ -1044,9 +1045,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "MSFT";
-    String after = "2019-01-01";
-    String before = "2019-12-31";
+    String symbol = "\"MSFT\"";
+    String after = "\"2019-01-01\"";
+    String before = "\"2019-12-31\"";
     Boolean includeRelatedSymbols = false;
     ApiResponseOptionsExpirations result = optionsApi.getOptionsExpirationsEod(symbol, after, before, includeRelatedSymbols);
     System.out.println(result);
@@ -1134,9 +1135,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String identifier = "SPY___230103P00380000";
-    String intervalSize = "5m";
-    String source = null;
+    String identifier = "\"SPY___230103P00380000\"";
+    String intervalSize = "\"5m\"";
+    String source = "\"~null\"";
     Integer pageSize = 100;
     OffsetDateTime endTime = OffsetDateTime.now();
     OptionIntervalsResult result = optionsApi.getOptionsIntervalByContract(identifier, intervalSize, source, pageSize, endTime);
@@ -1226,7 +1227,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = null;
+    String source = "\"~null\"";
     OffsetDateTime openTime = OffsetDateTime.now();
     OptionIntervalsMoversResult result = optionsApi.getOptionsIntervalMovers(source, openTime);
     System.out.println(result);
@@ -1312,7 +1313,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = null;
+    String source = "\"~null\"";
     OffsetDateTime openTime = OffsetDateTime.now();
     OptionIntervalsMoversResult result = optionsApi.getOptionsIntervalMoversChange(source, openTime);
     System.out.println(result);
@@ -1398,7 +1399,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = null;
+    String source = "\"~null\"";
     OffsetDateTime openTime = OffsetDateTime.now();
     OptionIntervalsMoversResult result = optionsApi.getOptionsIntervalMoversVolume(source, openTime);
     System.out.println(result);
@@ -1484,11 +1485,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String identifier = "MSFT190405C00118000";
-    String startDate = "2019-01-01";
-    String endDate = "2019-12-31";
+    String identifier = "\"MSFT190405C00118000\"";
+    String startDate = "\"2019-01-01\"";
+    String endDate = "\"2019-12-31\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseOptionPrices result = optionsApi.getOptionsPrices(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
@@ -1576,11 +1577,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = null;
-    Boolean showStats = null;
-    String stockPriceSource = null;
-    String model = null;
-    Boolean showExtendedPrice = null;
+    String source = "\"~null\"";
+    Boolean showStats = "~null";
+    String stockPriceSource = "\"~null\"";
+    String model = "\"~null\"";
+    Boolean showExtendedPrice = "~null";
     OptionContractsList body = new OptionContractsList();
     List<String> contracts = new ArrayList<>();
 
@@ -1606,7 +1607,7 @@ Name | Type | Description  | Notes
  **body** | [**OptionContractsList**](OptionContractsList.md)| The contract symbols for which to return options prices for. | &nbsp;
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
  **showStats** | Boolean| Whether to include Greek calculations or not. | [optional] &nbsp;
- **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
+ **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
 <br/>
@@ -1676,10 +1677,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String identifier = "AAPL230616P00190000";
-    String nextPage = null;
-    LocalDate startDate = null;
-    LocalDate endDate = null;
+    String identifier = "\"AAPL230616P00190000\"";
+    String nextPage = "\"~null\"";
+    LocalDate startDate = LocalDate.of(~null);
+    LocalDate endDate = LocalDate.of(~null);
     ApiResponseOptionsPricesEod result = optionsApi.getOptionsPricesEod(identifier, nextPage, startDate, endDate);
     System.out.println(result);
   }
@@ -1766,11 +1767,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String identifier = "AAPL230120C00090000";
-    String source = null;
-    String stockPriceSource = null;
-    String model = null;
-    Boolean showExtendedPrice = null;
+    String identifier = "\"AAPL230120C00090000\"";
+    String source = "\"~null\"";
+    String stockPriceSource = "\"~null\"";
+    String model = "\"~null\"";
+    Boolean showExtendedPrice = "~null";
     ApiResponseOptionsPriceRealtime result = optionsApi.getOptionsPricesRealtime(identifier, source, stockPriceSource, model, showExtendedPrice);
     System.out.println(result);
   }
@@ -1788,7 +1789,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| The Intrinio ID or code of the options contract to request prices for. | &nbsp;
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
- **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
+ **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
 <br/>
@@ -1798,6 +1799,104 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseOptionsPriceRealtime**](ApiResponseOptionsPriceRealtime.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionsPricesRealtimeByTicker)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsPricesByTickerRealtime)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsPricesByTickerRealtime.md)
+
+[//]: # (OPERATION:getOptionsPricesRealtimeByTicker_v2)
+
+[//]: # (ENDPOINT:/options/prices/by_ticker/{symbol}/realtime)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionsPricesRealtimeByTicker)
+
+<a name="getOptionsPricesRealtimeByTicker"></a>
+## **getOptionsPricesRealtimeByTicker**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionsPricesRealtimeByTicker_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsPricesByTickerRealtime getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice)
+
+#### Option Prices Realtime By Ticker
+
+
+Returns a list of the latest National Best Bid &amp; Offer (NBBO) top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the ticker.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String symbol = "\"MSFT\"";
+    String source = "\"~null\"";
+    String ivMode = "\"~null\"";
+    String nextPage = "\"~null\"";
+    Integer pageSize = 250;
+    String stockPriceSource = "\"~null\"";
+    String model = "\"~null\"";
+    Boolean showExtendedPrice = "~null";
+    ApiResponseOptionsPricesByTickerRealtime result = optionsApi.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | String| The equities ticker symbol, corresponding to the underlying security. | &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+ **ivMode** | String| Change the mode for the implied volatility calculation to out of the money. | [optional] [enum: out_of_the_money] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 250] &nbsp;
+ **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
+ **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
+ **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsPricesByTickerRealtime**](ApiResponseOptionsPricesByTickerRealtime.md)
 
 [//]: # (END_OPERATION)
 
@@ -1858,7 +1957,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = null;
+    String source = "\"~null\"";
     OffsetDateTime atDatetime = OffsetDateTime.now();
     OptionSnapshotsResult result = optionsApi.getOptionsSnapshots(source, atDatetime);
     System.out.println(result);
@@ -1944,9 +2043,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String identifier = "AAPL230120C00090000";
-    String source = null;
-    Boolean showExtendedPrice = null;
+    String identifier = "\"AAPL230120C00090000\"";
+    String source = "\"~null\"";
+    Boolean showExtendedPrice = "~null";
     ApiResponseOptionsStatsRealtime result = optionsApi.getOptionsStatsRealtime(identifier, source, showExtendedPrice);
     System.out.println(result);
   }
@@ -2032,8 +2131,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "AAPL";
-    String source = null;
+    String symbol = "\"AAPL\"";
+    String source = "\"~null\"";
     ApiResponseOptionsUnusualActivity result = optionsApi.getUnusualActivity(symbol, source);
     System.out.println(result);
   }
@@ -2118,13 +2217,13 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String symbol = "AAPL";
-    String nextPage = null;
+    String symbol = "\"AAPL\"";
+    String nextPage = "\"~null\"";
     Integer pageSize = 1000;
-    String activityType = null;
-    String sentiment = null;
-    LocalDate startDate = LocalDate.of(2022,2,01);
-    LocalDate endDate = LocalDate.of(2022,2,03);
+    String activityType = "\"~null\"";
+    String sentiment = "\"~null\"";
+    LocalDate startDate = LocalDate.of(2022-02-01);
+    LocalDate endDate = LocalDate.of(2022-02-03);
     Object minimumTotalValue = 100000.0;
     Object maximumTotalValue = 200000.0;
     ApiResponseOptionsUnusualActivity result = optionsApi.getUnusualActivityIntraday(symbol, nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue);
@@ -2218,7 +2317,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String source = null;
+    String source = "\"~null\"";
     ApiResponseOptionsUnusualActivity result = optionsApi.getUnusualActivityUniversal(source);
     System.out.println(result);
   }
@@ -2302,12 +2401,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     Integer pageSize = 1000;
-    String activityType = null;
-    String sentiment = null;
-    LocalDate startDate = LocalDate.of(2022,2,01);
-    LocalDate endDate = LocalDate.of(2022,2,03);
+    String activityType = "\"~null\"";
+    String sentiment = "\"~null\"";
+    LocalDate startDate = LocalDate.of(2022-02-01);
+    LocalDate endDate = LocalDate.of(2022-02-03);
     Object minimumTotalValue = 100000.0;
     Object maximumTotalValue = 200000.0;
     ApiResponseOptionsUnusualActivity result = optionsApi.getUnusualActivityUniversalIntraday(nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue);

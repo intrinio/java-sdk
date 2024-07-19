@@ -69,9 +69,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String city = "New York";
-    String country = "UNITED STATES OF AMERICA";
-    String countryCode = "US";
+    String city = "\"New York\"";
+    String country = "\"UNITED STATES OF AMERICA\"";
+    String countryCode = "\"US\"";
     Integer pageSize = 100;
     ApiResponseStockExchanges result = stockExchangeApi.getAllStockExchanges(city, country, countryCode, pageSize);
     System.out.println(result);
@@ -159,7 +159,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "USCOMP";
+    String identifier = "\"USCOMP\"";
     StockExchange result = stockExchangeApi.getStockExchangeById(identifier);
     System.out.println(result);
   }
@@ -243,10 +243,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "USCOMP";
-    LocalDate date = LocalDate.of(2018,8,14);
+    String identifier = "\"USCOMP\"";
+    LocalDate date = LocalDate.of(2018-08-14);
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustments(identifier, date, pageSize, nextPage);
     System.out.println(result);
   }
@@ -333,10 +333,10 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "USCOMP";
-    LocalDate date = LocalDate.of(2018,8,14);
+    String identifier = "\"USCOMP\"";
+    LocalDate date = LocalDate.of(2018-08-14);
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, pageSize, nextPage);
     System.out.println(result);
   }
@@ -423,12 +423,12 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "USCOMP";
-    String source = null;
-    Boolean activeOnly = null;
+    String identifier = "\"USCOMP\"";
+    List<String> source = Arrays.asList("\"~null\"");
+    Boolean activeOnly = "~null";
     Integer pageSize = 100;
-    List<String> tickers = Arrays.asList(null);
-    String nextPage = null;
+    List<String> tickers = Arrays.asList("\"~null\"");
+    String nextPage = "\"~null\"";
     ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, tickers, nextPage);
     System.out.println(result);
   }
@@ -445,7 +445,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
- **source** | String| Return realtime prices from the specified data source. If no source is specified, all sources are used. | [optional] [enum: iex, bats, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip] &nbsp;
+ **source** | [**List&lt;String&gt;**](String.md)| Return realtime prices from the specified data source. If no source is specified, all sources are used. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, intrinio_mx, intrinio_mx_plus] &nbsp;
  **activeOnly** | Boolean| Returns prices only from the most recent trading day. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **tickers** | [**List&lt;String&gt;**](String.md)| The list of ticker symbols to filter to. | [optional] &nbsp;
@@ -517,9 +517,9 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "USCOMP";
+    String identifier = "\"USCOMP\"";
     Integer pageSize = 100;
-    String nextPage = null;
+    String nextPage = "\"~null\"";
     ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, pageSize, nextPage);
     System.out.println(result);
   }

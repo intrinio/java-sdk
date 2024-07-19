@@ -1052,7 +1052,7 @@ public class SecurityApiTest {
     @Test
     public void getSecurityRealtimePriceTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
-        String source = null;
+        List<String> source = null;
         RealtimeStockPrice response = api.getSecurityRealtimePrice(identifier, source);
 
         // TODO: test validations

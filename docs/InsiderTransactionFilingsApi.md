@@ -64,11 +64,11 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     InsiderTransactionFilingsApi insiderTransactionFilingsApi = new InsiderTransactionFilingsApi();
-    LocalDate startDate = LocalDate.of(2015,1,01);
-    LocalDate endDate = null;
+    LocalDate startDate = LocalDate.of(2015-01-01);
+    LocalDate endDate = LocalDate.of(~null);
     Integer pageSize = 100;
-    String sortBy = "updated_on";
-    String nextPage = null;
+    String sortBy = "\"updated_on\"";
+    String nextPage = "\"~null\"";
     ApiResponseOwnerInsiderTransactionFilings result = insiderTransactionFilingsApi.getAllInsiderTransactionFilings(startDate, endDate, pageSize, sortBy, nextPage);
     System.out.println(result);
   }

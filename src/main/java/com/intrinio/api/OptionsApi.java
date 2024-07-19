@@ -25,6 +25,7 @@ import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import com.intrinio.models.ApiResponseOptionsPriceRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
+import com.intrinio.models.ApiResponseOptionsPricesByTickerRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesEod;
 import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
@@ -2984,6 +2985,175 @@ public class OptionsApi {
 
         com.squareup.okhttp.Call call = getOptionsPricesRealtimeValidateBeforeCall(identifier, source, stockPriceSource, model, showExtendedPrice, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsPriceRealtime>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionsPricesRealtimeByTicker
+     * @param symbol The equities ticker symbol, corresponding to the underlying security. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param ivMode Change the mode for the implied volatility calculation to out of the money. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 250)
+     * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
+     * @param model Model for calculating Greek values. Default is black_scholes. (optional)
+     * @param showExtendedPrice Whether to include open close high low type fields. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsPricesRealtimeByTickerCall(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/prices/by_ticker/{symbol}/realtime"
+            .replaceAll("\\{" + "symbol" + "\\}", apiClient.escapeString(symbol.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (ivMode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("iv_mode", ivMode));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (stockPriceSource != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("stock_price_source", stockPriceSource));
+        if (model != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("model", model));
+        if (showExtendedPrice != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("show_extended_price", showExtendedPrice));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionsPricesRealtimeByTickerValidateBeforeCall(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling getOptionsPricesRealtimeByTicker(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionsPricesRealtimeByTickerCall(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Option Prices Realtime By Ticker
+     * Returns a list of the latest National Best Bid &amp; Offer (NBBO) top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the ticker.
+     * @param symbol The equities ticker symbol, corresponding to the underlying security. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param ivMode Change the mode for the implied volatility calculation to out of the money. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 250)
+     * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
+     * @param model Model for calculating Greek values. Default is black_scholes. (optional)
+     * @param showExtendedPrice Whether to include open close high low type fields. (optional)
+     * @return ApiResponseOptionsPricesByTickerRealtime
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsPricesByTickerRealtime getOptionsPricesRealtimeByTicker(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsPricesRealtimeByTickerWithHttpInfo", String.class, String.class, String.class, String.class, Integer.class, String.class, String.class, Boolean.class);
+      
+      Object[] apiCallArguments = { symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice };
+      ApiResponse<ApiResponseOptionsPricesByTickerRealtime> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Option Prices Realtime By Ticker
+     * Returns a list of the latest National Best Bid &amp; Offer (NBBO) top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the ticker.
+     * @param symbol The equities ticker symbol, corresponding to the underlying security. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param ivMode Change the mode for the implied volatility calculation to out of the money. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 250)
+     * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
+     * @param model Model for calculating Greek values. Default is black_scholes. (optional)
+     * @param showExtendedPrice Whether to include open close high low type fields. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsPricesByTickerRealtime&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsPricesByTickerRealtime> getOptionsPricesRealtimeByTickerWithHttpInfo(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsPricesRealtimeByTickerValidateBeforeCall(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesByTickerRealtime>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Option Prices Realtime By Ticker (asynchronously)
+     * Returns a list of the latest National Best Bid &amp; Offer (NBBO) top of the order book size and premium (bid / ask), the latest trade size and premium as well as the greeks and implied volatility for all option contracts currently associated with the ticker.
+     * @param symbol The equities ticker symbol, corresponding to the underlying security. (required)
+     * @param source Realtime or 15-minute delayed contracts. (optional)
+     * @param ivMode Change the mode for the implied volatility calculation to out of the money. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param pageSize The number of results to return (optional, default to 250)
+     * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
+     * @param model Model for calculating Greek values. Default is black_scholes. (optional)
+     * @param showExtendedPrice Whether to include open close high low type fields. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsPricesRealtimeByTickerAsync(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice, final ApiCallback<ApiResponseOptionsPricesByTickerRealtime> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionsPricesRealtimeByTickerValidateBeforeCall(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesByTickerRealtime>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

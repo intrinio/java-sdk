@@ -111,7 +111,7 @@ public class StockExchangeApiTest {
     @Test
     public void getStockExchangeRealtimePricesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
-        String source = null;
+        List<String> source = null;
         Boolean activeOnly = null;
         Integer pageSize = null;
         List<String> tickers = null;
