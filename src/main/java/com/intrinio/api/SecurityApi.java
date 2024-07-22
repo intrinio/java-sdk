@@ -688,7 +688,7 @@ public class SecurityApi {
      * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
-     * @return ApiResponse&lt;String&gt;
+     * @return ApiResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
     public ApiResponse<String> getSecurityDataPointTextWithHttpInfo(String identifier, String tag) throws ApiException {
@@ -7388,7 +7388,7 @@ public class SecurityApi {
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
     public RealtimeStockPrice getSecurityRealtimePrice(String identifier, List<String> source) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecurityRealtimePriceWithHttpInfo", String.class, List&lt;String&gt;.class);
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityRealtimePriceWithHttpInfo", String.class, List.class);
       
       Object[] apiCallArguments = { identifier, source };
       ApiResponse<RealtimeStockPrice> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
