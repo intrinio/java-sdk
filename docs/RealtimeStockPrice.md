@@ -16,8 +16,10 @@ Name | Type | Description
 **lastSize** | [**BigDecimal**](BigDecimal.md) | The size of the last trade. &nbsp;
 **bidPrice** | [**BigDecimal**](BigDecimal.md) | The price of the top bid order. &nbsp;
 **bidSize** | [**BigDecimal**](BigDecimal.md) | The size of the top bid order. &nbsp;
+**bidTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when the last bid occurred. &nbsp;
 **askPrice** | [**BigDecimal**](BigDecimal.md) | The price of the top ask order. &nbsp;
 **askSize** | [**BigDecimal**](BigDecimal.md) | The size of the top ask order. &nbsp;
+**askTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when the last ask occurred. &nbsp;
 **openPrice** | [**BigDecimal**](BigDecimal.md) | The price at the open of the trading day. &nbsp;
 **closePrice** | [**BigDecimal**](BigDecimal.md) | The price at the close of the trading day. (IEX only) &nbsp;
 **highPrice** | [**BigDecimal**](BigDecimal.md) | The high price for the trading day. &nbsp;
@@ -51,10 +53,16 @@ Name | Type | Description
 [//]: # (CONTAINED_CLASS:BigDecimal)
 
 
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
 [//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)

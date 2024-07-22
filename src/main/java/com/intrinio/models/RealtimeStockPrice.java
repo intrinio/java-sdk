@@ -36,11 +36,17 @@ public class RealtimeStockPrice {
   @SerializedName("bid_size")
   private BigDecimal bidSize = null;
 
+  @SerializedName("bid_time")
+  private OffsetDateTime bidTime = null;
+
   @SerializedName("ask_price")
   private BigDecimal askPrice = null;
 
   @SerializedName("ask_size")
   private BigDecimal askSize = null;
+
+  @SerializedName("ask_time")
+  private OffsetDateTime askTime = null;
 
   @SerializedName("open_price")
   private BigDecimal openPrice = null;
@@ -174,6 +180,24 @@ public class RealtimeStockPrice {
     this.bidSize = bidSize;
   }
 
+  public RealtimeStockPrice bidTime(OffsetDateTime bidTime) {
+    this.bidTime = bidTime;
+    return this;
+  }
+
+   /**
+   * The date and time when the last bid occurred.
+   * @return bidTime
+  **/
+  @ApiModelProperty(value = "The date and time when the last bid occurred.")
+  public OffsetDateTime getBidTime() {
+    return bidTime;
+  }
+
+  public void setBidTime(OffsetDateTime bidTime) {
+    this.bidTime = bidTime;
+  }
+
   public RealtimeStockPrice askPrice(BigDecimal askPrice) {
     this.askPrice = askPrice;
     return this;
@@ -208,6 +232,24 @@ public class RealtimeStockPrice {
 
   public void setAskSize(BigDecimal askSize) {
     this.askSize = askSize;
+  }
+
+  public RealtimeStockPrice askTime(OffsetDateTime askTime) {
+    this.askTime = askTime;
+    return this;
+  }
+
+   /**
+   * The date and time when the last ask occurred.
+   * @return askTime
+  **/
+  @ApiModelProperty(value = "The date and time when the last ask occurred.")
+  public OffsetDateTime getAskTime() {
+    return askTime;
+  }
+
+  public void setAskTime(OffsetDateTime askTime) {
+    this.askTime = askTime;
   }
 
   public RealtimeStockPrice openPrice(BigDecimal openPrice) {
@@ -477,8 +519,10 @@ public class RealtimeStockPrice {
         Objects.equals(this.lastSize, realtimeStockPrice.lastSize) &&
         Objects.equals(this.bidPrice, realtimeStockPrice.bidPrice) &&
         Objects.equals(this.bidSize, realtimeStockPrice.bidSize) &&
+        Objects.equals(this.bidTime, realtimeStockPrice.bidTime) &&
         Objects.equals(this.askPrice, realtimeStockPrice.askPrice) &&
         Objects.equals(this.askSize, realtimeStockPrice.askSize) &&
+        Objects.equals(this.askTime, realtimeStockPrice.askTime) &&
         Objects.equals(this.openPrice, realtimeStockPrice.openPrice) &&
         Objects.equals(this.closePrice, realtimeStockPrice.closePrice) &&
         Objects.equals(this.highPrice, realtimeStockPrice.highPrice) &&
@@ -497,7 +541,7 @@ public class RealtimeStockPrice {
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastPrice, lastTime, lastSize, bidPrice, bidSize, askPrice, askSize, openPrice, closePrice, highPrice, lowPrice, exchangeVolume, marketVolume, updatedOn, source, listingVenue, salesConditions, quoteConditions, marketCenterCode, isDarkpool, security);
+    return Objects.hash(lastPrice, lastTime, lastSize, bidPrice, bidSize, bidTime, askPrice, askSize, askTime, openPrice, closePrice, highPrice, lowPrice, exchangeVolume, marketVolume, updatedOn, source, listingVenue, salesConditions, quoteConditions, marketCenterCode, isDarkpool, security);
   }
 
 
@@ -511,8 +555,10 @@ public class RealtimeStockPrice {
     sb.append("    lastSize: ").append(toIndentedString(lastSize)).append("\n");
     sb.append("    bidPrice: ").append(toIndentedString(bidPrice)).append("\n");
     sb.append("    bidSize: ").append(toIndentedString(bidSize)).append("\n");
+    sb.append("    bidTime: ").append(toIndentedString(bidTime)).append("\n");
     sb.append("    askPrice: ").append(toIndentedString(askPrice)).append("\n");
     sb.append("    askSize: ").append(toIndentedString(askSize)).append("\n");
+    sb.append("    askTime: ").append(toIndentedString(askTime)).append("\n");
     sb.append("    openPrice: ").append(toIndentedString(openPrice)).append("\n");
     sb.append("    closePrice: ").append(toIndentedString(closePrice)).append("\n");
     sb.append("    highPrice: ").append(toIndentedString(highPrice)).append("\n");
