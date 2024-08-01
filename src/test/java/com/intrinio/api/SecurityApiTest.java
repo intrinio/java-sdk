@@ -30,6 +30,7 @@ import com.intrinio.models.ApiResponseSecurityMovingAverageConvergenceDivergence
 import com.intrinio.models.ApiResponseSecurityNegativeVolumeIndex;
 import com.intrinio.models.ApiResponseSecurityOnBalanceVolume;
 import com.intrinio.models.ApiResponseSecurityOnBalanceVolumeMean;
+import com.intrinio.models.ApiResponseSecurityQuote;
 import com.intrinio.models.ApiResponseSecurityRelativeStrengthIndex;
 import com.intrinio.models.ApiResponseSecuritySimpleMovingAverage;
 import com.intrinio.models.ApiResponseSecurityStochasticOscillator;
@@ -1037,6 +1038,24 @@ public class SecurityApiTest {
         BigDecimal pageSize = null;
         String nextPage = null;
         ApiResponseSecurityWilliamsR response = api.getSecurityPriceTechnicalsWr(identifier, period, startDate, endDate, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Quote for a Security
+     *
+     * Return a current pricing quote for a security across multiple sources.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityQuoteTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        Boolean activeOnly = null;
+        String nextPage = null;
+        ApiResponseSecurityQuote response = api.getSecurityQuote(identifier, activeOnly, nextPage);
 
         // TODO: test validations
     }

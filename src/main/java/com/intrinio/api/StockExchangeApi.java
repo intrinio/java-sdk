@@ -466,15 +466,19 @@ public class StockExchangeApi {
     /**
      * Build call for getStockExchangePrices
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param date The date for which to return prices (optional)
+     * @param date The date for which to return prices. May not be used with the start_date and end_date parameters. (optional)
+     * @param startDate The start of the date range you&#39;re querying. May not be used with date parameter. (optional)
+     * @param endDate The end of the date range you&#39;re querying. May not be used with date parameter. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getStockExchangePricesCall(String identifier, LocalDate date, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getStockExchangePricesCall(String identifier, LocalDate date, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, List<String> tickers, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -485,10 +489,18 @@ public class StockExchangeApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (date != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+        if (tickers != null)
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "tickers", tickers));
+        if (nextPage2 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage2));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -523,7 +535,7 @@ public class StockExchangeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getStockExchangePricesValidateBeforeCall(String identifier, LocalDate date, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getStockExchangePricesValidateBeforeCall(String identifier, LocalDate date, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, List<String> tickers, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -531,7 +543,7 @@ public class StockExchangeApi {
         }
         
 
-        com.squareup.okhttp.Call call = getStockExchangePricesCall(identifier, date, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStockExchangePricesCall(identifier, date, startDate, endDate, pageSize, nextPage, tickers, nextPage2, progressListener, progressRequestListener);
         return call;
 
     }
@@ -540,17 +552,21 @@ public class StockExchangeApi {
      * Stock Prices by Exchange
      * Returns end-of-day stock prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param date The date for which to return prices (optional)
+     * @param date The date for which to return prices. May not be used with the start_date and end_date parameters. (optional)
+     * @param startDate The start of the date range you&#39;re querying. May not be used with date parameter. (optional)
+     * @param endDate The end of the date range you&#39;re querying. May not be used with date parameter. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockExchangeStockPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockExchangeStockPrices getStockExchangePrices(String identifier, LocalDate date, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangePricesWithHttpInfo", String.class, LocalDate.class, Integer.class, String.class);
+    public ApiResponseStockExchangeStockPrices getStockExchangePrices(String identifier, LocalDate date, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, List<String> tickers, String nextPage2) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangePricesWithHttpInfo", String.class, LocalDate.class, LocalDate.class, LocalDate.class, Integer.class, String.class, List.class, String.class);
       
-      Object[] apiCallArguments = { identifier, date, pageSize, nextPage };
+      Object[] apiCallArguments = { identifier, date, startDate, endDate, pageSize, nextPage, tickers, nextPage2 };
       ApiResponse<ApiResponseStockExchangeStockPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -559,14 +575,18 @@ public class StockExchangeApi {
      * Stock Prices by Exchange
      * Returns end-of-day stock prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param date The date for which to return prices (optional)
+     * @param date The date for which to return prices. May not be used with the start_date and end_date parameters. (optional)
+     * @param startDate The start of the date range you&#39;re querying. May not be used with date parameter. (optional)
+     * @param endDate The end of the date range you&#39;re querying. May not be used with date parameter. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseStockExchangeStockPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseStockExchangeStockPrices> getStockExchangePricesWithHttpInfo(String identifier, LocalDate date, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getStockExchangePricesValidateBeforeCall(identifier, date, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseStockExchangeStockPrices> getStockExchangePricesWithHttpInfo(String identifier, LocalDate date, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, List<String> tickers, String nextPage2) throws ApiException {
+        com.squareup.okhttp.Call call = getStockExchangePricesValidateBeforeCall(identifier, date, startDate, endDate, pageSize, nextPage, tickers, nextPage2, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseStockExchangeStockPrices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -575,14 +595,18 @@ public class StockExchangeApi {
      * Stock Prices by Exchange (asynchronously)
      * Returns end-of-day stock prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param date The date for which to return prices (optional)
+     * @param date The date for which to return prices. May not be used with the start_date and end_date parameters. (optional)
+     * @param startDate The start of the date range you&#39;re querying. May not be used with date parameter. (optional)
+     * @param endDate The end of the date range you&#39;re querying. May not be used with date parameter. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getStockExchangePricesAsync(String identifier, LocalDate date, Integer pageSize, String nextPage, final ApiCallback<ApiResponseStockExchangeStockPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getStockExchangePricesAsync(String identifier, LocalDate date, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, List<String> tickers, String nextPage2, final ApiCallback<ApiResponseStockExchangeStockPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -603,7 +627,7 @@ public class StockExchangeApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getStockExchangePricesValidateBeforeCall(identifier, date, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStockExchangePricesValidateBeforeCall(identifier, date, startDate, endDate, pageSize, nextPage, tickers, nextPage2, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseStockExchangeStockPrices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

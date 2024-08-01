@@ -302,7 +302,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseStockExchangeStockPrices getStockExchangePrices(identifier, date, pageSize, nextPage)
+> ApiResponseStockExchangeStockPrices getStockExchangePrices(identifier, date, startDate, endDate, pageSize, nextPage, tickers, nextPage2)
 
 #### Stock Prices by Exchange
 
@@ -335,9 +335,13 @@ public class Main {
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
     String identifier = "USCOMP";
     LocalDate date = LocalDate.of(2018,8,14);
+    LocalDate startDate = LocalDate.of(2020,8,14);
+    LocalDate endDate = LocalDate.of(2022,8,14);
     Integer pageSize = 100;
     String nextPage = null;
-    ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, pageSize, nextPage);
+    List<String> tickers = Arrays.asList(null);
+    String nextPage2 = null;
+    ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, startDate, endDate, pageSize, nextPage, tickers, nextPage2);
     System.out.println(result);
   }
 }
@@ -353,9 +357,13 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
- **date** | LocalDate| The date for which to return prices | [optional] &nbsp;
+ **date** | LocalDate| The date for which to return prices. May not be used with the start_date and end_date parameters. | [optional] &nbsp;
+ **startDate** | LocalDate| The start of the date range you&#39;re querying. May not be used with date parameter. | [optional] &nbsp;
+ **endDate** | LocalDate| The end of the date range you&#39;re querying. May not be used with date parameter. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+ **tickers** | [**List&lt;String&gt;**](String.md)| The list of ticker symbols to filter to. | [optional] &nbsp;
+ **nextPage2** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

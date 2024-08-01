@@ -50,6 +50,7 @@ Method | HTTP request | Description
 [**getSecurityPriceTechnicalsVpt**](SecurityApi.md#getSecurityPriceTechnicalsVpt) | **GET** /securities/{identifier}/prices/technicals/vpt | Volume-price Trend
 [**getSecurityPriceTechnicalsVwap**](SecurityApi.md#getSecurityPriceTechnicalsVwap) | **GET** /securities/{identifier}/prices/technicals/vwap | Volume Weighted Average Price
 [**getSecurityPriceTechnicalsWr**](SecurityApi.md#getSecurityPriceTechnicalsWr) | **GET** /securities/{identifier}/prices/technicals/wr | Williams %R
+[**getSecurityQuote**](SecurityApi.md#getSecurityQuote) | **GET** /securities/{identifier}/quote | Quote for a Security
 [**getSecurityRealtimePrice**](SecurityApi.md#getSecurityRealtimePrice) | **GET** /securities/{identifier}/prices/realtime | Realtime Stock Price for Security
 [**getSecurityReplayFile**](SecurityApi.md#getSecurityReplayFile) | **GET** /securities/replay | Security Replay File
 [**getSecuritySnapshots**](SecurityApi.md#getSecuritySnapshots) | **GET** /securities/snapshots | Realtime Stock Prices Snapshot
@@ -4382,6 +4383,94 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseSecurityWilliamsR**](ApiResponseSecurityWilliamsR.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:SecurityApi)
+
+[//]: # (METHOD:getSecurityQuote)
+
+[//]: # (RETURN_TYPE:ApiResponseSecurityQuote)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseSecurityQuote.md)
+
+[//]: # (OPERATION:getSecurityQuote_v2)
+
+[//]: # (ENDPOINT:/securities/{identifier}/quote)
+
+[//]: # (DOCUMENT_LINK:SecurityApi.md#getSecurityQuote)
+
+<a name="getSecurityQuote"></a>
+## **getSecurityQuote**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSecurityQuote_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseSecurityQuote getSecurityQuote(identifier, activeOnly, nextPage)
+
+#### Quote for a Security
+
+
+Return a current pricing quote for a security across multiple sources.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    SecurityApi securityApi = new SecurityApi();
+    String identifier = "AAPL";
+    Boolean activeOnly = false;
+    String nextPage = null;
+    ApiResponseSecurityQuote result = securityApi.getSecurityQuote(identifier, activeOnly, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
+ **activeOnly** | Boolean| Whether to return only realtime prices from today. | [optional] [default to false] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseSecurityQuote**](ApiResponseSecurityQuote.md)
 
 [//]: # (END_OPERATION)
 

@@ -93,9 +93,13 @@ public class StockExchangeApiTest {
     public void getStockExchangePricesTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         LocalDate date = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseStockExchangeStockPrices response = api.getStockExchangePrices(identifier, date, pageSize, nextPage);
+        List<String> tickers = null;
+        String nextPage2 = null;
+        ApiResponseStockExchangeStockPrices response = api.getStockExchangePrices(identifier, date, startDate, endDate, pageSize, nextPage, tickers, nextPage2);
 
         // TODO: test validations
     }
