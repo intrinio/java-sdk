@@ -27,6 +27,16 @@ Name | Type | Description
 **previousCloseDate** | [**BigDecimal**](BigDecimal.md) | The date of the previous close. &nbsp;
 **change** | [**BigDecimal**](BigDecimal.md) | The difference in last price from the last close price &nbsp;
 **changePercent** | [**BigDecimal**](BigDecimal.md) | The percent difference in last price from the last close price &nbsp;
+**adjClose5DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 5 days ago. &nbsp;
+**adjClose30DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 30 days ago. &nbsp;
+**adjClose180DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 180 days ago. &nbsp;
+**adjClose365DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 365 days ago. &nbsp;
+**adjClose1825DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 1825 days ago. &nbsp;
+**changePercent5Days** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 5 days ago to now. &nbsp;
+**changePercent30Days** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 30 days ago to now. &nbsp;
+**changePercent180Days** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 180 days ago to now. &nbsp;
+**changePercent365Days** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 365 days ago to now. &nbsp;
+**changePercent1825Days** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 1825 days ago to now. &nbsp;
 
 [//]: # (END_DEFINITION)
 
@@ -38,6 +48,36 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)
