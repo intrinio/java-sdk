@@ -332,7 +332,7 @@ public class CompanyApiTest {
     }
     
     /**
-     * The body of a news article
+     * The body of a news article.  This endpoint requires additional authorization beyond basic news access. Please see a representative for details.
      *
      * Returns the news article body.
      *

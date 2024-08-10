@@ -471,7 +471,7 @@ public class StockExchangeApi {
      * @param endDate The end of the date range you&#39;re querying. May not be used with date parameter. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param tickers The comma-delimited list of ticker symbols to filter down to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -557,7 +557,7 @@ public class StockExchangeApi {
      * @param endDate The end of the date range you&#39;re querying. May not be used with date parameter. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param tickers The comma-delimited list of ticker symbols to filter down to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockExchangeStockPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -580,7 +580,7 @@ public class StockExchangeApi {
      * @param endDate The end of the date range you&#39;re querying. May not be used with date parameter. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param tickers The comma-delimited list of ticker symbols to filter down to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseStockExchangeStockPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -600,7 +600,7 @@ public class StockExchangeApi {
      * @param endDate The end of the date range you&#39;re querying. May not be used with date parameter. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param tickers The comma-delimited list of ticker symbols to filter down to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage2 Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -635,10 +635,10 @@ public class StockExchangeApi {
     /**
      * Build call for getStockExchangeRealtimePrices
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
+     * @param source Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. (optional)
      * @param activeOnly Returns prices only from the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
-     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param tickers The comma-delimited list of ticker symbols to filter to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -715,10 +715,10 @@ public class StockExchangeApi {
      * Realtime Stock Prices by Exchange
      * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
+     * @param source Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. (optional)
      * @param activeOnly Returns prices only from the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
-     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param tickers The comma-delimited list of ticker symbols to filter to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseStockExchangeRealtimeStockPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -736,10 +736,10 @@ public class StockExchangeApi {
      * Realtime Stock Prices by Exchange
      * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
+     * @param source Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. (optional)
      * @param activeOnly Returns prices only from the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
-     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param tickers The comma-delimited list of ticker symbols to filter to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseStockExchangeRealtimeStockPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -754,10 +754,10 @@ public class StockExchangeApi {
      * Realtime Stock Prices by Exchange (asynchronously)
      * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
-     * @param source Return realtime prices from the specified data source. If no source is specified, all sources are used. (optional)
+     * @param source Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. (optional)
      * @param activeOnly Returns prices only from the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
-     * @param tickers The list of ticker symbols to filter to. (optional)
+     * @param tickers The comma-delimited list of ticker symbols to filter to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call

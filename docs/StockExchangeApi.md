@@ -339,7 +339,7 @@ public class Main {
     LocalDate endDate = LocalDate.of(2022,8,14);
     Integer pageSize = 100;
     String nextPage = null;
-    List<String> tickers = Arrays.asList(null);
+    List<String> tickers = Arrays.asList("AAPL,MSFT,NVDA");
     String nextPage2 = null;
     ApiResponseStockExchangeStockPrices result = stockExchangeApi.getStockExchangePrices(identifier, date, startDate, endDate, pageSize, nextPage, tickers, nextPage2);
     System.out.println(result);
@@ -362,7 +362,7 @@ Name | Type | Description  | Notes
  **endDate** | LocalDate| The end of the date range you&#39;re querying. May not be used with date parameter. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
- **tickers** | [**List&lt;String&gt;**](String.md)| The list of ticker symbols to filter to. | [optional] &nbsp;
+ **tickers** | [**List&lt;String&gt;**](String.md)| The comma-delimited list of ticker symbols to filter down to. If not provided, the entire stock exchange is returned. | [optional] &nbsp;
  **nextPage2** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 
@@ -432,10 +432,10 @@ public class Main {
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
     String identifier = "USCOMP";
-    List<String> source = Arrays.asList(null);
+    List<String> source = Arrays.asList("iex,delayed_sip");
     Boolean activeOnly = null;
     Integer pageSize = 100;
-    List<String> tickers = Arrays.asList(null);
+    List<String> tickers = Arrays.asList("AAPL,MSFT,NVDA");
     String nextPage = null;
     ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, tickers, nextPage);
     System.out.println(result);
@@ -453,10 +453,10 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
- **source** | [**List&lt;String&gt;**](String.md)| Return realtime prices from the specified data source. If no source is specified, all sources are used. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, intrinio_mx, intrinio_mx_plus] &nbsp;
+ **source** | [**List&lt;String&gt;**](String.md)| Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, intrinio_mx, intrinio_mx_plus] &nbsp;
  **activeOnly** | Boolean| Returns prices only from the most recent trading day. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
- **tickers** | [**List&lt;String&gt;**](String.md)| The list of ticker symbols to filter to. | [optional] &nbsp;
+ **tickers** | [**List&lt;String&gt;**](String.md)| The comma-delimited list of ticker symbols to filter to. If not provided, the entire stock exchange is returned. | [optional] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 

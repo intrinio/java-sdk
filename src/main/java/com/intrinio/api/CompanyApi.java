@@ -2283,7 +2283,7 @@ public class CompanyApi {
     }
 
     /**
-     * The body of a news article
+     * The body of a news article.  This endpoint requires additional authorization beyond basic news access. Please see a representative for details.
      * Returns the news article body.
      * @param newsStoryId The identifier of the news story. (required)
      * @param publicationDate The DateTime of the story. (required)
@@ -2302,7 +2302,7 @@ public class CompanyApi {
     }
 
     /**
-     * The body of a news article
+     * The body of a news article.  This endpoint requires additional authorization beyond basic news access. Please see a representative for details.
      * Returns the news article body.
      * @param newsStoryId The identifier of the news story. (required)
      * @param publicationDate The DateTime of the story. (required)
@@ -2318,7 +2318,7 @@ public class CompanyApi {
     }
 
     /**
-     * The body of a news article (asynchronously)
+     * The body of a news article.  This endpoint requires additional authorization beyond basic news access. Please see a representative for details. (asynchronously)
      * Returns the news article body.
      * @param newsStoryId The identifier of the news story. (required)
      * @param publicationDate The DateTime of the story. (required)

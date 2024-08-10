@@ -7454,7 +7454,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityRealtimePrice
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return the realtime price from the specified data source. If no source is specified, the best source available is used. (optional)
+     * @param source Return the realtime price from the specified comma-delimited data sources. If no source is specified, the best source available is used. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -7522,7 +7522,7 @@ public class SecurityApi {
      * Realtime Stock Price for Security
      * Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return the realtime price from the specified data source. If no source is specified, the best source available is used. (optional)
+     * @param source Return the realtime price from the specified comma-delimited data sources. If no source is specified, the best source available is used. (optional)
      * @return RealtimeStockPrice
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
@@ -7539,7 +7539,7 @@ public class SecurityApi {
      * Realtime Stock Price for Security
      * Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return the realtime price from the specified data source. If no source is specified, the best source available is used. (optional)
+     * @param source Return the realtime price from the specified comma-delimited data sources. If no source is specified, the best source available is used. (optional)
      * @return ApiResponse&lt;RealtimeStockPrice&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -7553,7 +7553,7 @@ public class SecurityApi {
      * Realtime Stock Price for Security (asynchronously)
      * Return the realtime stock price for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return the realtime price from the specified data source. If no source is specified, the best source available is used. (optional)
+     * @param source Return the realtime price from the specified comma-delimited data sources. If no source is specified, the best source available is used. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

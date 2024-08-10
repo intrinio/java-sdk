@@ -45,6 +45,9 @@ public class ApiResponseSecurityQuote {
   @SerializedName("exchange_volume")
   private BigDecimal exchangeVolume = null;
 
+  @SerializedName("market_volume")
+  private BigDecimal marketVolume = null;
+
   @SerializedName("eod_fifty_two_week_high")
   private BigDecimal eodFiftyTwoWeekHigh = null;
 
@@ -241,6 +244,24 @@ public class ApiResponseSecurityQuote {
 
   public void setExchangeVolume(BigDecimal exchangeVolume) {
     this.exchangeVolume = exchangeVolume;
+  }
+
+  public ApiResponseSecurityQuote marketVolume(BigDecimal marketVolume) {
+    this.marketVolume = marketVolume;
+    return this;
+  }
+
+   /**
+   * The volume of the security for the entire market.
+   * @return marketVolume
+  **/
+  @ApiModelProperty(value = "The volume of the security for the entire market.")
+  public BigDecimal getMarketVolume() {
+    return marketVolume;
+  }
+
+  public void setMarketVolume(BigDecimal marketVolume) {
+    this.marketVolume = marketVolume;
   }
 
   public ApiResponseSecurityQuote eodFiftyTwoWeekHigh(BigDecimal eodFiftyTwoWeekHigh) {
@@ -585,6 +606,7 @@ public class ApiResponseSecurityQuote {
         Objects.equals(this.high, apiResponseSecurityQuote.high) &&
         Objects.equals(this.low, apiResponseSecurityQuote.low) &&
         Objects.equals(this.exchangeVolume, apiResponseSecurityQuote.exchangeVolume) &&
+        Objects.equals(this.marketVolume, apiResponseSecurityQuote.marketVolume) &&
         Objects.equals(this.eodFiftyTwoWeekHigh, apiResponseSecurityQuote.eodFiftyTwoWeekHigh) &&
         Objects.equals(this.eodFiftyTwoWeekLow, apiResponseSecurityQuote.eodFiftyTwoWeekLow) &&
         Objects.equals(this.marketcap, apiResponseSecurityQuote.marketcap) &&
@@ -607,7 +629,7 @@ public class ApiResponseSecurityQuote {
 
   @Override
   public int hashCode() {
-    return Objects.hash(security, last, lastTime, source, open, high, low, exchangeVolume, eodFiftyTwoWeekHigh, eodFiftyTwoWeekLow, marketcap, pricetoearnings, previousClose, previousCloseDate, change, changePercent, adjClose5DaysAgo, adjClose30DaysAgo, adjClose180DaysAgo, adjClose365DaysAgo, adjClose1825DaysAgo, changePercent5Days, changePercent30Days, changePercent180Days, changePercent365Days, changePercent1825Days);
+    return Objects.hash(security, last, lastTime, source, open, high, low, exchangeVolume, marketVolume, eodFiftyTwoWeekHigh, eodFiftyTwoWeekLow, marketcap, pricetoearnings, previousClose, previousCloseDate, change, changePercent, adjClose5DaysAgo, adjClose30DaysAgo, adjClose180DaysAgo, adjClose365DaysAgo, adjClose1825DaysAgo, changePercent5Days, changePercent30Days, changePercent180Days, changePercent365Days, changePercent1825Days);
   }
 
 
@@ -624,6 +646,7 @@ public class ApiResponseSecurityQuote {
     sb.append("    high: ").append(toIndentedString(high)).append("\n");
     sb.append("    low: ").append(toIndentedString(low)).append("\n");
     sb.append("    exchangeVolume: ").append(toIndentedString(exchangeVolume)).append("\n");
+    sb.append("    marketVolume: ").append(toIndentedString(marketVolume)).append("\n");
     sb.append("    eodFiftyTwoWeekHigh: ").append(toIndentedString(eodFiftyTwoWeekHigh)).append("\n");
     sb.append("    eodFiftyTwoWeekLow: ").append(toIndentedString(eodFiftyTwoWeekLow)).append("\n");
     sb.append("    marketcap: ").append(toIndentedString(marketcap)).append("\n");

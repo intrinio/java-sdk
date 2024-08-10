@@ -19,6 +19,7 @@ Name | Type | Description
 **high** | [**BigDecimal**](BigDecimal.md) | The highest price from the latest day of trading. &nbsp;
 **low** | [**BigDecimal**](BigDecimal.md) | The lowest price from the latest day of trading. &nbsp;
 **exchangeVolume** | [**BigDecimal**](BigDecimal.md) | The volume of the security from the source. &nbsp;
+**marketVolume** | [**BigDecimal**](BigDecimal.md) | The volume of the security for the entire market. &nbsp;
 **eodFiftyTwoWeekHigh** | [**BigDecimal**](BigDecimal.md) | The 52 week high price. &nbsp;
 **eodFiftyTwoWeekLow** | [**BigDecimal**](BigDecimal.md) | The 52 week low price. &nbsp;
 **marketcap** | [**BigDecimal**](BigDecimal.md) | The current market cap. &nbsp;
@@ -48,6 +49,9 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)

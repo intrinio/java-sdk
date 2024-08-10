@@ -27,10 +27,10 @@ public class ApiResponseCompanyNewsBody {
   }
 
    /**
-   * The article body. Requires additional access.
+   * The article body.
    * @return body
   **/
-  @ApiModelProperty(value = "The article body. Requires additional access.")
+  @ApiModelProperty(value = "The article body.")
   public String getBody() {
     return body;
   }

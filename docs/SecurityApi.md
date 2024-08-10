@@ -4532,7 +4532,7 @@ public class Main {
 
     SecurityApi securityApi = new SecurityApi();
     String identifier = "AAPL";
-    List<String> source = Arrays.asList("iex");
+    List<String> source = Arrays.asList("iex,delayed_sip");
     RealtimeStockPrice result = securityApi.getSecurityRealtimePrice(identifier, source);
     System.out.println(result);
   }
@@ -4549,7 +4549,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
- **source** | [**List&lt;String&gt;**](String.md)| Return the realtime price from the specified data source. If no source is specified, the best source available is used. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, intrinio_mx, intrinio_mx_plus] &nbsp;
+ **source** | [**List&lt;String&gt;**](String.md)| Return the realtime price from the specified comma-delimited data sources. If no source is specified, the best source available is used. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, intrinio_mx, intrinio_mx_plus] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
