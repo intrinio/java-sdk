@@ -306,8 +306,9 @@ public class SecurityApiTest {
         String timezone = null;
         Integer pageSize = null;
         Boolean splitAdjusted = null;
+        Boolean includeQuoteOnlyBars = null;
         String nextPage = null;
-        ApiResponseSecurityIntervalPrices response = api.getSecurityIntervalPrices(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, nextPage);
+        ApiResponseSecurityIntervalPrices response = api.getSecurityIntervalPrices(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, includeQuoteOnlyBars, nextPage);
 
         // TODO: test validations
     }
@@ -315,7 +316,7 @@ public class SecurityApiTest {
     /**
      * Intraday Stock Prices for Security
      *
-     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
+     * Deprecated.  Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails
@@ -1054,8 +1055,9 @@ public class SecurityApiTest {
     public void getSecurityQuoteTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Boolean activeOnly = null;
+        String source = null;
         String nextPage = null;
-        ApiResponseSecurityQuote response = api.getSecurityQuote(identifier, activeOnly, nextPage);
+        ApiResponseSecurityQuote response = api.getSecurityQuote(identifier, activeOnly, source, nextPage);
 
         // TODO: test validations
     }

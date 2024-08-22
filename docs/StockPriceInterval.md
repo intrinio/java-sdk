@@ -21,6 +21,20 @@ Name | Type | Description
 **interval** | IntervalEnum | The size of the interval. &nbsp;
 **average** | [**BigDecimal**](BigDecimal.md) | The average trade price of an individual stock during the interval. &nbsp;
 **change** | [**BigDecimal**](BigDecimal.md) | The change ratio from open to close.  ((Close - Open)/Open). &nbsp;
+**bidHigh** | [**BigDecimal**](BigDecimal.md) | The highest bid price from the interval. &nbsp;
+**bidLow** | [**BigDecimal**](BigDecimal.md) | The lowest bid price from the interval. &nbsp;
+**bidClose** | [**BigDecimal**](BigDecimal.md) | The last bid price from the interval. &nbsp;
+**bidOpen** | [**BigDecimal**](BigDecimal.md) | The first bid price from the interval. &nbsp;
+**bidFirstTime** | [**OffsetDateTime**](OffsetDateTime.md) | The timestamp that represents the first bid time from the interval span. &nbsp;
+**bidLastTime** | [**OffsetDateTime**](OffsetDateTime.md) | The timestamp that represents the last bid time from the interval span. &nbsp;
+**bidChangePercent** | [**BigDecimal**](BigDecimal.md) | The ratio of the close to open bid difference, in percent. &nbsp;
+**askHigh** | [**BigDecimal**](BigDecimal.md) | The highest ask price from the interval. &nbsp;
+**askLow** | [**BigDecimal**](BigDecimal.md) | The lowest ask price from the interval. &nbsp;
+**askClose** | [**BigDecimal**](BigDecimal.md) | The last ask price from the interval. &nbsp;
+**askOpen** | [**BigDecimal**](BigDecimal.md) | The first ask price from the interval. &nbsp;
+**askFirstTime** | [**OffsetDateTime**](OffsetDateTime.md) | The timestamp that represents the first ask time from the interval span. &nbsp;
+**askLastTime** | [**OffsetDateTime**](OffsetDateTime.md) | The timestamp that represents the last ask time from the interval span. &nbsp;
+**askChangePercent** | [**BigDecimal**](BigDecimal.md) | The ratio of the close to open ask difference, in percent. &nbsp;
 
 [//]: # (END_DEFINITION)
 
@@ -47,6 +61,48 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)

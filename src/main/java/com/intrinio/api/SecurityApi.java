@@ -1698,13 +1698,14 @@ public class SecurityApi {
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
+     * @param includeQuoteOnlyBars If true, also include bars where no trades occurred but quotes did. (optional, default to false)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityIntervalPricesCall(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityIntervalPricesCall(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, Boolean includeQuoteOnlyBars, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1731,6 +1732,8 @@ public class SecurityApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (splitAdjusted != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("split_adjusted", splitAdjusted));
+        if (includeQuoteOnlyBars != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("include_quote_only_bars", includeQuoteOnlyBars));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -1767,7 +1770,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityIntervalPricesValidateBeforeCall(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityIntervalPricesValidateBeforeCall(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, Boolean includeQuoteOnlyBars, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1780,7 +1783,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityIntervalPricesCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityIntervalPricesCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, includeQuoteOnlyBars, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1798,15 +1801,16 @@ public class SecurityApi {
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
+     * @param includeQuoteOnlyBars If true, also include bars where no trades occurred but quotes did. (optional, default to false)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityIntervalPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityIntervalPrices getSecurityIntervalPrices(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecurityIntervalPricesWithHttpInfo", String.class, String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, Boolean.class, String.class);
+    public ApiResponseSecurityIntervalPrices getSecurityIntervalPrices(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, Boolean includeQuoteOnlyBars, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityIntervalPricesWithHttpInfo", String.class, String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, Boolean.class, Boolean.class, String.class);
       
-      Object[] apiCallArguments = { identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, nextPage };
+      Object[] apiCallArguments = { identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, includeQuoteOnlyBars, nextPage };
       ApiResponse<ApiResponseSecurityIntervalPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -1824,12 +1828,13 @@ public class SecurityApi {
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
+     * @param includeQuoteOnlyBars If true, also include bars where no trades occurred but quotes did. (optional, default to false)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurityIntervalPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityIntervalPrices> getSecurityIntervalPricesWithHttpInfo(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurityIntervalPrices> getSecurityIntervalPricesWithHttpInfo(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, Boolean includeQuoteOnlyBars, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, includeQuoteOnlyBars, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityIntervalPrices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1847,12 +1852,13 @@ public class SecurityApi {
      * @param timezone Returns trading times in this timezone (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
+     * @param includeQuoteOnlyBars If true, also include bars where no trades occurred but quotes did. (optional, default to false)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityIntervalPricesAsync(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, String nextPage, final ApiCallback<ApiResponseSecurityIntervalPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityIntervalPricesAsync(String identifier, String intervalSize, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Boolean splitAdjusted, Boolean includeQuoteOnlyBars, String nextPage, final ApiCallback<ApiResponseSecurityIntervalPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1873,7 +1879,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityIntervalPricesValidateBeforeCall(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, includeQuoteOnlyBars, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityIntervalPrices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1892,7 +1898,9 @@ public class SecurityApi {
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
+     * @deprecated
      */
+    @Deprecated
     public com.squareup.okhttp.Call getSecurityIntradayPricesCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
@@ -1949,6 +1957,7 @@ public class SecurityApi {
         return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
     }
 
+    @Deprecated
     @SuppressWarnings("rawtypes")
     private com.squareup.okhttp.Call getSecurityIntradayPricesValidateBeforeCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
@@ -1965,7 +1974,7 @@ public class SecurityApi {
 
     /**
      * Intraday Stock Prices for Security
-     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
+     * Deprecated.  Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param source Return intraday prices from the specified data source (optional)
      * @param startDate Return intraday prices starting at the specified date (optional)
@@ -1977,7 +1986,9 @@ public class SecurityApi {
      * @return ApiResponseSecurityIntradayPrices
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
+     * @deprecated
      */
+    @Deprecated
     public ApiResponseSecurityIntradayPrices getSecurityIntradayPrices(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
       Method targetMethod = SecurityApi.class.getMethod("getSecurityIntradayPricesWithHttpInfo", String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, Integer.class, String.class);
       
@@ -1988,7 +1999,7 @@ public class SecurityApi {
 
     /**
      * Intraday Stock Prices for Security
-     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
+     * Deprecated.  Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param source Return intraday prices from the specified data source (optional)
      * @param startDate Return intraday prices starting at the specified date (optional)
@@ -1999,7 +2010,9 @@ public class SecurityApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurityIntradayPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @deprecated
      */
+    @Deprecated
     public ApiResponse<ApiResponseSecurityIntradayPrices> getSecurityIntradayPricesWithHttpInfo(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage) throws ApiException {
         com.squareup.okhttp.Call call = getSecurityIntradayPricesValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityIntradayPrices>(){}.getType();
@@ -2008,7 +2021,7 @@ public class SecurityApi {
 
     /**
      * Intraday Stock Prices for Security (asynchronously)
-     * Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
+     * Deprecated.  Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param source Return intraday prices from the specified data source (optional)
      * @param startDate Return intraday prices starting at the specified date (optional)
@@ -2020,7 +2033,9 @@ public class SecurityApi {
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @deprecated
      */
+    @Deprecated
     public com.squareup.okhttp.Call getSecurityIntradayPricesAsync(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityIntradayPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
@@ -7316,13 +7331,14 @@ public class SecurityApi {
      * Build call for getSecurityQuote
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param activeOnly Whether to return only realtime prices from today. (optional, default to false)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecurityQuoteCall(String identifier, Boolean activeOnly, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityQuoteCall(String identifier, Boolean activeOnly, String source, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -7333,6 +7349,8 @@ public class SecurityApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (activeOnly != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("active_only", activeOnly));
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -7369,7 +7387,7 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityQuoteValidateBeforeCall(String identifier, Boolean activeOnly, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecurityQuoteValidateBeforeCall(String identifier, Boolean activeOnly, String source, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -7377,7 +7395,7 @@ public class SecurityApi {
         }
         
 
-        com.squareup.okhttp.Call call = getSecurityQuoteCall(identifier, activeOnly, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityQuoteCall(identifier, activeOnly, source, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -7387,15 +7405,16 @@ public class SecurityApi {
      * Return a current pricing quote for a security across multiple sources.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param activeOnly Whether to return only realtime prices from today. (optional, default to false)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseSecurityQuote
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseSecurityQuote getSecurityQuote(String identifier, Boolean activeOnly, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecurityQuoteWithHttpInfo", String.class, Boolean.class, String.class);
+    public ApiResponseSecurityQuote getSecurityQuote(String identifier, Boolean activeOnly, String source, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityQuoteWithHttpInfo", String.class, Boolean.class, String.class, String.class);
       
-      Object[] apiCallArguments = { identifier, activeOnly, nextPage };
+      Object[] apiCallArguments = { identifier, activeOnly, source, nextPage };
       ApiResponse<ApiResponseSecurityQuote> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -7405,12 +7424,13 @@ public class SecurityApi {
      * Return a current pricing quote for a security across multiple sources.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param activeOnly Whether to return only realtime prices from today. (optional, default to false)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseSecurityQuote&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseSecurityQuote> getSecurityQuoteWithHttpInfo(String identifier, Boolean activeOnly, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityQuoteValidateBeforeCall(identifier, activeOnly, nextPage, null, null);
+    public ApiResponse<ApiResponseSecurityQuote> getSecurityQuoteWithHttpInfo(String identifier, Boolean activeOnly, String source, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityQuoteValidateBeforeCall(identifier, activeOnly, source, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityQuote>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -7420,12 +7440,13 @@ public class SecurityApi {
      * Return a current pricing quote for a security across multiple sources.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param activeOnly Whether to return only realtime prices from today. (optional, default to false)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecurityQuoteAsync(String identifier, Boolean activeOnly, String nextPage, final ApiCallback<ApiResponseSecurityQuote> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecurityQuoteAsync(String identifier, Boolean activeOnly, String source, String nextPage, final ApiCallback<ApiResponseSecurityQuote> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -7446,7 +7467,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecurityQuoteValidateBeforeCall(identifier, activeOnly, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecurityQuoteValidateBeforeCall(identifier, activeOnly, source, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurityQuote>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
