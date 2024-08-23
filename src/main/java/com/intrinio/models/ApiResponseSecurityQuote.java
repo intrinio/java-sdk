@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -64,7 +65,7 @@ public class ApiResponseSecurityQuote {
   private BigDecimal previousClose = null;
 
   @SerializedName("previous_close_date")
-  private BigDecimal previousCloseDate = null;
+  private LocalDate previousCloseDate = null;
 
   @SerializedName("change")
   private BigDecimal change = null;
@@ -354,7 +355,7 @@ public class ApiResponseSecurityQuote {
     this.previousClose = previousClose;
   }
 
-  public ApiResponseSecurityQuote previousCloseDate(BigDecimal previousCloseDate) {
+  public ApiResponseSecurityQuote previousCloseDate(LocalDate previousCloseDate) {
     this.previousCloseDate = previousCloseDate;
     return this;
   }
@@ -364,11 +365,11 @@ public class ApiResponseSecurityQuote {
    * @return previousCloseDate
   **/
   @ApiModelProperty(value = "The date of the previous close.")
-  public BigDecimal getPreviousCloseDate() {
+  public LocalDate getPreviousCloseDate() {
     return previousCloseDate;
   }
 
-  public void setPreviousCloseDate(BigDecimal previousCloseDate) {
+  public void setPreviousCloseDate(LocalDate previousCloseDate) {
     this.previousCloseDate = previousCloseDate;
   }
 

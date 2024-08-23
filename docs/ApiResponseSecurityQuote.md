@@ -25,7 +25,7 @@ Name | Type | Description
 **marketcap** | [**BigDecimal**](BigDecimal.md) | The current market cap. &nbsp;
 **pricetoearnings** | [**BigDecimal**](BigDecimal.md) | The current price to earnings. &nbsp;
 **previousClose** | [**BigDecimal**](BigDecimal.md) | The previous close price. &nbsp;
-**previousCloseDate** | [**BigDecimal**](BigDecimal.md) | The date of the previous close. &nbsp;
+**previousCloseDate** | [**LocalDate**](LocalDate.md) | The date of the previous close. &nbsp;
 **change** | [**BigDecimal**](BigDecimal.md) | The difference in last price from the last close price &nbsp;
 **changePercent** | [**BigDecimal**](BigDecimal.md) | The percent difference in last price from the last close price &nbsp;
 **adjClose5DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 5 days ago. &nbsp;
@@ -81,7 +81,7 @@ Name | Type | Description
 [//]: # (CONTAINED_CLASS:BigDecimal)
 
 
-[//]: # (CONTAINED_CLASS:BigDecimal)
+[//]: # (CONTAINED_CLASS:LocalDate)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)
