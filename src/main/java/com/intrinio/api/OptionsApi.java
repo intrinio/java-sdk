@@ -185,12 +185,14 @@ public class OptionsApi {
     /**
      * Build call for getOptionAggregates
      * @param date Return aggregated data for this date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOptionAggregatesCall(Object date, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getOptionAggregatesCall(Object date, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -200,6 +202,10 @@ public class OptionsApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (date != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -234,10 +240,10 @@ public class OptionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOptionAggregatesValidateBeforeCall(Object date, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getOptionAggregatesValidateBeforeCall(Object date, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getOptionAggregatesCall(date, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionAggregatesCall(date, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -246,14 +252,16 @@ public class OptionsApi {
      * Total open interest and volume aggregated by ticker
      * Returns total open interest and volume by ticker
      * @param date Return aggregated data for this date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseOptionsAggregates
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseOptionsAggregates getOptionAggregates(Object date) throws ApiException, NoSuchMethodException {
-      Method targetMethod = OptionsApi.class.getMethod("getOptionAggregatesWithHttpInfo", Object.class);
+    public ApiResponseOptionsAggregates getOptionAggregates(Object date, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionAggregatesWithHttpInfo", Object.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { date };
+      Object[] apiCallArguments = { date, pageSize, nextPage };
       ApiResponse<ApiResponseOptionsAggregates> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -262,11 +270,13 @@ public class OptionsApi {
      * Total open interest and volume aggregated by ticker
      * Returns total open interest and volume by ticker
      * @param date Return aggregated data for this date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseOptionsAggregates&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseOptionsAggregates> getOptionAggregatesWithHttpInfo(Object date) throws ApiException {
-        com.squareup.okhttp.Call call = getOptionAggregatesValidateBeforeCall(date, null, null);
+    public ApiResponse<ApiResponseOptionsAggregates> getOptionAggregatesWithHttpInfo(Object date, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionAggregatesValidateBeforeCall(date, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsAggregates>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -275,11 +285,13 @@ public class OptionsApi {
      * Total open interest and volume aggregated by ticker (asynchronously)
      * Returns total open interest and volume by ticker
      * @param date Return aggregated data for this date (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getOptionAggregatesAsync(Object date, final ApiCallback<ApiResponseOptionsAggregates> callback) throws ApiException {
+    public com.squareup.okhttp.Call getOptionAggregatesAsync(Object date, Integer pageSize, String nextPage, final ApiCallback<ApiResponseOptionsAggregates> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -300,7 +312,7 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getOptionAggregatesValidateBeforeCall(date, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionAggregatesValidateBeforeCall(date, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsAggregates>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

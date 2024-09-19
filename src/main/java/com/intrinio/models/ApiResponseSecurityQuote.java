@@ -79,14 +79,23 @@ public class ApiResponseSecurityQuote {
   @SerializedName("adj_close_30_days_ago")
   private BigDecimal adjClose30DaysAgo = null;
 
+  @SerializedName("adj_close_90_days_ago")
+  private BigDecimal adjClose90DaysAgo = null;
+
   @SerializedName("adj_close_180_days_ago")
   private BigDecimal adjClose180DaysAgo = null;
 
   @SerializedName("adj_close_365_days_ago")
   private BigDecimal adjClose365DaysAgo = null;
 
+  @SerializedName("adj_close_730_days_ago")
+  private BigDecimal adjClose730DaysAgo = null;
+
   @SerializedName("adj_close_1825_days_ago")
   private BigDecimal adjClose1825DaysAgo = null;
+
+  @SerializedName("adj_close_year_to_date")
+  private BigDecimal adjCloseYearToDate = null;
 
   @SerializedName("change_percent_5_days")
   private BigDecimal changePercent5Days = null;
@@ -94,14 +103,32 @@ public class ApiResponseSecurityQuote {
   @SerializedName("change_percent_30_days")
   private BigDecimal changePercent30Days = null;
 
+  @SerializedName("change_percent_90_days")
+  private BigDecimal changePercent90Days = null;
+
   @SerializedName("change_percent_180_days")
   private BigDecimal changePercent180Days = null;
 
   @SerializedName("change_percent_365_days")
   private BigDecimal changePercent365Days = null;
 
+  @SerializedName("change_percent_730_days_ago")
+  private BigDecimal changePercent730DaysAgo = null;
+
   @SerializedName("change_percent_1825_days")
   private BigDecimal changePercent1825Days = null;
+
+  @SerializedName("change_percent_year_to_date")
+  private BigDecimal changePercentYearToDate = null;
+
+  @SerializedName("extended_hours_last")
+  private BigDecimal extendedHoursLast = null;
+
+  @SerializedName("extended_hours_change")
+  private BigDecimal extendedHoursChange = null;
+
+  @SerializedName("extended_hours_change_percent")
+  private BigDecimal extendedHoursChangePercent = null;
 
   public ApiResponseSecurityQuote security(SecuritySummary security) {
     this.security = security;
@@ -445,6 +472,24 @@ public class ApiResponseSecurityQuote {
     this.adjClose30DaysAgo = adjClose30DaysAgo;
   }
 
+  public ApiResponseSecurityQuote adjClose90DaysAgo(BigDecimal adjClose90DaysAgo) {
+    this.adjClose90DaysAgo = adjClose90DaysAgo;
+    return this;
+  }
+
+   /**
+   * The adjusted close price 90 days ago.
+   * @return adjClose90DaysAgo
+  **/
+  @ApiModelProperty(value = "The adjusted close price 90 days ago.")
+  public BigDecimal getAdjClose90DaysAgo() {
+    return adjClose90DaysAgo;
+  }
+
+  public void setAdjClose90DaysAgo(BigDecimal adjClose90DaysAgo) {
+    this.adjClose90DaysAgo = adjClose90DaysAgo;
+  }
+
   public ApiResponseSecurityQuote adjClose180DaysAgo(BigDecimal adjClose180DaysAgo) {
     this.adjClose180DaysAgo = adjClose180DaysAgo;
     return this;
@@ -481,6 +526,24 @@ public class ApiResponseSecurityQuote {
     this.adjClose365DaysAgo = adjClose365DaysAgo;
   }
 
+  public ApiResponseSecurityQuote adjClose730DaysAgo(BigDecimal adjClose730DaysAgo) {
+    this.adjClose730DaysAgo = adjClose730DaysAgo;
+    return this;
+  }
+
+   /**
+   * The adjusted close price 730 days ago.
+   * @return adjClose730DaysAgo
+  **/
+  @ApiModelProperty(value = "The adjusted close price 730 days ago.")
+  public BigDecimal getAdjClose730DaysAgo() {
+    return adjClose730DaysAgo;
+  }
+
+  public void setAdjClose730DaysAgo(BigDecimal adjClose730DaysAgo) {
+    this.adjClose730DaysAgo = adjClose730DaysAgo;
+  }
+
   public ApiResponseSecurityQuote adjClose1825DaysAgo(BigDecimal adjClose1825DaysAgo) {
     this.adjClose1825DaysAgo = adjClose1825DaysAgo;
     return this;
@@ -497,6 +560,24 @@ public class ApiResponseSecurityQuote {
 
   public void setAdjClose1825DaysAgo(BigDecimal adjClose1825DaysAgo) {
     this.adjClose1825DaysAgo = adjClose1825DaysAgo;
+  }
+
+  public ApiResponseSecurityQuote adjCloseYearToDate(BigDecimal adjCloseYearToDate) {
+    this.adjCloseYearToDate = adjCloseYearToDate;
+    return this;
+  }
+
+   /**
+   * The adjusted close price at the start of the calendar year.
+   * @return adjCloseYearToDate
+  **/
+  @ApiModelProperty(value = "The adjusted close price at the start of the calendar year.")
+  public BigDecimal getAdjCloseYearToDate() {
+    return adjCloseYearToDate;
+  }
+
+  public void setAdjCloseYearToDate(BigDecimal adjCloseYearToDate) {
+    this.adjCloseYearToDate = adjCloseYearToDate;
   }
 
   public ApiResponseSecurityQuote changePercent5Days(BigDecimal changePercent5Days) {
@@ -535,6 +616,24 @@ public class ApiResponseSecurityQuote {
     this.changePercent30Days = changePercent30Days;
   }
 
+  public ApiResponseSecurityQuote changePercent90Days(BigDecimal changePercent90Days) {
+    this.changePercent90Days = changePercent90Days;
+    return this;
+  }
+
+   /**
+   * The percent change from the adjusted price 90 days ago to now.
+   * @return changePercent90Days
+  **/
+  @ApiModelProperty(value = "The percent change from the adjusted price 90 days ago to now.")
+  public BigDecimal getChangePercent90Days() {
+    return changePercent90Days;
+  }
+
+  public void setChangePercent90Days(BigDecimal changePercent90Days) {
+    this.changePercent90Days = changePercent90Days;
+  }
+
   public ApiResponseSecurityQuote changePercent180Days(BigDecimal changePercent180Days) {
     this.changePercent180Days = changePercent180Days;
     return this;
@@ -571,6 +670,24 @@ public class ApiResponseSecurityQuote {
     this.changePercent365Days = changePercent365Days;
   }
 
+  public ApiResponseSecurityQuote changePercent730DaysAgo(BigDecimal changePercent730DaysAgo) {
+    this.changePercent730DaysAgo = changePercent730DaysAgo;
+    return this;
+  }
+
+   /**
+   * The percent change from the adjusted price 730 days ago to now.
+   * @return changePercent730DaysAgo
+  **/
+  @ApiModelProperty(value = "The percent change from the adjusted price 730 days ago to now.")
+  public BigDecimal getChangePercent730DaysAgo() {
+    return changePercent730DaysAgo;
+  }
+
+  public void setChangePercent730DaysAgo(BigDecimal changePercent730DaysAgo) {
+    this.changePercent730DaysAgo = changePercent730DaysAgo;
+  }
+
   public ApiResponseSecurityQuote changePercent1825Days(BigDecimal changePercent1825Days) {
     this.changePercent1825Days = changePercent1825Days;
     return this;
@@ -587,6 +704,78 @@ public class ApiResponseSecurityQuote {
 
   public void setChangePercent1825Days(BigDecimal changePercent1825Days) {
     this.changePercent1825Days = changePercent1825Days;
+  }
+
+  public ApiResponseSecurityQuote changePercentYearToDate(BigDecimal changePercentYearToDate) {
+    this.changePercentYearToDate = changePercentYearToDate;
+    return this;
+  }
+
+   /**
+   * The percent change from the adjusted price since the start of the calendar year to now.
+   * @return changePercentYearToDate
+  **/
+  @ApiModelProperty(value = "The percent change from the adjusted price since the start of the calendar year to now.")
+  public BigDecimal getChangePercentYearToDate() {
+    return changePercentYearToDate;
+  }
+
+  public void setChangePercentYearToDate(BigDecimal changePercentYearToDate) {
+    this.changePercentYearToDate = changePercentYearToDate;
+  }
+
+  public ApiResponseSecurityQuote extendedHoursLast(BigDecimal extendedHoursLast) {
+    this.extendedHoursLast = extendedHoursLast;
+    return this;
+  }
+
+   /**
+   * The price of the latest trade in pre and post market trading.  Might be null during normal trading
+   * @return extendedHoursLast
+  **/
+  @ApiModelProperty(value = "The price of the latest trade in pre and post market trading.  Might be null during normal trading")
+  public BigDecimal getExtendedHoursLast() {
+    return extendedHoursLast;
+  }
+
+  public void setExtendedHoursLast(BigDecimal extendedHoursLast) {
+    this.extendedHoursLast = extendedHoursLast;
+  }
+
+  public ApiResponseSecurityQuote extendedHoursChange(BigDecimal extendedHoursChange) {
+    this.extendedHoursChange = extendedHoursChange;
+    return this;
+  }
+
+   /**
+   * The difference in extended_hours_last price from most recent official close price
+   * @return extendedHoursChange
+  **/
+  @ApiModelProperty(value = "The difference in extended_hours_last price from most recent official close price")
+  public BigDecimal getExtendedHoursChange() {
+    return extendedHoursChange;
+  }
+
+  public void setExtendedHoursChange(BigDecimal extendedHoursChange) {
+    this.extendedHoursChange = extendedHoursChange;
+  }
+
+  public ApiResponseSecurityQuote extendedHoursChangePercent(BigDecimal extendedHoursChangePercent) {
+    this.extendedHoursChangePercent = extendedHoursChangePercent;
+    return this;
+  }
+
+   /**
+   * The percent difference in extended_hours_last from the most recent official close price
+   * @return extendedHoursChangePercent
+  **/
+  @ApiModelProperty(value = "The percent difference in extended_hours_last from the most recent official close price")
+  public BigDecimal getExtendedHoursChangePercent() {
+    return extendedHoursChangePercent;
+  }
+
+  public void setExtendedHoursChangePercent(BigDecimal extendedHoursChangePercent) {
+    this.extendedHoursChangePercent = extendedHoursChangePercent;
   }
 
 
@@ -618,19 +807,28 @@ public class ApiResponseSecurityQuote {
         Objects.equals(this.changePercent, apiResponseSecurityQuote.changePercent) &&
         Objects.equals(this.adjClose5DaysAgo, apiResponseSecurityQuote.adjClose5DaysAgo) &&
         Objects.equals(this.adjClose30DaysAgo, apiResponseSecurityQuote.adjClose30DaysAgo) &&
+        Objects.equals(this.adjClose90DaysAgo, apiResponseSecurityQuote.adjClose90DaysAgo) &&
         Objects.equals(this.adjClose180DaysAgo, apiResponseSecurityQuote.adjClose180DaysAgo) &&
         Objects.equals(this.adjClose365DaysAgo, apiResponseSecurityQuote.adjClose365DaysAgo) &&
+        Objects.equals(this.adjClose730DaysAgo, apiResponseSecurityQuote.adjClose730DaysAgo) &&
         Objects.equals(this.adjClose1825DaysAgo, apiResponseSecurityQuote.adjClose1825DaysAgo) &&
+        Objects.equals(this.adjCloseYearToDate, apiResponseSecurityQuote.adjCloseYearToDate) &&
         Objects.equals(this.changePercent5Days, apiResponseSecurityQuote.changePercent5Days) &&
         Objects.equals(this.changePercent30Days, apiResponseSecurityQuote.changePercent30Days) &&
+        Objects.equals(this.changePercent90Days, apiResponseSecurityQuote.changePercent90Days) &&
         Objects.equals(this.changePercent180Days, apiResponseSecurityQuote.changePercent180Days) &&
         Objects.equals(this.changePercent365Days, apiResponseSecurityQuote.changePercent365Days) &&
-        Objects.equals(this.changePercent1825Days, apiResponseSecurityQuote.changePercent1825Days);
+        Objects.equals(this.changePercent730DaysAgo, apiResponseSecurityQuote.changePercent730DaysAgo) &&
+        Objects.equals(this.changePercent1825Days, apiResponseSecurityQuote.changePercent1825Days) &&
+        Objects.equals(this.changePercentYearToDate, apiResponseSecurityQuote.changePercentYearToDate) &&
+        Objects.equals(this.extendedHoursLast, apiResponseSecurityQuote.extendedHoursLast) &&
+        Objects.equals(this.extendedHoursChange, apiResponseSecurityQuote.extendedHoursChange) &&
+        Objects.equals(this.extendedHoursChangePercent, apiResponseSecurityQuote.extendedHoursChangePercent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(security, last, lastTime, source, open, high, low, exchangeVolume, marketVolume, eodFiftyTwoWeekHigh, eodFiftyTwoWeekLow, marketcap, pricetoearnings, previousClose, previousCloseDate, change, changePercent, adjClose5DaysAgo, adjClose30DaysAgo, adjClose180DaysAgo, adjClose365DaysAgo, adjClose1825DaysAgo, changePercent5Days, changePercent30Days, changePercent180Days, changePercent365Days, changePercent1825Days);
+    return Objects.hash(security, last, lastTime, source, open, high, low, exchangeVolume, marketVolume, eodFiftyTwoWeekHigh, eodFiftyTwoWeekLow, marketcap, pricetoearnings, previousClose, previousCloseDate, change, changePercent, adjClose5DaysAgo, adjClose30DaysAgo, adjClose90DaysAgo, adjClose180DaysAgo, adjClose365DaysAgo, adjClose730DaysAgo, adjClose1825DaysAgo, adjCloseYearToDate, changePercent5Days, changePercent30Days, changePercent90Days, changePercent180Days, changePercent365Days, changePercent730DaysAgo, changePercent1825Days, changePercentYearToDate, extendedHoursLast, extendedHoursChange, extendedHoursChangePercent);
   }
 
 
@@ -658,14 +856,23 @@ public class ApiResponseSecurityQuote {
     sb.append("    changePercent: ").append(toIndentedString(changePercent)).append("\n");
     sb.append("    adjClose5DaysAgo: ").append(toIndentedString(adjClose5DaysAgo)).append("\n");
     sb.append("    adjClose30DaysAgo: ").append(toIndentedString(adjClose30DaysAgo)).append("\n");
+    sb.append("    adjClose90DaysAgo: ").append(toIndentedString(adjClose90DaysAgo)).append("\n");
     sb.append("    adjClose180DaysAgo: ").append(toIndentedString(adjClose180DaysAgo)).append("\n");
     sb.append("    adjClose365DaysAgo: ").append(toIndentedString(adjClose365DaysAgo)).append("\n");
+    sb.append("    adjClose730DaysAgo: ").append(toIndentedString(adjClose730DaysAgo)).append("\n");
     sb.append("    adjClose1825DaysAgo: ").append(toIndentedString(adjClose1825DaysAgo)).append("\n");
+    sb.append("    adjCloseYearToDate: ").append(toIndentedString(adjCloseYearToDate)).append("\n");
     sb.append("    changePercent5Days: ").append(toIndentedString(changePercent5Days)).append("\n");
     sb.append("    changePercent30Days: ").append(toIndentedString(changePercent30Days)).append("\n");
+    sb.append("    changePercent90Days: ").append(toIndentedString(changePercent90Days)).append("\n");
     sb.append("    changePercent180Days: ").append(toIndentedString(changePercent180Days)).append("\n");
     sb.append("    changePercent365Days: ").append(toIndentedString(changePercent365Days)).append("\n");
+    sb.append("    changePercent730DaysAgo: ").append(toIndentedString(changePercent730DaysAgo)).append("\n");
     sb.append("    changePercent1825Days: ").append(toIndentedString(changePercent1825Days)).append("\n");
+    sb.append("    changePercentYearToDate: ").append(toIndentedString(changePercentYearToDate)).append("\n");
+    sb.append("    extendedHoursLast: ").append(toIndentedString(extendedHoursLast)).append("\n");
+    sb.append("    extendedHoursChange: ").append(toIndentedString(extendedHoursChange)).append("\n");
+    sb.append("    extendedHoursChangePercent: ").append(toIndentedString(extendedHoursChangePercent)).append("\n");
     sb.append("}");
     return sb.toString();
   }

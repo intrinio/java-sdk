@@ -138,7 +138,7 @@ This endpoint does not need any parameter.
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsAggregates getOptionAggregates(date)
+> ApiResponseOptionsAggregates getOptionAggregates(date, pageSize, nextPage)
 
 #### Total open interest and volume aggregated by ticker
 
@@ -170,7 +170,9 @@ public class Main {
 
     OptionsApi optionsApi = new OptionsApi();
     Object date = "2024-04-24";
-    ApiResponseOptionsAggregates result = optionsApi.getOptionAggregates(date);
+    Integer pageSize = 100;
+    String nextPage = null;
+    ApiResponseOptionsAggregates result = optionsApi.getOptionAggregates(date, pageSize, nextPage);
     System.out.println(result);
   }
 }
@@ -186,6 +188,8 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **date** | [**Object**](.md)| Return aggregated data for this date | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

@@ -68,7 +68,9 @@ public class OptionsApiTest {
     @Test
     public void getOptionAggregatesTest() throws ApiException, NoSuchMethodException {
         Object date = null;
-        ApiResponseOptionsAggregates response = api.getOptionAggregates(date);
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseOptionsAggregates response = api.getOptionAggregates(date, pageSize, nextPage);
 
         // TODO: test validations
     }

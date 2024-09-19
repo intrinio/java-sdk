@@ -332,9 +332,9 @@ public class CompanyApiTest {
     }
     
     /**
-     * The body of a news article.  This endpoint requires additional authorization beyond basic news access. Please see a representative for details.
+     * News Article Body
      *
-     * Returns the news article body.
+     * Returns the body of a news article.  This endpoint requires additional authorization beyond basic news access. Please see a representative for details.
      *
      * @throws ApiException
      *          if the Api call fails

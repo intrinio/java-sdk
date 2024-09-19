@@ -3,6 +3,7 @@
 package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
+import com.intrinio.models.ApiResponseStockExchangeQuote;
 import com.intrinio.models.ApiResponseStockExchangeRealtimeStockPrices;
 import com.intrinio.models.ApiResponseStockExchangeSecurities;
 import com.intrinio.models.ApiResponseStockExchangeStockPriceAdjustments;
@@ -105,6 +106,25 @@ public class StockExchangeApiTest {
     }
     
     /**
+     * Realtime Quote Prices by Exchange
+     *
+     * Returns quote prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getStockExchangeQuoteTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        List<String> tickers = null;
+        String source = null;
+        Boolean activeOnly = null;
+        ApiResponseStockExchangeQuote response = api.getStockExchangeQuote(identifier, tickers, source, activeOnly);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Realtime Stock Prices by Exchange
      *
      * Returns realtime stock prices for the Stock Exchange with the given &#x60;identifier&#x60;
@@ -117,10 +137,11 @@ public class StockExchangeApiTest {
         String identifier = null;
         List<String> source = null;
         Boolean activeOnly = null;
+        Boolean tradedToday = null;
         Integer pageSize = null;
         List<String> tickers = null;
         String nextPage = null;
-        ApiResponseStockExchangeRealtimeStockPrices response = api.getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, tickers, nextPage);
+        ApiResponseStockExchangeRealtimeStockPrices response = api.getStockExchangeRealtimePrices(identifier, source, activeOnly, tradedToday, pageSize, tickers, nextPage);
 
         // TODO: test validations
     }

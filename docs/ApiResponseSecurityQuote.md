@@ -30,14 +30,23 @@ Name | Type | Description
 **changePercent** | [**BigDecimal**](BigDecimal.md) | The percent difference in last price from the last close price &nbsp;
 **adjClose5DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 5 days ago. &nbsp;
 **adjClose30DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 30 days ago. &nbsp;
+**adjClose90DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 90 days ago. &nbsp;
 **adjClose180DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 180 days ago. &nbsp;
 **adjClose365DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 365 days ago. &nbsp;
+**adjClose730DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 730 days ago. &nbsp;
 **adjClose1825DaysAgo** | [**BigDecimal**](BigDecimal.md) | The adjusted close price 1825 days ago. &nbsp;
+**adjCloseYearToDate** | [**BigDecimal**](BigDecimal.md) | The adjusted close price at the start of the calendar year. &nbsp;
 **changePercent5Days** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 5 days ago to now. &nbsp;
 **changePercent30Days** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 30 days ago to now. &nbsp;
+**changePercent90Days** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 90 days ago to now. &nbsp;
 **changePercent180Days** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 180 days ago to now. &nbsp;
 **changePercent365Days** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 365 days ago to now. &nbsp;
+**changePercent730DaysAgo** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 730 days ago to now. &nbsp;
 **changePercent1825Days** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price 1825 days ago to now. &nbsp;
+**changePercentYearToDate** | [**BigDecimal**](BigDecimal.md) | The percent change from the adjusted price since the start of the calendar year to now. &nbsp;
+**extendedHoursLast** | [**BigDecimal**](BigDecimal.md) | The price of the latest trade in pre and post market trading.  Might be null during normal trading &nbsp;
+**extendedHoursChange** | [**BigDecimal**](BigDecimal.md) | The difference in extended_hours_last price from most recent official close price &nbsp;
+**extendedHoursChangePercent** | [**BigDecimal**](BigDecimal.md) | The percent difference in extended_hours_last from the most recent official close price &nbsp;
 
 [//]: # (END_DEFINITION)
 
@@ -82,6 +91,33 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:LocalDate)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)

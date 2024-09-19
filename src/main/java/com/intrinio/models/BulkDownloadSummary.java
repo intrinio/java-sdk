@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.LocalDate;
 
 /**
  * Information about bulk downloads with download links
@@ -35,6 +36,9 @@ public class BulkDownloadSummary {
 
   @SerializedName("update_frequency")
   private String updateFrequency = null;
+
+  @SerializedName("last_updated")
+  private LocalDate lastUpdated = null;
 
   @SerializedName("links")
   private List<BulkDownloadLinks> links = null;
@@ -129,6 +133,24 @@ public class BulkDownloadSummary {
     this.updateFrequency = updateFrequency;
   }
 
+  public BulkDownloadSummary lastUpdated(LocalDate lastUpdated) {
+    this.lastUpdated = lastUpdated;
+    return this;
+  }
+
+   /**
+   * The date on which the bulk download was last updated
+   * @return lastUpdated
+  **/
+  @ApiModelProperty(value = "The date on which the bulk download was last updated")
+  public LocalDate getLastUpdated() {
+    return lastUpdated;
+  }
+
+  public void setLastUpdated(LocalDate lastUpdated) {
+    this.lastUpdated = lastUpdated;
+  }
+
   public BulkDownloadSummary links(List<BulkDownloadLinks> links) {
     this.links = links;
     return this;
@@ -170,12 +192,13 @@ public class BulkDownloadSummary {
         Objects.equals(this.format, bulkDownloadSummary.format) &&
         Objects.equals(this.dataLengthBytes, bulkDownloadSummary.dataLengthBytes) &&
         Objects.equals(this.updateFrequency, bulkDownloadSummary.updateFrequency) &&
+        Objects.equals(this.lastUpdated, bulkDownloadSummary.lastUpdated) &&
         Objects.equals(this.links, bulkDownloadSummary.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, format, dataLengthBytes, updateFrequency, links);
+    return Objects.hash(id, name, format, dataLengthBytes, updateFrequency, lastUpdated, links);
   }
 
 
@@ -189,6 +212,7 @@ public class BulkDownloadSummary {
     sb.append("    format: ").append(toIndentedString(format)).append("\n");
     sb.append("    dataLengthBytes: ").append(toIndentedString(dataLengthBytes)).append("\n");
     sb.append("    updateFrequency: ").append(toIndentedString(updateFrequency)).append("\n");
+    sb.append("    lastUpdated: ").append(toIndentedString(lastUpdated)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();

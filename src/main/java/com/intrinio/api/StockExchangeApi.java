@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.intrinio.models.ApiResponseStockExchangeQuote;
 import com.intrinio.models.ApiResponseStockExchangeRealtimeStockPrices;
 import com.intrinio.models.ApiResponseStockExchangeSecurities;
 import com.intrinio.models.ApiResponseStockExchangeStockPriceAdjustments;
@@ -633,10 +634,161 @@ public class StockExchangeApi {
         return call;
     }
     /**
+     * Build call for getStockExchangeQuote
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param tickers The comma-delimited list of ticker symbols to return quotes for. (required)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @param activeOnly Returns prices only from the most recent trading day. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getStockExchangeQuoteCall(String identifier, List<String> tickers, String source, Boolean activeOnly, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/stock_exchanges/{identifier}/quote"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (activeOnly != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("active_only", activeOnly));
+        if (tickers != null)
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "tickers", tickers));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getStockExchangeQuoteValidateBeforeCall(String identifier, List<String> tickers, String source, Boolean activeOnly, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getStockExchangeQuote(Async)");
+        }
+        
+        // verify the required parameter 'tickers' is set
+        if (tickers == null) {
+            throw new ApiException("Missing the required parameter 'tickers' when calling getStockExchangeQuote(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getStockExchangeQuoteCall(identifier, tickers, source, activeOnly, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Realtime Quote Prices by Exchange
+     * Returns quote prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param tickers The comma-delimited list of ticker symbols to return quotes for. (required)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @param activeOnly Returns prices only from the most recent trading day. (optional)
+     * @return ApiResponseStockExchangeQuote
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseStockExchangeQuote getStockExchangeQuote(String identifier, List<String> tickers, String source, Boolean activeOnly) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeQuoteWithHttpInfo", String.class, List.class, String.class, Boolean.class);
+      
+      Object[] apiCallArguments = { identifier, tickers, source, activeOnly };
+      ApiResponse<ApiResponseStockExchangeQuote> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Realtime Quote Prices by Exchange
+     * Returns quote prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param tickers The comma-delimited list of ticker symbols to return quotes for. (required)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @param activeOnly Returns prices only from the most recent trading day. (optional)
+     * @return ApiResponse&lt;ApiResponseStockExchangeQuote&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseStockExchangeQuote> getStockExchangeQuoteWithHttpInfo(String identifier, List<String> tickers, String source, Boolean activeOnly) throws ApiException {
+        com.squareup.okhttp.Call call = getStockExchangeQuoteValidateBeforeCall(identifier, tickers, source, activeOnly, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeQuote>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Realtime Quote Prices by Exchange (asynchronously)
+     * Returns quote prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param tickers The comma-delimited list of ticker symbols to return quotes for. (required)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @param activeOnly Returns prices only from the most recent trading day. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getStockExchangeQuoteAsync(String identifier, List<String> tickers, String source, Boolean activeOnly, final ApiCallback<ApiResponseStockExchangeQuote> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getStockExchangeQuoteValidateBeforeCall(identifier, tickers, source, activeOnly, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeQuote>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
      * Build call for getStockExchangeRealtimePrices
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param source Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. (optional)
      * @param activeOnly Returns prices only from the most recent trading day. (optional)
+     * @param tradedToday Returns prices only from securities which have traded on the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param tickers The comma-delimited list of ticker symbols to filter to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -645,7 +797,7 @@ public class StockExchangeApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getStockExchangeRealtimePricesCall(String identifier, List<String> source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getStockExchangeRealtimePricesCall(String identifier, List<String> source, Boolean activeOnly, Boolean tradedToday, Integer pageSize, List<String> tickers, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -658,6 +810,8 @@ public class StockExchangeApi {
         localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "source", source));
         if (activeOnly != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("active_only", activeOnly));
+        if (tradedToday != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("traded_today", tradedToday));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (tickers != null)
@@ -698,7 +852,7 @@ public class StockExchangeApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getStockExchangeRealtimePricesValidateBeforeCall(String identifier, List<String> source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getStockExchangeRealtimePricesValidateBeforeCall(String identifier, List<String> source, Boolean activeOnly, Boolean tradedToday, Integer pageSize, List<String> tickers, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -706,7 +860,7 @@ public class StockExchangeApi {
         }
         
 
-        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesCall(identifier, source, activeOnly, pageSize, tickers, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesCall(identifier, source, activeOnly, tradedToday, pageSize, tickers, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -717,6 +871,7 @@ public class StockExchangeApi {
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param source Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. (optional)
      * @param activeOnly Returns prices only from the most recent trading day. (optional)
+     * @param tradedToday Returns prices only from securities which have traded on the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param tickers The comma-delimited list of ticker symbols to filter to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -724,10 +879,10 @@ public class StockExchangeApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(String identifier, List<String> source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeRealtimePricesWithHttpInfo", String.class, List.class, Boolean.class, Integer.class, List.class, String.class);
+    public ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(String identifier, List<String> source, Boolean activeOnly, Boolean tradedToday, Integer pageSize, List<String> tickers, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeRealtimePricesWithHttpInfo", String.class, List.class, Boolean.class, Boolean.class, Integer.class, List.class, String.class);
       
-      Object[] apiCallArguments = { identifier, source, activeOnly, pageSize, tickers, nextPage };
+      Object[] apiCallArguments = { identifier, source, activeOnly, tradedToday, pageSize, tickers, nextPage };
       ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -738,14 +893,15 @@ public class StockExchangeApi {
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param source Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. (optional)
      * @param activeOnly Returns prices only from the most recent trading day. (optional)
+     * @param tradedToday Returns prices only from securities which have traded on the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param tickers The comma-delimited list of ticker symbols to filter to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseStockExchangeRealtimeStockPrices&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> getStockExchangeRealtimePricesWithHttpInfo(String identifier, List<String> source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesValidateBeforeCall(identifier, source, activeOnly, pageSize, tickers, nextPage, null, null);
+    public ApiResponse<ApiResponseStockExchangeRealtimeStockPrices> getStockExchangeRealtimePricesWithHttpInfo(String identifier, List<String> source, Boolean activeOnly, Boolean tradedToday, Integer pageSize, List<String> tickers, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesValidateBeforeCall(identifier, source, activeOnly, tradedToday, pageSize, tickers, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseStockExchangeRealtimeStockPrices>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -756,6 +912,7 @@ public class StockExchangeApi {
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param source Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. (optional)
      * @param activeOnly Returns prices only from the most recent trading day. (optional)
+     * @param tradedToday Returns prices only from securities which have traded on the most recent trading day. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param tickers The comma-delimited list of ticker symbols to filter to. If not provided, the entire stock exchange is returned. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -763,7 +920,7 @@ public class StockExchangeApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getStockExchangeRealtimePricesAsync(String identifier, List<String> source, Boolean activeOnly, Integer pageSize, List<String> tickers, String nextPage, final ApiCallback<ApiResponseStockExchangeRealtimeStockPrices> callback) throws ApiException {
+    public com.squareup.okhttp.Call getStockExchangeRealtimePricesAsync(String identifier, List<String> source, Boolean activeOnly, Boolean tradedToday, Integer pageSize, List<String> tickers, String nextPage, final ApiCallback<ApiResponseStockExchangeRealtimeStockPrices> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -784,7 +941,7 @@ public class StockExchangeApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesValidateBeforeCall(identifier, source, activeOnly, pageSize, tickers, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getStockExchangeRealtimePricesValidateBeforeCall(identifier, source, activeOnly, tradedToday, pageSize, tickers, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseStockExchangeRealtimeStockPrices>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

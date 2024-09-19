@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**getStockExchangeById**](StockExchangeApi.md#getStockExchangeById) | **GET** /stock_exchanges/{identifier} | Lookup Stock Exchange
 [**getStockExchangePriceAdjustments**](StockExchangeApi.md#getStockExchangePriceAdjustments) | **GET** /stock_exchanges/{identifier}/prices/adjustments | Stock Price Adjustments by Exchange
 [**getStockExchangePrices**](StockExchangeApi.md#getStockExchangePrices) | **GET** /stock_exchanges/{identifier}/prices | Stock Prices by Exchange
+[**getStockExchangeQuote**](StockExchangeApi.md#getStockExchangeQuote) | **GET** /stock_exchanges/{identifier}/quote | Realtime Quote Prices by Exchange
 [**getStockExchangeRealtimePrices**](StockExchangeApi.md#getStockExchangeRealtimePrices) | **GET** /stock_exchanges/{identifier}/prices/realtime | Realtime Stock Prices by Exchange
 [**getStockExchangeSecurities**](StockExchangeApi.md#getStockExchangeSecurities) | **GET** /stock_exchanges/{identifier}/securities | Securities by Exchange
 
@@ -379,6 +380,96 @@ Name | Type | Description  | Notes
 
 [//]: # (CLASS:StockExchangeApi)
 
+[//]: # (METHOD:getStockExchangeQuote)
+
+[//]: # (RETURN_TYPE:ApiResponseStockExchangeQuote)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockExchangeQuote.md)
+
+[//]: # (OPERATION:getStockExchangeQuote_v2)
+
+[//]: # (ENDPOINT:/stock_exchanges/{identifier}/quote)
+
+[//]: # (DOCUMENT_LINK:StockExchangeApi.md#getStockExchangeQuote)
+
+<a name="getStockExchangeQuote"></a>
+## **getStockExchangeQuote**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockExchangeQuote_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseStockExchangeQuote getStockExchangeQuote(identifier, tickers, source, activeOnly)
+
+#### Realtime Quote Prices by Exchange
+
+
+Returns quote prices for the Stock Exchange with the given &#x60;identifier&#x60;
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    StockExchangeApi stockExchangeApi = new StockExchangeApi();
+    String identifier = "USCOMP";
+    List<String> tickers = Arrays.asList("AAPL,MSFT,NVDA");
+    String source = "delayed_sip";
+    Boolean activeOnly = null;
+    ApiResponseStockExchangeQuote result = stockExchangeApi.getStockExchangeQuote(identifier, tickers, source, activeOnly);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
+ **tickers** | [**List&lt;String&gt;**](String.md)| The comma-delimited list of ticker symbols to return quotes for. | &nbsp;
+ **source** | String| Return the realtime price from the specified source instead of the most recent. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, intrinio_mx, intrinio_mx_plus] &nbsp;
+ **activeOnly** | Boolean| Returns prices only from the most recent trading day. | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseStockExchangeQuote**](ApiResponseStockExchangeQuote.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:StockExchangeApi)
+
 [//]: # (METHOD:getStockExchangeRealtimePrices)
 
 [//]: # (RETURN_TYPE:ApiResponseStockExchangeRealtimeStockPrices)
@@ -400,7 +491,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, tickers, nextPage)
+> ApiResponseStockExchangeRealtimeStockPrices getStockExchangeRealtimePrices(identifier, source, activeOnly, tradedToday, pageSize, tickers, nextPage)
 
 #### Realtime Stock Prices by Exchange
 
@@ -434,10 +525,11 @@ public class Main {
     String identifier = "USCOMP";
     List<String> source = Arrays.asList("iex,delayed_sip");
     Boolean activeOnly = null;
+    Boolean tradedToday = null;
     Integer pageSize = 100;
     List<String> tickers = Arrays.asList("AAPL,MSFT,NVDA");
     String nextPage = null;
-    ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, activeOnly, pageSize, tickers, nextPage);
+    ApiResponseStockExchangeRealtimeStockPrices result = stockExchangeApi.getStockExchangeRealtimePrices(identifier, source, activeOnly, tradedToday, pageSize, tickers, nextPage);
     System.out.println(result);
   }
 }
@@ -455,6 +547,7 @@ Name | Type | Description  | Notes
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
  **source** | [**List&lt;String&gt;**](String.md)| Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, intrinio_mx, intrinio_mx_plus] &nbsp;
  **activeOnly** | Boolean| Returns prices only from the most recent trading day. | [optional] &nbsp;
+ **tradedToday** | Boolean| Returns prices only from securities which have traded on the most recent trading day. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **tickers** | [**List&lt;String&gt;**](String.md)| The comma-delimited list of ticker symbols to filter to. If not provided, the entire stock exchange is returned. | [optional] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;

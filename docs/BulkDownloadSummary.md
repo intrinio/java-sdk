@@ -16,9 +16,13 @@ Name | Type | Description
 **format** | String | The file format of the bulk download &nbsp;
 **dataLengthBytes** | String | The total length of the bulk download data in bytes &nbsp;
 **updateFrequency** | String | The update frequency for the bulk download &nbsp;
+**lastUpdated** | [**LocalDate**](LocalDate.md) | The date on which the bulk download was last updated &nbsp;
 **links** | [**List&lt;BulkDownloadLinks&gt;**](BulkDownloadLinks.md) | Links to all of the files comprising the bulk download. Links expire in 24 hours. &nbsp;
 
 [//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
 
 
 [//]: # (CONTAINED_CLASS:BulkDownloadLinks)
