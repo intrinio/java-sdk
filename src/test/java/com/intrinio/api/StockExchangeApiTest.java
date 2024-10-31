@@ -3,12 +3,14 @@
 package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
+import com.intrinio.models.ApiResponseStockExchangeMovers;
 import com.intrinio.models.ApiResponseStockExchangeQuote;
 import com.intrinio.models.ApiResponseStockExchangeRealtimeStockPrices;
 import com.intrinio.models.ApiResponseStockExchangeSecurities;
 import com.intrinio.models.ApiResponseStockExchangeStockPriceAdjustments;
 import com.intrinio.models.ApiResponseStockExchangeStockPrices;
 import com.intrinio.models.ApiResponseStockExchanges;
+import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
 import com.intrinio.models.StockExchange;
 import org.junit.Test;
@@ -64,6 +66,44 @@ public class StockExchangeApiTest {
     }
     
     /**
+     * Top Gainers by Exchange
+     *
+     * Returns securities with the highest gain percent change traded on the chosen stock exchange.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getStockExchangeGainersTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        BigDecimal minPrice = null;
+        Integer pageSize = null;
+        String source = null;
+        ApiResponseStockExchangeMovers response = api.getStockExchangeGainers(identifier, minPrice, pageSize, source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Top Losers by Exchange
+     *
+     * Returns securities with the highest loss percent change traded on the chosen stock exchange.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getStockExchangeLosersTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        BigDecimal minPrice = null;
+        Integer pageSize = null;
+        String source = null;
+        ApiResponseStockExchangeMovers response = api.getStockExchangeLosers(identifier, minPrice, pageSize, source);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Stock Price Adjustments by Exchange
      *
      * Returns stock price adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
@@ -108,7 +148,7 @@ public class StockExchangeApiTest {
     /**
      * Realtime Quote Prices by Exchange
      *
-     * Returns quote prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     * Returns many popular metrics for securities from a given exchange &#39;identifier&#39; from multiple products conveniently in one API. Realtime stock price data requires at least one realtime product subscription (IEX, NASDAQ Basic, and/or Delayed SIP).  If you are subscribed to multiple realtime stock price products, the api will return the most recent realtime stock price. Previous close price and percent change fields require both an EoD US Stock Price subscription and a realtime stock price subscription. Market_cap, price_to_earnings, and dividendyield data fields require a fundamentals subscription.
      *
      * @throws ApiException
      *          if the Api call fails

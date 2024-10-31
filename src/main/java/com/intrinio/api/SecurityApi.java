@@ -1695,7 +1695,7 @@ public class SecurityApi {
      * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param endDate Return intervals stopping at the specified date (optional)
      * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
-     * @param timezone Returns trading times in this timezone (optional, default to UTC)
+     * @param timezone Interprets the input times in this time zone, as well as returns times in this timezone. (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
      * @param includeQuoteOnlyBars If true, also include bars where no trades occurred but quotes did. (optional, default to false)
@@ -1798,7 +1798,7 @@ public class SecurityApi {
      * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param endDate Return intervals stopping at the specified date (optional)
      * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
-     * @param timezone Returns trading times in this timezone (optional, default to UTC)
+     * @param timezone Interprets the input times in this time zone, as well as returns times in this timezone. (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
      * @param includeQuoteOnlyBars If true, also include bars where no trades occurred but quotes did. (optional, default to false)
@@ -1825,7 +1825,7 @@ public class SecurityApi {
      * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param endDate Return intervals stopping at the specified date (optional)
      * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
-     * @param timezone Returns trading times in this timezone (optional, default to UTC)
+     * @param timezone Interprets the input times in this time zone, as well as returns times in this timezone. (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
      * @param includeQuoteOnlyBars If true, also include bars where no trades occurred but quotes did. (optional, default to false)
@@ -1849,7 +1849,7 @@ public class SecurityApi {
      * @param startTime Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
      * @param endDate Return intervals stopping at the specified date (optional)
      * @param endTime Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) (optional)
-     * @param timezone Returns trading times in this timezone (optional, default to UTC)
+     * @param timezone Interprets the input times in this time zone, as well as returns times in this timezone. (optional, default to UTC)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param splitAdjusted Whether to return the values adjusted for splits or not. Default is false. (optional, default to false)
      * @param includeQuoteOnlyBars If true, also include bars where no trades occurred but quotes did. (optional, default to false)
@@ -7402,7 +7402,7 @@ public class SecurityApi {
 
     /**
      * Quote for a Security
-     * Return a current pricing quote for a security across multiple sources.
+     * Returns many popular metrics for a security from multiple products conveniently in one API. Realtime stock price data requires at least one realtime product subscription (IEX, NASDAQ Basic, and/or Delayed SIP).  If you are subscribed to multiple realtime stock price products, the api will return the most recent realtime stock price. Previous close price and percent change fields require both an EoD US Stock Price subscription and a realtime stock price subscription. Market_cap, price_to_earnings, and dividendyield data fields require a fundamentals subscription.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param activeOnly Whether to return only realtime prices from today. (optional, default to false)
      * @param source Return the realtime price from the specified source instead of the most recent. (optional)
@@ -7421,7 +7421,7 @@ public class SecurityApi {
 
     /**
      * Quote for a Security
-     * Return a current pricing quote for a security across multiple sources.
+     * Returns many popular metrics for a security from multiple products conveniently in one API. Realtime stock price data requires at least one realtime product subscription (IEX, NASDAQ Basic, and/or Delayed SIP).  If you are subscribed to multiple realtime stock price products, the api will return the most recent realtime stock price. Previous close price and percent change fields require both an EoD US Stock Price subscription and a realtime stock price subscription. Market_cap, price_to_earnings, and dividendyield data fields require a fundamentals subscription.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param activeOnly Whether to return only realtime prices from today. (optional, default to false)
      * @param source Return the realtime price from the specified source instead of the most recent. (optional)
@@ -7437,7 +7437,7 @@ public class SecurityApi {
 
     /**
      * Quote for a Security (asynchronously)
-     * Return a current pricing quote for a security across multiple sources.
+     * Returns many popular metrics for a security from multiple products conveniently in one API. Realtime stock price data requires at least one realtime product subscription (IEX, NASDAQ Basic, and/or Delayed SIP).  If you are subscribed to multiple realtime stock price products, the api will return the most recent realtime stock price. Previous close price and percent change fields require both an EoD US Stock Price subscription and a realtime stock price subscription. Market_cap, price_to_earnings, and dividendyield data fields require a fundamentals subscription.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param activeOnly Whether to return only realtime prices from today. (optional, default to false)
      * @param source Return the realtime price from the specified source instead of the most recent. (optional)

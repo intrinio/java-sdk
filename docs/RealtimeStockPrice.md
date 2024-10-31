@@ -27,6 +27,14 @@ Name | Type | Description
 **exchangeVolume** | [**BigDecimal**](BigDecimal.md) | The number of shares exchanged during the trading day on the exchange. &nbsp;
 **marketVolume** | [**BigDecimal**](BigDecimal.md) | The number of shares exchanged during the trading day for the whole market. &nbsp;
 **updatedOn** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when the data was last updated. &nbsp;
+**eodClosePrice** | [**BigDecimal**](BigDecimal.md) | The previous trading session&#39;s closing price. &nbsp;
+**eodCloseDate** | [**LocalDate**](LocalDate.md) | The date of the previous trading session&#39;s closing price. &nbsp;
+**normalMarketHoursLastTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time of the last trade that qualifies for last price consideration during normal market hours according to exchange rules on trade conditions. &nbsp;
+**normalMarketHoursLastPrice** | [**BigDecimal**](BigDecimal.md) | The price of the last that qualifies for last price consideration during normal market hours according to exchange rules on trade conditions. &nbsp;
+**normalMarketHoursLastSize** | [**BigDecimal**](BigDecimal.md) | The size of the last trade that qualifies for last price consideration during normal market hours according to exchange rules on trade conditions. &nbsp;
+**qualifiedLastPrice** | [**BigDecimal**](BigDecimal.md) | The price of the last trade that qualifies for last price consideration according to exchange rules on trade conditions. &nbsp;
+**qualifiedLastTime** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time of the last trade that qualifies for last price consideration according to exchange rules on trade conditions. &nbsp;
+**qualifiedLastSize** | [**BigDecimal**](BigDecimal.md) | The size of the last trade that qualifies for last price consideration according to exchange rules on trade conditions. &nbsp;
 **source** | String | The source of the data. &nbsp;
 **listingVenue** | String | The listing venue where the trade took place. Available only where source is SIP. Listing Venue Modifiers include: Q – Nasdaq | N – NYSE | A – NYSE American | P – NYSE Arca | u – Other OTC Markets | V – Investors Exchange LLC  &nbsp;
 **salesConditions** | String | When applicable, indicates any sales condition modifiers associated with the trade. Sales Condition Modifers include: @ – Regular Sale | A – Acquisition | B – Bunched Trade | C – Cash Sale | D – Distribution | E – Placeholder | F – Intermarket Sweep | G – Bunched Sold Trade  | H – Priced Variation Trade | I – Odd Lot Trade | K – Rule 155 Trade (AMEX) | L – Sold Last | M – Market Center Official Close | N – Next Day | O – Opening Prints  | P – Prior Reference Price | Q – Market Center Official Open | R – Seller | S – Split Trade | T – Form T | U – Extended Trading Hours (Sold Out of Sequence)  | V – Contingent Trade | W – Average Price Trade | X – Cross/Periodic Auction Trade | Y – Yellow Flag Regular Trade | Z – Sold (Out of Sequence)  | 1 – Stopped Stock (Regular Trade) | 4 – Derivatively Priced | 5 – Re-Opening Prints | 6 – Closing Prints | 7 – Qualified Contingent Trade (QCT)  | 8 – Placeholder for 611 Exempt | 9 – Corrected Consolidated Close (Per Listing Market)  &nbsp;
@@ -84,6 +92,30 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:LocalDate)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:RealtimeStockPriceSecurity)

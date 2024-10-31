@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAllStockExchanges**](StockExchangeApi.md#getAllStockExchanges) | **GET** /stock_exchanges | All Stock Exchanges
 [**getStockExchangeById**](StockExchangeApi.md#getStockExchangeById) | **GET** /stock_exchanges/{identifier} | Lookup Stock Exchange
+[**getStockExchangeGainers**](StockExchangeApi.md#getStockExchangeGainers) | **GET** /stock_exchanges/{identifier}/gainers | Top Gainers by Exchange
+[**getStockExchangeLosers**](StockExchangeApi.md#getStockExchangeLosers) | **GET** /stock_exchanges/{identifier}/losers | Top Losers by Exchange
 [**getStockExchangePriceAdjustments**](StockExchangeApi.md#getStockExchangePriceAdjustments) | **GET** /stock_exchanges/{identifier}/prices/adjustments | Stock Price Adjustments by Exchange
 [**getStockExchangePrices**](StockExchangeApi.md#getStockExchangePrices) | **GET** /stock_exchanges/{identifier}/prices | Stock Prices by Exchange
 [**getStockExchangeQuote**](StockExchangeApi.md#getStockExchangeQuote) | **GET** /stock_exchanges/{identifier}/quote | Realtime Quote Prices by Exchange
@@ -184,6 +186,186 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**StockExchange**](StockExchange.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:StockExchangeApi)
+
+[//]: # (METHOD:getStockExchangeGainers)
+
+[//]: # (RETURN_TYPE:ApiResponseStockExchangeMovers)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockExchangeMovers.md)
+
+[//]: # (OPERATION:getStockExchangeGainers_v2)
+
+[//]: # (ENDPOINT:/stock_exchanges/{identifier}/gainers)
+
+[//]: # (DOCUMENT_LINK:StockExchangeApi.md#getStockExchangeGainers)
+
+<a name="getStockExchangeGainers"></a>
+## **getStockExchangeGainers**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockExchangeGainers_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseStockExchangeMovers getStockExchangeGainers(identifier, minPrice, pageSize, source)
+
+#### Top Gainers by Exchange
+
+
+Returns securities with the highest gain percent change traded on the chosen stock exchange.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    StockExchangeApi stockExchangeApi = new StockExchangeApi();
+    String identifier = "USCOMP";
+    BigDecimal minPrice = null;
+    Integer pageSize = 100;
+    String source = "delayed_sip";
+    ApiResponseStockExchangeMovers result = stockExchangeApi.getStockExchangeGainers(identifier, minPrice, pageSize, source);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
+ **minPrice** | BigDecimal| The minimum price filter | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **source** | String| Return the realtime price from the specified source instead of the most recent. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseStockExchangeMovers**](ApiResponseStockExchangeMovers.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:StockExchangeApi)
+
+[//]: # (METHOD:getStockExchangeLosers)
+
+[//]: # (RETURN_TYPE:ApiResponseStockExchangeMovers)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockExchangeMovers.md)
+
+[//]: # (OPERATION:getStockExchangeLosers_v2)
+
+[//]: # (ENDPOINT:/stock_exchanges/{identifier}/losers)
+
+[//]: # (DOCUMENT_LINK:StockExchangeApi.md#getStockExchangeLosers)
+
+<a name="getStockExchangeLosers"></a>
+## **getStockExchangeLosers**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockExchangeLosers_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseStockExchangeMovers getStockExchangeLosers(identifier, minPrice, pageSize, source)
+
+#### Top Losers by Exchange
+
+
+Returns securities with the highest loss percent change traded on the chosen stock exchange.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    StockExchangeApi stockExchangeApi = new StockExchangeApi();
+    String identifier = "USCOMP";
+    BigDecimal minPrice = null;
+    Integer pageSize = 100;
+    String source = "delayed_sip";
+    ApiResponseStockExchangeMovers result = stockExchangeApi.getStockExchangeLosers(identifier, minPrice, pageSize, source);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
+ **minPrice** | BigDecimal| The minimum price filter | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **source** | String| Return the realtime price from the specified source instead of the most recent. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseStockExchangeMovers**](ApiResponseStockExchangeMovers.md)
 
 [//]: # (END_OPERATION)
 
@@ -406,7 +588,7 @@ Name | Type | Description  | Notes
 #### Realtime Quote Prices by Exchange
 
 
-Returns quote prices for the Stock Exchange with the given &#x60;identifier&#x60;
+Returns many popular metrics for securities from a given exchange &#39;identifier&#39; from multiple products conveniently in one API. Realtime stock price data requires at least one realtime product subscription (IEX, NASDAQ Basic, and/or Delayed SIP).  If you are subscribed to multiple realtime stock price products, the api will return the most recent realtime stock price. Previous close price and percent change fields require both an EoD US Stock Price subscription and a realtime stock price subscription. Market_cap, price_to_earnings, and dividendyield data fields require a fundamentals subscription.
 
 [//]: # (END_OVERVIEW)
 

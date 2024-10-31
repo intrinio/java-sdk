@@ -1832,7 +1832,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsPricesByTickerRealtime getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice)
+> ApiResponseOptionsPricesByTickerRealtime getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate)
 
 #### Option Prices Realtime By Ticker
 
@@ -1871,7 +1871,9 @@ public class Main {
     String stockPriceSource = null;
     String model = null;
     Boolean showExtendedPrice = null;
-    ApiResponseOptionsPricesByTickerRealtime result = optionsApi.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice);
+    Object expirationStartDate = "2024-01-01";
+    Object expirationEndDate = "2024-02-02";
+    ApiResponseOptionsPricesByTickerRealtime result = optionsApi.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate);
     System.out.println(result);
   }
 }
@@ -1894,6 +1896,8 @@ Name | Type | Description  | Notes
  **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
+ **expirationStartDate** | [**Object**](.md)| Filter out contracts that expire before this date. | [optional] &nbsp;
+ **expirationEndDate** | [**Object**](.md)| Filter out contracts that expire after this date. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

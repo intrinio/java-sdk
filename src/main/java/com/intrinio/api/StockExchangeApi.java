@@ -16,12 +16,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.intrinio.models.ApiResponseStockExchangeMovers;
 import com.intrinio.models.ApiResponseStockExchangeQuote;
 import com.intrinio.models.ApiResponseStockExchangeRealtimeStockPrices;
 import com.intrinio.models.ApiResponseStockExchangeSecurities;
 import com.intrinio.models.ApiResponseStockExchangeStockPriceAdjustments;
 import com.intrinio.models.ApiResponseStockExchangeStockPrices;
 import com.intrinio.models.ApiResponseStockExchanges;
+import java.math.BigDecimal;
 import org.threeten.bp.LocalDate;
 import com.intrinio.models.StockExchange;
 
@@ -316,6 +318,296 @@ public class StockExchangeApi {
 
         com.squareup.okhttp.Call call = getStockExchangeByIdValidateBeforeCall(identifier, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<StockExchange>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getStockExchangeGainers
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param minPrice The minimum price filter (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getStockExchangeGainersCall(String identifier, BigDecimal minPrice, Integer pageSize, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/stock_exchanges/{identifier}/gainers"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (minPrice != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("min_price", minPrice));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getStockExchangeGainersValidateBeforeCall(String identifier, BigDecimal minPrice, Integer pageSize, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getStockExchangeGainers(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getStockExchangeGainersCall(identifier, minPrice, pageSize, source, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Top Gainers by Exchange
+     * Returns securities with the highest gain percent change traded on the chosen stock exchange.
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param minPrice The minimum price filter (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @return ApiResponseStockExchangeMovers
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseStockExchangeMovers getStockExchangeGainers(String identifier, BigDecimal minPrice, Integer pageSize, String source) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeGainersWithHttpInfo", String.class, BigDecimal.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, minPrice, pageSize, source };
+      ApiResponse<ApiResponseStockExchangeMovers> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Top Gainers by Exchange
+     * Returns securities with the highest gain percent change traded on the chosen stock exchange.
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param minPrice The minimum price filter (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @return ApiResponse&lt;ApiResponseStockExchangeMovers&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseStockExchangeMovers> getStockExchangeGainersWithHttpInfo(String identifier, BigDecimal minPrice, Integer pageSize, String source) throws ApiException {
+        com.squareup.okhttp.Call call = getStockExchangeGainersValidateBeforeCall(identifier, minPrice, pageSize, source, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeMovers>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Top Gainers by Exchange (asynchronously)
+     * Returns securities with the highest gain percent change traded on the chosen stock exchange.
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param minPrice The minimum price filter (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getStockExchangeGainersAsync(String identifier, BigDecimal minPrice, Integer pageSize, String source, final ApiCallback<ApiResponseStockExchangeMovers> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getStockExchangeGainersValidateBeforeCall(identifier, minPrice, pageSize, source, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeMovers>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getStockExchangeLosers
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param minPrice The minimum price filter (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getStockExchangeLosersCall(String identifier, BigDecimal minPrice, Integer pageSize, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/stock_exchanges/{identifier}/losers"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (minPrice != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("min_price", minPrice));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getStockExchangeLosersValidateBeforeCall(String identifier, BigDecimal minPrice, Integer pageSize, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getStockExchangeLosers(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getStockExchangeLosersCall(identifier, minPrice, pageSize, source, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Top Losers by Exchange
+     * Returns securities with the highest loss percent change traded on the chosen stock exchange.
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param minPrice The minimum price filter (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @return ApiResponseStockExchangeMovers
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseStockExchangeMovers getStockExchangeLosers(String identifier, BigDecimal minPrice, Integer pageSize, String source) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeLosersWithHttpInfo", String.class, BigDecimal.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, minPrice, pageSize, source };
+      ApiResponse<ApiResponseStockExchangeMovers> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Top Losers by Exchange
+     * Returns securities with the highest loss percent change traded on the chosen stock exchange.
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param minPrice The minimum price filter (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @return ApiResponse&lt;ApiResponseStockExchangeMovers&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseStockExchangeMovers> getStockExchangeLosersWithHttpInfo(String identifier, BigDecimal minPrice, Integer pageSize, String source) throws ApiException {
+        com.squareup.okhttp.Call call = getStockExchangeLosersValidateBeforeCall(identifier, minPrice, pageSize, source, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeMovers>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Top Losers by Exchange (asynchronously)
+     * Returns securities with the highest loss percent change traded on the chosen stock exchange.
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param minPrice The minimum price filter (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param source Return the realtime price from the specified source instead of the most recent. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getStockExchangeLosersAsync(String identifier, BigDecimal minPrice, Integer pageSize, String source, final ApiCallback<ApiResponseStockExchangeMovers> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getStockExchangeLosersValidateBeforeCall(identifier, minPrice, pageSize, source, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeMovers>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -713,7 +1005,7 @@ public class StockExchangeApi {
 
     /**
      * Realtime Quote Prices by Exchange
-     * Returns quote prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     * Returns many popular metrics for securities from a given exchange &#39;identifier&#39; from multiple products conveniently in one API. Realtime stock price data requires at least one realtime product subscription (IEX, NASDAQ Basic, and/or Delayed SIP).  If you are subscribed to multiple realtime stock price products, the api will return the most recent realtime stock price. Previous close price and percent change fields require both an EoD US Stock Price subscription and a realtime stock price subscription. Market_cap, price_to_earnings, and dividendyield data fields require a fundamentals subscription.
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param tickers The comma-delimited list of ticker symbols to return quotes for. (required)
      * @param source Return the realtime price from the specified source instead of the most recent. (optional)
@@ -732,7 +1024,7 @@ public class StockExchangeApi {
 
     /**
      * Realtime Quote Prices by Exchange
-     * Returns quote prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     * Returns many popular metrics for securities from a given exchange &#39;identifier&#39; from multiple products conveniently in one API. Realtime stock price data requires at least one realtime product subscription (IEX, NASDAQ Basic, and/or Delayed SIP).  If you are subscribed to multiple realtime stock price products, the api will return the most recent realtime stock price. Previous close price and percent change fields require both an EoD US Stock Price subscription and a realtime stock price subscription. Market_cap, price_to_earnings, and dividendyield data fields require a fundamentals subscription.
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param tickers The comma-delimited list of ticker symbols to return quotes for. (required)
      * @param source Return the realtime price from the specified source instead of the most recent. (optional)
@@ -748,7 +1040,7 @@ public class StockExchangeApi {
 
     /**
      * Realtime Quote Prices by Exchange (asynchronously)
-     * Returns quote prices for the Stock Exchange with the given &#x60;identifier&#x60;
+     * Returns many popular metrics for securities from a given exchange &#39;identifier&#39; from multiple products conveniently in one API. Realtime stock price data requires at least one realtime product subscription (IEX, NASDAQ Basic, and/or Delayed SIP).  If you are subscribed to multiple realtime stock price products, the api will return the most recent realtime stock price. Previous close price and percent change fields require both an EoD US Stock Price subscription and a realtime stock price subscription. Market_cap, price_to_earnings, and dividendyield data fields require a fundamentals subscription.
      * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
      * @param tickers The comma-delimited list of ticker symbols to return quotes for. (required)
      * @param source Return the realtime price from the specified source instead of the most recent. (optional)

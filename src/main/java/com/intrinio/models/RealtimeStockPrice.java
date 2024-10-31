@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -68,6 +69,30 @@ public class RealtimeStockPrice {
 
   @SerializedName("updated_on")
   private OffsetDateTime updatedOn = null;
+
+  @SerializedName("eod_close_price")
+  private BigDecimal eodClosePrice = null;
+
+  @SerializedName("eod_close_date")
+  private LocalDate eodCloseDate = null;
+
+  @SerializedName("normal_market_hours_last_time")
+  private OffsetDateTime normalMarketHoursLastTime = null;
+
+  @SerializedName("normal_market_hours_last_price")
+  private BigDecimal normalMarketHoursLastPrice = null;
+
+  @SerializedName("normal_market_hours_last_size")
+  private BigDecimal normalMarketHoursLastSize = null;
+
+  @SerializedName("qualified_last_price")
+  private BigDecimal qualifiedLastPrice = null;
+
+  @SerializedName("qualified_last_time")
+  private OffsetDateTime qualifiedLastTime = null;
+
+  @SerializedName("qualified_last_size")
+  private BigDecimal qualifiedLastSize = null;
 
   @SerializedName("source")
   private String source = null;
@@ -378,6 +403,150 @@ public class RealtimeStockPrice {
     this.updatedOn = updatedOn;
   }
 
+  public RealtimeStockPrice eodClosePrice(BigDecimal eodClosePrice) {
+    this.eodClosePrice = eodClosePrice;
+    return this;
+  }
+
+   /**
+   * The previous trading session&#39;s closing price.
+   * @return eodClosePrice
+  **/
+  @ApiModelProperty(value = "The previous trading session's closing price.")
+  public BigDecimal getEodClosePrice() {
+    return eodClosePrice;
+  }
+
+  public void setEodClosePrice(BigDecimal eodClosePrice) {
+    this.eodClosePrice = eodClosePrice;
+  }
+
+  public RealtimeStockPrice eodCloseDate(LocalDate eodCloseDate) {
+    this.eodCloseDate = eodCloseDate;
+    return this;
+  }
+
+   /**
+   * The date of the previous trading session&#39;s closing price.
+   * @return eodCloseDate
+  **/
+  @ApiModelProperty(value = "The date of the previous trading session's closing price.")
+  public LocalDate getEodCloseDate() {
+    return eodCloseDate;
+  }
+
+  public void setEodCloseDate(LocalDate eodCloseDate) {
+    this.eodCloseDate = eodCloseDate;
+  }
+
+  public RealtimeStockPrice normalMarketHoursLastTime(OffsetDateTime normalMarketHoursLastTime) {
+    this.normalMarketHoursLastTime = normalMarketHoursLastTime;
+    return this;
+  }
+
+   /**
+   * The date and time of the last trade that qualifies for last price consideration during normal market hours according to exchange rules on trade conditions.
+   * @return normalMarketHoursLastTime
+  **/
+  @ApiModelProperty(value = "The date and time of the last trade that qualifies for last price consideration during normal market hours according to exchange rules on trade conditions.")
+  public OffsetDateTime getNormalMarketHoursLastTime() {
+    return normalMarketHoursLastTime;
+  }
+
+  public void setNormalMarketHoursLastTime(OffsetDateTime normalMarketHoursLastTime) {
+    this.normalMarketHoursLastTime = normalMarketHoursLastTime;
+  }
+
+  public RealtimeStockPrice normalMarketHoursLastPrice(BigDecimal normalMarketHoursLastPrice) {
+    this.normalMarketHoursLastPrice = normalMarketHoursLastPrice;
+    return this;
+  }
+
+   /**
+   * The price of the last that qualifies for last price consideration during normal market hours according to exchange rules on trade conditions.
+   * @return normalMarketHoursLastPrice
+  **/
+  @ApiModelProperty(value = "The price of the last that qualifies for last price consideration during normal market hours according to exchange rules on trade conditions.")
+  public BigDecimal getNormalMarketHoursLastPrice() {
+    return normalMarketHoursLastPrice;
+  }
+
+  public void setNormalMarketHoursLastPrice(BigDecimal normalMarketHoursLastPrice) {
+    this.normalMarketHoursLastPrice = normalMarketHoursLastPrice;
+  }
+
+  public RealtimeStockPrice normalMarketHoursLastSize(BigDecimal normalMarketHoursLastSize) {
+    this.normalMarketHoursLastSize = normalMarketHoursLastSize;
+    return this;
+  }
+
+   /**
+   * The size of the last trade that qualifies for last price consideration during normal market hours according to exchange rules on trade conditions.
+   * @return normalMarketHoursLastSize
+  **/
+  @ApiModelProperty(value = "The size of the last trade that qualifies for last price consideration during normal market hours according to exchange rules on trade conditions.")
+  public BigDecimal getNormalMarketHoursLastSize() {
+    return normalMarketHoursLastSize;
+  }
+
+  public void setNormalMarketHoursLastSize(BigDecimal normalMarketHoursLastSize) {
+    this.normalMarketHoursLastSize = normalMarketHoursLastSize;
+  }
+
+  public RealtimeStockPrice qualifiedLastPrice(BigDecimal qualifiedLastPrice) {
+    this.qualifiedLastPrice = qualifiedLastPrice;
+    return this;
+  }
+
+   /**
+   * The price of the last trade that qualifies for last price consideration according to exchange rules on trade conditions.
+   * @return qualifiedLastPrice
+  **/
+  @ApiModelProperty(value = "The price of the last trade that qualifies for last price consideration according to exchange rules on trade conditions.")
+  public BigDecimal getQualifiedLastPrice() {
+    return qualifiedLastPrice;
+  }
+
+  public void setQualifiedLastPrice(BigDecimal qualifiedLastPrice) {
+    this.qualifiedLastPrice = qualifiedLastPrice;
+  }
+
+  public RealtimeStockPrice qualifiedLastTime(OffsetDateTime qualifiedLastTime) {
+    this.qualifiedLastTime = qualifiedLastTime;
+    return this;
+  }
+
+   /**
+   * The date and time of the last trade that qualifies for last price consideration according to exchange rules on trade conditions.
+   * @return qualifiedLastTime
+  **/
+  @ApiModelProperty(value = "The date and time of the last trade that qualifies for last price consideration according to exchange rules on trade conditions.")
+  public OffsetDateTime getQualifiedLastTime() {
+    return qualifiedLastTime;
+  }
+
+  public void setQualifiedLastTime(OffsetDateTime qualifiedLastTime) {
+    this.qualifiedLastTime = qualifiedLastTime;
+  }
+
+  public RealtimeStockPrice qualifiedLastSize(BigDecimal qualifiedLastSize) {
+    this.qualifiedLastSize = qualifiedLastSize;
+    return this;
+  }
+
+   /**
+   * The size of the last trade that qualifies for last price consideration according to exchange rules on trade conditions.
+   * @return qualifiedLastSize
+  **/
+  @ApiModelProperty(value = "The size of the last trade that qualifies for last price consideration according to exchange rules on trade conditions.")
+  public BigDecimal getQualifiedLastSize() {
+    return qualifiedLastSize;
+  }
+
+  public void setQualifiedLastSize(BigDecimal qualifiedLastSize) {
+    this.qualifiedLastSize = qualifiedLastSize;
+  }
+
   public RealtimeStockPrice source(String source) {
     this.source = source;
     return this;
@@ -530,6 +699,14 @@ public class RealtimeStockPrice {
         Objects.equals(this.exchangeVolume, realtimeStockPrice.exchangeVolume) &&
         Objects.equals(this.marketVolume, realtimeStockPrice.marketVolume) &&
         Objects.equals(this.updatedOn, realtimeStockPrice.updatedOn) &&
+        Objects.equals(this.eodClosePrice, realtimeStockPrice.eodClosePrice) &&
+        Objects.equals(this.eodCloseDate, realtimeStockPrice.eodCloseDate) &&
+        Objects.equals(this.normalMarketHoursLastTime, realtimeStockPrice.normalMarketHoursLastTime) &&
+        Objects.equals(this.normalMarketHoursLastPrice, realtimeStockPrice.normalMarketHoursLastPrice) &&
+        Objects.equals(this.normalMarketHoursLastSize, realtimeStockPrice.normalMarketHoursLastSize) &&
+        Objects.equals(this.qualifiedLastPrice, realtimeStockPrice.qualifiedLastPrice) &&
+        Objects.equals(this.qualifiedLastTime, realtimeStockPrice.qualifiedLastTime) &&
+        Objects.equals(this.qualifiedLastSize, realtimeStockPrice.qualifiedLastSize) &&
         Objects.equals(this.source, realtimeStockPrice.source) &&
         Objects.equals(this.listingVenue, realtimeStockPrice.listingVenue) &&
         Objects.equals(this.salesConditions, realtimeStockPrice.salesConditions) &&
@@ -541,7 +718,7 @@ public class RealtimeStockPrice {
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastPrice, lastTime, lastSize, bidPrice, bidSize, bidTime, askPrice, askSize, askTime, openPrice, closePrice, highPrice, lowPrice, exchangeVolume, marketVolume, updatedOn, source, listingVenue, salesConditions, quoteConditions, marketCenterCode, isDarkpool, security);
+    return Objects.hash(lastPrice, lastTime, lastSize, bidPrice, bidSize, bidTime, askPrice, askSize, askTime, openPrice, closePrice, highPrice, lowPrice, exchangeVolume, marketVolume, updatedOn, eodClosePrice, eodCloseDate, normalMarketHoursLastTime, normalMarketHoursLastPrice, normalMarketHoursLastSize, qualifiedLastPrice, qualifiedLastTime, qualifiedLastSize, source, listingVenue, salesConditions, quoteConditions, marketCenterCode, isDarkpool, security);
   }
 
 
@@ -566,6 +743,14 @@ public class RealtimeStockPrice {
     sb.append("    exchangeVolume: ").append(toIndentedString(exchangeVolume)).append("\n");
     sb.append("    marketVolume: ").append(toIndentedString(marketVolume)).append("\n");
     sb.append("    updatedOn: ").append(toIndentedString(updatedOn)).append("\n");
+    sb.append("    eodClosePrice: ").append(toIndentedString(eodClosePrice)).append("\n");
+    sb.append("    eodCloseDate: ").append(toIndentedString(eodCloseDate)).append("\n");
+    sb.append("    normalMarketHoursLastTime: ").append(toIndentedString(normalMarketHoursLastTime)).append("\n");
+    sb.append("    normalMarketHoursLastPrice: ").append(toIndentedString(normalMarketHoursLastPrice)).append("\n");
+    sb.append("    normalMarketHoursLastSize: ").append(toIndentedString(normalMarketHoursLastSize)).append("\n");
+    sb.append("    qualifiedLastPrice: ").append(toIndentedString(qualifiedLastPrice)).append("\n");
+    sb.append("    qualifiedLastTime: ").append(toIndentedString(qualifiedLastTime)).append("\n");
+    sb.append("    qualifiedLastSize: ").append(toIndentedString(qualifiedLastSize)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
     sb.append("    listingVenue: ").append(toIndentedString(listingVenue)).append("\n");
     sb.append("    salesConditions: ").append(toIndentedString(salesConditions)).append("\n");

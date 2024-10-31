@@ -3010,12 +3010,14 @@ public class OptionsApi {
      * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
      * @param model Model for calculating Greek values. Default is black_scholes. (optional)
      * @param showExtendedPrice Whether to include open close high low type fields. (optional)
+     * @param expirationStartDate Filter out contracts that expire before this date. (optional)
+     * @param expirationEndDate Filter out contracts that expire after this date. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOptionsPricesRealtimeByTickerCall(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsPricesRealtimeByTickerCall(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice, Object expirationStartDate, Object expirationEndDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -3038,6 +3040,10 @@ public class OptionsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("model", model));
         if (showExtendedPrice != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("show_extended_price", showExtendedPrice));
+        if (expirationStartDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("expiration_start_date", expirationStartDate));
+        if (expirationEndDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("expiration_end_date", expirationEndDate));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -3072,7 +3078,7 @@ public class OptionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOptionsPricesRealtimeByTickerValidateBeforeCall(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getOptionsPricesRealtimeByTickerValidateBeforeCall(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice, Object expirationStartDate, Object expirationEndDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'symbol' is set
         if (symbol == null) {
@@ -3080,7 +3086,7 @@ public class OptionsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getOptionsPricesRealtimeByTickerCall(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsPricesRealtimeByTickerCall(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3096,14 +3102,16 @@ public class OptionsApi {
      * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
      * @param model Model for calculating Greek values. Default is black_scholes. (optional)
      * @param showExtendedPrice Whether to include open close high low type fields. (optional)
+     * @param expirationStartDate Filter out contracts that expire before this date. (optional)
+     * @param expirationEndDate Filter out contracts that expire after this date. (optional)
      * @return ApiResponseOptionsPricesByTickerRealtime
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseOptionsPricesByTickerRealtime getOptionsPricesRealtimeByTicker(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice) throws ApiException, NoSuchMethodException {
-      Method targetMethod = OptionsApi.class.getMethod("getOptionsPricesRealtimeByTickerWithHttpInfo", String.class, String.class, String.class, String.class, Integer.class, String.class, String.class, Boolean.class);
+    public ApiResponseOptionsPricesByTickerRealtime getOptionsPricesRealtimeByTicker(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice, Object expirationStartDate, Object expirationEndDate) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsPricesRealtimeByTickerWithHttpInfo", String.class, String.class, String.class, String.class, Integer.class, String.class, String.class, Boolean.class, Object.class, Object.class);
       
-      Object[] apiCallArguments = { symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice };
+      Object[] apiCallArguments = { symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate };
       ApiResponse<ApiResponseOptionsPricesByTickerRealtime> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -3119,11 +3127,13 @@ public class OptionsApi {
      * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
      * @param model Model for calculating Greek values. Default is black_scholes. (optional)
      * @param showExtendedPrice Whether to include open close high low type fields. (optional)
+     * @param expirationStartDate Filter out contracts that expire before this date. (optional)
+     * @param expirationEndDate Filter out contracts that expire after this date. (optional)
      * @return ApiResponse&lt;ApiResponseOptionsPricesByTickerRealtime&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseOptionsPricesByTickerRealtime> getOptionsPricesRealtimeByTickerWithHttpInfo(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice) throws ApiException {
-        com.squareup.okhttp.Call call = getOptionsPricesRealtimeByTickerValidateBeforeCall(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, null, null);
+    public ApiResponse<ApiResponseOptionsPricesByTickerRealtime> getOptionsPricesRealtimeByTickerWithHttpInfo(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice, Object expirationStartDate, Object expirationEndDate) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsPricesRealtimeByTickerValidateBeforeCall(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesByTickerRealtime>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3139,11 +3149,13 @@ public class OptionsApi {
      * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
      * @param model Model for calculating Greek values. Default is black_scholes. (optional)
      * @param showExtendedPrice Whether to include open close high low type fields. (optional)
+     * @param expirationStartDate Filter out contracts that expire before this date. (optional)
+     * @param expirationEndDate Filter out contracts that expire after this date. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getOptionsPricesRealtimeByTickerAsync(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice, final ApiCallback<ApiResponseOptionsPricesByTickerRealtime> callback) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsPricesRealtimeByTickerAsync(String symbol, String source, String ivMode, String nextPage, Integer pageSize, String stockPriceSource, String model, Boolean showExtendedPrice, Object expirationStartDate, Object expirationEndDate, final ApiCallback<ApiResponseOptionsPricesByTickerRealtime> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3164,7 +3176,7 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getOptionsPricesRealtimeByTickerValidateBeforeCall(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsPricesRealtimeByTickerValidateBeforeCall(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesByTickerRealtime>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

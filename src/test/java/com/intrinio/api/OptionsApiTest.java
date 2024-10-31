@@ -451,7 +451,9 @@ public class OptionsApiTest {
         String stockPriceSource = null;
         String model = null;
         Boolean showExtendedPrice = null;
-        ApiResponseOptionsPricesByTickerRealtime response = api.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice);
+        Object expirationStartDate = null;
+        Object expirationEndDate = null;
+        ApiResponseOptionsPricesByTickerRealtime response = api.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate);
 
         // TODO: test validations
     }

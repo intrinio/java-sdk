@@ -1046,7 +1046,7 @@ public class SecurityApiTest {
     /**
      * Quote for a Security
      *
-     * Return a current pricing quote for a security across multiple sources.
+     * Returns many popular metrics for a security from multiple products conveniently in one API. Realtime stock price data requires at least one realtime product subscription (IEX, NASDAQ Basic, and/or Delayed SIP).  If you are subscribed to multiple realtime stock price products, the api will return the most recent realtime stock price. Previous close price and percent change fields require both an EoD US Stock Price subscription and a realtime stock price subscription. Market_cap, price_to_earnings, and dividendyield data fields require a fundamentals subscription.
      *
      * @throws ApiException
      *          if the Api call fails
