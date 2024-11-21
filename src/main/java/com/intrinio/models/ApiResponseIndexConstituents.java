@@ -9,10 +9,12 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.intrinio.models.ApiResponseIndex;
-import com.intrinio.models.IndexConstituents;
+import com.intrinio.models.SecuritySummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.threeten.bp.LocalDate;
 
 /**
@@ -27,7 +29,7 @@ public class ApiResponseIndexConstituents {
   private LocalDate date = null;
 
   @SerializedName("constituents")
-  private IndexConstituents constituents = null;
+  private List<SecuritySummary> constituents = null;
 
   public ApiResponseIndexConstituents index(ApiResponseIndex index) {
     this.index = index;
@@ -65,8 +67,16 @@ public class ApiResponseIndexConstituents {
     this.date = date;
   }
 
-  public ApiResponseIndexConstituents constituents(IndexConstituents constituents) {
+  public ApiResponseIndexConstituents constituents(List<SecuritySummary> constituents) {
     this.constituents = constituents;
+    return this;
+  }
+
+  public ApiResponseIndexConstituents addConstituentsItem(SecuritySummary constituentsItem) {
+    if (this.constituents == null) {
+      this.constituents = new ArrayList<>();
+    }
+    this.constituents.add(constituentsItem);
     return this;
   }
 
@@ -75,11 +85,11 @@ public class ApiResponseIndexConstituents {
    * @return constituents
   **/
   @ApiModelProperty(value = "")
-  public IndexConstituents getConstituents() {
+  public List<SecuritySummary> getConstituents() {
     return constituents;
   }
 
-  public void setConstituents(IndexConstituents constituents) {
+  public void setConstituents(List<SecuritySummary> constituents) {
     this.constituents = constituents;
   }
 

@@ -32,7 +32,9 @@ public class ApiResponseSecurityIntradayPrices {
    */
   @JsonAdapter(SourceEnum.Adapter.class)
   public enum SourceEnum {
-    _V2_STOCK_PRICE_INTRADAY_SOURCES_ENUM_("$$v2_stock_price_intraday_sources_enum$$");
+    IEX("iex"),
+    
+    BATS("bats");
 
     private String value;
 

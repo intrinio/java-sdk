@@ -257,7 +257,7 @@ public class CompanyApiTest {
     /**
      * Historical Data for Company
      *
-     * $$v2_company_historical_data_description$$
+     * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
      *
      * @throws ApiException
      *          if the Api call fails

@@ -13,7 +13,7 @@ Name | Type | Description
 ------------ | ------------- | -------------
 **index** | [**ApiResponseIndex**](ApiResponseIndex.md) | The index &nbsp;
 **date** | [**LocalDate**](LocalDate.md) | The date when an update was last received for the index constituents &nbsp;
-**constituents** | [**IndexConstituents**](IndexConstituents.md) |  &nbsp;
+**constituents** | [**List&lt;SecuritySummary&gt;**](SecuritySummary.md) |  &nbsp;
 
 [//]: # (END_DEFINITION)
 
@@ -24,7 +24,7 @@ Name | Type | Description
 [//]: # (CONTAINED_CLASS:LocalDate)
 
 
-[//]: # (CONTAINED_CLASS:IndexConstituents)
+[//]: # (CONTAINED_CLASS:SecuritySummary)
 
 
 
