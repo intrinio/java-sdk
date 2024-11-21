@@ -12,6 +12,7 @@ import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import com.intrinio.models.ApiResponseOptionsPriceRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
+import com.intrinio.models.ApiResponseOptionsPricesByTickerEod;
 import com.intrinio.models.ApiResponseOptionsPricesByTickerRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesEod;
 import com.intrinio.models.ApiResponseOptionsRealtime;
@@ -25,6 +26,7 @@ import com.intrinio.models.OptionContractsList;
 import com.intrinio.models.OptionIntervalsMoversResult;
 import com.intrinio.models.OptionIntervalsResult;
 import com.intrinio.models.OptionSnapshotsResult;
+import com.intrinio.models.OptionTradesResult;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -113,6 +115,56 @@ public class OptionsApiTest {
         Boolean showExtendedPrice = null;
         Boolean includeRelatedSymbols = null;
         ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Option Trades
+     *
+     * Returns all trades between start time and end time, up to seven days ago for the specified source.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionTradesTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        LocalDate startDate = null;
+        String startTime = null;
+        LocalDate endDate = null;
+        String endTime = null;
+        String timezone = null;
+        Integer pageSize = null;
+        Integer minSize = null;
+        String security = null;
+        String nextPage = null;
+        OptionTradesResult response = api.getOptionTrades(source, startDate, startTime, endDate, endTime, timezone, pageSize, minSize, security, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Option Trades By Contract
+     *
+     * Returns all trades for a contract between start time and end time, up to seven days ago for the specified source.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionTradesByContractTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String source = null;
+        LocalDate startDate = null;
+        String startTime = null;
+        LocalDate endDate = null;
+        String endTime = null;
+        String timezone = null;
+        Integer pageSize = null;
+        Integer minSize = null;
+        String nextPage = null;
+        OptionTradesResult response = api.getOptionTradesByContract(identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, minSize, nextPage);
 
         // TODO: test validations
     }
@@ -409,6 +461,30 @@ public class OptionsApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         ApiResponseOptionsPricesEod response = api.getOptionsPricesEod(identifier, nextPage, startDate, endDate);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Option Prices End of Day By Ticker
+     *
+     * Returns a list of end of day pricing information for all option contracts currently associated with the ticker.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsPricesEodByTickerTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        Integer pageSize = null;
+        Object date = null;
+        String type = null;
+        BigDecimal strike = null;
+        BigDecimal strikeGreaterThan = null;
+        BigDecimal strikeLessThan = null;
+        Boolean includeRelatedSymbols = null;
+        String nextPage = null;
+        ApiResponseOptionsPricesByTickerEod response = api.getOptionsPricesEodByTicker(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage);
 
         // TODO: test validations
     }

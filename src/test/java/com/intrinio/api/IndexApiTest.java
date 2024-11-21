@@ -9,6 +9,7 @@ import com.intrinio.models.ApiResponseEconomicIndicesSearch;
 import com.intrinio.models.ApiResponseEodIndexPrices;
 import com.intrinio.models.ApiResponseEodIndexPricesAll;
 import com.intrinio.models.ApiResponseIndex;
+import com.intrinio.models.ApiResponseIndexConstituents;
 import com.intrinio.models.ApiResponseIndices;
 import com.intrinio.models.ApiResponseRealtimeIndexPrices;
 import com.intrinio.models.ApiResponseSICIndexHistoricalData;
@@ -229,6 +230,22 @@ public class IndexApiTest {
         LocalDate startDate = null;
         LocalDate endDate = null;
         ApiResponseEodIndexPrices response = api.getEodIndexPriceById(identifier, pageSize, startDate, endDate);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Index Constituents By Index Identifier
+     *
+     * 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getIndexConstituentsByIdTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        ApiResponseIndexConstituents response = api.getIndexConstituentsById(identifier);
 
         // TODO: test validations
     }

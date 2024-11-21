@@ -45,9 +45,10 @@ public class FilingApiTest {
         String industryCategory = null;
         String industryGroup = null;
         Boolean theaEnabled = null;
+        Boolean earningsRelease = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseFilings response = api.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, pageSize, nextPage);
+        ApiResponseFilings response = api.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, earningsRelease, pageSize, nextPage);
 
         // TODO: test validations
     }

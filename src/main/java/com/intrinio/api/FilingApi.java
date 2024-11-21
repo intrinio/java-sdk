@@ -60,6 +60,7 @@ public class FilingApi {
      * @param industryCategory Return companies in the given industry category (optional)
      * @param industryGroup Return companies in the given industry group (optional)
      * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
+     * @param earningsRelease Return filings that have been tagged as having Results of Operations and Financial Conditions (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -67,7 +68,7 @@ public class FilingApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllFilingsCall(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Boolean theaEnabled, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllFilingsCall(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Boolean theaEnabled, Boolean earningsRelease, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -89,6 +90,8 @@ public class FilingApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("industry_group", industryGroup));
         if (theaEnabled != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("thea_enabled", theaEnabled));
+        if (earningsRelease != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("earnings_release", earningsRelease));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -127,10 +130,10 @@ public class FilingApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllFilingsValidateBeforeCall(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Boolean theaEnabled, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllFilingsValidateBeforeCall(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Boolean theaEnabled, Boolean earningsRelease, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllFilingsCall(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllFilingsCall(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, earningsRelease, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -145,16 +148,17 @@ public class FilingApi {
      * @param industryCategory Return companies in the given industry category (optional)
      * @param industryGroup Return companies in the given industry group (optional)
      * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
+     * @param earningsRelease Return filings that have been tagged as having Results of Operations and Financial Conditions (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseFilings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseFilings getAllFilings(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Boolean theaEnabled, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = FilingApi.class.getMethod("getAllFilingsWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class, String.class, String.class, Boolean.class, Integer.class, String.class);
+    public ApiResponseFilings getAllFilings(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Boolean theaEnabled, Boolean earningsRelease, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = FilingApi.class.getMethod("getAllFilingsWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class, String.class, String.class, Boolean.class, Boolean.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, pageSize, nextPage };
+      Object[] apiCallArguments = { company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, earningsRelease, pageSize, nextPage };
       ApiResponse<ApiResponseFilings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -169,13 +173,14 @@ public class FilingApi {
      * @param industryCategory Return companies in the given industry category (optional)
      * @param industryGroup Return companies in the given industry group (optional)
      * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
+     * @param earningsRelease Return filings that have been tagged as having Results of Operations and Financial Conditions (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseFilings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseFilings> getAllFilingsWithHttpInfo(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Boolean theaEnabled, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllFilingsValidateBeforeCall(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseFilings> getAllFilingsWithHttpInfo(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Boolean theaEnabled, Boolean earningsRelease, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllFilingsValidateBeforeCall(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, earningsRelease, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseFilings>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -190,13 +195,14 @@ public class FilingApi {
      * @param industryCategory Return companies in the given industry category (optional)
      * @param industryGroup Return companies in the given industry group (optional)
      * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
+     * @param earningsRelease Return filings that have been tagged as having Results of Operations and Financial Conditions (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllFilingsAsync(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Boolean theaEnabled, Integer pageSize, String nextPage, final ApiCallback<ApiResponseFilings> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllFilingsAsync(String company, String reportType, LocalDate startDate, LocalDate endDate, String industryCategory, String industryGroup, Boolean theaEnabled, Boolean earningsRelease, Integer pageSize, String nextPage, final ApiCallback<ApiResponseFilings> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -217,7 +223,7 @@ public class FilingApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllFilingsValidateBeforeCall(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllFilingsValidateBeforeCall(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, earningsRelease, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseFilings>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

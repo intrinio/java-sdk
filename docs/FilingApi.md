@@ -43,7 +43,7 @@ Method | HTTP request | Description
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseFilings getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, pageSize, nextPage)
+> ApiResponseFilings getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, earningsRelease, pageSize, nextPage)
 
 #### All Filings
 
@@ -81,9 +81,10 @@ public class Main {
     String industryCategory = null;
     String industryGroup = null;
     Boolean theaEnabled = null;
+    Boolean earningsRelease = null;
     Integer pageSize = 100;
     String nextPage = null;
-    ApiResponseFilings result = filingApi.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, pageSize, nextPage);
+    ApiResponseFilings result = filingApi.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, earningsRelease, pageSize, nextPage);
     System.out.println(result);
   }
 }
@@ -105,6 +106,7 @@ Name | Type | Description  | Notes
  **industryCategory** | String| Return companies in the given industry category | [optional] &nbsp;
  **industryGroup** | String| Return companies in the given industry group | [optional] &nbsp;
  **theaEnabled** | Boolean| Return filings that have been read by our Thea NLP and are ready for our answers endpoint | [optional] &nbsp;
+ **earningsRelease** | Boolean| Return filings that have been tagged as having Results of Operations and Financial Conditions | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>

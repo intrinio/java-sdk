@@ -22,6 +22,7 @@ import com.intrinio.models.ApiResponseEconomicIndicesSearch;
 import com.intrinio.models.ApiResponseEodIndexPrices;
 import com.intrinio.models.ApiResponseEodIndexPricesAll;
 import com.intrinio.models.ApiResponseIndex;
+import com.intrinio.models.ApiResponseIndexConstituents;
 import com.intrinio.models.ApiResponseIndices;
 import com.intrinio.models.ApiResponseRealtimeIndexPrices;
 import com.intrinio.models.ApiResponseSICIndexHistoricalData;
@@ -1547,6 +1548,133 @@ public class IndexApi {
 
         com.squareup.okhttp.Call call = getEodIndexPriceByIdValidateBeforeCall(identifier, pageSize, startDate, endDate, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseEodIndexPrices>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getIndexConstituentsById
+     * @param identifier The index symbol (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getIndexConstituentsByIdCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/indices/{identifier}/constituents"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getIndexConstituentsByIdValidateBeforeCall(String identifier, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getIndexConstituentsById(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getIndexConstituentsByIdCall(identifier, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Index Constituents By Index Identifier
+     * 
+     * @param identifier The index symbol (required)
+     * @return ApiResponseIndexConstituents
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseIndexConstituents getIndexConstituentsById(String identifier) throws ApiException, NoSuchMethodException {
+      Method targetMethod = IndexApi.class.getMethod("getIndexConstituentsByIdWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { identifier };
+      ApiResponse<ApiResponseIndexConstituents> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Index Constituents By Index Identifier
+     * 
+     * @param identifier The index symbol (required)
+     * @return ApiResponse&lt;ApiResponseIndexConstituents&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseIndexConstituents> getIndexConstituentsByIdWithHttpInfo(String identifier) throws ApiException {
+        com.squareup.okhttp.Call call = getIndexConstituentsByIdValidateBeforeCall(identifier, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseIndexConstituents>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Index Constituents By Index Identifier (asynchronously)
+     * 
+     * @param identifier The index symbol (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getIndexConstituentsByIdAsync(String identifier, final ApiCallback<ApiResponseIndexConstituents> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getIndexConstituentsByIdValidateBeforeCall(identifier, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseIndexConstituents>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

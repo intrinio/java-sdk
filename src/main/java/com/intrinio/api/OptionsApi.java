@@ -25,6 +25,7 @@ import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
 import com.intrinio.models.ApiResponseOptionsPriceRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
+import com.intrinio.models.ApiResponseOptionsPricesByTickerEod;
 import com.intrinio.models.ApiResponseOptionsPricesByTickerRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesEod;
 import com.intrinio.models.ApiResponseOptionsRealtime;
@@ -38,6 +39,7 @@ import com.intrinio.models.OptionContractsList;
 import com.intrinio.models.OptionIntervalsMoversResult;
 import com.intrinio.models.OptionIntervalsResult;
 import com.intrinio.models.OptionSnapshotsResult;
+import com.intrinio.models.OptionTradesResult;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.Method;
@@ -632,6 +634,364 @@ public class OptionsApi {
 
         com.squareup.okhttp.Call call = getOptionStrikesRealtimeValidateBeforeCall(symbol, strike, source, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsChainRealtime>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionTrades
+     * @param source The specific source of the data being requested. (optional)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
+     * @param security The ticker symbol for which trades are being requested. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionTradesCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Integer minSize, String security, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/trades";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (startTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_time", startTime));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (endTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_time", endTime));
+        if (timezone != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("timezone", timezone));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (minSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("min_size", minSize));
+        if (security != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("security", security));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionTradesValidateBeforeCall(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Integer minSize, String security, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getOptionTradesCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, minSize, security, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Option Trades
+     * Returns all trades between start time and end time, up to seven days ago for the specified source.
+     * @param source The specific source of the data being requested. (optional)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
+     * @param security The ticker symbol for which trades are being requested. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return OptionTradesResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public OptionTradesResult getOptionTrades(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Integer minSize, String security, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionTradesWithHttpInfo", String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, Integer.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { source, startDate, startTime, endDate, endTime, timezone, pageSize, minSize, security, nextPage };
+      ApiResponse<OptionTradesResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Option Trades
+     * Returns all trades between start time and end time, up to seven days ago for the specified source.
+     * @param source The specific source of the data being requested. (optional)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
+     * @param security The ticker symbol for which trades are being requested. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;OptionTradesResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<OptionTradesResult> getOptionTradesWithHttpInfo(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Integer minSize, String security, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionTradesValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, minSize, security, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<OptionTradesResult>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Option Trades (asynchronously)
+     * Returns all trades between start time and end time, up to seven days ago for the specified source.
+     * @param source The specific source of the data being requested. (optional)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
+     * @param security The ticker symbol for which trades are being requested. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionTradesAsync(String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Integer minSize, String security, String nextPage, final ApiCallback<OptionTradesResult> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionTradesValidateBeforeCall(source, startDate, startTime, endDate, endTime, timezone, pageSize, minSize, security, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<OptionTradesResult>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionTradesByContract
+     * @param identifier The option contract for which trades are being requested. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionTradesByContractCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Integer minSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/{identifier}/trades"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (startTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_time", startTime));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (endTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_time", endTime));
+        if (timezone != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("timezone", timezone));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (minSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("min_size", minSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionTradesByContractValidateBeforeCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Integer minSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getOptionTradesByContract(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionTradesByContractCall(identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, minSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Option Trades By Contract
+     * Returns all trades for a contract between start time and end time, up to seven days ago for the specified source.
+     * @param identifier The option contract for which trades are being requested. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return OptionTradesResult
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public OptionTradesResult getOptionTradesByContract(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Integer minSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionTradesByContractWithHttpInfo", String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, String.class, Integer.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, minSize, nextPage };
+      ApiResponse<OptionTradesResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Option Trades By Contract
+     * Returns all trades for a contract between start time and end time, up to seven days ago for the specified source.
+     * @param identifier The option contract for which trades are being requested. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;OptionTradesResult&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<OptionTradesResult> getOptionTradesByContractWithHttpInfo(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Integer minSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionTradesByContractValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, minSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<OptionTradesResult>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Option Trades By Contract (asynchronously)
+     * Returns all trades for a contract between start time and end time, up to seven days ago for the specified source.
+     * @param identifier The option contract for which trades are being requested. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @param startDate The start date for the data being requested. (optional)
+     * @param startTime The start time for the data being requested. (optional)
+     * @param endDate The end date for the data being requested. (optional)
+     * @param endTime The end time for the data being requested. (optional)
+     * @param timezone The timezone the start and end date/times use. (optional, default to UTC)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param minSize Trades must be larger or equal to this size. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionTradesByContractAsync(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, String timezone, Integer pageSize, Integer minSize, String nextPage, final ApiCallback<OptionTradesResult> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionTradesByContractValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, timezone, pageSize, minSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<OptionTradesResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -2846,6 +3206,181 @@ public class OptionsApi {
 
         com.squareup.okhttp.Call call = getOptionsPricesEodValidateBeforeCall(identifier, nextPage, startDate, endDate, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesEod>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionsPricesEodByTicker
+     * @param symbol The equities ticker symbol, corresponding to the underlying security. (required)
+     * @param pageSize The number of results to return (optional, default to 250)
+     * @param date The date to get pricing data for. Defaults to today in Eastern time zone. (optional)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsPricesEodByTickerCall(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/prices/by_ticker/{symbol}/eod"
+            .replaceAll("\\{" + "symbol" + "\\}", apiClient.escapeString(symbol.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (date != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+        if (strike != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strike", strike));
+        if (strikeGreaterThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strike_greater_than", strikeGreaterThan));
+        if (strikeLessThan != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strike_less_than", strikeLessThan));
+        if (includeRelatedSymbols != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("include_related_symbols", includeRelatedSymbols));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionsPricesEodByTickerValidateBeforeCall(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling getOptionsPricesEodByTicker(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionsPricesEodByTickerCall(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Option Prices End of Day By Ticker
+     * Returns a list of end of day pricing information for all option contracts currently associated with the ticker.
+     * @param symbol The equities ticker symbol, corresponding to the underlying security. (required)
+     * @param pageSize The number of results to return (optional, default to 250)
+     * @param date The date to get pricing data for. Defaults to today in Eastern time zone. (optional)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseOptionsPricesByTickerEod
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsPricesByTickerEod getOptionsPricesEodByTicker(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsPricesEodByTickerWithHttpInfo", String.class, Integer.class, Object.class, String.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, Boolean.class, String.class);
+      
+      Object[] apiCallArguments = { symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage };
+      ApiResponse<ApiResponseOptionsPricesByTickerEod> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Option Prices End of Day By Ticker
+     * Returns a list of end of day pricing information for all option contracts currently associated with the ticker.
+     * @param symbol The equities ticker symbol, corresponding to the underlying security. (required)
+     * @param pageSize The number of results to return (optional, default to 250)
+     * @param date The date to get pricing data for. Defaults to today in Eastern time zone. (optional)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsPricesByTickerEod&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsPricesByTickerEod> getOptionsPricesEodByTickerWithHttpInfo(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsPricesEodByTickerValidateBeforeCall(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesByTickerEod>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Option Prices End of Day By Ticker (asynchronously)
+     * Returns a list of end of day pricing information for all option contracts currently associated with the ticker.
+     * @param symbol The equities ticker symbol, corresponding to the underlying security. (required)
+     * @param pageSize The number of results to return (optional, default to 250)
+     * @param date The date to get pricing data for. Defaults to today in Eastern time zone. (optional)
+     * @param type The option contract type. (optional)
+     * @param strike The strike price of the option contract. This will return options contracts with strike price equal to this price. (optional)
+     * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
+     * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
+     * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsPricesEodByTickerAsync(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, String nextPage, final ApiCallback<ApiResponseOptionsPricesByTickerEod> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionsPricesEodByTickerValidateBeforeCall(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesByTickerEod>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
