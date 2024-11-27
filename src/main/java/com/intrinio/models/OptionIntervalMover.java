@@ -43,6 +43,9 @@ public class OptionIntervalMover {
   @SerializedName("average")
   private BigDecimal average = null;
 
+  @SerializedName("trade_count")
+  private BigDecimal tradeCount = null;
+
   public OptionIntervalMover contract(String contract) {
     this.contract = contract;
     return this;
@@ -157,10 +160,10 @@ public class OptionIntervalMover {
   }
 
    /**
-   * The volume of contract trades in this interval.
+   * The volume of contracts traded in this interval.
    * @return volume
   **/
-  @ApiModelProperty(value = "The volume of contract trades in this interval.")
+  @ApiModelProperty(value = "The volume of contracts traded in this interval.")
   public BigDecimal getVolume() {
     return volume;
   }
@@ -187,6 +190,24 @@ public class OptionIntervalMover {
     this.average = average;
   }
 
+  public OptionIntervalMover tradeCount(BigDecimal tradeCount) {
+    this.tradeCount = tradeCount;
+    return this;
+  }
+
+   /**
+   * The number of contract trades executed in this interval
+   * @return tradeCount
+  **/
+  @ApiModelProperty(value = "The number of contract trades executed in this interval")
+  public BigDecimal getTradeCount() {
+    return tradeCount;
+  }
+
+  public void setTradeCount(BigDecimal tradeCount) {
+    this.tradeCount = tradeCount;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -204,12 +225,13 @@ public class OptionIntervalMover {
         Objects.equals(this.low, optionIntervalMover.low) &&
         Objects.equals(this.close, optionIntervalMover.close) &&
         Objects.equals(this.volume, optionIntervalMover.volume) &&
-        Objects.equals(this.average, optionIntervalMover.average);
+        Objects.equals(this.average, optionIntervalMover.average) &&
+        Objects.equals(this.tradeCount, optionIntervalMover.tradeCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contract, change, open, high, low, close, volume, average);
+    return Objects.hash(contract, change, open, high, low, close, volume, average, tradeCount);
   }
 
 
@@ -226,6 +248,7 @@ public class OptionIntervalMover {
     sb.append("    close: ").append(toIndentedString(close)).append("\n");
     sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
     sb.append("    average: ").append(toIndentedString(average)).append("\n");
+    sb.append("    tradeCount: ").append(toIndentedString(tradeCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

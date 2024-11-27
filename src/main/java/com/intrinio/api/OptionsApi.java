@@ -69,12 +69,13 @@ public class OptionsApi {
 
     /**
      * Build call for getAllOptionsTickers
+     * @param useUnderlyingSymbols Use underlying symbol vs contract symbol (optional, default to false)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllOptionsTickersCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllOptionsTickersCall(Boolean useUnderlyingSymbols, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -82,6 +83,8 @@ public class OptionsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (useUnderlyingSymbols != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("use_underlying_symbols", useUnderlyingSymbols));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -116,10 +119,10 @@ public class OptionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllOptionsTickersValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllOptionsTickersValidateBeforeCall(Boolean useUnderlyingSymbols, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllOptionsTickersCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllOptionsTickersCall(useUnderlyingSymbols, progressListener, progressRequestListener);
         return call;
 
     }
@@ -127,14 +130,15 @@ public class OptionsApi {
     /**
      * Options Tickers
      * Returns all tickers that have existing options contracts.
+     * @param useUnderlyingSymbols Use underlying symbol vs contract symbol (optional, default to false)
      * @return ApiResponseOptionsTickers
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseOptionsTickers getAllOptionsTickers() throws ApiException, NoSuchMethodException {
-      Method targetMethod = OptionsApi.class.getMethod("getAllOptionsTickersWithHttpInfo");
+    public ApiResponseOptionsTickers getAllOptionsTickers(Boolean useUnderlyingSymbols) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getAllOptionsTickersWithHttpInfo", Boolean.class);
       
-      Object[] apiCallArguments = {  };
+      Object[] apiCallArguments = { useUnderlyingSymbols };
       ApiResponse<ApiResponseOptionsTickers> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -142,11 +146,12 @@ public class OptionsApi {
     /**
      * Options Tickers
      * Returns all tickers that have existing options contracts.
+     * @param useUnderlyingSymbols Use underlying symbol vs contract symbol (optional, default to false)
      * @return ApiResponse&lt;ApiResponseOptionsTickers&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseOptionsTickers> getAllOptionsTickersWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = getAllOptionsTickersValidateBeforeCall(null, null);
+    public ApiResponse<ApiResponseOptionsTickers> getAllOptionsTickersWithHttpInfo(Boolean useUnderlyingSymbols) throws ApiException {
+        com.squareup.okhttp.Call call = getAllOptionsTickersValidateBeforeCall(useUnderlyingSymbols, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsTickers>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -154,11 +159,12 @@ public class OptionsApi {
     /**
      * Options Tickers (asynchronously)
      * Returns all tickers that have existing options contracts.
+     * @param useUnderlyingSymbols Use underlying symbol vs contract symbol (optional, default to false)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllOptionsTickersAsync(final ApiCallback<ApiResponseOptionsTickers> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllOptionsTickersAsync(Boolean useUnderlyingSymbols, final ApiCallback<ApiResponseOptionsTickers> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -179,7 +185,7 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllOptionsTickersValidateBeforeCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllOptionsTickersValidateBeforeCall(useUnderlyingSymbols, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsTickers>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

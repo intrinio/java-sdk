@@ -3,6 +3,7 @@
 package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
+import com.intrinio.models.ApiResponseStockExchangeBetas;
 import com.intrinio.models.ApiResponseStockExchangeMovers;
 import com.intrinio.models.ApiResponseStockExchangeQuote;
 import com.intrinio.models.ApiResponseStockExchangeRealtimeStockPrices;
@@ -45,6 +46,26 @@ public class StockExchangeApiTest {
         String countryCode = null;
         Integer pageSize = null;
         ApiResponseStockExchanges response = api.getAllStockExchanges(city, country, countryCode, pageSize);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security Betas
+     *
+     * Returns security beta data in the Stock Exchange with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getStockExchangeBetasTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String type = null;
+        Object date = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseStockExchangeBetas response = api.getStockExchangeBetas(identifier, type, date, pageSize, nextPage);
 
         // TODO: test validations
     }

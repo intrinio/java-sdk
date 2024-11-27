@@ -43,6 +43,9 @@ public class SecurityIntervalMover {
   @SerializedName("average")
   private BigDecimal average = null;
 
+  @SerializedName("trade_count")
+  private BigDecimal tradeCount = null;
+
   public SecurityIntervalMover symbol(String symbol) {
     this.symbol = symbol;
     return this;
@@ -157,10 +160,10 @@ public class SecurityIntervalMover {
   }
 
    /**
-   * The volume of trades in this interval.
+   * The volume of shares in this interval.
    * @return volume
   **/
-  @ApiModelProperty(value = "The volume of trades in this interval.")
+  @ApiModelProperty(value = "The volume of shares in this interval.")
   public BigDecimal getVolume() {
     return volume;
   }
@@ -187,6 +190,24 @@ public class SecurityIntervalMover {
     this.average = average;
   }
 
+  public SecurityIntervalMover tradeCount(BigDecimal tradeCount) {
+    this.tradeCount = tradeCount;
+    return this;
+  }
+
+   /**
+   * The of trades in this interval.
+   * @return tradeCount
+  **/
+  @ApiModelProperty(value = "The of trades in this interval.")
+  public BigDecimal getTradeCount() {
+    return tradeCount;
+  }
+
+  public void setTradeCount(BigDecimal tradeCount) {
+    this.tradeCount = tradeCount;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -204,12 +225,13 @@ public class SecurityIntervalMover {
         Objects.equals(this.low, securityIntervalMover.low) &&
         Objects.equals(this.close, securityIntervalMover.close) &&
         Objects.equals(this.volume, securityIntervalMover.volume) &&
-        Objects.equals(this.average, securityIntervalMover.average);
+        Objects.equals(this.average, securityIntervalMover.average) &&
+        Objects.equals(this.tradeCount, securityIntervalMover.tradeCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(symbol, change, open, high, low, close, volume, average);
+    return Objects.hash(symbol, change, open, high, low, close, volume, average, tradeCount);
   }
 
 
@@ -226,6 +248,7 @@ public class SecurityIntervalMover {
     sb.append("    close: ").append(toIndentedString(close)).append("\n");
     sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
     sb.append("    average: ").append(toIndentedString(average)).append("\n");
+    sb.append("    tradeCount: ").append(toIndentedString(tradeCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

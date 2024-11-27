@@ -61,7 +61,7 @@ Method | HTTP request | Description
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsTickers getAllOptionsTickers()
+> ApiResponseOptionsTickers getAllOptionsTickers(useUnderlyingSymbols)
 
 #### Options Tickers
 
@@ -92,7 +92,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     OptionsApi optionsApi = new OptionsApi();
-    ApiResponseOptionsTickers result = optionsApi.getAllOptionsTickers();
+    Boolean useUnderlyingSymbols = false;
+    ApiResponseOptionsTickers result = optionsApi.getAllOptionsTickers(useUnderlyingSymbols);
     System.out.println(result);
   }
 }
@@ -104,7 +105,10 @@ public class Main {
 
 [//]: # (START_PARAMETERS)
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **useUnderlyingSymbols** | Boolean| Use underlying symbol vs contract symbol | [optional] [default to false] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

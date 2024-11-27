@@ -35,6 +35,7 @@ Name | Type | Description
 **askFirstTime** | [**OffsetDateTime**](OffsetDateTime.md) | The timestamp that represents the first ask time from the interval span. &nbsp;
 **askLastTime** | [**OffsetDateTime**](OffsetDateTime.md) | The timestamp that represents the last ask time from the interval span. &nbsp;
 **askChangePercent** | [**BigDecimal**](BigDecimal.md) | The ratio of the close to open ask difference, in percent. &nbsp;
+**tradeCount** | [**BigDecimal**](BigDecimal.md) | The number of qualified trades executed during the period &nbsp;
 
 [//]: # (END_DEFINITION)
 
@@ -103,6 +104,9 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)

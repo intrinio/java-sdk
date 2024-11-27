@@ -147,6 +147,9 @@ public class StockPriceInterval {
   @SerializedName("ask_change_percent")
   private BigDecimal askChangePercent = null;
 
+  @SerializedName("trade_count")
+  private BigDecimal tradeCount = null;
+
   public StockPriceInterval time(OffsetDateTime time) {
     this.time = time;
     return this;
@@ -579,6 +582,24 @@ public class StockPriceInterval {
     this.askChangePercent = askChangePercent;
   }
 
+  public StockPriceInterval tradeCount(BigDecimal tradeCount) {
+    this.tradeCount = tradeCount;
+    return this;
+  }
+
+   /**
+   * The number of qualified trades executed during the period
+   * @return tradeCount
+  **/
+  @ApiModelProperty(value = "The number of qualified trades executed during the period")
+  public BigDecimal getTradeCount() {
+    return tradeCount;
+  }
+
+  public void setTradeCount(BigDecimal tradeCount) {
+    this.tradeCount = tradeCount;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -612,12 +633,13 @@ public class StockPriceInterval {
         Objects.equals(this.askOpen, stockPriceInterval.askOpen) &&
         Objects.equals(this.askFirstTime, stockPriceInterval.askFirstTime) &&
         Objects.equals(this.askLastTime, stockPriceInterval.askLastTime) &&
-        Objects.equals(this.askChangePercent, stockPriceInterval.askChangePercent);
+        Objects.equals(this.askChangePercent, stockPriceInterval.askChangePercent) &&
+        Objects.equals(this.tradeCount, stockPriceInterval.tradeCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(time, open, close, high, low, volume, closeTime, interval, average, change, bidHigh, bidLow, bidClose, bidOpen, bidFirstTime, bidLastTime, bidChangePercent, askHigh, askLow, askClose, askOpen, askFirstTime, askLastTime, askChangePercent);
+    return Objects.hash(time, open, close, high, low, volume, closeTime, interval, average, change, bidHigh, bidLow, bidClose, bidOpen, bidFirstTime, bidLastTime, bidChangePercent, askHigh, askLow, askClose, askOpen, askFirstTime, askLastTime, askChangePercent, tradeCount);
   }
 
 
@@ -650,6 +672,7 @@ public class StockPriceInterval {
     sb.append("    askFirstTime: ").append(toIndentedString(askFirstTime)).append("\n");
     sb.append("    askLastTime: ").append(toIndentedString(askLastTime)).append("\n");
     sb.append("    askChangePercent: ").append(toIndentedString(askChangePercent)).append("\n");
+    sb.append("    tradeCount: ").append(toIndentedString(tradeCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -54,7 +54,8 @@ public class OptionsApiTest {
      */
     @Test
     public void getAllOptionsTickersTest() throws ApiException, NoSuchMethodException {
-        ApiResponseOptionsTickers response = api.getAllOptionsTickers();
+        Boolean useUnderlyingSymbols = null;
+        ApiResponseOptionsTickers response = api.getAllOptionsTickers(useUnderlyingSymbols);
 
         // TODO: test validations
     }

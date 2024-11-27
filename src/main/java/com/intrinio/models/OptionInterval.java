@@ -47,6 +47,9 @@ public class OptionInterval {
   @SerializedName("change")
   private BigDecimal change = null;
 
+  @SerializedName("trade_count")
+  private BigDecimal tradeCount = null;
+
   public OptionInterval openTime(OffsetDateTime openTime) {
     this.openTime = openTime;
     return this;
@@ -161,10 +164,10 @@ public class OptionInterval {
   }
 
    /**
-   * The volume of contract trades in this interval.
+   * The volume of contracts traded in this interval.
    * @return volume
   **/
-  @ApiModelProperty(value = "The volume of contract trades in this interval.")
+  @ApiModelProperty(value = "The volume of contracts traded in this interval.")
   public BigDecimal getVolume() {
     return volume;
   }
@@ -209,6 +212,24 @@ public class OptionInterval {
     this.change = change;
   }
 
+  public OptionInterval tradeCount(BigDecimal tradeCount) {
+    this.tradeCount = tradeCount;
+    return this;
+  }
+
+   /**
+   * The number of qualified trades executed during the period
+   * @return tradeCount
+  **/
+  @ApiModelProperty(value = "The number of qualified trades executed during the period")
+  public BigDecimal getTradeCount() {
+    return tradeCount;
+  }
+
+  public void setTradeCount(BigDecimal tradeCount) {
+    this.tradeCount = tradeCount;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -227,12 +248,13 @@ public class OptionInterval {
         Objects.equals(this.close, optionInterval.close) &&
         Objects.equals(this.volume, optionInterval.volume) &&
         Objects.equals(this.average, optionInterval.average) &&
-        Objects.equals(this.change, optionInterval.change);
+        Objects.equals(this.change, optionInterval.change) &&
+        Objects.equals(this.tradeCount, optionInterval.tradeCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(openTime, closeTime, open, high, low, close, volume, average, change);
+    return Objects.hash(openTime, closeTime, open, high, low, close, volume, average, change, tradeCount);
   }
 
 
@@ -250,6 +272,7 @@ public class OptionInterval {
     sb.append("    volume: ").append(toIndentedString(volume)).append("\n");
     sb.append("    average: ").append(toIndentedString(average)).append("\n");
     sb.append("    change: ").append(toIndentedString(change)).append("\n");
+    sb.append("    tradeCount: ").append(toIndentedString(tradeCount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

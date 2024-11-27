@@ -17,9 +17,10 @@ Name | Type | Description
 **high** | [**BigDecimal**](BigDecimal.md) | The highest traded contract price in this interval. &nbsp;
 **low** | [**BigDecimal**](BigDecimal.md) | The lowest traded contract price in this interval. &nbsp;
 **close** | [**BigDecimal**](BigDecimal.md) | The last traded contract price in this interval. &nbsp;
-**volume** | [**BigDecimal**](BigDecimal.md) | The volume of contract trades in this interval. &nbsp;
+**volume** | [**BigDecimal**](BigDecimal.md) | The volume of contracts traded in this interval. &nbsp;
 **average** | [**BigDecimal**](BigDecimal.md) | The volume weighted average price of contract trades in this interval. &nbsp;
 **change** | [**BigDecimal**](BigDecimal.md) | The ratio of Close minus Open to Open. &nbsp;
+**tradeCount** | [**BigDecimal**](BigDecimal.md) | The number of qualified trades executed during the period &nbsp;
 
 [//]: # (END_DEFINITION)
 
@@ -28,6 +29,9 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:OffsetDateTime)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)

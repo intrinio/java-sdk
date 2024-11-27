@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.intrinio.models.ApiResponseStockExchangeBetas;
 import com.intrinio.models.ApiResponseStockExchangeMovers;
 import com.intrinio.models.ApiResponseStockExchangeQuote;
 import com.intrinio.models.ApiResponseStockExchangeRealtimeStockPrices;
@@ -191,6 +192,157 @@ public class StockExchangeApi {
 
         com.squareup.okhttp.Call call = getAllStockExchangesValidateBeforeCall(city, country, countryCode, pageSize, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseStockExchanges>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getStockExchangeBetas
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param type Only of the given type (optional, default to weekly)
+     * @param date Return data for this period end date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getStockExchangeBetasCall(String identifier, String type, Object date, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/stock_exchanges/{identifier}/betas"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+        if (date != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getStockExchangeBetasValidateBeforeCall(String identifier, String type, Object date, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getStockExchangeBetas(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getStockExchangeBetasCall(identifier, type, date, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Security Betas
+     * Returns security beta data in the Stock Exchange with the given &#x60;identifier&#x60;
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param type Only of the given type (optional, default to weekly)
+     * @param date Return data for this period end date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseStockExchangeBetas
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseStockExchangeBetas getStockExchangeBetas(String identifier, String type, Object date, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = StockExchangeApi.class.getMethod("getStockExchangeBetasWithHttpInfo", String.class, String.class, Object.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, type, date, pageSize, nextPage };
+      ApiResponse<ApiResponseStockExchangeBetas> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Security Betas
+     * Returns security beta data in the Stock Exchange with the given &#x60;identifier&#x60;
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param type Only of the given type (optional, default to weekly)
+     * @param date Return data for this period end date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseStockExchangeBetas&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseStockExchangeBetas> getStockExchangeBetasWithHttpInfo(String identifier, String type, Object date, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getStockExchangeBetasValidateBeforeCall(identifier, type, date, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeBetas>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Security Betas (asynchronously)
+     * Returns security beta data in the Stock Exchange with the given &#x60;identifier&#x60;
+     * @param identifier A Stock Exchange identifier (MIC or Intrinio ID) (required)
+     * @param type Only of the given type (optional, default to weekly)
+     * @param date Return data for this period end date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getStockExchangeBetasAsync(String identifier, String type, Object date, Integer pageSize, String nextPage, final ApiCallback<ApiResponseStockExchangeBetas> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getStockExchangeBetasValidateBeforeCall(identifier, type, date, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseStockExchangeBetas>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

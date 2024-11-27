@@ -17,10 +17,14 @@ Name | Type | Description
 **high** | [**BigDecimal**](BigDecimal.md) | The highest traded price in this interval. &nbsp;
 **low** | [**BigDecimal**](BigDecimal.md) | The lowest traded price in this interval. &nbsp;
 **close** | [**BigDecimal**](BigDecimal.md) | The last traded price in this interval. &nbsp;
-**volume** | [**BigDecimal**](BigDecimal.md) | The volume of trades in this interval. &nbsp;
+**volume** | [**BigDecimal**](BigDecimal.md) | The volume of shares in this interval. &nbsp;
 **average** | [**BigDecimal**](BigDecimal.md) | The volume weighted average price of trades in this interval. &nbsp;
+**tradeCount** | [**BigDecimal**](BigDecimal.md) | The of trades in this interval. &nbsp;
 
 [//]: # (END_DEFINITION)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)
