@@ -2245,7 +2245,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> OptionSnapshotsResult getOptionsSnapshots(source, atDatetime)
+> OptionSnapshotsResult getOptionsSnapshots(source, atDatetime, withGreeks, stockPriceSource, withUnderlyingPrice)
 
 #### Option Prices Realtime Snapshot
 
@@ -2278,7 +2278,10 @@ public class Main {
     OptionsApi optionsApi = new OptionsApi();
     String source = null;
     OffsetDateTime atDatetime = OffsetDateTime.now();
-    OptionSnapshotsResult result = optionsApi.getOptionsSnapshots(source, atDatetime);
+    Boolean withGreeks = null;
+    String stockPriceSource = null;
+    Boolean withUnderlyingPrice = null;
+    OptionSnapshotsResult result = optionsApi.getOptionsSnapshots(source, atDatetime, withGreeks, stockPriceSource, withUnderlyingPrice);
     System.out.println(result);
   }
 }
@@ -2295,6 +2298,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
  **atDatetime** | OffsetDateTime| The UTC date and time (with url-encoded spaces) the snapshot will cover. | [optional] &nbsp;
+ **withGreeks** | Boolean| Whether to include Greek calculations fields when available. | [optional] &nbsp;
+ **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, nasdaq_basic, nasdaq_basic_last_sale] &nbsp;
+ **withUnderlyingPrice** | Boolean| Whether to include the underlying price of the security in the file. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

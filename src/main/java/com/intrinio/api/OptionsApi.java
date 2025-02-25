@@ -3726,12 +3726,15 @@ public class OptionsApi {
      * Build call for getOptionsSnapshots
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @param withGreeks Whether to include Greek calculations fields when available. (optional)
+     * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
+     * @param withUnderlyingPrice Whether to include the underlying price of the security in the file. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOptionsSnapshotsCall(String source, OffsetDateTime atDatetime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsSnapshotsCall(String source, OffsetDateTime atDatetime, Boolean withGreeks, String stockPriceSource, Boolean withUnderlyingPrice, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -3743,6 +3746,12 @@ public class OptionsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
         if (atDatetime != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("at_datetime", atDatetime));
+        if (withGreeks != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("with_greeks", withGreeks));
+        if (stockPriceSource != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("stock_price_source", stockPriceSource));
+        if (withUnderlyingPrice != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("with_underlying_price", withUnderlyingPrice));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -3777,10 +3786,10 @@ public class OptionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOptionsSnapshotsValidateBeforeCall(String source, OffsetDateTime atDatetime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getOptionsSnapshotsValidateBeforeCall(String source, OffsetDateTime atDatetime, Boolean withGreeks, String stockPriceSource, Boolean withUnderlyingPrice, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getOptionsSnapshotsCall(source, atDatetime, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsSnapshotsCall(source, atDatetime, withGreeks, stockPriceSource, withUnderlyingPrice, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3790,14 +3799,17 @@ public class OptionsApi {
      * Returns all options snapshots for the queried interval with links to download.
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @param withGreeks Whether to include Greek calculations fields when available. (optional)
+     * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
+     * @param withUnderlyingPrice Whether to include the underlying price of the security in the file. (optional)
      * @return OptionSnapshotsResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public OptionSnapshotsResult getOptionsSnapshots(String source, OffsetDateTime atDatetime) throws ApiException, NoSuchMethodException {
-      Method targetMethod = OptionsApi.class.getMethod("getOptionsSnapshotsWithHttpInfo", String.class, OffsetDateTime.class);
+    public OptionSnapshotsResult getOptionsSnapshots(String source, OffsetDateTime atDatetime, Boolean withGreeks, String stockPriceSource, Boolean withUnderlyingPrice) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsSnapshotsWithHttpInfo", String.class, OffsetDateTime.class, Boolean.class, String.class, Boolean.class);
       
-      Object[] apiCallArguments = { source, atDatetime };
+      Object[] apiCallArguments = { source, atDatetime, withGreeks, stockPriceSource, withUnderlyingPrice };
       ApiResponse<OptionSnapshotsResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -3807,11 +3819,14 @@ public class OptionsApi {
      * Returns all options snapshots for the queried interval with links to download.
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @param withGreeks Whether to include Greek calculations fields when available. (optional)
+     * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
+     * @param withUnderlyingPrice Whether to include the underlying price of the security in the file. (optional)
      * @return ApiResponse&lt;OptionSnapshotsResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<OptionSnapshotsResult> getOptionsSnapshotsWithHttpInfo(String source, OffsetDateTime atDatetime) throws ApiException {
-        com.squareup.okhttp.Call call = getOptionsSnapshotsValidateBeforeCall(source, atDatetime, null, null);
+    public ApiResponse<OptionSnapshotsResult> getOptionsSnapshotsWithHttpInfo(String source, OffsetDateTime atDatetime, Boolean withGreeks, String stockPriceSource, Boolean withUnderlyingPrice) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsSnapshotsValidateBeforeCall(source, atDatetime, withGreeks, stockPriceSource, withUnderlyingPrice, null, null);
         Type localVarReturnType = new TypeToken<OptionSnapshotsResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3821,11 +3836,14 @@ public class OptionsApi {
      * Returns all options snapshots for the queried interval with links to download.
      * @param source Realtime or 15-minute delayed contracts. (optional)
      * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @param withGreeks Whether to include Greek calculations fields when available. (optional)
+     * @param stockPriceSource Source for underlying price for calculating Greeks. (optional)
+     * @param withUnderlyingPrice Whether to include the underlying price of the security in the file. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getOptionsSnapshotsAsync(String source, OffsetDateTime atDatetime, final ApiCallback<OptionSnapshotsResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsSnapshotsAsync(String source, OffsetDateTime atDatetime, Boolean withGreeks, String stockPriceSource, Boolean withUnderlyingPrice, final ApiCallback<OptionSnapshotsResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3846,7 +3864,7 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getOptionsSnapshotsValidateBeforeCall(source, atDatetime, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsSnapshotsValidateBeforeCall(source, atDatetime, withGreeks, stockPriceSource, withUnderlyingPrice, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<OptionSnapshotsResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

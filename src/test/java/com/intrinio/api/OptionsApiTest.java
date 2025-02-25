@@ -547,7 +547,10 @@ public class OptionsApiTest {
     public void getOptionsSnapshotsTest() throws ApiException, NoSuchMethodException {
         String source = null;
         OffsetDateTime atDatetime = null;
-        OptionSnapshotsResult response = api.getOptionsSnapshots(source, atDatetime);
+        Boolean withGreeks = null;
+        String stockPriceSource = null;
+        Boolean withUnderlyingPrice = null;
+        OptionSnapshotsResult response = api.getOptionsSnapshots(source, atDatetime, withGreeks, stockPriceSource, withUnderlyingPrice);
 
         // TODO: test validations
     }
