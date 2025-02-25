@@ -38,7 +38,9 @@ public class ApiResponseSecurityIntervalPrices {
     
     NASDAQ_BASIC("nasdaq_basic"),
     
-    NASDAQ_BASIC_FILTERED("nasdaq_basic_filtered");
+    NASDAQ_BASIC_FILTERED("nasdaq_basic_filtered"),
+    
+    NASDAQ_BASIC_LAST_SALE("nasdaq_basic_last_sale");
 
     private String value;
 

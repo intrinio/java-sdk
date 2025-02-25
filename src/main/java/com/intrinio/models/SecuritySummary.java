@@ -24,6 +24,15 @@ public class SecuritySummary {
   @SerializedName("company_id")
   private String companyId = null;
 
+  @SerializedName("exchange")
+  private String exchange = null;
+
+  @SerializedName("exchange_mic")
+  private String exchangeMic = null;
+
+  @SerializedName("stock_exchange_id")
+  private String stockExchangeId = null;
+
   @SerializedName("name")
   private String name = null;
 
@@ -85,6 +94,60 @@ public class SecuritySummary {
 
   public void setCompanyId(String companyId) {
     this.companyId = companyId;
+  }
+
+  public SecuritySummary exchange(String exchange) {
+    this.exchange = exchange;
+    return this;
+  }
+
+   /**
+   * The exchange&#39;s MIC
+   * @return exchange
+  **/
+  @ApiModelProperty(value = "The exchange's MIC")
+  public String getExchange() {
+    return exchange;
+  }
+
+  public void setExchange(String exchange) {
+    this.exchange = exchange;
+  }
+
+  public SecuritySummary exchangeMic(String exchangeMic) {
+    this.exchangeMic = exchangeMic;
+    return this;
+  }
+
+   /**
+   * The security&#39;s exchange MIC
+   * @return exchangeMic
+  **/
+  @ApiModelProperty(value = "The security's exchange MIC")
+  public String getExchangeMic() {
+    return exchangeMic;
+  }
+
+  public void setExchangeMic(String exchangeMic) {
+    this.exchangeMic = exchangeMic;
+  }
+
+  public SecuritySummary stockExchangeId(String stockExchangeId) {
+    this.stockExchangeId = stockExchangeId;
+    return this;
+  }
+
+   /**
+   * The exchange&#39;s Intrinio ID
+   * @return stockExchangeId
+  **/
+  @ApiModelProperty(value = "The exchange's Intrinio ID")
+  public String getStockExchangeId() {
+    return stockExchangeId;
+  }
+
+  public void setStockExchangeId(String stockExchangeId) {
+    this.stockExchangeId = stockExchangeId;
   }
 
   public SecuritySummary name(String name) {
@@ -261,6 +324,9 @@ public class SecuritySummary {
     SecuritySummary securitySummary = (SecuritySummary) o;
     return Objects.equals(this.id, securitySummary.id) &&
         Objects.equals(this.companyId, securitySummary.companyId) &&
+        Objects.equals(this.exchange, securitySummary.exchange) &&
+        Objects.equals(this.exchangeMic, securitySummary.exchangeMic) &&
+        Objects.equals(this.stockExchangeId, securitySummary.stockExchangeId) &&
         Objects.equals(this.name, securitySummary.name) &&
         Objects.equals(this.code, securitySummary.code) &&
         Objects.equals(this.currency, securitySummary.currency) &&
@@ -274,7 +340,7 @@ public class SecuritySummary {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, companyId, name, code, currency, ticker, compositeTicker, figi, compositeFigi, shareClassFigi, primaryListing);
+    return Objects.hash(id, companyId, exchange, exchangeMic, stockExchangeId, name, code, currency, ticker, compositeTicker, figi, compositeFigi, shareClassFigi, primaryListing);
   }
 
 
@@ -285,6 +351,9 @@ public class SecuritySummary {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    companyId: ").append(toIndentedString(companyId)).append("\n");
+    sb.append("    exchange: ").append(toIndentedString(exchange)).append("\n");
+    sb.append("    exchangeMic: ").append(toIndentedString(exchangeMic)).append("\n");
+    sb.append("    stockExchangeId: ").append(toIndentedString(stockExchangeId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");

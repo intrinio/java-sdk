@@ -890,7 +890,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseCompanyFundamentals getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, updatedAfter, updatedBefore, pageSize, nextPage)
+> ApiResponseCompanyFundamentals getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fundamentalType, startDate, endDate, updatedAfter, latestOnly, updatedBefore, pageSize, nextPage)
 
 #### All Fundamentals by Company
 
@@ -928,13 +928,15 @@ public class Main {
     Integer fiscalYear = null;
     String statementCode = null;
     String type = null;
+    String fundamentalType = null;
     LocalDate startDate = null;
     LocalDate endDate = null;
     LocalDate updatedAfter = LocalDate.of(2022,12,01);
+    Boolean latestOnly = true;
     LocalDate updatedBefore = LocalDate.of(2022,12,01);
     Integer pageSize = 100;
     String nextPage = null;
-    ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, updatedAfter, updatedBefore, pageSize, nextPage);
+    ApiResponseCompanyFundamentals result = companyApi.getCompanyFundamentals(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fundamentalType, startDate, endDate, updatedAfter, latestOnly, updatedBefore, pageSize, nextPage);
     System.out.println(result);
   }
 }
@@ -956,9 +958,11 @@ Name | Type | Description  | Notes
  **fiscalYear** | Integer| Only for the given fiscal year | [optional] &nbsp;
  **statementCode** | String| Only of the given statement code | [optional] [enum: income_statement, balance_sheet_statement, cash_flow_statement, calculations] &nbsp;
  **type** | String| Only of the given type | [optional] [enum: QTR, YTD, FY, TTM] &nbsp;
+ **fundamentalType** | String| Only of the given fundamental type | [optional] [enum: reported, restated, calculated] &nbsp;
  **startDate** | LocalDate| Only on or after the given date | [optional] &nbsp;
  **endDate** | LocalDate| Only on or before the given date | [optional] &nbsp;
  **updatedAfter** | LocalDate| Only include fundamentals where it was updated after this date. | [optional] &nbsp;
+ **latestOnly** | Boolean| Only the most-recently reported fundamental for the period | [optional] &nbsp;
  **updatedBefore** | LocalDate| Only include fundamentals where it was updated before this date. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;

@@ -1458,9 +1458,11 @@ public class CompanyApi {
      * @param fiscalYear Only for the given fiscal year (optional)
      * @param statementCode Only of the given statement code (optional)
      * @param type Only of the given type (optional)
+     * @param fundamentalType Only of the given fundamental type (optional)
      * @param startDate Only on or after the given date (optional)
      * @param endDate Only on or before the given date (optional)
      * @param updatedAfter Only include fundamentals where it was updated after this date. (optional)
+     * @param latestOnly Only the most-recently reported fundamental for the period (optional)
      * @param updatedBefore Only include fundamentals where it was updated before this date. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1469,7 +1471,7 @@ public class CompanyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFundamentalsCall(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, LocalDate updatedBefore, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFundamentalsCall(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fundamentalType, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, Boolean latestOnly, LocalDate updatedBefore, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1490,12 +1492,16 @@ public class CompanyApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("statement_code", statementCode));
         if (type != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("type", type));
+        if (fundamentalType != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fundamental_type", fundamentalType));
         if (startDate != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
         if (endDate != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
         if (updatedAfter != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("updated_after", updatedAfter));
+        if (latestOnly != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("latest_only", latestOnly));
         if (updatedBefore != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("updated_before", updatedBefore));
         if (pageSize != null)
@@ -1536,7 +1542,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyFundamentalsValidateBeforeCall(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, LocalDate updatedBefore, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyFundamentalsValidateBeforeCall(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fundamentalType, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, Boolean latestOnly, LocalDate updatedBefore, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1544,7 +1550,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCompanyFundamentalsCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, updatedAfter, updatedBefore, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFundamentalsCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fundamentalType, startDate, endDate, updatedAfter, latestOnly, updatedBefore, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1559,9 +1565,11 @@ public class CompanyApi {
      * @param fiscalYear Only for the given fiscal year (optional)
      * @param statementCode Only of the given statement code (optional)
      * @param type Only of the given type (optional)
+     * @param fundamentalType Only of the given fundamental type (optional)
      * @param startDate Only on or after the given date (optional)
      * @param endDate Only on or before the given date (optional)
      * @param updatedAfter Only include fundamentals where it was updated after this date. (optional)
+     * @param latestOnly Only the most-recently reported fundamental for the period (optional)
      * @param updatedBefore Only include fundamentals where it was updated before this date. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1569,10 +1577,10 @@ public class CompanyApi {
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanyFundamentals getCompanyFundamentals(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, LocalDate updatedBefore, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("getCompanyFundamentalsWithHttpInfo", String.class, LocalDate.class, LocalDate.class, Boolean.class, Integer.class, String.class, String.class, LocalDate.class, LocalDate.class, LocalDate.class, LocalDate.class, Integer.class, String.class);
+    public ApiResponseCompanyFundamentals getCompanyFundamentals(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fundamentalType, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, Boolean latestOnly, LocalDate updatedBefore, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyFundamentalsWithHttpInfo", String.class, LocalDate.class, LocalDate.class, Boolean.class, Integer.class, String.class, String.class, String.class, LocalDate.class, LocalDate.class, LocalDate.class, Boolean.class, LocalDate.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, updatedAfter, updatedBefore, pageSize, nextPage };
+      Object[] apiCallArguments = { identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fundamentalType, startDate, endDate, updatedAfter, latestOnly, updatedBefore, pageSize, nextPage };
       ApiResponse<ApiResponseCompanyFundamentals> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -1587,17 +1595,19 @@ public class CompanyApi {
      * @param fiscalYear Only for the given fiscal year (optional)
      * @param statementCode Only of the given statement code (optional)
      * @param type Only of the given type (optional)
+     * @param fundamentalType Only of the given fundamental type (optional)
      * @param startDate Only on or after the given date (optional)
      * @param endDate Only on or before the given date (optional)
      * @param updatedAfter Only include fundamentals where it was updated after this date. (optional)
+     * @param latestOnly Only the most-recently reported fundamental for the period (optional)
      * @param updatedBefore Only include fundamentals where it was updated before this date. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanyFundamentals&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanyFundamentals> getCompanyFundamentalsWithHttpInfo(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, LocalDate updatedBefore, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyFundamentalsValidateBeforeCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, updatedAfter, updatedBefore, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanyFundamentals> getCompanyFundamentalsWithHttpInfo(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fundamentalType, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, Boolean latestOnly, LocalDate updatedBefore, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyFundamentalsValidateBeforeCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fundamentalType, startDate, endDate, updatedAfter, latestOnly, updatedBefore, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFundamentals>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1612,9 +1622,11 @@ public class CompanyApi {
      * @param fiscalYear Only for the given fiscal year (optional)
      * @param statementCode Only of the given statement code (optional)
      * @param type Only of the given type (optional)
+     * @param fundamentalType Only of the given fundamental type (optional)
      * @param startDate Only on or after the given date (optional)
      * @param endDate Only on or before the given date (optional)
      * @param updatedAfter Only include fundamentals where it was updated after this date. (optional)
+     * @param latestOnly Only the most-recently reported fundamental for the period (optional)
      * @param updatedBefore Only include fundamentals where it was updated before this date. (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
@@ -1622,7 +1634,7 @@ public class CompanyApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFundamentalsAsync(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, LocalDate updatedBefore, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanyFundamentals> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFundamentalsAsync(String identifier, LocalDate filedAfter, LocalDate filedBefore, Boolean reportedOnly, Integer fiscalYear, String statementCode, String type, String fundamentalType, LocalDate startDate, LocalDate endDate, LocalDate updatedAfter, Boolean latestOnly, LocalDate updatedBefore, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanyFundamentals> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1643,7 +1655,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyFundamentalsValidateBeforeCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, startDate, endDate, updatedAfter, updatedBefore, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFundamentalsValidateBeforeCall(identifier, filedAfter, filedBefore, reportedOnly, fiscalYear, statementCode, type, fundamentalType, startDate, endDate, updatedAfter, latestOnly, updatedBefore, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFundamentals>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
