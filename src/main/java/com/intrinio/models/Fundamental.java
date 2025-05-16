@@ -97,6 +97,9 @@ public class Fundamental {
   @SerializedName("is_latest")
   private Boolean isLatest = null;
 
+  @SerializedName("updated_date")
+  private OffsetDateTime updatedDate = null;
+
   @SerializedName("company")
   private CompanySummary company = null;
 
@@ -262,6 +265,24 @@ public class Fundamental {
     this.isLatest = isLatest;
   }
 
+  public Fundamental updatedDate(OffsetDateTime updatedDate) {
+    this.updatedDate = updatedDate;
+    return this;
+  }
+
+   /**
+   * The date and time when the fundamental was last updated
+   * @return updatedDate
+  **/
+  @ApiModelProperty(value = "The date and time when the fundamental was last updated")
+  public OffsetDateTime getUpdatedDate() {
+    return updatedDate;
+  }
+
+  public void setUpdatedDate(OffsetDateTime updatedDate) {
+    this.updatedDate = updatedDate;
+  }
+
   public Fundamental company(CompanySummary company) {
     this.company = company;
     return this;
@@ -299,12 +320,13 @@ public class Fundamental {
         Objects.equals(this.endDate, fundamental.endDate) &&
         Objects.equals(this.filingDate, fundamental.filingDate) &&
         Objects.equals(this.isLatest, fundamental.isLatest) &&
+        Objects.equals(this.updatedDate, fundamental.updatedDate) &&
         Objects.equals(this.company, fundamental.company);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, isLatest, company);
+    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, isLatest, updatedDate, company);
   }
 
 
@@ -322,6 +344,7 @@ public class Fundamental {
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    filingDate: ").append(toIndentedString(filingDate)).append("\n");
     sb.append("    isLatest: ").append(toIndentedString(isLatest)).append("\n");
+    sb.append("    updatedDate: ").append(toIndentedString(updatedDate)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("}");
     return sb.toString();

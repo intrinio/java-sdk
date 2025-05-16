@@ -21,7 +21,6 @@ import com.intrinio.models.ApiResponseSecurityHistoricalData;
 import com.intrinio.models.ApiResponseSecurityIchimokuKinkoHyo;
 import com.intrinio.models.ApiResponseSecurityInstitutionalOwnership;
 import com.intrinio.models.ApiResponseSecurityIntervalPrices;
-import com.intrinio.models.ApiResponseSecurityIntradayPrices;
 import com.intrinio.models.ApiResponseSecurityKeltnerChannel;
 import com.intrinio.models.ApiResponseSecurityKnowSureThing;
 import com.intrinio.models.ApiResponseSecurityMassIndex;
@@ -309,29 +308,6 @@ public class SecurityApiTest {
         Boolean includeQuoteOnlyBars = null;
         String nextPage = null;
         ApiResponseSecurityIntervalPrices response = api.getSecurityIntervalPrices(identifier, intervalSize, source, startDate, startTime, endDate, endTime, timezone, pageSize, splitAdjusted, includeQuoteOnlyBars, nextPage);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Intraday Stock Prices for Security
-     *
-     * Deprecated.  $$v2_security_intraday_prices_description$$
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getSecurityIntradayPricesTest() throws ApiException, NoSuchMethodException {
-        String identifier = null;
-        String source = null;
-        LocalDate startDate = null;
-        String startTime = null;
-        LocalDate endDate = null;
-        String endTime = null;
-        Integer pageSize = null;
-        String nextPage = null;
-        ApiResponseSecurityIntradayPrices response = api.getSecurityIntradayPrices(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage);
 
         // TODO: test validations
     }

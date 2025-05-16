@@ -34,7 +34,6 @@ import com.intrinio.models.ApiResponseSecurityHistoricalData;
 import com.intrinio.models.ApiResponseSecurityIchimokuKinkoHyo;
 import com.intrinio.models.ApiResponseSecurityInstitutionalOwnership;
 import com.intrinio.models.ApiResponseSecurityIntervalPrices;
-import com.intrinio.models.ApiResponseSecurityIntradayPrices;
 import com.intrinio.models.ApiResponseSecurityKeltnerChannel;
 import com.intrinio.models.ApiResponseSecurityKnowSureThing;
 import com.intrinio.models.ApiResponseSecurityMassIndex;
@@ -1885,184 +1884,6 @@ public class SecurityApi {
         return call;
     }
     /**
-     * Build call for getSecurityIntradayPrices
-     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return intraday prices from the specified data source (optional)
-     * @param startDate Return intraday prices starting at the specified date (optional)
-     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
-     * @param endDate Return intraday prices stopping at the specified date (optional)
-     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
-     * @param pageSize The number of results to return (optional, default to 100)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call getSecurityIntradayPricesCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/securities/{identifier}/prices/intraday"
-            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (source != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
-        if (startDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
-        if (startTime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("start_time", startTime));
-        if (endDate != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
-        if (endTime != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("end_time", endTime));
-        if (pageSize != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
-        if (nextPage != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @Deprecated
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecurityIntradayPricesValidateBeforeCall(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'identifier' is set
-        if (identifier == null) {
-            throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityIntradayPrices(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = getSecurityIntradayPricesCall(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Intraday Stock Prices for Security
-     * Deprecated.  $$v2_security_intraday_prices_description$$
-     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return intraday prices from the specified data source (optional)
-     * @param startDate Return intraday prices starting at the specified date (optional)
-     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
-     * @param endDate Return intraday prices stopping at the specified date (optional)
-     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
-     * @param pageSize The number of results to return (optional, default to 100)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponseSecurityIntradayPrices
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @throws NoSuchMethodException If fail to get specified method off of the main class
-     * @deprecated
-     */
-    @Deprecated
-    public ApiResponseSecurityIntradayPrices getSecurityIntradayPrices(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecurityIntradayPricesWithHttpInfo", String.class, String.class, LocalDate.class, String.class, LocalDate.class, String.class, Integer.class, String.class);
-      
-      Object[] apiCallArguments = { identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage };
-      ApiResponse<ApiResponseSecurityIntradayPrices> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
-      return resp.getData();
-    }
-
-    /**
-     * Intraday Stock Prices for Security
-     * Deprecated.  $$v2_security_intraday_prices_description$$
-     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return intraday prices from the specified data source (optional)
-     * @param startDate Return intraday prices starting at the specified date (optional)
-     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
-     * @param endDate Return intraday prices stopping at the specified date (optional)
-     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
-     * @param pageSize The number of results to return (optional, default to 100)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @return ApiResponse&lt;ApiResponseSecurityIntradayPrices&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @deprecated
-     */
-    @Deprecated
-    public ApiResponse<ApiResponseSecurityIntradayPrices> getSecurityIntradayPricesWithHttpInfo(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getSecurityIntradayPricesValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseSecurityIntradayPrices>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Intraday Stock Prices for Security (asynchronously)
-     * Deprecated.  $$v2_security_intraday_prices_description$$
-     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param source Return intraday prices from the specified data source (optional)
-     * @param startDate Return intraday prices starting at the specified date (optional)
-     * @param startTime Return intraday prices starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
-     * @param endDate Return intraday prices stopping at the specified date (optional)
-     * @param endTime Return intraday prices stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm&#39; format, UTC timezone) (optional)
-     * @param pageSize The number of results to return (optional, default to 100)
-     * @param nextPage Gets the next page of data from a previous API call (optional)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @deprecated
-     */
-    @Deprecated
-    public com.squareup.okhttp.Call getSecurityIntradayPricesAsync(String identifier, String source, LocalDate startDate, String startTime, LocalDate endDate, String endTime, Integer pageSize, String nextPage, final ApiCallback<ApiResponseSecurityIntradayPrices> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getSecurityIntradayPricesValidateBeforeCall(identifier, source, startDate, startTime, endDate, endTime, pageSize, nextPage, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseSecurityIntradayPrices>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for getSecurityLatestDividendRecord
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param progressListener Progress listener
@@ -2470,7 +2291,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsAdtv
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average Daily Trading Volume (optional, default to 22)
+     * @param period The number of observations to calculate Average Daily Trading Volume (optional, default to 22)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2550,7 +2371,7 @@ public class SecurityApi {
      * Average Daily Trading Volume
      * Average Daily Trading Volume is the average number of shares traded over a given period, usually between 20 to 30 trading days.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average Daily Trading Volume (optional, default to 22)
+     * @param period The number of observations to calculate Average Daily Trading Volume (optional, default to 22)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2571,7 +2392,7 @@ public class SecurityApi {
      * Average Daily Trading Volume
      * Average Daily Trading Volume is the average number of shares traded over a given period, usually between 20 to 30 trading days.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average Daily Trading Volume (optional, default to 22)
+     * @param period The number of observations to calculate Average Daily Trading Volume (optional, default to 22)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2589,7 +2410,7 @@ public class SecurityApi {
      * Average Daily Trading Volume (asynchronously)
      * Average Daily Trading Volume is the average number of shares traded over a given period, usually between 20 to 30 trading days.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average Daily Trading Volume (optional, default to 22)
+     * @param period The number of observations to calculate Average Daily Trading Volume (optional, default to 22)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2627,7 +2448,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsAdx
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average Directional Index (optional, default to 14)
+     * @param period The number of observations to calculate Average Directional Index (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2707,7 +2528,7 @@ public class SecurityApi {
      * Average Directional Index
      * The Average Directional Index indicator is often used to identify decreasing or increasing price momentum for an underlying security, it is composed of a total of three indicators, the current trendline (adx), a positive directional indicator (di_pos), and a negative directional indicator (di_neg).
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average Directional Index (optional, default to 14)
+     * @param period The number of observations to calculate Average Directional Index (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2728,7 +2549,7 @@ public class SecurityApi {
      * Average Directional Index
      * The Average Directional Index indicator is often used to identify decreasing or increasing price momentum for an underlying security, it is composed of a total of three indicators, the current trendline (adx), a positive directional indicator (di_pos), and a negative directional indicator (di_neg).
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average Directional Index (optional, default to 14)
+     * @param period The number of observations to calculate Average Directional Index (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2746,7 +2567,7 @@ public class SecurityApi {
      * Average Directional Index (asynchronously)
      * The Average Directional Index indicator is often used to identify decreasing or increasing price momentum for an underlying security, it is composed of a total of three indicators, the current trendline (adx), a positive directional indicator (di_pos), and a negative directional indicator (di_neg).
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average Directional Index (optional, default to 14)
+     * @param period The number of observations to calculate Average Directional Index (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2784,8 +2605,8 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsAo
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param shortPeriod The number of observations, per period, to calculate short period Simple Moving Average of the Awesome Oscillator (optional, default to 5)
-     * @param longPeriod The number of observations, per period, to calculate long period Simple Moving Average of the Awesome Oscillator (optional, default to 34)
+     * @param shortPeriod The number of observations to calculate short period Simple Moving Average of the Awesome Oscillator (optional, default to 5)
+     * @param longPeriod The number of observations to calculate long period Simple Moving Average of the Awesome Oscillator (optional, default to 34)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2867,8 +2688,8 @@ public class SecurityApi {
      * Awesome Oscillator
      * The Awesome Oscillator (ao) is a momentum indicator and is calculated by taking the difference between the latest 5 period simple moving average and the 34 period simple moving average. Rather than using the closing price like other indicators, the Awesome Oscillator uses the latest period&#x60;s midpoint value (period_high - period_low / 2). The Awesome Oscillator is useful in identifying and trading, zero-line crossovers, twin-peaks trading, and bullish/bearish saucers - Awesome Oscillator is often aggregated with additional technical indicators.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param shortPeriod The number of observations, per period, to calculate short period Simple Moving Average of the Awesome Oscillator (optional, default to 5)
-     * @param longPeriod The number of observations, per period, to calculate long period Simple Moving Average of the Awesome Oscillator (optional, default to 34)
+     * @param shortPeriod The number of observations to calculate short period Simple Moving Average of the Awesome Oscillator (optional, default to 5)
+     * @param longPeriod The number of observations to calculate long period Simple Moving Average of the Awesome Oscillator (optional, default to 34)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2889,8 +2710,8 @@ public class SecurityApi {
      * Awesome Oscillator
      * The Awesome Oscillator (ao) is a momentum indicator and is calculated by taking the difference between the latest 5 period simple moving average and the 34 period simple moving average. Rather than using the closing price like other indicators, the Awesome Oscillator uses the latest period&#x60;s midpoint value (period_high - period_low / 2). The Awesome Oscillator is useful in identifying and trading, zero-line crossovers, twin-peaks trading, and bullish/bearish saucers - Awesome Oscillator is often aggregated with additional technical indicators.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param shortPeriod The number of observations, per period, to calculate short period Simple Moving Average of the Awesome Oscillator (optional, default to 5)
-     * @param longPeriod The number of observations, per period, to calculate long period Simple Moving Average of the Awesome Oscillator (optional, default to 34)
+     * @param shortPeriod The number of observations to calculate short period Simple Moving Average of the Awesome Oscillator (optional, default to 5)
+     * @param longPeriod The number of observations to calculate long period Simple Moving Average of the Awesome Oscillator (optional, default to 34)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2908,8 +2729,8 @@ public class SecurityApi {
      * Awesome Oscillator (asynchronously)
      * The Awesome Oscillator (ao) is a momentum indicator and is calculated by taking the difference between the latest 5 period simple moving average and the 34 period simple moving average. Rather than using the closing price like other indicators, the Awesome Oscillator uses the latest period&#x60;s midpoint value (period_high - period_low / 2). The Awesome Oscillator is useful in identifying and trading, zero-line crossovers, twin-peaks trading, and bullish/bearish saucers - Awesome Oscillator is often aggregated with additional technical indicators.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param shortPeriod The number of observations, per period, to calculate short period Simple Moving Average of the Awesome Oscillator (optional, default to 5)
-     * @param longPeriod The number of observations, per period, to calculate long period Simple Moving Average of the Awesome Oscillator (optional, default to 34)
+     * @param shortPeriod The number of observations to calculate short period Simple Moving Average of the Awesome Oscillator (optional, default to 5)
+     * @param longPeriod The number of observations to calculate long period Simple Moving Average of the Awesome Oscillator (optional, default to 34)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -2947,7 +2768,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsAtr
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average True Range (optional, default to 14)
+     * @param period The number of observations to calculate Average True Range (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3027,7 +2848,7 @@ public class SecurityApi {
      * Average True Range
      * The Average True Range (ATR) is a non-directional market volatility indicator often used to generate stop-out or entry indications. An increasing or expanding ATR typically indicates higher volatility, and a decreasing ATR indicates sideways price action and lower volatility.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average True Range (optional, default to 14)
+     * @param period The number of observations to calculate Average True Range (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3048,7 +2869,7 @@ public class SecurityApi {
      * Average True Range
      * The Average True Range (ATR) is a non-directional market volatility indicator often used to generate stop-out or entry indications. An increasing or expanding ATR typically indicates higher volatility, and a decreasing ATR indicates sideways price action and lower volatility.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average True Range (optional, default to 14)
+     * @param period The number of observations to calculate Average True Range (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3066,7 +2887,7 @@ public class SecurityApi {
      * Average True Range (asynchronously)
      * The Average True Range (ATR) is a non-directional market volatility indicator often used to generate stop-out or entry indications. An increasing or expanding ATR typically indicates higher volatility, and a decreasing ATR indicates sideways price action and lower volatility.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Average True Range (optional, default to 14)
+     * @param period The number of observations to calculate Average True Range (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3104,7 +2925,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsBb
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Bollinger Bands (optional, default to 20)
+     * @param period The number of observations to calculate Bollinger Bands (optional, default to 20)
      * @param standardDeviations The number of standard deviations to calculate the upper and lower bands of the Bollinger Bands (optional, default to 2.0)
      * @param priceKey The Stock Price field to use when calculating Bollinger Bands (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
@@ -3190,7 +3011,7 @@ public class SecurityApi {
      * Bollinger Bands
      * Bollinger Bands can be a useful technical analysis tool for generating oversold or overbought indicators. Bollinger Bands are composed of three lines, a simple moving average (middle band) and an upper and lower band – the upper and lower bands are typically 2 standard deviations +/- from a 20-day simple moving average, but can be modified. Traders typically consider an underlying security to be overbought as the underlying&#x60;s price moves towards the upper band and oversold as the underlying price moves towards the lower band.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Bollinger Bands (optional, default to 20)
+     * @param period The number of observations to calculate Bollinger Bands (optional, default to 20)
      * @param standardDeviations The number of standard deviations to calculate the upper and lower bands of the Bollinger Bands (optional, default to 2.0)
      * @param priceKey The Stock Price field to use when calculating Bollinger Bands (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
@@ -3213,7 +3034,7 @@ public class SecurityApi {
      * Bollinger Bands
      * Bollinger Bands can be a useful technical analysis tool for generating oversold or overbought indicators. Bollinger Bands are composed of three lines, a simple moving average (middle band) and an upper and lower band – the upper and lower bands are typically 2 standard deviations +/- from a 20-day simple moving average, but can be modified. Traders typically consider an underlying security to be overbought as the underlying&#x60;s price moves towards the upper band and oversold as the underlying price moves towards the lower band.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Bollinger Bands (optional, default to 20)
+     * @param period The number of observations to calculate Bollinger Bands (optional, default to 20)
      * @param standardDeviations The number of standard deviations to calculate the upper and lower bands of the Bollinger Bands (optional, default to 2.0)
      * @param priceKey The Stock Price field to use when calculating Bollinger Bands (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
@@ -3233,7 +3054,7 @@ public class SecurityApi {
      * Bollinger Bands (asynchronously)
      * Bollinger Bands can be a useful technical analysis tool for generating oversold or overbought indicators. Bollinger Bands are composed of three lines, a simple moving average (middle band) and an upper and lower band – the upper and lower bands are typically 2 standard deviations +/- from a 20-day simple moving average, but can be modified. Traders typically consider an underlying security to be overbought as the underlying&#x60;s price moves towards the upper band and oversold as the underlying price moves towards the lower band.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Bollinger Bands (optional, default to 20)
+     * @param period The number of observations to calculate Bollinger Bands (optional, default to 20)
      * @param standardDeviations The number of standard deviations to calculate the upper and lower bands of the Bollinger Bands (optional, default to 2.0)
      * @param priceKey The Stock Price field to use when calculating Bollinger Bands (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
@@ -3273,8 +3094,8 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsCci
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Commodity Channel Index (optional, default to 20)
-     * @param constant The number of observations, per period, to calculate Commodity Channel Index (optional, default to 0.015)
+     * @param period The number of observations to calculate Commodity Channel Index (optional, default to 20)
+     * @param constant The number of observations to calculate Commodity Channel Index (optional, default to 0.015)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3356,8 +3177,8 @@ public class SecurityApi {
      * Commodity Channel Index
      * The Commodity Channel Index (CCI) is a technical indicator used to generate buy and sell signals by indicating periods of strength and weakness in the market. CCI signals that fall below -100 are often perceived as weakness in the underlying price movement and CCI signals that rise above 100 indicate strength behind the underlying price movement.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Commodity Channel Index (optional, default to 20)
-     * @param constant The number of observations, per period, to calculate Commodity Channel Index (optional, default to 0.015)
+     * @param period The number of observations to calculate Commodity Channel Index (optional, default to 20)
+     * @param constant The number of observations to calculate Commodity Channel Index (optional, default to 0.015)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3378,8 +3199,8 @@ public class SecurityApi {
      * Commodity Channel Index
      * The Commodity Channel Index (CCI) is a technical indicator used to generate buy and sell signals by indicating periods of strength and weakness in the market. CCI signals that fall below -100 are often perceived as weakness in the underlying price movement and CCI signals that rise above 100 indicate strength behind the underlying price movement.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Commodity Channel Index (optional, default to 20)
-     * @param constant The number of observations, per period, to calculate Commodity Channel Index (optional, default to 0.015)
+     * @param period The number of observations to calculate Commodity Channel Index (optional, default to 20)
+     * @param constant The number of observations to calculate Commodity Channel Index (optional, default to 0.015)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3397,8 +3218,8 @@ public class SecurityApi {
      * Commodity Channel Index (asynchronously)
      * The Commodity Channel Index (CCI) is a technical indicator used to generate buy and sell signals by indicating periods of strength and weakness in the market. CCI signals that fall below -100 are often perceived as weakness in the underlying price movement and CCI signals that rise above 100 indicate strength behind the underlying price movement.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Commodity Channel Index (optional, default to 20)
-     * @param constant The number of observations, per period, to calculate Commodity Channel Index (optional, default to 0.015)
+     * @param period The number of observations to calculate Commodity Channel Index (optional, default to 20)
+     * @param constant The number of observations to calculate Commodity Channel Index (optional, default to 0.015)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3436,7 +3257,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsCmf
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Chaikin Money Flow (optional, default to 20)
+     * @param period The number of observations to calculate Chaikin Money Flow (optional, default to 20)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3516,7 +3337,7 @@ public class SecurityApi {
      * Chaikin Money Flow
      * The Chaikin Money Flow (CMF) utilizes exponential moving averages as an indicator to monitor the flow of money and momentum. The CMF indicator oscillates around a midrange 0-line and ranges between 100 and -100.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Chaikin Money Flow (optional, default to 20)
+     * @param period The number of observations to calculate Chaikin Money Flow (optional, default to 20)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3537,7 +3358,7 @@ public class SecurityApi {
      * Chaikin Money Flow
      * The Chaikin Money Flow (CMF) utilizes exponential moving averages as an indicator to monitor the flow of money and momentum. The CMF indicator oscillates around a midrange 0-line and ranges between 100 and -100.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Chaikin Money Flow (optional, default to 20)
+     * @param period The number of observations to calculate Chaikin Money Flow (optional, default to 20)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3555,7 +3376,7 @@ public class SecurityApi {
      * Chaikin Money Flow (asynchronously)
      * The Chaikin Money Flow (CMF) utilizes exponential moving averages as an indicator to monitor the flow of money and momentum. The CMF indicator oscillates around a midrange 0-line and ranges between 100 and -100.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Chaikin Money Flow (optional, default to 20)
+     * @param period The number of observations to calculate Chaikin Money Flow (optional, default to 20)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3593,7 +3414,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsDc
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Donchian Channel (optional, default to 20)
+     * @param period The number of observations to calculate Donchian Channel (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Donchian Channel (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -3676,7 +3497,7 @@ public class SecurityApi {
      * Donchian Channel
      * The Donchian Channel consists of an Upper Bound (upper_bound) and Lower Bound (lower_bound) that track the recent highs and lows and is often used to signal entry and exit points for a position. As the price of the underlying symbol increases the Upper Bound raises, if the price becomes range bound the Upper Bound will remain flat and if the price begins to decrease, the Upper Bound will fall (and vice-versa for the Lower Bound).
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Donchian Channel (optional, default to 20)
+     * @param period The number of observations to calculate Donchian Channel (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Donchian Channel (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -3698,7 +3519,7 @@ public class SecurityApi {
      * Donchian Channel
      * The Donchian Channel consists of an Upper Bound (upper_bound) and Lower Bound (lower_bound) that track the recent highs and lows and is often used to signal entry and exit points for a position. As the price of the underlying symbol increases the Upper Bound raises, if the price becomes range bound the Upper Bound will remain flat and if the price begins to decrease, the Upper Bound will fall (and vice-versa for the Lower Bound).
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Donchian Channel (optional, default to 20)
+     * @param period The number of observations to calculate Donchian Channel (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Donchian Channel (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -3717,7 +3538,7 @@ public class SecurityApi {
      * Donchian Channel (asynchronously)
      * The Donchian Channel consists of an Upper Bound (upper_bound) and Lower Bound (lower_bound) that track the recent highs and lows and is often used to signal entry and exit points for a position. As the price of the underlying symbol increases the Upper Bound raises, if the price becomes range bound the Upper Bound will remain flat and if the price begins to decrease, the Upper Bound will fall (and vice-versa for the Lower Bound).
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Donchian Channel (optional, default to 20)
+     * @param period The number of observations to calculate Donchian Channel (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Donchian Channel (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -3756,7 +3577,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsDpo
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Detrended Price Oscillator (optional, default to 20)
+     * @param period The number of observations to calculate Detrended Price Oscillator (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Detrended Price Oscillator (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -3839,7 +3660,7 @@ public class SecurityApi {
      * Detrended Price Oscillator
      * The Detrended Price Oscillator (DPO) signals the peaks and troughs of the underlying symbol’s price for a set period of time and is often used by traders to estimate future peaks and troughs using this as guidance to enter or exit a position.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Detrended Price Oscillator (optional, default to 20)
+     * @param period The number of observations to calculate Detrended Price Oscillator (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Detrended Price Oscillator (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -3861,7 +3682,7 @@ public class SecurityApi {
      * Detrended Price Oscillator
      * The Detrended Price Oscillator (DPO) signals the peaks and troughs of the underlying symbol’s price for a set period of time and is often used by traders to estimate future peaks and troughs using this as guidance to enter or exit a position.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Detrended Price Oscillator (optional, default to 20)
+     * @param period The number of observations to calculate Detrended Price Oscillator (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Detrended Price Oscillator (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -3880,7 +3701,7 @@ public class SecurityApi {
      * Detrended Price Oscillator (asynchronously)
      * The Detrended Price Oscillator (DPO) signals the peaks and troughs of the underlying symbol’s price for a set period of time and is often used by traders to estimate future peaks and troughs using this as guidance to enter or exit a position.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Detrended Price Oscillator (optional, default to 20)
+     * @param period The number of observations to calculate Detrended Price Oscillator (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Detrended Price Oscillator (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -3919,7 +3740,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsEom
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Ease of Movement (optional, default to 20)
+     * @param period The number of observations to calculate Ease of Movement (optional, default to 20)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -3999,7 +3820,7 @@ public class SecurityApi {
      * Ease of Movement
      * The Ease of Movement (EOM) is a volume based oscillator that fluctuates around a midrange 0-line into positive and negative values. Positive values indicate that the underlying symbol&#x60;s price is rising with relative ease and negative value indicates the underlying symbol&#x60;s price is failing with relative ease.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Ease of Movement (optional, default to 20)
+     * @param period The number of observations to calculate Ease of Movement (optional, default to 20)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -4020,7 +3841,7 @@ public class SecurityApi {
      * Ease of Movement
      * The Ease of Movement (EOM) is a volume based oscillator that fluctuates around a midrange 0-line into positive and negative values. Positive values indicate that the underlying symbol&#x60;s price is rising with relative ease and negative value indicates the underlying symbol&#x60;s price is failing with relative ease.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Ease of Movement (optional, default to 20)
+     * @param period The number of observations to calculate Ease of Movement (optional, default to 20)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -4038,7 +3859,7 @@ public class SecurityApi {
      * Ease of Movement (asynchronously)
      * The Ease of Movement (EOM) is a volume based oscillator that fluctuates around a midrange 0-line into positive and negative values. Positive values indicate that the underlying symbol&#x60;s price is rising with relative ease and negative value indicates the underlying symbol&#x60;s price is failing with relative ease.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Ease of Movement (optional, default to 20)
+     * @param period The number of observations to calculate Ease of Movement (optional, default to 20)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -4227,9 +4048,9 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsIchimoku
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param lowPeriod The number of observations, per period, to calculate Tenkan Sen (Conversion Line) of Ichimoku Kinko Hyo (optional, default to 9)
-     * @param mediumPeriod The number of observations, per period, to calculate Kijun Sen (Base Line), Senkou Span A (Leading Span A), and Chikou Span (Lagging Span) of Ichimoku Kinko Hyo (optional, default to 26)
-     * @param highPeriod The number of observations, per period, to calculate Senkou Span B (Leading Span B) of Ichimoku Kinko Hyo (optional, default to 52)
+     * @param lowPeriod The number of observations to calculate Tenkan Sen (Conversion Line) of Ichimoku Kinko Hyo (optional, default to 9)
+     * @param mediumPeriod The number of observations to calculate Kijun Sen (Base Line), Senkou Span A (Leading Span A), and Chikou Span (Lagging Span) of Ichimoku Kinko Hyo (optional, default to 26)
+     * @param highPeriod The number of observations to calculate Senkou Span B (Leading Span B) of Ichimoku Kinko Hyo (optional, default to 52)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -4313,9 +4134,9 @@ public class SecurityApi {
      * Ichimoku Kinko Hyo
      * The Ichimoku Kinko Hyo was designed to be an all-in-one trading indicator that could help traders determine momentum, support, and resistance.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param lowPeriod The number of observations, per period, to calculate Tenkan Sen (Conversion Line) of Ichimoku Kinko Hyo (optional, default to 9)
-     * @param mediumPeriod The number of observations, per period, to calculate Kijun Sen (Base Line), Senkou Span A (Leading Span A), and Chikou Span (Lagging Span) of Ichimoku Kinko Hyo (optional, default to 26)
-     * @param highPeriod The number of observations, per period, to calculate Senkou Span B (Leading Span B) of Ichimoku Kinko Hyo (optional, default to 52)
+     * @param lowPeriod The number of observations to calculate Tenkan Sen (Conversion Line) of Ichimoku Kinko Hyo (optional, default to 9)
+     * @param mediumPeriod The number of observations to calculate Kijun Sen (Base Line), Senkou Span A (Leading Span A), and Chikou Span (Lagging Span) of Ichimoku Kinko Hyo (optional, default to 26)
+     * @param highPeriod The number of observations to calculate Senkou Span B (Leading Span B) of Ichimoku Kinko Hyo (optional, default to 52)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -4336,9 +4157,9 @@ public class SecurityApi {
      * Ichimoku Kinko Hyo
      * The Ichimoku Kinko Hyo was designed to be an all-in-one trading indicator that could help traders determine momentum, support, and resistance.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param lowPeriod The number of observations, per period, to calculate Tenkan Sen (Conversion Line) of Ichimoku Kinko Hyo (optional, default to 9)
-     * @param mediumPeriod The number of observations, per period, to calculate Kijun Sen (Base Line), Senkou Span A (Leading Span A), and Chikou Span (Lagging Span) of Ichimoku Kinko Hyo (optional, default to 26)
-     * @param highPeriod The number of observations, per period, to calculate Senkou Span B (Leading Span B) of Ichimoku Kinko Hyo (optional, default to 52)
+     * @param lowPeriod The number of observations to calculate Tenkan Sen (Conversion Line) of Ichimoku Kinko Hyo (optional, default to 9)
+     * @param mediumPeriod The number of observations to calculate Kijun Sen (Base Line), Senkou Span A (Leading Span A), and Chikou Span (Lagging Span) of Ichimoku Kinko Hyo (optional, default to 26)
+     * @param highPeriod The number of observations to calculate Senkou Span B (Leading Span B) of Ichimoku Kinko Hyo (optional, default to 52)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -4356,9 +4177,9 @@ public class SecurityApi {
      * Ichimoku Kinko Hyo (asynchronously)
      * The Ichimoku Kinko Hyo was designed to be an all-in-one trading indicator that could help traders determine momentum, support, and resistance.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param lowPeriod The number of observations, per period, to calculate Tenkan Sen (Conversion Line) of Ichimoku Kinko Hyo (optional, default to 9)
-     * @param mediumPeriod The number of observations, per period, to calculate Kijun Sen (Base Line), Senkou Span A (Leading Span A), and Chikou Span (Lagging Span) of Ichimoku Kinko Hyo (optional, default to 26)
-     * @param highPeriod The number of observations, per period, to calculate Senkou Span B (Leading Span B) of Ichimoku Kinko Hyo (optional, default to 52)
+     * @param lowPeriod The number of observations to calculate Tenkan Sen (Conversion Line) of Ichimoku Kinko Hyo (optional, default to 9)
+     * @param mediumPeriod The number of observations to calculate Kijun Sen (Base Line), Senkou Span A (Leading Span A), and Chikou Span (Lagging Span) of Ichimoku Kinko Hyo (optional, default to 26)
+     * @param highPeriod The number of observations to calculate Senkou Span B (Leading Span B) of Ichimoku Kinko Hyo (optional, default to 52)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -4396,7 +4217,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsKc
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Kelter Channel (optional, default to 10)
+     * @param period The number of observations to calculate Kelter Channel (optional, default to 10)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -4476,7 +4297,7 @@ public class SecurityApi {
      * Keltner Channel
      * The Keltner Channel is a volatility based signal, with upper, middle, and lower bands. It is often used at market open, when the largest moves tend to occur. In general, traders tend to buy if the price breaks up above the upper band or sell short if the price drops below the lower band.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Kelter Channel (optional, default to 10)
+     * @param period The number of observations to calculate Kelter Channel (optional, default to 10)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -4497,7 +4318,7 @@ public class SecurityApi {
      * Keltner Channel
      * The Keltner Channel is a volatility based signal, with upper, middle, and lower bands. It is often used at market open, when the largest moves tend to occur. In general, traders tend to buy if the price breaks up above the upper band or sell short if the price drops below the lower band.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Kelter Channel (optional, default to 10)
+     * @param period The number of observations to calculate Kelter Channel (optional, default to 10)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -4515,7 +4336,7 @@ public class SecurityApi {
      * Keltner Channel (asynchronously)
      * The Keltner Channel is a volatility based signal, with upper, middle, and lower bands. It is often used at market open, when the largest moves tend to occur. In general, traders tend to buy if the price breaks up above the upper band or sell short if the price drops below the lower band.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Kelter Channel (optional, default to 10)
+     * @param period The number of observations to calculate Kelter Channel (optional, default to 10)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -4553,14 +4374,14 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsKst
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
-     * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
-     * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
-     * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
-     * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
-     * @param sma4 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA4 (optional, default to 15)
+     * @param roc1 The number of observations to calculate the rate-of-change for RCMA1 (optional, default to 10)
+     * @param roc2 The number of observations to calculate the rate-of-change for RCMA2 (optional, default to 15)
+     * @param roc3 The number of observations to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param sma1 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
+     * @param sma2 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
+     * @param sma3 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
+     * @param sma4 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA4 (optional, default to 15)
      * @param priceKey The Stock Price field to use when calculating Know Sure Thing (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -4657,14 +4478,14 @@ public class SecurityApi {
      * Know Sure Thing
      * The Know Sure Thing indicator (KST) is a momentum based oscillator that is calculated by measuring the momentum of four separate price cycles. KST fluctuates above and below a zero line and is used to identify overbought and oversold conditions, and is often used with additional indicators to boost signal strength.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
-     * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
-     * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
-     * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
-     * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
-     * @param sma4 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA4 (optional, default to 15)
+     * @param roc1 The number of observations to calculate the rate-of-change for RCMA1 (optional, default to 10)
+     * @param roc2 The number of observations to calculate the rate-of-change for RCMA2 (optional, default to 15)
+     * @param roc3 The number of observations to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param sma1 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
+     * @param sma2 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
+     * @param sma3 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
+     * @param sma4 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA4 (optional, default to 15)
      * @param priceKey The Stock Price field to use when calculating Know Sure Thing (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -4686,14 +4507,14 @@ public class SecurityApi {
      * Know Sure Thing
      * The Know Sure Thing indicator (KST) is a momentum based oscillator that is calculated by measuring the momentum of four separate price cycles. KST fluctuates above and below a zero line and is used to identify overbought and oversold conditions, and is often used with additional indicators to boost signal strength.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
-     * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
-     * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
-     * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
-     * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
-     * @param sma4 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA4 (optional, default to 15)
+     * @param roc1 The number of observations to calculate the rate-of-change for RCMA1 (optional, default to 10)
+     * @param roc2 The number of observations to calculate the rate-of-change for RCMA2 (optional, default to 15)
+     * @param roc3 The number of observations to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param sma1 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
+     * @param sma2 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
+     * @param sma3 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
+     * @param sma4 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA4 (optional, default to 15)
      * @param priceKey The Stock Price field to use when calculating Know Sure Thing (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -4712,14 +4533,14 @@ public class SecurityApi {
      * Know Sure Thing (asynchronously)
      * The Know Sure Thing indicator (KST) is a momentum based oscillator that is calculated by measuring the momentum of four separate price cycles. KST fluctuates above and below a zero line and is used to identify overbought and oversold conditions, and is often used with additional indicators to boost signal strength.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param roc1 The number of observations, per period, to calculate the rate-of-change for RCMA1 (optional, default to 10)
-     * @param roc2 The number of observations, per period, to calculate the rate-of-change for RCMA2 (optional, default to 15)
-     * @param roc3 The number of observations, per period, to calculate the rate-of-change for RCMA3 (optional, default to 20)
-     * @param roc4 The number of observations, per period, to calculate the rate-of-change for RCMA4 (optional, default to 30)
-     * @param sma1 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
-     * @param sma2 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
-     * @param sma3 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
-     * @param sma4 The number of observations, per period, to calculate the Simple Moving Average of the rate-of-change for RCMA4 (optional, default to 15)
+     * @param roc1 The number of observations to calculate the rate-of-change for RCMA1 (optional, default to 10)
+     * @param roc2 The number of observations to calculate the rate-of-change for RCMA2 (optional, default to 15)
+     * @param roc3 The number of observations to calculate the rate-of-change for RCMA3 (optional, default to 20)
+     * @param roc4 The number of observations to calculate the rate-of-change for RCMA4 (optional, default to 30)
+     * @param sma1 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA1 (optional, default to 10)
+     * @param sma2 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA2 (optional, default to 10)
+     * @param sma3 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA3 (optional, default to 10)
+     * @param sma4 The number of observations to calculate the Simple Moving Average of the rate-of-change for RCMA4 (optional, default to 15)
      * @param priceKey The Stock Price field to use when calculating Know Sure Thing (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -4758,9 +4579,9 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsMacd
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param fastPeriod The number of observations, per period, to calculate the fast moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 12)
-     * @param slowPeriod The number of observations, per period, to calculate the slow moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 26)
-     * @param signalPeriod The number of observations, per period, to calculate the signal line for Moving Average Convergence Divergence (optional, default to 9)
+     * @param fastPeriod The number of observations to calculate the fast moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 12)
+     * @param slowPeriod The number of observations to calculate the slow moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 26)
+     * @param signalPeriod The number of observations to calculate the signal line for Moving Average Convergence Divergence (optional, default to 9)
      * @param priceKey The Stock Price field to use when calculating Moving Average Convergence Divergence (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -4847,9 +4668,9 @@ public class SecurityApi {
      * Moving Average Convergence Divergence
      * Moving average convergence divergence (MACD) is a trend-following momentum oscillator that consists of three indicators: (1) a 12 period short-term exponential moving average (EMA) a 26 period long-term EMA and a 9 period EMA signal line. Traders using MACD often look for signal line crossovers, centerline crossovers, and EMA divergences to indicate the momentum and underlying trend of a security&#x60;s price.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param fastPeriod The number of observations, per period, to calculate the fast moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 12)
-     * @param slowPeriod The number of observations, per period, to calculate the slow moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 26)
-     * @param signalPeriod The number of observations, per period, to calculate the signal line for Moving Average Convergence Divergence (optional, default to 9)
+     * @param fastPeriod The number of observations to calculate the fast moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 12)
+     * @param slowPeriod The number of observations to calculate the slow moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 26)
+     * @param signalPeriod The number of observations to calculate the signal line for Moving Average Convergence Divergence (optional, default to 9)
      * @param priceKey The Stock Price field to use when calculating Moving Average Convergence Divergence (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -4871,9 +4692,9 @@ public class SecurityApi {
      * Moving Average Convergence Divergence
      * Moving average convergence divergence (MACD) is a trend-following momentum oscillator that consists of three indicators: (1) a 12 period short-term exponential moving average (EMA) a 26 period long-term EMA and a 9 period EMA signal line. Traders using MACD often look for signal line crossovers, centerline crossovers, and EMA divergences to indicate the momentum and underlying trend of a security&#x60;s price.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param fastPeriod The number of observations, per period, to calculate the fast moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 12)
-     * @param slowPeriod The number of observations, per period, to calculate the slow moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 26)
-     * @param signalPeriod The number of observations, per period, to calculate the signal line for Moving Average Convergence Divergence (optional, default to 9)
+     * @param fastPeriod The number of observations to calculate the fast moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 12)
+     * @param slowPeriod The number of observations to calculate the slow moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 26)
+     * @param signalPeriod The number of observations to calculate the signal line for Moving Average Convergence Divergence (optional, default to 9)
      * @param priceKey The Stock Price field to use when calculating Moving Average Convergence Divergence (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -4892,9 +4713,9 @@ public class SecurityApi {
      * Moving Average Convergence Divergence (asynchronously)
      * Moving average convergence divergence (MACD) is a trend-following momentum oscillator that consists of three indicators: (1) a 12 period short-term exponential moving average (EMA) a 26 period long-term EMA and a 9 period EMA signal line. Traders using MACD often look for signal line crossovers, centerline crossovers, and EMA divergences to indicate the momentum and underlying trend of a security&#x60;s price.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param fastPeriod The number of observations, per period, to calculate the fast moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 12)
-     * @param slowPeriod The number of observations, per period, to calculate the slow moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 26)
-     * @param signalPeriod The number of observations, per period, to calculate the signal line for Moving Average Convergence Divergence (optional, default to 9)
+     * @param fastPeriod The number of observations to calculate the fast moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 12)
+     * @param slowPeriod The number of observations to calculate the slow moving Exponential Moving Average for Moving Average Convergence Divergence (optional, default to 26)
+     * @param signalPeriod The number of observations to calculate the signal line for Moving Average Convergence Divergence (optional, default to 9)
      * @param priceKey The Stock Price field to use when calculating Moving Average Convergence Divergence (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -4933,7 +4754,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsMfi
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Money Flow Index (optional, default to 14)
+     * @param period The number of observations to calculate Money Flow Index (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5013,7 +4834,7 @@ public class SecurityApi {
      * Money Flow Index
      * The Money Flow Index (MFI) is a technical oscillator that incorporates both price and volume, moving between 0 and 100. Traders often consider a MFI above 80 as overbought conditions and below 20 as oversold conditions.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Money Flow Index (optional, default to 14)
+     * @param period The number of observations to calculate Money Flow Index (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5034,7 +4855,7 @@ public class SecurityApi {
      * Money Flow Index
      * The Money Flow Index (MFI) is a technical oscillator that incorporates both price and volume, moving between 0 and 100. Traders often consider a MFI above 80 as overbought conditions and below 20 as oversold conditions.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Money Flow Index (optional, default to 14)
+     * @param period The number of observations to calculate Money Flow Index (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5052,7 +4873,7 @@ public class SecurityApi {
      * Money Flow Index (asynchronously)
      * The Money Flow Index (MFI) is a technical oscillator that incorporates both price and volume, moving between 0 and 100. Traders often consider a MFI above 80 as overbought conditions and below 20 as oversold conditions.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Money Flow Index (optional, default to 14)
+     * @param period The number of observations to calculate Money Flow Index (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5090,8 +4911,8 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsMi
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param emaPeriod The number of observations, per period, to calculate the single Exponential Moving Average and the Double Exponential Moving Average for Mass Index (optional, default to 9)
-     * @param sumPeriod The number of observations, per period, to calculate the sum of the Exponetinal Moving Average Ratios for Mass Index (optional, default to 25)
+     * @param emaPeriod The number of observations to calculate the single Exponential Moving Average and the Double Exponential Moving Average for Mass Index (optional, default to 9)
+     * @param sumPeriod The number of observations to calculate the sum of the Exponetinal Moving Average Ratios for Mass Index (optional, default to 25)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5173,8 +4994,8 @@ public class SecurityApi {
      * Mass Index
      * The mass index (MI) is a technical indicator used by traders to predict trend reversals. A trend reversal signal is said to occur when the 25-day MI reaches 27.0 and then falls below 26.0.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param emaPeriod The number of observations, per period, to calculate the single Exponential Moving Average and the Double Exponential Moving Average for Mass Index (optional, default to 9)
-     * @param sumPeriod The number of observations, per period, to calculate the sum of the Exponetinal Moving Average Ratios for Mass Index (optional, default to 25)
+     * @param emaPeriod The number of observations to calculate the single Exponential Moving Average and the Double Exponential Moving Average for Mass Index (optional, default to 9)
+     * @param sumPeriod The number of observations to calculate the sum of the Exponetinal Moving Average Ratios for Mass Index (optional, default to 25)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5195,8 +5016,8 @@ public class SecurityApi {
      * Mass Index
      * The mass index (MI) is a technical indicator used by traders to predict trend reversals. A trend reversal signal is said to occur when the 25-day MI reaches 27.0 and then falls below 26.0.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param emaPeriod The number of observations, per period, to calculate the single Exponential Moving Average and the Double Exponential Moving Average for Mass Index (optional, default to 9)
-     * @param sumPeriod The number of observations, per period, to calculate the sum of the Exponetinal Moving Average Ratios for Mass Index (optional, default to 25)
+     * @param emaPeriod The number of observations to calculate the single Exponential Moving Average and the Double Exponential Moving Average for Mass Index (optional, default to 9)
+     * @param sumPeriod The number of observations to calculate the sum of the Exponetinal Moving Average Ratios for Mass Index (optional, default to 25)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5214,8 +5035,8 @@ public class SecurityApi {
      * Mass Index (asynchronously)
      * The mass index (MI) is a technical indicator used by traders to predict trend reversals. A trend reversal signal is said to occur when the 25-day MI reaches 27.0 and then falls below 26.0.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param emaPeriod The number of observations, per period, to calculate the single Exponential Moving Average and the Double Exponential Moving Average for Mass Index (optional, default to 9)
-     * @param sumPeriod The number of observations, per period, to calculate the sum of the Exponetinal Moving Average Ratios for Mass Index (optional, default to 25)
+     * @param emaPeriod The number of observations to calculate the single Exponential Moving Average and the Double Exponential Moving Average for Mass Index (optional, default to 9)
+     * @param sumPeriod The number of observations to calculate the sum of the Exponetinal Moving Average Ratios for Mass Index (optional, default to 25)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5555,7 +5376,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsObvMean
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate On-balance Volume Mean (optional, default to 10)
+     * @param period The number of observations to calculate On-balance Volume Mean (optional, default to 10)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5635,7 +5456,7 @@ public class SecurityApi {
      * On-balance Volume Mean
      * On-balance volume mean (OBVM) is a leading momentum indicator that uses the increase/decrease flow in volume to predict upcoming stock price changes. The difference between OBV and OBVM is that OBVM takes the mean average of a provided period.  When both OBVM and a security&#x60;s price are making higher highs, it is presumed the upward trend is likely to continue and vice versa.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate On-balance Volume Mean (optional, default to 10)
+     * @param period The number of observations to calculate On-balance Volume Mean (optional, default to 10)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5656,7 +5477,7 @@ public class SecurityApi {
      * On-balance Volume Mean
      * On-balance volume mean (OBVM) is a leading momentum indicator that uses the increase/decrease flow in volume to predict upcoming stock price changes. The difference between OBV and OBVM is that OBVM takes the mean average of a provided period.  When both OBVM and a security&#x60;s price are making higher highs, it is presumed the upward trend is likely to continue and vice versa.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate On-balance Volume Mean (optional, default to 10)
+     * @param period The number of observations to calculate On-balance Volume Mean (optional, default to 10)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5674,7 +5495,7 @@ public class SecurityApi {
      * On-balance Volume Mean (asynchronously)
      * On-balance volume mean (OBVM) is a leading momentum indicator that uses the increase/decrease flow in volume to predict upcoming stock price changes. The difference between OBV and OBVM is that OBVM takes the mean average of a provided period.  When both OBVM and a security&#x60;s price are making higher highs, it is presumed the upward trend is likely to continue and vice versa.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate On-balance Volume Mean (optional, default to 10)
+     * @param period The number of observations to calculate On-balance Volume Mean (optional, default to 10)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -5712,7 +5533,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsRsi
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Relative Strength Index (optional, default to 14)
+     * @param period The number of observations to calculate Relative Strength Index (optional, default to 14)
      * @param priceKey The Stock Price field to use when calculating Relative Strength Index (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -5795,7 +5616,7 @@ public class SecurityApi {
      * Relative Strength Index
      * Relative strength index (RSI) is a momentum oscillator that ranges between 0 and 100. Traders believe that an RSI value over 70 indicates that a security is overbought and an RSI under 30 indicates that a security is oversold.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Relative Strength Index (optional, default to 14)
+     * @param period The number of observations to calculate Relative Strength Index (optional, default to 14)
      * @param priceKey The Stock Price field to use when calculating Relative Strength Index (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -5817,7 +5638,7 @@ public class SecurityApi {
      * Relative Strength Index
      * Relative strength index (RSI) is a momentum oscillator that ranges between 0 and 100. Traders believe that an RSI value over 70 indicates that a security is overbought and an RSI under 30 indicates that a security is oversold.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Relative Strength Index (optional, default to 14)
+     * @param period The number of observations to calculate Relative Strength Index (optional, default to 14)
      * @param priceKey The Stock Price field to use when calculating Relative Strength Index (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -5836,7 +5657,7 @@ public class SecurityApi {
      * Relative Strength Index (asynchronously)
      * Relative strength index (RSI) is a momentum oscillator that ranges between 0 and 100. Traders believe that an RSI value over 70 indicates that a security is overbought and an RSI under 30 indicates that a security is oversold.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Relative Strength Index (optional, default to 14)
+     * @param period The number of observations to calculate Relative Strength Index (optional, default to 14)
      * @param priceKey The Stock Price field to use when calculating Relative Strength Index (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -5875,7 +5696,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsSma
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Simple Moving Average (optional, default to 20)
+     * @param period The number of observations to calculate Simple Moving Average (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Simple Moving Average (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -5958,7 +5779,7 @@ public class SecurityApi {
      * Simple Moving Average
      * A simple moving average (SMA) adds recent prices for a specified period and divides the total by that same number of periods. SMA is typically used to indicate whether a security is in an uptrend or downtrend and can also be combined with a long-term moving average to improve the signal&#x60;s abilities.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Simple Moving Average (optional, default to 20)
+     * @param period The number of observations to calculate Simple Moving Average (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Simple Moving Average (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -5980,7 +5801,7 @@ public class SecurityApi {
      * Simple Moving Average
      * A simple moving average (SMA) adds recent prices for a specified period and divides the total by that same number of periods. SMA is typically used to indicate whether a security is in an uptrend or downtrend and can also be combined with a long-term moving average to improve the signal&#x60;s abilities.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Simple Moving Average (optional, default to 20)
+     * @param period The number of observations to calculate Simple Moving Average (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Simple Moving Average (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -5999,7 +5820,7 @@ public class SecurityApi {
      * Simple Moving Average (asynchronously)
      * A simple moving average (SMA) adds recent prices for a specified period and divides the total by that same number of periods. SMA is typically used to indicate whether a security is in an uptrend or downtrend and can also be combined with a long-term moving average to improve the signal&#x60;s abilities.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Simple Moving Average (optional, default to 20)
+     * @param period The number of observations to calculate Simple Moving Average (optional, default to 20)
      * @param priceKey The Stock Price field to use when calculating Simple Moving Average (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -6038,8 +5859,8 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsSr
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate %K of Stochastic Oscillator (optional, default to 14)
-     * @param signalPeriod The number of observations, per period, to calculate the %D (the Simple Moving Average of %K) as a signal line for Stochastic Oscillator (optional, default to 3)
+     * @param period The number of observations to calculate %K of Stochastic Oscillator (optional, default to 14)
+     * @param signalPeriod The number of observations to calculate the %D (the Simple Moving Average of %K) as a signal line for Stochastic Oscillator (optional, default to 3)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -6121,8 +5942,8 @@ public class SecurityApi {
      * Stochastic Oscillator
      * The Stochastic Oscillator (SO) is a range-bound momentum indicator that ranges from 0 to 100 and follows the velocity of the momentum itself, not the underlying price or volume. When SO is above 80 it indicates that a security is trading at the high end of its period&#x60;s high-low range and vice versa if the reading is below 20.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate %K of Stochastic Oscillator (optional, default to 14)
-     * @param signalPeriod The number of observations, per period, to calculate the %D (the Simple Moving Average of %K) as a signal line for Stochastic Oscillator (optional, default to 3)
+     * @param period The number of observations to calculate %K of Stochastic Oscillator (optional, default to 14)
+     * @param signalPeriod The number of observations to calculate the %D (the Simple Moving Average of %K) as a signal line for Stochastic Oscillator (optional, default to 3)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -6143,8 +5964,8 @@ public class SecurityApi {
      * Stochastic Oscillator
      * The Stochastic Oscillator (SO) is a range-bound momentum indicator that ranges from 0 to 100 and follows the velocity of the momentum itself, not the underlying price or volume. When SO is above 80 it indicates that a security is trading at the high end of its period&#x60;s high-low range and vice versa if the reading is below 20.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate %K of Stochastic Oscillator (optional, default to 14)
-     * @param signalPeriod The number of observations, per period, to calculate the %D (the Simple Moving Average of %K) as a signal line for Stochastic Oscillator (optional, default to 3)
+     * @param period The number of observations to calculate %K of Stochastic Oscillator (optional, default to 14)
+     * @param signalPeriod The number of observations to calculate the %D (the Simple Moving Average of %K) as a signal line for Stochastic Oscillator (optional, default to 3)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -6162,8 +5983,8 @@ public class SecurityApi {
      * Stochastic Oscillator (asynchronously)
      * The Stochastic Oscillator (SO) is a range-bound momentum indicator that ranges from 0 to 100 and follows the velocity of the momentum itself, not the underlying price or volume. When SO is above 80 it indicates that a security is trading at the high end of its period&#x60;s high-low range and vice versa if the reading is below 20.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate %K of Stochastic Oscillator (optional, default to 14)
-     * @param signalPeriod The number of observations, per period, to calculate the %D (the Simple Moving Average of %K) as a signal line for Stochastic Oscillator (optional, default to 3)
+     * @param period The number of observations to calculate %K of Stochastic Oscillator (optional, default to 14)
+     * @param signalPeriod The number of observations to calculate the %D (the Simple Moving Average of %K) as a signal line for Stochastic Oscillator (optional, default to 3)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -6201,7 +6022,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsTrix
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Exponential Moving Average for Triple Exponential Average (optional, default to 15)
+     * @param period The number of observations to calculate Exponential Moving Average for Triple Exponential Average (optional, default to 15)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -6281,7 +6102,7 @@ public class SecurityApi {
      * Triple Exponential Average
      * The Triple Exponential Average (TEA) is a momentum indicator used to identify when a security is oversold and overbought. By exponentially smoothing out the underlying security&#x60;s moving average, the TEA  filters out insignificant price movements. A positive TEA is often believed to indicate momentum is increasing and a negative TEA indicates that momentum is decreasing.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Exponential Moving Average for Triple Exponential Average (optional, default to 15)
+     * @param period The number of observations to calculate Exponential Moving Average for Triple Exponential Average (optional, default to 15)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -6302,7 +6123,7 @@ public class SecurityApi {
      * Triple Exponential Average
      * The Triple Exponential Average (TEA) is a momentum indicator used to identify when a security is oversold and overbought. By exponentially smoothing out the underlying security&#x60;s moving average, the TEA  filters out insignificant price movements. A positive TEA is often believed to indicate momentum is increasing and a negative TEA indicates that momentum is decreasing.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Exponential Moving Average for Triple Exponential Average (optional, default to 15)
+     * @param period The number of observations to calculate Exponential Moving Average for Triple Exponential Average (optional, default to 15)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -6320,7 +6141,7 @@ public class SecurityApi {
      * Triple Exponential Average (asynchronously)
      * The Triple Exponential Average (TEA) is a momentum indicator used to identify when a security is oversold and overbought. By exponentially smoothing out the underlying security&#x60;s moving average, the TEA  filters out insignificant price movements. A positive TEA is often believed to indicate momentum is increasing and a negative TEA indicates that momentum is decreasing.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Exponential Moving Average for Triple Exponential Average (optional, default to 15)
+     * @param period The number of observations to calculate Exponential Moving Average for Triple Exponential Average (optional, default to 15)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -6358,8 +6179,8 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsTsi
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param lowPeriod The number of observations, per period, to calculate low period Exponential Moving Average for smoothing in True Strength Index (optional, default to 13)
-     * @param highPeriod The number of observations, per period, to calculate high period Exponential Moving Average for smoothing in True Strength Index (optional, default to 25)
+     * @param lowPeriod The number of observations to calculate low period Exponential Moving Average for smoothing in True Strength Index (optional, default to 13)
+     * @param highPeriod The number of observations to calculate high period Exponential Moving Average for smoothing in True Strength Index (optional, default to 25)
      * @param priceKey The Stock Price field to use when calculating True Strength Index (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -6444,8 +6265,8 @@ public class SecurityApi {
      * True Strength Index
      * The True Strength Index (TSI) is a momentum oscillator used to identify building trends and trend reversals, typically by signalling overbought and oversold conditions. TSI fluctuates between positive and negative values, and traders typically combine its signal with other momentum oscillators to increase its strength. When TSI crosses the signal line into positive territory it is presumed to be an entrance opportunity and vice versa when the TSI crosses into negative territory.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param lowPeriod The number of observations, per period, to calculate low period Exponential Moving Average for smoothing in True Strength Index (optional, default to 13)
-     * @param highPeriod The number of observations, per period, to calculate high period Exponential Moving Average for smoothing in True Strength Index (optional, default to 25)
+     * @param lowPeriod The number of observations to calculate low period Exponential Moving Average for smoothing in True Strength Index (optional, default to 13)
+     * @param highPeriod The number of observations to calculate high period Exponential Moving Average for smoothing in True Strength Index (optional, default to 25)
      * @param priceKey The Stock Price field to use when calculating True Strength Index (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -6467,8 +6288,8 @@ public class SecurityApi {
      * True Strength Index
      * The True Strength Index (TSI) is a momentum oscillator used to identify building trends and trend reversals, typically by signalling overbought and oversold conditions. TSI fluctuates between positive and negative values, and traders typically combine its signal with other momentum oscillators to increase its strength. When TSI crosses the signal line into positive territory it is presumed to be an entrance opportunity and vice versa when the TSI crosses into negative territory.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param lowPeriod The number of observations, per period, to calculate low period Exponential Moving Average for smoothing in True Strength Index (optional, default to 13)
-     * @param highPeriod The number of observations, per period, to calculate high period Exponential Moving Average for smoothing in True Strength Index (optional, default to 25)
+     * @param lowPeriod The number of observations to calculate low period Exponential Moving Average for smoothing in True Strength Index (optional, default to 13)
+     * @param highPeriod The number of observations to calculate high period Exponential Moving Average for smoothing in True Strength Index (optional, default to 25)
      * @param priceKey The Stock Price field to use when calculating True Strength Index (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -6487,8 +6308,8 @@ public class SecurityApi {
      * True Strength Index (asynchronously)
      * The True Strength Index (TSI) is a momentum oscillator used to identify building trends and trend reversals, typically by signalling overbought and oversold conditions. TSI fluctuates between positive and negative values, and traders typically combine its signal with other momentum oscillators to increase its strength. When TSI crosses the signal line into positive territory it is presumed to be an entrance opportunity and vice versa when the TSI crosses into negative territory.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param lowPeriod The number of observations, per period, to calculate low period Exponential Moving Average for smoothing in True Strength Index (optional, default to 13)
-     * @param highPeriod The number of observations, per period, to calculate high period Exponential Moving Average for smoothing in True Strength Index (optional, default to 25)
+     * @param lowPeriod The number of observations to calculate low period Exponential Moving Average for smoothing in True Strength Index (optional, default to 13)
+     * @param highPeriod The number of observations to calculate high period Exponential Moving Average for smoothing in True Strength Index (optional, default to 25)
      * @param priceKey The Stock Price field to use when calculating True Strength Index (optional, default to close)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
@@ -6527,9 +6348,9 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsUo
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param shortPeriod The number of observations, per period, to calculate the short period for Ultimate Oscillator (optional, default to 7)
-     * @param mediumPeriod The number of observations, per period, to calculate the medium period for Ultimate Oscillator (optional, default to 14)
-     * @param longPeriod The number of observations, per period, to calculate the long period for Ultimate Oscillator (optional, default to 28)
+     * @param shortPeriod The number of observations to calculate the short period for Ultimate Oscillator (optional, default to 7)
+     * @param mediumPeriod The number of observations to calculate the medium period for Ultimate Oscillator (optional, default to 14)
+     * @param longPeriod The number of observations to calculate the long period for Ultimate Oscillator (optional, default to 28)
      * @param shortWeight The weight of short Buying Pressure average for Ultimate Oscillator (optional, default to 4.0)
      * @param mediumWeight The weight of medium Buying Pressure average for Ultimate Oscillator (optional, default to 2.0)
      * @param longWeight The weight of long Buying Pressure average for Ultimate Oscillator (optional, default to 1.0)
@@ -6622,9 +6443,9 @@ public class SecurityApi {
      * Ultimate Oscillator
      * The Ultimate Oscillator (UO) is a range bound technical indicator that moves between 0 and 100 and is calculated with 3 timeframes, typically 7, 14, and 28 day periods. When UO&#x60;s value is above 70 a security is categorized as overbought and when UO&#x60;s value is below 30 a security is categorized as oversold.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param shortPeriod The number of observations, per period, to calculate the short period for Ultimate Oscillator (optional, default to 7)
-     * @param mediumPeriod The number of observations, per period, to calculate the medium period for Ultimate Oscillator (optional, default to 14)
-     * @param longPeriod The number of observations, per period, to calculate the long period for Ultimate Oscillator (optional, default to 28)
+     * @param shortPeriod The number of observations to calculate the short period for Ultimate Oscillator (optional, default to 7)
+     * @param mediumPeriod The number of observations to calculate the medium period for Ultimate Oscillator (optional, default to 14)
+     * @param longPeriod The number of observations to calculate the long period for Ultimate Oscillator (optional, default to 28)
      * @param shortWeight The weight of short Buying Pressure average for Ultimate Oscillator (optional, default to 4.0)
      * @param mediumWeight The weight of medium Buying Pressure average for Ultimate Oscillator (optional, default to 2.0)
      * @param longWeight The weight of long Buying Pressure average for Ultimate Oscillator (optional, default to 1.0)
@@ -6648,9 +6469,9 @@ public class SecurityApi {
      * Ultimate Oscillator
      * The Ultimate Oscillator (UO) is a range bound technical indicator that moves between 0 and 100 and is calculated with 3 timeframes, typically 7, 14, and 28 day periods. When UO&#x60;s value is above 70 a security is categorized as overbought and when UO&#x60;s value is below 30 a security is categorized as oversold.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param shortPeriod The number of observations, per period, to calculate the short period for Ultimate Oscillator (optional, default to 7)
-     * @param mediumPeriod The number of observations, per period, to calculate the medium period for Ultimate Oscillator (optional, default to 14)
-     * @param longPeriod The number of observations, per period, to calculate the long period for Ultimate Oscillator (optional, default to 28)
+     * @param shortPeriod The number of observations to calculate the short period for Ultimate Oscillator (optional, default to 7)
+     * @param mediumPeriod The number of observations to calculate the medium period for Ultimate Oscillator (optional, default to 14)
+     * @param longPeriod The number of observations to calculate the long period for Ultimate Oscillator (optional, default to 28)
      * @param shortWeight The weight of short Buying Pressure average for Ultimate Oscillator (optional, default to 4.0)
      * @param mediumWeight The weight of medium Buying Pressure average for Ultimate Oscillator (optional, default to 2.0)
      * @param longWeight The weight of long Buying Pressure average for Ultimate Oscillator (optional, default to 1.0)
@@ -6671,9 +6492,9 @@ public class SecurityApi {
      * Ultimate Oscillator (asynchronously)
      * The Ultimate Oscillator (UO) is a range bound technical indicator that moves between 0 and 100 and is calculated with 3 timeframes, typically 7, 14, and 28 day periods. When UO&#x60;s value is above 70 a security is categorized as overbought and when UO&#x60;s value is below 30 a security is categorized as oversold.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param shortPeriod The number of observations, per period, to calculate the short period for Ultimate Oscillator (optional, default to 7)
-     * @param mediumPeriod The number of observations, per period, to calculate the medium period for Ultimate Oscillator (optional, default to 14)
-     * @param longPeriod The number of observations, per period, to calculate the long period for Ultimate Oscillator (optional, default to 28)
+     * @param shortPeriod The number of observations to calculate the short period for Ultimate Oscillator (optional, default to 7)
+     * @param mediumPeriod The number of observations to calculate the medium period for Ultimate Oscillator (optional, default to 14)
+     * @param longPeriod The number of observations to calculate the long period for Ultimate Oscillator (optional, default to 28)
      * @param shortWeight The weight of short Buying Pressure average for Ultimate Oscillator (optional, default to 4.0)
      * @param mediumWeight The weight of medium Buying Pressure average for Ultimate Oscillator (optional, default to 2.0)
      * @param longWeight The weight of long Buying Pressure average for Ultimate Oscillator (optional, default to 1.0)
@@ -6714,7 +6535,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsVi
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Vortex Indicator (optional, default to 14)
+     * @param period The number of observations to calculate Vortex Indicator (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -6794,7 +6615,7 @@ public class SecurityApi {
      * Vortex Indicator
      * The Vortex Indicator (VI) is composed of an uptrend line (VI+) and a downtrend line (VI-). When VI+ crosses VI- from below it typically indicates an entry into a given security. When VI- crosses VI+ from below it typically triggers an exit and that the current trend is reversing course.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Vortex Indicator (optional, default to 14)
+     * @param period The number of observations to calculate Vortex Indicator (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -6815,7 +6636,7 @@ public class SecurityApi {
      * Vortex Indicator
      * The Vortex Indicator (VI) is composed of an uptrend line (VI+) and a downtrend line (VI-). When VI+ crosses VI- from below it typically indicates an entry into a given security. When VI- crosses VI+ from below it typically triggers an exit and that the current trend is reversing course.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Vortex Indicator (optional, default to 14)
+     * @param period The number of observations to calculate Vortex Indicator (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -6833,7 +6654,7 @@ public class SecurityApi {
      * Vortex Indicator (asynchronously)
      * The Vortex Indicator (VI) is composed of an uptrend line (VI+) and a downtrend line (VI-). When VI+ crosses VI- from below it typically indicates an entry into a given security. When VI- crosses VI+ from below it typically triggers an exit and that the current trend is reversing course.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to calculate Vortex Indicator (optional, default to 14)
+     * @param period The number of observations to calculate Vortex Indicator (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -7173,7 +6994,7 @@ public class SecurityApi {
     /**
      * Build call for getSecurityPriceTechnicalsWr
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to look-back when calculating Williams %R (optional, default to 14)
+     * @param period The number of observations to look-back when calculating Williams %R (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -7253,7 +7074,7 @@ public class SecurityApi {
      * Williams %R
      * Williams %R is a momentum indicator used to determine overbought and oversold environments for a security and fluctuates between 0 and -100. When Williams %R is above -20 the security is considered to be overbought and when Williams %R is under -80 the security is considered to be oversold.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to look-back when calculating Williams %R (optional, default to 14)
+     * @param period The number of observations to look-back when calculating Williams %R (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -7274,7 +7095,7 @@ public class SecurityApi {
      * Williams %R
      * Williams %R is a momentum indicator used to determine overbought and oversold environments for a security and fluctuates between 0 and -100. When Williams %R is above -20 the security is considered to be overbought and when Williams %R is under -80 the security is considered to be oversold.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to look-back when calculating Williams %R (optional, default to 14)
+     * @param period The number of observations to look-back when calculating Williams %R (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)
@@ -7292,7 +7113,7 @@ public class SecurityApi {
      * Williams %R (asynchronously)
      * Williams %R is a momentum indicator used to determine overbought and oversold environments for a security and fluctuates between 0 and -100. When Williams %R is above -20 the security is considered to be overbought and when Williams %R is under -80 the security is considered to be oversold.
      * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
-     * @param period The number of observations, per period, to look-back when calculating Williams %R (optional, default to 14)
+     * @param period The number of observations to look-back when calculating Williams %R (optional, default to 14)
      * @param startDate Return technical indicator values on or after the date (optional)
      * @param endDate Return technical indicator values on or before the date (optional)
      * @param pageSize The number of results to return (optional, default to 100)

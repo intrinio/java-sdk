@@ -93,6 +93,12 @@ public class FundamentalSummary {
   @SerializedName("filing_date")
   private OffsetDateTime filingDate = null;
 
+  @SerializedName("is_latest")
+  private Boolean isLatest = null;
+
+  @SerializedName("updated_date")
+  private OffsetDateTime updatedDate = null;
+
   public FundamentalSummary id(String id) {
     this.id = id;
     return this;
@@ -237,6 +243,42 @@ public class FundamentalSummary {
     this.filingDate = filingDate;
   }
 
+  public FundamentalSummary isLatest(Boolean isLatest) {
+    this.isLatest = isLatest;
+    return this;
+  }
+
+   /**
+   * Is this the latest fundamental available based on the company&#39;s most recent filings? Use the Lookup Fundamental endpoint to find the latest fundamental (&lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/web_api/lookup_fundamental_v2\&quot; target&#x3D;\&quot;_blank\&quot;&gt;reference&lt;/a&gt;)
+   * @return isLatest
+  **/
+  @ApiModelProperty(value = "Is this the latest fundamental available based on the company's most recent filings? Use the Lookup Fundamental endpoint to find the latest fundamental (<a href=\"https://docs.intrinio.com/documentation/web_api/lookup_fundamental_v2\" target=\"_blank\">reference</a>)")
+  public Boolean isIsLatest() {
+    return isLatest;
+  }
+
+  public void setIsLatest(Boolean isLatest) {
+    this.isLatest = isLatest;
+  }
+
+  public FundamentalSummary updatedDate(OffsetDateTime updatedDate) {
+    this.updatedDate = updatedDate;
+    return this;
+  }
+
+   /**
+   * The date and time when the data related to the fundamental was last updated
+   * @return updatedDate
+  **/
+  @ApiModelProperty(value = "The date and time when the data related to the fundamental was last updated")
+  public OffsetDateTime getUpdatedDate() {
+    return updatedDate;
+  }
+
+  public void setUpdatedDate(OffsetDateTime updatedDate) {
+    this.updatedDate = updatedDate;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -254,12 +296,14 @@ public class FundamentalSummary {
         Objects.equals(this.type, fundamentalSummary.type) &&
         Objects.equals(this.startDate, fundamentalSummary.startDate) &&
         Objects.equals(this.endDate, fundamentalSummary.endDate) &&
-        Objects.equals(this.filingDate, fundamentalSummary.filingDate);
+        Objects.equals(this.filingDate, fundamentalSummary.filingDate) &&
+        Objects.equals(this.isLatest, fundamentalSummary.isLatest) &&
+        Objects.equals(this.updatedDate, fundamentalSummary.updatedDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate);
+    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, isLatest, updatedDate);
   }
 
 
@@ -276,6 +320,8 @@ public class FundamentalSummary {
     sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
     sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
     sb.append("    filingDate: ").append(toIndentedString(filingDate)).append("\n");
+    sb.append("    isLatest: ").append(toIndentedString(isLatest)).append("\n");
+    sb.append("    updatedDate: ").append(toIndentedString(updatedDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }
