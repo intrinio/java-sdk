@@ -32,15 +32,7 @@ public class ApiResponseSecurityIntervalPrices {
    */
   @JsonAdapter(SourceEnum.Adapter.class)
   public enum SourceEnum {
-    REALTIME("realtime"),
-    
-    DELAYED("delayed"),
-    
-    NASDAQ_BASIC("nasdaq_basic"),
-    
-    NASDAQ_BASIC_FILTERED("nasdaq_basic_filtered"),
-    
-    NASDAQ_BASIC_LAST_SALE("nasdaq_basic_last_sale");
+    _V2_STOCK_PRICE_INTERVAL_SOURCES_ENUM_("$$v2_stock_price_interval_sources_enum$$");
 
     private String value;
 

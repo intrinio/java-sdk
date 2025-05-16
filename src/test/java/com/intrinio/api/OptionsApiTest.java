@@ -10,6 +10,9 @@ import com.intrinio.models.ApiResponseOptionsChain;
 import com.intrinio.models.ApiResponseOptionsChainEod;
 import com.intrinio.models.ApiResponseOptionsChainRealtime;
 import com.intrinio.models.ApiResponseOptionsExpirations;
+import com.intrinio.models.ApiResponseOptionsGreekContractRealtime;
+import com.intrinio.models.ApiResponseOptionsGreeksByTickerRealtime;
+import com.intrinio.models.ApiResponseOptionsImpliedMove;
 import com.intrinio.models.ApiResponseOptionsPriceRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesBatchRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesByTickerEod;
@@ -336,6 +339,25 @@ public class OptionsApiTest {
     }
     
     /**
+     * Options Implied Move By Symbol
+     *
+     * Returns the implied move data points for a ticker symbol.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsImpliedMoveBySymbolTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        LocalDate expirationDate = null;
+        Object percentage = null;
+        String source = null;
+        ApiResponseOptionsImpliedMove response = api.getOptionsImpliedMoveBySymbol(symbol, expirationDate, percentage, source);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Options Intervals By Contract
      *
      * Returns a list of interval data points for a contract.
@@ -530,7 +552,8 @@ public class OptionsApiTest {
         Boolean showExtendedPrice = null;
         Object expirationStartDate = null;
         Object expirationEndDate = null;
-        ApiResponseOptionsPricesByTickerRealtime response = api.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate);
+        BigDecimal strike = null;
+        ApiResponseOptionsPricesByTickerRealtime response = api.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate, strike);
 
         // TODO: test validations
     }
@@ -649,6 +672,52 @@ public class OptionsApiTest {
         Object minimumTotalValue = null;
         Object maximumTotalValue = null;
         ApiResponseOptionsUnusualActivity response = api.getUnusualActivityUniversalIntraday(nextPage, pageSize, activityType, sentiment, startDate, endDate, minimumTotalValue, maximumTotalValue);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get realtime options greeks by ticker
+     *
+     * Retrieves realtime options greeks data for all contracts of a given ticker symbol
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void optionsGreeksByTickerIdentifierRealtimeGetTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String source = null;
+        String model = null;
+        String ivMode = null;
+        String stockPriceSource = null;
+        LocalDate expirationStartDate = null;
+        LocalDate expirationEndDate = null;
+        Float strike = null;
+        Float strikeGreaterThan = null;
+        Float strikeLessThan = null;
+        Integer pageSize = null;
+        ApiResponseOptionsGreeksByTickerRealtime response = api.optionsGreeksByTickerIdentifierRealtimeGet(identifier, source, model, ivMode, stockPriceSource, expirationStartDate, expirationEndDate, strike, strikeGreaterThan, strikeLessThan, pageSize);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Get realtime options greeks for a specific contract
+     *
+     * Retrieves realtime options greeks data for a specific options contract
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void optionsGreeksContractRealtimeGetTest() throws ApiException, NoSuchMethodException {
+        String contract = null;
+        String source = null;
+        String model = null;
+        String ivMode = null;
+        String stockPriceSource = null;
+        ApiResponseOptionsGreekContractRealtime response = api.optionsGreeksContractRealtimeGet(contract, source, model, ivMode, stockPriceSource);
 
         // TODO: test validations
     }

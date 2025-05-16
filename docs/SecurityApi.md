@@ -243,7 +243,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Security result = securityApi.getSecurityById(identifier);
     System.out.println(result);
   }
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 #### Data Point (Number) for Security
 
 
-Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+$$v2_security_data_point_number_description$$
 
 [//]: # (END_OVERVIEW)
 
@@ -327,8 +327,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
-    String tag = "close_price";
+    String identifier = "$$v2_security_data_point_identifier_default$$";
+    String tag = "$$v2_security_data_point_item_number_default$$";
     BigDecimal result = securityApi.getSecurityDataPointNumber(identifier, tag);
     System.out.println(result);
   }
@@ -344,8 +344,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
- **tag** | String| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
+ **identifier** | String| $$v2_security_data_point_identifier_description$$ | &nbsp;
+ **tag** | String| $$v2_security_data_point_item_description$$ | &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 #### Data Point (Text) for Security
 
 
-Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+$$v2_security_data_point_text_description$$
 
 [//]: # (END_OVERVIEW)
 
@@ -413,8 +413,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
-    String tag = "figi";
+    String identifier = "$$v2_security_data_point_identifier_default$$";
+    String tag = "$$v2_security_data_point_item_text_default$$";
     String result = securityApi.getSecurityDataPointText(identifier, tag);
     System.out.println(result);
   }
@@ -430,7 +430,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
+ **identifier** | String| $$v2_security_data_point_identifier_description$$ | &nbsp;
  **tag** | String| An Intrinio data tag ID or code-name | &nbsp;
 <br/>
 
@@ -473,7 +473,7 @@ Name | Type | Description  | Notes
 #### Historical Data for Security
 
 
-Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
+$$v2_security_historical_data_description$$
 
 [//]: # (END_OVERVIEW)
 
@@ -499,8 +499,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
-    String tag = "adj_close_price";
+    String identifier = "$$v2_security_historical_data_identifier_default$$";
+    String tag = "$$v2_security_historical_data_item_default$$";
     String frequency = "daily";
     String type = null;
     LocalDate startDate = LocalDate.of(2018,1,01);
@@ -523,8 +523,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
- **tag** | String| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
+ **identifier** | String| $$v2_security_historical_data_identifier_description$$ | &nbsp;
+ **tag** | String| $$v2_security_data_point_item_description$$ | &nbsp;
  **frequency** | String| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly] &nbsp;
  **type** | String| Filter by type, when applicable | [optional] &nbsp;
  **startDate** | LocalDate| Get historical data on or after this date | [optional] &nbsp;
@@ -767,7 +767,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String nextPage = null;
     ApiResponseSecurityInstitutionalOwnership result = securityApi.getSecurityInsiderOwnership(identifier, nextPage);
     System.out.println(result);
@@ -1111,8 +1111,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
-    String intervalSize = "15m";
+    String identifier = "$$v2_ticker_default$$";
+    String intervalSize = "5m";
     String source = null;
     LocalDate startDate = LocalDate.of(2023,1,01);
     String startTime = "33300";
@@ -1139,14 +1139,14 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
- **intervalSize** | String| The interval for which to return stock prices | [default to 15m] [enum: 1m, 5m, 10m, 15m, 30m, 60m, 1h] &nbsp;
- **source** | String| Return intervals from the specified data source | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered, nasdaq_basic_last_sale] &nbsp;
+ **intervalSize** | String| The interval size to return in minutes (m) or hour (h). | [default to 5m] [enum: 1m, 5m, 10m, 15m, 30m, 60m, 1h] &nbsp;
+ **source** | String| Return intervals from the specified data source | [optional] [enum: $$v2_stock_price_interval_sources_enum$$] &nbsp;
  **startDate** | LocalDate| Return intervals starting at the specified date | [optional] &nbsp;
  **startTime** | String| Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) | [optional] &nbsp;
  **endDate** | LocalDate| Return intervals stopping at the specified date | [optional] &nbsp;
  **endTime** | String| Return intervals stopping at the specified time on the &#x60;end_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) | [optional] &nbsp;
  **timezone** | String| Interprets the input times in this time zone, as well as returns times in this timezone. | [optional] [default to UTC] [enum: Africa/Algiers, Africa/Cairo, Africa/Casablanca, Africa/Harare, Africa/Johannesburg, Africa/Monrovia, Africa/Nairobi, America/Argentina/Buenos_Aires, America/Bogota, America/Caracas, America/Chicago, America/Chihuahua, America/Denver, America/Godthab, America/Guatemala, America/Guyana, America/Halifax, America/Indiana/Indianapolis, America/Juneau, America/La_Paz, America/Lima, America/Lima, America/Los_Angeles, America/Mazatlan, America/Mexico_City, America/Mexico_City, America/Monterrey, America/Montevideo, America/New_York, America/Phoenix, America/Regina, America/Santiago, America/Sao_Paulo, America/St_Johns, America/Tijuana, Asia/Almaty, Asia/Baghdad, Asia/Baku, Asia/Bangkok, Asia/Bangkok, Asia/Chongqing, Asia/Colombo, Asia/Dhaka, Asia/Dhaka, Asia/Hong_Kong, Asia/Irkutsk, Asia/Jakarta, Asia/Jerusalem, Asia/Kabul, Asia/Kamchatka, Asia/Karachi, Asia/Karachi, Asia/Kathmandu, Asia/Kolkata, Asia/Kolkata, Asia/Kolkata, Asia/Kolkata, Asia/Krasnoyarsk, Asia/Kuala_Lumpur, Asia/Kuwait, Asia/Magadan, Asia/Muscat, Asia/Muscat, Asia/Novosibirsk, Asia/Rangoon, Asia/Riyadh, Asia/Seoul, Asia/Shanghai, Asia/Singapore, Asia/Srednekolymsk, Asia/Taipei, Asia/Tashkent, Asia/Tbilisi, Asia/Tehran, Asia/Tokyo, Asia/Tokyo, Asia/Tokyo, Asia/Ulaanbaatar, Asia/Urumqi, Asia/Vladivostok, Asia/Yakutsk, Asia/Yekaterinburg, Asia/Yerevan, Atlantic/Azores, Atlantic/Cape_Verde, Atlantic/South_Georgia, Australia/Adelaide, Australia/Brisbane, Australia/Darwin, Australia/Hobart, Australia/Melbourne, Australia/Melbourne, Australia/Perth, Australia/Sydney, Etc/UTC, UTC, Europe/Amsterdam, Europe/Athens, Europe/Belgrade, Europe/Berlin, Europe/Berlin, Europe/Bratislava, Europe/Brussels, Europe/Bucharest, Europe/Budapest, Europe/Copenhagen, Europe/Dublin, Europe/Helsinki, Europe/Istanbul, Europe/Kaliningrad, Europe/Kiev, Europe/Lisbon, Europe/Ljubljana, Europe/London, Europe/London, Europe/Madrid, Europe/Minsk, Europe/Moscow, Europe/Moscow, Europe/Paris, Europe/Prague, Europe/Riga, Europe/Rome, Europe/Samara, Europe/Sarajevo, Europe/Skopje, Europe/Sofia, Europe/Stockholm, Europe/Tallinn, Europe/Vienna, Europe/Vilnius, Europe/Volgograd, Europe/Warsaw, Europe/Zagreb, Pacific/Apia, Pacific/Auckland, Pacific/Auckland, Pacific/Chatham, Pacific/Fakaofo, Pacific/Fiji, Pacific/Guadalcanal, Pacific/Guam, Pacific/Honolulu, Pacific/Majuro, Pacific/Midway, Pacific/Midway, Pacific/Noumea, Pacific/Pago_Pago, Pacific/Port_Moresby, Pacific/Tongatapu] &nbsp;
- **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **pageSize** | Integer| The number of results to return per page. | [optional] [default to 100] &nbsp;
  **splitAdjusted** | Boolean| Whether to return the values adjusted for splits or not. Default is false. | [optional] [default to false] &nbsp;
  **includeQuoteOnlyBars** | Boolean| If true, also include bars where no trades occurred but quotes did. | [optional] [default to false] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
@@ -1191,7 +1191,7 @@ Name | Type | Description  | Notes
 #### Intraday Stock Prices for Security
 
 
-Deprecated.  Return intraday stock prices for the Security with the given &#x60;identifier&#x60;
+Deprecated.  $$v2_security_intraday_prices_description$$
 
 [//]: # (END_OVERVIEW)
 
@@ -1217,7 +1217,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String source = null;
     LocalDate startDate = LocalDate.of(2018,1,01);
     String startTime = null;
@@ -1315,7 +1315,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     DividendRecord result = securityApi.getSecurityLatestDividendRecord(identifier);
     System.out.println(result);
   }
@@ -1399,7 +1399,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     EarningsRecord result = securityApi.getSecurityLatestEarningsRecord(identifier);
     System.out.println(result);
   }
@@ -1483,7 +1483,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -1575,7 +1575,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 22;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -1669,7 +1669,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -1763,7 +1763,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer shortPeriod = 5;
     Integer longPeriod = 34;
     String startDate = "2018-01-01";
@@ -1859,7 +1859,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -1953,7 +1953,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     Float standardDeviations = 2.0F;
     String priceKey = "close";
@@ -2051,7 +2051,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     Float constant = 0.015F;
     String startDate = "2018-01-01";
@@ -2147,7 +2147,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -2241,7 +2241,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     String priceKey = "close";
     String startDate = "2018-01-01";
@@ -2337,7 +2337,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     String priceKey = "close";
     String startDate = "2018-01-01";
@@ -2433,7 +2433,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -2527,7 +2527,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -2619,7 +2619,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer lowPeriod = 9;
     Integer mediumPeriod = 26;
     Integer highPeriod = 52;
@@ -2717,7 +2717,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 10;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -2811,7 +2811,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer roc1 = 10;
     Integer roc2 = 15;
     Integer roc3 = 20;
@@ -2921,7 +2921,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer fastPeriod = 12;
     Integer slowPeriod = 26;
     Integer signalPeriod = 9;
@@ -3021,7 +3021,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -3115,7 +3115,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer emaPeriod = 9;
     Integer sumPeriod = 25;
     String startDate = "2018-01-01";
@@ -3211,7 +3211,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -3303,7 +3303,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -3395,7 +3395,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 10;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -3489,7 +3489,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String priceKey = "close";
     String startDate = "2018-01-01";
@@ -3585,7 +3585,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     String priceKey = "close";
     String startDate = "2018-01-01";
@@ -3681,7 +3681,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     Integer signalPeriod = 3;
     String startDate = "2018-01-01";
@@ -3777,7 +3777,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 15;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -3871,7 +3871,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer lowPeriod = 13;
     Integer highPeriod = 25;
     String priceKey = "close";
@@ -3969,7 +3969,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer shortPeriod = 7;
     Integer mediumPeriod = 14;
     Integer longPeriod = 28;
@@ -4073,7 +4073,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -4167,7 +4167,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -4259,7 +4259,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -4351,7 +4351,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -4445,7 +4445,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Boolean activeOnly = false;
     String source = "delayed_sip";
     String nextPage = null;
@@ -4535,7 +4535,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     List<String> source = Arrays.asList("iex,delayed_sip");
     RealtimeStockPrice result = securityApi.getSecurityRealtimePrice(identifier, source);
     System.out.println(result);
@@ -4791,7 +4791,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     LocalDate startDate = LocalDate.of(2018,1,01);
     LocalDate endDate = LocalDate.of(2019,1,01);
     Integer pageSize = 100;
@@ -4883,7 +4883,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     LocalDate startDate = LocalDate.of(2018,1,01);
     LocalDate endDate = LocalDate.of(2019,1,01);
     String frequency = "daily";
@@ -5183,7 +5183,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = null;
     String endDate = null;
     BigDecimal meanGreater = null;
@@ -5301,7 +5301,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String date = null;
     ApiResponseSecurityZacksAnalystRatingsSnapshot result = securityApi.getSecurityZacksAnalystRatingsSnapshot(identifier, date);
     System.out.println(result);
@@ -5387,7 +5387,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer pageSize = 100;
     String nextPage = null;
     ApiResponseSecurityZacksEPSSurprises result = securityApi.getSecurityZacksEpsSurprises(identifier, pageSize, nextPage);
@@ -5475,7 +5475,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     SecurityApi securityApi = new SecurityApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer pageSize = 100;
     String nextPage = null;
     ApiResponseSecurityZacksSalesSurprises result = securityApi.getSecurityZacksSalesSurprises(identifier, pageSize, nextPage);
