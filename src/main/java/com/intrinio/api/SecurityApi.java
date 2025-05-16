@@ -460,8 +460,8 @@ public class SecurityApi {
     }
     /**
      * Build call for getSecurityDataPointNumber
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -531,9 +531,9 @@ public class SecurityApi {
 
     /**
      * Data Point (Number) for Security
-     * $$v2_security_data_point_number_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return BigDecimal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
@@ -548,9 +548,9 @@ public class SecurityApi {
 
     /**
      * Data Point (Number) for Security
-     * $$v2_security_data_point_number_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return ApiResponse&lt;BigDecimal&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -562,9 +562,9 @@ public class SecurityApi {
 
     /**
      * Data Point (Number) for Security (asynchronously)
-     * $$v2_security_data_point_number_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns a numeric value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -597,7 +597,7 @@ public class SecurityApi {
     }
     /**
      * Build call for getSecurityDataPointText
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -668,8 +668,8 @@ public class SecurityApi {
 
     /**
      * Data Point (Text) for Security
-     * $$v2_security_data_point_text_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
+     * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -685,8 +685,8 @@ public class SecurityApi {
 
     /**
      * Data Point (Text) for Security
-     * $$v2_security_data_point_text_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
+     * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
      * @return ApiResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -699,8 +699,8 @@ public class SecurityApi {
 
     /**
      * Data Point (Text) for Security (asynchronously)
-     * $$v2_security_data_point_text_description$$
-     * @param identifier $$v2_security_data_point_identifier_description$$ (required)
+     * Returns a text value for the given &#x60;tag&#x60; for the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
      * @param tag An Intrinio data tag ID or code-name (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
@@ -734,8 +734,8 @@ public class SecurityApi {
     }
     /**
      * Build call for getSecurityHistoricalData
-     * @param identifier $$v2_security_historical_data_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
@@ -826,9 +826,9 @@ public class SecurityApi {
 
     /**
      * Historical Data for Security
-     * $$v2_security_historical_data_description$$
-     * @param identifier $$v2_security_historical_data_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
@@ -850,9 +850,9 @@ public class SecurityApi {
 
     /**
      * Historical Data for Security
-     * $$v2_security_historical_data_description$$
-     * @param identifier $$v2_security_historical_data_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)
@@ -871,9 +871,9 @@ public class SecurityApi {
 
     /**
      * Historical Data for Security (asynchronously)
-     * $$v2_security_historical_data_description$$
-     * @param identifier $$v2_security_historical_data_identifier_description$$ (required)
-     * @param tag $$v2_security_data_point_item_description$$ (required)
+     * Returns historical values for the given &#x60;tag&#x60; and the Security with the given &#x60;identifier&#x60;
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Filter by type, when applicable (optional)
      * @param startDate Get historical data on or after this date (optional)

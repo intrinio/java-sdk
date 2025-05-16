@@ -78,7 +78,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     ZacksApi zacksApi = new ZacksApi();
-    String identifier = "$$v2_ticker_default$$";
+    String identifier = "AAPL";
     LocalDate startDate = null;
     LocalDate endDate = null;
     BigDecimal meanGreater = null;
