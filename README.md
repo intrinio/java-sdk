@@ -149,6 +149,7 @@ Class | Method | HTTP request | Description
 *IndexApi* | [**getEconomicIndexHistoricalData**](docs/IndexApi.md#getEconomicIndexHistoricalData) | **GET** /indices/economic/{identifier}/historical_data/{tag} | Historical Data for an Economic Index
 *IndexApi* | [**getEodIndexPriceById**](docs/IndexApi.md#getEodIndexPriceById) | **GET** /indices/{identifier}/eod | End of Day Index Prices By Identifier
 *IndexApi* | [**getIndexConstituentsById**](docs/IndexApi.md#getIndexConstituentsById) | **GET** /indices/{identifier}/constituents | Index Constituents By Index Identifier
+*IndexApi* | [**getIndexIntervals**](docs/IndexApi.md#getIndexIntervals) | **GET** /indices/{identifier}/intervals | Index Intervals
 *IndexApi* | [**getIndexSummaryById**](docs/IndexApi.md#getIndexSummaryById) | **GET** /indices/{identifier} | Index Summary By Identifier
 *IndexApi* | [**getRealtimeIndexPriceById**](docs/IndexApi.md#getRealtimeIndexPriceById) | **GET** /indices/{identifier}/realtime | Realtime Index Price By Identifier
 *IndexApi* | [**getSicIndexById**](docs/IndexApi.md#getSicIndexById) | **GET** /indices/sic/{identifier} | Lookup SIC Index
@@ -162,7 +163,6 @@ Class | Method | HTTP request | Description
 *IndexApi* | [**searchEconomicIndices**](docs/IndexApi.md#searchEconomicIndices) | **GET** /indices/economic/search | Search Economic Indices
 *IndexApi* | [**searchSicIndices**](docs/IndexApi.md#searchSicIndices) | **GET** /indices/sic/search | Search SIC Indices
 *IndexApi* | [**searchStockMarketsIndices**](docs/IndexApi.md#searchStockMarketsIndices) | **GET** /indices/stock_market/search | Search Stock Market Indices
-*IndicesApi* | [**getIndexIntervals**](docs/IndicesApi.md#getIndexIntervals) | **GET** /indices/{identifier}/intervals | Index Intervals
 *InsiderTransactionFilingsApi* | [**getAllInsiderTransactionFilings**](docs/InsiderTransactionFilingsApi.md#getAllInsiderTransactionFilings) | **GET** /insider_transaction_filings | All Insider Transactions Filings
 *MarketApi* | [**getMarketStatus**](docs/MarketApi.md#getMarketStatus) | **GET** /market/status | Market Status
 *MunicipalityApi* | [**getAllMunicipalities**](docs/MunicipalityApi.md#getAllMunicipalities) | **GET** /municipalities | All Municipalities

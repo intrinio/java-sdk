@@ -10,6 +10,7 @@ import com.intrinio.models.ApiResponseEodIndexPrices;
 import com.intrinio.models.ApiResponseEodIndexPricesAll;
 import com.intrinio.models.ApiResponseIndex;
 import com.intrinio.models.ApiResponseIndexConstituents;
+import com.intrinio.models.ApiResponseIndexIntervals;
 import com.intrinio.models.ApiResponseIndices;
 import com.intrinio.models.ApiResponseRealtimeIndexPrices;
 import com.intrinio.models.ApiResponseSICIndexHistoricalData;
@@ -251,6 +252,29 @@ public class IndexApiTest {
     }
     
     /**
+     * Index Intervals
+     *
+     * Returns a list of interval data points for a specified index, including open, close, high, low, volume, and average price. Intervals are available in 60-minute, 30-minute, 15-minute, 10-minute, 5-minute, and 1-minute increments.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getIndexIntervalsTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String intervalSize = null;
+        LocalDate startDate = null;
+        String startTime = null;
+        LocalDate endDate = null;
+        String endTime = null;
+        String timezone = null;
+        Integer pageSize = null;
+        ApiResponseIndexIntervals response = api.getIndexIntervals(identifier, intervalSize, startDate, startTime, endDate, endTime, timezone, pageSize);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Index Summary By Identifier
      *
      * 
@@ -269,7 +293,7 @@ public class IndexApiTest {
     /**
      * Realtime Index Price By Identifier
      *
-     * 
+     * Returns the realtime price for an index.
      *
      * @throws ApiException
      *          if the Api call fails
