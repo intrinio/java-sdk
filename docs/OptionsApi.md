@@ -17,6 +17,8 @@ Method | HTTP request | Description
 [**getOptionsChainRealtime**](OptionsApi.md#getOptionsChainRealtime) | **GET** /options/chain/{symbol}/{expiration}/realtime | Options Chain Realtime
 [**getOptionsExpirations**](OptionsApi.md#getOptionsExpirations) | **GET** /options/expirations/{symbol} | Options Expirations
 [**getOptionsExpirationsEod**](OptionsApi.md#getOptionsExpirationsEod) | **GET** /options/expirations/{symbol}/eod | Options Expirations
+[**getOptionsGreeksByContract**](OptionsApi.md#getOptionsGreeksByContract) | **GET** /options/greeks/{contract}/realtime | Get realtime options greeks for a specific contract
+[**getOptionsGreeksByTicker**](OptionsApi.md#getOptionsGreeksByTicker) | **GET** /options/greeks/by_ticker/{identifier}/realtime | Get realtime options greeks by ticker
 [**getOptionsImpliedMoveBySymbol**](OptionsApi.md#getOptionsImpliedMoveBySymbol) | **GET** /options/implied_move/{symbol}/{expiration_date} | Options Implied Move By Symbol
 [**getOptionsIntervalByContract**](OptionsApi.md#getOptionsIntervalByContract) | **GET** /options/interval/{identifier} | Options Intervals By Contract
 [**getOptionsIntervalMovers**](OptionsApi.md#getOptionsIntervalMovers) | **GET** /options/interval/movers | Options Intervals Movers
@@ -34,8 +36,6 @@ Method | HTTP request | Description
 [**getUnusualActivityIntraday**](OptionsApi.md#getUnusualActivityIntraday) | **GET** /options/unusual_activity/{symbol}/intraday | Options Unusual Activity Intraday
 [**getUnusualActivityUniversal**](OptionsApi.md#getUnusualActivityUniversal) | **GET** /options/unusual_activity | Options Unusual Activity Universal
 [**getUnusualActivityUniversalIntraday**](OptionsApi.md#getUnusualActivityUniversalIntraday) | **GET** /options/unusual_activity/intraday | Options Unusual Activity Universal Intraday
-[**optionsGreeksByTickerIdentifierRealtimeGet**](OptionsApi.md#optionsGreeksByTickerIdentifierRealtimeGet) | **GET** /options/greeks/by_ticker/{identifier}/realtime | Get realtime options greeks by ticker
-[**optionsGreeksContractRealtimeGet**](OptionsApi.md#optionsGreeksContractRealtimeGet) | **GET** /options/greeks/{contract}/realtime | Get realtime options greeks for a specific contract
 
 
 
@@ -1293,6 +1293,202 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseOptionsExpirations**](ApiResponseOptionsExpirations.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionsGreeksByContract)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsGreekContractRealtime)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsGreekContractRealtime.md)
+
+[//]: # (OPERATION:getOptionsGreeksByContract_v2)
+
+[//]: # (ENDPOINT:/options/greeks/{contract}/realtime)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionsGreeksByContract)
+
+<a name="getOptionsGreeksByContract"></a>
+## **getOptionsGreeksByContract**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionsGreeksByContract_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsGreekContractRealtime getOptionsGreeksByContract(contract, source, model, ivMode, stockPriceSource)
+
+#### Get realtime options greeks for a specific contract
+
+
+Retrieves realtime options greeks data for a specific options contract
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String contract = "contract_example";
+    String source = "source_example";
+    String model = "black_scholes";
+    String ivMode = "ivMode_example";
+    String stockPriceSource = "stockPriceSource_example";
+    ApiResponseOptionsGreekContractRealtime result = optionsApi.getOptionsGreeksByContract(contract, source, model, ivMode, stockPriceSource);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contract** | String| The options contract identifier | &nbsp;
+ **source** | String| The data source to use for options data | [optional] [enum: realtime, delayed] &nbsp;
+ **model** | String| The options pricing model to use for greeks calculations | [optional] [default to black_scholes] [enum: black_scholes, bjerk] &nbsp;
+ **ivMode** | String| The implied volatility calculation mode | [optional] [enum: out_of_the_money] &nbsp;
+ **stockPriceSource** | String| The data source to use for underlying stock prices | [optional] [enum: iex, nasdaq_basic, nasdaq_basic_last_sale, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsGreekContractRealtime**](ApiResponseOptionsGreekContractRealtime.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionsGreeksByTicker)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsGreeksByTickerRealtime)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsGreeksByTickerRealtime.md)
+
+[//]: # (OPERATION:getOptionsGreeksByTicker_v2)
+
+[//]: # (ENDPOINT:/options/greeks/by_ticker/{identifier}/realtime)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionsGreeksByTicker)
+
+<a name="getOptionsGreeksByTicker"></a>
+## **getOptionsGreeksByTicker**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionsGreeksByTicker_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsGreeksByTickerRealtime getOptionsGreeksByTicker(identifier, source, model, ivMode, stockPriceSource, expirationStartDate, expirationEndDate, strike, strikeGreaterThan, strikeLessThan, pageSize)
+
+#### Get realtime options greeks by ticker
+
+
+Retrieves realtime options greeks data for all contracts of a given ticker symbol
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String identifier = "identifier_example";
+    String source = "source_example";
+    String model = "black_scholes";
+    String ivMode = "ivMode_example";
+    String stockPriceSource = "stockPriceSource_example";
+    LocalDate expirationStartDate = LocalDate.of();
+    LocalDate expirationEndDate = LocalDate.of();
+    Float strike = 3.4F;
+    Float strikeGreaterThan = 3.4F;
+    Float strikeLessThan = 3.4F;
+    Integer pageSize = 250;
+    ApiResponseOptionsGreeksByTickerRealtime result = optionsApi.getOptionsGreeksByTicker(identifier, source, model, ivMode, stockPriceSource, expirationStartDate, expirationEndDate, strike, strikeGreaterThan, strikeLessThan, pageSize);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| The ticker symbol to get options greeks for | &nbsp;
+ **source** | String| The data source to use for options data | [optional] [enum: realtime, delayed] &nbsp;
+ **model** | String| The options pricing model to use for greeks calculations | [optional] [default to black_scholes] [enum: black_scholes, bjerk] &nbsp;
+ **ivMode** | String| The implied volatility calculation mode | [optional] [enum: out_of_the_money] &nbsp;
+ **stockPriceSource** | String| The data source to use for underlying stock prices | [optional] [enum: iex, nasdaq_basic, nasdaq_basic_last_sale, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip] &nbsp;
+ **expirationStartDate** | LocalDate| Filter options by expiration date (start) | [optional] &nbsp;
+ **expirationEndDate** | LocalDate| Filter options by expiration date (end) | [optional] &nbsp;
+ **strike** | Float| Filter options by strike price | [optional] &nbsp;
+ **strikeGreaterThan** | Float| Filter options by minimum strike price | [optional] &nbsp;
+ **strikeLessThan** | Float| Filter options by maximum strike price | [optional] &nbsp;
+ **pageSize** | Integer| Number of results to return per page | [optional] [default to 250] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsGreeksByTickerRealtime**](ApiResponseOptionsGreeksByTickerRealtime.md)
 
 [//]: # (END_OPERATION)
 
@@ -2859,202 +3055,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseOptionsUnusualActivity**](ApiResponseOptionsUnusualActivity.md)
-
-[//]: # (END_OPERATION)
-
-
-[//]: # (START_OPERATION)
-
-[//]: # (CLASS:OptionsApi)
-
-[//]: # (METHOD:optionsGreeksByTickerIdentifierRealtimeGet)
-
-[//]: # (RETURN_TYPE:ApiResponseOptionsGreeksByTickerRealtime)
-
-[//]: # (RETURN_TYPE_KIND:object)
-
-[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsGreeksByTickerRealtime.md)
-
-[//]: # (OPERATION:optionsGreeksByTickerIdentifierRealtimeGet_v2)
-
-[//]: # (ENDPOINT:/options/greeks/by_ticker/{identifier}/realtime)
-
-[//]: # (DOCUMENT_LINK:OptionsApi.md#optionsGreeksByTickerIdentifierRealtimeGet)
-
-<a name="optionsGreeksByTickerIdentifierRealtimeGet"></a>
-## **optionsGreeksByTickerIdentifierRealtimeGet**
-
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/optionsGreeksByTickerIdentifierRealtimeGet_v2)
-
-[//]: # (START_OVERVIEW)
-
-> ApiResponseOptionsGreeksByTickerRealtime optionsGreeksByTickerIdentifierRealtimeGet(identifier, source, model, ivMode, stockPriceSource, expirationStartDate, expirationEndDate, strike, strikeGreaterThan, strikeLessThan, pageSize)
-
-#### Get realtime options greeks by ticker
-
-
-Retrieves realtime options greeks data for all contracts of a given ticker symbol
-
-[//]: # (END_OVERVIEW)
-
-### Example
-
-[//]: # (START_CODE_EXAMPLE)
-
-```java
-import com.intrinio.api.*;
-import com.intrinio.models.*;
-import com.intrinio.invoker.*;
-import com.intrinio.invoker.auth.*;
-import org.threeten.bp.*;
-import java.math.BigDecimal;
-import java.util.*;
-
-public class Main {
-  public static void main(String[] args) throws Exception {
-
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR_API_KEY");
-    defaultClient.setAllowRetries(true);
-
-    OptionsApi optionsApi = new OptionsApi();
-    String identifier = "identifier_example";
-    String source = "source_example";
-    String model = "black_scholes";
-    String ivMode = "ivMode_example";
-    String stockPriceSource = "stockPriceSource_example";
-    LocalDate expirationStartDate = LocalDate.of();
-    LocalDate expirationEndDate = LocalDate.of();
-    Float strike = 3.4F;
-    Float strikeGreaterThan = 3.4F;
-    Float strikeLessThan = 3.4F;
-    Integer pageSize = 250;
-    ApiResponseOptionsGreeksByTickerRealtime result = optionsApi.optionsGreeksByTickerIdentifierRealtimeGet(identifier, source, model, ivMode, stockPriceSource, expirationStartDate, expirationEndDate, strike, strikeGreaterThan, strikeLessThan, pageSize);
-    System.out.println(result);
-  }
-}
-```
-
-[//]: # (END_CODE_EXAMPLE)
-
-### Parameters
-
-[//]: # (START_PARAMETERS)
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **identifier** | String| The ticker symbol to get options greeks for | &nbsp;
- **source** | String| The data source to use for options data | [optional] [enum: realtime, delayed] &nbsp;
- **model** | String| The options pricing model to use for greeks calculations | [optional] [default to black_scholes] [enum: black_scholes, bjerk] &nbsp;
- **ivMode** | String| The implied volatility calculation mode | [optional] [enum: out_of_the_money] &nbsp;
- **stockPriceSource** | String| The data source to use for underlying stock prices | [optional] [enum: iex, nasdaq_basic, nasdaq_basic_last_sale, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip] &nbsp;
- **expirationStartDate** | LocalDate| Filter options by expiration date (start) | [optional] &nbsp;
- **expirationEndDate** | LocalDate| Filter options by expiration date (end) | [optional] &nbsp;
- **strike** | Float| Filter options by strike price | [optional] &nbsp;
- **strikeGreaterThan** | Float| Filter options by minimum strike price | [optional] &nbsp;
- **strikeLessThan** | Float| Filter options by maximum strike price | [optional] &nbsp;
- **pageSize** | Integer| Number of results to return per page | [optional] [default to 250] &nbsp;
-<br/>
-
-[//]: # (END_PARAMETERS)
-
-### Return type
-
-[**ApiResponseOptionsGreeksByTickerRealtime**](ApiResponseOptionsGreeksByTickerRealtime.md)
-
-[//]: # (END_OPERATION)
-
-
-[//]: # (START_OPERATION)
-
-[//]: # (CLASS:OptionsApi)
-
-[//]: # (METHOD:optionsGreeksContractRealtimeGet)
-
-[//]: # (RETURN_TYPE:ApiResponseOptionsGreekContractRealtime)
-
-[//]: # (RETURN_TYPE_KIND:object)
-
-[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsGreekContractRealtime.md)
-
-[//]: # (OPERATION:optionsGreeksContractRealtimeGet_v2)
-
-[//]: # (ENDPOINT:/options/greeks/{contract}/realtime)
-
-[//]: # (DOCUMENT_LINK:OptionsApi.md#optionsGreeksContractRealtimeGet)
-
-<a name="optionsGreeksContractRealtimeGet"></a>
-## **optionsGreeksContractRealtimeGet**
-
-[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/optionsGreeksContractRealtimeGet_v2)
-
-[//]: # (START_OVERVIEW)
-
-> ApiResponseOptionsGreekContractRealtime optionsGreeksContractRealtimeGet(contract, source, model, ivMode, stockPriceSource)
-
-#### Get realtime options greeks for a specific contract
-
-
-Retrieves realtime options greeks data for a specific options contract
-
-[//]: # (END_OVERVIEW)
-
-### Example
-
-[//]: # (START_CODE_EXAMPLE)
-
-```java
-import com.intrinio.api.*;
-import com.intrinio.models.*;
-import com.intrinio.invoker.*;
-import com.intrinio.invoker.auth.*;
-import org.threeten.bp.*;
-import java.math.BigDecimal;
-import java.util.*;
-
-public class Main {
-  public static void main(String[] args) throws Exception {
-
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
-    auth.setApiKey("YOUR_API_KEY");
-    defaultClient.setAllowRetries(true);
-
-    OptionsApi optionsApi = new OptionsApi();
-    String contract = "contract_example";
-    String source = "source_example";
-    String model = "black_scholes";
-    String ivMode = "ivMode_example";
-    String stockPriceSource = "stockPriceSource_example";
-    ApiResponseOptionsGreekContractRealtime result = optionsApi.optionsGreeksContractRealtimeGet(contract, source, model, ivMode, stockPriceSource);
-    System.out.println(result);
-  }
-}
-```
-
-[//]: # (END_CODE_EXAMPLE)
-
-### Parameters
-
-[//]: # (START_PARAMETERS)
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contract** | String| The options contract identifier | &nbsp;
- **source** | String| The data source to use for options data | [optional] [enum: realtime, delayed] &nbsp;
- **model** | String| The options pricing model to use for greeks calculations | [optional] [default to black_scholes] [enum: black_scholes, bjerk] &nbsp;
- **ivMode** | String| The implied volatility calculation mode | [optional] [enum: out_of_the_money] &nbsp;
- **stockPriceSource** | String| The data source to use for underlying stock prices | [optional] [enum: iex, nasdaq_basic, nasdaq_basic_last_sale, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip] &nbsp;
-<br/>
-
-[//]: # (END_PARAMETERS)
-
-### Return type
-
-[**ApiResponseOptionsGreekContractRealtime**](ApiResponseOptionsGreekContractRealtime.md)
 
 [//]: # (END_OPERATION)
 
