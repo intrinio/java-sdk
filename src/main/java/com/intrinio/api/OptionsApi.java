@@ -2300,7 +2300,7 @@ public class OptionsApi {
     }
 
     /**
-     * Get realtime options greeks for a specific contract
+     * Option Greeks &amp; Derived Price by Contract
      * Retrieves realtime options greeks data for a specific options contract
      * @param contract The options contract identifier (required)
      * @param source The data source to use for options data (optional)
@@ -2320,7 +2320,7 @@ public class OptionsApi {
     }
 
     /**
-     * Get realtime options greeks for a specific contract
+     * Option Greeks &amp; Derived Price by Contract
      * Retrieves realtime options greeks data for a specific options contract
      * @param contract The options contract identifier (required)
      * @param source The data source to use for options data (optional)
@@ -2337,7 +2337,7 @@ public class OptionsApi {
     }
 
     /**
-     * Get realtime options greeks for a specific contract (asynchronously)
+     * Option Greeks &amp; Derived Price by Contract (asynchronously)
      * Retrieves realtime options greeks data for a specific options contract
      * @param contract The options contract identifier (required)
      * @param source The data source to use for options data (optional)
@@ -2469,7 +2469,7 @@ public class OptionsApi {
     }
 
     /**
-     * Get realtime options greeks by ticker
+     * Options Realtime Greeks &amp; Derived Price by Ticker
      * Retrieves realtime options greeks data for all contracts of a given ticker symbol
      * @param identifier The ticker symbol to get options greeks for (required)
      * @param source The data source to use for options data (optional)
@@ -2495,7 +2495,7 @@ public class OptionsApi {
     }
 
     /**
-     * Get realtime options greeks by ticker
+     * Options Realtime Greeks &amp; Derived Price by Ticker
      * Retrieves realtime options greeks data for all contracts of a given ticker symbol
      * @param identifier The ticker symbol to get options greeks for (required)
      * @param source The data source to use for options data (optional)
@@ -2518,7 +2518,7 @@ public class OptionsApi {
     }
 
     /**
-     * Get realtime options greeks by ticker (asynchronously)
+     * Options Realtime Greeks &amp; Derived Price by Ticker (asynchronously)
      * Retrieves realtime options greeks data for all contracts of a given ticker symbol
      * @param identifier The ticker symbol to get options greeks for (required)
      * @param source The data source to use for options data (optional)

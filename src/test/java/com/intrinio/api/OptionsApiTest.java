@@ -339,7 +339,7 @@ public class OptionsApiTest {
     }
     
     /**
-     * Get realtime options greeks for a specific contract
+     * Option Greeks &amp; Derived Price by Contract
      *
      * Retrieves realtime options greeks data for a specific options contract
      *
@@ -359,7 +359,7 @@ public class OptionsApiTest {
     }
     
     /**
-     * Get realtime options greeks by ticker
+     * Options Realtime Greeks &amp; Derived Price by Ticker
      *
      * Retrieves realtime options greeks data for all contracts of a given ticker symbol
      *

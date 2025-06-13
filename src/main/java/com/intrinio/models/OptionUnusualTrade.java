@@ -12,7 +12,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * A large market order that is broken into a collection of smaller orders to take advantage of all contracts and prices offered across all exchanges.
@@ -24,7 +24,7 @@ public class OptionUnusualTrade {
   private String symbol = null;
 
   @SerializedName("timestamp")
-  private LocalDate timestamp = null;
+  private OffsetDateTime timestamp = null;
 
   @SerializedName("type")
   private String type = null;
@@ -120,7 +120,7 @@ public class OptionUnusualTrade {
     this.symbol = symbol;
   }
 
-  public OptionUnusualTrade timestamp(LocalDate timestamp) {
+  public OptionUnusualTrade timestamp(OffsetDateTime timestamp) {
     this.timestamp = timestamp;
     return this;
   }
@@ -130,11 +130,11 @@ public class OptionUnusualTrade {
    * @return timestamp
   **/
   @ApiModelProperty(value = "The UTC timestamp of order placement")
-  public LocalDate getTimestamp() {
+  public OffsetDateTime getTimestamp() {
     return timestamp;
   }
 
-  public void setTimestamp(LocalDate timestamp) {
+  public void setTimestamp(OffsetDateTime timestamp) {
     this.timestamp = timestamp;
   }
 
