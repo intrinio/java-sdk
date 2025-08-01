@@ -1317,7 +1317,7 @@ Name | Type | Description  | Notes
 #### News Article Body
 
 
-Returns the body of a news article.  This endpoint requires additional authorization beyond basic news access. Please see a representative for details.
+Returns the body of a news article for moody sources.  This endpoint requires additional authorization beyond basic news access and is for your internal use only - no display. Please see a representative for details.
 
 [//]: # (END_OVERVIEW)
 
@@ -1364,7 +1364,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **newsStoryId** | String| The identifier of the news story. | &nbsp;
  **publicationDate** | OffsetDateTime| The DateTime of the story. | &nbsp;
- **specificSource** | String| Only news from this source. Defaults to highest available if not present. | [optional] [enum: yahoo, moody, moody_us_news, moody_us_press_releases] &nbsp;
+ **specificSource** | String| Only news from this source. Defaults to highest available if not present. | [optional] [enum: moody, moody_us_news, moody_us_press_releases] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 

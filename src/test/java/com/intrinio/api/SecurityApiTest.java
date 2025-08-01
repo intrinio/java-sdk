@@ -1109,6 +1109,46 @@ public class SecurityApiTest {
     }
     
     /**
+     * Dividends by Security
+     *
+     * Returns dividend price adjustments for the Security with the given &#x60;identifier&#x60;. A filtered api of /securities/{identifier}/prices/adjustments.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityStockPriceAdjustmentsDividendsTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseSecurityStockPriceAdjustments response = api.getSecurityStockPriceAdjustmentsDividends(identifier, startDate, endDate, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Splits by Security
+     *
+     * Returns stock price split adjustments for the Security with the given &#x60;identifier&#x60;.  A filtered api of /securities/{identifier}/prices/adjustments.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityStockPriceAdjustmentsSplitsTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseSecurityStockPriceAdjustments response = api.getSecurityStockPriceAdjustmentsSplits(identifier, startDate, endDate, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Stock Prices by Security
      *
      * Return end-of-day stock prices for the Security with the given &#x60;identifier&#x60;

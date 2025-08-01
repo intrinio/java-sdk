@@ -41,7 +41,11 @@ public class SecurityTradesResult {
     
     OTC_DELAYED("otc_delayed"),
     
-    NASDAQ_BASIC("nasdaq_basic");
+    NASDAQ_BASIC("nasdaq_basic"),
+    
+    CBOE_ONE_DELAYED("cboe_one_delayed"),
+    
+    IEX_DELAYED("iex_delayed");
 
     private String value;
 

@@ -23,6 +23,9 @@ Name | Type | Description
 **industryCategory** | String | The company&#39;s operating industry category &nbsp;
 **industryGroup** | String | The company&#39;s operating industry group &nbsp;
 **wordCount** | Integer | The number of words in the filing &nbsp;
+**earningsDisclosedAt** | [**OffsetDateTime**](OffsetDateTime.md) | The date and time when the earnings information was first disclosed via 8-K filing &nbsp;
+**earningsDisclosed8kId** | String | The Intrinio ID of the 8-K filing where earnings were first disclosed &nbsp;
+**earnings8kUrl** | String | The URL to the 8-K filing page on the SEC site where earnings were first disclosed &nbsp;
 **company** | [**CompanySummary**](CompanySummary.md) |  &nbsp;
 
 [//]: # (END_DEFINITION)
@@ -35,6 +38,9 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:LocalDate)
+
+
+[//]: # (CONTAINED_CLASS:OffsetDateTime)
 
 
 [//]: # (CONTAINED_CLASS:CompanySummary)

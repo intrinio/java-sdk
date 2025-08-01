@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**getAllEtfs**](EtFsApi.md#getAllEtfs) | **GET** /etfs | All ETFs
 [**getEtf**](EtFsApi.md#getEtf) | **GET** /etfs/{identifier} | Lookup ETF
 [**getEtfAnalytics**](EtFsApi.md#getEtfAnalytics) | **GET** /etfs/{identifier}/analytics | ETF Analytics
+[**getEtfHistoricalStats**](EtFsApi.md#getEtfHistoricalStats) | **GET** /etfs/{identifier}/historical_stats | Exchange Traded Fund (ETF) stats
 [**getEtfHoldings**](EtFsApi.md#getEtfHoldings) | **GET** /etfs/{identifier}/holdings | ETF Holdings
 [**getEtfStats**](EtFsApi.md#getEtfStats) | **GET** /etfs/{identifier}/stats | Exchange Traded Fund (ETF) stats
 [**searchEtfs**](EtFsApi.md#searchEtfs) | **GET** /etfs/search | Search ETFs
@@ -265,6 +266,96 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ETFAnalytics**](ETFAnalytics.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:EtFsApi)
+
+[//]: # (METHOD:getEtfHistoricalStats)
+
+[//]: # (RETURN_TYPE:ETFHistoricalStats)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ETFHistoricalStats.md)
+
+[//]: # (OPERATION:getEtfHistoricalStats_v2)
+
+[//]: # (ENDPOINT:/etfs/{identifier}/historical_stats)
+
+[//]: # (DOCUMENT_LINK:EtFsApi.md#getEtfHistoricalStats)
+
+<a name="getEtfHistoricalStats"></a>
+## **getEtfHistoricalStats**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getEtfHistoricalStats_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ETFHistoricalStats getEtfHistoricalStats(identifier, startDate, endDate, pageSize)
+
+#### Exchange Traded Fund (ETF) stats
+
+
+Returns comprehensive key US ETF historical performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    EtFsApi etFsApi = new EtFsApi();
+    String identifier = "SPY";
+    LocalDate startDate = LocalDate.of(2020,1,01);
+    LocalDate endDate = LocalDate.of(2020,12,31);
+    Integer pageSize = 100;
+    ETFHistoricalStats result = etFsApi.getEtfHistoricalStats(identifier, startDate, endDate, pageSize);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) | &nbsp;
+ **startDate** | LocalDate| The start date for the historical stats data in YYYY-MM-DD format. | [optional] &nbsp;
+ **endDate** | LocalDate| The end date for the historical stats data in YYYY-MM-DD format. | [optional] &nbsp;
+ **pageSize** | Integer| The maximum number of results to return per page. | [optional] [default to 100] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ETFHistoricalStats**](ETFHistoricalStats.md)
 
 [//]: # (END_OPERATION)
 

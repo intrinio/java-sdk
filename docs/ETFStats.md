@@ -41,7 +41,7 @@ Name | Type | Description
 **calendarYear1ReturnSplitOnly** | [**BigDecimal**](BigDecimal.md) | One year ago calendar year return excluding dividends &nbsp;
 **calendarYearToDateReturnSplitAndDividend** | [**BigDecimal**](BigDecimal.md) | Calendar year to date (YTD) return including dividends &nbsp;
 **calendarYearToDateReturnSplitOnly** | [**BigDecimal**](BigDecimal.md) | Calendar year to date (YTD) return excluding dividends &nbsp;
-**etf** | [**ETFSummary**](ETFSummary.md) |  &nbsp;
+**etf** | [**ETFSummary**](ETFSummary.md) | A brief summary of the ETF to which these stats refer.  Not included when part of historical stats. &nbsp;
 
 [//]: # (END_DEFINITION)
 

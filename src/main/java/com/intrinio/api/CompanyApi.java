@@ -2296,7 +2296,7 @@ public class CompanyApi {
 
     /**
      * News Article Body
-     * Returns the body of a news article.  This endpoint requires additional authorization beyond basic news access. Please see a representative for details.
+     * Returns the body of a news article for moody sources.  This endpoint requires additional authorization beyond basic news access and is for your internal use only - no display. Please see a representative for details.
      * @param newsStoryId The identifier of the news story. (required)
      * @param publicationDate The DateTime of the story. (required)
      * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
@@ -2315,7 +2315,7 @@ public class CompanyApi {
 
     /**
      * News Article Body
-     * Returns the body of a news article.  This endpoint requires additional authorization beyond basic news access. Please see a representative for details.
+     * Returns the body of a news article for moody sources.  This endpoint requires additional authorization beyond basic news access and is for your internal use only - no display. Please see a representative for details.
      * @param newsStoryId The identifier of the news story. (required)
      * @param publicationDate The DateTime of the story. (required)
      * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)
@@ -2331,7 +2331,7 @@ public class CompanyApi {
 
     /**
      * News Article Body (asynchronously)
-     * Returns the body of a news article.  This endpoint requires additional authorization beyond basic news access. Please see a representative for details.
+     * Returns the body of a news article for moody sources.  This endpoint requires additional authorization beyond basic news access and is for your internal use only - no display. Please see a representative for details.
      * @param newsStoryId The identifier of the news story. (required)
      * @param publicationDate The DateTime of the story. (required)
      * @param specificSource Only news from this source. Defaults to highest available if not present. (optional)

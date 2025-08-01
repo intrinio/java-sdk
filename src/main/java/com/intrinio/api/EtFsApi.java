@@ -20,7 +20,9 @@ import com.intrinio.models.ApiResponseETFHoldings;
 import com.intrinio.models.ApiResponseETFs;
 import com.intrinio.models.ETF;
 import com.intrinio.models.ETFAnalytics;
+import com.intrinio.models.ETFHistoricalStats;
 import com.intrinio.models.ETFStats;
+import org.threeten.bp.LocalDate;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.Method;
@@ -434,6 +436,151 @@ public class EtFsApi {
 
         com.squareup.okhttp.Call call = getEtfAnalyticsValidateBeforeCall(identifier, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ETFAnalytics>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getEtfHistoricalStats
+     * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
+     * @param startDate The start date for the historical stats data in YYYY-MM-DD format. (optional)
+     * @param endDate The end date for the historical stats data in YYYY-MM-DD format. (optional)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getEtfHistoricalStatsCall(String identifier, LocalDate startDate, LocalDate endDate, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/etfs/{identifier}/historical_stats"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getEtfHistoricalStatsValidateBeforeCall(String identifier, LocalDate startDate, LocalDate endDate, Integer pageSize, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getEtfHistoricalStats(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getEtfHistoricalStatsCall(identifier, startDate, endDate, pageSize, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Exchange Traded Fund (ETF) stats
+     * Returns comprehensive key US ETF historical performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
+     * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
+     * @param startDate The start date for the historical stats data in YYYY-MM-DD format. (optional)
+     * @param endDate The end date for the historical stats data in YYYY-MM-DD format. (optional)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @return ETFHistoricalStats
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ETFHistoricalStats getEtfHistoricalStats(String identifier, LocalDate startDate, LocalDate endDate, Integer pageSize) throws ApiException, NoSuchMethodException {
+      Method targetMethod = EtFsApi.class.getMethod("getEtfHistoricalStatsWithHttpInfo", String.class, LocalDate.class, LocalDate.class, Integer.class);
+      
+      Object[] apiCallArguments = { identifier, startDate, endDate, pageSize };
+      ApiResponse<ETFHistoricalStats> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Exchange Traded Fund (ETF) stats
+     * Returns comprehensive key US ETF historical performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
+     * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
+     * @param startDate The start date for the historical stats data in YYYY-MM-DD format. (optional)
+     * @param endDate The end date for the historical stats data in YYYY-MM-DD format. (optional)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @return ApiResponse&lt;ETFHistoricalStats&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ETFHistoricalStats> getEtfHistoricalStatsWithHttpInfo(String identifier, LocalDate startDate, LocalDate endDate, Integer pageSize) throws ApiException {
+        com.squareup.okhttp.Call call = getEtfHistoricalStatsValidateBeforeCall(identifier, startDate, endDate, pageSize, null, null);
+        Type localVarReturnType = new TypeToken<ETFHistoricalStats>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Exchange Traded Fund (ETF) stats (asynchronously)
+     * Returns comprehensive key US ETF historical performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
+     * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
+     * @param startDate The start date for the historical stats data in YYYY-MM-DD format. (optional)
+     * @param endDate The end date for the historical stats data in YYYY-MM-DD format. (optional)
+     * @param pageSize The maximum number of results to return per page. (optional, default to 100)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getEtfHistoricalStatsAsync(String identifier, LocalDate startDate, LocalDate endDate, Integer pageSize, final ApiCallback<ETFHistoricalStats> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getEtfHistoricalStatsValidateBeforeCall(identifier, startDate, endDate, pageSize, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ETFHistoricalStats>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

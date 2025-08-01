@@ -7,7 +7,9 @@ import com.intrinio.models.ApiResponseETFHoldings;
 import com.intrinio.models.ApiResponseETFs;
 import com.intrinio.models.ETF;
 import com.intrinio.models.ETFAnalytics;
+import com.intrinio.models.ETFHistoricalStats;
 import com.intrinio.models.ETFStats;
+import org.threeten.bp.LocalDate;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -71,6 +73,25 @@ public class EtFsApiTest {
     public void getEtfAnalyticsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         ETFAnalytics response = api.getEtfAnalytics(identifier);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Exchange Traded Fund (ETF) stats
+     *
+     * Returns comprehensive key US ETF historical performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getEtfHistoricalStatsTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        Integer pageSize = null;
+        ETFHistoricalStats response = api.getEtfHistoricalStats(identifier, startDate, endDate, pageSize);
 
         // TODO: test validations
     }

@@ -100,6 +100,12 @@ public class Fundamental {
   @SerializedName("updated_date")
   private OffsetDateTime updatedDate = null;
 
+  @SerializedName("first_calculable")
+  private OffsetDateTime firstCalculable = null;
+
+  @SerializedName("earnings_disclosed_at")
+  private OffsetDateTime earningsDisclosedAt = null;
+
   @SerializedName("company")
   private CompanySummary company = null;
 
@@ -283,6 +289,42 @@ public class Fundamental {
     this.updatedDate = updatedDate;
   }
 
+  public Fundamental firstCalculable(OffsetDateTime firstCalculable) {
+    this.firstCalculable = firstCalculable;
+    return this;
+  }
+
+   /**
+   * The date and time when the fundamental was first calculable
+   * @return firstCalculable
+  **/
+  @ApiModelProperty(value = "The date and time when the fundamental was first calculable")
+  public OffsetDateTime getFirstCalculable() {
+    return firstCalculable;
+  }
+
+  public void setFirstCalculable(OffsetDateTime firstCalculable) {
+    this.firstCalculable = firstCalculable;
+  }
+
+  public Fundamental earningsDisclosedAt(OffsetDateTime earningsDisclosedAt) {
+    this.earningsDisclosedAt = earningsDisclosedAt;
+    return this;
+  }
+
+   /**
+   * The date and time when the earnings information was first disclosed via 8-K filing
+   * @return earningsDisclosedAt
+  **/
+  @ApiModelProperty(value = "The date and time when the earnings information was first disclosed via 8-K filing")
+  public OffsetDateTime getEarningsDisclosedAt() {
+    return earningsDisclosedAt;
+  }
+
+  public void setEarningsDisclosedAt(OffsetDateTime earningsDisclosedAt) {
+    this.earningsDisclosedAt = earningsDisclosedAt;
+  }
+
   public Fundamental company(CompanySummary company) {
     this.company = company;
     return this;
@@ -321,12 +363,14 @@ public class Fundamental {
         Objects.equals(this.filingDate, fundamental.filingDate) &&
         Objects.equals(this.isLatest, fundamental.isLatest) &&
         Objects.equals(this.updatedDate, fundamental.updatedDate) &&
+        Objects.equals(this.firstCalculable, fundamental.firstCalculable) &&
+        Objects.equals(this.earningsDisclosedAt, fundamental.earningsDisclosedAt) &&
         Objects.equals(this.company, fundamental.company);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, isLatest, updatedDate, company);
+    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, isLatest, updatedDate, firstCalculable, earningsDisclosedAt, company);
   }
 
 
@@ -345,6 +389,8 @@ public class Fundamental {
     sb.append("    filingDate: ").append(toIndentedString(filingDate)).append("\n");
     sb.append("    isLatest: ").append(toIndentedString(isLatest)).append("\n");
     sb.append("    updatedDate: ").append(toIndentedString(updatedDate)).append("\n");
+    sb.append("    firstCalculable: ").append(toIndentedString(firstCalculable)).append("\n");
+    sb.append("    earningsDisclosedAt: ").append(toIndentedString(earningsDisclosedAt)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -57,6 +57,15 @@ public class Filing {
   @SerializedName("word_count")
   private Integer wordCount = null;
 
+  @SerializedName("earnings_disclosed_at")
+  private OffsetDateTime earningsDisclosedAt = null;
+
+  @SerializedName("earnings_disclosed_8k_id")
+  private String earningsDisclosed8kId = null;
+
+  @SerializedName("earnings_8k_url")
+  private String earnings8kUrl = null;
+
   @SerializedName("company")
   private CompanySummary company = null;
 
@@ -276,6 +285,60 @@ public class Filing {
     this.wordCount = wordCount;
   }
 
+  public Filing earningsDisclosedAt(OffsetDateTime earningsDisclosedAt) {
+    this.earningsDisclosedAt = earningsDisclosedAt;
+    return this;
+  }
+
+   /**
+   * The date and time when the earnings information was first disclosed via 8-K filing
+   * @return earningsDisclosedAt
+  **/
+  @ApiModelProperty(value = "The date and time when the earnings information was first disclosed via 8-K filing")
+  public OffsetDateTime getEarningsDisclosedAt() {
+    return earningsDisclosedAt;
+  }
+
+  public void setEarningsDisclosedAt(OffsetDateTime earningsDisclosedAt) {
+    this.earningsDisclosedAt = earningsDisclosedAt;
+  }
+
+  public Filing earningsDisclosed8kId(String earningsDisclosed8kId) {
+    this.earningsDisclosed8kId = earningsDisclosed8kId;
+    return this;
+  }
+
+   /**
+   * The Intrinio ID of the 8-K filing where earnings were first disclosed
+   * @return earningsDisclosed8kId
+  **/
+  @ApiModelProperty(value = "The Intrinio ID of the 8-K filing where earnings were first disclosed")
+  public String getEarningsDisclosed8kId() {
+    return earningsDisclosed8kId;
+  }
+
+  public void setEarningsDisclosed8kId(String earningsDisclosed8kId) {
+    this.earningsDisclosed8kId = earningsDisclosed8kId;
+  }
+
+  public Filing earnings8kUrl(String earnings8kUrl) {
+    this.earnings8kUrl = earnings8kUrl;
+    return this;
+  }
+
+   /**
+   * The URL to the 8-K filing page on the SEC site where earnings were first disclosed
+   * @return earnings8kUrl
+  **/
+  @ApiModelProperty(value = "The URL to the 8-K filing page on the SEC site where earnings were first disclosed")
+  public String getEarnings8kUrl() {
+    return earnings8kUrl;
+  }
+
+  public void setEarnings8kUrl(String earnings8kUrl) {
+    this.earnings8kUrl = earnings8kUrl;
+  }
+
   public Filing company(CompanySummary company) {
     this.company = company;
     return this;
@@ -316,12 +379,15 @@ public class Filing {
         Objects.equals(this.industryCategory, filing.industryCategory) &&
         Objects.equals(this.industryGroup, filing.industryGroup) &&
         Objects.equals(this.wordCount, filing.wordCount) &&
+        Objects.equals(this.earningsDisclosedAt, filing.earningsDisclosedAt) &&
+        Objects.equals(this.earningsDisclosed8kId, filing.earningsDisclosed8kId) &&
+        Objects.equals(this.earnings8kUrl, filing.earnings8kUrl) &&
         Objects.equals(this.company, filing.company);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, filingDate, acceptedDate, periodEndDate, reportType, secUniqueId, filingUrl, reportUrl, instanceUrl, industryCategory, industryGroup, wordCount, company);
+    return Objects.hash(id, filingDate, acceptedDate, periodEndDate, reportType, secUniqueId, filingUrl, reportUrl, instanceUrl, industryCategory, industryGroup, wordCount, earningsDisclosedAt, earningsDisclosed8kId, earnings8kUrl, company);
   }
 
 
@@ -342,6 +408,9 @@ public class Filing {
     sb.append("    industryCategory: ").append(toIndentedString(industryCategory)).append("\n");
     sb.append("    industryGroup: ").append(toIndentedString(industryGroup)).append("\n");
     sb.append("    wordCount: ").append(toIndentedString(wordCount)).append("\n");
+    sb.append("    earningsDisclosedAt: ").append(toIndentedString(earningsDisclosedAt)).append("\n");
+    sb.append("    earningsDisclosed8kId: ").append(toIndentedString(earningsDisclosed8kId)).append("\n");
+    sb.append("    earnings8kUrl: ").append(toIndentedString(earnings8kUrl)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("}");
     return sb.toString();

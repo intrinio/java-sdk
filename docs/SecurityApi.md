@@ -54,6 +54,8 @@ Method | HTTP request | Description
 [**getSecurityReplayFile**](SecurityApi.md#getSecurityReplayFile) | **GET** /securities/replay | Security Replay File
 [**getSecuritySnapshots**](SecurityApi.md#getSecuritySnapshots) | **GET** /securities/snapshots | Realtime Stock Prices Snapshot
 [**getSecurityStockPriceAdjustments**](SecurityApi.md#getSecurityStockPriceAdjustments) | **GET** /securities/{identifier}/prices/adjustments | Stock Price Adjustments by Security
+[**getSecurityStockPriceAdjustmentsDividends**](SecurityApi.md#getSecurityStockPriceAdjustmentsDividends) | **GET** /securities/{identifier}/prices/adjustments/dividends | Dividends by Security
+[**getSecurityStockPriceAdjustmentsSplits**](SecurityApi.md#getSecurityStockPriceAdjustmentsSplits) | **GET** /securities/{identifier}/prices/adjustments/splits | Splits by Security
 [**getSecurityStockPrices**](SecurityApi.md#getSecurityStockPrices) | **GET** /securities/{identifier}/prices | Stock Prices by Security
 [**getSecurityTrades**](SecurityApi.md#getSecurityTrades) | **GET** /securities/trades | Security Trades
 [**getSecurityTradesBySymbol**](SecurityApi.md#getSecurityTradesBySymbol) | **GET** /securities/{identifier}/trades | Security Trades By Symbol
@@ -869,7 +871,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered] &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered, nasdaq_basic_last_sale, cboe_one_delayed, iex, iex_delayed] &nbsp;
  **openTime** | OffsetDateTime| The inclusive UTC date and time the interval opens at. | [optional] &nbsp;
 <br/>
 
@@ -955,7 +957,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered] &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered, nasdaq_basic_last_sale, cboe_one_delayed, iex, iex_delayed] &nbsp;
  **openTime** | OffsetDateTime| The inclusive UTC date and time the interval opens at. | [optional] &nbsp;
 <br/>
 
@@ -1041,7 +1043,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered] &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered, nasdaq_basic_last_sale, cboe_one_delayed, iex, iex_delayed] &nbsp;
  **openTime** | OffsetDateTime| The inclusive UTC date and time the interval opens at. | [optional] &nbsp;
 <br/>
 
@@ -1139,7 +1141,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
  **intervalSize** | String| The interval size to return in minutes (m) or hour (h). | [default to 5m] [enum: 1m, 5m, 10m, 15m, 30m, 60m, 1h] &nbsp;
- **source** | String| Return intervals from the specified data source | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered, nasdaq_basic_last_sale] &nbsp;
+ **source** | String| Return intervals from the specified data source | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered, nasdaq_basic_last_sale, cboe_one] &nbsp;
  **startDate** | LocalDate| Return intervals starting at the specified date | [optional] &nbsp;
  **startTime** | String| Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) | [optional] &nbsp;
  **endDate** | LocalDate| Return intervals stopping at the specified date | [optional] &nbsp;
@@ -4367,7 +4369,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
  **activeOnly** | Boolean| Whether to return only realtime prices from today. | [optional] [default to false] &nbsp;
- **source** | String| Return the realtime price from the specified source instead of the most recent. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, intrinio_mx, intrinio_mx_plus] &nbsp;
+ **source** | String| Return the realtime price from the specified source instead of the most recent. | [optional] [enum: iex, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, cboe_one_delayed, iex_delayed] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 
@@ -4454,7 +4456,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
- **source** | [**List&lt;String&gt;**](String.md)| Return the realtime price from the specified comma-delimited data sources. If no source is specified, the best source available is used. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, intrinio_mx, intrinio_mx_plus] &nbsp;
+ **source** | [**List&lt;String&gt;**](String.md)| Return the realtime price from the specified comma-delimited data sources. If no source is specified, the best source available is used. | [optional] [enum: iex, iex_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, cboe_one_delayed] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -4539,7 +4541,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **subsource** | String| The specific source of the data being requested. | [enum: iex, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, nasdaq_basic] &nbsp;
+ **subsource** | String| The specific source of the data being requested. | [enum: iex, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, nasdaq_basic, cboe_one, iex_delayed, cboe_one_delayed] &nbsp;
  **date** | LocalDate| The date for the data being requested. | &nbsp;
 <br/>
 
@@ -4698,6 +4700,190 @@ public class Main {
     Integer pageSize = 100;
     String nextPage = null;
     ApiResponseSecurityStockPriceAdjustments result = securityApi.getSecurityStockPriceAdjustments(identifier, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
+ **startDate** | LocalDate| Return price adjustments on or after the date | [optional] &nbsp;
+ **endDate** | LocalDate| Return price adjustments on or before the date | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseSecurityStockPriceAdjustments**](ApiResponseSecurityStockPriceAdjustments.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:SecurityApi)
+
+[//]: # (METHOD:getSecurityStockPriceAdjustmentsDividends)
+
+[//]: # (RETURN_TYPE:ApiResponseSecurityStockPriceAdjustments)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseSecurityStockPriceAdjustments.md)
+
+[//]: # (OPERATION:getSecurityStockPriceAdjustmentsDividends_v2)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/adjustments/dividends)
+
+[//]: # (DOCUMENT_LINK:SecurityApi.md#getSecurityStockPriceAdjustmentsDividends)
+
+<a name="getSecurityStockPriceAdjustmentsDividends"></a>
+## **getSecurityStockPriceAdjustmentsDividends**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSecurityStockPriceAdjustmentsDividends_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseSecurityStockPriceAdjustments getSecurityStockPriceAdjustmentsDividends(identifier, startDate, endDate, pageSize, nextPage)
+
+#### Dividends by Security
+
+
+Returns dividend price adjustments for the Security with the given &#x60;identifier&#x60;. A filtered api of /securities/{identifier}/prices/adjustments.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    SecurityApi securityApi = new SecurityApi();
+    String identifier = "AAPL";
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = LocalDate.of(2019,1,01);
+    Integer pageSize = 100;
+    String nextPage = null;
+    ApiResponseSecurityStockPriceAdjustments result = securityApi.getSecurityStockPriceAdjustmentsDividends(identifier, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
+ **startDate** | LocalDate| Return price adjustments on or after the date | [optional] &nbsp;
+ **endDate** | LocalDate| Return price adjustments on or before the date | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseSecurityStockPriceAdjustments**](ApiResponseSecurityStockPriceAdjustments.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:SecurityApi)
+
+[//]: # (METHOD:getSecurityStockPriceAdjustmentsSplits)
+
+[//]: # (RETURN_TYPE:ApiResponseSecurityStockPriceAdjustments)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseSecurityStockPriceAdjustments.md)
+
+[//]: # (OPERATION:getSecurityStockPriceAdjustmentsSplits_v2)
+
+[//]: # (ENDPOINT:/securities/{identifier}/prices/adjustments/splits)
+
+[//]: # (DOCUMENT_LINK:SecurityApi.md#getSecurityStockPriceAdjustmentsSplits)
+
+<a name="getSecurityStockPriceAdjustmentsSplits"></a>
+## **getSecurityStockPriceAdjustmentsSplits**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSecurityStockPriceAdjustmentsSplits_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseSecurityStockPriceAdjustments getSecurityStockPriceAdjustmentsSplits(identifier, startDate, endDate, pageSize, nextPage)
+
+#### Splits by Security
+
+
+Returns stock price split adjustments for the Security with the given &#x60;identifier&#x60;.  A filtered api of /securities/{identifier}/prices/adjustments.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    SecurityApi securityApi = new SecurityApi();
+    String identifier = "AAPL";
+    LocalDate startDate = LocalDate.of(2018,1,01);
+    LocalDate endDate = LocalDate.of(2019,1,01);
+    Integer pageSize = 100;
+    String nextPage = null;
+    ApiResponseSecurityStockPriceAdjustments result = securityApi.getSecurityStockPriceAdjustmentsSplits(identifier, startDate, endDate, pageSize, nextPage);
     System.out.println(result);
   }
 }
@@ -4903,7 +5089,7 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **source** | String| The specific source of the data being requested. | [enum: nasdaq_basic, iex, cta_a_delayed, cta_b_delayed, utp_delayed, otc_delayed] &nbsp;
+ **source** | String| The specific source of the data being requested. | [enum: nasdaq_basic, iex, cta_a_delayed, cta_b_delayed, utp_delayed, otc_delayed, cboe_one_delayed, iex_delayed] &nbsp;
  **startDate** | LocalDate| The start date for the data being requested. | [optional] &nbsp;
  **startTime** | String| The start time for the data being requested. | [optional] &nbsp;
  **endDate** | LocalDate| The end date for the data being requested. | [optional] &nbsp;
@@ -5007,7 +5193,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| The ticker symbol for which trades are being requested. | &nbsp;
- **source** | String| The specific source of the data being requested.  Specifying delayed sip will result in the system automatically determining which delayed sip source (cta_delayed, cta_b_delayed, utp_delayed, otc_delayed) to use. | [enum: nasdaq_basic, delayed_sip, iex, cta_a_delayed, cta_b_delayed, utp_delayed, otc_delayed] &nbsp;
+ **source** | String| The specific source of the data being requested.  Specifying delayed sip will result in the system automatically determining which delayed sip source (cta_delayed, cta_b_delayed, utp_delayed, otc_delayed) to use. | [enum: nasdaq_basic, delayed_sip, iex, cta_a_delayed, cta_b_delayed, utp_delayed, otc_delayed, cboe_one_delayed, iex_delayed] &nbsp;
  **startDate** | LocalDate| The start date for the data being requested. | [optional] &nbsp;
  **startTime** | String| The start time for the data being requested. | [optional] &nbsp;
  **endDate** | LocalDate| The end date for the data being requested. | [optional] &nbsp;

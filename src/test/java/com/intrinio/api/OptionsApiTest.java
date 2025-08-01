@@ -296,7 +296,8 @@ public class OptionsApiTest {
         String model = null;
         Boolean showExtendedPrice = null;
         Boolean includeRelatedSymbols = null;
-        ApiResponseOptionsChainRealtime response = api.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
+        Boolean showStats = null;
+        ApiResponseOptionsChainRealtime response = api.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols, showStats);
 
         // TODO: test validations
     }
@@ -379,7 +380,8 @@ public class OptionsApiTest {
         Float strikeGreaterThan = null;
         Float strikeLessThan = null;
         Integer pageSize = null;
-        ApiResponseOptionsGreeksByTickerRealtime response = api.getOptionsGreeksByTicker(identifier, source, model, ivMode, stockPriceSource, expirationStartDate, expirationEndDate, strike, strikeGreaterThan, strikeLessThan, pageSize);
+        String nextPage = null;
+        ApiResponseOptionsGreeksByTickerRealtime response = api.getOptionsGreeksByTicker(identifier, source, model, ivMode, stockPriceSource, expirationStartDate, expirationEndDate, strike, strikeGreaterThan, strikeLessThan, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -599,7 +601,9 @@ public class OptionsApiTest {
         Object expirationStartDate = null;
         Object expirationEndDate = null;
         BigDecimal strike = null;
-        ApiResponseOptionsPricesByTickerRealtime response = api.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate, strike);
+        Boolean showStats = null;
+        String nextPage2 = null;
+        ApiResponseOptionsPricesByTickerRealtime response = api.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate, strike, showStats, nextPage2);
 
         // TODO: test validations
     }

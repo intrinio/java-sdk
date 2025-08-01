@@ -144,6 +144,44 @@ public class StockExchangeApiTest {
     }
     
     /**
+     * Dividends by date for exchange
+     *
+     * Returns dividend adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getStockExchangePriceAdjustmentsDividendsTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        LocalDate date = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseStockExchangeStockPriceAdjustments response = api.getStockExchangePriceAdjustmentsDividends(identifier, date, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Splits by date for exchange
+     *
+     * Returns split adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getStockExchangePriceAdjustmentsSplitsTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        LocalDate date = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseStockExchangeStockPriceAdjustments response = api.getStockExchangePriceAdjustmentsSplits(identifier, date, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Stock Prices by Exchange
      *
      * Returns end-of-day stock prices for Securities on the Stock Exchange with &#x60;identifier&#x60; and on the &#x60;price_date&#x60; (or the latest date that prices are available)

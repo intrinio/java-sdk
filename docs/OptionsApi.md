@@ -384,7 +384,7 @@ Name | Type | Description  | Notes
  **symbol** | String| The option symbol, corresponding to the underlying security. | &nbsp;
  **strike** | BigDecimal| The strike price of the option contract. This will return options contracts with strike price equal to this price. | &nbsp;
  **source** | String| Realtime or delayed. | [optional] [enum: realtime, delayed] &nbsp;
- **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
+ **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic, cboe_one_delayed, iex_delayed] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
  **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
@@ -1030,7 +1030,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsChainRealtime getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols)
+> ApiResponseOptionsChainRealtime getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols, showStats)
 
 #### Options Chain Realtime
 
@@ -1077,7 +1077,8 @@ public class Main {
     String model = null;
     Boolean showExtendedPrice = null;
     Boolean includeRelatedSymbols = false;
-    ApiResponseOptionsChainRealtime result = optionsApi.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
+    Boolean showStats = null;
+    ApiResponseOptionsChainRealtime result = optionsApi.getOptionsChainRealtime(symbol, expiration, source, type, strike, strikeGreaterThan, strikeLessThan, volumeGreaterThan, volumeLessThan, openInterestGreaterThan, openInterestLessThan, moneyness, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols, showStats);
     System.out.println(result);
   }
 }
@@ -1104,10 +1105,11 @@ Name | Type | Description  | Notes
  **openInterestGreaterThan** | BigDecimal| The open interest of the option contract. This will return options contracts with open interest greater than this amount. | [optional] &nbsp;
  **openInterestLessThan** | BigDecimal| The open interest of the option contract. This will return options contracts with open interest less than this amount. | [optional] &nbsp;
  **moneyness** | String| The moneyness of the options contracts to return. &#39;all&#39; will return all options contracts. &#39;in_the_money&#39; will return options contracts that are in the money (call options with strike prices below the current price, put options with strike prices above the current price). &#39;out_of_they_money&#39; will return options contracts that are out of the money (call options with strike prices above the current price, put options with strike prices below the current price). &#39;near_the_money&#39; will return options contracts that are $0.50 or less away from being in the money.  Requires subscription to realtime stock price data. | [optional] [enum: all, in_the_money, out_of_the_money, near_the_money] &nbsp;
- **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
+ **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic, cboe_one_delayed, iex_delayed] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
  **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
+ **showStats** | Boolean| Whether to include Greek calculations or not. | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -1377,7 +1379,7 @@ Name | Type | Description  | Notes
  **source** | String| The data source to use for options data | [optional] [enum: realtime, delayed] &nbsp;
  **model** | String| The options pricing model to use for greeks calculations | [optional] [default to black_scholes] [enum: black_scholes, bjerk] &nbsp;
  **ivMode** | String| The implied volatility calculation mode | [optional] [enum: out_of_the_money] &nbsp;
- **stockPriceSource** | String| The data source to use for underlying stock prices | [optional] [enum: iex, nasdaq_basic, nasdaq_basic_last_sale, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip] &nbsp;
+ **stockPriceSource** | String| The data source to use for underlying stock prices | [optional] [enum: iex, nasdaq_basic, nasdaq_basic_last_sale, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, iex_delayed, cboe_one_delayed] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -1414,7 +1416,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsGreeksByTickerRealtime getOptionsGreeksByTicker(identifier, source, model, ivMode, stockPriceSource, expirationStartDate, expirationEndDate, strike, strikeGreaterThan, strikeLessThan, pageSize)
+> ApiResponseOptionsGreeksByTickerRealtime getOptionsGreeksByTicker(identifier, source, model, ivMode, stockPriceSource, expirationStartDate, expirationEndDate, strike, strikeGreaterThan, strikeLessThan, pageSize, nextPage)
 
 #### Options Realtime Greeks &amp; Derived Price by Ticker
 
@@ -1456,7 +1458,8 @@ public class Main {
     Float strikeGreaterThan = 3.4F;
     Float strikeLessThan = 3.4F;
     Integer pageSize = 250;
-    ApiResponseOptionsGreeksByTickerRealtime result = optionsApi.getOptionsGreeksByTicker(identifier, source, model, ivMode, stockPriceSource, expirationStartDate, expirationEndDate, strike, strikeGreaterThan, strikeLessThan, pageSize);
+    String nextPage = null;
+    ApiResponseOptionsGreeksByTickerRealtime result = optionsApi.getOptionsGreeksByTicker(identifier, source, model, ivMode, stockPriceSource, expirationStartDate, expirationEndDate, strike, strikeGreaterThan, strikeLessThan, pageSize, nextPage);
     System.out.println(result);
   }
 }
@@ -1475,13 +1478,14 @@ Name | Type | Description  | Notes
  **source** | String| The data source to use for options data | [optional] [enum: realtime, delayed] &nbsp;
  **model** | String| The options pricing model to use for greeks calculations | [optional] [default to black_scholes] [enum: black_scholes, bjerk] &nbsp;
  **ivMode** | String| The implied volatility calculation mode | [optional] [enum: out_of_the_money] &nbsp;
- **stockPriceSource** | String| The data source to use for underlying stock prices | [optional] [enum: iex, nasdaq_basic, nasdaq_basic_last_sale, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip] &nbsp;
+ **stockPriceSource** | String| The data source to use for underlying stock prices | [optional] [enum: iex, nasdaq_basic, nasdaq_basic_last_sale, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, iex_delayed, cboe_one_delayed] &nbsp;
  **expirationStartDate** | LocalDate| Filter options by expiration date (start) | [optional] &nbsp;
  **expirationEndDate** | LocalDate| Filter options by expiration date (end) | [optional] &nbsp;
  **strike** | Float| Filter options by strike price | [optional] &nbsp;
  **strikeGreaterThan** | Float| Filter options by minimum strike price | [optional] &nbsp;
  **strikeLessThan** | Float| Filter options by maximum strike price | [optional] &nbsp;
  **pageSize** | Integer| Number of results to return per page | [optional] [default to 250] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -2111,7 +2115,7 @@ Name | Type | Description  | Notes
  **body** | [**OptionContractsList**](OptionContractsList.md)| The contract symbols for which to return options prices for. | &nbsp;
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
  **showStats** | Boolean| Whether to include Greek calculations or not. | [optional] &nbsp;
- **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
+ **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic, iex_delayed, cboe_one_delayed] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
 <br/>
@@ -2393,7 +2397,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| The Intrinio ID or code of the options contract to request prices for. | &nbsp;
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
- **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
+ **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic, cboe_one_delayed, iex_delayed] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
 <br/>
@@ -2432,7 +2436,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsPricesByTickerRealtime getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate, strike)
+> ApiResponseOptionsPricesByTickerRealtime getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate, strike, showStats, nextPage2)
 
 #### Option Prices Realtime By Ticker
 
@@ -2474,7 +2478,9 @@ public class Main {
     Object expirationStartDate = "2024-01-01";
     Object expirationEndDate = "2024-02-02";
     BigDecimal strike = null;
-    ApiResponseOptionsPricesByTickerRealtime result = optionsApi.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate, strike);
+    Boolean showStats = null;
+    String nextPage2 = null;
+    ApiResponseOptionsPricesByTickerRealtime result = optionsApi.getOptionsPricesRealtimeByTicker(symbol, source, ivMode, nextPage, pageSize, stockPriceSource, model, showExtendedPrice, expirationStartDate, expirationEndDate, strike, showStats, nextPage2);
     System.out.println(result);
   }
 }
@@ -2494,12 +2500,14 @@ Name | Type | Description  | Notes
  **ivMode** | String| Change the mode for the implied volatility calculation to out of the money. | [optional] [enum: out_of_the_money] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 250] &nbsp;
- **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, bats_delayed, intrinio_mx, intrinio_mx_plus, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic] &nbsp;
+ **stockPriceSource** | String| Source for underlying price for calculating Greeks. | [optional] [enum: iex, delayed_sip, utp_delayed, otc_delayed, cta_a_delayed, cta_b_delayed, nasdaq_basic, cboe_one_delayed, iex_delayed] &nbsp;
  **model** | String| Model for calculating Greek values. Default is black_scholes. | [optional] [enum: black_scholes, bjerk] &nbsp;
  **showExtendedPrice** | Boolean| Whether to include open close high low type fields. | [optional] &nbsp;
  **expirationStartDate** | [**Object**](.md)| Filter out contracts that expire before this date. | [optional] &nbsp;
  **expirationEndDate** | [**Object**](.md)| Filter out contracts that expire after this date. | [optional] &nbsp;
  **strike** | BigDecimal| Filter out contracts that have this strike price. | [optional] &nbsp;
+ **showStats** | Boolean| Whether to include Greek calculations or not. | [optional] &nbsp;
+ **nextPage2** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

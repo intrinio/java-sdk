@@ -10,6 +10,8 @@ Method | HTTP request | Description
 [**getStockExchangeGainers**](StockExchangeApi.md#getStockExchangeGainers) | **GET** /stock_exchanges/{identifier}/gainers | Top Gainers by Exchange
 [**getStockExchangeLosers**](StockExchangeApi.md#getStockExchangeLosers) | **GET** /stock_exchanges/{identifier}/losers | Top Losers by Exchange
 [**getStockExchangePriceAdjustments**](StockExchangeApi.md#getStockExchangePriceAdjustments) | **GET** /stock_exchanges/{identifier}/prices/adjustments | Stock Price Adjustments by Exchange
+[**getStockExchangePriceAdjustmentsDividends**](StockExchangeApi.md#getStockExchangePriceAdjustmentsDividends) | **GET** /stock_exchanges/{identifier}/prices/adjustments/dividends | Dividends by date for exchange
+[**getStockExchangePriceAdjustmentsSplits**](StockExchangeApi.md#getStockExchangePriceAdjustmentsSplits) | **GET** /stock_exchanges/{identifier}/prices/adjustments/splits | Splits by date for exchange
 [**getStockExchangePrices**](StockExchangeApi.md#getStockExchangePrices) | **GET** /stock_exchanges/{identifier}/prices | Stock Prices by Exchange
 [**getStockExchangeQuote**](StockExchangeApi.md#getStockExchangeQuote) | **GET** /stock_exchanges/{identifier}/quote | Realtime Quote Prices by Exchange
 [**getStockExchangeRealtimePrices**](StockExchangeApi.md#getStockExchangeRealtimePrices) | **GET** /stock_exchanges/{identifier}/prices/realtime | Realtime Stock Prices by Exchange
@@ -361,7 +363,7 @@ Name | Type | Description  | Notes
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
  **minPrice** | BigDecimal| The minimum price filter | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
- **source** | String| Return the realtime price from the specified source instead of the most recent. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic] &nbsp;
+ **source** | String| Return the realtime price from the specified source instead of the most recent. | [optional] [enum: iex, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, cboe_one_delayed, iex_delayed] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -451,7 +453,7 @@ Name | Type | Description  | Notes
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
  **minPrice** | BigDecimal| The minimum price filter | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
- **source** | String| Return the realtime price from the specified source instead of the most recent. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic] &nbsp;
+ **source** | String| Return the realtime price from the specified source instead of the most recent. | [optional] [enum: iex, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, cboe_one_delayed, iex_delayed] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -540,6 +542,186 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
  **date** | LocalDate| The date for which to return price adjustments | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseStockExchangeStockPriceAdjustments**](ApiResponseStockExchangeStockPriceAdjustments.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:StockExchangeApi)
+
+[//]: # (METHOD:getStockExchangePriceAdjustmentsDividends)
+
+[//]: # (RETURN_TYPE:ApiResponseStockExchangeStockPriceAdjustments)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockExchangeStockPriceAdjustments.md)
+
+[//]: # (OPERATION:getStockExchangePriceAdjustmentsDividends_v2)
+
+[//]: # (ENDPOINT:/stock_exchanges/{identifier}/prices/adjustments/dividends)
+
+[//]: # (DOCUMENT_LINK:StockExchangeApi.md#getStockExchangePriceAdjustmentsDividends)
+
+<a name="getStockExchangePriceAdjustmentsDividends"></a>
+## **getStockExchangePriceAdjustmentsDividends**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockExchangePriceAdjustmentsDividends_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseStockExchangeStockPriceAdjustments getStockExchangePriceAdjustmentsDividends(identifier, date, pageSize, nextPage)
+
+#### Dividends by date for exchange
+
+
+Returns dividend adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    StockExchangeApi stockExchangeApi = new StockExchangeApi();
+    String identifier = "USCOMP";
+    LocalDate date = LocalDate.of(2025,6,01);
+    Integer pageSize = 100;
+    String nextPage = null;
+    ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustmentsDividends(identifier, date, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
+ **date** | LocalDate| The date for which to return dividends | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseStockExchangeStockPriceAdjustments**](ApiResponseStockExchangeStockPriceAdjustments.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:StockExchangeApi)
+
+[//]: # (METHOD:getStockExchangePriceAdjustmentsSplits)
+
+[//]: # (RETURN_TYPE:ApiResponseStockExchangeStockPriceAdjustments)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseStockExchangeStockPriceAdjustments.md)
+
+[//]: # (OPERATION:getStockExchangePriceAdjustmentsSplits_v2)
+
+[//]: # (ENDPOINT:/stock_exchanges/{identifier}/prices/adjustments/splits)
+
+[//]: # (DOCUMENT_LINK:StockExchangeApi.md#getStockExchangePriceAdjustmentsSplits)
+
+<a name="getStockExchangePriceAdjustmentsSplits"></a>
+## **getStockExchangePriceAdjustmentsSplits**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getStockExchangePriceAdjustmentsSplits_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseStockExchangeStockPriceAdjustments getStockExchangePriceAdjustmentsSplits(identifier, date, pageSize, nextPage)
+
+#### Splits by date for exchange
+
+
+Returns split adjustments for the Stock Exchange with the given &#x60;identifier&#x60;
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    StockExchangeApi stockExchangeApi = new StockExchangeApi();
+    String identifier = "USCOMP";
+    LocalDate date = LocalDate.of(2025,6,01);
+    Integer pageSize = 100;
+    String nextPage = null;
+    ApiResponseStockExchangeStockPriceAdjustments result = stockExchangeApi.getStockExchangePriceAdjustmentsSplits(identifier, date, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
+ **date** | LocalDate| The date for which to return splits | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
@@ -728,7 +910,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
  **tickers** | [**List&lt;String&gt;**](String.md)| The comma-delimited list of ticker symbols to return quotes for. | &nbsp;
- **source** | String| Return the realtime price from the specified source instead of the most recent. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, intrinio_mx, intrinio_mx_plus] &nbsp;
+ **source** | String| Return the realtime price from the specified source instead of the most recent. | [optional] [enum: iex, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, cboe_one_delayed, iex_delayed] &nbsp;
  **activeOnly** | Boolean| Returns prices only from the most recent trading day. | [optional] &nbsp;
 <br/>
 
@@ -820,7 +1002,7 @@ public class Main {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Stock Exchange identifier (MIC or Intrinio ID) | &nbsp;
- **source** | [**List&lt;String&gt;**](String.md)| Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. | [optional] [enum: iex, bats_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, intrinio_mx, intrinio_mx_plus] &nbsp;
+ **source** | [**List&lt;String&gt;**](String.md)| Return realtime prices from the specified comma-delimited data sources. If no source is specified, all sources available to user are used. | [optional] [enum: iex, iex_delayed, utp_delayed, cta_a_delayed, cta_b_delayed, otc_delayed, delayed_sip, nasdaq_basic, cboe_one_delayed] &nbsp;
  **activeOnly** | Boolean| Returns prices only from the most recent trading day. | [optional] &nbsp;
  **tradedToday** | Boolean| Returns prices only from securities which have traded on the most recent trading day. | [optional] &nbsp;
  **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;

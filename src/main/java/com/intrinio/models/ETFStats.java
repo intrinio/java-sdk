@@ -660,10 +660,10 @@ public class ETFStats {
   }
 
    /**
-   * Get etf
+   * A brief summary of the ETF to which these stats refer.  Not included when part of historical stats.
    * @return etf
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "A brief summary of the ETF to which these stats refer.  Not included when part of historical stats.")
   public ETFSummary getEtf() {
     return etf;
   }
