@@ -23,7 +23,7 @@ import java.util.List;
 
 public class ETFHistoricalStats {
   @SerializedName("messages")
-  private  messages = null;
+  private List<String> messages = null;
 
   @SerializedName("etf")
   private ETFSummary etf = null;
@@ -34,14 +34,14 @@ public class ETFHistoricalStats {
   @SerializedName("next_page")
   private String nextPage = null;
 
-  public ETFHistoricalStats messages( messages) {
+  public ETFHistoricalStats messages(List<String> messages) {
     this.messages = messages;
     return this;
   }
 
-  public ETFHistoricalStats addMessagesItem( messagesItem) {
+  public ETFHistoricalStats addMessagesItem(String messagesItem) {
     if (this.messages == null) {
-      this.messages = ;
+      this.messages = new ArrayList<>();
     }
     this.messages.add(messagesItem);
     return this;
@@ -52,11 +52,11 @@ public class ETFHistoricalStats {
    * @return messages
   **/
   @ApiModelProperty(value = "A list of messages related to the request, such as warnings or errors.")
-  public  getMessages() {
+  public List<String> getMessages() {
     return messages;
   }
 
-  public void setMessages( messages) {
+  public void setMessages(List<String> messages) {
     this.messages = messages;
   }
 
