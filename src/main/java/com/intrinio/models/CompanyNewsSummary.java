@@ -8,7 +8,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.intrinio.models.CompanySummary;
 import com.intrinio.models.NewsTopic;
+import com.intrinio.models.SecuritySummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -31,6 +33,12 @@ public class CompanyNewsSummary {
 
   @SerializedName("publication_date")
   private OffsetDateTime publicationDate = null;
+
+  @SerializedName("companies")
+  private List<CompanySummary> companies = null;
+
+  @SerializedName("securities")
+  private List<SecuritySummary> securities = null;
 
   @SerializedName("url")
   private String url = null;
@@ -165,6 +173,18 @@ public class CompanyNewsSummary {
   @SerializedName("article_sentiment_confidence")
   private BigDecimal articleSentimentConfidence = null;
 
+  @SerializedName("issuer")
+  private String issuer = null;
+
+  @SerializedName("issuer_name")
+  private String issuerName = null;
+
+  @SerializedName("issuer_company")
+  private CompanySummary issuerCompany = null;
+
+  @SerializedName("issuer_security")
+  private SecuritySummary issuerSecurity = null;
+
   public CompanyNewsSummary id(String id) {
     this.id = id;
     return this;
@@ -217,6 +237,58 @@ public class CompanyNewsSummary {
 
   public void setPublicationDate(OffsetDateTime publicationDate) {
     this.publicationDate = publicationDate;
+  }
+
+  public CompanyNewsSummary companies(List<CompanySummary> companies) {
+    this.companies = companies;
+    return this;
+  }
+
+  public CompanyNewsSummary addCompaniesItem(CompanySummary companiesItem) {
+    if (this.companies == null) {
+      this.companies = new ArrayList<>();
+    }
+    this.companies.add(companiesItem);
+    return this;
+  }
+
+   /**
+   * The Companies to which the new article pertains
+   * @return companies
+  **/
+  @ApiModelProperty(value = "The Companies to which the new article pertains")
+  public List<CompanySummary> getCompanies() {
+    return companies;
+  }
+
+  public void setCompanies(List<CompanySummary> companies) {
+    this.companies = companies;
+  }
+
+  public CompanyNewsSummary securities(List<SecuritySummary> securities) {
+    this.securities = securities;
+    return this;
+  }
+
+  public CompanyNewsSummary addSecuritiesItem(SecuritySummary securitiesItem) {
+    if (this.securities == null) {
+      this.securities = new ArrayList<>();
+    }
+    this.securities.add(securitiesItem);
+    return this;
+  }
+
+   /**
+   * The Securities to which the new article pertains
+   * @return securities
+  **/
+  @ApiModelProperty(value = "The Securities to which the new article pertains")
+  public List<SecuritySummary> getSecurities() {
+    return securities;
+  }
+
+  public void setSecurities(List<SecuritySummary> securities) {
+    this.securities = securities;
   }
 
   public CompanyNewsSummary url(String url) {
@@ -425,6 +497,78 @@ public class CompanyNewsSummary {
     this.articleSentimentConfidence = articleSentimentConfidence;
   }
 
+  public CompanyNewsSummary issuer(String issuer) {
+    this.issuer = issuer;
+    return this;
+  }
+
+   /**
+   * The issuer of the story.
+   * @return issuer
+  **/
+  @ApiModelProperty(value = "The issuer of the story.")
+  public String getIssuer() {
+    return issuer;
+  }
+
+  public void setIssuer(String issuer) {
+    this.issuer = issuer;
+  }
+
+  public CompanyNewsSummary issuerName(String issuerName) {
+    this.issuerName = issuerName;
+    return this;
+  }
+
+   /**
+   * The issuer of the story.
+   * @return issuerName
+  **/
+  @ApiModelProperty(value = "The issuer of the story.")
+  public String getIssuerName() {
+    return issuerName;
+  }
+
+  public void setIssuerName(String issuerName) {
+    this.issuerName = issuerName;
+  }
+
+  public CompanyNewsSummary issuerCompany(CompanySummary issuerCompany) {
+    this.issuerCompany = issuerCompany;
+    return this;
+  }
+
+   /**
+   * The company that issued the story.
+   * @return issuerCompany
+  **/
+  @ApiModelProperty(value = "The company that issued the story.")
+  public CompanySummary getIssuerCompany() {
+    return issuerCompany;
+  }
+
+  public void setIssuerCompany(CompanySummary issuerCompany) {
+    this.issuerCompany = issuerCompany;
+  }
+
+  public CompanyNewsSummary issuerSecurity(SecuritySummary issuerSecurity) {
+    this.issuerSecurity = issuerSecurity;
+    return this;
+  }
+
+   /**
+   * The security that issued the story.
+   * @return issuerSecurity
+  **/
+  @ApiModelProperty(value = "The security that issued the story.")
+  public SecuritySummary getIssuerSecurity() {
+    return issuerSecurity;
+  }
+
+  public void setIssuerSecurity(SecuritySummary issuerSecurity) {
+    this.issuerSecurity = issuerSecurity;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -438,6 +582,8 @@ public class CompanyNewsSummary {
     return Objects.equals(this.id, companyNewsSummary.id) &&
         Objects.equals(this.title, companyNewsSummary.title) &&
         Objects.equals(this.publicationDate, companyNewsSummary.publicationDate) &&
+        Objects.equals(this.companies, companyNewsSummary.companies) &&
+        Objects.equals(this.securities, companyNewsSummary.securities) &&
         Objects.equals(this.url, companyNewsSummary.url) &&
         Objects.equals(this.summary, companyNewsSummary.summary) &&
         Objects.equals(this.source, companyNewsSummary.source) &&
@@ -448,12 +594,16 @@ public class CompanyNewsSummary {
         Objects.equals(this.spam, companyNewsSummary.spam) &&
         Objects.equals(this.businessRelevance, companyNewsSummary.businessRelevance) &&
         Objects.equals(this.articleSentiment, companyNewsSummary.articleSentiment) &&
-        Objects.equals(this.articleSentimentConfidence, companyNewsSummary.articleSentimentConfidence);
+        Objects.equals(this.articleSentimentConfidence, companyNewsSummary.articleSentimentConfidence) &&
+        Objects.equals(this.issuer, companyNewsSummary.issuer) &&
+        Objects.equals(this.issuerName, companyNewsSummary.issuerName) &&
+        Objects.equals(this.issuerCompany, companyNewsSummary.issuerCompany) &&
+        Objects.equals(this.issuerSecurity, companyNewsSummary.issuerSecurity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, publicationDate, url, summary, source, topics, copyright, language, wordCount, spam, businessRelevance, articleSentiment, articleSentimentConfidence);
+    return Objects.hash(id, title, publicationDate, companies, securities, url, summary, source, topics, copyright, language, wordCount, spam, businessRelevance, articleSentiment, articleSentimentConfidence, issuer, issuerName, issuerCompany, issuerSecurity);
   }
 
 
@@ -465,6 +615,8 @@ public class CompanyNewsSummary {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    publicationDate: ").append(toIndentedString(publicationDate)).append("\n");
+    sb.append("    companies: ").append(toIndentedString(companies)).append("\n");
+    sb.append("    securities: ").append(toIndentedString(securities)).append("\n");
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
     sb.append("    source: ").append(toIndentedString(source)).append("\n");
@@ -476,6 +628,10 @@ public class CompanyNewsSummary {
     sb.append("    businessRelevance: ").append(toIndentedString(businessRelevance)).append("\n");
     sb.append("    articleSentiment: ").append(toIndentedString(articleSentiment)).append("\n");
     sb.append("    articleSentimentConfidence: ").append(toIndentedString(articleSentimentConfidence)).append("\n");
+    sb.append("    issuer: ").append(toIndentedString(issuer)).append("\n");
+    sb.append("    issuerName: ").append(toIndentedString(issuerName)).append("\n");
+    sb.append("    issuerCompany: ").append(toIndentedString(issuerCompany)).append("\n");
+    sb.append("    issuerSecurity: ").append(toIndentedString(issuerSecurity)).append("\n");
     sb.append("}");
     return sb.toString();
   }

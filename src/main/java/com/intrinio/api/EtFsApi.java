@@ -513,7 +513,7 @@ public class EtFsApi {
     }
 
     /**
-     * Exchange Traded Fund (ETF) stats
+     * Exchange Traded Fund (ETF) Historical Stats
      * Returns comprehensive key US ETF historical performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @param startDate The start date for the historical stats data in YYYY-MM-DD format. (optional)
@@ -532,7 +532,7 @@ public class EtFsApi {
     }
 
     /**
-     * Exchange Traded Fund (ETF) stats
+     * Exchange Traded Fund (ETF) Historical Stats
      * Returns comprehensive key US ETF historical performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @param startDate The start date for the historical stats data in YYYY-MM-DD format. (optional)
@@ -548,7 +548,7 @@ public class EtFsApi {
     }
 
     /**
-     * Exchange Traded Fund (ETF) stats (asynchronously)
+     * Exchange Traded Fund (ETF) Historical Stats (asynchronously)
      * Returns comprehensive key US ETF historical performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @param startDate The start date for the historical stats data in YYYY-MM-DD format. (optional)
@@ -788,7 +788,7 @@ public class EtFsApi {
     }
 
     /**
-     * Exchange Traded Fund (ETF) stats
+     * Exchange Traded Fund (ETF) Stats
      * Returns comprehensive key US ETF performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ETFStats
@@ -804,7 +804,7 @@ public class EtFsApi {
     }
 
     /**
-     * Exchange Traded Fund (ETF) stats
+     * Exchange Traded Fund (ETF) Stats
      * Returns comprehensive key US ETF performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @return ApiResponse&lt;ETFStats&gt;
@@ -817,7 +817,7 @@ public class EtFsApi {
     }
 
     /**
-     * Exchange Traded Fund (ETF) stats (asynchronously)
+     * Exchange Traded Fund (ETF) Stats (asynchronously)
      * Returns comprehensive key US ETF performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
      * @param identifier An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) (required)
      * @param callback The callback to be executed when the API call finishes

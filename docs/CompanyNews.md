@@ -17,7 +17,9 @@ Name | Type | Description
 **url** | String | The url of the news article &nbsp;
 **summary** | String | A summary of the news article &nbsp;
 **source** | SourceEnum | The news source. &nbsp;
-**company** | [**CompanySummary**](CompanySummary.md) | The Company to which the new article pertains &nbsp;
+**company** | [**CompanySummary**](CompanySummary.md) | The Company to which the new article pertains. &nbsp;
+**companies** | [**List&lt;CompanySummary&gt;**](CompanySummary.md) | The Companies to which the new article pertains &nbsp;
+**securities** | [**List&lt;SecuritySummary&gt;**](SecuritySummary.md) | The Securities to which the new article pertains &nbsp;
 **topics** | [**List&lt;NewsTopic&gt;**](NewsTopic.md) |  &nbsp;
 **copyright** | String | The copyright of the news article &nbsp;
 **language** | String | The language code of the news article &nbsp;
@@ -26,6 +28,10 @@ Name | Type | Description
 **businessRelevance** | [**BigDecimal**](BigDecimal.md) | How strongly correlated the news article is to the business &nbsp;
 **articleSentiment** | ArticleSentimentEnum | The news sentiment. &nbsp;
 **articleSentimentConfidence** | [**BigDecimal**](BigDecimal.md) | The confidence score of the sentiment rating &nbsp;
+**issuer** | String | The issuer of the story. &nbsp;
+**issuerName** | String | The issuer of the story. &nbsp;
+**issuerCompany** | [**CompanySummary**](CompanySummary.md) | The company that issued the story. &nbsp;
+**issuerSecurity** | [**SecuritySummary**](SecuritySummary.md) | The security that issued the story. &nbsp;
 
 [//]: # (END_DEFINITION)
 
@@ -36,6 +42,12 @@ Name | Type | Description
 [//]: # (CONTAINED_CLASS:CompanySummary)
 
 
+[//]: # (CONTAINED_CLASS:CompanySummary)
+
+
+[//]: # (CONTAINED_CLASS:SecuritySummary)
+
+
 [//]: # (CONTAINED_CLASS:NewsTopic)
 
 
@@ -43,6 +55,12 @@ Name | Type | Description
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)
+
+
+[//]: # (CONTAINED_CLASS:CompanySummary)
+
+
+[//]: # (CONTAINED_CLASS:SecuritySummary)
 
 
 

@@ -7,9 +7,9 @@ Method | HTTP request | Description
 [**getAllEtfs**](EtFsApi.md#getAllEtfs) | **GET** /etfs | All ETFs
 [**getEtf**](EtFsApi.md#getEtf) | **GET** /etfs/{identifier} | Lookup ETF
 [**getEtfAnalytics**](EtFsApi.md#getEtfAnalytics) | **GET** /etfs/{identifier}/analytics | ETF Analytics
-[**getEtfHistoricalStats**](EtFsApi.md#getEtfHistoricalStats) | **GET** /etfs/{identifier}/historical_stats | Exchange Traded Fund (ETF) stats
+[**getEtfHistoricalStats**](EtFsApi.md#getEtfHistoricalStats) | **GET** /etfs/{identifier}/historical_stats | Exchange Traded Fund (ETF) Historical Stats
 [**getEtfHoldings**](EtFsApi.md#getEtfHoldings) | **GET** /etfs/{identifier}/holdings | ETF Holdings
-[**getEtfStats**](EtFsApi.md#getEtfStats) | **GET** /etfs/{identifier}/stats | Exchange Traded Fund (ETF) stats
+[**getEtfStats**](EtFsApi.md#getEtfStats) | **GET** /etfs/{identifier}/stats | Exchange Traded Fund (ETF) Stats
 [**searchEtfs**](EtFsApi.md#searchEtfs) | **GET** /etfs/search | Search ETFs
 
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 > ETFHistoricalStats getEtfHistoricalStats(identifier, startDate, endDate, pageSize)
 
-#### Exchange Traded Fund (ETF) stats
+#### Exchange Traded Fund (ETF) Historical Stats
 
 
 Returns comprehensive key US ETF historical performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
@@ -475,7 +475,7 @@ Name | Type | Description  | Notes
 
 > ETFStats getEtfStats(identifier)
 
-#### Exchange Traded Fund (ETF) stats
+#### Exchange Traded Fund (ETF) Stats
 
 
 Returns comprehensive key US ETF performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.

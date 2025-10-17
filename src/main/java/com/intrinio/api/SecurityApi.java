@@ -18,6 +18,7 @@ import java.io.IOException;
 
 import com.intrinio.models.ApiResponseSecurities;
 import com.intrinio.models.ApiResponseSecuritiesSearch;
+import com.intrinio.models.ApiResponseSecuritiesShortInterest;
 import com.intrinio.models.ApiResponseSecurityAccumulationDistributionIndex;
 import com.intrinio.models.ApiResponseSecurityAverageDailyTradingVolume;
 import com.intrinio.models.ApiResponseSecurityAverageDirectionalIndex;
@@ -44,6 +45,7 @@ import com.intrinio.models.ApiResponseSecurityOnBalanceVolume;
 import com.intrinio.models.ApiResponseSecurityOnBalanceVolumeMean;
 import com.intrinio.models.ApiResponseSecurityQuote;
 import com.intrinio.models.ApiResponseSecurityRelativeStrengthIndex;
+import com.intrinio.models.ApiResponseSecurityShortInterest;
 import com.intrinio.models.ApiResponseSecuritySimpleMovingAverage;
 import com.intrinio.models.ApiResponseSecurityStochasticOscillator;
 import com.intrinio.models.ApiResponseSecurityStockPriceAdjustments;
@@ -328,6 +330,129 @@ public class SecurityApi {
 
         com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecuritiesShortInterest
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecuritiesShortInterestCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/short_interest";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecuritiesShortInterestValidateBeforeCall(String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getSecuritiesShortInterestCall(nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Latest Short Interest
+     * Returns the latest short interest data for all securities. The data covers the most recent settlement date and up to 13 days prior, sorted by percentage change in descending order. Each short interest record includes the associated security information.
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseSecuritiesShortInterest
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseSecuritiesShortInterest getSecuritiesShortInterest(String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecuritiesShortInterestWithHttpInfo", String.class);
+      
+      Object[] apiCallArguments = { nextPage };
+      ApiResponse<ApiResponseSecuritiesShortInterest> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Latest Short Interest
+     * Returns the latest short interest data for all securities. The data covers the most recent settlement date and up to 13 days prior, sorted by percentage change in descending order. Each short interest record includes the associated security information.
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseSecuritiesShortInterest&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseSecuritiesShortInterest> getSecuritiesShortInterestWithHttpInfo(String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecuritiesShortInterestValidateBeforeCall(nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesShortInterest>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Latest Short Interest (asynchronously)
+     * Returns the latest short interest data for all securities. The data covers the most recent settlement date and up to 13 days prior, sorted by percentage change in descending order. Each short interest record includes the associated security information.
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecuritiesShortInterestAsync(String nextPage, final ApiCallback<ApiResponseSecuritiesShortInterest> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecuritiesShortInterestValidateBeforeCall(nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesShortInterest>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -7562,6 +7687,139 @@ public class SecurityApi {
 
         com.squareup.okhttp.Call call = getSecurityReplayFileValidateBeforeCall(subsource, date, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SecurityReplayFileResult>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecurityShortInterest
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityShortInterestCall(String identifier, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/{identifier}/short_interest"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecurityShortInterestValidateBeforeCall(String identifier, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getSecurityShortInterest(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getSecurityShortInterestCall(identifier, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Short Interest by Security
+     * Returns historical short interest data for a given security. Short interest data includes settlement date, current and previous short positions, percentage change, days to cover, and average daily volume.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseSecurityShortInterest
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseSecurityShortInterest getSecurityShortInterest(String identifier, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecurityShortInterestWithHttpInfo", String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, nextPage };
+      ApiResponse<ApiResponseSecurityShortInterest> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Short Interest by Security
+     * Returns historical short interest data for a given security. Short interest data includes settlement date, current and previous short positions, percentage change, days to cover, and average daily volume.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseSecurityShortInterest&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseSecurityShortInterest> getSecurityShortInterestWithHttpInfo(String identifier, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecurityShortInterestValidateBeforeCall(identifier, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityShortInterest>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Short Interest by Security (asynchronously)
+     * Returns historical short interest data for a given security. Short interest data includes settlement date, current and previous short positions, percentage change, days to cover, and average daily volume.
+     * @param identifier A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) (required)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecurityShortInterestAsync(String identifier, String nextPage, final ApiCallback<ApiResponseSecurityShortInterest> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecurityShortInterestValidateBeforeCall(identifier, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecurityShortInterest>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
