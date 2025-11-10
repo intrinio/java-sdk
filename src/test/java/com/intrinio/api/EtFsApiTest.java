@@ -78,7 +78,7 @@ public class EtFsApiTest {
     }
     
     /**
-     * Exchange Traded Fund (ETF) stats
+     * Exchange Traded Fund (ETF) Historical Stats
      *
      * Returns comprehensive key US ETF historical performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
      *
@@ -115,7 +115,7 @@ public class EtFsApiTest {
     }
     
     /**
-     * Exchange Traded Fund (ETF) stats
+     * Exchange Traded Fund (ETF) Stats
      *
      * Returns comprehensive key US ETF performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
      *

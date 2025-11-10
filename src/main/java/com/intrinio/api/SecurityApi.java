@@ -17,6 +17,8 @@ import java.io.IOException;
 
 
 import com.intrinio.models.ApiResponseSecurities;
+import com.intrinio.models.ApiResponseSecuritiesDividendLatest;
+import com.intrinio.models.ApiResponseSecuritiesEarningsLatest;
 import com.intrinio.models.ApiResponseSecuritiesSearch;
 import com.intrinio.models.ApiResponseSecuritiesShortInterest;
 import com.intrinio.models.ApiResponseSecurityAccumulationDistributionIndex;
@@ -330,6 +332,300 @@ public class SecurityApi {
 
         com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecuritiesLatestDividendRecords
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param date Return dividend records on or before this date. Format YYYY-MM-DD (optional)
+     * @param identifiers A comma-delimited list of security identifiers (tickers, CUSIPs, ISINs, etc.) (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecuritiesLatestDividendRecordsCall(Integer pageSize, String nextPage, LocalDate date, String identifiers, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/dividends/latest";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+        if (date != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
+        if (identifiers != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("identifiers", identifiers));
+        if (nextPage2 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage2));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecuritiesLatestDividendRecordsValidateBeforeCall(Integer pageSize, String nextPage, LocalDate date, String identifiers, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getSecuritiesLatestDividendRecordsCall(pageSize, nextPage, date, identifiers, nextPage2, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Latest Dividend Records for All Securities
+     * Returns the latest available dividend information for all securities. Returns one dividend record per security, limited to records from the last 90 days, sorted by date_loaded in descending order.
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param date Return dividend records on or before this date. Format YYYY-MM-DD (optional)
+     * @param identifiers A comma-delimited list of security identifiers (tickers, CUSIPs, ISINs, etc.) (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseSecuritiesDividendLatest
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseSecuritiesDividendLatest getSecuritiesLatestDividendRecords(Integer pageSize, String nextPage, LocalDate date, String identifiers, String nextPage2) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecuritiesLatestDividendRecordsWithHttpInfo", Integer.class, String.class, LocalDate.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { pageSize, nextPage, date, identifiers, nextPage2 };
+      ApiResponse<ApiResponseSecuritiesDividendLatest> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Latest Dividend Records for All Securities
+     * Returns the latest available dividend information for all securities. Returns one dividend record per security, limited to records from the last 90 days, sorted by date_loaded in descending order.
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param date Return dividend records on or before this date. Format YYYY-MM-DD (optional)
+     * @param identifiers A comma-delimited list of security identifiers (tickers, CUSIPs, ISINs, etc.) (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseSecuritiesDividendLatest&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseSecuritiesDividendLatest> getSecuritiesLatestDividendRecordsWithHttpInfo(Integer pageSize, String nextPage, LocalDate date, String identifiers, String nextPage2) throws ApiException {
+        com.squareup.okhttp.Call call = getSecuritiesLatestDividendRecordsValidateBeforeCall(pageSize, nextPage, date, identifiers, nextPage2, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesDividendLatest>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Latest Dividend Records for All Securities (asynchronously)
+     * Returns the latest available dividend information for all securities. Returns one dividend record per security, limited to records from the last 90 days, sorted by date_loaded in descending order.
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param date Return dividend records on or before this date. Format YYYY-MM-DD (optional)
+     * @param identifiers A comma-delimited list of security identifiers (tickers, CUSIPs, ISINs, etc.) (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecuritiesLatestDividendRecordsAsync(Integer pageSize, String nextPage, LocalDate date, String identifiers, String nextPage2, final ApiCallback<ApiResponseSecuritiesDividendLatest> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecuritiesLatestDividendRecordsValidateBeforeCall(pageSize, nextPage, date, identifiers, nextPage2, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesDividendLatest>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecuritiesLatestEarningsRecords
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param date Return earnings records on or before this date. Format YYYY-MM-DD (optional)
+     * @param identifiers A comma-delimited list of security identifiers (tickers, CUSIPs, ISINs, etc.) (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecuritiesLatestEarningsRecordsCall(Integer pageSize, String nextPage, LocalDate date, String identifiers, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/earnings/latest";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+        if (date != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
+        if (identifiers != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("identifiers", identifiers));
+        if (nextPage2 != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage2));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecuritiesLatestEarningsRecordsValidateBeforeCall(Integer pageSize, String nextPage, LocalDate date, String identifiers, String nextPage2, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getSecuritiesLatestEarningsRecordsCall(pageSize, nextPage, date, identifiers, nextPage2, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Latest Earnings Records for All Securities
+     * Returns the latest available earnings information for all securities. Returns one earnings record per security, limited to records from the last 90 days, sorted by date_loaded in descending order.
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param date Return earnings records on or before this date. Format YYYY-MM-DD (optional)
+     * @param identifiers A comma-delimited list of security identifiers (tickers, CUSIPs, ISINs, etc.) (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseSecuritiesEarningsLatest
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseSecuritiesEarningsLatest getSecuritiesLatestEarningsRecords(Integer pageSize, String nextPage, LocalDate date, String identifiers, String nextPage2) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecuritiesLatestEarningsRecordsWithHttpInfo", Integer.class, String.class, LocalDate.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { pageSize, nextPage, date, identifiers, nextPage2 };
+      ApiResponse<ApiResponseSecuritiesEarningsLatest> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Latest Earnings Records for All Securities
+     * Returns the latest available earnings information for all securities. Returns one earnings record per security, limited to records from the last 90 days, sorted by date_loaded in descending order.
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param date Return earnings records on or before this date. Format YYYY-MM-DD (optional)
+     * @param identifiers A comma-delimited list of security identifiers (tickers, CUSIPs, ISINs, etc.) (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseSecuritiesEarningsLatest&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseSecuritiesEarningsLatest> getSecuritiesLatestEarningsRecordsWithHttpInfo(Integer pageSize, String nextPage, LocalDate date, String identifiers, String nextPage2) throws ApiException {
+        com.squareup.okhttp.Call call = getSecuritiesLatestEarningsRecordsValidateBeforeCall(pageSize, nextPage, date, identifiers, nextPage2, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesEarningsLatest>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Latest Earnings Records for All Securities (asynchronously)
+     * Returns the latest available earnings information for all securities. Returns one earnings record per security, limited to records from the last 90 days, sorted by date_loaded in descending order.
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param date Return earnings records on or before this date. Format YYYY-MM-DD (optional)
+     * @param identifiers A comma-delimited list of security identifiers (tickers, CUSIPs, ISINs, etc.) (optional)
+     * @param nextPage2 Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecuritiesLatestEarningsRecordsAsync(Integer pageSize, String nextPage, LocalDate date, String identifiers, String nextPage2, final ApiCallback<ApiResponseSecuritiesEarningsLatest> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecuritiesLatestEarningsRecordsValidateBeforeCall(pageSize, nextPage, date, identifiers, nextPage2, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesEarningsLatest>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

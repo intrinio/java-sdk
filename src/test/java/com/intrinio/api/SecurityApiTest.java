@@ -4,7 +4,10 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseSecurities;
+import com.intrinio.models.ApiResponseSecuritiesDividendLatest;
+import com.intrinio.models.ApiResponseSecuritiesEarningsLatest;
 import com.intrinio.models.ApiResponseSecuritiesSearch;
+import com.intrinio.models.ApiResponseSecuritiesShortInterest;
 import com.intrinio.models.ApiResponseSecurityAccumulationDistributionIndex;
 import com.intrinio.models.ApiResponseSecurityAverageDailyTradingVolume;
 import com.intrinio.models.ApiResponseSecurityAverageDirectionalIndex;
@@ -31,6 +34,7 @@ import com.intrinio.models.ApiResponseSecurityOnBalanceVolume;
 import com.intrinio.models.ApiResponseSecurityOnBalanceVolumeMean;
 import com.intrinio.models.ApiResponseSecurityQuote;
 import com.intrinio.models.ApiResponseSecurityRelativeStrengthIndex;
+import com.intrinio.models.ApiResponseSecurityShortInterest;
 import com.intrinio.models.ApiResponseSecuritySimpleMovingAverage;
 import com.intrinio.models.ApiResponseSecurityStochasticOscillator;
 import com.intrinio.models.ApiResponseSecurityStockPriceAdjustments;
@@ -107,6 +111,62 @@ public class SecurityApiTest {
         Boolean primaryListing = null;
         String nextPage = null;
         ApiResponseSecurities response = api.getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Latest Dividend Records for All Securities
+     *
+     * Returns the latest available dividend information for all securities. Returns one dividend record per security, limited to records from the last 90 days, sorted by date_loaded in descending order.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecuritiesLatestDividendRecordsTest() throws ApiException, NoSuchMethodException {
+        Integer pageSize = null;
+        String nextPage = null;
+        LocalDate date = null;
+        String identifiers = null;
+        String nextPage2 = null;
+        ApiResponseSecuritiesDividendLatest response = api.getSecuritiesLatestDividendRecords(pageSize, nextPage, date, identifiers, nextPage2);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Latest Earnings Records for All Securities
+     *
+     * Returns the latest available earnings information for all securities. Returns one earnings record per security, limited to records from the last 90 days, sorted by date_loaded in descending order.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecuritiesLatestEarningsRecordsTest() throws ApiException, NoSuchMethodException {
+        Integer pageSize = null;
+        String nextPage = null;
+        LocalDate date = null;
+        String identifiers = null;
+        String nextPage2 = null;
+        ApiResponseSecuritiesEarningsLatest response = api.getSecuritiesLatestEarningsRecords(pageSize, nextPage, date, identifiers, nextPage2);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Latest Short Interest
+     *
+     * Returns the latest short interest data for all securities. The data covers the most recent settlement date and up to 13 days prior, sorted by percentage change in descending order. Each short interest record includes the associated security information.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecuritiesShortInterestTest() throws ApiException, NoSuchMethodException {
+        String nextPage = null;
+        ApiResponseSecuritiesShortInterest response = api.getSecuritiesShortInterest(nextPage);
 
         // TODO: test validations
     }
@@ -1068,6 +1128,23 @@ public class SecurityApiTest {
         String subsource = null;
         LocalDate date = null;
         SecurityReplayFileResult response = api.getSecurityReplayFile(subsource, date);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Short Interest by Security
+     *
+     * Returns historical short interest data for a given security. Short interest data includes settlement date, current and previous short positions, percentage change, days to cover, and average daily volume.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityShortInterestTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String nextPage = null;
+        ApiResponseSecurityShortInterest response = api.getSecurityShortInterest(identifier, nextPage);
 
         // TODO: test validations
     }

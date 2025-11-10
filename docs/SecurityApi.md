@@ -5,6 +5,8 @@ All URIs are relative to *https://api-v2.intrinio.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAllSecurities**](SecurityApi.md#getAllSecurities) | **GET** /securities | All Securities
+[**getSecuritiesLatestDividendRecords**](SecurityApi.md#getSecuritiesLatestDividendRecords) | **GET** /securities/dividends/latest | Latest Dividend Records for All Securities
+[**getSecuritiesLatestEarningsRecords**](SecurityApi.md#getSecuritiesLatestEarningsRecords) | **GET** /securities/earnings/latest | Latest Earnings Records for All Securities
 [**getSecuritiesShortInterest**](SecurityApi.md#getSecuritiesShortInterest) | **GET** /securities/short_interest | Latest Short Interest
 [**getSecurityById**](SecurityApi.md#getSecurityById) | **GET** /securities/{identifier} | Lookup Security
 [**getSecurityDataPointNumber**](SecurityApi.md#getSecurityDataPointNumber) | **GET** /securities/{identifier}/data_point/{tag}/number | Data Point (Number) for Security
@@ -186,6 +188,190 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseSecurities**](ApiResponseSecurities.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:SecurityApi)
+
+[//]: # (METHOD:getSecuritiesLatestDividendRecords)
+
+[//]: # (RETURN_TYPE:ApiResponseSecuritiesDividendLatest)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseSecuritiesDividendLatest.md)
+
+[//]: # (OPERATION:getSecuritiesLatestDividendRecords_v2)
+
+[//]: # (ENDPOINT:/securities/dividends/latest)
+
+[//]: # (DOCUMENT_LINK:SecurityApi.md#getSecuritiesLatestDividendRecords)
+
+<a name="getSecuritiesLatestDividendRecords"></a>
+## **getSecuritiesLatestDividendRecords**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSecuritiesLatestDividendRecords_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseSecuritiesDividendLatest getSecuritiesLatestDividendRecords(pageSize, nextPage, date, identifiers, nextPage2)
+
+#### Latest Dividend Records for All Securities
+
+
+Returns the latest available dividend information for all securities. Returns one dividend record per security, limited to records from the last 90 days, sorted by date_loaded in descending order.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    SecurityApi securityApi = new SecurityApi();
+    Integer pageSize = 100;
+    String nextPage = null;
+    LocalDate date = LocalDate.of();
+    String identifiers = "AAPL,MSFT";
+    String nextPage2 = null;
+    ApiResponseSecuritiesDividendLatest result = securityApi.getSecuritiesLatestDividendRecords(pageSize, nextPage, date, identifiers, nextPage2);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+ **date** | LocalDate| Return dividend records on or before this date. Format YYYY-MM-DD | [optional] &nbsp;
+ **identifiers** | String| A comma-delimited list of security identifiers (tickers, CUSIPs, ISINs, etc.) | [optional] &nbsp;
+ **nextPage2** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseSecuritiesDividendLatest**](ApiResponseSecuritiesDividendLatest.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:SecurityApi)
+
+[//]: # (METHOD:getSecuritiesLatestEarningsRecords)
+
+[//]: # (RETURN_TYPE:ApiResponseSecuritiesEarningsLatest)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseSecuritiesEarningsLatest.md)
+
+[//]: # (OPERATION:getSecuritiesLatestEarningsRecords_v2)
+
+[//]: # (ENDPOINT:/securities/earnings/latest)
+
+[//]: # (DOCUMENT_LINK:SecurityApi.md#getSecuritiesLatestEarningsRecords)
+
+<a name="getSecuritiesLatestEarningsRecords"></a>
+## **getSecuritiesLatestEarningsRecords**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getSecuritiesLatestEarningsRecords_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseSecuritiesEarningsLatest getSecuritiesLatestEarningsRecords(pageSize, nextPage, date, identifiers, nextPage2)
+
+#### Latest Earnings Records for All Securities
+
+
+Returns the latest available earnings information for all securities. Returns one earnings record per security, limited to records from the last 90 days, sorted by date_loaded in descending order.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    SecurityApi securityApi = new SecurityApi();
+    Integer pageSize = 100;
+    String nextPage = null;
+    LocalDate date = LocalDate.of();
+    String identifiers = "AAPL,MSFT";
+    String nextPage2 = null;
+    ApiResponseSecuritiesEarningsLatest result = securityApi.getSecuritiesLatestEarningsRecords(pageSize, nextPage, date, identifiers, nextPage2);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+ **date** | LocalDate| Return earnings records on or before this date. Format YYYY-MM-DD | [optional] &nbsp;
+ **identifiers** | String| A comma-delimited list of security identifiers (tickers, CUSIPs, ISINs, etc.) | [optional] &nbsp;
+ **nextPage2** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseSecuritiesEarningsLatest**](ApiResponseSecuritiesEarningsLatest.md)
 
 [//]: # (END_OPERATION)
 
@@ -1227,7 +1413,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifier** | String| A Security identifier (Ticker, FIGI, ISIN, CUSIP, Intrinio ID) | &nbsp;
  **intervalSize** | String| The interval size to return in minutes (m) or hour (h). | [default to 5m] [enum: 1m, 5m, 10m, 15m, 30m, 60m, 1h] &nbsp;
- **source** | String| Return intervals from the specified data source | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered, nasdaq_basic_last_sale, cboe_one] &nbsp;
+ **source** | String| Return intervals from the specified data source | [optional] [enum: realtime, delayed, nasdaq_basic, nasdaq_basic_filtered, nasdaq_basic_last_sale, cboe_one, equities_edge] &nbsp;
  **startDate** | LocalDate| Return intervals starting at the specified date | [optional] &nbsp;
  **startTime** | String| Return intervals starting at the specified time on the &#x60;start_date&#x60; (24-hour in &#39;hh:mm:ss&#39; format) | [optional] &nbsp;
  **endDate** | LocalDate| Return intervals stopping at the specified date | [optional] &nbsp;

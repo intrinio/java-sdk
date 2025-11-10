@@ -4,8 +4,8 @@ To get an API key, [sign up here](https://intrinio.com/).
 
 Welcome to the Intrinio API! Through our Financial Data Marketplace, we offer a wide selection of financial data feed APIs sourced by our own proprietary processes as well as from many data vendors. For a complete API request / response reference please view the [Intrinio API documentation](https://docs.intrinio.com/documentation/api_v2). If you need additional help in using the API, please visit the [Intrinio website](https://intrinio.com) and click on the chat icon in the lower right corner.
 
-- API version: 2.107.0
-- Package version: 6.34.0
+- API version: 2.112.0
+- Package version: 6.35.0
 
 
 ## Installation
@@ -113,9 +113,9 @@ Class | Method | HTTP request | Description
 *EtFsApi* | [**getAllEtfs**](docs/EtFsApi.md#getAllEtfs) | **GET** /etfs | All ETFs
 *EtFsApi* | [**getEtf**](docs/EtFsApi.md#getEtf) | **GET** /etfs/{identifier} | Lookup ETF
 *EtFsApi* | [**getEtfAnalytics**](docs/EtFsApi.md#getEtfAnalytics) | **GET** /etfs/{identifier}/analytics | ETF Analytics
-*EtFsApi* | [**getEtfHistoricalStats**](docs/EtFsApi.md#getEtfHistoricalStats) | **GET** /etfs/{identifier}/historical_stats | Exchange Traded Fund (ETF) stats
+*EtFsApi* | [**getEtfHistoricalStats**](docs/EtFsApi.md#getEtfHistoricalStats) | **GET** /etfs/{identifier}/historical_stats | Exchange Traded Fund (ETF) Historical Stats
 *EtFsApi* | [**getEtfHoldings**](docs/EtFsApi.md#getEtfHoldings) | **GET** /etfs/{identifier}/holdings | ETF Holdings
-*EtFsApi* | [**getEtfStats**](docs/EtFsApi.md#getEtfStats) | **GET** /etfs/{identifier}/stats | Exchange Traded Fund (ETF) stats
+*EtFsApi* | [**getEtfStats**](docs/EtFsApi.md#getEtfStats) | **GET** /etfs/{identifier}/stats | Exchange Traded Fund (ETF) Stats
 *EtFsApi* | [**searchEtfs**](docs/EtFsApi.md#searchEtfs) | **GET** /etfs/search | Search ETFs
 *FilingApi* | [**getAllFilings**](docs/FilingApi.md#getAllFilings) | **GET** /filings | All Filings
 *FilingApi* | [**getAllNotes**](docs/FilingApi.md#getAllNotes) | **GET** /filings/notes | All Filing Notes
@@ -207,6 +207,9 @@ Class | Method | HTTP request | Description
 *OwnersApi* | [**institutionalHoldingsByOwner**](docs/OwnersApi.md#institutionalHoldingsByOwner) | **GET** /owners/{identifier}/institutional_holdings | Institutional Holdings by Owner
 *OwnersApi* | [**searchOwners**](docs/OwnersApi.md#searchOwners) | **GET** /owners/search | Search Owners
 *SecurityApi* | [**getAllSecurities**](docs/SecurityApi.md#getAllSecurities) | **GET** /securities | All Securities
+*SecurityApi* | [**getSecuritiesLatestDividendRecords**](docs/SecurityApi.md#getSecuritiesLatestDividendRecords) | **GET** /securities/dividends/latest | Latest Dividend Records for All Securities
+*SecurityApi* | [**getSecuritiesLatestEarningsRecords**](docs/SecurityApi.md#getSecuritiesLatestEarningsRecords) | **GET** /securities/earnings/latest | Latest Earnings Records for All Securities
+*SecurityApi* | [**getSecuritiesShortInterest**](docs/SecurityApi.md#getSecuritiesShortInterest) | **GET** /securities/short_interest | Latest Short Interest
 *SecurityApi* | [**getSecurityById**](docs/SecurityApi.md#getSecurityById) | **GET** /securities/{identifier} | Lookup Security
 *SecurityApi* | [**getSecurityDataPointNumber**](docs/SecurityApi.md#getSecurityDataPointNumber) | **GET** /securities/{identifier}/data_point/{tag}/number | Data Point (Number) for Security
 *SecurityApi* | [**getSecurityDataPointText**](docs/SecurityApi.md#getSecurityDataPointText) | **GET** /securities/{identifier}/data_point/{tag}/text | Data Point (Text) for Security
@@ -254,6 +257,7 @@ Class | Method | HTTP request | Description
 *SecurityApi* | [**getSecurityQuote**](docs/SecurityApi.md#getSecurityQuote) | **GET** /securities/{identifier}/quote | Quote for a Security
 *SecurityApi* | [**getSecurityRealtimePrice**](docs/SecurityApi.md#getSecurityRealtimePrice) | **GET** /securities/{identifier}/prices/realtime | Realtime Stock Price for Security
 *SecurityApi* | [**getSecurityReplayFile**](docs/SecurityApi.md#getSecurityReplayFile) | **GET** /securities/replay | Security Replay File
+*SecurityApi* | [**getSecurityShortInterest**](docs/SecurityApi.md#getSecurityShortInterest) | **GET** /securities/{identifier}/short_interest | Short Interest by Security
 *SecurityApi* | [**getSecuritySnapshots**](docs/SecurityApi.md#getSecuritySnapshots) | **GET** /securities/snapshots | Realtime Stock Prices Snapshot
 *SecurityApi* | [**getSecurityStockPriceAdjustments**](docs/SecurityApi.md#getSecurityStockPriceAdjustments) | **GET** /securities/{identifier}/prices/adjustments | Stock Price Adjustments by Security
 *SecurityApi* | [**getSecurityStockPriceAdjustmentsDividends**](docs/SecurityApi.md#getSecurityStockPriceAdjustmentsDividends) | **GET** /securities/{identifier}/prices/adjustments/dividends | Dividends by Security
@@ -405,7 +409,10 @@ Class | Method | HTTP request | Description
  - [ApiResponseSICIndices](docs/ApiResponseSICIndices.md)
  - [ApiResponseSICIndicesSearch](docs/ApiResponseSICIndicesSearch.md)
  - [ApiResponseSecurities](docs/ApiResponseSecurities.md)
+ - [ApiResponseSecuritiesDividendLatest](docs/ApiResponseSecuritiesDividendLatest.md)
+ - [ApiResponseSecuritiesEarningsLatest](docs/ApiResponseSecuritiesEarningsLatest.md)
  - [ApiResponseSecuritiesSearch](docs/ApiResponseSecuritiesSearch.md)
+ - [ApiResponseSecuritiesShortInterest](docs/ApiResponseSecuritiesShortInterest.md)
  - [ApiResponseSecurityAccumulationDistributionIndex](docs/ApiResponseSecurityAccumulationDistributionIndex.md)
  - [ApiResponseSecurityAverageDailyTradingVolume](docs/ApiResponseSecurityAverageDailyTradingVolume.md)
  - [ApiResponseSecurityAverageDirectionalIndex](docs/ApiResponseSecurityAverageDirectionalIndex.md)
@@ -432,6 +439,7 @@ Class | Method | HTTP request | Description
  - [ApiResponseSecurityOnBalanceVolumeMean](docs/ApiResponseSecurityOnBalanceVolumeMean.md)
  - [ApiResponseSecurityQuote](docs/ApiResponseSecurityQuote.md)
  - [ApiResponseSecurityRelativeStrengthIndex](docs/ApiResponseSecurityRelativeStrengthIndex.md)
+ - [ApiResponseSecurityShortInterest](docs/ApiResponseSecurityShortInterest.md)
  - [ApiResponseSecuritySimpleMovingAverage](docs/ApiResponseSecuritySimpleMovingAverage.md)
  - [ApiResponseSecurityStochasticOscillator](docs/ApiResponseSecurityStochasticOscillator.md)
  - [ApiResponseSecurityStockPriceAdjustments](docs/ApiResponseSecurityStockPriceAdjustments.md)
@@ -598,6 +606,8 @@ Class | Method | HTTP request | Description
  - [SecuritySummary](docs/SecuritySummary.md)
  - [SecurityTrades](docs/SecurityTrades.md)
  - [SecurityTradesResult](docs/SecurityTradesResult.md)
+ - [ShortInterest](docs/ShortInterest.md)
+ - [ShortInterestWithSecurity](docs/ShortInterestWithSecurity.md)
  - [SimpleMovingAverageTechnicalValue](docs/SimpleMovingAverageTechnicalValue.md)
  - [StandardizedFinancial](docs/StandardizedFinancial.md)
  - [StandardizedFinancialsDimension](docs/StandardizedFinancialsDimension.md)

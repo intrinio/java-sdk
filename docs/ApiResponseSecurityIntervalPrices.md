@@ -38,6 +38,7 @@ NASDAQ_BASIC | &quot;nasdaq_basic&quot;
 NASDAQ_BASIC_FILTERED | &quot;nasdaq_basic_filtered&quot;
 NASDAQ_BASIC_LAST_SALE | &quot;nasdaq_basic_last_sale&quot;
 CBOE_ONE | &quot;cboe_one&quot;
+EQUITIES_EDGE | &quot;equities_edge&quot;
 
 
 
