@@ -8,6 +8,9 @@ import com.intrinio.models.ApiResponseETFs;
 import com.intrinio.models.ETF;
 import com.intrinio.models.ETFAnalytics;
 import com.intrinio.models.ETFHistoricalStats;
+import com.intrinio.models.ETFNavFlows;
+import com.intrinio.models.ETFNavFlowsAll;
+import com.intrinio.models.ETFNavFlowsHistorical;
 import com.intrinio.models.ETFStats;
 import org.threeten.bp.LocalDate;
 import org.junit.Test;
@@ -78,6 +81,26 @@ public class EtFsApiTest {
     }
     
     /**
+     * Exchange Traded Fund (ETF) Historical NAV Flows
+     *
+     * Returns a list of historical NAV (Net Asset Value) and flows data for Exchange Traded Funds. Includes NAV returns, NAV values, net flows data, share outstanding counts, and total net assets across multiple dates with pagination support.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getEtfHistoricalNavFlowsTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ETFNavFlowsHistorical response = api.getEtfHistoricalNavFlows(identifier, startDate, endDate, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Exchange Traded Fund (ETF) Historical Stats
      *
      * Returns comprehensive key US ETF historical performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
@@ -115,6 +138,26 @@ public class EtFsApiTest {
     }
     
     /**
+     * Exchange Traded Fund (ETF) NAV Flows
+     *
+     * Returns NAV (Net Asset Value) and flows data for Exchange Traded Funds. Includes NAV returns (daily, monthly, quarterly, yearly, annualized), NAV values (unadjusted and adjusted for splits/dividends), net flows data, share outstanding counts, and total net assets.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getEtfNavFlowsTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ETFNavFlows response = api.getEtfNavFlows(identifier, startDate, endDate, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Exchange Traded Fund (ETF) Stats
      *
      * Returns comprehensive key US ETF performance statistics, including prices, NAVs, flows, returns, and much more for both trailing and calendar year periods.
@@ -126,6 +169,24 @@ public class EtFsApiTest {
     public void getEtfStatsTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         ETFStats response = api.getEtfStats(identifier);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Exchange Traded Funds (ETFs) Latest NAV Flows
+     *
+     * Returns the latest NAV (Net Asset Value) and flows data for all Exchange Traded Funds in the specified country, sorted by month-end assets in descending order. Each ETF appears only once with its most recent NAV flows data.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getEtfsNavFlowsTest() throws ApiException, NoSuchMethodException {
+        String countryCode = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ETFNavFlowsAll response = api.getEtfsNavFlows(countryCode, pageSize, nextPage);
 
         // TODO: test validations
     }

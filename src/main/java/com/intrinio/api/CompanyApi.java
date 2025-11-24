@@ -16,10 +16,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import com.intrinio.models.ApiResponseAllExpectedEarningsDates;
 import com.intrinio.models.ApiResponseCompanies;
 import com.intrinio.models.ApiResponseCompaniesSearch;
 import com.intrinio.models.ApiResponseCompanyAnswers;
 import com.intrinio.models.ApiResponseCompanyDailyMetrics;
+import com.intrinio.models.ApiResponseCompanyExpectedEarningsDates;
 import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
@@ -65,6 +67,328 @@ public class CompanyApi {
         this.apiClient = apiClient;
     }
 
+    /**
+     * Build call for allExpectedEarningsDates
+     * @param tickers Comma-delimited list of tickers to filter results (optional)
+     * @param fiscalYear Filter by fiscal year (optional)
+     * @param fiscalPeriod Filter by fiscal period (Q1, Q2, Q3, FY) (optional)
+     * @param expectedDateAfter Returns expected dates on or after this date. Defaults to today if not provided. (optional, default to today)
+     * @param expectedDateBefore Returns expected dates before this date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call allExpectedEarningsDatesCall(String tickers, Integer fiscalYear, String fiscalPeriod, LocalDate expectedDateAfter, LocalDate expectedDateBefore, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/companies/upcoming_earnings";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (tickers != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("tickers", tickers));
+        if (fiscalYear != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_year", fiscalYear));
+        if (fiscalPeriod != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_period", fiscalPeriod));
+        if (expectedDateAfter != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("expected_date_after", expectedDateAfter));
+        if (expectedDateBefore != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("expected_date_before", expectedDateBefore));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call allExpectedEarningsDatesValidateBeforeCall(String tickers, Integer fiscalYear, String fiscalPeriod, LocalDate expectedDateAfter, LocalDate expectedDateBefore, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = allExpectedEarningsDatesCall(tickers, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * All Expected Earnings Dates
+     * Returns expected earnings announcement dates for all companies, optionally filtered by tickers. Results are always sorted by expected date ascending and include company identification.
+     * @param tickers Comma-delimited list of tickers to filter results (optional)
+     * @param fiscalYear Filter by fiscal year (optional)
+     * @param fiscalPeriod Filter by fiscal period (Q1, Q2, Q3, FY) (optional)
+     * @param expectedDateAfter Returns expected dates on or after this date. Defaults to today if not provided. (optional, default to today)
+     * @param expectedDateBefore Returns expected dates before this date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseAllExpectedEarningsDates
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseAllExpectedEarningsDates allExpectedEarningsDates(String tickers, Integer fiscalYear, String fiscalPeriod, LocalDate expectedDateAfter, LocalDate expectedDateBefore, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("allExpectedEarningsDatesWithHttpInfo", String.class, Integer.class, String.class, LocalDate.class, LocalDate.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { tickers, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage };
+      ApiResponse<ApiResponseAllExpectedEarningsDates> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * All Expected Earnings Dates
+     * Returns expected earnings announcement dates for all companies, optionally filtered by tickers. Results are always sorted by expected date ascending and include company identification.
+     * @param tickers Comma-delimited list of tickers to filter results (optional)
+     * @param fiscalYear Filter by fiscal year (optional)
+     * @param fiscalPeriod Filter by fiscal period (Q1, Q2, Q3, FY) (optional)
+     * @param expectedDateAfter Returns expected dates on or after this date. Defaults to today if not provided. (optional, default to today)
+     * @param expectedDateBefore Returns expected dates before this date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseAllExpectedEarningsDates&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseAllExpectedEarningsDates> allExpectedEarningsDatesWithHttpInfo(String tickers, Integer fiscalYear, String fiscalPeriod, LocalDate expectedDateAfter, LocalDate expectedDateBefore, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = allExpectedEarningsDatesValidateBeforeCall(tickers, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseAllExpectedEarningsDates>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * All Expected Earnings Dates (asynchronously)
+     * Returns expected earnings announcement dates for all companies, optionally filtered by tickers. Results are always sorted by expected date ascending and include company identification.
+     * @param tickers Comma-delimited list of tickers to filter results (optional)
+     * @param fiscalYear Filter by fiscal year (optional)
+     * @param fiscalPeriod Filter by fiscal period (Q1, Q2, Q3, FY) (optional)
+     * @param expectedDateAfter Returns expected dates on or after this date. Defaults to today if not provided. (optional, default to today)
+     * @param expectedDateBefore Returns expected dates before this date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call allExpectedEarningsDatesAsync(String tickers, Integer fiscalYear, String fiscalPeriod, LocalDate expectedDateAfter, LocalDate expectedDateBefore, Integer pageSize, String nextPage, final ApiCallback<ApiResponseAllExpectedEarningsDates> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = allExpectedEarningsDatesValidateBeforeCall(tickers, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseAllExpectedEarningsDates>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for expectedEarningsDatesByCompany
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param fiscalYear Filter by fiscal year (optional)
+     * @param fiscalPeriod Filter by fiscal period (Q1, Q2, Q3, FY) (optional)
+     * @param expectedDateAfter Returns expected dates on or after this date. Defaults to today if not provided. (optional, default to today)
+     * @param expectedDateBefore Returns expected dates before this date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call expectedEarningsDatesByCompanyCall(String identifier, Integer fiscalYear, String fiscalPeriod, LocalDate expectedDateAfter, LocalDate expectedDateBefore, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/companies/{identifier}/upcoming_earnings"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (fiscalYear != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_year", fiscalYear));
+        if (fiscalPeriod != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("fiscal_period", fiscalPeriod));
+        if (expectedDateAfter != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("expected_date_after", expectedDateAfter));
+        if (expectedDateBefore != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("expected_date_before", expectedDateBefore));
+        if (pageSize != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call expectedEarningsDatesByCompanyValidateBeforeCall(String identifier, Integer fiscalYear, String fiscalPeriod, LocalDate expectedDateAfter, LocalDate expectedDateBefore, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling expectedEarningsDatesByCompany(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = expectedEarningsDatesByCompanyCall(identifier, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Expected Earnings Dates by Company
+     * Returns expected earnings announcement dates for a company&#39;s fiscal periods with confidence intervals and historical filing date ranges.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param fiscalYear Filter by fiscal year (optional)
+     * @param fiscalPeriod Filter by fiscal period (Q1, Q2, Q3, FY) (optional)
+     * @param expectedDateAfter Returns expected dates on or after this date. Defaults to today if not provided. (optional, default to today)
+     * @param expectedDateBefore Returns expected dates before this date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseCompanyExpectedEarningsDates
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseCompanyExpectedEarningsDates expectedEarningsDatesByCompany(String identifier, Integer fiscalYear, String fiscalPeriod, LocalDate expectedDateAfter, LocalDate expectedDateBefore, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("expectedEarningsDatesByCompanyWithHttpInfo", String.class, Integer.class, String.class, LocalDate.class, LocalDate.class, Integer.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage };
+      ApiResponse<ApiResponseCompanyExpectedEarningsDates> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Expected Earnings Dates by Company
+     * Returns expected earnings announcement dates for a company&#39;s fiscal periods with confidence intervals and historical filing date ranges.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param fiscalYear Filter by fiscal year (optional)
+     * @param fiscalPeriod Filter by fiscal period (Q1, Q2, Q3, FY) (optional)
+     * @param expectedDateAfter Returns expected dates on or after this date. Defaults to today if not provided. (optional, default to today)
+     * @param expectedDateBefore Returns expected dates before this date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseCompanyExpectedEarningsDates&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseCompanyExpectedEarningsDates> expectedEarningsDatesByCompanyWithHttpInfo(String identifier, Integer fiscalYear, String fiscalPeriod, LocalDate expectedDateAfter, LocalDate expectedDateBefore, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = expectedEarningsDatesByCompanyValidateBeforeCall(identifier, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanyExpectedEarningsDates>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Expected Earnings Dates by Company (asynchronously)
+     * Returns expected earnings announcement dates for a company&#39;s fiscal periods with confidence intervals and historical filing date ranges.
+     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
+     * @param fiscalYear Filter by fiscal year (optional)
+     * @param fiscalPeriod Filter by fiscal period (Q1, Q2, Q3, FY) (optional)
+     * @param expectedDateAfter Returns expected dates on or after this date. Defaults to today if not provided. (optional, default to today)
+     * @param expectedDateBefore Returns expected dates before this date. (optional)
+     * @param pageSize The number of results to return (optional, default to 100)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call expectedEarningsDatesByCompanyAsync(String identifier, Integer fiscalYear, String fiscalPeriod, LocalDate expectedDateAfter, LocalDate expectedDateBefore, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanyExpectedEarningsDates> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = expectedEarningsDatesByCompanyValidateBeforeCall(identifier, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseCompanyExpectedEarningsDates>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
     /**
      * Build call for getAllCompanies
      * @param latestFilingDate Return companies whose latest 10-Q or 10-K was filed on or after this date (optional)
@@ -1014,8 +1338,8 @@ public class CompanyApi {
     }
     /**
      * Build call for getCompanyDataPointNumber
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1086,8 +1410,8 @@ public class CompanyApi {
     /**
      * Data Point (Number) for Company
      * Returns latest value for calculations, metrics, and financial data points for a company.
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @return BigDecimal
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
@@ -1103,8 +1427,8 @@ public class CompanyApi {
     /**
      * Data Point (Number) for Company
      * Returns latest value for calculations, metrics, and financial data points for a company.
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @return ApiResponse&lt;BigDecimal&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1117,8 +1441,8 @@ public class CompanyApi {
     /**
      * Data Point (Number) for Company (asynchronously)
      * Returns latest value for calculations, metrics, and financial data points for a company.
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1151,8 +1475,8 @@ public class CompanyApi {
     }
     /**
      * Build call for getCompanyDataPointText
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -1223,8 +1547,8 @@ public class CompanyApi {
     /**
      * Data Point (Text) for Company
      * Returns latest value for metadata items for a company.
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
@@ -1240,8 +1564,8 @@ public class CompanyApi {
     /**
      * Data Point (Text) for Company
      * Returns latest value for metadata items for a company.
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -1254,8 +1578,8 @@ public class CompanyApi {
     /**
      * Data Point (Text) for Company (asynchronously)
      * Returns latest value for metadata items for a company.
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_data_point_identifier_description$$ (required)
+     * @param tag $$v2_company_data_point_item_description$$ (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1662,8 +1986,8 @@ public class CompanyApi {
     }
     /**
      * Build call for getCompanyHistoricalData
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * @param identifier $$v2_company_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_company_historical_data_item_description$$ (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Return historical data for given fiscal period type (optional)
      * @param startDate Return historical data on or after this date (optional)
@@ -1754,9 +2078,9 @@ public class CompanyApi {
 
     /**
      * Historical Data for Company
-     * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_historical_data_description$$
+     * @param identifier $$v2_company_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_company_historical_data_item_description$$ (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Return historical data for given fiscal period type (optional)
      * @param startDate Return historical data on or after this date (optional)
@@ -1778,9 +2102,9 @@ public class CompanyApi {
 
     /**
      * Historical Data for Company
-     * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_historical_data_description$$
+     * @param identifier $$v2_company_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_company_historical_data_item_description$$ (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Return historical data for given fiscal period type (optional)
      * @param startDate Return historical data on or after this date (optional)
@@ -1799,9 +2123,9 @@ public class CompanyApi {
 
     /**
      * Historical Data for Company (asynchronously)
-     * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
+     * $$v2_company_historical_data_description$$
+     * @param identifier $$v2_company_historical_data_identifier_description$$ (required)
+     * @param tag $$v2_company_historical_data_item_description$$ (required)
      * @param frequency Return historical data in the given frequency (optional, default to daily)
      * @param type Return historical data for given fiscal period type (optional)
      * @param startDate Return historical data on or after this date (optional)

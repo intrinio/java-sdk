@@ -4,6 +4,8 @@ All URIs are relative to *https://api-v2.intrinio.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**allExpectedEarningsDates**](CompanyApi.md#allExpectedEarningsDates) | **GET** /companies/upcoming_earnings | All Expected Earnings Dates
+[**expectedEarningsDatesByCompany**](CompanyApi.md#expectedEarningsDatesByCompany) | **GET** /companies/{identifier}/upcoming_earnings | Expected Earnings Dates by Company
 [**getAllCompanies**](CompanyApi.md#getAllCompanies) | **GET** /companies | All Companies
 [**getAllCompaniesDailyMetrics**](CompanyApi.md#getAllCompaniesDailyMetrics) | **GET** /companies/daily_metrics | All Companies daily metrics
 [**getAllCompanyNews**](CompanyApi.md#getAllCompanyNews) | **GET** /companies/news | All News
@@ -27,6 +29,198 @@ Method | HTTP request | Description
 [**searchCompanies**](CompanyApi.md#searchCompanies) | **GET** /companies/search | Search Companies
 [**sharesOutstandingByCompany**](CompanyApi.md#sharesOutstandingByCompany) | **GET** /companies/{identifier}/shares_outstanding | Shares Outstanding by Company
 
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:CompanyApi)
+
+[//]: # (METHOD:allExpectedEarningsDates)
+
+[//]: # (RETURN_TYPE:ApiResponseAllExpectedEarningsDates)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseAllExpectedEarningsDates.md)
+
+[//]: # (OPERATION:allExpectedEarningsDates_v2)
+
+[//]: # (ENDPOINT:/companies/upcoming_earnings)
+
+[//]: # (DOCUMENT_LINK:CompanyApi.md#allExpectedEarningsDates)
+
+<a name="allExpectedEarningsDates"></a>
+## **allExpectedEarningsDates**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/allExpectedEarningsDates_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseAllExpectedEarningsDates allExpectedEarningsDates(tickers, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage)
+
+#### All Expected Earnings Dates
+
+
+Returns expected earnings announcement dates for all companies, optionally filtered by tickers. Results are always sorted by expected date ascending and include company identification.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    CompanyApi companyApi = new CompanyApi();
+    String tickers = null;
+    Integer fiscalYear = null;
+    String fiscalPeriod = null;
+    LocalDate expectedDateAfter = null;
+    LocalDate expectedDateBefore = null;
+    Integer pageSize = 100;
+    String nextPage = null;
+    ApiResponseAllExpectedEarningsDates result = companyApi.allExpectedEarningsDates(tickers, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tickers** | String| Comma-delimited list of tickers to filter results | [optional] &nbsp;
+ **fiscalYear** | Integer| Filter by fiscal year | [optional] &nbsp;
+ **fiscalPeriod** | String| Filter by fiscal period (Q1, Q2, Q3, FY) | [optional] &nbsp;
+ **expectedDateAfter** | LocalDate| Returns expected dates on or after this date. Defaults to today if not provided. | [optional] [default to today] &nbsp;
+ **expectedDateBefore** | LocalDate| Returns expected dates before this date. | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseAllExpectedEarningsDates**](ApiResponseAllExpectedEarningsDates.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:CompanyApi)
+
+[//]: # (METHOD:expectedEarningsDatesByCompany)
+
+[//]: # (RETURN_TYPE:ApiResponseCompanyExpectedEarningsDates)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseCompanyExpectedEarningsDates.md)
+
+[//]: # (OPERATION:expectedEarningsDatesByCompany_v2)
+
+[//]: # (ENDPOINT:/companies/{identifier}/upcoming_earnings)
+
+[//]: # (DOCUMENT_LINK:CompanyApi.md#expectedEarningsDatesByCompany)
+
+<a name="expectedEarningsDatesByCompany"></a>
+## **expectedEarningsDatesByCompany**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/expectedEarningsDatesByCompany_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseCompanyExpectedEarningsDates expectedEarningsDatesByCompany(identifier, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage)
+
+#### Expected Earnings Dates by Company
+
+
+Returns expected earnings announcement dates for a company&#39;s fiscal periods with confidence intervals and historical filing date ranges.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    CompanyApi companyApi = new CompanyApi();
+    String identifier = "AAPL";
+    Integer fiscalYear = null;
+    String fiscalPeriod = null;
+    LocalDate expectedDateAfter = null;
+    LocalDate expectedDateBefore = null;
+    Integer pageSize = 100;
+    String nextPage = null;
+    ApiResponseCompanyExpectedEarningsDates result = companyApi.expectedEarningsDatesByCompany(identifier, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
+ **fiscalYear** | Integer| Filter by fiscal year | [optional] &nbsp;
+ **fiscalPeriod** | String| Filter by fiscal period (Q1, Q2, Q3, FY) | [optional] &nbsp;
+ **expectedDateAfter** | LocalDate| Returns expected dates on or after this date. Defaults to today if not provided. | [optional] [default to today] &nbsp;
+ **expectedDateBefore** | LocalDate| Returns expected dates before this date. | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseCompanyExpectedEarningsDates**](ApiResponseCompanyExpectedEarningsDates.md)
+
+[//]: # (END_OPERATION)
 
 
 [//]: # (START_OPERATION)
@@ -653,8 +847,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String tag = "marketcap";
+    String identifier = "$$v2_company_data_point_identifier_default$$";
+    String tag = "$$v2_company_data_point_item_number_default$$";
     BigDecimal result = companyApi.getCompanyDataPointNumber(identifier, tag);
     System.out.println(result);
   }
@@ -670,8 +864,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
- **tag** | String| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
+ **identifier** | String| $$v2_company_data_point_identifier_description$$ | &nbsp;
+ **tag** | String| $$v2_company_data_point_item_description$$ | &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -739,8 +933,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String tag = "ceo";
+    String identifier = "$$v2_company_data_point_identifier_default$$";
+    String tag = "$$v2_company_data_point_item_text_default$$";
     String result = companyApi.getCompanyDataPointText(identifier, tag);
     System.out.println(result);
   }
@@ -756,8 +950,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
- **tag** | String| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
+ **identifier** | String| $$v2_company_data_point_identifier_description$$ | &nbsp;
+ **tag** | String| $$v2_company_data_point_item_description$$ | &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -1007,7 +1201,7 @@ Name | Type | Description  | Notes
 #### Historical Data for Company
 
 
-Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
+$$v2_company_historical_data_description$$
 
 [//]: # (END_OVERVIEW)
 
@@ -1033,8 +1227,8 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     CompanyApi companyApi = new CompanyApi();
-    String identifier = "AAPL";
-    String tag = "marketcap";
+    String identifier = "$$v2_company_historical_data_identifier_default$$";
+    String tag = "$$v2_company_historical_data_item_default$$";
     String frequency = "daily";
     String type = null;
     LocalDate startDate = LocalDate.of(2018,1,01);
@@ -1057,8 +1251,8 @@ public class Main {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifier** | String| A Company identifier (Ticker, CIK, LEI, Intrinio ID) | &nbsp;
- **tag** | String| An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) | &nbsp;
+ **identifier** | String| $$v2_company_historical_data_identifier_description$$ | &nbsp;
+ **tag** | String| $$v2_company_historical_data_item_description$$ | &nbsp;
  **frequency** | String| Return historical data in the given frequency | [optional] [default to daily] [enum: daily, weekly, monthly, quarterly, yearly] &nbsp;
  **type** | String| Return historical data for given fiscal period type | [optional] [enum: FY, QTR, TTM] &nbsp;
  **startDate** | LocalDate| Return historical data on or after this date | [optional] &nbsp;

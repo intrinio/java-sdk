@@ -3,10 +3,12 @@
 package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
+import com.intrinio.models.ApiResponseAllExpectedEarningsDates;
 import com.intrinio.models.ApiResponseCompanies;
 import com.intrinio.models.ApiResponseCompaniesSearch;
 import com.intrinio.models.ApiResponseCompanyAnswers;
 import com.intrinio.models.ApiResponseCompanyDailyMetrics;
+import com.intrinio.models.ApiResponseCompanyExpectedEarningsDates;
 import com.intrinio.models.ApiResponseCompanyFilings;
 import com.intrinio.models.ApiResponseCompanyFundamentals;
 import com.intrinio.models.ApiResponseCompanyHistoricalData;
@@ -41,6 +43,50 @@ public class CompanyApiTest {
 
     private final CompanyApi api = new CompanyApi();
 
+    
+    /**
+     * All Expected Earnings Dates
+     *
+     * Returns expected earnings announcement dates for all companies, optionally filtered by tickers. Results are always sorted by expected date ascending and include company identification.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void allExpectedEarningsDatesTest() throws ApiException, NoSuchMethodException {
+        String tickers = null;
+        Integer fiscalYear = null;
+        String fiscalPeriod = null;
+        LocalDate expectedDateAfter = null;
+        LocalDate expectedDateBefore = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseAllExpectedEarningsDates response = api.allExpectedEarningsDates(tickers, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Expected Earnings Dates by Company
+     *
+     * Returns expected earnings announcement dates for a company&#39;s fiscal periods with confidence intervals and historical filing date ranges.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void expectedEarningsDatesByCompanyTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        Integer fiscalYear = null;
+        String fiscalPeriod = null;
+        LocalDate expectedDateAfter = null;
+        LocalDate expectedDateBefore = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseCompanyExpectedEarningsDates response = api.expectedEarningsDatesByCompany(identifier, fiscalYear, fiscalPeriod, expectedDateAfter, expectedDateBefore, pageSize, nextPage);
+
+        // TODO: test validations
+    }
     
     /**
      * All Companies
@@ -259,7 +305,7 @@ public class CompanyApiTest {
     /**
      * Historical Data for Company
      *
-     * Returns historical values for the given &#x60;tag&#x60; and the Company with the given &#x60;identifier&#x60;
+     * $$v2_company_historical_data_description$$
      *
      * @throws ApiException
      *          if the Api call fails

@@ -94,7 +94,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -186,7 +186,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 22;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -280,7 +280,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -374,7 +374,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer shortPeriod = 5;
     Integer longPeriod = 34;
     String startDate = "2018-01-01";
@@ -470,7 +470,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -564,7 +564,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     Float standardDeviations = 2.0F;
     String priceKey = "close";
@@ -662,7 +662,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     Float constant = 0.015F;
     String startDate = "2018-01-01";
@@ -758,7 +758,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -852,7 +852,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     String priceKey = "close";
     String startDate = "2018-01-01";
@@ -948,7 +948,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     String priceKey = "close";
     String startDate = "2018-01-01";
@@ -1044,7 +1044,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -1138,7 +1138,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -1230,7 +1230,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer lowPeriod = 9;
     Integer mediumPeriod = 26;
     Integer highPeriod = 52;
@@ -1328,7 +1328,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 10;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -1422,7 +1422,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer roc1 = 10;
     Integer roc2 = 15;
     Integer roc3 = 20;
@@ -1532,7 +1532,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer fastPeriod = 12;
     Integer slowPeriod = 26;
     Integer signalPeriod = 9;
@@ -1632,7 +1632,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -1726,7 +1726,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer emaPeriod = 9;
     Integer sumPeriod = 25;
     String startDate = "2018-01-01";
@@ -1822,7 +1822,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -1914,7 +1914,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -2006,7 +2006,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 10;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -2100,7 +2100,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String priceKey = "close";
     String startDate = "2018-01-01";
@@ -2196,7 +2196,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 20;
     String priceKey = "close";
     String startDate = "2018-01-01";
@@ -2292,7 +2292,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     Integer signalPeriod = 3;
     String startDate = "2018-01-01";
@@ -2388,7 +2388,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 15;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -2482,7 +2482,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer lowPeriod = 13;
     Integer highPeriod = 25;
     String priceKey = "close";
@@ -2580,7 +2580,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer shortPeriod = 7;
     Integer mediumPeriod = 14;
     Integer longPeriod = 28;
@@ -2684,7 +2684,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
@@ -2778,7 +2778,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -2870,7 +2870,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";
     Integer pageSize = 100;
@@ -2962,7 +2962,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     TechnicalApi technicalApi = new TechnicalApi();
-    String identifier = "AAPL";
+    String identifier = "$$v2_ticker_default$$";
     Integer period = 14;
     String startDate = "2018-01-01";
     String endDate = "2019-01-01";

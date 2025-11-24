@@ -7,9 +7,12 @@ Method | HTTP request | Description
 [**getAllEtfs**](EtFsApi.md#getAllEtfs) | **GET** /etfs | All ETFs
 [**getEtf**](EtFsApi.md#getEtf) | **GET** /etfs/{identifier} | Lookup ETF
 [**getEtfAnalytics**](EtFsApi.md#getEtfAnalytics) | **GET** /etfs/{identifier}/analytics | ETF Analytics
+[**getEtfHistoricalNavFlows**](EtFsApi.md#getEtfHistoricalNavFlows) | **GET** /etfs/{identifier}/nav_flows/historical | Exchange Traded Fund (ETF) Historical NAV Flows
 [**getEtfHistoricalStats**](EtFsApi.md#getEtfHistoricalStats) | **GET** /etfs/{identifier}/historical_stats | Exchange Traded Fund (ETF) Historical Stats
 [**getEtfHoldings**](EtFsApi.md#getEtfHoldings) | **GET** /etfs/{identifier}/holdings | ETF Holdings
+[**getEtfNavFlows**](EtFsApi.md#getEtfNavFlows) | **GET** /etfs/{identifier}/nav_flows | Exchange Traded Fund (ETF) NAV Flows
 [**getEtfStats**](EtFsApi.md#getEtfStats) | **GET** /etfs/{identifier}/stats | Exchange Traded Fund (ETF) Stats
+[**getEtfsNavFlows**](EtFsApi.md#getEtfsNavFlows) | **GET** /etfs/nav_flows | Exchange Traded Funds (ETFs) Latest NAV Flows
 [**searchEtfs**](EtFsApi.md#searchEtfs) | **GET** /etfs/search | Search ETFs
 
 
@@ -274,6 +277,98 @@ Name | Type | Description  | Notes
 
 [//]: # (CLASS:EtFsApi)
 
+[//]: # (METHOD:getEtfHistoricalNavFlows)
+
+[//]: # (RETURN_TYPE:ETFNavFlowsHistorical)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ETFNavFlowsHistorical.md)
+
+[//]: # (OPERATION:getEtfHistoricalNavFlows_v2)
+
+[//]: # (ENDPOINT:/etfs/{identifier}/nav_flows/historical)
+
+[//]: # (DOCUMENT_LINK:EtFsApi.md#getEtfHistoricalNavFlows)
+
+<a name="getEtfHistoricalNavFlows"></a>
+## **getEtfHistoricalNavFlows**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getEtfHistoricalNavFlows_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ETFNavFlowsHistorical getEtfHistoricalNavFlows(identifier, startDate, endDate, pageSize, nextPage)
+
+#### Exchange Traded Fund (ETF) Historical NAV Flows
+
+
+Returns a list of historical NAV (Net Asset Value) and flows data for Exchange Traded Funds. Includes NAV returns, NAV values, net flows data, share outstanding counts, and total net assets across multiple dates with pagination support.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    EtFsApi etFsApi = new EtFsApi();
+    String identifier = "SPY";
+    LocalDate startDate = LocalDate.of();
+    LocalDate endDate = LocalDate.of();
+    Integer pageSize = 100;
+    String nextPage = "nextPage_example";
+    ETFNavFlowsHistorical result = etFsApi.getEtfHistoricalNavFlows(identifier, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) | &nbsp;
+ **startDate** | LocalDate| Return NAV flows on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Return NAV flows on or before this date | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ETFNavFlowsHistorical**](ETFNavFlowsHistorical.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:EtFsApi)
+
 [//]: # (METHOD:getEtfHistoricalStats)
 
 [//]: # (RETURN_TYPE:ETFHistoricalStats)
@@ -452,6 +547,98 @@ Name | Type | Description  | Notes
 
 [//]: # (CLASS:EtFsApi)
 
+[//]: # (METHOD:getEtfNavFlows)
+
+[//]: # (RETURN_TYPE:ETFNavFlows)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ETFNavFlows.md)
+
+[//]: # (OPERATION:getEtfNavFlows_v2)
+
+[//]: # (ENDPOINT:/etfs/{identifier}/nav_flows)
+
+[//]: # (DOCUMENT_LINK:EtFsApi.md#getEtfNavFlows)
+
+<a name="getEtfNavFlows"></a>
+## **getEtfNavFlows**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getEtfNavFlows_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ETFNavFlows getEtfNavFlows(identifier, startDate, endDate, pageSize, nextPage)
+
+#### Exchange Traded Fund (ETF) NAV Flows
+
+
+Returns NAV (Net Asset Value) and flows data for Exchange Traded Funds. Includes NAV returns (daily, monthly, quarterly, yearly, annualized), NAV values (unadjusted and adjusted for splits/dividends), net flows data, share outstanding counts, and total net assets.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    EtFsApi etFsApi = new EtFsApi();
+    String identifier = "SPY";
+    LocalDate startDate = LocalDate.of();
+    LocalDate endDate = LocalDate.of();
+    Integer pageSize = 100;
+    String nextPage = "nextPage_example";
+    ETFNavFlows result = etFsApi.getEtfNavFlows(identifier, startDate, endDate, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| An ETF identifier (Ticker, Figi Ticker, ISIN, RIC, Intrinio ID) | &nbsp;
+ **startDate** | LocalDate| Return NAV flows on or after this date | [optional] &nbsp;
+ **endDate** | LocalDate| Return NAV flows on or before this date | [optional] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ETFNavFlows**](ETFNavFlows.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:EtFsApi)
+
 [//]: # (METHOD:getEtfStats)
 
 [//]: # (RETURN_TYPE:ETFStats)
@@ -528,6 +715,94 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ETFStats**](ETFStats.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:EtFsApi)
+
+[//]: # (METHOD:getEtfsNavFlows)
+
+[//]: # (RETURN_TYPE:ETFNavFlowsAll)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ETFNavFlowsAll.md)
+
+[//]: # (OPERATION:getEtfsNavFlows_v2)
+
+[//]: # (ENDPOINT:/etfs/nav_flows)
+
+[//]: # (DOCUMENT_LINK:EtFsApi.md#getEtfsNavFlows)
+
+<a name="getEtfsNavFlows"></a>
+## **getEtfsNavFlows**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getEtfsNavFlows_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ETFNavFlowsAll getEtfsNavFlows(countryCode, pageSize, nextPage)
+
+#### Exchange Traded Funds (ETFs) Latest NAV Flows
+
+
+Returns the latest NAV (Net Asset Value) and flows data for all Exchange Traded Funds in the specified country, sorted by month-end assets in descending order. Each ETF appears only once with its most recent NAV flows data.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    EtFsApi etFsApi = new EtFsApi();
+    String countryCode = "US";
+    Integer pageSize = 100;
+    String nextPage = "nextPage_example";
+    ETFNavFlowsAll result = etFsApi.getEtfsNavFlows(countryCode, pageSize, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **countryCode** | String| The ISO country code to filter ETFs by (e.g., US, CA, GB). Defaults to US. | [optional] [default to US] &nbsp;
+ **pageSize** | Integer| The number of results to return | [optional] [default to 100] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ETFNavFlowsAll**](ETFNavFlowsAll.md)
 
 [//]: # (END_OPERATION)
 
