@@ -13,8 +13,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * ApiResponseAccountCurrentUsagesAccount
+ * The account.
  */
+@ApiModel(description = "The account.")
 
 public class ApiResponseAccountCurrentUsagesAccount {
   @SerializedName("email")
