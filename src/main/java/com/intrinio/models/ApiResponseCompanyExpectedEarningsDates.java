@@ -44,10 +44,10 @@ public class ApiResponseCompanyExpectedEarningsDates {
   }
 
    /**
-   * Get expectedEarningsDates
+   * Expected earnings dates.
    * @return expectedEarningsDates
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Expected earnings dates.")
   public List<EarningsDateEstimate> getExpectedEarningsDates() {
     return expectedEarningsDates;
   }

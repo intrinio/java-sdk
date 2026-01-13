@@ -8,7 +8,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.intrinio.models.EarningsDateEstimate;
 import com.intrinio.models.EarningsDateEstimateConfidenceIntervals;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -20,10 +19,17 @@ import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * EarningsDateEstimateWithCompany
+ * An estimated earnings announcement date for a company&#39;s fiscal period
  */
+@ApiModel(description = "An estimated earnings announcement date for a company's fiscal period")
 
 public class EarningsDateEstimateWithCompany {
+  @SerializedName("company_id")
+  private String companyId = null;
+
+  @SerializedName("ticker")
+  private String ticker = null;
+
   @SerializedName("fiscal_year")
   private Integer fiscalYear = null;
 
@@ -45,11 +51,41 @@ public class EarningsDateEstimateWithCompany {
   @SerializedName("confidence_intervals")
   private Map<String, EarningsDateEstimateConfidenceIntervals> confidenceIntervals = null;
 
-  @SerializedName("company_id")
-  private String companyId = null;
+  public EarningsDateEstimateWithCompany companyId(String companyId) {
+    this.companyId = companyId;
+    return this;
+  }
 
-  @SerializedName("ticker")
-  private String ticker = null;
+   /**
+   * The Intrinio ID for the company
+   * @return companyId
+  **/
+  @ApiModelProperty(value = "The Intrinio ID for the company")
+  public String getCompanyId() {
+    return companyId;
+  }
+
+  public void setCompanyId(String companyId) {
+    this.companyId = companyId;
+  }
+
+  public EarningsDateEstimateWithCompany ticker(String ticker) {
+    this.ticker = ticker;
+    return this;
+  }
+
+   /**
+   * The ticker symbol of the company
+   * @return ticker
+  **/
+  @ApiModelProperty(value = "The ticker symbol of the company")
+  public String getTicker() {
+    return ticker;
+  }
+
+  public void setTicker(String ticker) {
+    this.ticker = ticker;
+  }
 
   public EarningsDateEstimateWithCompany fiscalYear(Integer fiscalYear) {
     this.fiscalYear = fiscalYear;
@@ -185,42 +221,6 @@ public class EarningsDateEstimateWithCompany {
     this.confidenceIntervals = confidenceIntervals;
   }
 
-  public EarningsDateEstimateWithCompany companyId(String companyId) {
-    this.companyId = companyId;
-    return this;
-  }
-
-   /**
-   * The Intrinio ID for the company
-   * @return companyId
-  **/
-  @ApiModelProperty(value = "The Intrinio ID for the company")
-  public String getCompanyId() {
-    return companyId;
-  }
-
-  public void setCompanyId(String companyId) {
-    this.companyId = companyId;
-  }
-
-  public EarningsDateEstimateWithCompany ticker(String ticker) {
-    this.ticker = ticker;
-    return this;
-  }
-
-   /**
-   * The ticker symbol of the company
-   * @return ticker
-  **/
-  @ApiModelProperty(value = "The ticker symbol of the company")
-  public String getTicker() {
-    return ticker;
-  }
-
-  public void setTicker(String ticker) {
-    this.ticker = ticker;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -231,20 +231,20 @@ public class EarningsDateEstimateWithCompany {
       return false;
     }
     EarningsDateEstimateWithCompany earningsDateEstimateWithCompany = (EarningsDateEstimateWithCompany) o;
-    return Objects.equals(this.fiscalYear, earningsDateEstimateWithCompany.fiscalYear) &&
+    return Objects.equals(this.companyId, earningsDateEstimateWithCompany.companyId) &&
+        Objects.equals(this.ticker, earningsDateEstimateWithCompany.ticker) &&
+        Objects.equals(this.fiscalYear, earningsDateEstimateWithCompany.fiscalYear) &&
         Objects.equals(this.fiscalPeriod, earningsDateEstimateWithCompany.fiscalPeriod) &&
         Objects.equals(this.expectedDate, earningsDateEstimateWithCompany.expectedDate) &&
         Objects.equals(this.expected8kAt, earningsDateEstimateWithCompany.expected8kAt) &&
         Objects.equals(this.historicallyEarliest, earningsDateEstimateWithCompany.historicallyEarliest) &&
         Objects.equals(this.historicallyLatest, earningsDateEstimateWithCompany.historicallyLatest) &&
-        Objects.equals(this.confidenceIntervals, earningsDateEstimateWithCompany.confidenceIntervals) &&
-        Objects.equals(this.companyId, earningsDateEstimateWithCompany.companyId) &&
-        Objects.equals(this.ticker, earningsDateEstimateWithCompany.ticker);
+        Objects.equals(this.confidenceIntervals, earningsDateEstimateWithCompany.confidenceIntervals);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fiscalYear, fiscalPeriod, expectedDate, expected8kAt, historicallyEarliest, historicallyLatest, confidenceIntervals, companyId, ticker);
+    return Objects.hash(companyId, ticker, fiscalYear, fiscalPeriod, expectedDate, expected8kAt, historicallyEarliest, historicallyLatest, confidenceIntervals);
   }
 
 
@@ -253,6 +253,8 @@ public class EarningsDateEstimateWithCompany {
     StringBuilder sb = new StringBuilder();
     sb.append("class EarningsDateEstimateWithCompany {\n");
     
+    sb.append("    companyId: ").append(toIndentedString(companyId)).append("\n");
+    sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
     sb.append("    fiscalYear: ").append(toIndentedString(fiscalYear)).append("\n");
     sb.append("    fiscalPeriod: ").append(toIndentedString(fiscalPeriod)).append("\n");
     sb.append("    expectedDate: ").append(toIndentedString(expectedDate)).append("\n");
@@ -260,8 +262,6 @@ public class EarningsDateEstimateWithCompany {
     sb.append("    historicallyEarliest: ").append(toIndentedString(historicallyEarliest)).append("\n");
     sb.append("    historicallyLatest: ").append(toIndentedString(historicallyLatest)).append("\n");
     sb.append("    confidenceIntervals: ").append(toIndentedString(confidenceIntervals)).append("\n");
-    sb.append("    companyId: ").append(toIndentedString(companyId)).append("\n");
-    sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
     sb.append("}");
     return sb.toString();
   }
