@@ -16,7 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.intrinio.models.ApiResponseAccountCurrentUsages;
+import com.intrinio.models.ApiResponseAccountUsages;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.Method;
@@ -104,27 +104,27 @@ public class AccountApi {
     /**
      * Account Current Usage
      * Returns a list of all access codes available with their current usage.
-     * @return ApiResponseAccountCurrentUsages
+     * @return ApiResponseAccountUsages
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseAccountCurrentUsages getAccountCurrentUsage() throws ApiException, NoSuchMethodException {
+    public ApiResponseAccountUsages getAccountCurrentUsage() throws ApiException, NoSuchMethodException {
       Method targetMethod = AccountApi.class.getMethod("getAccountCurrentUsageWithHttpInfo");
       
       Object[] apiCallArguments = {  };
-      ApiResponse<ApiResponseAccountCurrentUsages> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      ApiResponse<ApiResponseAccountUsages> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
 
     /**
      * Account Current Usage
      * Returns a list of all access codes available with their current usage.
-     * @return ApiResponse&lt;ApiResponseAccountCurrentUsages&gt;
+     * @return ApiResponse&lt;ApiResponseAccountUsages&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseAccountCurrentUsages> getAccountCurrentUsageWithHttpInfo() throws ApiException {
+    public ApiResponse<ApiResponseAccountUsages> getAccountCurrentUsageWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = getAccountCurrentUsageValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseAccountCurrentUsages>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseAccountUsages>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -135,7 +135,7 @@ public class AccountApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAccountCurrentUsageAsync(final ApiCallback<ApiResponseAccountCurrentUsages> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAccountCurrentUsageAsync(final ApiCallback<ApiResponseAccountUsages> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -157,7 +157,7 @@ public class AccountApi {
         }
 
         com.squareup.okhttp.Call call = getAccountCurrentUsageValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseAccountCurrentUsages>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiResponseAccountUsages>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

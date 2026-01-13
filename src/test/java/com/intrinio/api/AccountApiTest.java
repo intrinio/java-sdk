@@ -3,7 +3,7 @@
 package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
-import com.intrinio.models.ApiResponseAccountCurrentUsages;
+import com.intrinio.models.ApiResponseAccountUsages;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -31,7 +31,7 @@ public class AccountApiTest {
      */
     @Test
     public void getAccountCurrentUsageTest() throws ApiException, NoSuchMethodException {
-        ApiResponseAccountCurrentUsages response = api.getAccountCurrentUsage();
+        ApiResponseAccountUsages response = api.getAccountCurrentUsage();
 
         // TODO: test validations
     }

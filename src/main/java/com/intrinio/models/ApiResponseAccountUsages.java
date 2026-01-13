@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.intrinio.models.AccountCurrentUsage;
-import com.intrinio.models.ApiResponseAccountCurrentUsagesAccount;
+import com.intrinio.models.ApiResponseAccountUsagesAccount;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -17,22 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ApiResponseAccountCurrentUsages
+ * The current usages on an account.
  */
+@ApiModel(description = "The current usages on an account.")
 
-public class ApiResponseAccountCurrentUsages {
+public class ApiResponseAccountUsages {
   @SerializedName("usage")
   private List<AccountCurrentUsage> usage = null;
 
   @SerializedName("account")
-  private ApiResponseAccountCurrentUsagesAccount account = null;
+  private ApiResponseAccountUsagesAccount account = null;
 
-  public ApiResponseAccountCurrentUsages usage(List<AccountCurrentUsage> usage) {
+  public ApiResponseAccountUsages usage(List<AccountCurrentUsage> usage) {
     this.usage = usage;
     return this;
   }
 
-  public ApiResponseAccountCurrentUsages addUsageItem(AccountCurrentUsage usageItem) {
+  public ApiResponseAccountUsages addUsageItem(AccountCurrentUsage usageItem) {
     if (this.usage == null) {
       this.usage = new ArrayList<>();
     }
@@ -41,10 +42,10 @@ public class ApiResponseAccountCurrentUsages {
   }
 
    /**
-   * Get usage
+   * The usages on the account.
    * @return usage
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The usages on the account.")
   public List<AccountCurrentUsage> getUsage() {
     return usage;
   }
@@ -53,7 +54,7 @@ public class ApiResponseAccountCurrentUsages {
     this.usage = usage;
   }
 
-  public ApiResponseAccountCurrentUsages account(ApiResponseAccountCurrentUsagesAccount account) {
+  public ApiResponseAccountUsages account(ApiResponseAccountUsagesAccount account) {
     this.account = account;
     return this;
   }
@@ -63,11 +64,11 @@ public class ApiResponseAccountCurrentUsages {
    * @return account
   **/
   @ApiModelProperty(value = "")
-  public ApiResponseAccountCurrentUsagesAccount getAccount() {
+  public ApiResponseAccountUsagesAccount getAccount() {
     return account;
   }
 
-  public void setAccount(ApiResponseAccountCurrentUsagesAccount account) {
+  public void setAccount(ApiResponseAccountUsagesAccount account) {
     this.account = account;
   }
 
@@ -80,9 +81,9 @@ public class ApiResponseAccountCurrentUsages {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApiResponseAccountCurrentUsages apiResponseAccountCurrentUsages = (ApiResponseAccountCurrentUsages) o;
-    return Objects.equals(this.usage, apiResponseAccountCurrentUsages.usage) &&
-        Objects.equals(this.account, apiResponseAccountCurrentUsages.account);
+    ApiResponseAccountUsages apiResponseAccountUsages = (ApiResponseAccountUsages) o;
+    return Objects.equals(this.usage, apiResponseAccountUsages.usage) &&
+        Objects.equals(this.account, apiResponseAccountUsages.account);
   }
 
   @Override
@@ -94,7 +95,7 @@ public class ApiResponseAccountCurrentUsages {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApiResponseAccountCurrentUsages {\n");
+    sb.append("class ApiResponseAccountUsages {\n");
     
     sb.append("    usage: ").append(toIndentedString(usage)).append("\n");
     sb.append("    account: ").append(toIndentedString(account)).append("\n");

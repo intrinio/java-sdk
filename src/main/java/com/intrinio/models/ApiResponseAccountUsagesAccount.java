@@ -17,11 +17,11 @@ import java.io.IOException;
  */
 @ApiModel(description = "The account.")
 
-public class ApiResponseAccountCurrentUsagesAccount {
+public class ApiResponseAccountUsagesAccount {
   @SerializedName("email")
   private String email = null;
 
-  public ApiResponseAccountCurrentUsagesAccount email(String email) {
+  public ApiResponseAccountUsagesAccount email(String email) {
     this.email = email;
     return this;
   }
@@ -48,8 +48,8 @@ public class ApiResponseAccountCurrentUsagesAccount {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ApiResponseAccountCurrentUsagesAccount apiResponseAccountCurrentUsagesAccount = (ApiResponseAccountCurrentUsagesAccount) o;
-    return Objects.equals(this.email, apiResponseAccountCurrentUsagesAccount.email);
+    ApiResponseAccountUsagesAccount apiResponseAccountUsagesAccount = (ApiResponseAccountUsagesAccount) o;
+    return Objects.equals(this.email, apiResponseAccountUsagesAccount.email);
   }
 
   @Override
@@ -61,7 +61,7 @@ public class ApiResponseAccountCurrentUsagesAccount {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ApiResponseAccountCurrentUsagesAccount {\n");
+    sb.append("class ApiResponseAccountUsagesAccount {\n");
     
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("}");
