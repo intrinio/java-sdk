@@ -627,7 +627,7 @@ public class FundamentalsApi {
     /**
      * Build call for getFundamentalStandardizedFinancialsDimensions
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
-     * @param tag $$v2_data_point_item_description$$ (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
@@ -699,7 +699,7 @@ public class FundamentalsApi {
      * Standardized Financials Dimensions
      * Returns as reported dimensionality of a data tag
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
-     * @param tag $$v2_data_point_item_description$$ (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return ApiResponseStandardizedFinancialsDimensions
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
@@ -716,7 +716,7 @@ public class FundamentalsApi {
      * Standardized Financials Dimensions
      * Returns as reported dimensionality of a data tag
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
-     * @param tag $$v2_data_point_item_description$$ (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @return ApiResponse&lt;ApiResponseStandardizedFinancialsDimensions&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -730,7 +730,7 @@ public class FundamentalsApi {
      * Standardized Financials Dimensions (asynchronously)
      * Returns as reported dimensionality of a data tag
      * @param id The Intrinio ID or lookup code (ticker-statement-year-period) for the Fundamental (required)
-     * @param tag $$v2_data_point_item_description$$ (required)
+     * @param tag An Intrinio data tag ID or code (&lt;a href&#x3D;&#39;https://data.intrinio.com/data-tags&#39;&gt;reference&lt;/a&gt;) (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

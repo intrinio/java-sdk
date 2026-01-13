@@ -165,7 +165,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "$$v2_mic_default$$";
+    String identifier = "USCOMP";
     String type = "weekly";
     Object date = "2024-04-24";
     Integer pageSize = 100;
@@ -257,7 +257,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "$$v2_mic_default$$";
+    String identifier = "USCOMP";
     StockExchange result = stockExchangeApi.getStockExchangeById(identifier);
     System.out.println(result);
   }
@@ -341,7 +341,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "$$v2_mic_default$$";
+    String identifier = "USCOMP";
     BigDecimal minPrice = null;
     Integer pageSize = 100;
     String source = "delayed_sip";
@@ -431,7 +431,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "$$v2_mic_default$$";
+    String identifier = "USCOMP";
     BigDecimal minPrice = null;
     Integer pageSize = 100;
     String source = "delayed_sip";
@@ -521,7 +521,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "$$v2_mic_default$$";
+    String identifier = "USCOMP";
     LocalDate date = LocalDate.of(2018,8,14);
     Integer pageSize = 100;
     String nextPage = null;
@@ -611,7 +611,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "$$v2_mic_default$$";
+    String identifier = "USCOMP";
     LocalDate date = LocalDate.of(2025,6,01);
     Integer pageSize = 100;
     String nextPage = null;
@@ -701,7 +701,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "$$v2_mic_default$$";
+    String identifier = "USCOMP";
     LocalDate date = LocalDate.of(2025,6,01);
     Integer pageSize = 100;
     String nextPage = null;
@@ -791,7 +791,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "$$v2_mic_default$$";
+    String identifier = "USCOMP";
     LocalDate date = LocalDate.of(2018,8,14);
     LocalDate startDate = LocalDate.of(2020,8,14);
     LocalDate endDate = LocalDate.of(2022,8,14);
@@ -889,7 +889,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "$$v2_mic_default$$";
+    String identifier = "USCOMP";
     List<String> tickers = Arrays.asList("AAPL,MSFT,NVDA");
     String source = "delayed_sip";
     Boolean activeOnly = null;
@@ -979,7 +979,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "$$v2_mic_default$$";
+    String identifier = "USCOMP";
     List<String> source = Arrays.asList("iex,delayed_sip");
     Boolean activeOnly = null;
     Boolean tradedToday = null;
@@ -1075,7 +1075,7 @@ public class Main {
     defaultClient.setAllowRetries(true);
 
     StockExchangeApi stockExchangeApi = new StockExchangeApi();
-    String identifier = "$$v2_mic_default$$";
+    String identifier = "USCOMP";
     Integer pageSize = 100;
     String nextPage = null;
     ApiResponseStockExchangeSecurities result = stockExchangeApi.getStockExchangeSecurities(identifier, pageSize, nextPage);
