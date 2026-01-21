@@ -12,7 +12,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
-import org.threeten.bp.LocalDate;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * An option contract gives the buyer of a contract the right to buy or sell a particular asset at a later date at an agreed upon price.
@@ -27,7 +27,7 @@ public class OptionRealtime {
   private String ticker = null;
 
   @SerializedName("expiration")
-  private LocalDate expiration = null;
+  private OffsetDateTime expiration = null;
 
   @SerializedName("strike")
   private BigDecimal strike = null;
@@ -118,7 +118,7 @@ public class OptionRealtime {
     this.ticker = ticker;
   }
 
-  public OptionRealtime expiration(LocalDate expiration) {
+  public OptionRealtime expiration(OffsetDateTime expiration) {
     this.expiration = expiration;
     return this;
   }
@@ -128,11 +128,11 @@ public class OptionRealtime {
    * @return expiration
   **/
   @ApiModelProperty(value = "The date on which the Option expires. The Option becomes invalid after this date and cannot be exercised.")
-  public LocalDate getExpiration() {
+  public OffsetDateTime getExpiration() {
     return expiration;
   }
 
-  public void setExpiration(LocalDate expiration) {
+  public void setExpiration(OffsetDateTime expiration) {
     this.expiration = expiration;
   }
 
