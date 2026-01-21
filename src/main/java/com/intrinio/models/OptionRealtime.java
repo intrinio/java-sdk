@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
+import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 
 /**
@@ -27,7 +28,10 @@ public class OptionRealtime {
   private String ticker = null;
 
   @SerializedName("expiration")
-  private OffsetDateTime expiration = null;
+  private LocalDate expiration = null;
+
+  @SerializedName("expiration_time")
+  private OffsetDateTime expirationTime = null;
 
   @SerializedName("strike")
   private BigDecimal strike = null;
@@ -118,7 +122,7 @@ public class OptionRealtime {
     this.ticker = ticker;
   }
 
-  public OptionRealtime expiration(OffsetDateTime expiration) {
+  public OptionRealtime expiration(LocalDate expiration) {
     this.expiration = expiration;
     return this;
   }
@@ -128,12 +132,30 @@ public class OptionRealtime {
    * @return expiration
   **/
   @ApiModelProperty(value = "The date on which the Option expires. The Option becomes invalid after this date and cannot be exercised.")
-  public OffsetDateTime getExpiration() {
+  public LocalDate getExpiration() {
     return expiration;
   }
 
-  public void setExpiration(OffsetDateTime expiration) {
+  public void setExpiration(LocalDate expiration) {
     this.expiration = expiration;
+  }
+
+  public OptionRealtime expirationTime(OffsetDateTime expirationTime) {
+    this.expirationTime = expirationTime;
+    return this;
+  }
+
+   /**
+   * The date on which the Option expires. The Option becomes invalid after this date and cannot be exercised.
+   * @return expirationTime
+  **/
+  @ApiModelProperty(value = "The date on which the Option expires. The Option becomes invalid after this date and cannot be exercised.")
+  public OffsetDateTime getExpirationTime() {
+    return expirationTime;
+  }
+
+  public void setExpirationTime(OffsetDateTime expirationTime) {
+    this.expirationTime = expirationTime;
   }
 
   public OptionRealtime strike(BigDecimal strike) {
@@ -185,13 +207,14 @@ public class OptionRealtime {
     return Objects.equals(this.code, optionRealtime.code) &&
         Objects.equals(this.ticker, optionRealtime.ticker) &&
         Objects.equals(this.expiration, optionRealtime.expiration) &&
+        Objects.equals(this.expirationTime, optionRealtime.expirationTime) &&
         Objects.equals(this.strike, optionRealtime.strike) &&
         Objects.equals(this.type, optionRealtime.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, ticker, expiration, strike, type);
+    return Objects.hash(code, ticker, expiration, expirationTime, strike, type);
   }
 
 
@@ -203,6 +226,7 @@ public class OptionRealtime {
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    ticker: ").append(toIndentedString(ticker)).append("\n");
     sb.append("    expiration: ").append(toIndentedString(expiration)).append("\n");
+    sb.append("    expirationTime: ").append(toIndentedString(expirationTime)).append("\n");
     sb.append("    strike: ").append(toIndentedString(strike)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
