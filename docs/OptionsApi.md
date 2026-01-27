@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**getOptionsChainRealtime**](OptionsApi.md#getOptionsChainRealtime) | **GET** /options/chain/{symbol}/{expiration}/realtime | Options Chain Realtime
 [**getOptionsExpirations**](OptionsApi.md#getOptionsExpirations) | **GET** /options/expirations/{symbol} | Options Expirations
 [**getOptionsExpirationsEod**](OptionsApi.md#getOptionsExpirationsEod) | **GET** /options/expirations/{symbol}/eod | Options Expirations
+[**getOptionsGainers**](OptionsApi.md#getOptionsGainers) | **GET** /options/gainers | Options Top Gainers
 [**getOptionsGreeksByContract**](OptionsApi.md#getOptionsGreeksByContract) | **GET** /options/greeks/{contract}/realtime | Option Greeks &amp; Derived Price by Contract
 [**getOptionsGreeksByTicker**](OptionsApi.md#getOptionsGreeksByTicker) | **GET** /options/greeks/by_ticker/{identifier}/realtime | Options Realtime Greeks &amp; Derived Price by Ticker
 [**getOptionsImpliedMoveBySymbol**](OptionsApi.md#getOptionsImpliedMoveBySymbol) | **GET** /options/implied_move/{symbol}/{expiration_date} | Options Implied Move By Symbol
@@ -24,6 +25,7 @@ Method | HTTP request | Description
 [**getOptionsIntervalMovers**](OptionsApi.md#getOptionsIntervalMovers) | **GET** /options/interval/movers | Options Intervals Movers
 [**getOptionsIntervalMoversChange**](OptionsApi.md#getOptionsIntervalMoversChange) | **GET** /options/interval/movers/change | Options Intervals Movers By Change
 [**getOptionsIntervalMoversVolume**](OptionsApi.md#getOptionsIntervalMoversVolume) | **GET** /options/interval/movers/volume | Options Intervals Movers By Volume
+[**getOptionsLosers**](OptionsApi.md#getOptionsLosers) | **GET** /options/losers | Options Top Losers
 [**getOptionsPrices**](OptionsApi.md#getOptionsPrices) | **GET** /options/prices/{identifier} | Option Prices
 [**getOptionsPricesBatchRealtime**](OptionsApi.md#getOptionsPricesBatchRealtime) | **POST** /options/prices/realtime/batch | Option Prices Batch Realtime
 [**getOptionsPricesEod**](OptionsApi.md#getOptionsPricesEod) | **GET** /options/prices/{identifier}/eod | Option Prices EOD
@@ -1303,6 +1305,92 @@ Name | Type | Description  | Notes
 
 [//]: # (CLASS:OptionsApi)
 
+[//]: # (METHOD:getOptionsGainers)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionMovers)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionMovers.md)
+
+[//]: # (OPERATION:getOptionsGainers_v2)
+
+[//]: # (ENDPOINT:/options/gainers)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionsGainers)
+
+<a name="getOptionsGainers"></a>
+## **getOptionsGainers**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionsGainers_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionMovers getOptionsGainers(mode, nextPage)
+
+#### Options Top Gainers
+
+
+Returns a list of top gainers since last close.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String mode = null;
+    String nextPage = null;
+    ApiResponseOptionMovers result = optionsApi.getOptionsGainers(mode, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mode** | String| Which metric to sort by - change, percent change, or volume. | [enum: change, percent_change, volume] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionMovers**](ApiResponseOptionMovers.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
 [//]: # (METHOD:getOptionsGreeksByContract)
 
 [//]: # (RETURN_TYPE:ApiResponseOptionsGreekContractRealtime)
@@ -1933,6 +2021,92 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OptionIntervalsMoversResult**](OptionIntervalsMoversResult.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionsLosers)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionMovers)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionMovers.md)
+
+[//]: # (OPERATION:getOptionsLosers_v2)
+
+[//]: # (ENDPOINT:/options/losers)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionsLosers)
+
+<a name="getOptionsLosers"></a>
+## **getOptionsLosers**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionsLosers_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionMovers getOptionsLosers(mode, nextPage)
+
+#### Options Top Losers
+
+
+Returns a list of top losers since last close.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String mode = null;
+    String nextPage = null;
+    ApiResponseOptionMovers result = optionsApi.getOptionsLosers(mode, nextPage);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mode** | String| Which metric to sort by - change, percent change, or volume. | [enum: change, percent_change, volume] &nbsp;
+ **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionMovers**](ApiResponseOptionMovers.md)
 
 [//]: # (END_OPERATION)
 

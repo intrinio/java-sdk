@@ -3,6 +3,7 @@
 package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
+import com.intrinio.models.ApiResponseOptionMovers;
 import com.intrinio.models.ApiResponseOptionPrices;
 import com.intrinio.models.ApiResponseOptions;
 import com.intrinio.models.ApiResponseOptionsAggregates;
@@ -340,6 +341,23 @@ public class OptionsApiTest {
     }
     
     /**
+     * Options Top Gainers
+     *
+     * Returns a list of top gainers since last close.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsGainersTest() throws ApiException, NoSuchMethodException {
+        String mode = null;
+        String nextPage = null;
+        ApiResponseOptionMovers response = api.getOptionsGainers(mode, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
      * Option Greeks &amp; Derived Price by Contract
      *
      * Retrieves realtime options greeks data for a specific options contract
@@ -472,6 +490,23 @@ public class OptionsApiTest {
         String source = null;
         OffsetDateTime openTime = null;
         OptionIntervalsMoversResult response = api.getOptionsIntervalMoversVolume(source, openTime);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Options Top Losers
+     *
+     * Returns a list of top losers since last close.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsLosersTest() throws ApiException, NoSuchMethodException {
+        String mode = null;
+        String nextPage = null;
+        ApiResponseOptionMovers response = api.getOptionsLosers(mode, nextPage);
 
         // TODO: test validations
     }
