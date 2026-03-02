@@ -3,7 +3,6 @@
 package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
-import com.intrinio.models.ApiResponseFilingAnswers;
 import com.intrinio.models.ApiResponseFilingFundamentals;
 import com.intrinio.models.ApiResponseFilingNotes;
 import com.intrinio.models.ApiResponseFilingNotesSearch;
@@ -44,11 +43,10 @@ public class FilingApiTest {
         LocalDate endDate = null;
         String industryCategory = null;
         String industryGroup = null;
-        Boolean theaEnabled = null;
         Boolean earningsRelease = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseFilings response = api.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, theaEnabled, earningsRelease, pageSize, nextPage);
+        ApiResponseFilings response = api.getAllFilings(company, reportType, startDate, endDate, industryCategory, industryGroup, earningsRelease, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -72,23 +70,6 @@ public class FilingApiTest {
         Integer pageSize = null;
         String nextPage = null;
         ApiResponseFilingNotes response = api.getAllNotes(company, reportType, filingStartDate, filingEndDate, periodEndedStartDate, periodEndedEndDate, pageSize, nextPage);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Filing Answers
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getFilingAnswersTest() throws ApiException, NoSuchMethodException {
-        String identifier = null;
-        String query = null;
-        ApiResponseFilingAnswers response = api.getFilingAnswers(identifier, query);
 
         // TODO: test validations
     }

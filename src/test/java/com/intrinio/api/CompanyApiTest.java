@@ -6,7 +6,6 @@ import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseAllExpectedEarningsDates;
 import com.intrinio.models.ApiResponseCompanies;
 import com.intrinio.models.ApiResponseCompaniesSearch;
-import com.intrinio.models.ApiResponseCompanyAnswers;
 import com.intrinio.models.ApiResponseCompanyDailyMetrics;
 import com.intrinio.models.ApiResponseCompanyExpectedEarningsDates;
 import com.intrinio.models.ApiResponseCompanyFilings;
@@ -15,7 +14,6 @@ import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
 import com.intrinio.models.ApiResponseCompanyNewsBody;
 import com.intrinio.models.ApiResponseCompanyPublicFloatResult;
-import com.intrinio.models.ApiResponseCompanyRecognize;
 import com.intrinio.models.ApiResponseCompanySecurities;
 import com.intrinio.models.ApiResponseCompanySharesOutstanding;
 import com.intrinio.models.ApiResponseInitialPublicOfferings;
@@ -106,10 +104,9 @@ public class CompanyApiTest {
         String industryGroup = null;
         Boolean hasFundamentals = null;
         Boolean hasStockPrices = null;
-        Boolean theaEnabled = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseCompanies response = api.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage);
+        ApiResponseCompanies response = api.getAllCompanies(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -175,23 +172,6 @@ public class CompanyApiTest {
     public void getCompanyTest() throws ApiException, NoSuchMethodException {
         String identifier = null;
         Company response = api.getCompany(identifier);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Company Answers
-     *
-     * Returns answers for a question about the Company with the given &#x60;identifier&#x60;
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getCompanyAnswersTest() throws ApiException, NoSuchMethodException {
-        String identifier = null;
-        String query = null;
-        ApiResponseCompanyAnswers response = api.getCompanyAnswers(identifier, query);
 
         // TODO: test validations
     }
@@ -264,10 +244,9 @@ public class CompanyApiTest {
         String reportType = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
-        Boolean theaEnabled = null;
         Integer pageSize = null;
         String nextPage = null;
-        ApiResponseCompanyFilings response = api.getCompanyFilings(identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage);
+        ApiResponseCompanyFilings response = api.getCompanyFilings(identifier, reportType, startDate, endDate, pageSize, nextPage);
 
         // TODO: test validations
     }
@@ -490,22 +469,6 @@ public class CompanyApiTest {
         String fiscalPeriod = null;
         Integer fiscalYear = null;
         Fundamental response = api.lookupCompanyFundamental(identifier, statementCode, fiscalPeriod, fiscalYear);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Recognize Company
-     *
-     * Returns a list of companies recognized by the Thea API in the given &#x60;text&#x60; query string parameter.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void recognizeCompanyTest() throws ApiException, NoSuchMethodException {
-        String text = null;
-        ApiResponseCompanyRecognize response = api.recognizeCompany(text);
 
         // TODO: test validations
     }

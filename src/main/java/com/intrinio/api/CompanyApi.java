@@ -19,7 +19,6 @@ import java.io.IOException;
 import com.intrinio.models.ApiResponseAllExpectedEarningsDates;
 import com.intrinio.models.ApiResponseCompanies;
 import com.intrinio.models.ApiResponseCompaniesSearch;
-import com.intrinio.models.ApiResponseCompanyAnswers;
 import com.intrinio.models.ApiResponseCompanyDailyMetrics;
 import com.intrinio.models.ApiResponseCompanyExpectedEarningsDates;
 import com.intrinio.models.ApiResponseCompanyFilings;
@@ -28,7 +27,6 @@ import com.intrinio.models.ApiResponseCompanyHistoricalData;
 import com.intrinio.models.ApiResponseCompanyNews;
 import com.intrinio.models.ApiResponseCompanyNewsBody;
 import com.intrinio.models.ApiResponseCompanyPublicFloatResult;
-import com.intrinio.models.ApiResponseCompanyRecognize;
 import com.intrinio.models.ApiResponseCompanySecurities;
 import com.intrinio.models.ApiResponseCompanySharesOutstanding;
 import com.intrinio.models.ApiResponseInitialPublicOfferings;
@@ -399,7 +397,6 @@ public class CompanyApi {
      * @param industryGroup Return companies in the given industry group (optional)
      * @param hasFundamentals Return only companies that have fundamentals when true (optional)
      * @param hasStockPrices Return only companies that have stock prices when true (optional)
-     * @param theaEnabled Return companies whose have been read by our Thea NLP and are ready for our company answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -407,7 +404,7 @@ public class CompanyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getAllCompaniesCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Boolean theaEnabled, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompaniesCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -431,8 +428,6 @@ public class CompanyApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("has_fundamentals", hasFundamentals));
         if (hasStockPrices != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("has_stock_prices", hasStockPrices));
-        if (theaEnabled != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("thea_enabled", theaEnabled));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -471,10 +466,10 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getAllCompaniesValidateBeforeCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Boolean theaEnabled, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getAllCompaniesValidateBeforeCall(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getAllCompaniesCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompaniesCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -490,17 +485,16 @@ public class CompanyApi {
      * @param industryGroup Return companies in the given industry group (optional)
      * @param hasFundamentals Return only companies that have fundamentals when true (optional)
      * @param hasStockPrices Return only companies that have stock prices when true (optional)
-     * @param theaEnabled Return companies whose have been read by our Thea NLP and are ready for our company answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanies
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanies getAllCompanies(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Boolean theaEnabled, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("getAllCompaniesWithHttpInfo", LocalDate.class, String.class, String.class, String.class, String.class, String.class, Boolean.class, Boolean.class, Boolean.class, Integer.class, String.class);
+    public ApiResponseCompanies getAllCompanies(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getAllCompaniesWithHttpInfo", LocalDate.class, String.class, String.class, String.class, String.class, String.class, Boolean.class, Boolean.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage };
+      Object[] apiCallArguments = { latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage };
       ApiResponse<ApiResponseCompanies> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -516,14 +510,13 @@ public class CompanyApi {
      * @param industryGroup Return companies in the given industry group (optional)
      * @param hasFundamentals Return only companies that have fundamentals when true (optional)
      * @param hasStockPrices Return only companies that have stock prices when true (optional)
-     * @param theaEnabled Return companies whose have been read by our Thea NLP and are ready for our company answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanies&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanies> getAllCompaniesWithHttpInfo(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Boolean theaEnabled, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanies> getAllCompaniesWithHttpInfo(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -539,14 +532,13 @@ public class CompanyApi {
      * @param industryGroup Return companies in the given industry group (optional)
      * @param hasFundamentals Return only companies that have fundamentals when true (optional)
      * @param hasStockPrices Return only companies that have stock prices when true (optional)
-     * @param theaEnabled Return companies whose have been read by our Thea NLP and are ready for our company answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAllCompaniesAsync(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Boolean theaEnabled, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanies> callback) throws ApiException {
+    public com.squareup.okhttp.Call getAllCompaniesAsync(LocalDate latestFilingDate, String sic, String template, String sector, String industryCategory, String industryGroup, Boolean hasFundamentals, Boolean hasStockPrices, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanies> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -567,7 +559,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, theaEnabled, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getAllCompaniesValidateBeforeCall(latestFilingDate, sic, template, sector, industryCategory, industryGroup, hasFundamentals, hasStockPrices, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanies>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -1048,144 +1040,6 @@ public class CompanyApi {
         return call;
     }
     /**
-     * Build call for getCompanyAnswers
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param query The query to ask the Thea API (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call getCompanyAnswersCall(String identifier, String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/companies/{identifier}/answers"
-            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (query != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("query", query));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyAnswersValidateBeforeCall(String identifier, String query, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'identifier' is set
-        if (identifier == null) {
-            throw new ApiException("Missing the required parameter 'identifier' when calling getCompanyAnswers(Async)");
-        }
-        
-        // verify the required parameter 'query' is set
-        if (query == null) {
-            throw new ApiException("Missing the required parameter 'query' when calling getCompanyAnswers(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = getCompanyAnswersCall(identifier, query, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Company Answers
-     * Returns answers for a question about the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param query The query to ask the Thea API (required)
-     * @return ApiResponseCompanyAnswers
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @throws NoSuchMethodException If fail to get specified method off of the main class
-     */
-    public ApiResponseCompanyAnswers getCompanyAnswers(String identifier, String query) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("getCompanyAnswersWithHttpInfo", String.class, String.class);
-      
-      Object[] apiCallArguments = { identifier, query };
-      ApiResponse<ApiResponseCompanyAnswers> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
-      return resp.getData();
-    }
-
-    /**
-     * Company Answers
-     * Returns answers for a question about the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param query The query to ask the Thea API (required)
-     * @return ApiResponse&lt;ApiResponseCompanyAnswers&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<ApiResponseCompanyAnswers> getCompanyAnswersWithHttpInfo(String identifier, String query) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyAnswersValidateBeforeCall(identifier, query, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseCompanyAnswers>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Company Answers (asynchronously)
-     * Returns answers for a question about the Company with the given &#x60;identifier&#x60;
-     * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
-     * @param query The query to ask the Thea API (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call getCompanyAnswersAsync(String identifier, String query, final ApiCallback<ApiResponseCompanyAnswers> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = getCompanyAnswersValidateBeforeCall(identifier, query, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseCompanyAnswers>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for getCompanyDailyMetrics
      * @param identifier A Company identifier (Ticker, CIK, LEI, Intrinio ID) (required)
      * @param onDate Date of the metric (optional)
@@ -1616,7 +1470,6 @@ public class CompanyApi {
      * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
-     * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
@@ -1624,7 +1477,7 @@ public class CompanyApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFilingsCall(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Boolean theaEnabled, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFilingsCall(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1639,8 +1492,6 @@ public class CompanyApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
         if (endDate != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
-        if (theaEnabled != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("thea_enabled", theaEnabled));
         if (pageSize != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("page_size", pageSize));
         if (nextPage != null)
@@ -1679,7 +1530,7 @@ public class CompanyApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getCompanyFilingsValidateBeforeCall(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Boolean theaEnabled, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getCompanyFilingsValidateBeforeCall(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -1687,7 +1538,7 @@ public class CompanyApi {
         }
         
 
-        com.squareup.okhttp.Call call = getCompanyFilingsCall(identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFilingsCall(identifier, reportType, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1699,17 +1550,16 @@ public class CompanyApi {
      * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
-     * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseCompanyFilings
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseCompanyFilings getCompanyFilings(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Boolean theaEnabled, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("getCompanyFilingsWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class, Boolean.class, Integer.class, String.class);
+    public ApiResponseCompanyFilings getCompanyFilings(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = CompanyApi.class.getMethod("getCompanyFilingsWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class, Integer.class, String.class);
       
-      Object[] apiCallArguments = { identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage };
+      Object[] apiCallArguments = { identifier, reportType, startDate, endDate, pageSize, nextPage };
       ApiResponse<ApiResponseCompanyFilings> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -1721,14 +1571,13 @@ public class CompanyApi {
      * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
-     * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseCompanyFilings&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseCompanyFilings> getCompanyFilingsWithHttpInfo(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Boolean theaEnabled, Integer pageSize, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage, null, null);
+    public ApiResponse<ApiResponseCompanyFilings> getCompanyFilingsWithHttpInfo(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, reportType, startDate, endDate, pageSize, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFilings>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1740,14 +1589,13 @@ public class CompanyApi {
      * @param reportType Filter by &lt;a href&#x3D;\&quot;https://docs.intrinio.com/documentation/sec_filing_report_types\&quot; target&#x3D;\&quot;_blank\&quot;&gt;report type&lt;/a&gt;. Separate values with commas to return multiple report types. (optional)
      * @param startDate Filed on or after the given date (optional)
      * @param endDate Filed before or after the given date (optional)
-     * @param theaEnabled Return filings that have been read by our Thea NLP and are ready for our answers endpoint (optional)
      * @param pageSize The number of results to return (optional, default to 100)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getCompanyFilingsAsync(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Boolean theaEnabled, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanyFilings> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCompanyFilingsAsync(String identifier, String reportType, LocalDate startDate, LocalDate endDate, Integer pageSize, String nextPage, final ApiCallback<ApiResponseCompanyFilings> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1768,7 +1616,7 @@ public class CompanyApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, reportType, startDate, endDate, theaEnabled, pageSize, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getCompanyFilingsValidateBeforeCall(identifier, reportType, startDate, endDate, pageSize, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseCompanyFilings>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -3430,134 +3278,6 @@ public class CompanyApi {
 
         com.squareup.okhttp.Call call = lookupCompanyFundamentalValidateBeforeCall(identifier, statementCode, fiscalPeriod, fiscalYear, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<Fundamental>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for recognizeCompany
-     * @param text The text sent to the Thea API to analyze (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call recognizeCompanyCall(String text, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/companies/recognize";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        if (text != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("text", text));
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call recognizeCompanyValidateBeforeCall(String text, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'text' is set
-        if (text == null) {
-            throw new ApiException("Missing the required parameter 'text' when calling recognizeCompany(Async)");
-        }
-        
-
-        com.squareup.okhttp.Call call = recognizeCompanyCall(text, progressListener, progressRequestListener);
-        return call;
-
-    }
-
-    /**
-     * Recognize Company
-     * Returns a list of companies recognized by the Thea API in the given &#x60;text&#x60; query string parameter.
-     * @param text The text sent to the Thea API to analyze (required)
-     * @return ApiResponseCompanyRecognize
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @throws NoSuchMethodException If fail to get specified method off of the main class
-     */
-    public ApiResponseCompanyRecognize recognizeCompany(String text) throws ApiException, NoSuchMethodException {
-      Method targetMethod = CompanyApi.class.getMethod("recognizeCompanyWithHttpInfo", String.class);
-      
-      Object[] apiCallArguments = { text };
-      ApiResponse<ApiResponseCompanyRecognize> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
-      return resp.getData();
-    }
-
-    /**
-     * Recognize Company
-     * Returns a list of companies recognized by the Thea API in the given &#x60;text&#x60; query string parameter.
-     * @param text The text sent to the Thea API to analyze (required)
-     * @return ApiResponse&lt;ApiResponseCompanyRecognize&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<ApiResponseCompanyRecognize> recognizeCompanyWithHttpInfo(String text) throws ApiException {
-        com.squareup.okhttp.Call call = recognizeCompanyValidateBeforeCall(text, null, null);
-        Type localVarReturnType = new TypeToken<ApiResponseCompanyRecognize>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Recognize Company (asynchronously)
-     * Returns a list of companies recognized by the Thea API in the given &#x60;text&#x60; query string parameter.
-     * @param text The text sent to the Thea API to analyze (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call recognizeCompanyAsync(String text, final ApiCallback<ApiResponseCompanyRecognize> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = recognizeCompanyValidateBeforeCall(text, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ApiResponseCompanyRecognize>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

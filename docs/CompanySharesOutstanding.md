@@ -18,11 +18,15 @@ Name | Type | Description
 **tradingSymbol** | String | The symbol under which the security is traded in the exchange &nbsp;
 **securityExchangeName** | String | The name of the secuirty exchange &nbsp;
 **sharesOutstanding** | [**BigDecimal**](BigDecimal.md) | The amount of stock currently held by all shareholders &nbsp;
+**adjSharesOutstanding** | [**BigDecimal**](BigDecimal.md) | Adjusted Shares Outstanding - The shares outstanding adjusted for stock splits that have occurred since the filing was reported, making it comparable to current share counts &nbsp;
 
 [//]: # (END_DEFINITION)
 
 
 [//]: # (CONTAINED_CLASS:LocalDate)
+
+
+[//]: # (CONTAINED_CLASS:BigDecimal)
 
 
 [//]: # (CONTAINED_CLASS:BigDecimal)

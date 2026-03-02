@@ -106,6 +106,12 @@ public class Fundamental {
   @SerializedName("earnings_disclosed_at")
   private OffsetDateTime earningsDisclosedAt = null;
 
+  @SerializedName("standardized_signature")
+  private String standardizedSignature = null;
+
+  @SerializedName("reported_signature")
+  private String reportedSignature = null;
+
   @SerializedName("company")
   private CompanySummary company = null;
 
@@ -325,6 +331,42 @@ public class Fundamental {
     this.earningsDisclosedAt = earningsDisclosedAt;
   }
 
+  public Fundamental standardizedSignature(String standardizedSignature) {
+    this.standardizedSignature = standardizedSignature;
+    return this;
+  }
+
+   /**
+   * A hash signature for standardized financials. This value is used to identify when standardized financials have changed between updates.
+   * @return standardizedSignature
+  **/
+  @ApiModelProperty(value = "A hash signature for standardized financials. This value is used to identify when standardized financials have changed between updates.")
+  public String getStandardizedSignature() {
+    return standardizedSignature;
+  }
+
+  public void setStandardizedSignature(String standardizedSignature) {
+    this.standardizedSignature = standardizedSignature;
+  }
+
+  public Fundamental reportedSignature(String reportedSignature) {
+    this.reportedSignature = reportedSignature;
+    return this;
+  }
+
+   /**
+   * A hash signature for reported financials. This value is used to identify when reported financials have changed between updates.
+   * @return reportedSignature
+  **/
+  @ApiModelProperty(value = "A hash signature for reported financials. This value is used to identify when reported financials have changed between updates.")
+  public String getReportedSignature() {
+    return reportedSignature;
+  }
+
+  public void setReportedSignature(String reportedSignature) {
+    this.reportedSignature = reportedSignature;
+  }
+
   public Fundamental company(CompanySummary company) {
     this.company = company;
     return this;
@@ -365,12 +407,14 @@ public class Fundamental {
         Objects.equals(this.updatedDate, fundamental.updatedDate) &&
         Objects.equals(this.firstCalculable, fundamental.firstCalculable) &&
         Objects.equals(this.earningsDisclosedAt, fundamental.earningsDisclosedAt) &&
+        Objects.equals(this.standardizedSignature, fundamental.standardizedSignature) &&
+        Objects.equals(this.reportedSignature, fundamental.reportedSignature) &&
         Objects.equals(this.company, fundamental.company);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, isLatest, updatedDate, firstCalculable, earningsDisclosedAt, company);
+    return Objects.hash(id, statementCode, fiscalYear, fiscalPeriod, type, startDate, endDate, filingDate, isLatest, updatedDate, firstCalculable, earningsDisclosedAt, standardizedSignature, reportedSignature, company);
   }
 
 
@@ -391,6 +435,8 @@ public class Fundamental {
     sb.append("    updatedDate: ").append(toIndentedString(updatedDate)).append("\n");
     sb.append("    firstCalculable: ").append(toIndentedString(firstCalculable)).append("\n");
     sb.append("    earningsDisclosedAt: ").append(toIndentedString(earningsDisclosedAt)).append("\n");
+    sb.append("    standardizedSignature: ").append(toIndentedString(standardizedSignature)).append("\n");
+    sb.append("    reportedSignature: ").append(toIndentedString(reportedSignature)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("}");
     return sb.toString();

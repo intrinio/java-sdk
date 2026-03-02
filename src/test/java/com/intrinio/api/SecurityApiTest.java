@@ -39,6 +39,8 @@ import com.intrinio.models.ApiResponseSecuritySimpleMovingAverage;
 import com.intrinio.models.ApiResponseSecurityStochasticOscillator;
 import com.intrinio.models.ApiResponseSecurityStockPriceAdjustments;
 import com.intrinio.models.ApiResponseSecurityStockPrices;
+import com.intrinio.models.ApiResponseSecurityTradingStatus;
+import com.intrinio.models.ApiResponseSecurityTradingStatuses;
 import com.intrinio.models.ApiResponseSecurityTripleExponentialAverage;
 import com.intrinio.models.ApiResponseSecurityTrueStrengthIndex;
 import com.intrinio.models.ApiResponseSecurityUltimateOscillator;
@@ -1293,6 +1295,77 @@ public class SecurityApiTest {
         Integer minSize = null;
         String nextPage = null;
         SecurityTradesResult response = api.getSecurityTradesBySymbol(identifier, source, startDate, startTime, endDate, endTime, timezone, darkpoolOnly, pageSize, minSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security Trading Status By Security
+     *
+     * Returns trading status for the specified security.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityTradingStatusTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String source = null;
+        ApiResponseSecurityTradingStatus response = api.getSecurityTradingStatus(identifier, source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security Trading Status Quotes Only
+     *
+     * Returns all securities where the current trading status is quotes_only for the specified source.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityTradingStatusQuotesOnlyTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseSecurityTradingStatuses response = api.getSecurityTradingStatusQuotesOnly(source, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security Trading Status Stopped
+     *
+     * Returns all securities where the current trading status is stopped for the specified source.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityTradingStatusStoppedTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseSecurityTradingStatuses response = api.getSecurityTradingStatusStopped(source, pageSize, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Security Trading Status Trading
+     *
+     * Returns all securities where the current trading status is trading for the specified source.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecurityTradingStatusTradingTest() throws ApiException, NoSuchMethodException {
+        String source = null;
+        Integer pageSize = null;
+        String nextPage = null;
+        ApiResponseSecurityTradingStatuses response = api.getSecurityTradingStatusTrading(source, pageSize, nextPage);
 
         // TODO: test validations
     }
