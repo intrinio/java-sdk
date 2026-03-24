@@ -266,7 +266,10 @@ public class OptionsApiTest {
         BigDecimal strikeLessThan = null;
         LocalDate date = null;
         Boolean includeRelatedSymbols = null;
-        ApiResponseOptionsChainEod response = api.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols);
+        Boolean recalculateStats = null;
+        String model = null;
+        String ivMode = null;
+        ApiResponseOptionsChainEod response = api.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols, recalculateStats, model, ivMode);
 
         // TODO: test validations
     }
@@ -566,7 +569,10 @@ public class OptionsApiTest {
         String nextPage = null;
         LocalDate startDate = null;
         LocalDate endDate = null;
-        ApiResponseOptionsPricesEod response = api.getOptionsPricesEod(identifier, nextPage, startDate, endDate);
+        Boolean recalculateStats = null;
+        String model = null;
+        String ivMode = null;
+        ApiResponseOptionsPricesEod response = api.getOptionsPricesEod(identifier, nextPage, startDate, endDate, recalculateStats, model, ivMode);
 
         // TODO: test validations
     }
@@ -589,8 +595,11 @@ public class OptionsApiTest {
         BigDecimal strikeGreaterThan = null;
         BigDecimal strikeLessThan = null;
         Boolean includeRelatedSymbols = null;
+        Boolean recalculateStats = null;
+        String model = null;
+        String ivMode = null;
         String nextPage = null;
-        ApiResponseOptionsPricesByTickerEod response = api.getOptionsPricesEodByTicker(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage);
+        ApiResponseOptionsPricesByTickerEod response = api.getOptionsPricesEodByTicker(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, recalculateStats, model, ivMode, nextPage);
 
         // TODO: test validations
     }

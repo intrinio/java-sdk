@@ -934,7 +934,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsChainEod getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols)
+> ApiResponseOptionsChainEod getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols, recalculateStats, model, ivMode)
 
 #### Options Chain EOD
 
@@ -973,7 +973,10 @@ public class Main {
     BigDecimal strikeLessThan = null;
     LocalDate date = null;
     Boolean includeRelatedSymbols = false;
-    ApiResponseOptionsChainEod result = optionsApi.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols);
+    Boolean recalculateStats = false;
+    String model = "black_scholes";
+    String ivMode = "ivMode_example";
+    ApiResponseOptionsChainEod result = optionsApi.getOptionsChainEod(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols, recalculateStats, model, ivMode);
     System.out.println(result);
   }
 }
@@ -996,6 +999,9 @@ Name | Type | Description  | Notes
  **strikeLessThan** | BigDecimal| The strike price of the option contract. This will return options contracts with strike prices less than this price. | [optional] &nbsp;
  **date** | LocalDate| The date to retrieve prices for | [optional] &nbsp;
  **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
+ **recalculateStats** | Boolean| Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. | [optional] [default to false] &nbsp;
+ **model** | String| The options pricing model to use when recalculating stats. | [optional] [default to black_scholes] [enum: black_scholes, bjerk] &nbsp;
+ **ivMode** | String| The implied volatility calculation mode to use when recalculating stats. | [optional] [enum: out_of_the_money] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -2328,7 +2334,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsPricesEod getOptionsPricesEod(identifier, nextPage, startDate, endDate)
+> ApiResponseOptionsPricesEod getOptionsPricesEod(identifier, nextPage, startDate, endDate, recalculateStats, model, ivMode)
 
 #### Option Prices EOD
 
@@ -2363,7 +2369,10 @@ public class Main {
     String nextPage = null;
     LocalDate startDate = null;
     LocalDate endDate = null;
-    ApiResponseOptionsPricesEod result = optionsApi.getOptionsPricesEod(identifier, nextPage, startDate, endDate);
+    Boolean recalculateStats = false;
+    String model = "black_scholes";
+    String ivMode = "ivMode_example";
+    ApiResponseOptionsPricesEod result = optionsApi.getOptionsPricesEod(identifier, nextPage, startDate, endDate, recalculateStats, model, ivMode);
     System.out.println(result);
   }
 }
@@ -2382,6 +2391,9 @@ Name | Type | Description  | Notes
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
  **startDate** | LocalDate| The start date to retrieve prices for | [optional] &nbsp;
  **endDate** | LocalDate| The end date to retrieve prices for | [optional] &nbsp;
+ **recalculateStats** | Boolean| Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. | [optional] [default to false] &nbsp;
+ **model** | String| The options pricing model to use when recalculating stats. | [optional] [default to black_scholes] [enum: black_scholes, bjerk] &nbsp;
+ **ivMode** | String| The implied volatility calculation mode to use when recalculating stats. | [optional] [enum: out_of_the_money] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)
@@ -2418,7 +2430,7 @@ Name | Type | Description  | Notes
 
 [//]: # (START_OVERVIEW)
 
-> ApiResponseOptionsPricesByTickerEod getOptionsPricesEodByTicker(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage)
+> ApiResponseOptionsPricesByTickerEod getOptionsPricesEodByTicker(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, recalculateStats, model, ivMode, nextPage)
 
 #### Option Prices End of Day By Ticker
 
@@ -2457,8 +2469,11 @@ public class Main {
     BigDecimal strikeGreaterThan = null;
     BigDecimal strikeLessThan = null;
     Boolean includeRelatedSymbols = false;
+    Boolean recalculateStats = false;
+    String model = "black_scholes";
+    String ivMode = "ivMode_example";
     String nextPage = null;
-    ApiResponseOptionsPricesByTickerEod result = optionsApi.getOptionsPricesEodByTicker(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage);
+    ApiResponseOptionsPricesByTickerEod result = optionsApi.getOptionsPricesEodByTicker(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, recalculateStats, model, ivMode, nextPage);
     System.out.println(result);
   }
 }
@@ -2481,6 +2496,9 @@ Name | Type | Description  | Notes
  **strikeGreaterThan** | BigDecimal| The strike price of the option contract. This will return options contracts with strike prices greater than this price. | [optional] &nbsp;
  **strikeLessThan** | BigDecimal| The strike price of the option contract. This will return options contracts with strike prices less than this price. | [optional] &nbsp;
  **includeRelatedSymbols** | Boolean| Include related symbols that end in a 1 or 2 because of a corporate action. | [optional] &nbsp;
+ **recalculateStats** | Boolean| Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. | [optional] [default to false] &nbsp;
+ **model** | String| The options pricing model to use when recalculating stats. | [optional] [default to black_scholes] [enum: black_scholes, bjerk] &nbsp;
+ **ivMode** | String| The implied volatility calculation mode to use when recalculating stats. | [optional] [enum: out_of_the_money] &nbsp;
  **nextPage** | String| Gets the next page of data from a previous API call | [optional] &nbsp;
 <br/>
 

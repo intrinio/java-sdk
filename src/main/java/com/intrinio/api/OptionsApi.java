@@ -1556,12 +1556,15 @@ public class OptionsApi {
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
      * @param date The date to retrieve prices for (optional)
      * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOptionsChainEodCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, Boolean includeRelatedSymbols, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsChainEodCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, Boolean includeRelatedSymbols, Boolean recalculateStats, String model, String ivMode, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1583,6 +1586,12 @@ public class OptionsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("date", date));
         if (includeRelatedSymbols != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("include_related_symbols", includeRelatedSymbols));
+        if (recalculateStats != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("recalculate_stats", recalculateStats));
+        if (model != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("model", model));
+        if (ivMode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("iv_mode", ivMode));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -1617,7 +1626,7 @@ public class OptionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOptionsChainEodValidateBeforeCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, Boolean includeRelatedSymbols, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getOptionsChainEodValidateBeforeCall(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, Boolean includeRelatedSymbols, Boolean recalculateStats, String model, String ivMode, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'symbol' is set
         if (symbol == null) {
@@ -1630,7 +1639,7 @@ public class OptionsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getOptionsChainEodCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsChainEodCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols, recalculateStats, model, ivMode, progressListener, progressRequestListener);
         return call;
 
     }
@@ -1646,14 +1655,17 @@ public class OptionsApi {
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
      * @param date The date to retrieve prices for (optional)
      * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @return ApiResponseOptionsChainEod
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseOptionsChainEod getOptionsChainEod(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, Boolean includeRelatedSymbols) throws ApiException, NoSuchMethodException {
-      Method targetMethod = OptionsApi.class.getMethod("getOptionsChainEodWithHttpInfo", String.class, String.class, String.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, LocalDate.class, Boolean.class);
+    public ApiResponseOptionsChainEod getOptionsChainEod(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, Boolean includeRelatedSymbols, Boolean recalculateStats, String model, String ivMode) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsChainEodWithHttpInfo", String.class, String.class, String.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, LocalDate.class, Boolean.class, Boolean.class, String.class, String.class);
       
-      Object[] apiCallArguments = { symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols };
+      Object[] apiCallArguments = { symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols, recalculateStats, model, ivMode };
       ApiResponse<ApiResponseOptionsChainEod> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -1669,11 +1681,14 @@ public class OptionsApi {
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
      * @param date The date to retrieve prices for (optional)
      * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @return ApiResponse&lt;ApiResponseOptionsChainEod&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseOptionsChainEod> getOptionsChainEodWithHttpInfo(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, Boolean includeRelatedSymbols) throws ApiException {
-        com.squareup.okhttp.Call call = getOptionsChainEodValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols, null, null);
+    public ApiResponse<ApiResponseOptionsChainEod> getOptionsChainEodWithHttpInfo(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, Boolean includeRelatedSymbols, Boolean recalculateStats, String model, String ivMode) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsChainEodValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols, recalculateStats, model, ivMode, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsChainEod>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -1689,11 +1704,14 @@ public class OptionsApi {
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
      * @param date The date to retrieve prices for (optional)
      * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getOptionsChainEodAsync(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, Boolean includeRelatedSymbols, final ApiCallback<ApiResponseOptionsChainEod> callback) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsChainEodAsync(String symbol, String expiration, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, LocalDate date, Boolean includeRelatedSymbols, Boolean recalculateStats, String model, String ivMode, final ApiCallback<ApiResponseOptionsChainEod> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1714,7 +1732,7 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getOptionsChainEodValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsChainEodValidateBeforeCall(symbol, expiration, type, strike, strikeGreaterThan, strikeLessThan, date, includeRelatedSymbols, recalculateStats, model, ivMode, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsChainEod>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -3847,12 +3865,15 @@ public class OptionsApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param startDate The start date to retrieve prices for (optional)
      * @param endDate The end date to retrieve prices for (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOptionsPricesEodCall(String identifier, String nextPage, LocalDate startDate, LocalDate endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsPricesEodCall(String identifier, String nextPage, LocalDate startDate, LocalDate endDate, Boolean recalculateStats, String model, String ivMode, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -3867,6 +3888,12 @@ public class OptionsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
         if (endDate != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (recalculateStats != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("recalculate_stats", recalculateStats));
+        if (model != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("model", model));
+        if (ivMode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("iv_mode", ivMode));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -3901,7 +3928,7 @@ public class OptionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOptionsPricesEodValidateBeforeCall(String identifier, String nextPage, LocalDate startDate, LocalDate endDate, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getOptionsPricesEodValidateBeforeCall(String identifier, String nextPage, LocalDate startDate, LocalDate endDate, Boolean recalculateStats, String model, String ivMode, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'identifier' is set
         if (identifier == null) {
@@ -3909,7 +3936,7 @@ public class OptionsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getOptionsPricesEodCall(identifier, nextPage, startDate, endDate, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsPricesEodCall(identifier, nextPage, startDate, endDate, recalculateStats, model, ivMode, progressListener, progressRequestListener);
         return call;
 
     }
@@ -3921,14 +3948,17 @@ public class OptionsApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param startDate The start date to retrieve prices for (optional)
      * @param endDate The end date to retrieve prices for (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @return ApiResponseOptionsPricesEod
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseOptionsPricesEod getOptionsPricesEod(String identifier, String nextPage, LocalDate startDate, LocalDate endDate) throws ApiException, NoSuchMethodException {
-      Method targetMethod = OptionsApi.class.getMethod("getOptionsPricesEodWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class);
+    public ApiResponseOptionsPricesEod getOptionsPricesEod(String identifier, String nextPage, LocalDate startDate, LocalDate endDate, Boolean recalculateStats, String model, String ivMode) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsPricesEodWithHttpInfo", String.class, String.class, LocalDate.class, LocalDate.class, Boolean.class, String.class, String.class);
       
-      Object[] apiCallArguments = { identifier, nextPage, startDate, endDate };
+      Object[] apiCallArguments = { identifier, nextPage, startDate, endDate, recalculateStats, model, ivMode };
       ApiResponse<ApiResponseOptionsPricesEod> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -3940,11 +3970,14 @@ public class OptionsApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param startDate The start date to retrieve prices for (optional)
      * @param endDate The end date to retrieve prices for (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @return ApiResponse&lt;ApiResponseOptionsPricesEod&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseOptionsPricesEod> getOptionsPricesEodWithHttpInfo(String identifier, String nextPage, LocalDate startDate, LocalDate endDate) throws ApiException {
-        com.squareup.okhttp.Call call = getOptionsPricesEodValidateBeforeCall(identifier, nextPage, startDate, endDate, null, null);
+    public ApiResponse<ApiResponseOptionsPricesEod> getOptionsPricesEodWithHttpInfo(String identifier, String nextPage, LocalDate startDate, LocalDate endDate, Boolean recalculateStats, String model, String ivMode) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsPricesEodValidateBeforeCall(identifier, nextPage, startDate, endDate, recalculateStats, model, ivMode, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesEod>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -3956,11 +3989,14 @@ public class OptionsApi {
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param startDate The start date to retrieve prices for (optional)
      * @param endDate The end date to retrieve prices for (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getOptionsPricesEodAsync(String identifier, String nextPage, LocalDate startDate, LocalDate endDate, final ApiCallback<ApiResponseOptionsPricesEod> callback) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsPricesEodAsync(String identifier, String nextPage, LocalDate startDate, LocalDate endDate, Boolean recalculateStats, String model, String ivMode, final ApiCallback<ApiResponseOptionsPricesEod> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -3981,7 +4017,7 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getOptionsPricesEodValidateBeforeCall(identifier, nextPage, startDate, endDate, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsPricesEodValidateBeforeCall(identifier, nextPage, startDate, endDate, recalculateStats, model, ivMode, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesEod>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -3996,13 +4032,16 @@ public class OptionsApi {
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
      * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getOptionsPricesEodByTickerCall(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsPricesEodByTickerCall(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, Boolean recalculateStats, String model, String ivMode, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -4025,6 +4064,12 @@ public class OptionsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("strike_less_than", strikeLessThan));
         if (includeRelatedSymbols != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("include_related_symbols", includeRelatedSymbols));
+        if (recalculateStats != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("recalculate_stats", recalculateStats));
+        if (model != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("model", model));
+        if (ivMode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("iv_mode", ivMode));
         if (nextPage != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
 
@@ -4061,7 +4106,7 @@ public class OptionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getOptionsPricesEodByTickerValidateBeforeCall(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getOptionsPricesEodByTickerValidateBeforeCall(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, Boolean recalculateStats, String model, String ivMode, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'symbol' is set
         if (symbol == null) {
@@ -4069,7 +4114,7 @@ public class OptionsApi {
         }
         
 
-        com.squareup.okhttp.Call call = getOptionsPricesEodByTickerCall(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsPricesEodByTickerCall(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, recalculateStats, model, ivMode, nextPage, progressListener, progressRequestListener);
         return call;
 
     }
@@ -4085,15 +4130,18 @@ public class OptionsApi {
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
      * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponseOptionsPricesByTickerEod
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public ApiResponseOptionsPricesByTickerEod getOptionsPricesEodByTicker(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, String nextPage) throws ApiException, NoSuchMethodException {
-      Method targetMethod = OptionsApi.class.getMethod("getOptionsPricesEodByTickerWithHttpInfo", String.class, Integer.class, Object.class, String.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, Boolean.class, String.class);
+    public ApiResponseOptionsPricesByTickerEod getOptionsPricesEodByTicker(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, Boolean recalculateStats, String model, String ivMode, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsPricesEodByTickerWithHttpInfo", String.class, Integer.class, Object.class, String.class, BigDecimal.class, BigDecimal.class, BigDecimal.class, Boolean.class, Boolean.class, String.class, String.class, String.class);
       
-      Object[] apiCallArguments = { symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage };
+      Object[] apiCallArguments = { symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, recalculateStats, model, ivMode, nextPage };
       ApiResponse<ApiResponseOptionsPricesByTickerEod> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -4109,12 +4157,15 @@ public class OptionsApi {
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
      * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @return ApiResponse&lt;ApiResponseOptionsPricesByTickerEod&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ApiResponseOptionsPricesByTickerEod> getOptionsPricesEodByTickerWithHttpInfo(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, String nextPage) throws ApiException {
-        com.squareup.okhttp.Call call = getOptionsPricesEodByTickerValidateBeforeCall(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage, null, null);
+    public ApiResponse<ApiResponseOptionsPricesByTickerEod> getOptionsPricesEodByTickerWithHttpInfo(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, Boolean recalculateStats, String model, String ivMode, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsPricesEodByTickerValidateBeforeCall(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, recalculateStats, model, ivMode, nextPage, null, null);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesByTickerEod>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -4130,12 +4181,15 @@ public class OptionsApi {
      * @param strikeGreaterThan The strike price of the option contract. This will return options contracts with strike prices greater than this price. (optional)
      * @param strikeLessThan The strike price of the option contract. This will return options contracts with strike prices less than this price. (optional)
      * @param includeRelatedSymbols Include related symbols that end in a 1 or 2 because of a corporate action. (optional)
+     * @param recalculateStats Recalculate implied volatility and greeks on the fly using end-of-day underlying prices. (optional, default to false)
+     * @param model The options pricing model to use when recalculating stats. (optional, default to black_scholes)
+     * @param ivMode The implied volatility calculation mode to use when recalculating stats. (optional)
      * @param nextPage Gets the next page of data from a previous API call (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getOptionsPricesEodByTickerAsync(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, String nextPage, final ApiCallback<ApiResponseOptionsPricesByTickerEod> callback) throws ApiException {
+    public com.squareup.okhttp.Call getOptionsPricesEodByTickerAsync(String symbol, Integer pageSize, Object date, String type, BigDecimal strike, BigDecimal strikeGreaterThan, BigDecimal strikeLessThan, Boolean includeRelatedSymbols, Boolean recalculateStats, String model, String ivMode, String nextPage, final ApiCallback<ApiResponseOptionsPricesByTickerEod> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -4156,7 +4210,7 @@ public class OptionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getOptionsPricesEodByTickerValidateBeforeCall(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, nextPage, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getOptionsPricesEodByTickerValidateBeforeCall(symbol, pageSize, date, type, strike, strikeGreaterThan, strikeLessThan, includeRelatedSymbols, recalculateStats, model, ivMode, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsPricesByTickerEod>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
