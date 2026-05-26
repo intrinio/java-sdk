@@ -17,6 +17,7 @@ import java.io.IOException;
 
 
 import com.intrinio.models.ApiResponseAccountUsages;
+import com.intrinio.models.ApiResponseWebsocketStatuses;
 
 import java.lang.reflect.Type;
 import java.lang.reflect.Method;
@@ -55,7 +56,7 @@ public class AccountApi {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/account";
+        String localVarPath = "/account/current_usage";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -158,6 +159,123 @@ public class AccountApi {
 
         com.squareup.okhttp.Call call = getAccountCurrentUsageValidateBeforeCall(progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseAccountUsages>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getAccountWebsocketStatuses
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getAccountWebsocketStatusesCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/account/websocket_statuses";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getAccountWebsocketStatusesValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getAccountWebsocketStatusesCall(progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Account Websocket Statuses
+     * Returns a list of all websocket statuses for the account.
+     * @return ApiResponseWebsocketStatuses
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseWebsocketStatuses getAccountWebsocketStatuses() throws ApiException, NoSuchMethodException {
+      Method targetMethod = AccountApi.class.getMethod("getAccountWebsocketStatusesWithHttpInfo");
+      
+      Object[] apiCallArguments = {  };
+      ApiResponse<ApiResponseWebsocketStatuses> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Account Websocket Statuses
+     * Returns a list of all websocket statuses for the account.
+     * @return ApiResponse&lt;ApiResponseWebsocketStatuses&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseWebsocketStatuses> getAccountWebsocketStatusesWithHttpInfo() throws ApiException {
+        com.squareup.okhttp.Call call = getAccountWebsocketStatusesValidateBeforeCall(null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseWebsocketStatuses>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Account Websocket Statuses (asynchronously)
+     * Returns a list of all websocket statuses for the account.
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getAccountWebsocketStatusesAsync(final ApiCallback<ApiResponseWebsocketStatuses> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getAccountWebsocketStatusesValidateBeforeCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseWebsocketStatuses>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

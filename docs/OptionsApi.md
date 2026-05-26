@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**getOptionAggregates**](OptionsApi.md#getOptionAggregates) | **GET** /options/aggregates | Total open interest and volume aggregated by ticker
 [**getOptionExpirationsRealtime**](OptionsApi.md#getOptionExpirationsRealtime) | **GET** /options/expirations/{symbol}/realtime | Options Expirations
 [**getOptionStrikesRealtime**](OptionsApi.md#getOptionStrikesRealtime) | **GET** /options/strikes/{symbol}/{strike}/realtime | Option Strikes Realtime
+[**getOptionSurface**](OptionsApi.md#getOptionSurface) | **GET** /options/surface/{identifier} | Option Surface
+[**getOptionSurface_0**](OptionsApi.md#getOptionSurface_0) | **GET** /options/surface/{identifier}/interpolate_iv | Option Surface
 [**getOptionTrades**](OptionsApi.md#getOptionTrades) | **GET** /options/trades | Option Trades
 [**getOptionTradesByContract**](OptionsApi.md#getOptionTradesByContract) | **GET** /options/{identifier}/trades | Option Trades By Contract
 [**getOptions**](OptionsApi.md#getOptions) | **GET** /options/{symbol} | Options
@@ -20,7 +22,8 @@ Method | HTTP request | Description
 [**getOptionsGainers**](OptionsApi.md#getOptionsGainers) | **GET** /options/gainers | Options Top Gainers
 [**getOptionsGreeksByContract**](OptionsApi.md#getOptionsGreeksByContract) | **GET** /options/greeks/{contract}/realtime | Option Greeks &amp; Derived Price by Contract
 [**getOptionsGreeksByTicker**](OptionsApi.md#getOptionsGreeksByTicker) | **GET** /options/greeks/by_ticker/{identifier}/realtime | Options Realtime Greeks &amp; Derived Price by Ticker
-[**getOptionsImpliedMoveBySymbol**](OptionsApi.md#getOptionsImpliedMoveBySymbol) | **GET** /options/implied_move/{symbol}/{expiration_date} | Options Implied Move By Symbol
+[**getOptionsImpliedMoveBySymbol**](OptionsApi.md#getOptionsImpliedMoveBySymbol) | **GET** /options/implied_move/{symbol}/{expiration_date} | Options Implied Move (Expected) Realtime
+[**getOptionsImpliedMoveHistoricalBySymbol**](OptionsApi.md#getOptionsImpliedMoveHistoricalBySymbol) | **GET** /options/implied_move/{symbol}/{expiration_date}/historical/{as_of_date} | Options Implied Move (Expected) Historical
 [**getOptionsIntervalByContract**](OptionsApi.md#getOptionsIntervalByContract) | **GET** /options/interval/{identifier} | Options Intervals By Contract
 [**getOptionsIntervalMovers**](OptionsApi.md#getOptionsIntervalMovers) | **GET** /options/interval/movers | Options Intervals Movers
 [**getOptionsIntervalMoversChange**](OptionsApi.md#getOptionsIntervalMoversChange) | **GET** /options/interval/movers/change | Options Intervals Movers By Change
@@ -397,6 +400,186 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ApiResponseOptionsChainRealtime**](ApiResponseOptionsChainRealtime.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionSurface)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsSurface)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsSurface.md)
+
+[//]: # (OPERATION:getOptionSurface_v2)
+
+[//]: # (ENDPOINT:/options/surface/{identifier})
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionSurface)
+
+<a name="getOptionSurface"></a>
+## **getOptionSurface**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionSurface_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsSurface getOptionSurface(identifier, surfaceType, source)
+
+#### Option Surface
+
+
+Returns the implied volatility surface for a ticker symbol.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String identifier = "AAPL";
+    String surfaceType = null;
+    String source = null;
+    ApiResponseOptionsSurface result = optionsApi.getOptionSurface(identifier, surfaceType, source);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| The ticker symbol for the surface data being requested. | &nbsp;
+ **surfaceType** | String| The form of the surface being requested. | [enum: raw, logarithmic_smoothed] &nbsp;
+ **source** | String| The specific source of the data being requested. | [optional] [enum: realtime] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsSurface**](ApiResponseOptionsSurface.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionSurface_0)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsSurfaceInterpolatedIv)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsSurfaceInterpolatedIv.md)
+
+[//]: # (OPERATION:getOptionSurface_0_v2)
+
+[//]: # (ENDPOINT:/options/surface/{identifier}/interpolate_iv)
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionSurface_0)
+
+<a name="getOptionSurface_0"></a>
+## **getOptionSurface_0**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionSurface_0_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsSurfaceInterpolatedIv getOptionSurface_0(identifier, expiration, strike, source, asOf)
+
+#### Option Surface
+
+
+The interpolated implied volatility is the implied volatility calculated from an arbitrary point on the smoothed volatility surface.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String identifier = "SPY";
+    OffsetDateTime expiration = OffsetDateTime.now();
+    BigDecimal strike = null;
+    String source = null;
+    OffsetDateTime asOf = OffsetDateTime.now();
+    ApiResponseOptionsSurfaceInterpolatedIv result = optionsApi.getOptionSurface_0(identifier, expiration, strike, source, asOf);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **identifier** | String| The ticker symbol for the surface data being requested. | &nbsp;
+ **expiration** | OffsetDateTime| The DateTime of the expiration for the contract to calculate implied volatility from the surface. | &nbsp;
+ **strike** | BigDecimal| The strike for the contract to calculate implied volatility from the surface. | &nbsp;
+ **source** | String| The specific source of the data being requested. | [optional] [enum: realtime] &nbsp;
+ **asOf** | OffsetDateTime| The time to use in calculating time until expiration.  Defaults to the current time. | [optional] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsSurfaceInterpolatedIv**](ApiResponseOptionsSurfaceInterpolatedIv.md)
 
 [//]: # (END_OPERATION)
 
@@ -1618,7 +1801,7 @@ Name | Type | Description  | Notes
 
 > ApiResponseOptionsImpliedMove getOptionsImpliedMoveBySymbol(symbol, expirationDate, percentage, source)
 
-#### Options Implied Move By Symbol
+#### Options Implied Move (Expected) Realtime
 
 
 Returns the implied move data points for a ticker symbol.
@@ -1670,6 +1853,98 @@ Name | Type | Description  | Notes
  **expirationDate** | LocalDate| The expiration date for the contracts to consider. | &nbsp;
  **percentage** | [**Object**](.md)| Percentage to multiply the straddle by. Defaults to 0.85. | [optional] &nbsp;
  **source** | String| Realtime or 15-minute delayed contracts. | [optional] [enum: realtime, delayed] &nbsp;
+<br/>
+
+[//]: # (END_PARAMETERS)
+
+### Return type
+
+[**ApiResponseOptionsImpliedMove**](ApiResponseOptionsImpliedMove.md)
+
+[//]: # (END_OPERATION)
+
+
+[//]: # (START_OPERATION)
+
+[//]: # (CLASS:OptionsApi)
+
+[//]: # (METHOD:getOptionsImpliedMoveHistoricalBySymbol)
+
+[//]: # (RETURN_TYPE:ApiResponseOptionsImpliedMove)
+
+[//]: # (RETURN_TYPE_KIND:object)
+
+[//]: # (RETURN_TYPE_DOC:ApiResponseOptionsImpliedMove.md)
+
+[//]: # (OPERATION:getOptionsImpliedMoveHistoricalBySymbol_v2)
+
+[//]: # (ENDPOINT:/options/implied_move/{symbol}/{expiration_date}/historical/{as_of_date})
+
+[//]: # (DOCUMENT_LINK:OptionsApi.md#getOptionsImpliedMoveHistoricalBySymbol)
+
+<a name="getOptionsImpliedMoveHistoricalBySymbol"></a>
+## **getOptionsImpliedMoveHistoricalBySymbol**
+
+[**View Intrinio API Documentation**](https://docs.intrinio.com/documentation/java/getOptionsImpliedMoveHistoricalBySymbol_v2)
+
+[//]: # (START_OVERVIEW)
+
+> ApiResponseOptionsImpliedMove getOptionsImpliedMoveHistoricalBySymbol(symbol, expirationDate, asOfDate, percentage, source)
+
+#### Options Implied Move (Expected) Historical
+
+
+Returns historical implied move data points for a ticker symbol on a specific date.
+
+[//]: # (END_OVERVIEW)
+
+### Example
+
+[//]: # (START_CODE_EXAMPLE)
+
+```java
+import com.intrinio.api.*;
+import com.intrinio.models.*;
+import com.intrinio.invoker.*;
+import com.intrinio.invoker.auth.*;
+import org.threeten.bp.*;
+import java.math.BigDecimal;
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    ApiKeyAuth auth = (ApiKeyAuth) defaultClient.getAuthentication("ApiKeyAuth");
+    auth.setApiKey("YOUR_API_KEY");
+    defaultClient.setAllowRetries(true);
+
+    OptionsApi optionsApi = new OptionsApi();
+    String symbol = "TSLA";
+    LocalDate expirationDate = LocalDate.of(2025,5,30);
+    LocalDate asOfDate = LocalDate.of(2025,5,15);
+    Object percentage = 0.85;
+    String source = null;
+    ApiResponseOptionsImpliedMove result = optionsApi.getOptionsImpliedMoveHistoricalBySymbol(symbol, expirationDate, asOfDate, percentage, source);
+    System.out.println(result);
+  }
+}
+```
+
+[//]: # (END_CODE_EXAMPLE)
+
+### Parameters
+
+[//]: # (START_PARAMETERS)
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbol** | String| The ticker symbol for the contracts. | &nbsp;
+ **expirationDate** | LocalDate| The expiration date for the contracts to consider. | &nbsp;
+ **asOfDate** | LocalDate| The historical date to evaluate implied move on. | &nbsp;
+ **percentage** | [**Object**](.md)| Percentage to multiply the straddle by. Defaults to 0.85. | [optional] &nbsp;
+ **source** | String| Realtime or 15-minute delayed contracts used for underlying mapping. | [optional] [enum: realtime, delayed] &nbsp;
 <br/>
 
 [//]: # (END_PARAMETERS)

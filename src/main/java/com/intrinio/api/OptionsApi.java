@@ -34,6 +34,8 @@ import com.intrinio.models.ApiResponseOptionsPricesByTickerRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesEod;
 import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
+import com.intrinio.models.ApiResponseOptionsSurface;
+import com.intrinio.models.ApiResponseOptionsSurfaceInterpolatedIv;
 import com.intrinio.models.ApiResponseOptionsTickers;
 import com.intrinio.models.ApiResponseOptionsUnusualActivity;
 import java.math.BigDecimal;
@@ -644,6 +646,311 @@ public class OptionsApi {
 
         com.squareup.okhttp.Call call = getOptionStrikesRealtimeValidateBeforeCall(symbol, strike, source, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsChainRealtime>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionSurface
+     * @param identifier The ticker symbol for the surface data being requested. (required)
+     * @param surfaceType The form of the surface being requested. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionSurfaceCall(String identifier, String surfaceType, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/surface/{identifier}"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (surfaceType != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("surface_type", surfaceType));
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionSurfaceValidateBeforeCall(String identifier, String surfaceType, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getOptionSurface(Async)");
+        }
+        
+        // verify the required parameter 'surfaceType' is set
+        if (surfaceType == null) {
+            throw new ApiException("Missing the required parameter 'surfaceType' when calling getOptionSurface(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionSurfaceCall(identifier, surfaceType, source, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Option Surface
+     * Returns the implied volatility surface for a ticker symbol.
+     * @param identifier The ticker symbol for the surface data being requested. (required)
+     * @param surfaceType The form of the surface being requested. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @return ApiResponseOptionsSurface
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsSurface getOptionSurface(String identifier, String surfaceType, String source) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionSurfaceWithHttpInfo", String.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { identifier, surfaceType, source };
+      ApiResponse<ApiResponseOptionsSurface> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Option Surface
+     * Returns the implied volatility surface for a ticker symbol.
+     * @param identifier The ticker symbol for the surface data being requested. (required)
+     * @param surfaceType The form of the surface being requested. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsSurface&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsSurface> getOptionSurfaceWithHttpInfo(String identifier, String surfaceType, String source) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionSurfaceValidateBeforeCall(identifier, surfaceType, source, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsSurface>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Option Surface (asynchronously)
+     * Returns the implied volatility surface for a ticker symbol.
+     * @param identifier The ticker symbol for the surface data being requested. (required)
+     * @param surfaceType The form of the surface being requested. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionSurfaceAsync(String identifier, String surfaceType, String source, final ApiCallback<ApiResponseOptionsSurface> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionSurfaceValidateBeforeCall(identifier, surfaceType, source, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsSurface>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionSurface_0
+     * @param identifier The ticker symbol for the surface data being requested. (required)
+     * @param expiration The DateTime of the expiration for the contract to calculate implied volatility from the surface. (required)
+     * @param strike The strike for the contract to calculate implied volatility from the surface. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @param asOf The time to use in calculating time until expiration.  Defaults to the current time. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionSurface_0Call(String identifier, OffsetDateTime expiration, BigDecimal strike, String source, OffsetDateTime asOf, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/surface/{identifier}/interpolate_iv"
+            .replaceAll("\\{" + "identifier" + "\\}", apiClient.escapeString(identifier.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+        if (expiration != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("expiration", expiration));
+        if (asOf != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("as_of", asOf));
+        if (strike != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("strike", strike));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionSurface_0ValidateBeforeCall(String identifier, OffsetDateTime expiration, BigDecimal strike, String source, OffsetDateTime asOf, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'identifier' is set
+        if (identifier == null) {
+            throw new ApiException("Missing the required parameter 'identifier' when calling getOptionSurface_0(Async)");
+        }
+        
+        // verify the required parameter 'expiration' is set
+        if (expiration == null) {
+            throw new ApiException("Missing the required parameter 'expiration' when calling getOptionSurface_0(Async)");
+        }
+        
+        // verify the required parameter 'strike' is set
+        if (strike == null) {
+            throw new ApiException("Missing the required parameter 'strike' when calling getOptionSurface_0(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionSurface_0Call(identifier, expiration, strike, source, asOf, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Option Surface
+     * The interpolated implied volatility is the implied volatility calculated from an arbitrary point on the smoothed volatility surface.
+     * @param identifier The ticker symbol for the surface data being requested. (required)
+     * @param expiration The DateTime of the expiration for the contract to calculate implied volatility from the surface. (required)
+     * @param strike The strike for the contract to calculate implied volatility from the surface. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @param asOf The time to use in calculating time until expiration.  Defaults to the current time. (optional)
+     * @return ApiResponseOptionsSurfaceInterpolatedIv
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsSurfaceInterpolatedIv getOptionSurface_0(String identifier, OffsetDateTime expiration, BigDecimal strike, String source, OffsetDateTime asOf) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionSurface_0WithHttpInfo", String.class, OffsetDateTime.class, BigDecimal.class, String.class, OffsetDateTime.class);
+      
+      Object[] apiCallArguments = { identifier, expiration, strike, source, asOf };
+      ApiResponse<ApiResponseOptionsSurfaceInterpolatedIv> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Option Surface
+     * The interpolated implied volatility is the implied volatility calculated from an arbitrary point on the smoothed volatility surface.
+     * @param identifier The ticker symbol for the surface data being requested. (required)
+     * @param expiration The DateTime of the expiration for the contract to calculate implied volatility from the surface. (required)
+     * @param strike The strike for the contract to calculate implied volatility from the surface. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @param asOf The time to use in calculating time until expiration.  Defaults to the current time. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsSurfaceInterpolatedIv&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsSurfaceInterpolatedIv> getOptionSurface_0WithHttpInfo(String identifier, OffsetDateTime expiration, BigDecimal strike, String source, OffsetDateTime asOf) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionSurface_0ValidateBeforeCall(identifier, expiration, strike, source, asOf, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsSurfaceInterpolatedIv>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Option Surface (asynchronously)
+     * The interpolated implied volatility is the implied volatility calculated from an arbitrary point on the smoothed volatility surface.
+     * @param identifier The ticker symbol for the surface data being requested. (required)
+     * @param expiration The DateTime of the expiration for the contract to calculate implied volatility from the surface. (required)
+     * @param strike The strike for the contract to calculate implied volatility from the surface. (required)
+     * @param source The specific source of the data being requested. (optional)
+     * @param asOf The time to use in calculating time until expiration.  Defaults to the current time. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionSurface_0Async(String identifier, OffsetDateTime expiration, BigDecimal strike, String source, OffsetDateTime asOf, final ApiCallback<ApiResponseOptionsSurfaceInterpolatedIv> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionSurface_0ValidateBeforeCall(identifier, expiration, strike, source, asOf, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsSurfaceInterpolatedIv>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -2804,7 +3111,7 @@ public class OptionsApi {
     }
 
     /**
-     * Options Implied Move By Symbol
+     * Options Implied Move (Expected) Realtime
      * Returns the implied move data points for a ticker symbol.
      * @param symbol The ticker symbol for the contracts. (required)
      * @param expirationDate The expiration date for the contracts to consider. (required)
@@ -2823,7 +3130,7 @@ public class OptionsApi {
     }
 
     /**
-     * Options Implied Move By Symbol
+     * Options Implied Move (Expected) Realtime
      * Returns the implied move data points for a ticker symbol.
      * @param symbol The ticker symbol for the contracts. (required)
      * @param expirationDate The expiration date for the contracts to consider. (required)
@@ -2839,7 +3146,7 @@ public class OptionsApi {
     }
 
     /**
-     * Options Implied Move By Symbol (asynchronously)
+     * Options Implied Move (Expected) Realtime (asynchronously)
      * Returns the implied move data points for a ticker symbol.
      * @param symbol The ticker symbol for the contracts. (required)
      * @param expirationDate The expiration date for the contracts to consider. (required)
@@ -2871,6 +3178,165 @@ public class OptionsApi {
         }
 
         com.squareup.okhttp.Call call = getOptionsImpliedMoveBySymbolValidateBeforeCall(symbol, expirationDate, percentage, source, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsImpliedMove>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getOptionsImpliedMoveHistoricalBySymbol
+     * @param symbol The ticker symbol for the contracts. (required)
+     * @param expirationDate The expiration date for the contracts to consider. (required)
+     * @param asOfDate The historical date to evaluate implied move on. (required)
+     * @param percentage Percentage to multiply the straddle by. Defaults to 0.85. (optional)
+     * @param source Realtime or 15-minute delayed contracts used for underlying mapping. (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsImpliedMoveHistoricalBySymbolCall(String symbol, LocalDate expirationDate, LocalDate asOfDate, Object percentage, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/options/implied_move/{symbol}/{expiration_date}/historical/{as_of_date}"
+            .replaceAll("\\{" + "symbol" + "\\}", apiClient.escapeString(symbol.toString()))
+            .replaceAll("\\{" + "expiration_date" + "\\}", apiClient.escapeString(expirationDate.toString()))
+            .replaceAll("\\{" + "as_of_date" + "\\}", apiClient.escapeString(asOfDate.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (percentage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("percentage", percentage));
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getOptionsImpliedMoveHistoricalBySymbolValidateBeforeCall(String symbol, LocalDate expirationDate, LocalDate asOfDate, Object percentage, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'symbol' is set
+        if (symbol == null) {
+            throw new ApiException("Missing the required parameter 'symbol' when calling getOptionsImpliedMoveHistoricalBySymbol(Async)");
+        }
+        
+        // verify the required parameter 'expirationDate' is set
+        if (expirationDate == null) {
+            throw new ApiException("Missing the required parameter 'expirationDate' when calling getOptionsImpliedMoveHistoricalBySymbol(Async)");
+        }
+        
+        // verify the required parameter 'asOfDate' is set
+        if (asOfDate == null) {
+            throw new ApiException("Missing the required parameter 'asOfDate' when calling getOptionsImpliedMoveHistoricalBySymbol(Async)");
+        }
+        
+
+        com.squareup.okhttp.Call call = getOptionsImpliedMoveHistoricalBySymbolCall(symbol, expirationDate, asOfDate, percentage, source, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Options Implied Move (Expected) Historical
+     * Returns historical implied move data points for a ticker symbol on a specific date.
+     * @param symbol The ticker symbol for the contracts. (required)
+     * @param expirationDate The expiration date for the contracts to consider. (required)
+     * @param asOfDate The historical date to evaluate implied move on. (required)
+     * @param percentage Percentage to multiply the straddle by. Defaults to 0.85. (optional)
+     * @param source Realtime or 15-minute delayed contracts used for underlying mapping. (optional)
+     * @return ApiResponseOptionsImpliedMove
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseOptionsImpliedMove getOptionsImpliedMoveHistoricalBySymbol(String symbol, LocalDate expirationDate, LocalDate asOfDate, Object percentage, String source) throws ApiException, NoSuchMethodException {
+      Method targetMethod = OptionsApi.class.getMethod("getOptionsImpliedMoveHistoricalBySymbolWithHttpInfo", String.class, LocalDate.class, LocalDate.class, Object.class, String.class);
+      
+      Object[] apiCallArguments = { symbol, expirationDate, asOfDate, percentage, source };
+      ApiResponse<ApiResponseOptionsImpliedMove> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Options Implied Move (Expected) Historical
+     * Returns historical implied move data points for a ticker symbol on a specific date.
+     * @param symbol The ticker symbol for the contracts. (required)
+     * @param expirationDate The expiration date for the contracts to consider. (required)
+     * @param asOfDate The historical date to evaluate implied move on. (required)
+     * @param percentage Percentage to multiply the straddle by. Defaults to 0.85. (optional)
+     * @param source Realtime or 15-minute delayed contracts used for underlying mapping. (optional)
+     * @return ApiResponse&lt;ApiResponseOptionsImpliedMove&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseOptionsImpliedMove> getOptionsImpliedMoveHistoricalBySymbolWithHttpInfo(String symbol, LocalDate expirationDate, LocalDate asOfDate, Object percentage, String source) throws ApiException {
+        com.squareup.okhttp.Call call = getOptionsImpliedMoveHistoricalBySymbolValidateBeforeCall(symbol, expirationDate, asOfDate, percentage, source, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseOptionsImpliedMove>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Options Implied Move (Expected) Historical (asynchronously)
+     * Returns historical implied move data points for a ticker symbol on a specific date.
+     * @param symbol The ticker symbol for the contracts. (required)
+     * @param expirationDate The expiration date for the contracts to consider. (required)
+     * @param asOfDate The historical date to evaluate implied move on. (required)
+     * @param percentage Percentage to multiply the straddle by. Defaults to 0.85. (optional)
+     * @param source Realtime or 15-minute delayed contracts used for underlying mapping. (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getOptionsImpliedMoveHistoricalBySymbolAsync(String symbol, LocalDate expirationDate, LocalDate asOfDate, Object percentage, String source, final ApiCallback<ApiResponseOptionsImpliedMove> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getOptionsImpliedMoveHistoricalBySymbolValidateBeforeCall(symbol, expirationDate, asOfDate, percentage, source, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseOptionsImpliedMove>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

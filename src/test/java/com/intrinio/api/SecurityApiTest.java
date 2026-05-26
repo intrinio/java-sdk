@@ -4,6 +4,8 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseSecurities;
+import com.intrinio.models.ApiResponseSecuritiesDailyShortVolume;
+import com.intrinio.models.ApiResponseSecuritiesDailyShortVolumeConsolidated;
 import com.intrinio.models.ApiResponseSecuritiesDividendLatest;
 import com.intrinio.models.ApiResponseSecuritiesEarningsLatest;
 import com.intrinio.models.ApiResponseSecuritiesSearch;
@@ -113,6 +115,45 @@ public class SecurityApiTest {
         Boolean primaryListing = null;
         String nextPage = null;
         ApiResponseSecurities response = api.getAllSecurities(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Daily Short Volume
+     *
+     * Returns FINRA daily short volume data for securities, reported by individual market centers and reporting facilities.  ## Data Coverage This endpoint provides **off-exchange activity** data aggregated from FINRA&#39;s Short Sale Volume files. The data represents short selling activity reported by market centers and third-party reporting facilities, including both exchange and off-exchange venues.  ## Use as Market Proxy Short volume data can serve as a meaningful proxy for overall market sentiment and activity: - **Market Structure Insight**: Tracks short selling intensity across different trading venues and market centers - **Liquidity Indicator**: Higher short volume often correlates with increased market activity and liquidity - **Sentiment Analysis**: Can indicate bearish positioning, though short volume alone doesn&#39;t determine market direction - **Cross-Venue Analysis**: Compare short volume patterns across different reporting facilities to understand how activity varies by venue type  ## Data Characteristics - Data is reported at the facility level for granular analysis - Use the &#x60;/securities/daily_short_volume/consolidated&#x60; endpoint for a single aggregated view across all facilities - Short exempt volume reflects pre-borrow arrangements and other regulated short selling exemptions - Each data point represents a full trading day&#39;s accumulated short volume 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecuritiesDailyShortVolumeTest() throws ApiException, NoSuchMethodException {
+        List<String> tickers = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        String sortBy = null;
+        String nextPage = null;
+        ApiResponseSecuritiesDailyShortVolume response = api.getSecuritiesDailyShortVolume(tickers, startDate, endDate, sortBy, nextPage);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Daily Short Volume Consolidated
+     *
+     * Returns FINRA daily short volume data aggregated across all reporting facilities for each security and date.  ## Data Aggregation This endpoint consolidates all short volume activity reported across different market centers and reporting facilities into a single daily view per security: - **Volume Summation**: Total, short, and short exempt volumes are summed across all facilities - **Ratio Recalculation**: The short volume ratio is recalculated on the aggregated totals for accurate market-wide percentages - **Facility Tracking**: Included &#x60;sources&#x60; field lists all reporting facilities that contributed to each daily aggregate  ## Market-Wide Perspective Consolidated short volume serves as an excellent proxy for off-exchange market activity: - **Complete Market View**: Aggregates activity from all FINRA-reporting venues into a single metric - **Comparable Across Securities**: Normalized short volume ratios allow fair comparison between different stocks regardless of absolute trading volume - **Trend Analysis**: Daily consolidated data enables tracking of short selling trends and patterns across the entire market - **Venue-Agnostic**: Eliminates the need to aggregate across multiple facilities manually  ## Use Cases - Monitor overall short selling sentiment across your portfolio or watchlist - Identify unusual short volume spikes that may precede price moves - Compare short volume ratios between securities to identify relative short interest positioning - Analyze temporal patterns in short selling behavior across trading days 
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getSecuritiesDailyShortVolumeConsolidatedTest() throws ApiException, NoSuchMethodException {
+        List<String> tickers = null;
+        LocalDate startDate = null;
+        LocalDate endDate = null;
+        String nextPage = null;
+        ApiResponseSecuritiesDailyShortVolumeConsolidated response = api.getSecuritiesDailyShortVolumeConsolidated(tickers, startDate, endDate, nextPage);
 
         // TODO: test validations
     }
@@ -1162,7 +1203,8 @@ public class SecurityApiTest {
     @Test
     public void getSecuritySnapshotsTest() throws ApiException, NoSuchMethodException {
         OffsetDateTime atDatetime = null;
-        SecuritySnapshotsResult response = api.getSecuritySnapshots(atDatetime);
+        String source = null;
+        SecuritySnapshotsResult response = api.getSecuritySnapshots(atDatetime, source);
 
         // TODO: test validations
     }

@@ -4,6 +4,7 @@ package com.intrinio.api;
 
 import com.intrinio.invoker.ApiException;
 import com.intrinio.models.ApiResponseAccountUsages;
+import com.intrinio.models.ApiResponseWebsocketStatuses;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -32,6 +33,21 @@ public class AccountApiTest {
     @Test
     public void getAccountCurrentUsageTest() throws ApiException, NoSuchMethodException {
         ApiResponseAccountUsages response = api.getAccountCurrentUsage();
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Account Websocket Statuses
+     *
+     * Returns a list of all websocket statuses for the account.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getAccountWebsocketStatusesTest() throws ApiException, NoSuchMethodException {
+        ApiResponseWebsocketStatuses response = api.getAccountWebsocketStatuses();
 
         // TODO: test validations
     }

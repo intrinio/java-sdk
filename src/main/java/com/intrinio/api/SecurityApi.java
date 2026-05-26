@@ -17,6 +17,8 @@ import java.io.IOException;
 
 
 import com.intrinio.models.ApiResponseSecurities;
+import com.intrinio.models.ApiResponseSecuritiesDailyShortVolume;
+import com.intrinio.models.ApiResponseSecuritiesDailyShortVolumeConsolidated;
 import com.intrinio.models.ApiResponseSecuritiesDividendLatest;
 import com.intrinio.models.ApiResponseSecuritiesEarningsLatest;
 import com.intrinio.models.ApiResponseSecuritiesSearch;
@@ -334,6 +336,294 @@ public class SecurityApi {
 
         com.squareup.okhttp.Call call = getAllSecuritiesValidateBeforeCall(active, delisted, code, currency, ticker, name, compositeMic, exchangeMic, stockPricesAfter, stockPricesBefore, cik, figi, compositeFigi, shareClassFigi, figiUniqueId, includeNonFigi, pageSize, primaryListing, nextPage, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ApiResponseSecurities>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecuritiesDailyShortVolume
+     * @param tickers A list of one or more security tickers to filter results (optional)
+     * @param startDate The start date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param endDate The end date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param sortBy Specifies how to sort the data. Valid values are \&quot;date\&quot; (default, descending) or \&quot;ticker\&quot; (ascending) (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecuritiesDailyShortVolumeCall(List<String> tickers, LocalDate startDate, LocalDate endDate, String sortBy, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/daily_short_volume";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (tickers != null)
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "tickers", tickers));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (sortBy != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("sort_by", sortBy));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecuritiesDailyShortVolumeValidateBeforeCall(List<String> tickers, LocalDate startDate, LocalDate endDate, String sortBy, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getSecuritiesDailyShortVolumeCall(tickers, startDate, endDate, sortBy, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Daily Short Volume
+     * Returns FINRA daily short volume data for securities, reported by individual market centers and reporting facilities.  ## Data Coverage This endpoint provides **off-exchange activity** data aggregated from FINRA&#39;s Short Sale Volume files. The data represents short selling activity reported by market centers and third-party reporting facilities, including both exchange and off-exchange venues.  ## Use as Market Proxy Short volume data can serve as a meaningful proxy for overall market sentiment and activity: - **Market Structure Insight**: Tracks short selling intensity across different trading venues and market centers - **Liquidity Indicator**: Higher short volume often correlates with increased market activity and liquidity - **Sentiment Analysis**: Can indicate bearish positioning, though short volume alone doesn&#39;t determine market direction - **Cross-Venue Analysis**: Compare short volume patterns across different reporting facilities to understand how activity varies by venue type  ## Data Characteristics - Data is reported at the facility level for granular analysis - Use the &#x60;/securities/daily_short_volume/consolidated&#x60; endpoint for a single aggregated view across all facilities - Short exempt volume reflects pre-borrow arrangements and other regulated short selling exemptions - Each data point represents a full trading day&#39;s accumulated short volume 
+     * @param tickers A list of one or more security tickers to filter results (optional)
+     * @param startDate The start date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param endDate The end date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param sortBy Specifies how to sort the data. Valid values are \&quot;date\&quot; (default, descending) or \&quot;ticker\&quot; (ascending) (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseSecuritiesDailyShortVolume
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseSecuritiesDailyShortVolume getSecuritiesDailyShortVolume(List<String> tickers, LocalDate startDate, LocalDate endDate, String sortBy, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecuritiesDailyShortVolumeWithHttpInfo", List.class, LocalDate.class, LocalDate.class, String.class, String.class);
+      
+      Object[] apiCallArguments = { tickers, startDate, endDate, sortBy, nextPage };
+      ApiResponse<ApiResponseSecuritiesDailyShortVolume> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Daily Short Volume
+     * Returns FINRA daily short volume data for securities, reported by individual market centers and reporting facilities.  ## Data Coverage This endpoint provides **off-exchange activity** data aggregated from FINRA&#39;s Short Sale Volume files. The data represents short selling activity reported by market centers and third-party reporting facilities, including both exchange and off-exchange venues.  ## Use as Market Proxy Short volume data can serve as a meaningful proxy for overall market sentiment and activity: - **Market Structure Insight**: Tracks short selling intensity across different trading venues and market centers - **Liquidity Indicator**: Higher short volume often correlates with increased market activity and liquidity - **Sentiment Analysis**: Can indicate bearish positioning, though short volume alone doesn&#39;t determine market direction - **Cross-Venue Analysis**: Compare short volume patterns across different reporting facilities to understand how activity varies by venue type  ## Data Characteristics - Data is reported at the facility level for granular analysis - Use the &#x60;/securities/daily_short_volume/consolidated&#x60; endpoint for a single aggregated view across all facilities - Short exempt volume reflects pre-borrow arrangements and other regulated short selling exemptions - Each data point represents a full trading day&#39;s accumulated short volume 
+     * @param tickers A list of one or more security tickers to filter results (optional)
+     * @param startDate The start date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param endDate The end date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param sortBy Specifies how to sort the data. Valid values are \&quot;date\&quot; (default, descending) or \&quot;ticker\&quot; (ascending) (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseSecuritiesDailyShortVolume&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseSecuritiesDailyShortVolume> getSecuritiesDailyShortVolumeWithHttpInfo(List<String> tickers, LocalDate startDate, LocalDate endDate, String sortBy, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecuritiesDailyShortVolumeValidateBeforeCall(tickers, startDate, endDate, sortBy, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesDailyShortVolume>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Daily Short Volume (asynchronously)
+     * Returns FINRA daily short volume data for securities, reported by individual market centers and reporting facilities.  ## Data Coverage This endpoint provides **off-exchange activity** data aggregated from FINRA&#39;s Short Sale Volume files. The data represents short selling activity reported by market centers and third-party reporting facilities, including both exchange and off-exchange venues.  ## Use as Market Proxy Short volume data can serve as a meaningful proxy for overall market sentiment and activity: - **Market Structure Insight**: Tracks short selling intensity across different trading venues and market centers - **Liquidity Indicator**: Higher short volume often correlates with increased market activity and liquidity - **Sentiment Analysis**: Can indicate bearish positioning, though short volume alone doesn&#39;t determine market direction - **Cross-Venue Analysis**: Compare short volume patterns across different reporting facilities to understand how activity varies by venue type  ## Data Characteristics - Data is reported at the facility level for granular analysis - Use the &#x60;/securities/daily_short_volume/consolidated&#x60; endpoint for a single aggregated view across all facilities - Short exempt volume reflects pre-borrow arrangements and other regulated short selling exemptions - Each data point represents a full trading day&#39;s accumulated short volume 
+     * @param tickers A list of one or more security tickers to filter results (optional)
+     * @param startDate The start date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param endDate The end date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param sortBy Specifies how to sort the data. Valid values are \&quot;date\&quot; (default, descending) or \&quot;ticker\&quot; (ascending) (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecuritiesDailyShortVolumeAsync(List<String> tickers, LocalDate startDate, LocalDate endDate, String sortBy, String nextPage, final ApiCallback<ApiResponseSecuritiesDailyShortVolume> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecuritiesDailyShortVolumeValidateBeforeCall(tickers, startDate, endDate, sortBy, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesDailyShortVolume>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for getSecuritiesDailyShortVolumeConsolidated
+     * @param tickers A list of one or more security tickers to filter results (optional)
+     * @param startDate The start date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param endDate The end date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call getSecuritiesDailyShortVolumeConsolidatedCall(List<String> tickers, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/securities/daily_short_volume/consolidated";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (tickers != null)
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("csv", "tickers", tickers));
+        if (startDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start_date", startDate));
+        if (endDate != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("end_date", endDate));
+        if (nextPage != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("next_page", nextPage));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "ApiKeyAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call getSecuritiesDailyShortVolumeConsolidatedValidateBeforeCall(List<String> tickers, LocalDate startDate, LocalDate endDate, String nextPage, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = getSecuritiesDailyShortVolumeConsolidatedCall(tickers, startDate, endDate, nextPage, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Daily Short Volume Consolidated
+     * Returns FINRA daily short volume data aggregated across all reporting facilities for each security and date.  ## Data Aggregation This endpoint consolidates all short volume activity reported across different market centers and reporting facilities into a single daily view per security: - **Volume Summation**: Total, short, and short exempt volumes are summed across all facilities - **Ratio Recalculation**: The short volume ratio is recalculated on the aggregated totals for accurate market-wide percentages - **Facility Tracking**: Included &#x60;sources&#x60; field lists all reporting facilities that contributed to each daily aggregate  ## Market-Wide Perspective Consolidated short volume serves as an excellent proxy for off-exchange market activity: - **Complete Market View**: Aggregates activity from all FINRA-reporting venues into a single metric - **Comparable Across Securities**: Normalized short volume ratios allow fair comparison between different stocks regardless of absolute trading volume - **Trend Analysis**: Daily consolidated data enables tracking of short selling trends and patterns across the entire market - **Venue-Agnostic**: Eliminates the need to aggregate across multiple facilities manually  ## Use Cases - Monitor overall short selling sentiment across your portfolio or watchlist - Identify unusual short volume spikes that may precede price moves - Compare short volume ratios between securities to identify relative short interest positioning - Analyze temporal patterns in short selling behavior across trading days 
+     * @param tickers A list of one or more security tickers to filter results (optional)
+     * @param startDate The start date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param endDate The end date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponseSecuritiesDailyShortVolumeConsolidated
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @throws NoSuchMethodException If fail to get specified method off of the main class
+     */
+    public ApiResponseSecuritiesDailyShortVolumeConsolidated getSecuritiesDailyShortVolumeConsolidated(List<String> tickers, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecuritiesDailyShortVolumeConsolidatedWithHttpInfo", List.class, LocalDate.class, LocalDate.class, String.class);
+      
+      Object[] apiCallArguments = { tickers, startDate, endDate, nextPage };
+      ApiResponse<ApiResponseSecuritiesDailyShortVolumeConsolidated> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
+      return resp.getData();
+    }
+
+    /**
+     * Daily Short Volume Consolidated
+     * Returns FINRA daily short volume data aggregated across all reporting facilities for each security and date.  ## Data Aggregation This endpoint consolidates all short volume activity reported across different market centers and reporting facilities into a single daily view per security: - **Volume Summation**: Total, short, and short exempt volumes are summed across all facilities - **Ratio Recalculation**: The short volume ratio is recalculated on the aggregated totals for accurate market-wide percentages - **Facility Tracking**: Included &#x60;sources&#x60; field lists all reporting facilities that contributed to each daily aggregate  ## Market-Wide Perspective Consolidated short volume serves as an excellent proxy for off-exchange market activity: - **Complete Market View**: Aggregates activity from all FINRA-reporting venues into a single metric - **Comparable Across Securities**: Normalized short volume ratios allow fair comparison between different stocks regardless of absolute trading volume - **Trend Analysis**: Daily consolidated data enables tracking of short selling trends and patterns across the entire market - **Venue-Agnostic**: Eliminates the need to aggregate across multiple facilities manually  ## Use Cases - Monitor overall short selling sentiment across your portfolio or watchlist - Identify unusual short volume spikes that may precede price moves - Compare short volume ratios between securities to identify relative short interest positioning - Analyze temporal patterns in short selling behavior across trading days 
+     * @param tickers A list of one or more security tickers to filter results (optional)
+     * @param startDate The start date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param endDate The end date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @return ApiResponse&lt;ApiResponseSecuritiesDailyShortVolumeConsolidated&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiResponseSecuritiesDailyShortVolumeConsolidated> getSecuritiesDailyShortVolumeConsolidatedWithHttpInfo(List<String> tickers, LocalDate startDate, LocalDate endDate, String nextPage) throws ApiException {
+        com.squareup.okhttp.Call call = getSecuritiesDailyShortVolumeConsolidatedValidateBeforeCall(tickers, startDate, endDate, nextPage, null, null);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesDailyShortVolumeConsolidated>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Daily Short Volume Consolidated (asynchronously)
+     * Returns FINRA daily short volume data aggregated across all reporting facilities for each security and date.  ## Data Aggregation This endpoint consolidates all short volume activity reported across different market centers and reporting facilities into a single daily view per security: - **Volume Summation**: Total, short, and short exempt volumes are summed across all facilities - **Ratio Recalculation**: The short volume ratio is recalculated on the aggregated totals for accurate market-wide percentages - **Facility Tracking**: Included &#x60;sources&#x60; field lists all reporting facilities that contributed to each daily aggregate  ## Market-Wide Perspective Consolidated short volume serves as an excellent proxy for off-exchange market activity: - **Complete Market View**: Aggregates activity from all FINRA-reporting venues into a single metric - **Comparable Across Securities**: Normalized short volume ratios allow fair comparison between different stocks regardless of absolute trading volume - **Trend Analysis**: Daily consolidated data enables tracking of short selling trends and patterns across the entire market - **Venue-Agnostic**: Eliminates the need to aggregate across multiple facilities manually  ## Use Cases - Monitor overall short selling sentiment across your portfolio or watchlist - Identify unusual short volume spikes that may precede price moves - Compare short volume ratios between securities to identify relative short interest positioning - Analyze temporal patterns in short selling behavior across trading days 
+     * @param tickers A list of one or more security tickers to filter results (optional)
+     * @param startDate The start date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param endDate The end date for the data (inclusive) in YYYY-MM-DD format (optional)
+     * @param nextPage Gets the next page of data from a previous API call (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSecuritiesDailyShortVolumeConsolidatedAsync(List<String> tickers, LocalDate startDate, LocalDate endDate, String nextPage, final ApiCallback<ApiResponseSecuritiesDailyShortVolumeConsolidated> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSecuritiesDailyShortVolumeConsolidatedValidateBeforeCall(tickers, startDate, endDate, nextPage, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiResponseSecuritiesDailyShortVolumeConsolidated>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -8124,12 +8414,13 @@ public class SecurityApi {
     /**
      * Build call for getSecuritySnapshots
      * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @param source Return the snapshot from the specified source. (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getSecuritySnapshotsCall(OffsetDateTime atDatetime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecuritySnapshotsCall(OffsetDateTime atDatetime, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -8139,6 +8430,8 @@ public class SecurityApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (atDatetime != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("at_datetime", atDatetime));
+        if (source != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("source", source));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -8173,10 +8466,10 @@ public class SecurityApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getSecuritySnapshotsValidateBeforeCall(OffsetDateTime atDatetime, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecuritySnapshotsValidateBeforeCall(OffsetDateTime atDatetime, String source, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
 
-        com.squareup.okhttp.Call call = getSecuritySnapshotsCall(atDatetime, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecuritySnapshotsCall(atDatetime, source, progressListener, progressRequestListener);
         return call;
 
     }
@@ -8185,14 +8478,15 @@ public class SecurityApi {
      * Realtime Stock Prices Snapshot
      * Returns all security snapshots for the queried interval with links to download.
      * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @param source Return the snapshot from the specified source. (optional)
      * @return SecuritySnapshotsResult
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @throws NoSuchMethodException If fail to get specified method off of the main class
      */
-    public SecuritySnapshotsResult getSecuritySnapshots(OffsetDateTime atDatetime) throws ApiException, NoSuchMethodException {
-      Method targetMethod = SecurityApi.class.getMethod("getSecuritySnapshotsWithHttpInfo", OffsetDateTime.class);
+    public SecuritySnapshotsResult getSecuritySnapshots(OffsetDateTime atDatetime, String source) throws ApiException, NoSuchMethodException {
+      Method targetMethod = SecurityApi.class.getMethod("getSecuritySnapshotsWithHttpInfo", OffsetDateTime.class, String.class);
       
-      Object[] apiCallArguments = { atDatetime };
+      Object[] apiCallArguments = { atDatetime, source };
       ApiResponse<SecuritySnapshotsResult> resp = apiClient.attemptApiCall(targetMethod, apiCallArguments);
       return resp.getData();
     }
@@ -8201,11 +8495,12 @@ public class SecurityApi {
      * Realtime Stock Prices Snapshot
      * Returns all security snapshots for the queried interval with links to download.
      * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @param source Return the snapshot from the specified source. (optional)
      * @return ApiResponse&lt;SecuritySnapshotsResult&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<SecuritySnapshotsResult> getSecuritySnapshotsWithHttpInfo(OffsetDateTime atDatetime) throws ApiException {
-        com.squareup.okhttp.Call call = getSecuritySnapshotsValidateBeforeCall(atDatetime, null, null);
+    public ApiResponse<SecuritySnapshotsResult> getSecuritySnapshotsWithHttpInfo(OffsetDateTime atDatetime, String source) throws ApiException {
+        com.squareup.okhttp.Call call = getSecuritySnapshotsValidateBeforeCall(atDatetime, source, null, null);
         Type localVarReturnType = new TypeToken<SecuritySnapshotsResult>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -8214,11 +8509,12 @@ public class SecurityApi {
      * Realtime Stock Prices Snapshot (asynchronously)
      * Returns all security snapshots for the queried interval with links to download.
      * @param atDatetime The UTC date and time (with url-encoded spaces) the snapshot will cover. (optional)
+     * @param source Return the snapshot from the specified source. (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getSecuritySnapshotsAsync(OffsetDateTime atDatetime, final ApiCallback<SecuritySnapshotsResult> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecuritySnapshotsAsync(OffsetDateTime atDatetime, String source, final ApiCallback<SecuritySnapshotsResult> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -8239,7 +8535,7 @@ public class SecurityApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getSecuritySnapshotsValidateBeforeCall(atDatetime, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecuritySnapshotsValidateBeforeCall(atDatetime, source, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<SecuritySnapshotsResult>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

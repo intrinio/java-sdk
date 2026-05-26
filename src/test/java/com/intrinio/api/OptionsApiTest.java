@@ -21,6 +21,8 @@ import com.intrinio.models.ApiResponseOptionsPricesByTickerRealtime;
 import com.intrinio.models.ApiResponseOptionsPricesEod;
 import com.intrinio.models.ApiResponseOptionsRealtime;
 import com.intrinio.models.ApiResponseOptionsStatsRealtime;
+import com.intrinio.models.ApiResponseOptionsSurface;
+import com.intrinio.models.ApiResponseOptionsSurfaceInterpolatedIv;
 import com.intrinio.models.ApiResponseOptionsTickers;
 import com.intrinio.models.ApiResponseOptionsUnusualActivity;
 import java.math.BigDecimal;
@@ -120,6 +122,44 @@ public class OptionsApiTest {
         Boolean showExtendedPrice = null;
         Boolean includeRelatedSymbols = null;
         ApiResponseOptionsChainRealtime response = api.getOptionStrikesRealtime(symbol, strike, source, stockPriceSource, model, showExtendedPrice, includeRelatedSymbols);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Option Surface
+     *
+     * Returns the implied volatility surface for a ticker symbol.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionSurfaceTest() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        String surfaceType = null;
+        String source = null;
+        ApiResponseOptionsSurface response = api.getOptionSurface(identifier, surfaceType, source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Option Surface
+     *
+     * The interpolated implied volatility is the implied volatility calculated from an arbitrary point on the smoothed volatility surface.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionSurface_0Test() throws ApiException, NoSuchMethodException {
+        String identifier = null;
+        OffsetDateTime expiration = null;
+        BigDecimal strike = null;
+        String source = null;
+        OffsetDateTime asOf = null;
+        ApiResponseOptionsSurfaceInterpolatedIv response = api.getOptionSurface_0(identifier, expiration, strike, source, asOf);
 
         // TODO: test validations
     }
@@ -408,7 +448,7 @@ public class OptionsApiTest {
     }
     
     /**
-     * Options Implied Move By Symbol
+     * Options Implied Move (Expected) Realtime
      *
      * Returns the implied move data points for a ticker symbol.
      *
@@ -422,6 +462,26 @@ public class OptionsApiTest {
         Object percentage = null;
         String source = null;
         ApiResponseOptionsImpliedMove response = api.getOptionsImpliedMoveBySymbol(symbol, expirationDate, percentage, source);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Options Implied Move (Expected) Historical
+     *
+     * Returns historical implied move data points for a ticker symbol on a specific date.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void getOptionsImpliedMoveHistoricalBySymbolTest() throws ApiException, NoSuchMethodException {
+        String symbol = null;
+        LocalDate expirationDate = null;
+        LocalDate asOfDate = null;
+        Object percentage = null;
+        String source = null;
+        ApiResponseOptionsImpliedMove response = api.getOptionsImpliedMoveHistoricalBySymbol(symbol, expirationDate, asOfDate, percentage, source);
 
         // TODO: test validations
     }
