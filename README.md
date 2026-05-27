@@ -1,4 +1,4 @@
-# Intrinio Java SDK
+# Intrinio Java SDK 
 
 To get an API key, [sign up here](https://intrinio.com/).
 
